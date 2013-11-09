@@ -1,0 +1,4 @@
+Some Utility Classes			Michael Pfeiffer 28.10.2000
+
+Resource Bitmaps have 'bits' respective B_TRANSLATOR_BITMAP as type_code!
+Required libraries: libtranslation.so

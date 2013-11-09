@@ -1,0 +1,7 @@
+#! /bin/sh
+cd $(dirname "$0")
+
+res=`alert --warning "Do you want to remove a Replicant for BePDF from the deskbar? " Abort Remove`
+if [ "$res" = "Remove" ] ; then
+	desklink remove=`pwd`/BePDF
+fi 

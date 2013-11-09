@@ -1,0 +1,11 @@
+#! /bin/sh
+cd $(dirname "$0")
+
+# Create zip archive for localization update.
+rm BePDF.update.zip
+cd bepdf
+if [ "$1" = "-l" ] ; then
+	zip -r -y ../BePDF.update.zip locale/* -xi "*CVS*" locale/Active\ Translators
+else
+	zip -r -y ../BePDF.update.zip locale/* docs/* -xi "*CVS*" locale/Active\ Translators
+fi

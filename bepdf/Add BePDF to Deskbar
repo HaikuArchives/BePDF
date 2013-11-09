@@ -1,0 +1,4 @@
+#! /bin/sh
+cd $(dirname "$0")
+
+desklink "cmd=Remove Replicant:desklink remove=`pwd`/BePDF &" `pwd`/BePDF

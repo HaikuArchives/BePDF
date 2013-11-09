@@ -1,0 +1,676 @@
+CatalogName
+Korean
+CatalogLanguage
+Korean
+LanguageCode
+ko
+CatalogAuthor
+t3RRa & Park Sukyouk
+File
+파일
+Search
+검색
+View
+보기
+Page
+페이지
+Rotation
+회전
+Help
+도움말
+Open…
+열기…
+File Info…
+파일 정보…
+File Info
+문서 정보
+Bookmarks…
+즐겨찾기…
+Bookmarks
+즐겨찾기
+Page Setup…
+용지 설정…
+Print…
+인쇄…
+Print
+인쇄
+Preferences…
+환경설정…
+About BePDF…
+BePDF에 대하여…
+Quit
+끝내기
+Find…
+찾기…
+Find
+찾기
+Find Next…
+다음 찾기…
+Zoom In
+확대
+Zoom Out
+축소
+Fit to Page Width
+페이지 넓이에 맞춰 보기
+Fit to Page
+페이지 전체 보기
+Custom Zoom Factor (%d%%)
+사용자 확대 비율 (%d%%)
+First
+처음
+Previous
+이전
+Go To Page
+페이지 이동
+Next
+다음
+Last
+마지막
+Back
+뒤로
+Forward
+앞으로
+Return to the beginning of the document.
+문서의 시작페이지로 돌아가기
+Skip to the 10th previous page.
+10페이지 앞으로 가기.
+Skip to the previous page.
+이전페이지로 가기 .
+Skip to the next page.
+다음페이지로 가기.
+Skip to the 10th next page.
+10페이지 뒤로 가기
+Advance to the end of the document.
+문서의 마지막 페이지로 가기.
+Back in the page history list.
+이력목록에서 이전으로 이동.
+Forward in the page history list.
+이력목록에서 다음으로 이동.
+Fit to Page Width.
+페이지 넓이에 맞추기.
+Fit to page.
+페이지 전체 보기.
+of %d
+%d의
+BePDF Status
+BePDF 상태
+BePDF reading file: 
+BePDF 파일을 읽는중: 
+Display Preferences
+설정 보기
+Font Renderer
+폰트 렌더러
+Type 1
+타입 1
+Off
+끄기
+Without Anti-Aliasing
+안티-얼라이어싱 기능 제거
+Anti-Aliasing
+안티-얼라이어싱 기능 사용
+Anti-Aliasing High
+안티-얼라이어싱 기능 향상
+Type 3
+타입 3
+On (Very Slow!)
+켜기 (매우 느림!)
+Freetype
+Freetype
+Color Space
+색상
+8 bits per pixel
+픽셀당 8 비트
+16 bits per pixel
+픽셀당 16 비트
+32 bits per pixel
+픽셀당 32 비트
+BePDF Printing
+BePDF 인쇄
+BePDF printing document: 
+BePDF 인쇄 문서: 
+Page:
+페이지:
+Stop
+멈춤
+Abort
+취소
+Page: %d
+페이지: %d
+Print Settings
+인쇄 설정
+Pages
+페이지
+All Pages
+모든 페이지
+Odd Pages
+홀수 페이지
+Even Pages
+짝수 페이지
+Order
+순서
+Normal
+표준
+Reverse
+전환
+Zoom (%)
+배율 (%)
+On
+켜기
+DPI
+DPI
+Max. Printer Resolution
+프린터 해상도 최대
+Page Size
+페이지 크기
+Wrong Parameter!
+잘못된 변수!
+Zoom must be between 25 and 400!
+배율을 25 - 400 사이로 설정하세요!
+OK
+확인
+Width: 
+넓이: 
+Height: 
+높이: 
+ in
+ in
+Yes
+예
+No
+아니오
+Allowed
+허가
+Denied
+거부
+Filename:
+파일명:
+Path:
+경로:
+Title:
+제목:
+Title
+제목
+Subject:
+주제:
+Author:
+작성자:
+Keywords:
+주제어:
+Creator:
+만든이:
+Producer:
+PDF변환:
+Created:
+생성시간:
+Modified:
+수정시간:
+PDF Version:
+PDF 버전:
+Linearized:
+최적화:
+Encrypted:
+암호화:
+Printing:
+인쇄:
+Changing the Document:
+문서 변경:
+Selecting Text and Graphics:
+문서 및 그림을 선택:
+Adding or Changing Notes and Form Fields:
+노트 및 폼필드를 변경하거나 추가:
+Document
+문서
+Security
+보안
+Find Text
+단어 찾기
+Find: 
+찾기: 
+Enter Password
+비밀번호 입력
+Password: 
+비밀번호: 
+No Title
+제목 없음
+Execute the command:
+실행할 명령:
+BePDF: Launch
+BePDF: 실행
+Cancel
+취소
+Unknown link action type: '%s'
+알수없는 실행유형 링크: '%s'
+[internal link]
+[내부 링크]
+[unknown link]
+[알수없는 링크]
+Link: 
+링크: 
+ (Pages %d To %d)
+ (%d 에서 %d 까지의 페이지)
+General
+기본
+Status
+상태
+Bookmarks
+즐겨찾기
+About
+BePDF 개요
+Error
+에러
+BePDF: Error opening file!
+BePDF: 파일 열기 에러!
+Close
+닫기
+Edit
+편집
+Copy Selection
+선택항목 복사
+Select All
+모두 선택
+Select None
+선택 해제
+Update Frequency
+갱신빈도
+Language
+언어
+Preferences
+환경설정
+Renderer
+렌더러
+Display
+표시
+Native
+BePDF
+Native Renderer
+BePDF 렌더러
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript Renderer
+2x2 Anti-Aliasing
+2x2 안티-얼라이어싱
+4x4 Anti-Aliasing
+4x4 안티i-얼라이어싱
+2x2 Anti-Aliasing text only
+2x2 안티-얼라이어싱 문서만
+4x4 Anti-Aliasing text only
+4x4 안티-얼라이어싱 문서만
+Restore Page Number
+재시작시 종료되었을때 보던 페이지 열기.
+Restore Window Position and Size
+창 위치 및 크기 저장.
+No Settings
+설정이 없음
+Fonts of this page
+이 페이지의 폰트
+Show All Fonts
+모든 폰트 보기
+Fonts
+폰트
+Searching all fonts…
+모든 폰트를 찾는 중…
+All fonts of this document (aborted)
+이 문서의 모든 폰트 (취소)
+All fonts of this document
+이 문서의 모든 폰트
+Name
+이름
+Embedded Name
+Embedded Name
+Type
+형식
+Will take effect at next program launch.
+프로그램을 재실행해야 변경사항이 적용됩니다..
+Zoom in.
+20% 확대.
+Zoom out.
+20% 축소.
+Open file.
+파일 열기.
+Print.
+인쇄.
+Bookmarks.
+즐겨찾기 표시.
+Find.
+찾기.
+Find next.
+다음 찾기.
+Rotate clockwise.
+시계방향으로 회전.
+Rotate anti-clockwise.
+시계반대 방향으로 회전.
+Show page list
+페이지 목록 보기
+Show page list.
+페이지 목록 보기.
+Hide page list
+페이지 목록 숨기기
+Hide page list.
+페이지 목록 숨기기.
+Fullscreen
+전체화면
+Fullscreen mode.
+전체화면 모드.
+Fullscreen Mode
+전체화면 모드
+Window
+창
+Window mode.
+창 모드.
+Zoom
+확대/축소
+Ghostscript library "libgs.so" not found.
+Ghostscript 라이버러리 "libgs.so" 를 찾지 못했슴.
+Install Ghostscript 6.50 or later and restart BePDF.
+Ghostscript 6.50또는 이후버젼을 설치한후 BePDF를 재시작하세요.
+Show Toolbar, Statusbar and Scrollbars too
+작업막대와 상태막대, 스크롤바 보기
+Show Document view only
+문서만 보기
+<empty>
+<공백>
+Go to page %d
+%d 페이지로 이동
+Selection Rectangle
+범위 지정
+Filled Rectangle
+지정된 범위 색 표시
+Stroked Rectangle
+지정된 범위 색 표시 않음
+Asian Fonts
+아시아 폰트
+Japanese
+일본어
+Simplified Chinese
+중국어 (간자체)
+Traditional Chinese
+중국어 (번자체)
+FreeType 2
+FreeType 2
+Open In New Window…
+새로운 창으로 열기…
+Open In New Window
+새로운 창으로 열기
+Mode
+모드
+Color
+색상
+Gray scale
+흑백
+Reload
+다시 읽어들이기
+Reload file.
+파일 다시읽기.
+Sub-pixel precise positioning
+하위픽셀의 정확한 위치설정
+Hinting
+힌트정보
+Open in Workspace
+작업공간에서 열기
+Open in Workspace
+작업공간에서 열기
+Bookmark
+즐겨찾기
+Add
+추가
+Delete
+삭제
+Edit
+편집
+Show Help…
+도움말 보기…
+Show Online Help…
+온라인 도움말 보기…
+Visit Home Page…
+홈페이지 방문…
+Vote at BeBits…
+BeBits에서 투표하기…
+Submit Bug Report…
+버그리포트 제출…
+User Password
+사용자 비밀번호
+Owner Password
+소유자 비밀번호
+Open in Workspace:
+작업공간에서 열기:
+current
+현재
+Edit title for bookmark
+즐겨찾기 제목 편집
+Page %d
+%d 페이지
+User defined
+사용자 정의
+Annotation
+주석
+Title:
+제목:
+Date:
+날짜:
+Show Error Messages
+에러 메세지 보기
+Error Messages
+에러 메세지
+Clear
+지우기
+stderr
+stderr
+stdout
+stdout
+Auto Open
+자동 열기
+Floating
+전체표시
+Check For Update…
+갱신함옥 확인…
+Checking for update… Please wait.
+갱신항목 확인중… 잠시만 기다리세요.
+Loading pages
+페이지를 읽어들이는 중…
+Preparing for rendering
+랜더링 준비중…
+Contacting server…
+서버에 연결중…
+Downloading…
+내려받기…
+Update
+갱신
+Couldn't retrieve update script
+갱신 스크립트를 가져올 수 없음
+Update script was empty!
+갱신 스크립트가 비었음!
+No update is currently available.
+현재 이용가능한 갱신항목이 없음.
+Cancel
+취소
+More info…
+상세 정보…
+Upgrade
+업그레이드
+Upgrade!
+업그레이드!
+Upgrade available
+업그레이드 이용가능
+Couldn't download upgrade file!
+업그레이드 파일을 내려받을 수 없음!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+내려받은 파일을 실행할 수 없음!\n(내려받은 파일은 /tmp에 있음)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+업그레이드 스크립트를 실행할 수 없음!\n(내려받은 파일은 /tmp에 있음)
+Add circle annotation.
+Add circle annotation.
+Add comment text annotation.
+Add comment text annotation.
+Add free text annotation.
+Add free text annotation.
+Add help text annotation.
+Add help text annotation.
+Add highlight annotation.
+Add highlight annotation.
+Add insert text annotation.
+Add insert text annotation.
+Add key text annotation.
+Add key text annotation.
+Add new paragraph text annotation.
+Add new paragraph text annotation.
+Add note text annotation.
+Add note text annotation.
+Add paragraph text annotation.
+Add paragraph text annotation.
+Add square annotation.
+Add square annotation.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Add strikeout annotation.
+Add underline annotation.
+Add underline annotation.
+Align:
+Align:
+Author
+Author
+Automatic
+Automatic
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Circle
+Circle
+Comment
+Comment
+Copy link
+Copy link
+Could not write PDF file!
+Could not write PDF file!
+Edit Annotations.
+Edit Annotations.
+Editing of annotations in an encrypted PDF file not supported yet!
+Editing of annotations in an encrypted PDF file not supported yet!
+Enable Close Path Workaround
+Enable Close Path Workaround
+Error
+Error
+File Attachment
+File Attachment
+Font:
+Font:
+Free Text
+Free Text
+Highlight
+Highlight
+Information
+Information
+Ink
+Ink
+Insert
+Insert
+Invert vertical mouse scrolling
+Invert vertical mouse scrolling
+Key
+Key
+Korean
+Korean
+Leave annotation editing mode
+Leave annotation editing mode
+Leave annotation editing mode.
+Leave annotation editing mode.
+Line
+Line
+Link
+Link
+Movie
+Movie
+New
+New
+New Paragraph
+New Paragraph
+Note
+Note
+PDF file successfully written!
+PDF file successfully written!
+Paragraph
+Paragraph
+Popup
+Popup
+PrinterMark
+PrinterMark
+Properties
+Properties
+Save As…
+Save As…
+Save file as.
+Save file as.
+Show annotation tool bar
+Show annotation tool bar
+Show annotation tool bar.
+Show annotation tool bar.
+Size:
+Size:
+Sound
+Sound
+Square
+Square
+Squiggly
+Squiggly
+Stamp
+Stamp
+Strike Out
+Strike Out
+Text
+Text
+TrapNet
+TrapNet
+Underline
+Underline
+Widget
+Widget
+centered
+centered
+left
+left
+right
+right
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+Common Fonts
+Common Fonts
+Description
+Description
+File Name
+File Name
+Ignore Case
+Ignore Case
+Open attachment(s).
+Open attachment(s).
+Save File Attachment As…
+Save File Attachment As…
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+Search Backwards
+Search Backwards
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+System Fonts
+System Fonts
+User Fonts
+User Fonts
+Warning
+Warning

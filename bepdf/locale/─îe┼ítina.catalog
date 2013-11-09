@@ -1,0 +1,678 @@
+CatalogName
+Čeština
+CatalogLanguage
+Czech
+LanguageCode
+cs
+CatalogAuthor
+Jan Polzer
+File
+Soubor
+Search
+Hledat
+View
+Zobrazení
+Page
+Strana
+Rotation
+Otočení
+Help
+Nápověda
+Open…
+Otevřít…
+File Info…
+Informace o souboru…
+File Info
+Informace o souboru
+Bookmarks…
+Záložky…
+Bookmarks
+Záložky
+Page Setup…
+Nastavení strany…
+Print…
+Tisk…
+Print
+Tisk
+Preferences…
+Nastavení…
+About BePDF…
+O BePDF…
+Quit
+Konec
+Find…
+Najít…
+Find
+Najít
+Find Next…
+Najít další…
+Zoom In
+Zvětšit
+Zoom Out
+Zmenšit
+Zoom in.
+Zvětšit.
+Zoom out.
+Zmenšit.
+Fit to Page Width
+Na šířku strany
+Fit to Page
+Na velikost strany
+Custom Zoom Factor (%d%%)
+Libovolné zvětšení (%d%%)
+First
+První
+Previous
+Předchozí
+Go To Page
+Jdi na stranu
+Next
+Další
+Last
+Poslední
+Back
+Zpět
+Forward
+Dopředu
+Return to the beginning of the document.
+Na začátek documentu.
+Skip to the 10th previous page.
+O 10 stran zpět.
+Skip to the previous page.
+Na předchozí stranu.
+Skip to the next page.
+Na další stranu.
+Skip to the 10th next page.
+O 10 stran dopředu.
+Advance to the end of the document.
+Na konec dokumentu.
+Back in the page history list.
+Zpět v historii.
+Forward in the page history list.
+Dopředu v historii.
+Fit to Page Width.
+Na šířku strany.
+Fit to page.
+Na velikost strany.
+of %d
+z %d
+BePDF Status
+BePDF Stav
+BePDF reading file: 
+BePDF čte soubor: 
+Display Preferences
+Zobrazit nastavení
+Font Renderer
+Zobrazit fonty
+Type 1
+Type 1
+Off
+Vypnuto
+Without Anti-Aliasing
+Bez Anti-Aliasingu
+Anti-Aliasing
+Anti-Aliasing
+Anti-Aliasing High
+Anti-Aliasing vysoký
+Type 3
+Type 3
+On (Very Slow!)
+Zapnuto (Velmi pomalé!)
+Freetype
+Freetype
+Color Space
+Barevné prostředí
+8 bits per pixel
+8 bitů na pixel
+16 bits per pixel
+16 bitů na pixel
+32 bits per pixel
+32 bitů na pixel
+BePDF Printing
+BePDF tiskne
+BePDF printing document: 
+BePDF tiskne dokument: 
+Page:
+Strana:
+Stop
+Stop
+Abort
+Zrušit
+Page: %d
+Strana: %d
+Print Settings
+Nastavení tisku
+Pages
+Strany
+All Pages
+Všechny strany
+Odd Pages
+Liché strany
+Even Pages
+Sudé strany
+Order
+Pořadí
+Normal
+Normálně
+Reverse
+Pozpátku
+Zoom (%)
+Zvětšení (%)
+On
+Zapnuto
+DPI
+DPI
+Max. Printer Resolution
+Max. rozlišení tiskárny
+Page Size
+Velikost strany
+Wrong Parameter!
+Špatný parametr!
+Zoom must be between 25 and 400!
+Zvětšení musí být mezi 25 a 400!
+OK
+OK
+Width: 
+Šířka: 
+Height: 
+Výška: 
+ in
+ v
+Yes
+Ano
+No
+Ne
+Allowed
+Dovoleno
+Denied
+Zamítnuto
+Filename:
+Název souboru:
+Path:
+Cesta:
+Title:
+Název:
+Title
+Název
+Subject:
+Předmět:
+Author:
+Autor:
+Keywords:
+Klíčová slova:
+Creator:
+Tvůrce:
+Producer:
+Výrobce:
+Created:
+Vytvořeno:
+Modified:
+Změněno:
+PDF Version:
+PDF Verze:
+Linearized:
+Nalinkováno:
+Encrypted:
+Zakódováno:
+Printing:
+Tisk:
+Changing the Document:
+Změna dokumentu:
+Selecting Text and Graphics:
+Označuji text a grafiku:
+Adding or Changing Notes and Form Fields:
+Přidávám nebo měním poznámky a formuláře:
+Document
+Dokument
+Security
+Zabezpečení
+Find Text
+Najít text
+Find: 
+Najít: 
+Enter Password
+Zadejte heslo
+Password: 
+Heslo: 
+No Title
+Bez názvu
+Execute the command:
+Vykonat příkaz:
+BePDF: Launch
+BePDF: Spustit
+Cancel
+Storno
+Unknown link action type: '%s'
+Neznámá akce typu: '%s'
+[internal link]
+[vnitřní link]
+[unknown link]
+[neznámý link]
+Link: 
+Link: 
+ (Pages %d To %d)
+ (Strany %d až %d)
+General
+Obecné
+Status
+Stav
+Bookmarks
+Záložky
+About
+O
+Error
+Chyba
+BePDF: Error opening file!
+BePDF: Chyba při otevírání souboru!
+Close
+Zavřít
+Edit
+Upravit
+Copy Selection
+Kopírovat označené
+Select All
+Vybrat vše
+Select None
+Nevybrat nic
+Update Frequency
+Obnovovací frekvence
+Language
+Jazyk
+Preferences
+Nastavení
+Renderer
+Vykreslovač
+Display
+Obrazovka
+Native
+Přirozený
+Native Renderer
+Přirozený vykreslovač
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Vykreslovač Ghostscript
+2x2 Anti-Aliasing
+2x2 Anti-Aliasing
+4x4 Anti-Aliasing
+4x4 Anti-Aliasing
+2x2 Anti-Aliasing text only
+2x2 Anti-Aliasing pouze text
+4x4 Anti-Aliasing text only
+4x4 Anti-Aliasing pouze text
+Obnovit stranu číslo
+Jdi na toto číslo strany když se soubor zavřel.
+Restore Window Position and Size
+Obnovit pozici okna a velikost.
+No Settings
+Žádná nastavení
+Fonts of this page
+Fonty na této straně
+Show All Fonts
+Ukaž všechny fonty
+Fonts
+Fonty
+Searching all fonts…
+Hledám všechny fonty…
+All fonts of this document (aborted)
+Všechny fonty v tomto dokumentu (zrušeno)
+All fonts of this document
+Všechny fonty v tomto dokumentu
+Name
+Jméno
+Embedded Name
+Vložené jméno
+Type
+Typ
+Will take effect at next program launch.
+Projeví se při příštím spuštění programu.
+Zvětšit.
+Zvětšit o 20%.
+Zmenšit.
+Zmenšit o 20%.
+Open file.
+Otevřít soubor.
+Print.
+Tisk.
+Bookmarks.
+Záložky.
+Find.
+Najít.
+Find next.
+Najít další.
+Rotate clockwise.
+Otočit po směru hodinových ručiček.
+Rotate anti-clockwise.
+Otočit proti směru hodinových ručiček.
+Show page list
+Ukázat seznam stran
+Show page list.
+Ukázat seznam stran.
+Hide page list
+Schovat seznam stran
+Hide page list.
+Schovat seznam stran.
+Fullscreen
+Na celou obrazovku
+Fullscreen mode.
+Celá obrazovka.
+Window
+Okno
+Window mode.
+Zobrazení v okně.
+Zoom
+Zvětšení
+Ghostscript library "libgs.so" not found.
+Knihovna Ghostscriptu "libgs.so" nenalezena.
+Install Ghostscript 6.50 or later and restart BePDF.
+Nainstalujte Ghostscript 6.50 nebo novější a znovu spusťte BePDF.
+Fullscreen Mode
+Celá obrazovka
+Show Toolbar, Statusbar and Scrollbars too
+Zobrazit panel nástrojů, stavovou lištu a posuvníky
+Show Document view only
+Zobrazit pouze dokument
+<empty>
+<prázdné>
+Go to page %d
+Jdi na stranu %d
+Selection Rectangle
+Vybrání obdélníkem
+Filled Rectangle
+Plný obdélník
+Stroked Rectangle
+Přerušovaný obdélník
+Asian Fonts
+Asijské fonty
+Japanese
+Japonské
+Simplified Chinese
+Zjednodušená čínština
+Traditional Chinese
+Tradiční čínština
+FreeType 2
+Volný styl 2
+Open In New Window…
+Otevřít v novém okně…
+Open In New Window
+Otevřít v novém okně
+Mode
+Mód
+Color
+Barva
+Gray scale
+Šedá škála
+Reload
+Znovu načíst
+Reload file.
+Znovu načíst soubor.
+Restore Page Number
+Restore Page Number
+Add circle annotation.
+Add circle annotation.
+Add comment text annotation.
+Add comment text annotation.
+Add free text annotation.
+Add free text annotation.
+Add help text annotation.
+Add help text annotation.
+Add highlight annotation.
+Add highlight annotation.
+Add insert text annotation.
+Add insert text annotation.
+Add key text annotation.
+Add key text annotation.
+Add new paragraph text annotation.
+Add new paragraph text annotation.
+Add note text annotation.
+Add note text annotation.
+Add paragraph text annotation.
+Add paragraph text annotation.
+Add square annotation.
+Add square annotation.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Add strikeout annotation.
+Add underline annotation.
+Add underline annotation.
+Align:
+Align:
+Annotation
+Annotation
+Author
+Author
+Auto Open
+Auto Open
+Automatic
+Automatic
+Bookmark
+Bookmark
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Cancel
+Cancel
+Check For Update…
+Check For Update…
+Checking for update… Please wait.
+Checking for update… Please wait.
+Circle
+Circle
+Clear
+Clear
+Comment
+Comment
+Contacting server…
+Contacting server…
+Copy link
+Copy link
+Could not write PDF file!
+Could not write PDF file!
+Couldn't download upgrade file!
+Couldn't download upgrade file!
+Couldn't execute upgrade script!n(Downloaded file is in /tmp)
+Couldn't execute upgrade script!n(Downloaded file is in /tmp)
+Couldn't launch downloaded file!n(Downloaded file is in /tmp)
+Couldn't launch downloaded file!n(Downloaded file is in /tmp)
+Couldn't retrieve update script
+Couldn't retrieve update script
+Date:
+Date:
+Delete
+Delete
+Downloading…
+Downloading…
+Edit Annotations.
+Edit Annotations.
+Edit title for bookmark
+Edit title for bookmark
+Editing of annotations in an encrypted PDF file not supported yet!
+Editing of annotations in an encrypted PDF file not supported yet!
+Enable Close Path Workaround
+Enable Close Path Workaround
+Error
+Error
+Error Messages
+Error Messages
+File Attachment
+File Attachment
+Floating
+Floating
+Font:
+Font:
+Free Text
+Free Text
+Highlight
+Highlight
+Hinting
+Hinting
+Information
+Information
+Ink
+Ink
+Insert
+Insert
+Invert vertical mouse scrolling
+Invert vertical mouse scrolling
+Key
+Key
+Korean
+Korean
+Leave annotation editing mode
+Leave annotation editing mode
+Leave annotation editing mode.
+Leave annotation editing mode.
+Line
+Line
+Link
+Link
+Loading pages
+Loading pages
+More info…
+More info…
+Movie
+Movie
+New
+New
+New Paragraph
+New Paragraph
+No update is currently available.
+No update is currently available.
+Note
+Note
+Open in Workspace
+Open in Workspace
+Open in Workspace:
+Open in Workspace:
+Owner Password
+Owner Password
+PDF file successfully written!
+PDF file successfully written!
+Page %d
+Page %d
+Paragraph
+Paragraph
+Popup
+Popup
+Preparing for rendering
+Preparing for rendering
+PrinterMark
+PrinterMark
+Properties
+Properties
+Save As…
+Save As…
+Save file as.
+Save file as.
+Show Error Messages
+Show Error Messages
+Show Help…
+Show Help…
+Show Online Help…
+Show Online Help…
+Show annotation tool bar
+Show annotation tool bar
+Show annotation tool bar.
+Show annotation tool bar.
+Size:
+Size:
+Sound
+Sound
+Square
+Square
+Squiggly
+Squiggly
+Stamp
+Stamp
+Strike Out
+Strike Out
+Sub-pixel precise positioning
+Sub-pixel precise positioning
+Submit Bug Report…
+Submit Bug Report…
+Text
+Text
+Title:
+Title:
+TrapNet
+TrapNet
+Underline
+Underline
+Update
+Update
+Update script was empty!
+Update script was empty!
+Upgrade
+Upgrade
+Upgrade available
+Upgrade available
+Upgrade!
+Upgrade!
+User Password
+User Password
+User defined
+User defined
+Visit Home Page…
+Visit Home Page…
+Vote at BeBits…
+Vote at BeBits…
+Widget
+Widget
+centered
+centered
+current
+current
+left
+left
+right
+right
+stderr
+stderr
+stdout
+stdout
+Add
+Add
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+Common Fonts
+Common Fonts
+Description
+Description
+File Name
+File Name
+Ignore Case
+Ignore Case
+Open attachment(s).
+Open attachment(s).
+Save File Attachment As…
+Save File Attachment As…
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+Search Backwards
+Search Backwards
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+System Fonts
+System Fonts
+User Fonts
+User Fonts
+Warning
+Warning

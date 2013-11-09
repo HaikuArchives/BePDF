@@ -1,0 +1,664 @@
+CatalogName
+<Enter the name of your language here>
+CatalogLanguage
+<Replace with language name in English>
+LanguageCode
+<Replace with posix language code>
+CatalogAuthor
+<Your name>
+File
+File
+Search
+Search
+View
+View
+Page
+Page
+Rotation
+Rotation
+Help
+Help
+Open…
+Open…
+File Info…
+File Info…
+File Info
+File Info
+Bookmarks…
+Bookmarks…
+Bookmarks
+Bookmarks
+Page Setup…
+Page Setup…
+Print…
+Print…
+Print
+Print
+Preferences…
+Preferences…
+About BePDF…
+About BePDF…
+Quit
+Quit
+Find…
+Find…
+Find
+Find
+Find Next…
+Find Next…
+Zoom In
+Zoom In
+Zoom Out
+Zoom Out
+Fit to Page Width
+Fit to Page Width
+Fit to Page
+Fit to Page
+Custom Zoom Factor (%d%%)
+Custom Zoom Factor (%d%%)
+First
+First
+Previous
+Previous
+Go To Page
+Go To Page
+Next
+Next
+Last
+Last
+Back
+Back
+Forward
+Forward
+Return to the beginning of the document.
+Return to the beginning of the document.
+Skip to the 10th previous page.
+Skip to the 10th previous page.
+Skip to the previous page.
+Skip to the previous page.
+Skip to the next page.
+Skip to the next page.
+Skip to the 10th next page.
+Skip to the 10th next page.
+Advance to the end of the document.
+Advance to the end of the document.
+Back in the page history list.
+Back in the page history list.
+Forward in the page history list.
+Forward in the page history list.
+Fit to Page Width.
+Fit to Page Width.
+Fit to page.
+Fit to page.
+of %d
+of %d
+BePDF Status
+BePDF Status
+BePDF reading file: 
+BePDF reading file: 
+Display Preferences
+Display Preferences
+Font Renderer
+Font Renderer
+Type 1
+Type 1
+Off
+Off
+Without Anti-Aliasing
+Without Anti-Aliasing
+Anti-Aliasing
+Anti-Aliasing
+Anti-Aliasing High
+Anti-Aliasing High
+Type 3
+Type 3
+On (Very Slow!)
+On (Very Slow!)
+Freetype
+Freetype
+Color Space
+Color Space
+8 bits per pixel
+8 bits per pixel
+16 bits per pixel
+16 bits per pixel
+32 bits per pixel
+32 bits per pixel
+BePDF Printing
+BePDF Printing
+BePDF printing document: 
+BePDF printing document: 
+Page:
+Page:
+Stop
+Stop
+Abort
+Abort
+Page: %d
+Page: %d
+Print Settings
+Print Settings
+Pages
+Pages
+All Pages
+All Pages
+Odd Pages
+Odd Pages
+Even Pages
+Even Pages
+Order
+Order
+Normal
+Normal
+Reverse
+Reverse
+Zoom (%)
+Zoom (%)
+On
+On
+DPI
+DPI
+Max. Printer Resolution
+Max. Printer Resolution
+Page Size
+Page Size
+Wrong Parameter!
+Wrong Parameter!
+Zoom must be between 25 and 400!
+Zoom must be between 25 and 400!
+OK
+OK
+Width: 
+Width: 
+Height: 
+Height: 
+ in
+ in
+Yes
+Yes
+No
+No
+Allowed
+Allowed
+Denied
+Denied
+Filename:
+Filename:
+Path:
+Path:
+Title:
+Title:
+Title
+Title
+Subject:
+Subject:
+Author:
+Author:
+Keywords:
+Keywords:
+Creator:
+Creator:
+Producer:
+Producer:
+Created:
+Created:
+Modified:
+Modified:
+PDF Version:
+PDF Version:
+Linearized:
+Linearized:
+Encrypted:
+Encrypted:
+Printing:
+Printing:
+Changing the Document:
+Changing the Document:
+Selecting Text and Graphics:
+Selecting Text and Graphics:
+Adding or Changing Notes and Form Fields:
+Adding or Changing Notes and Form Fields:
+Document
+Document
+Security
+Security
+Find Text
+Find Text
+Find: 
+Find: 
+Enter Password
+Enter Password
+Password: 
+Password: 
+No Title
+No Title
+Execute the command:
+Execute the command:
+BePDF: Launch
+BePDF: Launch
+Cancel
+Cancel
+Unknown link action type: '%s'
+Unknown link action type: '%s'
+[internal link]
+[internal link]
+[unknown link]
+[unknown link]
+Link: 
+Link: 
+ (Pages %d To %d)
+ (Pages %d To %d)
+General
+General
+Status
+Status
+About
+About
+Error
+Error
+BePDF: Error opening file!
+BePDF: Error opening file!
+Close
+Close
+Copy Selection
+Copy Selection
+Select All
+Select All
+Select None
+Select None
+Update Frequency
+Update Frequency
+Language
+Language
+Preferences
+Preferences
+Renderer
+Renderer
+Display
+Display
+Native
+Native
+Native Renderer
+Native Renderer
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript Renderer
+2x2 Anti-Aliasing
+2x2 Anti-Aliasing
+4x4 Anti-Aliasing
+4x4 Anti-Aliasing
+2x2 Anti-Aliasing text only
+2x2 Anti-Aliasing text only
+4x4 Anti-Aliasing text only
+4x4 Anti-Aliasing text only
+Restore Page Number
+Go to that page number when the file was closed.
+Restore Window Position and Size
+Restore window position and size.
+No Settings
+No Settings
+Fonts of this page
+Fonts of this page
+Show All Fonts
+Show All Fonts
+Fonts
+Fonts
+Searching all fonts…
+Searching all fonts…
+All fonts of this document (aborted)
+All fonts of this document (aborted)
+All fonts of this document
+All fonts of this document
+Name
+Name
+Embedded Name
+Embedded Name
+Type
+Type
+Will take effect at next program launch.
+Will take effect at next program launch.
+Zoom in.
+Zoom in 20%.
+Zoom out.
+Zoom out 20%.
+Open file.
+Open file.
+Print.
+Print.
+Bookmarks.
+Bookmarks.
+Find.
+Find.
+Find next.
+Find next.
+Rotate clockwise.
+Rotate clockwise.
+Rotate anti-clockwise.
+Rotate anti-clockwise.
+Show page list
+Show page list
+Show page list.
+Show page list.
+Hide page list
+Hide page list
+Hide page list.
+Hide page list.
+Fullscreen
+Fullscreen
+Fullscreen mode.
+Fullscreen mode.
+Window
+Window
+Window mode.
+Window mode.
+Zoom
+Zoom
+Ghostscript library "libgs.so" not found.
+Ghostscript library "libgs.so" not found.
+Install Ghostscript 6.50 or later and restart BePDF.
+Install Ghostscript 6.50 or later and restart BePDF.
+Fullscreen Mode
+Fullscreen Mode
+Show Toolbar, Statusbar and Scrollbars too
+Show Toolbar, Statusbar and Scrollbars too
+Show Document view only
+Show Document view only
+<empty>
+<empty>
+Go to page %d
+Go to page %d
+Selection Rectangle
+Selection Rectangle
+Filled Rectangle
+Filled Rectangle
+Stroked Rectangle
+Stroked Rectangle
+Asian Fonts
+Asian Fonts
+FreeType 2
+FreeType 2
+Open In New Window…
+Open In New Window…
+Open In New Window
+Open In New Window
+Mode
+Mode
+Color
+Color
+Gray scale
+Gray scale
+Reload
+Reload
+Reload file.
+Reload file.
+Sub-pixel precise positioning
+Sub-pixel precise positioning
+Hinting
+Hinting
+Open in Workspace
+Open in Workspace
+Bookmark
+Bookmark
+Add
+Add
+Delete
+Delete
+Edit
+Edit
+Show Help…
+Show Help…
+Show Online Help…
+Show Online Help…
+Visit Home Page…
+Visit Home Page…
+Vote at BeBits…
+Vote at BeBits…
+Submit Bug Report…
+Submit Bug Report…
+User Password
+User Password
+Owner Password
+Owner Password
+Open in Workspace:
+Open in Workspace:
+current
+current
+Edit title for bookmark
+Edit title for bookmark
+Page %d
+Page %d
+User defined
+User defined
+Annotation
+Annotation
+Title:
+Title:
+Date:
+Date:
+Show Error Messages
+Show Error Messages
+Error Messages
+Error Messages
+Clear
+Clear
+stderr
+stderr
+stdout
+stdout
+Auto Open
+Auto Open
+Floating
+Floating
+Check For Update…
+Check For Update…
+Checking for update… Please wait.
+Checking for update… Please wait.
+Loading pages
+Loading pages…
+Preparing for rendering
+Preparing for rendering…
+Contacting server…
+Contacting server…
+Downloading…
+Downloading…
+Update
+Update
+Couldn't retrieve update script
+Couldn't retrieve update script
+Update script was empty!
+Update script was empty!
+No update is currently available.
+No update is currently available.
+Cancel
+Cancel
+More info…
+More info…
+Upgrade
+Upgrade
+Upgrade!
+Upgrade!
+Upgrade available
+Upgrade available
+Couldn't download upgrade file!
+Couldn't download upgrade file!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+Text
+Text
+Link
+Link
+Free Text
+Free Text
+Line
+Line
+Square
+Square
+Circle
+Circle
+Highlight
+Highlight
+Underline
+Underline
+Squiggly
+Squiggly
+Strike Out
+Strike Out
+Stamp
+Stamp
+Ink
+Ink
+Popup
+Popup
+File Attachment
+File Attachment
+Sound
+Sound
+Movie
+Movie
+Widget
+Widget
+PrinterMark
+PrinterMark
+TrapNet
+TrapNet
+Properties
+Properties
+Save As…
+Save As…
+Comment
+Comment
+Insert
+Insert
+Key
+Key
+New
+New
+Note
+Note
+Paragraph
+Paragraph
+New Paragraph
+New Paragraph
+Korean
+Korean
+Author
+Author
+Information
+Information
+PDF file successfully written!
+PDF file successfully written!
+Error
+Error
+Could not write PDF file!
+Could not write PDF file!
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Editing of annotations in an encrypted PDF file not supported yet!
+Editing of annotations in an encrypted PDF file not supported yet!
+Enable Close Path Workaround
+Enable Close Path Workaround
+Invert vertical mouse scrolling
+Invert vertical mouse scrolling
+Copy link
+Copy link location
+Align:
+Align:
+Size:
+Size:
+Font:
+Font:
+Automatic
+Automatic
+left
+left
+right
+right
+centered
+centered
+Show annotation tool bar.
+Show annotation tool bar.
+Show annotation tool bar
+Show annotation tool bar
+Edit Annotations.
+Edit Annotations.
+Save file as.
+Save file as.
+Add comment text annotation.
+Add comment text annotation.
+Add help text annotation.
+Add help text annotation.
+Add insert text annotation.
+Add insert text annotation.
+Add key text annotation.
+Add key text annotation.
+Add new paragraph text annotation.
+Add new paragraph text annotation.
+Add note text annotation.
+Add note text annotation.
+Add paragraph text annotation.
+Add paragraph text annotation.
+Add free text annotation.
+Add free text annotation.
+Add square annotation.
+Add square annotation.
+Add circle annotation.
+Add circle annotation.
+Add highlight annotation.
+Add highlight annotation.
+Add underline annotation.
+Add underline annotation.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Add strikeout annotation.
+Leave annotation editing mode.
+Leave annotation editing mode.
+Leave annotation editing mode
+Leave annotation editing mode
+Save File Attachment As…
+Save File Attachment As…
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+Open attachment(s).
+Open attachment(s).
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+File Name
+File Name
+Description
+Description
+Ignore Case
+Ignore Case
+Search Backwards
+Search Backwards
+Warning
+Warning
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+System Fonts
+System Fonts
+Common Fonts
+Common Fonts
+User Fonts
+User Fonts

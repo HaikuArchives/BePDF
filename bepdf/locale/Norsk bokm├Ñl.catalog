@@ -1,0 +1,686 @@
+CatalogName
+Norsk bokmål
+CatalogLanguage
+Norwegian bokmål
+LanguageCode
+no
+CatalogAuthor
+Frank Paul Silye
+File
+Fil
+Search
+Søk
+View
+Vis
+Page
+Side
+Rotation
+Rotasjon
+Help
+Hjelp
+Open…
+Åpne…
+File Info…
+Fil info…
+File Info
+Fil info
+Bookmarks…
+Bokmerker…
+Bookmarks
+Bokmerker
+Page Setup…
+Side oppsett…
+Print…
+Skriv ut…
+Print
+Skriv ut
+Preferences…
+Innstillinger…
+About BePDF…
+Om BePDF…
+Quit
+Avslutt
+Find…
+Finn…
+Find
+Finn
+Find Next…
+Finn neste…
+Zoom In
+Zoom inn
+Zoom Out
+Zoom ut
+Fit to Page Width
+Tilpass til side bredde
+Fit to Page
+Tilpass til side
+Custom Zoom Factor (%d%%)
+Egen tilpasset zoom (%d%%)
+First
+Første
+Previous
+Forrige
+Go To Page
+Gå til side
+Next
+Neste
+Last
+Siste
+Back
+Forrige
+Forward
+Framover
+Return to the beginning of the document.
+Gå tilbake til begynnelsen av dokumentet.
+Skip to the 10th previous page.
+Gå 10 sider tilbake.
+Skip back 10 pages.
+Gå tilbake 10 sider.
+Skip to the previous page.
+Gå tilbake til forrige side.
+Skip to the next page.
+Gå til neste side.
+Skip to the 10th next page.
+Gå fram 10 sider.
+Advance to the end of the document.
+Gå til slutten av dokumentet.
+Back in the page history list.
+Tilbake i historie listen.
+Forward in the page history list.
+Framover i historie listen.
+Fit to Page Width.
+Tilpass til side bredde.
+Fit to page.
+Tilpass til side.
+of %d
+av %d
+BePDF Status
+BePDF status
+BePDF reading file: 
+BePDF leser fil: 
+Display Preferences
+Visningsinnstillinger
+Font Renderer
+Skrift gjengivelse
+Type 1
+Type 1
+Off
+Av
+Without Anti-Aliasing
+Uten kantgjengivelse
+Anti-Aliasing
+Kantgjengivelse
+Anti-Aliasing High
+Kraftig kantgjengivelse
+Type 3
+Type 3
+On (Very Slow!)
+På (Veldig langsom!)
+Freetype
+Freetype
+Color Space
+Fargedybde
+8 bits per pixel
+8 biter per pixel
+16 bits per pixel
+16 biter per pixel
+32 bits per pixel
+32 biter per pixel
+BePDF Printing
+BePDF utskrift
+BePDF printing document: 
+BePDF skriver ut dokument: 
+Page:
+Side:
+Stop
+Stopp
+Abort
+Avbryt
+Page: %d
+Side: %d
+Print Settings
+Skriverinnstillinger
+Pages
+Sider
+All Pages
+Alle sider
+Odd Pages
+Ulike sider
+Even Pages
+Like sider
+Order
+Ordning
+Normal
+Normal
+Reverse
+Omvendt
+Zoom (%)
+Zoom (%)
+On
+På
+DPI
+DPI
+Max. Printer Resolution
+Maks. skriveroppløsning
+Page Size
+Side størrelse
+Wrong Parameter!
+Feil parameter!
+Zoom must be between 25 and 400!
+Zoom må være i mellom 25 og 400!
+Width: 
+Bredde: 
+Height: 
+Høyde: 
+ in
+ tommer
+Yes
+Ja
+No
+Nei
+Allowed
+Tillatt
+Denied
+Avslått
+Filename:
+Filnavn:
+Path:
+Bane:
+Title:
+Tittel:
+Title
+Tittel
+Subject:
+Emne:
+Author:
+Forfatter:
+Keywords:
+Nøkkelord:
+Creator:
+Skaper:
+Producer:
+Produsent:
+Created:
+Opprettet:
+Modified:
+Modifisert:
+PDF Version:
+PDF Versjon:
+Linearized:
+Optimert:
+Encrypted:
+Kryptert:
+Printing:
+Utskrift:
+Changing the Document:
+Endre dokument:
+Selecting Text and Graphics:
+Velge tekst og grafikk:
+Adding or Changing Notes and Form Fields:
+Legg til eller ta bort notater og skjema felter:
+Document
+Dokument
+Security
+Sikkerhet
+Find Text
+Finn tekst
+Find: 
+Finn: 
+Enter Password
+Skriv inn passord
+Password: 
+Passord: 
+No Title
+Ingen tittel
+Execute the command:
+Utfør kommandoen:
+BePDF: Launch
+BePDF: Kjør
+Cancel
+Avbryt
+Unknown link action type: '%s'
+Ukjent link handlingstype: '%s'
+[internal link]
+[intern link]
+[unknown link]
+[ukjent link]
+Link: 
+Link: 
+ (Pages %d To %d)
+ (Sider %d til %d)
+General
+Generelt
+Status
+Status
+Bookmarks
+Bokmerker
+About
+Avbryt
+Error
+Feil
+BePDF: Error opening file!
+BePDF: Feil ved åpning av fil!
+Close
+Lukk
+Edit
+Rediger
+Copy Selection
+Kopier utvalg
+Select All
+Velg alt
+Select None
+Fjern markering
+Update Frequency
+Oppdateringsfrekvens
+Language
+Språk
+Preferences
+Innstillinger
+Renderer
+Gjengivelse
+Display
+Vis
+Native
+Egen
+Native Renderer
+Egen gjengivelse
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript gjengivelse
+2x2 Anti-Aliasing
+2x2 kantgjengivelse
+4x4 Anti-Aliasing
+4x4 kantgjengivelse
+2x2 Anti-Aliasing text only
+2x2 kantgjengivelse kun tekst
+4x4 Anti-Aliasing text only
+4x4 kantgjengivelse kun tekst
+Restore Page Number
+Gjenopprette sidenummer
+Go to that page number when the file was closed.
+Gå til side der dokumentet ble avsluttet.
+Restore Window Position and Size
+Gjenopprett vindustørrelse og posisjon.
+No Settings
+Ingen innstillinger
+Fonts of this page
+Skriftstype denne side
+Show All Fonts
+Vis alle tegnsett
+Fonts
+Tegnsett
+Searching all fonts…
+Leter etter alle tegnsett…
+All fonts of this document (aborted)
+Alle tegnsett i dokumentet (avbrutt)
+All fonts of this document
+Alle tegnsett i dette dokumentet
+Name
+Navn
+Embedded Name
+Innlagt navn
+Type
+Type
+Will take effect at next program launch.
+Vil ta effekt neste gang programmet startes.
+Zoom in.
+Zoom inn.
+Zoom in 20%.
+Zoom inn 20%.
+Zoom out.
+Zoom ut 20%.
+Open file.
+Åpne fil.
+Print.
+Skriv ut.
+Bookmarks.
+Bokmerker.
+Display bookmarks.
+Vis bokmerker.
+Find.
+Finn.
+Find next.
+Finn neste.
+Find next text.
+Finn neste tekst.
+Rotate clockwise.
+Rotere med klokken.
+Rotate anti-clockwise.
+Rotere mot klokken.
+Show page list
+Vis sideliste
+Show page list.
+Vis sideliste.
+Hide page list
+Skjul sideliste
+Hide page list.
+Skjul liste.
+Fullscreen
+Fullskjerm
+Fullscreen mode.
+Fullskjerm modus.
+Fullscreen Mode
+Fullskjerm modus
+Window
+Vindu
+Window mode.
+Vindu modus.
+Zoom
+Zoom
+Ghostscript library "libgs.so" not found.
+Ghostscript bibliotek "libgs.so" ikke funnet.
+Install Ghostscript 6.50 or later and restart BePDF.
+Installer Ghostscript 6.50 eller later og restart BePDF.
+Show Toolbar, Statusbar and Scrollbars too
+Vis Verktøylinje, statuslinje og scroll funksjoner
+Show Document view only
+Vis kun dokument visning
+<empty>
+<tom>
+Go to page %d
+Gå til side %d
+Selection Rectangle
+Utvalgs rektangel
+Filled Rectangle
+Utfylt rektangel
+Stroked Rectangle
+Rektangel
+Asian Fonts
+Asiatiske tegnsett
+Japanese
+Japansk
+Simplified Chinese
+Forenklet kinesisk
+Traditional Chinese
+Tradisjonell kinesisk
+FreeType 2
+FreeType 2
+Open In New Window…
+Åpne i nytt vindu…
+Open In New Window
+Åpne i nytt vindu
+Mode
+Modus
+Color
+Farge
+Gray scale
+Gråtoner
+Reload
+Reload
+Reload file.
+Reload fil.
+Annotation
+Kommentar
+Title:
+Tittel
+Date:
+Dato
+Show Error Messages
+Vis feil meldinger
+Error Messages
+Feil meldinger
+Clear
+Fjern
+Auto Open
+Åpne automatisk
+Floating
+Skiftende
+stdout
+stdout
+stderr
+stderr
+Check For Update…
+Se etter oppdatering…
+Checking for update… Please wait.
+Ser etter oppdatering… Vennligst vent.
+Loading pages
+Laster ned sider…
+Preparing for rendering
+Forbereder rendering…
+Contacting server…
+Kontakter server…
+Downloading…
+Laster ned…
+Update
+Oppdater
+Couldn't retrieve update script
+Kunne ikke motta oppdateringsscript
+Update script was empty!
+Oppdateringsscriptet var tomt!
+No update is currently available.
+Ingen oppdateringer er tilgjengelig.
+Cancel
+Avbryt
+More info…
+Mer info…
+Upgrade
+Oppdater
+Upgrade!
+Oppdater!
+Upgrade available
+Oppdatering er tilgjengelig
+Couldn't download upgrade file!
+Kunne ikke laste ned oppdateringsfil!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+Kunne ikke starte nedlastet fil!\n(Nedlastet fil er i /tmp)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+Kunne ikke starte nedlastet script!\n(Nedlastet fil er i /tmp)
+Bookmark
+Bokmerke
+Add
+Legg til
+Delete
+Slett
+Show Help…
+Vis hjelp…
+Show Online Help…
+Vis online hjelp…
+Visit Home Page…
+Besøk hjemmeside…
+Vote at BeBits…
+Stem på BeBits…
+Submit Bug Report…
+Send inn feilmelding…
+Find next
+Finn neste
+OK
+OK
+Text
+Tekst
+Link
+Lenke
+Free Text
+Fri tekst
+Line
+Linje
+Square
+Firkant
+Circle
+Sirkel
+Highlight
+Uthev
+Underline
+Understrek
+Squiggly
+Rablete
+Strike Out
+Overstrøket
+Stamp
+Avtrykk
+Ink
+Blekk
+Popup
+Popup
+File Attachment
+Fil vedlegg
+Sound
+Lyd
+Movie
+Film
+Widget
+Ting
+PrinterMark
+Skriver merke
+TrapNet
+Bunngarn
+Properties
+Rettigheter
+Save As…
+Lagre som…
+Comment
+Kommentar
+Insert
+Sett inn
+Key
+Nøkkel
+New
+Ny
+Note
+Notat
+Paragraph
+Avsnitt
+New Paragraph
+Nytt avsnitt
+Korean
+Koreansk
+Author
+Forfatter
+User defined
+Brukerdefinert
+Sub-pixel precise positioning
+Sub-pixel presis posisjonering
+Hinting
+Tipser
+Open in Workspace:
+Åpne på skrivebord
+current
+denne
+Bug in localization library, leave this line unchanged!Add circle annotation.
+Add circle annotation.
+Add comment text annotation.
+Add comment text annotation.
+Add free text annotation.
+Add free text annotation.
+Add help text annotation.
+Add help text annotation.
+Add highlight annotation.
+Add highlight annotation.
+Add insert text annotation.
+Add insert text annotation.
+Add key text annotation.
+Add key text annotation.
+Add new paragraph text annotation.
+Add new paragraph text annotation.
+Add note text annotation.
+Add note text annotation.
+Add paragraph text annotation.
+Add paragraph text annotation.
+Add square annotation.
+Add square annotation.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Add strikeout annotation.
+Add underline annotation.
+Add underline annotation.
+Align:
+Align:
+Automatic
+Automatic
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Copy link
+Copy link
+Could not write PDF file!
+Could not write PDF file!
+Edit Annotations.
+Edit Annotations.
+Edit title for bookmark
+Edit title for bookmark
+Editing of annotations in an encrypted PDF file not supported yet!
+Editing of annotations in an encrypted PDF file not supported yet!
+Enable Close Path Workaround
+Enable Close Path Workaround
+Error
+Error
+Font:
+Font:
+Information
+Information
+Invert vertical mouse scrolling
+Invert vertical mouse scrolling
+Leave annotation editing mode
+Leave annotation editing mode
+Leave annotation editing mode.
+Leave annotation editing mode.
+Open in Workspace
+Open in Workspace
+Owner Password
+Owner Password
+PDF file successfully written!
+PDF file successfully written!
+Page %d
+Page %d
+Save file as.
+Save file as.
+Show annotation tool bar
+Show annotation tool bar
+Show annotation tool bar.
+Show annotation tool bar.
+Size:
+Size:
+User Password
+User Password
+centered
+centered
+left
+left
+right
+right
+Add circle annotation.
+Add circle annotation.
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+Common Fonts
+Common Fonts
+Description
+Description
+File Name
+File Name
+Ignore Case
+Ignore Case
+Open attachment(s).
+Open attachment(s).
+Save File Attachment As…
+Save File Attachment As…
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+Search Backwards
+Search Backwards
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+System Fonts
+System Fonts
+User Fonts
+User Fonts
+Warning
+Warning

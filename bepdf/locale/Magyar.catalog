@@ -1,0 +1,670 @@
+CatalogName
+Magyar
+CatalogLanguage
+Hungarian
+LanguageCode
+hu
+CatalogAuthor
+Andras Kaldor (An-Dee), Robert Dancso (dsjonny)
+File
+Fájl
+Search
+Keresés
+View
+Nézet
+Page
+Oldal
+Rotation
+Elforgatás
+Help
+Segítség
+Open…
+Megnyitás…
+File Info…
+Információ…
+File Info
+Információ
+Bookmarks…
+Könyvjelzők…
+Bookmarks
+Könyvjelzők
+Page Setup…
+Oldal beállítás…
+Print…
+Nyomtatás…
+Print
+Nyomtatás
+Preferences…
+Tulajdonságok…
+About BePDF…
+Névjegy…
+Quit
+Kilépés
+Find…
+Keresés…
+Find
+Keresés
+Find Next…
+Következő keresése…
+Zoom In
+Nagyítás
+Zoom Out
+Kicsinyítés
+Fit to Page Width
+Teljes szélesség
+Fit to Page
+Teljes oldal
+Custom Zoom Factor (%d%%)
+Egyedi nagyítás (%d%%)
+First
+Első
+Previous
+Előző
+Go To Page
+Megadott
+Next
+Következő
+Last
+Utolsó
+Back
+Vissza
+Forward
+Előre
+Return to the beginning of the document.
+Vissza a dokumentum elejére.
+Skip to the 10th previous page.
+Visszalépés 10 oldallal.
+Skip to the previous page.
+Lépés az előző oldalra.
+Skip to the next page.
+A követekező oldalra lépés.
+Skip to the 10th next page.
+Előre lépés 10 oldallal.
+Advance to the end of the document.
+A dokumentum végére lépés.
+Back in the page history list.
+Vissza az előzmények oldalban.
+Forward in the page history list.
+Előre az előzmények oldalban.
+Fit to Page Width.
+Oldalszélességben látszik.
+Fit to page.
+Egész oldal látszik.
+of %d
+/ %d
+BePDF Status
+BePDF Állapot
+BePDF reading file: 
+BePDF fájl olvasása: 
+Display Preferences
+Tulajdonságok megjelenítése
+Font Renderer
+Betűk megjelenítése
+Type 1
+Type 1
+Off
+Kikapcsolva
+Without Anti-Aliasing
+Anti-Aliasing nélkül
+Anti-Aliasing
+Anti-Aliasinggal
+Anti-Aliasing High
+Anti-Aliasing High
+Type 3
+Type 3
+On (Very Slow!)
+Bekapcsolva (Nagyon lassú!)
+Freetype
+Freetype
+Color Space
+Színmélység
+8 bits per pixel
+8 bits per pixel
+16 bits per pixel
+16 bits per pixel
+32 bits per pixel
+32 bits per pixel
+BePDF Printing
+BePDF Nyomtatás
+BePDF printing document: 
+BePDF nyomtatja a dokumentumot: 
+Page:
+Oldal:
+Stop
+Stop
+Abort
+Megszakítás
+Page: %d
+Oldal: %d
+Print Settings
+Nyomtatási beállítások
+Pages
+Oldalak
+All Pages
+Minden oldal
+Odd Pages
+Páratlan oldalak
+Even Pages
+Páros oldalak
+Order
+Sorrend
+Normal
+Normál
+Reverse
+Fordított
+Zoom (%)
+Nagyító (%)
+On
+Bekapcsolva
+DPI
+DPI
+Max. Printer Resolution
+Max. nyomtató felbontás
+Page Size
+Papír méret
+Wrong Parameter!
+Rossz paraméter!
+Zoom must be between 25 and 400!
+A nagyításnak 25 és 400 között kell lennie!
+OK
+Rendben
+Width: 
+Szélesség: 
+Height: 
+Magasság: 
+in
+in
+Yes
+Igen
+No
+Nem
+Allowed
+Megengedett
+Denied
+Nem engedélyezett
+Filename:
+Fájlnév:
+Path:
+Útvonal:
+Title:
+Cím:
+Title
+Cím
+Subject:
+Téma:
+Author:
+Szerző:
+Keywords:
+Kulcsszavak:
+Creator:
+Készítő:
+Producer:
+Létrehozta:
+Created:
+Létrehozva:
+Modified:
+Módosítva:
+PDF Version:
+PDF verzió:
+Linearized:
+Linearized:
+Encrypted:
+Kódolt:
+Printing:
+Nyomtatás:
+Changing the Document:
+A dokumentum megváltoztatása:
+Selecting Text and Graphics:
+Szöveg és grafika kiválasztása:
+Adding or Changing Notes and Form Fields:
+Űrlap mezők hozzáadása vagy módosítása:
+Document
+Dokumentum
+Security
+Biztonság
+Find Text
+Szöveg keresése
+Find: 
+Keresés: 
+Enter Password
+Kódszó bevitele
+Password: 
+Kódszó: 
+No Title
+Nincs cím
+Execute the command:
+Program végrehajtása:
+BePDF: Launch
+BePDF: Betöltés
+Cancel
+Mégsem
+Unknown link action type: '%s'
+Unknown link action type: '%s'
+[internal link]
+[belső link]
+[unknown link]
+[ismeretlen link]
+Link: 
+Link: 
+ (Pages %d To %d)
+ ( %d oldal tól %d oldal ig)
+General
+Általános
+Status
+Állapot
+About
+Névjegy
+Error
+Hiba
+BePDF: Error opening file!
+BePDF: Hiba a fájl megnyitásakor!
+Close
+Bezár
+Edit
+Szerkesztés
+Copy Selection
+Kijelölés másolása
+Select All
+Mindent kijelöl
+Select None
+Kijelölés megszüntetése
+Update Frequency
+Újraolvasási idő
+Language
+Nyelv
+Preferences
+Tulajdonságok
+Renderer
+Renderelés
+Display
+Megjelenés
+Native
+Nativ
+Native Renderer
+Nativ Renderelés
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript Renderelés
+2x2 Anti-Aliasing
+2x2 Anti-Aliasinggal
+4x4 Anti-Aliasing
+4x4 Anti-Aliasinggal
+2x2 Anti-Aliasing text only
+2x2 Anti-Aliasing csak szöveg
+4x4 Anti-Aliasing text only
+4x4 Anti-Aliasing csak szöveg
+Restore Page Number
+Legutóbbi oldal visszaállítása indításkor
+Restore Window Position and Size
+Ablak pozíciójának visszaállítása indításkor
+No Settings
+Nincsenek beállítások
+Fonts of this page
+Az oldal betűtípusai
+Show All Fonts
+Minden betűtípust mutat
+Fonts
+Betűtípusok
+Searching all fonts…
+Minden betűtípus megkeresése…
+All fonts of this document (aborted)
+A dokumentum összes betűtípusa (félbszakított)
+All fonts of this document
+A dokumentum összes betűtípusa
+Name
+Név
+Embedded Name
+Beágyazott név
+Type
+Típus
+Will take effect at next program launch.
+Csak a következő indításkor lépnek érvénybe.
+Zoom in.
+20%-os nagyítás.
+Zoom out.
+20%-os kicsinyítés.
+Open file.
+Fájl megnyitása.
+Print.
+Nyomtatás.
+Bookmarks.
+Könyvjelzők.
+Find.
+Keresés.
+Find next.
+Következő keresése.
+Rotate clockwise.
+Elfordítás jobbra.
+Rotate anti-clockwise.
+Elfordítás balra.
+Show page list
+Oldal lista megjelenítése
+Show page list.
+Oldal lista megjelenítése.
+Hide page list
+Oldal lista elrejtése
+Hide page list.
+Oldal lista elrejtése.
+Fullscreen
+Teljes képernyő
+Fullscreen mode.
+Teljes képernyős mód.
+Window
+Ablak
+Window mode.
+Ablak mód.
+Zoom
+Nagyítás
+Ghostscript library "libgs.so" not found.
+Ghostscript library "libgs.so" nem található.
+Install Ghostscript 6.50 or later and restart BePDF.
+Installálja a Ghostscript 6.50 vagy későbbi verzióját és indítsa újra a BePDF-t.
+Fullscreen Mode
+Teljes képernyős mód
+Show Toolbar, Statusbar and Scrollbars too
+Eszközsor, állapotjelző és görgetősáv megjelenítése
+Show Document view only
+Csak a dokumentumot mutatja
+<empty>
+<üres>
+Go to page %d
+Menjen a %d oldalhoz.
+Selection Rectangle
+Négyzet kijelölés
+Filled Rectangle
+Kitöltött négyzet
+Stroked Rectangle
+Keretes négyzet
+Reload
+Újraolvasás
+Reload file.
+Fájl újraolvasása.
+Open In New Window…
+Megnyitás új ablakban…
+Open In New Window
+Megnyitás új ablakban
+FreeType 2
+FreeType 2
+Simplified Chinese
+Egyszerűsített Kinai
+Traditional Chinese
+Hagyományos Kínai
+Japanese
+Japán
+Asian Fonts
+Ásia betűk
+Gray scale
+Szürke
+Color
+Szin
+Mode
+Mód
+Sub-pixel precise positioning
+Mély-pixel pozicionálás
+Hinting
+Tanácsok
+Open in Workspace
+Megnyitás az egyik ablakban
+Bookmark
+Könyvjelző
+Add
+Hozzáadás
+Delete
+Törlés
+Show Help…
+Leírás…
+Show Online Help…
+Leírás az interneten…
+Visit Home Page…
+Honlap megtekintése…
+Vote at BeBits…
+Szavazás a BeBits-en…
+Submit Bug Report…
+Hiba jelentése…
+User Password
+Felhasználó jelszava
+Owner Password
+Tulajdonos jelszava
+Open in Workspace:
+Megnyitás ebben az ablakban:
+current
+jelenlegi
+Edit title for bookmark
+Könyvjelző címének szerkesztése
+Page %d
+Oldal %d
+User defined
+Felhasználó által meghatározott
+Annotation
+Jegyzet
+Title:
+Cím:
+Date:
+Dátum:
+Show Error Messages
+Hibaüzenetek
+Error Messages
+Hibaüzenetek
+Clear
+Törlés
+stderr
+stderr
+stdout
+stdout
+Auto Open
+Automatikus megnyitás
+Floating
+Lebegés
+Check For Update…
+Frissítés lekérdezése…
+Checking for update… Please wait.
+Frissítés lekérdezése… Kérem várjon.
+Loading pages
+Oldalak betöltése…
+Preparing for rendering
+Felkészülés a renderelésre…
+Contacting server…
+Kapcsolódás a szerverhez…
+Downloading…
+Letöltés…
+Update
+Frissítés
+Couldn't retrieve update script
+Couldn't retrieve update script
+Update script was empty!
+A frissítő szkript üres volt!
+No update is currently available.
+Nem érhető el újabb változat.
+Cancel
+Mégsem
+More info…
+Több információ…
+Upgrade
+Frissítés
+Upgrade!
+Frissítés!
+Upgrade available
+Frissítés elérhető
+Couldn't download upgrade file!
+Nem lehet a frissítést letölteni!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+Nem lehet elindítani a letöltött fájlt!\n(A letöltött fájl a  /tmp mappában található)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+Nem lehet futtatni a frissítő programot!\n(A frissítő program a /tmp mappában található)
+Text
+Szöveg
+Link
+Link
+Free Text
+Szabad szöveg
+Line
+Vonal
+Square
+Négyszög
+Circle
+Kör
+Highlight
+Kiemelés
+Underline
+Aláhúzás
+Squiggly
+Squiggly
+Strike Out
+Áthúzás
+Stamp
+Bélyeg
+Ink
+Tinta
+Popup
+Felbukkanó
+File Attachment
+Hozzáfűzött fájl
+Sound
+Hang
+Movie
+Video
+Widget
+Widget
+PrinterMark
+Vízjel
+TrapNet
+TrapNet
+Properties
+Tulajdonságok
+Save As…
+Mentés másként ...
+Comment
+Megjegyzés
+Insert
+Beszúrás
+Key
+Kulcs
+New
+Új
+Note
+Megjegyzés
+Paragraph
+Paragrafus
+New Paragraph
+Új paragrafus
+Korean
+Koreai
+Author
+Szerző
+Information
+Információ
+PDF file successfully written!
+A PDF fájl sikersen elmentve!
+Error
+Hiba
+Could not write PDF file!
+Nem lehet elmenteni a PDF fájlt!
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Nem lehet BePDFfel felülirni egy olyan fájlt, ami a BePDF-ben meg van nyitva! Válasszon másik nevet.
+Editing of annotations in an encrypted PDF file not supported yet!
+Titkosított PDF fájlban a megjegyzések szerkesztése még nem lehetséges!
+Enable Close Path Workaround
+Enable Close Path Workaround 
+Invert vertical mouse scrolling
+Firdított függőleges egér görgetés
+Copy link
+Hivatkozás másolása
+Align:
+Rendezés:
+Size:
+Méret:
+Font:
+Betűtípus:
+Automatic
+Automatikus
+left
+bal
+right
+jobb
+centered
+középre
+Show annotation tool bar.
+Magyarázatok eszköztár.
+Show annotation tool bar
+Magyarázatok eszköztár
+Edit Annotations.
+Magyarázatok szerkesztése.
+Save file as.
+Fájl mentése másként.
+Add comment text annotation.
+Megjegyzés magyarázat hozzáadás.
+Add help text annotation.
+Segitség magyarázat hozzáadás.
+Add insert text annotation.
+Szöveg beszúrás magyarázat hozzáadás.
+Add key text annotation.
+Kulcs szöveg magyarázat hozzáadás.
+Add new paragraph text annotation.
+Új paragrafus magyarázat hozzáadás.
+Add note text annotation.
+Megjegyzés magyarázat hozzáadás.
+Add paragraph text annotation.
+Paragrafus magyarázat hozzáadás. 
+Add free text annotation.
+Szabad szöveg magyarázat hozzáadás.
+Add square annotation.
+Kocka magyarázat hozzáadás.
+Add circle annotation.
+Kör magyarázat hozzáadás.
+Add highlight annotation.
+Add highlight annotation.
+Add underline annotation.
+Aláhúzás magyarázat hozzáadás.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Kihúzás magyarázat hozzáadás.
+Leave annotation editing mode.
+Magyarázat szerkesztő módból kilépés.
+Leave annotation editing mode
+Magyarázat szerkesztő módból kilépés
+Adobe-Japan1
+Japán
+Adobe-GB1
+Egyszerűsített Kínai
+Adobe-CNS1
+Hagyományos Kínai
+Adobe-Korea1
+Koreai
+Common Fonts
+Közös betűtípusok
+Description
+Leírás
+File Name
+Fájl neve
+Ignore Case
+Nem betűérzékeny
+Open attachment(s).
+Melléklet megnyitása.
+Save File Attachment As…
+Fájl mellékletének mentése másként…
+Save attachment(s) as.
+Melléklet mnetése másként.
+Save selected attachment to file.
+Kiválasztott melléklet mentése fájlba.
+Save selected attachments into directory.
+Kiválasztott melléklet mentése mappába.
+Saving attachment(s):
+Melléklet mentése:
+Saving copy of PDF file:
+PDF fájl másolatának mentése:
+Saving file attachment:
+Fájl melléklet mentése:
+Search Backwards
+Keresés visszafelé
+Show attachments
+Mellékletek megjelenítése
+Show attachments.
+Mellékletek megjelenítése.
+System Fonts
+Rendszer betűtípusok
+User Fonts
+Felhasználói betűtípusok
+Warning
+Figyelem

@@ -1,0 +1,670 @@
+CatalogName
+Traditional Chinese
+CatalogLanguage
+Traditional Chinese
+LanguageCode
+zh
+CatalogAuthor
+Chen Yi-feng
+File
+檔案
+Search
+搜尋
+View
+檢視
+Page
+頁數
+Rotation
+旋轉
+Help
+說明
+Open…
+開啟…
+File Info…
+檔案資訊…
+File Info
+檔案資訊
+Bookmarks…
+書籤…
+Bookmarks
+顯示書籤
+Page Setup…
+頁面設定…
+Print…
+列印…
+Print
+列印
+Preferences…
+偏好設定…
+About BePDF…
+關於 BePDF…
+Quit
+結束
+Find…
+尋找…
+Find
+尋找
+Find Next…
+找下一個…
+Zoom In
+放大
+Zoom Out
+縮小
+Fit to Page Width
+符合頁寬
+Fit to Page
+符合頁面
+Custom Zoom Factor (%d%%)
+放大為 (%d%%)
+First
+第一頁
+Previous
+上一頁
+Go To Page
+跳頁
+Next
+下一頁
+Last
+最後一頁
+Back
+後退
+Forward
+前進
+Return to the beginning of the document.
+回到文件最前端
+Skip to the 10th previous page.
+往前10頁
+Skip to the previous page.
+上一頁
+Skip to the next page.
+下一頁
+Skip to the 10th next page.
+往後10頁
+Advance to the end of the document.
+到文件最末端
+Back in the page history list.
+後退一歷史頁
+Forward in the page history list.
+前進一歷史頁
+Fit to Page Width.
+符合頁寬
+Fit to page.
+符合頁面
+of %d
+/ %d
+BePDF Status
+BePDF 狀態
+BePDF reading file: 
+BePDF 讀檔中: 
+Display Preferences
+顯示設定
+Font Renderer
+字型顯示
+Type 1
+Type 1
+Off
+Off
+Without Anti-Aliasing
+不使用平滑化功能
+Anti-Aliasing
+平滑化
+Anti-Aliasing High
+高度平滑化
+Type 3
+Type 3
+On (Very Slow!)
+On (非常慢!)
+Freetype
+Freetype
+Color Space
+色彩
+8 bits per pixel
+8 位元/像素
+16 bits per pixel
+16 位元/像素
+32 bits per pixel
+32 位元/像素
+BePDF Printing
+BePDF 列印中
+BePDF printing document: 
+BePDF 正在列印文件: 
+Page:
+頁數:
+Stop
+停止
+Abort
+中止
+Page: %d
+頁數: %d
+Print Settings
+列印設定
+Pages
+頁數
+All Pages
+全部
+Odd Pages
+奇數頁
+Even Pages
+偶數頁
+Order
+順序
+Normal
+正常
+Reverse
+反向
+Zoom (%)
+放大(%)
+On
+On
+DPI
+DPI
+Max. Printer Resolution
+印表機最大解析度
+Page Size
+紙張大小
+Wrong Parameter!
+參數錯誤!
+Zoom must be between 25 and 400!
+放大倍率須介於 25 及 400!
+OK
+確定
+Width: 
+寬度: 
+Height: 
+高度: 
+ in
+ 英吋
+Yes
+是
+No
+否
+Allowed
+允許
+Denied
+不允許
+Filename:
+檔名:
+Path:
+路徑:
+Title:
+標題:
+Title
+標題
+Subject:
+主題:
+Author:
+作者:
+Keywords:
+關鍵字:
+Creator:
+建立者:
+Producer:
+製作者:
+Created:
+建立時間:
+Modified:
+修改時間:
+PDF Version:
+PDF 版本:
+Linearized:
+線性化:
+Encrypted:
+編碼:
+Printing:
+列印:
+Changing the Document:
+更改文件:
+Selecting Text and Graphics:
+選取文字及圖形:
+Adding or Changing Notes and Form Fields:
+新增或變更附註及表格欄位:
+Document
+文件
+Security
+保密
+Find Text
+尋找文字
+Find: 
+尋找: 
+Enter Password
+輸入密碼
+Password: 
+密碼: 
+No Title
+無標題
+Execute the command:
+執行命令:
+BePDF: Launch
+BePDF: 啟動
+Cancel
+取消
+Unknown link action type: '%s'
+Unknown link action type: '%s'
+[internal link]
+[內部連結]
+[unknown link]
+[未知連結]
+Link: 
+連結: 
+ (Pages %d To %d)
+ (第 %d 頁到第 %d 頁)
+General
+一般
+Status
+狀態
+About
+關於
+Error
+錯誤
+BePDF: Error opening file!
+BePDF: 檔案開啟錯誤!
+Close
+關閉
+Copy Selection
+複製選擇區
+Select All
+全選
+Select None
+取消選擇
+Update Frequency
+更新頻率
+Language
+語文
+Preferences
+偏好設定
+Renderer
+顯示方式
+Display
+顯示
+Native
+程式內定
+Native Renderer
+程式內定顯示
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript 顯示
+2x2 Anti-Aliasing
+2x2 平滑化
+4x4 Anti-Aliasing
+4x4 平滑化
+2x2 Anti-Aliasing text only
+2x2 只有字體平滑化
+4x4 Anti-Aliasing text only
+4x4 只有字體平滑化
+Restore Page Number
+儲存結束時文件顯示之頁數
+Restore Window Position and Size
+儲存視窗位置及大小
+No Settings
+無設定
+Fonts of this page
+此頁包含字型
+Show All Fonts
+顯示所有字型
+Fonts
+字型
+Searching all fonts…
+尋找所有字型…
+All fonts of this document (aborted)
+文件內所有字型 (中止)
+All fonts of this document
+文件內所有字型
+Name
+名稱
+Embedded Name
+嵌入名稱
+Type
+型式
+Will take effect at next program launch.
+下一次啟動時生效
+Zoom in.
+放大20%
+Zoom out.
+縮小20%
+Open file.
+開啟檔案
+Print.
+列印
+Bookmarks.
+顯示書籤
+Find.
+尋找
+Find next.
+找下一個
+Rotate clockwise.
+順時鐘旋轉
+Rotate anti-clockwise.
+逆時鐘旋轉
+Show page list
+顯示頁數索引
+Show page list.
+顯示頁數索引
+Hide page list
+隱藏頁數索引及書籤
+Hide page list.
+隱藏頁數索引及書籤
+Fullscreen
+全螢幕
+Fullscreen mode.
+全螢幕模式
+Window
+視窗
+Window mode.
+視窗模式
+Zoom
+放大
+Ghostscript library "libgs.so" not found.
+找不到 Ghostscript 函式庫 "libgs.so"
+Install Ghostscript 6.50 or later and restart BePDF.
+安裝 Ghostscript 6.50 或更新版本 然後 重新啟動 BePDF
+Fullscreen Mode
+全螢幕模式
+Show Toolbar, Statusbar and Scrollbars too
+顯示工具列,狀態列及捲軸
+Show Document view only
+只顯示文件內容
+<empty>
+<無>
+Go to page %d
+到第 %d 頁
+Selection Rectangle
+選擇區方塊
+Filled Rectangle
+填滿方塊
+Stroked Rectangle
+空心方塊
+Asian Fonts
+亞洲字型
+Japanese
+日文
+Simplified Chinese
+簡體中文
+Traditional Chinese
+繁體中文
+FreeType 2
+FreeType 2
+Open In New Window…
+在新視窗開啟…
+Open In New Window
+在新視窗開啟
+Mode
+色彩
+Color
+彩色
+Gray scale
+灰階
+Reload
+重新載入
+Reload file.
+重新載入
+Sub-pixel precise positioning
+次像素定位
+Hinting
+使用附加資訊
+Open in Workspace
+開啟於桌面
+Bookmark
+書籤
+Add
+新增
+Delete
+刪除
+Edit
+編輯
+Show Help…
+使用說明…
+Show Online Help…
+觀看線上說明…
+Visit Home Page…
+拜訪軟體首頁…
+Vote at BeBits…
+到 BeBits 投票…
+Submit Bug Report…
+問題回報…
+User Password
+使用者密碼
+Owner Password
+擁有者密碼
+Open in Workspace:
+開啟於桌面:
+current
+目前
+Edit title for bookmark
+編輯書籤標題
+Page %d
+第%d頁
+User defined
+使用者定義
+Annotation
+註解
+Title:
+標題:
+Date:
+日期:
+Show Error Messages
+顯示錯誤訊息
+Error Messages
+錯誤訊息
+Clear
+清除
+stderr
+stderr
+stdout
+stdout
+Auto Open
+自動開啟
+Floating
+最上層顯示
+Check For Update…
+檢查更新…
+Checking for update… Please wait.
+檢查更新中，請等待
+Loading pages
+載入頁面中…
+Preparing for rendering
+準備顯示中…
+Contacting server…
+與伺服器連線中…
+Downloading…
+下載中…
+Update
+更新
+Couldn't retrieve update script
+無法擷取更新命令稿
+Update script was empty!
+更新命令稿是空的!
+No update is currently available.
+現階段不需要更新
+Cancel
+取消
+More info…
+更多資訊…
+Upgrade
+更新
+Upgrade!
+更新!
+Upgrade available
+可進行更新
+Couldn't download upgrade file!
+無法下載更新檔案!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+無法打開已下載檔案!\n(已下載檔案到 /tmp 目錄)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+無法執行升級命令稿!\n(已下載檔案到 /tmp 目錄)
+Text
+文字
+Link
+連結
+Free Text
+Free Text
+Line
+直線
+Square
+方形
+Circle
+圓形
+Highlight
+高亮度
+Underline
+底線
+Squiggly
+書名線
+Strike Out
+刪除線
+Stamp
+戳記
+Ink
+簽署
+Popup
+快顯
+File Attachment
+附加檔案
+Sound
+音效
+Movie
+短片
+Widget
+裝飾
+PrinterMark
+浮水印
+TrapNet
+TrapNet
+Properties
+屬性
+Save As…
+另存新檔…
+Comment
+註解
+Insert
+插入
+Key
+關鍵
+New
+新增
+Note
+註釋
+Paragraph
+段落
+New Paragraph
+新段落
+Korean
+韓文
+Author
+作者
+Information
+資訊
+PDF file successfully written!
+存檔成功!
+Error
+錯誤
+Could not write PDF file!
+無法儲存為 PDF 格式檔案!
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+無法覆寫 BePDF 已開啟的檔案! 請輸入其它檔名
+Editing of annotations in an encrypted PDF file not supported yet!
+尚未支援已編碼 PDF 檔案的註解編輯功能!
+Enable Close Path Workaround
+開啟 Close Path Workaround
+Invert vertical mouse scrolling
+捲軸作動方向反向
+Copy link
+複製連結
+Align:
+對齊:
+Size:
+大小:
+Font:
+字型:
+Automatic
+自動
+left
+靠左
+right
+靠右
+centered
+置中
+Show annotation tool bar.
+顯示註解工具列.
+Show annotation tool bar
+顯示註解工具列
+Edit Annotations.
+編輯註解.
+Save file as.
+另存新檔.
+Add comment text annotation.
+新增註釋文字註解.
+Add help text annotation.
+新增說明文字註解.
+Add insert text annotation.
+新增插入文字註解.
+Add key text annotation.
+新增關鍵字註解.
+Add new paragraph text annotation.
+新增新段落文字註解.
+Add note text annotation.
+新增附註文字註解.
+Add paragraph text annotation.
+新增段落文字註解.
+Add free text annotation.
+新增隨意文字註解.
+Add square annotation.
+新增方塊註解.
+Add circle annotation.
+新增圓形註解.
+Add highlight annotation.
+新增反白註解.
+Add underline annotation.
+新增底線註解.
+Add squiggly annotation.
+新增書名線註解.
+Add strikeout annotation.
+新增刪除線註解.
+Leave annotation editing mode.
+離開註解編輯模式.
+Leave annotation editing mode
+離開註解編輯模式
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+Common Fonts
+Common Fonts
+Description
+Description
+File Name
+File Name
+Ignore Case
+Ignore Case
+Open attachment(s).
+Open attachment(s).
+Save File Attachment As…
+Save File Attachment As…
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+Search Backwards
+Search Backwards
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+System Fonts
+System Fonts
+User Fonts
+User Fonts
+Warning
+Warning

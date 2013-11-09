@@ -1,0 +1,682 @@
+CatalogName
+Japanese
+CatalogLanguage
+Japanese
+LanguageCode
+ja
+CatalogAuthor
+NAITHO Jun	 Revision(2005.8): Koichi Kimura (a.k.a. KiM)
+File
+ファイル(F)
+Search
+検索(S)
+View
+表示(V)
+Page
+文書(P)
+Rotation
+回転(R)
+Help
+ヘルプ(H)
+Open…
+開く(O)…
+File Info…
+文書のプロパティ(I)…
+File Info
+文書のプロパティ
+Bookmarks…
+しおり…
+Bookmarks
+しおり
+Page Setup…
+ページ設定(A)…
+Print…
+印刷(P)…
+Print
+印刷
+Preferences…
+環境設定(P)…
+About BePDF…
+BePDF について(B)…
+Quit
+終了(Q)
+Find…
+検索(F)…
+Find
+検索
+Find Next…
+次を検索(N)…
+Zoom In
+ズームイン(I)
+Zoom Out
+ズームアウト(O)
+Fit to Page Width
+幅に合わせる(W)
+Fit to Page
+全体表示(P)
+Custom Zoom Factor (%d%%)
+倍率指定 (%d%%)
+First
+開始ページ(F)
+Previous
+前ページ(P)
+Go To Page
+ページ指定(G)
+Next
+次ページ(N)
+Last
+最終ページ(L)
+Back
+前の表示に移動(B)
+Forward
+次の表示に移動(O)
+Return to the beginning of the document.
+開始ページに移動
+Skip to the 10th previous page.
+10ページ分戻る
+Skip to the previous page.
+前ページに移動
+Skip to the next page.
+次ページに移動
+Skip to the 10th next page.
+10ページ分進む
+Advance to the end of the document.
+最終ページに移動
+Back in the page history list.
+前の画面
+Forward in the page history list.
+次の画面
+Fit to Page Width.
+幅に合わせる
+Fit to page.
+全体表示
+of %d
+of %d
+BePDF Status
+BePDF ステータス
+BePDF reading file: 
+BePDF ファイルを読み込んでいます: 
+Display Preferences
+表示設定
+Font Renderer
+フォントレンダラー
+Type 1
+Type 1
+Off
+オフ
+Without Anti-Aliasing
+アンチエイリアス無効
+Anti-Aliasing
+アンチエイリアス有効
+Anti-Aliasing High
+アンチエイリアス（高機能）
+Type 3
+Type 3
+On (Very Slow!)
+オン (低速です!)
+Freetype
+フリータイプ
+Color Space
+カラー深度
+8 bits per pixel
+8 ビットカラー
+16 bits per pixel
+16 ビットカラー
+32 bits per pixel
+32 ビットカラー
+BePDF Printing
+BePDF 印刷
+BePDF printing document: 
+BePDF 印刷文書: 
+Page:
+ページ:
+Stop
+停止
+Abort
+中止
+Page: %d
+ページ: %d
+Print Settings
+印刷設定
+Pages
+ページ
+All Pages
+すべてのページ
+Odd Pages
+奇数ページ
+Even Pages
+偶数ページ
+Order
+順序
+Normal
+標準
+Reverse
+反転
+Zoom (%)
+倍率 (%)
+On
+オン
+DPI
+DPI
+Max. Printer Resolution
+印刷解像度: 最大
+Page Size
+ページサイズ
+Wrong Parameter!
+不正なパラメータです!
+Zoom must be between 25 and 400!
+倍率は 25 ～ 400の間で設定する必要があります!
+OK
+Ok
+Width: 
+幅: 
+Height: 
+高さ: 
+ in
+ インチ
+Yes
+はい
+No
+いいえ
+Allowed
+許可
+Denied
+許可しない
+Filename:
+ファイル名:
+Path:
+パス:
+Title:
+タイトル:
+Title
+タイトル
+Subject:
+サブタイトル:
+Author:
+作成者:
+Keywords:
+キーワード:
+Creator:
+作成:
+Producer:
+PDF変換:
+Created:
+作成日時:
+Modified:
+更新日時:
+PDF Version:
+PDFのバージョン:
+Linearized:
+Web表示用に最適化:
+Encrypted:
+暗号化:
+Printing:
+印刷:
+Changing the Document:
+文書の変更:
+Selecting Text and Graphics:
+テキストとグラフィックスの選択:
+Adding or Changing Notes and Form Fields:
+注釈とフォームフィールドの作成と変更:
+Document
+文書
+Security
+セキュリティ
+Find Text
+テキストの検索
+Find: 
+検索: 
+Enter Password
+パスワードの入力
+Password: 
+パスワード: 
+No Title
+タイトル無し
+Execute the command:
+コマンドの実行:
+BePDF: Launch
+BePDF: 開始
+Cancel
+中止
+Unknown link action type: '%s'
+不明なリンク形式です。: '%s'
+[internal link]
+[インターナルリンク]
+[unknown link]
+[不明なリンク]
+Link: 
+リンク: 
+ (Pages %d To %d)
+ (%d ページから %d まで)
+General
+全般
+Status
+ステータス
+Bookmarks
+しおりを表示(B)
+About
+BePDF について
+Error
+エラー
+BePDF: Error opening file!
+BePDF: エラー! ファイルを開けません
+Close
+閉じる(C)
+Edit
+編集(E)
+Copy Selection
+選択部分をコピー(C)
+Select All
+すべてを選択(A)
+Select None
+すべてを選択解除(N)
+Update Frequency
+更新頻度
+Language
+言語設定
+Preferences
+設定
+Renderer
+レンダラー
+Display
+表示設定
+Native
+ネイティブ
+Native Renderer
+ネイティブレンダラー
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript レンダラー
+2x2 Anti-Aliasing
+2x2 アンチエイリアス
+4x4 Anti-Aliasing
+4x4 アンチエイリアス
+2x2 Anti-Aliasing text only
+2x2 テキストのみのアンチエイリアス
+4x4 Anti-Aliasing text only
+4x4 テキストのみのアンチエイリアス
+Restore Page Number
+次回起動時に前回終了したページへ移動する。
+Restore Window Position and Size
+ウィンドウの位置とサイズを記憶する。
+No Settings
+設定無し
+Fonts of this page
+このページのフォント
+Show All Fonts
+フォント一覧
+Fonts
+フォント
+Searching all fonts…
+フォントを検索中…
+All fonts of this document (aborted)
+この文書に含まれるフォント (中止)
+All fonts of this document
+この文書に含まれるフォント
+Name
+オリジナルフォント
+Embedded Name
+埋め込みフォント
+Type
+種類
+Will take effect at next program launch.
+次回起動時に有効になります。
+Zoom in.
+20%拡大.
+Zoom out.
+20%縮小
+Open file.
+ファイルを開く
+Print.
+印刷
+Bookmarks.
+しおりを表示
+Find.
+検索
+Find next.
+次を検索
+Rotate clockwise.
+表示を右に回転
+Rotate anti-clockwise.
+表示を左に回転
+Show page list
+ページリストを表示(L)
+Show page list.
+ページリストを表示
+Hide page list
+ページリストを非表示(H)
+Hide page list.
+ページリストを非表示
+Fullscreen
+全画面表示(F)
+Fullscreen mode.
+全画面モード
+Fullscreen Mode
+全画面モード
+Window
+ウィンドウ
+Window mode.
+ウィンドウモード
+Zoom
+拡大/縮小(Z)
+Ghostscript library "libgs.so" not found.
+Ghostscript ライブラリ "libgs.so" が見つかりません。
+Install Ghostscript 6.50 or later and restart BePDF.
+Ghostscript 6.50 以降をインストール後、BePDFを再起動して下さい。
+Show Toolbar, Statusbar and Scrollbars too
+ツールバー、ステータスバー、スクロールバーを表示
+Show Document view only
+ドキュメントビューのみを表示
+<empty>
+<なし>
+Go to page %d
+%d ページに移動
+Selection Rectangle
+範囲指定設定
+Filled Rectangle
+色を変更して指定範囲を表示
+Stroked Rectangle
+枠のみで指定範囲を表示
+Asian Fonts
+アジアフォント設定
+Japanese
+日本語フォント
+Simplified Chinese
+中国語(簡体字)フォント
+Traditional Chinese
+中国語(繁体字)フォント
+FreeType 2
+FreeType 2
+Open In New Window…
+新しいウィンドウで開く(N)…
+Open In New Window
+新しいウィンドウで開く
+Mode
+モード
+Color
+カラー
+Gray scale
+グレースケール(白黒)
+Reload
+再読み込み(R)
+Reload file.
+ファイルの再読み込み
+Sub-pixel precise positioning
+サブピクセルの正確な位置設定
+Hinting
+ヒント情報
+Open in Workspace
+ワークスペースを指定して開く
+Open in Workspace
+ワークスペースを指定して開く
+Bookmark
+しおり(B)
+Add
+追加(A)
+Delete
+削除(D)
+Edit
+編集(E)
+Show Help…
+BePDF のヘルプ(B)…
+Show Online Help…
+オンラインヘルプ(O)…
+Visit Home Page…
+ホームページを表示(H)…
+Vote at BeBits…
+BeBits に投票(E)…
+Submit Bug Report…
+バグレポートの報告(R)
+User Password
+ユーザパスワード
+Owner Password
+マスタパスワード
+Open in Workspace:
+起動時のワークスペースを指定:
+current
+現在のワークスペース
+Edit title for bookmark
+しおりの編集
+Page %d
+%d ページ
+User defined
+ユーザ定義
+Annotation
+注釈(A)
+Title:
+タイトル:
+Date:
+日付:
+Show Error Messages
+エラーメッセージを表示(M)
+Error Messages
+エラーメッセージ
+Clear
+消去
+stderr
+stderr
+stdout
+stdout
+Auto Open
+自動表示
+Floating
+手前に表示
+Check For Update…
+アップデートの確認(C)…
+Checking for update… Please wait.
+アップデートの確認中 しばらくお待ち下さい。
+Loading pages
+ページを読み込み中…
+Preparing for rendering
+レンタリングの準備中…
+Contacting server…
+サーバーに接続中…
+Downloading…
+ダウンロード中…
+Update
+アップデート
+Couldn't retrieve update script
+アップデートスクリプトを回復できません
+Update script was empty!
+アップデートスクリプトが存在しません!
+No update is currently available.
+現在アップデートすべきものが存在しません。
+Cancel
+中止
+More info…
+更に詳しい情報…
+Upgrade
+アップグレード
+Upgrade!
+アップグレード!
+Upgrade available
+アップグレードが存在します。
+Couldn't download upgrade file!
+アップグレードファイルをダウンロードすることができません!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+ダウンロードファイルを展開できません!\n(ダウンロードしたファイルは /tmp にあります。)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+アップグレードスクリプトを実行することができません!\n(ダウンロードしたファイルは /tmp にあります。)
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+BePDF で開いた PDF ファイルが上書きできません! 別のファイル名を選んでください。
+Text
+テキスト(T)
+Link
+リンク
+Free Text
+フリー テキスト
+Line
+ライン
+Square
+四角(S)
+Circle
+円(C)
+Highlight
+ハイライト(H)
+Underline
+下線(U)
+Squiggly
+ねじれ線(Q)
+Strike Out
+消去線(O)
+Stamp
+スタンプ
+Ink
+インク
+Popup
+ポップアップ
+File Attachment
+添付ファイル
+Sound
+サウンド
+Movie
+ムービー
+Widget
+部品
+PrinterMark
+プリンタマーク
+TrapNet
+TrapNet
+Properties
+プロパティ(P)
+Save As…
+複製を保存(S)…
+Comment
+コメント(C)
+Insert
+挿入(I)
+Key
+鍵(K)
+New
+新規
+Note
+注釈(O)
+Paragraph
+段落(A)
+New Paragraph
+新規段落(P)
+Korean
+朝鮮語フォント
+Author
+作成者
+Information
+お知らせ
+PDF file successfully written!
+PDF ファイルの書き込みに成功しました!
+Error
+エラー
+Could not write PDF file!
+PDF ファイルを書き込むことができません!
+Editing of annotations in an encrypted PDF file not supported yet!
+暗号化された PDF ファイル中の注釈の編集はまだサポートされていません!
+Enable Close Path Workaround
+クローズパスの予備手段を有効にする
+Invert vertical mouse scrolling
+逆回転垂直マウススクロール
+Copy link
+リンク先のロケーションをコピー
+Align:
+行揃え:
+Size:
+サイズ:
+Font:
+フォント:
+Automatic
+自動
+left
+左揃え
+right
+右揃え
+centered
+中央揃え
+Show annotation tool bar.
+注釈ツールバーを表示
+Show annotation tool bar
+注釈ツールバーを表示(S)
+Edit Annotations.
+注釈の編集
+Save file as.
+ファイルに保存
+Add circle annotation.
+円注釈の追加
+Add comment text annotation.
+コメントの追加
+Add free text annotation.
+フリーテキストの追加
+Add help text annotation.
+ヘルプテキストの追加
+Add highlight annotation.
+ハイライト注釈の追加
+Add insert text annotation.
+挿入テキストの追加
+Add key text annotation.
+鍵テキストの追加
+Add new paragraph text annotation.
+新規段落テキストの追加
+Add note text annotation.
+メモテキストの追加
+Add paragraph text annotation.
+段落テキストの追加
+Add square annotation.
+四角注釈の追加
+Add squiggly annotation.
+ねじれ線の追加
+Add strikeout annotation.
+消去線の追加
+Add underline annotation.
+下線の追加
+Leave annotation editing mode.
+注釈編集モードからぬける
+Leave annotation editing mode
+注釈編集モードからぬける(L)
+Save File Attachment As…
+名前を付けて添付ファイルを保存…
+Show attachments
+添付ファイルを表示(T)
+Show attachments.
+添付ファイルを表示
+Open attachment(s).
+添付ファイルを開く
+Save attachment(s) as.
+添付ファイルの保存
+Save selected attachment to file.
+ファイルに選択した添付ファイルを保存
+Save selected attachments into directory.
+ディレクトリに選択した添付ファイルを保存
+Saving attachment(s):
+添付ファイルの保存中:
+Saving copy of PDF file:
+PDF ファイルのコピーを保存中:
+Saving file attachment:
+ファイルに添付ファイルの保存中:
+File Name
+ファイル名
+Description
+説明
+Ignore Case
+大小文字を区別しない
+Search Backwards
+後方へ検索
+Warning
+警告
+Adobe-Japan1
+日本語フォント
+Adobe-CNS1
+中国語(繁体字)フォント
+Adobe-GB1
+中国語(簡体字)フォント
+Adobe-Korea1
+朝鮮語フォント
+System Fonts
+システムフォント
+Common Fonts
+コモンフォント
+User Fonts
+ユーザフォント
+Cool
+クール
+Duh!
+そんなことも知らないの!
+Ok
+Ok

@@ -1,0 +1,670 @@
+CatalogName
+Português
+CatalogLanguage
+Portuguese
+LanguageCode
+pt
+CatalogAuthor
+Miguel Zúñiga González
+File
+Arquivo
+Search
+Procurar
+View
+Visualizar
+Page
+Página
+Rotation
+Rotação
+Help
+Ajuda
+Open…
+Abrir…
+File Info…
+Informação Sobre o Arquivo…
+File Info
+Informação Sobre o Arquivo
+Bookmarks…
+Marcações…
+Bookmarks
+Marcações
+Page Setup…
+Configurar Página…
+Print…
+Imprimir…
+Print
+Imprimir
+Preferences…
+Preferências…
+About BePDF…
+Sobre BePDF…
+Quit
+Sair
+Find…
+Localizar…
+Find
+Localizar
+Find Next…
+Localizar Próxima…
+Zoom In
+Ampliar
+Zoom Out
+Diminuir
+Fit to Page Width
+Redimencionar Para Largura da Página
+Fit to Page
+Redimensionar Para Página
+Custom Zoom Factor (%d%%)
+Fator de Ampliação Customizado (%d%%)
+First
+Primeira
+Previous
+Anterior
+Go To Page
+Ir Para Página
+Next
+Próxima
+Last
+Última
+Back
+Voltar
+Forward
+Avançar
+Return to the beginning of the document.
+Retornar para o começo do documento.
+Skip to the 10th previous page.
+Pular para a 10a. página anterior.
+Skip to the previous page.
+Pular para a página anterior.
+Skip to the next page.
+Pular para a próxima página.
+Skip to the 10th next page.
+Pular para a 10a. próxima página.
+Advance to the end of the document.
+Avançar para o fim do documento.
+Back in the page history list.
+Voltar na lista de histórico de página.
+Forward in the page history list.
+Avançar na lista de histórico de página.
+Fit to Page Width.
+Redimencionar Para Largura da Página.
+Fit to page.
+Redimensionar Para Página.
+of %d
+de %d
+BePDF Status
+Estado do BePDF
+BePDF reading file: 
+BePDF lendo arquivo: 
+Display Preferences
+Preferências de Visualização
+Font Renderer
+Renderizador de Fonte
+Type 1
+Type 1
+Off
+Desligado
+Without Anti-Aliasing
+Sem Suavização
+Anti-Aliasing
+Suavização
+Anti-Aliasing High
+Muita Suavização
+Type 3
+Type 3
+On (Very Slow!)
+Ligado (Muito Lento!)
+Freetype
+Freetype
+Color Space
+Amplitude da cor
+8 bits per pixel
+8 bits per pixel
+16 bits per pixel
+16 bits per pixel
+32 bits per pixel
+32 bits per pixel
+BePDF Printing
+BePDF Imprimindo
+BePDF printing document: 
+BePDF imprimindo documento: 
+Page:
+Página:
+Stop
+Parar
+Abort
+Abortar
+Page: %d
+Página: %d
+Print Settings
+Opções de Impressão
+Pages
+Páginas
+All Pages
+Todas as Páginas
+Odd Pages
+Páginas Ímpares
+Even Pages
+Páginas Pares
+Order
+Ordem
+Normal
+Normal
+Reverse
+Invertida
+Zoom (%)
+Ampliação (%)
+On
+Ligado
+DPI
+DPI
+Max. Printer Resolution
+Resolução Máx. de Impressão
+Page Size
+Tamanho da Página
+Wrong Parameter!
+Parâmetro Incorrreto!
+Zoom must be between 25 and 400!
+Ampliação precisa estar entre 25 e 400!
+OK
+OK
+Width: 
+Largura: 
+Height: 
+Altura: 
+ in
+ pol
+Yes
+Sim
+No
+Não
+Allowed
+Permitido
+Denied
+Negado
+Filename:
+Arquivo:
+Path:
+Diretório:
+Title:
+Título:
+Title
+Título
+Subject:
+Assunto:
+Author:
+Autor:
+Keywords:
+Palavras-Chave:
+Creator:
+Criador:
+Producer:
+Produtor:
+Created:
+Criado:
+Modified:
+Modificado:
+PDF Version:
+Versão do PDF:
+Linearized:
+Linearizado:
+Encrypted:
+Encriptado:
+Printing:
+Imprimir:
+Changing the Document:
+Alterar o Documento:
+Selecting Text and Graphics:
+Selecionar Texto e Gráficos:
+Adding or Changing Notes and Form Fields:
+Adicionar/Alterar Notas e Formulários:
+Document
+Documento
+Security
+Segurança
+Find Text
+Localizar Texto
+Find: 
+Localizar: 
+Enter Password
+Entre a Senha
+Password: 
+Senha: 
+No Title
+Sem Título
+Execute the command:
+Execute o commando:
+BePDF: Launch
+BePDF: Inicialização
+Cancel
+Cancelar
+Unknown link action type: '%s'
+Tipo de ação de ligação desconhecida: '%s'
+[internal link]
+[ligação interna]
+[unknown link]
+[ligação desconhecida]
+Link: 
+Ligação: 
+ (Pages %d To %d)
+ (Páginas %d A %d)
+General
+Geral
+Status
+Estado
+About
+Sobre
+Error
+Erro
+BePDF: Error opening file!
+BePDF: Erro abrindo arquivo!
+Close
+Fechar
+Copy Selection
+Copiar Seleção
+Select All
+Selecionar Tudo
+Select None
+Selecionar Nada
+Update Frequency
+Frequência de Atualização
+Language
+Lingua
+Preferences
+Preferências
+Renderer
+Renderizador
+Display
+Visualização
+Native
+Nativa
+Native Renderer
+Renderizador Nativo
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Renderizador Ghostscript
+2x2 Anti-Aliasing
+Suavização 2x2
+4x4 Anti-Aliasing
+Suavização 4x4
+2x2 Anti-Aliasing text only
+Suavização 2x2 apenas para texto
+4x4 Anti-Aliasing text only
+Suavização 4x4 apenas para texto
+Restore Page Number
+Ir para a página mostrada quando o documento foi fechado.
+Restore Window Position and Size
+Restaurar posição e tamanho da janela.
+No Settings
+Nenhuma Configuração
+Fonts of this page
+Fontes desta página
+Show All Fonts
+Mostrar Todas as Fontes
+Fonts
+Fontes
+Searching all fonts…
+Procurando todas as fontes…
+All fonts of this document (aborted)
+Todas as fontes deste documento (abortado)
+All fonts of this document
+Todas as fontes deste documento
+Name
+Nome
+Embedded Name
+Nome Interno
+Type
+Tipo
+Will take effect at next program launch.
+Entrará em efeito na próxima sessão.
+Zoom in.
+Ampliação em 20%.
+Zoom out.
+Redução em 20%.
+Open file.
+Abrir arquivo.
+Print.
+Imprimir.
+Bookmarks.
+Mostrar Marcações.
+Find.
+Localizar texto.
+Find next.
+Localizar próximo texto.
+Rotate clockwise.
+Rotacionar no sentido horário.
+Rotate anti-clockwise.
+Rotacionar no sentido anti-horário.
+Show page list
+Mostrar lista de páginas
+Show page list.
+Mostrar lista de páginas.
+Hide page list
+Esconder lista de páginas
+Hide page list.
+Esconder lista de páginas.
+Fullscreen
+Tela Cheia
+Fullscreen mode.
+Modo tela cheia.
+Fullscreen Mode
+Modo tela cheia
+Window
+Janela
+Window mode.
+Modo janela.
+Zoom
+Ampliação
+Ghostscript library "libgs.so" not found.
+Biblioteca Ghostscript "libgs.so" não encontrada.
+Install Ghostscript 6.50 or later and restart BePDF.
+Instale Ghostscript 6.50 ou posterior e reinicie o BePDF.
+Show Toolbar, Statusbar and Scrollbars too
+Mostrar Barras de Ferramentas, Status e Rolagem também
+Show Document view only
+Mostrar apenas Documento
+<empty>
+<vazio>
+Go to page %d
+Ir para página %d
+Selection Rectangle
+Retângulo de Seleção
+Filled Rectangle
+Retângulo Preenchido
+Stroked Rectangle
+Contorno de Retângulo
+Asian Fonts
+Fontes Asiáticas
+Japanese
+Japonês
+Simplified Chinese
+Chinês Simplificado
+Traditional Chinese
+Chinês Tradicional
+FreeType 2
+FreeType 2
+Open In New Window…
+Abrir Em Nova Janela…
+Open In New Window
+Abrir Em Nova Janela
+Mode
+Modo
+Color
+Colorido
+Gray scale
+Escala de cinza
+Reload
+Recarregar
+Reload file.
+Recarregar arquivo.
+Sub-pixel precise positioning
+Posicionamento com precisão sub-pixel
+Hinting
+Ajuda visual
+Open in Workspace
+Abrir no Workspace
+Bookmark
+Marcação
+Add
+Adicionar
+Delete
+Apagar
+Edit
+Editar
+Show Help…
+Mostrar Ajuda…
+Show Online Help…
+Mostrar Ajuda Online…
+Visit Home Page…
+Visitar Home Page…
+Vote at BeBits…
+Votar no BeBits…
+Submit Bug Report…
+Enviar Relatório de Erro…
+User Password
+Senha do Usuário
+Owner Password
+Senha do Dono
+Open in Workspace:
+Abrir no Workspace:
+current
+atual
+Edit title for bookmark
+Editar título da marcação
+Page %d
+Página %d
+User defined
+Definido pelo usuário
+Annotation
+Anotação
+Title:
+Título:
+Date:
+Data:
+Show Error Messages
+Mostrar Mensagens de Erro
+Error Messages
+Mensagens de Erro
+Clear
+Limpar
+stderr
+Erro standard (stderr)
+stdout
+Padrão para fora (stdout)
+Auto Open
+Abrir Automaticamente
+Floating
+Flutuando
+Check For Update…
+Checar Por Atualização…
+Checking for update… Please wait.
+Checando por atualização… Por favor, aguarde.
+Loading pages
+Carregando páginas…
+Preparing for rendering
+Preparando para renderizar…
+Contacting server…
+Contactando servidor…
+Downloading…
+Efetuando Download…
+Update
+Atualizar
+Couldn't retrieve update script
+Impossível obter script de atualização
+Update script was empty!
+Script de atualização vazio!
+No update is currently available.
+Nenhuma atualização disponível no momento.
+Cancel
+Cancelar
+More info…
+Mais informação…
+Upgrade
+Atualização
+Upgrade!
+Atualizar!
+Upgrade available
+Atualização disponível
+Couldn't download upgrade file!
+Impossível obter arquivo de atualização!
+Couldn't launch downloaded file!\n(Downloaded file is in /tmp)
+Impossível iniciar arquivo de atualização!\n(O arquivo se encontra em /tmp)
+Couldn't execute upgrade script!\n(Downloaded file is in /tmp)
+Impossível executar script de atualização!\n(O arquivo se encontra em /tmp)
+Text
+Texto
+Link
+Ligação
+Free Text
+Texto Livre
+Line
+Linha
+Square
+Quadrado
+Circle
+Circulo
+Highlight
+Destacar
+Underline
+Subescrito
+Squiggly
+Torcido
+Strike Out
+Removido
+Stamp
+Carimbar
+Ink
+Tinta
+Popup
+Pop-up
+File Attachment
+Arquivo Anexo
+Sound
+Som
+Movie
+Filme
+Widget
+Componente
+PrinterMark
+Marca de Impressora
+TrapNet
+TrapNet
+Properties
+Propriedados
+Save As…
+Salvar como…
+Comment
+Comentário
+Insert
+Inserir
+Key
+Tecla
+New
+Novo
+Note
+Nota
+Paragraph
+Parágrafo
+New Paragraph
+Novo Parágrafo
+Korean
+Coreano
+Author
+Autor
+Information
+Informação
+PDF file successfully written!
+Arquivo PDF gravado com sucesso!
+Error
+Erro
+Could not write PDF file!
+Impossivel gravar arquivo PDF!
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Impossivel sobrescrever arquivo em uso! Selecione outro nome para o arquivo.
+Editing of annotations in an encrypted PDF file not supported yet!
+Edição de anotações em um arquivo PDF encriptado ainda não é suportado!
+Enable Close Path Workaround
+Habilitar Correção Para "Close Path"
+Invert vertical mouse scrolling
+Inverter scroll vertical do mouse
+Copy link
+Copiar atalho
+Align:
+Alinhamento:
+Size:
+Tamanho:
+Font:
+Fonte:
+Automatic
+Automático
+left
+esquerda
+right
+direita
+centered
+centralizado
+Show annotation tool bar.
+Mostrar barra de ferramentas de anotações.
+Show annotation tool bar
+Mostrar barra de ferramentas de anotações
+Edit Annotations.
+Editar Anotações.
+Save file as.
+Salvar arquivo como.
+Add comment text annotation.
+Adicionar anotação de texto de comentário.
+Add help text annotation.
+Adicionar anotação de texto de ajuda.
+Add insert text annotation.
+Adicionar anotação de texto de inserção.
+Add key text annotation.
+Adicionar anotação de texto chave.
+Add new paragraph text annotation.
+Adicionar anotação de texto de novo parágrafo.
+Add note text annotation.
+Adicionar anotação de texto de nota.
+Add paragraph text annotation.
+Adicionar anotação de texto de parágrafo.
+Add free text annotation.
+Adicionar anotação de texto livre.
+Add square annotation.
+Adicionar anotação de quadrado.
+Add circle annotation.
+Adicionar anotação de círculo.
+Add highlight annotation.
+Adicionar anotação de destacamento.
+Add underline annotation.
+Adicionar anotação de sublinhado.
+Add squiggly annotation.
+Adicionar anotação torcida.
+Add strikeout annotation.
+Adicionar anotação de texto removido.
+Leave annotation editing mode.
+Sair do modo de edição de anotações.
+Leave annotation editing mode
+Sair do modo de edição de anotações
+Save File Attachment As…
+Salvar Arquivo Anexo Como…
+Show attachments
+Mostrar anexos
+Show attachments.
+Mostrar anexos.
+Open attachment(s).
+Abrir anexo(s).
+Save attachment(s) as.
+Salvar anexo(s) como.
+Save selected attachment to file.
+Salvar anexo selecionado para o Arquivo.
+Save selected attachments into directory.
+Salvar anexos seleccionados no diretório.
+Saving attachment(s):
+Salvando anexo(s):
+Saving copy of PDF file:
+Salvando cópia do arquivo PDF:
+Saving file attachment:
+Salvando arquivo anexo:
+File Name
+Nome do Arquivo
+Description
+Descrição
+Ignore Case
+Ignorar Caixa alta/baixa
+Search Backwards
+Procura para trás
+Warning
+Aviso
+Adobe-Japan1
+Japonês
+Adobe-GB1
+Chinês Simplificado
+Adobe-CNS1
+Chinês Tradicional
+Adobe-Korea1
+Coreano
+System Fonts
+Fontes do sistema
+Common Fonts
+Fontes comuns
+User Fonts
+Fontes do Usuário

@@ -1,0 +1,678 @@
+CatalogName
+Bulgarian
+CatalogLanguage
+Bulgarian
+LanguageCode
+bg
+CatalogAuthor
+MadMax
+File
+Файл
+Search
+Търси
+View
+Виж
+Page
+Страница
+Rotation
+Въртене
+Help
+Помощ
+Open…
+Отвори...
+File Info…
+Информация...
+File Info
+Информация
+Bookmarks…
+Препратки...
+Bookmarks
+Препратки
+Page Setup…
+Настройка на страницата
+Print…
+Печат...
+Print
+Печат
+Preferences…
+Настройки...
+About BePDF…
+За BePDF…
+Quit
+Изход
+Find…
+Търси...
+Find
+Търси
+Find Next…
+Търси следващия...
+Zoom In
+Уголемяване
+Zoom Out
+Умаляване
+Fit to Page Width
+Уголеми страницата по ширина
+Fit to Page
+Уголеми страницата
+Custom Zoom Factor (%d%%)
+Ръчно уголемяване/умаляване (%d%%)
+First
+Първа
+Previous
+Предишна
+Go To Page
+Отиди на страница
+Next
+Следваща
+Last
+Последна
+Back
+Назад
+Forward
+Напред
+Return to the beginning of the document.
+Върни в началото на документа
+Skip to the 10th previous page.
+Иди 10 страници назад
+Skip to the previous page.
+Иди на предишната страница
+Skip to the next page.
+Иди на следващата страница
+Skip to the 10th next page.
+Иди 10 страници напред
+Advance to the end of the document.
+Иди в края на документа
+Back in the page history list.
+Назад
+Forward in the page history list.
+Напред
+Fit to Page Width.
+Уголеми страницата по ширина
+Fit to page.
+Уголеми страницата
+of %d
+от %d
+BePDF Status
+BePDF статус
+BePDF reading file: 
+BePDF чете файл: 
+Display Preferences
+Настройки на показването
+Font Renderer
+Рендеринг на шригтовете
+Type 1
+Type 1
+Off
+Изключи
+Without Anti-Aliasing
+Без изглаждане
+Anti-Aliasing
+Със изглаждане
+Anti-Aliasing High
+Силно изглаждане
+Type 3
+Type 3
+On (Very Slow!)
+Включи (Много бавно!)
+Freetype
+Freetype
+Color Space
+Брой на цветовете
+8 bits per pixel
+8 бита на пиксел
+16 bits per pixel
+16 бита на пиксел
+32 bits per pixel
+32 бита на пиксел
+BePDF Printing
+BePDF печата
+BePDF printing document: 
+BePDF печата документ: 
+Page:
+Страница:
+Stop
+Спри
+Abort
+Прекъсни
+Page: %d
+Страница: %d
+Print Settings
+Настройки на печата
+Pages
+Страници
+All Pages
+Всички страници
+Odd Pages
+Четни страници
+Even Pages
+Нечетни страници
+Order
+Ред
+Normal
+Нормален
+Reverse
+Обратен
+Zoom (%)
+Увеличение (%)
+On
+Включи
+DPI
+DPI
+Max. Printer Resolution
+Максимална резолюция на принтера
+Page Size
+Размер на страницата
+Wrong Parameter!
+Грешен параметър!
+Zoom must be between 25 and 400!
+Увеличението трябва да е между 25 и 400!
+OK
+OK
+Width: 
+Ширина: 
+Height: 
+Височина: 
+ in
+ в
+Yes
+Да
+No
+Не
+Allowed
+Разрешено
+Denied
+Забранено
+Filename:
+Име на файл:
+Path:
+Път:
+Title:
+Заглавие:
+Title
+Заглавие
+Subject:
+Относно:
+Author:
+Автор:
+Keywords:
+Ключови думи:
+Creator:
+Създател:
+Producer:
+Продуцент:
+Created:
+Създаден:
+Modified:
+Променен:
+PDF Version:
+PDF версия:
+Linearized:
+Линеаризиран:
+Encrypted:
+Криптиран:
+Printing:
+Печатане:
+Changing the Document:
+Промяна на документа:
+Selecting Text and Graphics:
+Избор на текст и графика:
+Adding or Changing Notes and Form Fields:
+Добавяне или измемение на бележките и формата:
+Document
+Документ
+Security
+Сугурност
+Find Text
+Търси текст
+Find: 
+Търси: 
+Enter Password
+Въведи парола
+Password: 
+Парола: 
+No Title
+Без заглавие
+Execute the command:
+Изпълни командата:
+BePDF: Launch
+BePDF: Стартиране
+Cancel
+Отказ
+Unknown link action type: '%s'
+Неизвестен тип препратки: '%s'
+[internal link]
+[вътрешна препратка]
+[unknown link]
+[непозната препратка]
+Link: 
+Препратка: 
+ (Pages %d To %d)
+ (Страници от %d до %d)
+General
+Общи
+Status
+Статус
+About
+За
+Error
+Грешка
+BePDF: Error opening file!
+BePDF: Грешка при отваряне на файл!
+Close
+Затвори
+Edit
+Редактирай
+Copy Selection
+Копирай избраното
+Select All
+Избери всички
+Select None
+Не избирай
+Update Frequency
+Частично обновление
+Language
+Език
+Preferences
+Настройки
+Renderer
+Рендер
+Display
+Дисплей
+Native
+Естествен
+Native Renderer
+Естествен рендер
+Ghostscript
+Ghostscript
+Ghostscript Renderer
+Ghostscript рендер
+2x2 Anti-Aliasing
+2x2 изглаждане
+4x4 Anti-Aliasing
+4x4 изглаждане
+2x2 Anti-Aliasing text only
+2x2 изглаждане само на текста
+4x4 Anti-Aliasing text only
+4x4 изглаждане само на текста
+Restore Page Number
+Възстанови номера на страницата
+Go to that page number when the file was closed.
+Върни се на тази страница след затваряне на файла
+Restore Window Position and Size
+Възстанови позицията и размера на прозореца
+No Settings
+Няма настройки
+Fonts of this page
+Шрифтове на тази страница
+Show All Fonts
+Покажи всички шрифтове
+Fonts
+Шрифтове
+Searching all fonts…
+Търси всички шрифтове…
+All fonts of this document (aborted)
+Всички шрифтове в документа (отмемено)
+All fonts of this document
+Всички шрифтове в документа
+Name
+Име
+Embedded Name
+Вътрешно име
+Type
+Тип
+Will take effect at next program launch.
+Измененията ще се задействат при следващо стартиране
+Zoom in.
+Увеличение
+Zoom in 20%.
+Увеличение с 20%
+Zoom out.
+Умаление
+Zoom out 20%.
+Умаление с 20%
+Open file.
+Отвори файл
+Print.
+Печат
+Bookmarks.
+Препратки
+Find.
+Търси
+Find next.
+Търси следвашия
+Rotate clockwise.
+Върти по часовниковата стрелка
+Rotate anti-clockwise.
+Върти обратно на часовниковата стрелка
+Show page list
+Покажи списък на страниците
+Show page list.
+Покажи списък на страниците
+Hide page list
+Скрий списъка на страниците
+Hide page list.
+Скрий списъка на страниците
+Fullscreen
+Пълноекранен режим
+Fullscreen mode.
+Пълноекранен режим
+Window
+Прозорец
+Window mode.
+Режим на прозореца
+Zoom
+Увеличение
+Ghostscript library "libgs.so" not found.
+Ghostscript библиотеката "libgs.so" не е намерена.
+Install Ghostscript 6.50 or later and restart BePDF.
+Инсталирай Ghostscript 6.50 или по-късен и рестартирай BePDF.
+Fullscreen Mode
+Пълноекранен режим
+Show Toolbar, Statusbar and Scrollbars too
+Покажи бутоните, статуса и скролерите
+Show Document view only
+Покажи само изгледа на документа
+<empty>
+<празно>
+Go to page %d
+Иди на страница %d
+Selection Rectangle
+Селекционен правоъгълник
+Filled Rectangle
+Запълнен правоъгълник
+Stroked Rectangle
+Щрихован правоъгълник
+Asian Fonts
+Азиатски щрифтове
+Japanese
+Японски
+Simplified Chinese
+Китайски
+Traditional Chinese
+Традиционни китайски
+FreeType 2
+FreeType 2
+Open In New Window…
+Отвори в нов прозорец…
+Open In New Window
+Отвори в нов прозорец
+Mode
+Режим
+Color
+Цвят
+Gray scale
+Сива палитра
+Reload
+Презареди
+Reload file.
+Презареди файла
+Sub-pixel precise positioning
+Прецизно позициониране на пикселите
+Hinting
+Подсказване
+Open in Workspace
+Отвори в работно пространство
+Bookmark
+Отметка
+Add
+Добави
+Delete
+Изтрий
+Edit
+Редактирай
+Show Help…
+Покажи документацията…
+Show Online Help…
+Покажи онлайн документацията…
+Visit Home Page…
+Посети уеб страницата…
+Vote at BeBits…
+Гласувай на BeBits…
+Submit Bug Report…
+Изпрати съобщение за бъг…
+User Password
+Потребителска парола
+Owner Password
+Парола на собственика
+Open in Workspace:
+Отвори в Работно пространство:
+current
+текущо
+Edit title for bookmark
+Редактирай заглавието на отметката
+Page %d
+Страница %d
+User defined
+Дефинирано от потребителя
+Add circle annotation.
+Add circle annotation.
+Add comment text annotation.
+Add comment text annotation.
+Add free text annotation.
+Add free text annotation.
+Add help text annotation.
+Add help text annotation.
+Add highlight annotation.
+Add highlight annotation.
+Add insert text annotation.
+Add insert text annotation.
+Add key text annotation.
+Add key text annotation.
+Add new paragraph text annotation.
+Add new paragraph text annotation.
+Add note text annotation.
+Add note text annotation.
+Add paragraph text annotation.
+Add paragraph text annotation.
+Add square annotation.
+Add square annotation.
+Add squiggly annotation.
+Add squiggly annotation.
+Add strikeout annotation.
+Add strikeout annotation.
+Add underline annotation.
+Add underline annotation.
+Align:
+Align:
+Annotation
+Annotation
+Author
+Author
+Auto Open
+Auto Open
+Automatic
+Automatic
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Can not overwrite in BePDF opened PDF file! Choose another file name.
+Cancel
+Cancel
+Check For Update…
+Check For Update…
+Checking for update… Please wait.
+Checking for update… Please wait.
+Circle
+Circle
+Clear
+Clear
+Comment
+Comment
+Contacting server…
+Contacting server…
+Copy link
+Copy link
+Could not write PDF file!
+Could not write PDF file!
+Couldn't download upgrade file!
+Couldn't download upgrade file!
+Couldn't execute upgrade script!n(Downloaded file is in /tmp)
+Couldn't execute upgrade script!n(Downloaded file is in /tmp)
+Couldn't launch downloaded file!n(Downloaded file is in /tmp)
+Couldn't launch downloaded file!n(Downloaded file is in /tmp)
+Couldn't retrieve update script
+Couldn't retrieve update script
+Date:
+Date:
+Downloading…
+Downloading…
+Edit Annotations.
+Edit Annotations.
+Editing of annotations in an encrypted PDF file not supported yet!
+Editing of annotations in an encrypted PDF file not supported yet!
+Enable Close Path Workaround
+Enable Close Path Workaround
+Error
+Error
+Error Messages
+Error Messages
+File Attachment
+File Attachment
+Floating
+Floating
+Font:
+Font:
+Free Text
+Free Text
+Highlight
+Highlight
+Information
+Information
+Ink
+Ink
+Insert
+Insert
+Invert vertical mouse scrolling
+Invert vertical mouse scrolling
+Key
+Key
+Korean
+Korean
+Leave annotation editing mode
+Leave annotation editing mode
+Leave annotation editing mode.
+Leave annotation editing mode.
+Line
+Line
+Link
+Link
+Loading pages
+Loading pages
+More info…
+More info…
+Movie
+Movie
+New
+New
+New Paragraph
+New Paragraph
+No update is currently available.
+No update is currently available.
+Note
+Note
+PDF file successfully written!
+PDF file successfully written!
+Paragraph
+Paragraph
+Popup
+Popup
+Preparing for rendering
+Preparing for rendering
+PrinterMark
+PrinterMark
+Properties
+Properties
+Save As…
+Save As…
+Save file as.
+Save file as.
+Show Error Messages
+Show Error Messages
+Show annotation tool bar
+Show annotation tool bar
+Show annotation tool bar.
+Show annotation tool bar.
+Size:
+Size:
+Sound
+Sound
+Square
+Square
+Squiggly
+Squiggly
+Stamp
+Stamp
+Strike Out
+Strike Out
+Text
+Text
+Title:
+Title:
+TrapNet
+TrapNet
+Underline
+Underline
+Update
+Update
+Update script was empty!
+Update script was empty!
+Upgrade
+Upgrade
+Upgrade available
+Upgrade available
+Upgrade!
+Upgrade!
+Widget
+Widget
+centered
+centered
+left
+left
+right
+right
+stderr
+stderr
+stdout
+stdout
+Adobe-Japan1
+Japanese
+Adobe-GB1
+Simplified Chinese
+Adobe-CNS1
+Tradtional Chinese
+Adobe-Korea1
+Korean
+Common Fonts
+Common Fonts
+Description
+Description
+File Name
+File Name
+Ignore Case
+Ignore Case
+Open attachment(s).
+Open attachment(s).
+Save File Attachment As…
+Save File Attachment As…
+Save attachment(s) as.
+Save attachment(s) as.
+Save selected attachment to file.
+Save selected attachment to file.
+Save selected attachments into directory.
+Save selected attachments into directory.
+Saving attachment(s):
+Saving attachment(s):
+Saving copy of PDF file:
+Saving copy of PDF file:
+Saving file attachment:
+Saving file attachment:
+Search Backwards
+Search Backwards
+Show attachments
+Show attachments
+Show attachments.
+Show attachments.
+System Fonts
+System Fonts
+User Fonts
+User Fonts
+Warning
+Warning

@@ -1,0 +1,77 @@
+%!PS-Adobe-3.0 Resource-CMap
+%%DocumentNeededResources: ProcSet (CIDInit)
+%%DocumentNeededResources: CMap (UniKS-UTF8-H)
+%%IncludeResource: ProcSet (CIDInit)
+%%IncludeResource: CMap (UniKS-UTF8-H)
+%%BeginResource: CMap (UniKS-UTF8-V)
+%%Title: (UniKS-UTF8-V Adobe Korea1 1)
+%%Version: 10.001
+%%Copyright: -----------------------------------------------------------
+%%Copyright: Copyright 1990-1999 Adobe Systems Incorporated.
+%%Copyright: All Rights Reserved.
+%%Copyright:
+%%Copyright: Patents Pending
+%%Copyright:
+%%Copyright: NOTICE: All information contained herein is the property
+%%Copyright: of Adobe Systems Incorporated.
+%%Copyright:
+%%Copyright: Permission is granted for redistribution of this file
+%%Copyright: provided this copyright notice is maintained intact and
+%%Copyright: that the contents of this file are not altered in any
+%%Copyright: way from its original form.
+%%Copyright:
+%%Copyright: PostScript and Display PostScript are trademarks of
+%%Copyright: Adobe Systems Incorporated which may be registered in
+%%Copyright: certain jurisdictions.
+%%Copyright: -----------------------------------------------------------
+%%EndComments
+
+/CIDInit /ProcSet findresource begin
+
+12 dict begin
+
+begincmap
+
+/UniKS-UTF8-H usecmap
+
+/CIDSystemInfo 3 dict dup begin
+  /Registry (Adobe) def
+  /Ordering (Korea1) def
+  /Supplement 1 def
+end def
+
+/CMapName /UniKS-UTF8-V def
+/CMapVersion 10.001 def
+/CMapType 1 def
+
+/XUID [1 10 25415] def
+
+/WMode 1 def
+
+18 begincidrange
+<e28093> <e28094> 8059
+<e28096> <e28096> 8061
+<e280a5> <e280a5> 8058
+<e38081> <e38082> 8056
+<e38088> <e38091> 8065
+<e38093> <e38093> 8075
+<e38094> <e38095> 8063
+<efbc81> <efbc81> 8076
+<efbc88> <efbc89> 8077
+<efbc8c> <efbc8c> 8079
+<efbc8e> <efbc8e> 8080
+<efbc9a> <efbc9f> 8081
+<efbcbb> <efbcbb> 8087
+<efbcbd> <efbcbd> 8088
+<efbcbf> <efbcbf> 8089
+<efbd9b> <efbd9d> 8090
+<efbd9e> <efbd9e> 8062
+<efbfa3> <efbfa3> 8093
+endcidrange
+endcmap
+CMapName currentdict /CMap defineresource pop
+end
+end
+
+%%EndResource
+%%EOF
