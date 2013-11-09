@@ -1,1 +1,1 @@
-Required packages: freetype2, htmldoc.
+Required packages for compiling: freetype2(+devel), liblayout(+devel), htmldoc.
