@@ -18,7 +18,7 @@ META_DATE="2009-01-29"
 META_LANGUAGE="es"
 
 # the name of the language
-HTML_LANGUAGE="Espa\&ntilde;ol; Castellano"
+HTML_LANGUAGE="Espa\&ntilde;ol"
 
 # HTMLdoc properties
 HTMLDOC_PDF_FILE="Español.pdf"

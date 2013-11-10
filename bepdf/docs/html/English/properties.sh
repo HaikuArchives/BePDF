@@ -14,7 +14,7 @@ PDF_TEMPLATES="HTMLdoc.book"
 
 # Meta data
 META_AUTHOR="Celerick Stephens\, Michael Pfeiffer"
-META_DATE="2008-12-20"
+META_DATE="2013-11-10"
 META_LANGUAGE="en"
 
 # the name of the language
