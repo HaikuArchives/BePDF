@@ -12,8 +12,6 @@ jam for building BePDF and required libraries.
 Required Libraries
 
 The following required libararies are included (name <directory>):
-Freetype 2        <freetype2>
-Layout library    <layout>
 Santa's Gift Bag  <santa>
 xpdf              <xpdf>
 See file versions.txt for the current version of a library.
@@ -32,27 +30,19 @@ but the distributable package is not created (= ZIP file).
 Option can be one of
   clean ... to remove generated files and folders.
   package ... to create the distributable zip file.
-  optional-package r1a2-x86-gcc2-2010-05-08 
-	... same as "package" but adds the file
-	etc/.OptionalPackageDescription to the root
-	of the package ZIP file. Needed so
-	the package can be used as an optional
-	Haiku package (adds BePDF related licenses to AboutSystem).
   debug ... to build libraries with debug information turned on.
   bepdf ... to build files in folder 'bepdf' only.
 
 The version of the binary and package is stored in file etc/VERSION.
 
-Jam is used to build BePDF, libsanta.a, libfreetype.a and libxpdf.a.
+Jam is used to build BePDF, libsanta.a, and libxpdf.a.
 
 A slightly modified version of the OpenBeOS Generic Jamfile Engine v1.0.1
 by Ryan Leavengood is used (action MkDir1 was added, so Jam does
 not fail when it tries to create a directory that exists already) for santa, 
 xpdf and BePDF.
-Freetype 2 provides already Jamfiles for building with jam.
 
 The temporary build files are created inside the project directories:
-freetype2/objs/libfreetype.a
 santa/obj.X86/libsanta.a
 xpdf/obj.X86/libxpdf.a
 bepdf/obj.X86/BePDF
@@ -94,5 +84,5 @@ The build script also generates the documenation (see bepdf/docs/make.sh)
 when the application directory is set up the first time the
 build script is run.
 
-Note: htmldoc (www.htmldoc.org) is required to generate PDF files from
+Note: htmldoc (http://htmldoc.org) is required to generate PDF files from
 the HTML documentation.

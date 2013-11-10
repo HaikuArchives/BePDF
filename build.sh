@@ -172,12 +172,6 @@ function makePackage {
 	makePackage0 "$arch" "." "$arch"
 }
 
-function makeOptionalPackage {
-	arch="$1"
-	suffix="$2"
-	makePackage0 "$arch" "-" "$suffix"
-}
-
 function addOptionPackageDescription {
 	suffix="$1"
 	splitVersion
@@ -245,7 +239,6 @@ if [ "$option" == "bepdf" ] ; then
 	buildProject $debug bepdf
 else
 	buildProject $debug santa libsanta.a
-	buildProject $debug freetype2
 	buildProject $debug xpdf libxpdf.a
 	buildProject $debug bepdf
 fi
@@ -256,10 +249,4 @@ setVectorIcon "bepdf/icons/bepdf.hvif.attr" "$DESTINATION/x86/BePDF"
 
 if [ "$option" == "package" ] ; then
 	makePackage x86
-fi
-
-if [ "$option" == "optional-package" ] ; then
-	suffix=$2
-	makeOptionalPackage x86 $suffix
-	addOptionPackageDescription $suffix
 fi
