@@ -31,13 +31,6 @@ function copyFiles() {
 	done	
 }
 
-# CVS does not preserve file attributes
-# so unzip bookmarks & icons
-function setupBePDFFolder {
-	unzip bepdf/bookmarks.zip -d bepdf
-	unzip bepdf/icons.zip -d bepdf
-}
-
 # Setup directories and symbolic links
 function setupBinFolder {
 	arch="$1"
@@ -48,7 +41,7 @@ function setupBinFolder {
 	for file in "Add BePDF to Deskbar" "Remove BePDF from Deskbar" ; do
 		copyattr -v -d "bepdf/$file" "$folder/$arch/$file"
 	done
-	for dir in bookmarks encodings locale license ; do
+	for dir in encodings locale license ; do
 		mkdir -p "$folder/$arch/$dir"
 		copyFiles "bepdf/$dir" "$folder/$arch/$dir"
 	done
@@ -198,11 +191,8 @@ function addOptionPackageDescription {
 function clean {
 	rm -rf $DESTINATION/x86
 	rm -rf $TOOLS_BIN
-	rm -rf bepdf/bookmarks
-	rm -rf bepdf/icons
 
 	rm -rf santa/obj.X86
-	( cd freetype2 ; jam clean )
 	rm -rf xpdf/obj.X86
 	rm -rf bepdf/obj.X86
 }
@@ -211,10 +201,6 @@ option="$1"
 if [ "$option" == "clean" ] ; then
 	clean
 	exit 0
-fi
-
-if [ ! -e bepdf/bookmarks ] ; then
-	setupBePDFFolder
 fi
 
 if [ ! -e "$DESTINATION/x86" ] ; then
