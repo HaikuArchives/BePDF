@@ -219,4 +219,4 @@ LINKER_FLAGS =  ;
 DRIVER_PATH =  ;
 
 ## Include the Jamfile-engine
-include $(BUILDHOME)/etc/Jamfile-engine ;
+include ../etc/Jamfile-engine ;

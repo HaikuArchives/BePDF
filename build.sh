@@ -193,9 +193,6 @@ if [ ! -e "$TOOLSBIN/CopyFileToAttribute" ] ; then
 	buildTools
 fi
 
-# Use jam file engine (from folder "etc")
-export BUILDHOME=$(pwd)
-
 debug="FALSE"
 if [ "$option" == "debug" ] ; then
 	debug=TRUE
