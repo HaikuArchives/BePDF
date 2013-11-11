@@ -166,16 +166,6 @@ function makePackage {
 	makePackage0 "$arch" "." "$arch"
 }
 
-function addOptionPackageDescription {
-	suffix="$1"
-	splitVersion
-	version="$MAJOR.$MIDDLE.$MINOR$POSTFIX$INTERNAL"
-	(
-		cd etc
-		zip -9 -y -r "$DESTINATION/BePDF-$version-$suffix.zip" .OptionalPackageDescription
-	)
-}
-
 function clean {
 	rm -rf $DESTINATION/x86
 	rm -rf $TOOLS_BIN
