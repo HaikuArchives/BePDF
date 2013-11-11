@@ -210,14 +210,6 @@ fi
 export BUILD_PLATFORM
 echo BUILD_PLATFORM = $BUILD_PLATFORM
 
-# Check parameter for optional-package target
-if [ "$option" == "optional-package" -a "$2" == "" ] ; then
-	echo Missing optional package suffix
-	echo For example:
-	echo ./build.sh optional-package r1a2-x86-gcc2-2010-05-02
-	exit 1	
-fi
-
 # Build projects
 if [ "$option" == "bepdf" ] ; then
 	buildProject $debug bepdf
