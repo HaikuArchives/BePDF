@@ -92,12 +92,6 @@ function buildDocumentation {
 			fi
 		done
 	)
-	
-	(
-		# Create link to default documentation
-		cd "$DESTINATION/$arch/docs/"
-		ln -s $DEFAULT_DOCUMENT Default.pdf
-	)
 }
 
 function buildTools {
