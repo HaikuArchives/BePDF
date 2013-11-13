@@ -81,7 +81,7 @@ beos/utils/ToolTipItem.cpp
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.
-RSRCS= beos/BePDF.rsrc
+RDEFS= beos/BePDF.rdef
 
 #	specify additional libraries to link against
 #	there are two acceptable forms of library specifications
