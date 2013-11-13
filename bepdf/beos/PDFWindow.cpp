@@ -889,10 +889,6 @@ BMenuBar* PDFWindow::BuildMenu() {
 			ADD_SITEM (menu );
 			ADD_ITEM (menu, TRANSLATE("Page Setup…"), 'S', MakeCommandMessage (PAGESETUP_FILE_CMD));
 			ADD_ITEM (menu, TRANSLATE("Print…"), 'P', MakeCommandMessage (PRINT_SETTINGS_CMD));
-	
-			ADD_SITEM (menu );
-
-			ADD_ITEM (menu, TRANSLATE("About BePDF…"), 0, MakeCommandMessage( ABOUT_APP_CMD ) );
 
 			ADD_SITEM (menu );
 
@@ -1011,6 +1007,8 @@ BMenuBar* PDFWindow::BuildMenu() {
 		ADD_SITEM(menu);
 
 		ADD_ITEM (menu, TRANSLATE("Submit Bug Report…"), 0, MakeCommandMessage(BUG_REPORT_CMD));
+		ADD_SITEM (menu );
+		ADD_ITEM (menu, TRANSLATE("About BePDF…"), 0, MakeCommandMessage( ABOUT_APP_CMD ) );
 		menuBar->AddItem( menu );
 
 	AddChild(menuBar);
