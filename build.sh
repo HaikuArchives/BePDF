@@ -9,10 +9,9 @@ INFO_LONG="The PDF Reader for BeOS, Haiku and Zeta."
 
 # The folder where the executable is installed
 DESTINATION="$(pwd)/generated"
-VERSION_FILE="$(pwd)/etc/VERSION"
-VERSION=$(cat "$VERSION_FILE")
 TOOLS_SOURCE="$(pwd)/etc/tools"
 TOOLS_BIN="$DESTINATION/tools"
+OBJDIR="objects.x86-gcc2-release"
 
 function copyFiles() {
 	local src dst file dst2 
@@ -50,8 +49,6 @@ function setupBinFolder {
 
 	mkdir -p "$folder/$arch/fonts/psfonts"
  	copyFiles bepdf/fonts/psfonts "$folder/$arch/fonts/psfonts"
- 	
-	cp layout/lib/liblayout.so "$folder/x86/lib/liblayout.so"	
 }
 
 function buildProject {
@@ -94,85 +91,17 @@ function buildDocumentation {
 	)
 }
 
-function buildTools {
-	echo "Building tools"
-	(
-		cd "$TOOLS_SOURCE"
-		mkdir -p "$TOOLS_BIN"
-		cc CopyFileToAttribute.cpp -o "$TOOLS_BIN/CopyFileToAttribute" -lbe
-	)
-}
-
-
-function splitVersion {
-	# Split version information into components:
-	# MAJOR "." MIDDLE "." MINOR POSTFIX [ "/" INTERNAL]
-	MAJOR=$(cut -d . -f 1 < $VERSION_FILE)
-	MIDDLE=$(cut -d . -f 2 < $VERSION_FILE)
-	MINOR=$(cut -d . -f 3 < $VERSION_FILE)
-	POSTFIX=${MINOR/[0123456789]/}
-	POSTFIX=$(echo $POSTFIX | cut -d / -f 1)
-	MINOR=${MINOR/[dabgmf]/}
-	MINOR=$(echo $MINOR | cut -d / -f 1)
-	INTERNAL=$(cut -d / -f 2 < $VERSION_FILE)
-	# unset INTERNAL if "/ INTERNAL" is missing
-	if [ "$INTERNAL" == "$VERSION" ] ; then
-		unset INTERNAL
-	fi
-}
-
-function updateVersion {
-	path="$1"
-
-	splitVersion
-
-	echo setversion "$path" -app $MAJOR $MIDDLE $MINOR $POSTFIX $INTERNAL \
-		-short "$INFO_SHORT" -long "$INFO_LONG"
-	setversion "$path" -app $MAJOR $MIDDLE $MINOR $POSTFIX $INTERNAL \
-		-short "$INFO_SHORT" -long "$INFO_LONG"
-}
-
 function setupBinary {
 	file="$1"
-	updateVersion "$file"
 	chmod ug=rwx,o-rwx "$file"
 }
 
-function setVectorIcon {
-	iconFile="$1"
-	targetFile="$2"
-
-	echo "Setting vector icon $iconFile to $targetFile"
-	"$TOOLS_BIN/CopyFileToAttribute" "$iconFile" "VICN" "BEOS:ICON" "$targetFile"
-}
-
-function makePackage0 {
-	arch="$1"
-	separator="$2"
-	suffix="$3"
-	splitVersion
-	version="$MAJOR.$MIDDLE.$MINOR$POSTFIX$INTERNAL"
-	(
-		cd "$DESTINATION"
-		mv $arch BePDF
-		rm -f "$DESTINATION/BePDF-$version$separator$suffix.zip"
-		zip -9 -y -r "$DESTINATION/BePDF-$version$separator$suffix.zip" BePDF
-		mv BePDF $arch
-	)
-}
-
-function makePackage {
-	arch="$1"
-	makePackage0 "$arch" "." "$arch"
-}
-
 function clean {
-	rm -rf $DESTINATION/x86
-	rm -rf $TOOLS_BIN
+	rm -rf $DESTINATION/BePDF
 
-	rm -rf santa/obj.X86
-	rm -rf xpdf/obj.X86
-	rm -rf bepdf/obj.X86
+	rm -rf santa/$OBJDIR
+	rm -rf xpdf/$OBJDIR
+	rm -rf bepdf/$OBJDIR
 }
 
 option="$1"
@@ -181,16 +110,12 @@ if [ "$option" == "clean" ] ; then
 	exit 0
 fi
 
-if [ ! -e "$DESTINATION/x86" ] ; then
-	setupBinFolder x86
+if [ ! -e "$DESTINATION/BePDF" ] ; then
+	setupBinFolder BePDF
 fi
 
-if [ ! -e "$DESTINATION/x86/docs/English.pdf" ] ; then
-	buildDocumentation x86
-fi
-
-if [ ! -e "$TOOLSBIN/CopyFileToAttribute" ] ; then
-	buildTools
+if [ ! -e "$DESTINATION/BePDF/docs/English.pdf" ] ; then
+	buildDocumentation BePDF
 fi
 
 debug="FALSE"
@@ -216,10 +141,5 @@ else
 	buildProject $debug bepdf
 fi
 
-mv bepdf/obj.X86/BePDF "$DESTINATION/x86/"
-setupBinary "$DESTINATION/x86/BePDF"
-setVectorIcon "bepdf/icons/bepdf.hvif.attr" "$DESTINATION/x86/BePDF"
-
-if [ "$option" == "package" ] ; then
-	makePackage x86
-fi
+mv bepdf/$OBJDIR/BePDF "$DESTINATION/BePDF/"
+setupBinary "$DESTINATION/BePDF/BePDF"
