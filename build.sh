@@ -64,9 +64,9 @@ function buildProject {
 	current=$(pwd)
 	cd "$folder"
 	export DEBUGGER=$debug
-	jam -q $@
+	make
 	if [ $? -ne 0 ] ; then
-		echo "Jam failed in folder '$folder'."
+		echo "Make failed in folder '$folder'."
 		exit 1
 	fi
 	cd "$current"

@@ -263,8 +263,11 @@ DisplayCIDFonts::Type PreferencesWindow::GetType(const char* file) {
 }
 
 void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, const char* name, const char* file) {
-	FillFontFileMenu(menuField, B_BEOS_FONTS_DIRECTORY, TRANSLATE("System Fonts"), name, file);
-	FillFontFileMenu(menuField, B_COMMON_FONTS_DIRECTORY, TRANSLATE("Common Fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_FONTS_DIRECTORY, TRANSLATE("System Fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_NONPACKAGED_FONTS_DIRECTORY, TRANSLATE("System Fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_NONPACKAGED_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
+
 	// B_USER_FONTS_DIRECTORY is same as B_COMMON_FONTS_DIRECTORY in 
 	// BeOS R5
 	// FillFontFileMenu(menu, B_USER_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
