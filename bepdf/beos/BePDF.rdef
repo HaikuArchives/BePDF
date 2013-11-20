@@ -10,7 +10,7 @@ resource app_version {
 	internal = 0,
 
 	short_info = "BePDF",
-	long_info = "The PDF Reader for BeOS, Haiku & Zeta."
+	long_info = "The PDF Reader for Haiku."
 };
 
 resource(86, "NOTE_ANNOT") #'BBMP' archive BBitmap {
