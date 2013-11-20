@@ -49,7 +49,8 @@
 static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
 	"© 1999-2000 Hubert Figuiere\n"
-    "© 2000-2009 Michael Pfeiffer\n";
+    "© 2000-2011 Michael Pfeiffer\n"
+    "© 2013 waddlesplash\n";
 
 static const char * bePDFLocalization = 
     "\nLocalization to ";
@@ -57,19 +58,8 @@ static const char * bePDFLocalizationBy = " by ";
 
 static const char * GPLCopyright = 
     "\n\n"
-    "This program is free software; you can redistribute it and/or modify "
-    "it under the terms of the GNU General Public License as published by "
-    "the Free Software Foundation; either version 2 of the License, or "
-    "(at your option) any later version.\n"
-	"\n"
-    "This program is distributed in the hope that it will be useful, "
-    "but WITHOUT ANY WARRANTY; without even the implied warranty of "
-    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
-    "GNU General Public License for more details.\n"
-	"\n"
-    "You should have received a copy of the GNU General Public License"
-    "along with this program; if not, write to the Free Software"
-    "Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.";
+    "This program is free software under the GNU GPL v2, or any later version.\n";
+/* The last \n in the string is a workaround for a bug in the text layout system */
     
 static const char *PAGE_NUM_MSG = "bepdf:page_num";
 
@@ -374,7 +364,8 @@ void BepdfApplication::ReadyToRun()
 void BepdfApplication::AboutRequested()
 {
 	BString version;
-	BString str("BePDF Version ");
+	BString str("BePDF");
+	str += "\nVersion ";
 	str += GetVersion(version);
 	str += "\n";
 	
@@ -386,9 +377,9 @@ void BepdfApplication::AboutRequested()
 	str += TRANSLATE("CatalogAuthor");
 	str += "\n";
 
-	str += "\nBePDF is based on xpdf ";
+	str += "\nBePDF is based on XPDF ";
 	str += xpdfVersion;
-	str += "\n";
+	str += ", ";
 	str += xpdfCopyright;
 
 	str += GPLCopyright;
@@ -413,7 +404,7 @@ void BepdfApplication::AboutRequested()
 		s = strchr(text, '\n');
 		BFont font;
 		v->GetFontAndColor(0, &font);
-		font.SetSize(12);
+		font.SetSize(16);
 		v->SetFontAndColor(0, s-text+1, &font, B_FONT_SIZE);
 	};
 	about->Go();
