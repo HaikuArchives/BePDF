@@ -910,33 +910,6 @@ BMenuBar* PDFWindow::BuildMenu() {
 			menu->AddItem(mPreferencesItem);
 		menuBar->AddItem ( menu );
 
-		// Search
-		menu = new BMenu ( TRANSLATE("Search") );
-			ADD_ITEM (menu, TRANSLATE("Find…") , 'F', MakeCommandMessage( FIND_CMD));
-			menu->AddItem(new BMenuItem(TRANSLATE("Find Next…"), MakeCommandMessage( FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
-		menuBar->AddItem ( menu );
-				
-		// Page		
-		menu = new BMenu (TRANSLATE("Page"));
-			ADD_ITEM (menu, TRANSLATE("First"), 0, MakeCommandMessage (FIRST_PAGE_CMD));	
-			ADD_ITEM (menu, TRANSLATE("Previous"), 0, MakeCommandMessage (PREVIOUS_PAGE_CMD));	
-			ADD_ITEM (menu, TRANSLATE("Go To Page"), 'G', MakeCommandMessage (GOTO_PAGE_MENU_CMD));	
-			ADD_ITEM (menu, TRANSLATE("Next"), 0, MakeCommandMessage (NEXT_PAGE_CMD));
-			ADD_ITEM (menu, TRANSLATE("Last"), 0, MakeCommandMessage (LAST_PAGE_CMD));	
-			ADD_SITEM(menu);
-			ADD_ITEM (menu, TRANSLATE("Back"), B_LEFT_ARROW, MakeCommandMessage (HISTORY_BACK_CMD));	
-			ADD_ITEM (menu, TRANSLATE("Forward"), B_RIGHT_ARROW, MakeCommandMessage (HISTORY_FORWARD_CMD));	
-		menuBar->AddItem (menu);			
-		
-		// Bookmarks
-		menu = new BMenu (TRANSLATE("Bookmark"));
-
-			ADD_ITEM (menu, TRANSLATE("Add"),    0, MakeCommandMessage( ADD_BOOKMARK_CMD));
-			ADD_ITEM (menu, TRANSLATE("Delete"), 0, MakeCommandMessage( DELETE_BOOKMARK_CMD));
-			ADD_ITEM (menu, TRANSLATE("Edit"),   0, MakeCommandMessage( EDIT_BOOKMARK_CMD));
-			
-		menuBar->AddItem(menu);		
-
 		// Zoom
 		menu = new BMenu ( TRANSLATE("View") );
 		int16 zoom = settings->GetZoom();
@@ -992,7 +965,34 @@ BMenuBar* PDFWindow::BuildMenu() {
 			ADD_SITEM(menu);
 			ADD_ITEM(menu, TRANSLATE("Show Error Messages"), 'M', MakeCommandMessage(SHOW_TRACER_CMD));
 		menuBar->AddItem ( menu );
+
+		// Search
+		menu = new BMenu ( TRANSLATE("Search") );
+			ADD_ITEM (menu, TRANSLATE("Find…") , 'F', MakeCommandMessage( FIND_CMD));
+			menu->AddItem(new BMenuItem(TRANSLATE("Find Next…"), MakeCommandMessage( FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
+		menuBar->AddItem ( menu );
+				
+		// Page		
+		menu = new BMenu (TRANSLATE("Page"));
+			ADD_ITEM (menu, TRANSLATE("First"), 0, MakeCommandMessage (FIRST_PAGE_CMD));	
+			ADD_ITEM (menu, TRANSLATE("Previous"), 0, MakeCommandMessage (PREVIOUS_PAGE_CMD));	
+			ADD_ITEM (menu, TRANSLATE("Go To Page"), 'G', MakeCommandMessage (GOTO_PAGE_MENU_CMD));	
+			ADD_ITEM (menu, TRANSLATE("Next"), 0, MakeCommandMessage (NEXT_PAGE_CMD));
+			ADD_ITEM (menu, TRANSLATE("Last"), 0, MakeCommandMessage (LAST_PAGE_CMD));	
+			ADD_SITEM(menu);
+			ADD_ITEM (menu, TRANSLATE("Back"), B_LEFT_ARROW, MakeCommandMessage (HISTORY_BACK_CMD));	
+			ADD_ITEM (menu, TRANSLATE("Forward"), B_RIGHT_ARROW, MakeCommandMessage (HISTORY_FORWARD_CMD));	
+		menuBar->AddItem (menu);			
 		
+		// Bookmarks
+		menu = new BMenu (TRANSLATE("Bookmark"));
+
+			ADD_ITEM (menu, TRANSLATE("Add"),    0, MakeCommandMessage( ADD_BOOKMARK_CMD));
+			ADD_ITEM (menu, TRANSLATE("Delete"), 0, MakeCommandMessage( DELETE_BOOKMARK_CMD));
+			ADD_ITEM (menu, TRANSLATE("Edit"),   0, MakeCommandMessage( EDIT_BOOKMARK_CMD));
+			
+		menuBar->AddItem(menu);		
+				
 //		menuBar->AddItem ( mWindowsMenu = new BMenu(TRANSLATE("Window")) );
 		UpdateWindowsMenu();
 			
