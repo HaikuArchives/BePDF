@@ -98,9 +98,9 @@ stdc++.r4 \
 textencoding \
 tracker \
 translation \
-../xpdf/objects.x86-gcc2-release/libxpdf.a \
 layout \
-../santa/objects.x86-gcc2-release/libsanta.a 
+../generated/libxpdf.a \
+../generated/libsanta.a
 
 #	specify additional paths to directories following the standard
 #	libXXX.so or libXXX.a naming scheme.  You can specify full paths

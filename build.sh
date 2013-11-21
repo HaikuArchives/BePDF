@@ -65,6 +65,12 @@ function buildProject {
 	if [ $? -ne 0 ] ; then
 		echo "Make failed in folder '$folder'."
 		exit 1
+	else
+		if [ "$folder" == 'xpdf' ] ; then
+			cp "$OBJDIR/libxpdf.a" "../generated/"
+		elif [ "$folder" == 'santa' ] ; then
+			cp "$OBJDIR/libsanta.a" "../generated/"
+		fi
 	fi
 	cd "$current"
 }
@@ -89,11 +95,6 @@ function buildDocumentation {
 			fi
 		done
 	)
-}
-
-function setupBinary {
-	file="$1"
-	chmod ug=rwx,o-rwx "$file"
 }
 
 function clean {
@@ -124,14 +125,6 @@ if [ "$option" == "debug" ] ; then
 	shift
 fi
 
-# Detect the build platform
-BUILD_PLATFORM=BeOS
-if [ "$MACHTYPE" == "i586-pc-haiku" ] ; then
-	BUILD_PLATFORM=Haiku
-fi
-export BUILD_PLATFORM
-echo BUILD_PLATFORM = $BUILD_PLATFORM
-
 # Build projects
 if [ "$option" == "bepdf" ] ; then
 	buildProject $debug bepdf
@@ -142,4 +135,3 @@ else
 fi
 
 mv bepdf/$OBJDIR/BePDF "$DESTINATION/BePDF/"
-setupBinary "$DESTINATION/BePDF/BePDF"
