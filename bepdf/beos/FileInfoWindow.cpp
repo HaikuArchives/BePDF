@@ -421,7 +421,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
     
 	char ver[80];
 	sprintf(ver, "%.1f", doc->getPDFVersion());
-	AddPair(left, right, new MStringView(TRANSLATE("PDF Version:")), new MStringView(ver));
+	AddPair(left, right, new MStringView(TRANSLATE("Version:")), new MStringView(ver));
 
 	AddPair(left, right, new MStringView(TRANSLATE("Linearized:")), 
 		new MStringView(YesNo(doc->isLinearized())));
@@ -437,9 +437,9 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 
 	AddPair(left, right, new MStringView(TRANSLATE("Encrypted:")), new MStringView(YesNo(doc->isEncrypted())));
 	AddPair(left, right, new MStringView(TRANSLATE("Printing:")), new MStringView(Allowed(doc->okToPrint())));
-	AddPair(left, right, new MStringView(TRANSLATE("Changing the Document:")), new MStringView(Allowed(doc->okToChange())));
-	AddPair(left, right, new MStringView(TRANSLATE("Selecting Text and Graphics:")), new MStringView(Allowed(doc->okToCopy())));
-	AddPair(left, right, new MStringView(TRANSLATE("Adding or Changing Notes and Form Fields:")), new MStringView(Allowed(doc->okToAddNotes())));
+	AddPair(left, right, new MStringView(TRANSLATE("Editing:")), new MStringView(Allowed(doc->okToChange())));
+	AddPair(left, right, new MStringView(TRANSLATE("Copy & paste:")), new MStringView(Allowed(doc->okToCopy())));
+	AddPair(left, right, new MStringView(TRANSLATE("Annotations:")), new MStringView(Allowed(doc->okToAddNotes())));
 	
 
 
