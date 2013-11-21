@@ -89,10 +89,6 @@ char * PDFWindow::PAGE_MSG_LABEL = "page";
 
 #define PATH_HELP        "docs/help.html"
 #define PATH_PDF_HELP    "docs/BePDF.pdf"
-#define BOOKMARK_ONLINE_HELP "bookmarks/Online Help"
-#define BOOKMARK_HOME_PAGE   "bookmarks/Home Page"
-#define BOOKMARK_BUG_REPORT  "bookmarks/Submit Bug Report"
-#define BOOKMARK_BEBITS      "bookmarks/Vote At BeBits"
 
 #define FIRST_ZOOM_ITEM_INDEX 0
 
@@ -617,16 +613,16 @@ void PDFWindow::HandleCommand ( int32 cmd, BMessage * msg )
 		OpenHelp();
 		break;
 	case ONLINE_HELP_CMD:
-		LaunchInHome(BOOKMARK_ONLINE_HELP);
+		LaunchHTMLBrowser("http://haikuarchives.github.io/");
 		break;
 	case HOME_PAGE_CMD:
-		LaunchInHome(BOOKMARK_HOME_PAGE);
+		LaunchHTMLBrowser("http://haikuarchives.github.io/");
 		break;
 	case BUG_REPORT_CMD:
-		LaunchInHome(BOOKMARK_BUG_REPORT);
+		LaunchHTMLBrowser("http://github.com/HaikuArchives/BePDF/issues/");
 		break;
-	case BEBITS_CMD:
-		LaunchInHome(BOOKMARK_BEBITS);
+	case HAIKUWARE_CMD:
+		LaunchHTMLBrowser("http://haikuware.com/path-to-bepdf");
 		break;
 	case PREFERENCES_FILE_CMD:
 		mPreferencesItem->SetEnabled(false);
@@ -1001,12 +997,9 @@ BMenuBar* PDFWindow::BuildMenu() {
 
 		ADD_SITEM(menu);
 
-		ADD_ITEM (menu, TRANSLATE("Visit Home Page…"), 0, MakeCommandMessage(HOME_PAGE_CMD));
-		ADD_ITEM (menu, TRANSLATE("Vote at BeBits…"), 0, MakeCommandMessage(BEBITS_CMD));
-
-		ADD_SITEM(menu);
-
-		ADD_ITEM (menu, TRANSLATE("Submit Bug Report…"), 0, MakeCommandMessage(BUG_REPORT_CMD));
+		ADD_ITEM (menu, TRANSLATE("Visit Homepage…"), 0, MakeCommandMessage(HOME_PAGE_CMD));
+		ADD_ITEM (menu, TRANSLATE("View on HaikuWare…"), 0, MakeCommandMessage(HAIKUWARE_CMD));
+		ADD_ITEM (menu, TRANSLATE("Issue Tracker…"), 0, MakeCommandMessage(BUG_REPORT_CMD));
 		ADD_SITEM (menu );
 		ADD_ITEM (menu, TRANSLATE("About BePDF…"), 0, MakeCommandMessage( ABOUT_APP_CMD ) );
 		menuBar->AddItem( menu );
