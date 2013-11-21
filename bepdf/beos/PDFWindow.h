@@ -161,6 +161,11 @@ public:
 		// Search
 		FIND_CMD,
 		FIND_NEXT_CMD,
+		
+		// User defined bookmarks
+		ADD_BOOKMARK_CMD,
+		DELETE_BOOKMARK_CMD,
+		EDIT_BOOKMARK_CMD,
 
 		// Help
 		HELP_CMD,
