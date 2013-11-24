@@ -1,25 +1,24 @@
 /*  
-	BeOS Front-end du PDF file reader xpdf.
-		
-    Copyright (C) 1998 Hubert Figuiere
-	Copyright (C) 2000-2005 Michael Pfeiffer
-
-	$Id: BepdfApplication.cpp,v 1.52 2011/05/05 08:34:35 laplace Exp $
-	
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-*/
+ * BePDF: The PDF reader for Haiku.
+ * 	 Copyright (C) 1997 Benoit Triquet.
+ * 	 Copyright (C) 1998-2000 Hubert Figuiere.
+ * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
+ * 	 Copyright (C) 2013 waddlesplash.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -48,7 +47,7 @@
 
 static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
-	"© 1999-2000 Hubert Figuiere\n"
+	"© 1998-2000 Hubert Figuiere\n"
     "© 2000-2011 Michael Pfeiffer\n"
     "© 2013 waddlesplash\n";
 
@@ -59,7 +58,6 @@ static const char * bePDFLocalizationBy = " by ";
 static const char * GPLCopyright = 
     "\n\n"
     "This program is free software under the GNU GPL v2, or any later version.\n";
-/* The last \n in the string is a workaround for a bug in the text layout system */
     
 static const char *PAGE_NUM_MSG = "bepdf:page_num";
 
