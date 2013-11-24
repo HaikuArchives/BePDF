@@ -30,11 +30,11 @@ generated/libxpdf.a
 ```
 
 The application directory contents is created in
-
+```
   generated/BePDF
-
+```
 its contents is mainly copied from folder bepdf:
-
+```
   Add BePDF to Deskbar       shell script that adds an icon to 
                              launch BePDF to the Deskbar
   BePDF                      the executable file
@@ -47,7 +47,7 @@ its contents is mainly copied from folder bepdf:
                              party libraries 
   locale                     the localization files
   Remove BePDF from Deskbar  shell script to remove BePDF icon from Deskbar
-
+```
 The application folder is created only the first time
 the build script is run.
 To regenerate the application directory either do a "clean" build followed
