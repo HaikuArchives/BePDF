@@ -1,55 +1,37 @@
 Building BePDF from Source Code
+=================================
 
-2009/01/05 Michael Pfeiffer <michael.pfeiffer@utanet.at>
-
-
-Requirements
-
-BeOS R5 or compatible (tested on R5 only)
-jam for building BePDF and required libraries.
+## Requirements
+Haiku with Package Management (at the time of writing, only nightly builds had this)
 
 
-Required Libraries
+## Required Packages
+freetype2(+devel), liblayout(+devel), htmldoc.
 
-The following required libararies are included (name <directory>):
-Santa's Gift Bag  <santa>
-xpdf              <xpdf>
-See file versions.txt for the current version of a library.
-
-
-Building
-
-Use the bash script "build.sh" to build BePDF.
+## Building
+Use the bash script `build.sh` to build BePDF.
 
 Usage:
   build.sh [option]
 
-If option is omitted BePDF and its required libraries are built
-but the distributable package is not created (= ZIP file).
+If option is omitted BePDF and its required libraries are built.
 
 Option can be one of
   clean ... to remove generated files and folders.
-  package ... to create the distributable zip file.
   debug ... to build libraries with debug information turned on.
   bepdf ... to build files in folder 'bepdf' only.
 
-The version of the binary and package is stored in file etc/VERSION.
-
-Jam is used to build BePDF, libsanta.a, and libxpdf.a.
-
-A slightly modified version of the OpenBeOS Generic Jamfile Engine v1.0.1
-by Ryan Leavengood is used (action MkDir1 was added, so Jam does
-not fail when it tries to create a directory that exists already) for santa, 
-xpdf and BePDF.
+Make is used to build BePDF, `libsanta.a`, and `libxpdf.a`.
 
 The temporary build files are created inside the project directories:
-santa/obj.X86/libsanta.a
-xpdf/obj.X86/libxpdf.a
-bepdf/obj.X86/BePDF
+```
+generated/libsanta.a
+generated/libxpdf.a
+```
 
 The application directory contents is created in
 
-  generated/x86
+  generated/BePDF
 
 its contents is mainly copied from folder bepdf:
 
@@ -77,9 +59,7 @@ the application folder and the version information is updated in the file.
 
 See build script for details.
 
-
-Documentation
-
+## Documentation
 The build script also generates the documenation (see bepdf/docs/make.sh)
 when the application directory is set up the first time the
 build script is run.

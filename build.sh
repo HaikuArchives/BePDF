@@ -7,10 +7,7 @@ DEFAULT_DOCUMENT=English.pdf
 INFO_SHORT="PDF Reader"
 INFO_LONG="The PDF Reader for BeOS, Haiku and Zeta."
 
-# The folder where the executable is installed
 DESTINATION="$(pwd)/generated"
-TOOLS_SOURCE="$(pwd)/etc/tools"
-TOOLS_BIN="$DESTINATION/tools"
 OBJDIR="objects.x86-gcc2-release"
 
 function copyFiles() {
@@ -18,7 +15,7 @@ function copyFiles() {
 	src="$1"
 	dst="$2"
 	echo "Copy files from $src to $dst"
-	for file in "$src/"!(CVS) ; do
+	for file in "$src/" ; do
 		if [ -d "$file" ] ; then
 			dst2="$dst"/$(basename "$file")
 			mkdir -p "$dst2"
