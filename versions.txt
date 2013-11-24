@@ -1,6 +1,5 @@
 Version numbers of 3rd party libraries and resources
 ----------------------------------------------------
-
-Base-14 fonts: URW fonts from Ghostscript 8.14.
+Base-14 Fonts: URW fonts from GhostScript 9.10
 Santa's Gift Bag: 3.0
 XPDF: 3.02
