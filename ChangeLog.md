@@ -1,5 +1,17 @@
 BePDF ChangeLog
 ==========================
+Complete version history for BePDF. Most of it comes from when BePDF was on SourceForge; the last SourceForge release was 1.1.1b5.
+
+### BePDF 1.2.0 (unreleased master)
+ - Various fixes to the docs.
+ - Switch to using Make instead of Jam for building.
+ - Removed the OptionalPackageDescription file.
+ - Moved ChangeLog out of the docs and into its own file.
+ - Use the RDEF by default instead of the RSRC.
+ - Tweaks to the menus, about box & file info dialog.
+ - Drop BeOS support from the code and the docs.
+ - Modify start PDF to reflect Haiku being the only supported platform.
+ - Update GhostScript fonts to 9.10 (was 8.14).
 
 ### BePDF 1.1.1 Beta 5 - May 6, 2011
  - Updated/corrected Hungarian translation by Robert Dancso (dsjonny).
