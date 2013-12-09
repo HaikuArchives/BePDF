@@ -608,10 +608,10 @@ void PDFWindow::HandleCommand ( int32 cmd, BMessage * msg )
 		OpenHelp();
 		break;
 	case ONLINE_HELP_CMD:
-		LaunchHTMLBrowser("http://haikuarchives.github.io/");
+		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/English/table_of_contents.html");
 		break;
 	case HOME_PAGE_CMD:
-		LaunchHTMLBrowser("http://haikuarchives.github.io/");
+		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/");
 		break;
 	case BUG_REPORT_CMD:
 		LaunchHTMLBrowser("http://github.com/HaikuArchives/BePDF/issues/");
