@@ -98,8 +98,6 @@ public:
 private:
 	const char* GetVersion(BString &version);
 	void Initialize();
-	void InstallMimeType(const char* mime);	
-	void InstallMimeTypes();
 	void LoadImages(BBitmap* images[], const char* names[], int num);
 	void FreeImages(BBitmap* images[], int num);
 	void OpenSaveFilePanel(BHandler* handler, bool fileMode, BRefFilter* filter, BMessage* msg, const char* name);
