@@ -43,7 +43,7 @@ function setupBinFolder {
 	done
 
 	mkdir -p "$folder/$arch/fonts"
- 	copyFiles bepdf/fonts/psfonts "$folder/$arch/fonts"
+ 	copyFiles bepdf/fonts/ "$folder/$arch/fonts"
 }
 
 function buildProject {
@@ -74,10 +74,11 @@ function buildDocumentation {
 	arch="$1"
 
 	( 
-		cd bepdf/docs
+		cd bepdf/docs/
 		./make.sh -target "$DESTINATION/docs"
-		mkdir "$DESTINATION/$arch/docs/"
+		mkdir "$DESTINATION/$arch/docs"
 		cp "$DESTINATION/docs/*.pdf" "$DESTINATION/$arch/docs/"
+		cp "bepdf/docs/Start.pdf" "$DESTINATION/$arch/docs/Start.pdf"
 	)
 }
 
@@ -100,7 +101,7 @@ if [ ! -e "$DESTINATION/BePDF" ] ; then
 	setupBinFolder BePDF
 fi
 
-if [ ! -e "$DESTINATION/BePDF/docs/English.pdf" ] ; then
+if [ ! -e "$DESTINATION/docs/English.pdf" ] ; then
 	buildDocumentation BePDF
 fi
 
