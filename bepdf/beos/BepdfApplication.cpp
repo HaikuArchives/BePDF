@@ -52,8 +52,8 @@ static const char * bePDFCopyright =
     "© 2013 waddlesplash\n";
 
 static const char * bePDFLocalization = 
-    "\nLocalization to ";
-static const char * bePDFLocalizationBy = " by ";
+    "\nLanguage '";
+static const char * bePDFLocalizationBy = "' by ";
 
 static const char * GPLCopyright = 
     "\n\n"
