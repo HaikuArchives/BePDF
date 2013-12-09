@@ -15,7 +15,7 @@ function copyFiles() {
 	src="$1"
 	dst="$2"
 	echo "Copy files from $src to $dst"
-	for file in "$src/" ; do
+	for file in "$src/"!(.git) ; do
 		if [ -d "$file" ] ; then
 			dst2="$dst"/$(basename "$file")
 			mkdir -p "$dst2"
@@ -41,11 +41,9 @@ function setupBinFolder {
 		mkdir -p "$folder/$arch/$dir"
 		copyFiles "bepdf/$dir" "$folder/$arch/$dir"
 	done
-	
-	copyFiles "bepdf/Icons" "$folder/$arch/icons"
 
-	mkdir -p "$folder/$arch/fonts/psfonts"
- 	copyFiles bepdf/fonts/psfonts "$folder/$arch/fonts/psfonts"
+	mkdir -p "$folder/$arch/fonts"
+ 	copyFiles bepdf/fonts/psfonts "$folder/$arch/fonts"
 }
 
 function buildProject {
@@ -77,25 +75,15 @@ function buildDocumentation {
 
 	( 
 		cd bepdf/docs
-		./make.sh -target "$DESTINATION/$arch/docs"
-	)
-
-	# htmldoc not ported to BeOS yet,
-	# so simply copy pdf files from bepdf/docs
-	(
-		cd bepdf/docs
-		for file in *.pdf ; do
-			dest="$DESTINATION/$arch/docs/$file"
-			# don't overwrite existing file
-			if [ ! -e "$dest" ] ; then
-				cp "$file" "$dest"
-			fi
-		done
+		./make.sh -target "$DESTINATION/docs"
+		mkdir "$DESTINATION/$arch/docs/"
+		cp "$DESTINATION/docs/*.pdf" "$DESTINATION/$arch/docs/"
 	)
 }
 
 function clean {
 	rm -rf $DESTINATION/BePDF
+	rm -rf $DESTINATION/docs
 
 	rm -rf santa/$OBJDIR
 	rm -rf xpdf/$OBJDIR
@@ -126,8 +114,8 @@ fi
 if [ "$option" == "bepdf" ] ; then
 	buildProject $debug bepdf
 else
-	buildProject $debug santa libsanta.a
-	buildProject $debug xpdf libxpdf.a
+	buildProject $debug santa
+	buildProject $debug xpdf
 	buildProject $debug bepdf
 fi
 
