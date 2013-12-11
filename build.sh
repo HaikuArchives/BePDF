@@ -10,23 +10,6 @@ INFO_LONG="The PDF Reader for BeOS, Haiku and Zeta."
 DESTINATION="$(pwd)/generated"
 OBJDIR="objects.x86-gcc2-release"
 
-function copyFiles() {
-	local src dst file dst2 
-	src="$1"
-	dst="$2"
-	echo "Copy files from $src to $dst"
-	for file in "$src/"!(.git) ; do
-		if [ -d "$file" ] ; then
-			dst2="$dst"/$(basename "$file")
-			mkdir -p "$dst2"
-			copyattr -v "$file" "$dst2"
-			copyFiles "$file" "$dst2" 
-		else
-			copyattr -v -d "$file" "$dst/"
-		fi
-	done	
-}
-
 # Setup directories and symbolic links
 function setupBinFolder {
 	arch="$1"
@@ -39,11 +22,11 @@ function setupBinFolder {
 	done
 	for dir in encodings locale license ; do
 		mkdir -p "$folder/$arch/$dir"
-		copyFiles "bepdf/$dir" "$folder/$arch/$dir"
+		cp -R "bepdf/$dir" "$folder/$arch/"
 	done
 
 	mkdir -p "$folder/$arch/fonts"
- 	copyFiles bepdf/fonts/ "$folder/$arch/fonts"
+ 	cp -R bepdf/fonts/ "$folder/$arch/fonts"
 }
 
 function buildProject {
