@@ -16,7 +16,6 @@ function setupBinFolder {
 	folder="$DESTINATION"
 	
 	rm -rf "$folder/$arch"
-	mkdir -p "$folder/$arch/lib"
 	for file in "Add BePDF to Deskbar" "Remove BePDF from Deskbar" ; do
 		copyattr -v -d "bepdf/$file" "$folder/$arch/$file"
 	done
@@ -26,7 +25,7 @@ function setupBinFolder {
 	done
 
 	mkdir -p "$folder/$arch/fonts"
- 	cp -R bepdf/fonts/ "$folder/$arch/fonts"
+ 	cp -R bepdf/fonts/ "$folder/$arch/"
 }
 
 function buildProject {
