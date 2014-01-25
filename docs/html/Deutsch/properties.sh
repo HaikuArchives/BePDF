@@ -30,7 +30,7 @@ HTMLDOC_TITLE="BePDF Dokumentation"
 # US-ASCII with %hh (2 hex-digits) for non-ASCII characters
 # UTF-8 for % encoded characters
 URI_DIRECTORY="Deutsch"
-URI_PDF_FILE="$URI_DIRECTORY.ps"
+URI_PDF_FILE="$URI_DIRECTORY.pdf"
 
 # HTML table of contents
 TOC_TITLE="Inhaltsverzeichnis"
