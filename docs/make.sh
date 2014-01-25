@@ -178,7 +178,9 @@ function createPdf {
 	
 	( 
 		cd "$destination"
-		htmldoc --batch HTMLdoc.book	
+		htmldoc --batch HTMLdoc.book
+		ps2pdf -dCompatibility=1.4 ../../$HTMLDOC_PS_FILE ../../$OUTPUT_PDF_FILE
+		rm ../../$HTMLDOC_PS_FILE
 	)
 	
 	if [ "$keepTemporaryFiles" == "false" ] ; then

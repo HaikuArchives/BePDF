@@ -21,7 +21,8 @@ META_LANGUAGE="es"
 HTML_LANGUAGE="Espa\&ntilde;ol"
 
 # HTMLdoc properties
-HTMLDOC_PDF_FILE="Español.pdf"
+HTMLDOC_PS_FILE="Español.ps"
+OUTPUT_PDF_FILE="Español.pdf"
 HTMLDOC_TOC_TITLE="Tabla de Contenidos"
 HTMLDOC_TITLE="Documentaci\&oacute;n de BePDF"
 
@@ -29,7 +30,7 @@ HTMLDOC_TITLE="Documentaci\&oacute;n de BePDF"
 # US-ASCII with %hh (2 hex-digits) for non-ASCII characters
 # UTF-8 for % encoded characters
 URI_DIRECTORY="Espa%C3%B1ol"
-URI_PDF_FILE="$URI_DIRECTORY.pdf"
+URI_PDF_FILE="$URI_DIRECTORY.ps"
 
 # HTML table of contents
 TOC_TITLE="Tabla de Contenidos"

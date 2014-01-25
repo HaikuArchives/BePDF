@@ -1,16 +1,10 @@
-Authors and translators of the BePDF documentation
+BePDF Documentation
 ===================================================
-English
-Title: BePDF User Manual
-Authors: Celerick Stephens, Michael Pfeiffer
+You need `htmldoc` and `ghostscript` installed to build the documentation. Run docs/make.sh, output is put in the "docs-build" folder.
 
-Español
-Title: Manual de Usuario de BePDF
-Translator: Oscar Lesta (BiPolar); 
-Current version: Miguel Zúñiga González
-
-German
-Translator: Humdinger
-
-Italian
-Translator: Miguel Zúñiga González
+Credits
+-----------------------------
+English: Celerick Stephens, Michael Pfeiffer, waddlesplash
+Español: Oscar Lesta (BiPolar), Miguel Zúñiga González
+German: Humdinger
+Italian: Miguel Zúñiga González

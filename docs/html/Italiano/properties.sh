@@ -21,7 +21,8 @@ META_LANGUAGE="it"
 HTML_LANGUAGE="Italiano"
 
 # HTMLdoc properties
-HTMLDOC_PDF_FILE="Italiano.pdf"
+HTMLDOC_PS_FILE="Italiano.ps"
+OUTPUT_PDF_FILE="Italiano.pdf"
 HTMLDOC_TOC_TITLE="Indice dei contenuti"
 HTMLDOC_TITLE="Documentazione di BePDF"
 
@@ -29,7 +30,7 @@ HTMLDOC_TITLE="Documentazione di BePDF"
 # US-ASCII with %hh (2 hex-digits) for non-ASCII characters
 # UTF-8 for % encoded characters
 URI_DIRECTORY="Italiano"
-URI_PDF_FILE="$URI_DIRECTORY.pdf"
+URI_PDF_FILE="$URI_DIRECTORY.ps"
 
 # HTML table of contents
 TOC_TITLE="Indice dei contenuti"

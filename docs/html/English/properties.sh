@@ -21,7 +21,8 @@ META_LANGUAGE="en"
 HTML_LANGUAGE="English"
 
 # HTMLdoc properties
-HTMLDOC_PDF_FILE="English.pdf"
+HTMLDOC_PS_FILE="English.ps"
+OUTPUT_PDF_FILE="English.pdf"
 HTMLDOC_TOC_TITLE="Table of Contents"
 HTMLDOC_TITLE="BePDF Documentation"
 
@@ -29,7 +30,7 @@ HTMLDOC_TITLE="BePDF Documentation"
 # US-ASCII with %hh (2 hex-digits) for non-ASCII characters
 # UTF-8 for % encoded characters
 URI_DIRECTORY="English"
-URI_PDF_FILE="$URI_DIRECTORY.pdf"
+URI_PDF_FILE="$URI_DIRECTORY.ps"
 
 # HTML table of contents
 TOC_TITLE="Table of Contents"
