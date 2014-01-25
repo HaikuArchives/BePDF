@@ -1,5 +1,5 @@
 #HTMLDOC 1.8.28
--t pdf14 -f "../../HTMLDOC_PDF_FILE.pdf" --book --toclevels 1 --no-numbered --toctitle "HTMLDOC_TOC_TITLE" --title --titleimage "titlepage.html" --textcolor #000000 --linkcolor #a35b04 --linkstyle plain --bodycolor #ffffff --size Letter --left 1.00in --right 0.50in --top 0.50in --bottom 0.50in --header .t. --header1 ... --footer h.1 --nup 1 --tocheader ... --tocfooter ..i --portrait --color --no-pscommands --no-xrxcomments --compression=9 --jpeg=0 --fontsize 11.0 --fontspacing 1.2 --headingfont Helvetica --bodyfont Sans --headfootsize 10.9 --headfootfont Helvetica --charset iso-8859-1 --links --embedfonts --pagemode outline --pagelayout single --firstpage p1 --pageeffect none --pageduration 10 --effectduration 1.0 --no-encryption --permissions all  --owner-password ""  --user-password "" --browserwidth 680 --no-strict --no-overflow
+-t pdf14 -f "../../HTMLDOC_PDF_FILE" --book --toclevels 2 --no-numbered --toctitle "HTMLDOC_TOC_TITLE" --title --titleimage "titlepage.html" --textcolor #000000 --linkcolor #a35b04 --linkstyle plain --bodycolor #ffffff --size Letter --left 1.00in --right 0.50in --top 0.50in --bottom 0.50in --header .t. --header1 ... --footer h.1 --nup 1 --tocheader ... --tocfooter ..i --portrait --color --no-pscommands --no-xrxcomments --compression=9 --jpeg=0 --fontsize 11.0 --fontspacing 1.2 --headingfont Helvetica --bodyfont Sans --headfootsize 10.9 --headfootfont Helvetica --charset iso-8859-1 --links --embedfonts --pagemode outline --pagelayout single --firstpage p1 --pageeffect none --pageduration 10 --effectduration 1.0 --no-encryption --permissions all  --owner-password ""  --user-password "" --browserwidth 680 --no-strict --no-overflow
 about_bepdf.html
 program_requirements.html
 installation.html
@@ -11,7 +11,6 @@ tracker_attributes.html
 creating_and_editing_annotations.html
 printing.html
 localization.html
-get_bepdf_for_your_site.html
 known_bugs.html
 upcoming_features.html
 acknowledgements.html
