@@ -51,12 +51,7 @@ htmlDirectory="$baseDirectory/html"
 templatesDirectory="$baseDirectory/templates"
 
 # the output directory
-generatedDirectory="$baseDirectory/../../builds/docs"
-if [ "$1" == "-target" ] ; then
-	shift
-	generatedDirectory="$1"
-	shift
-fi
+generatedDirectory="$baseDirectory/../docs-build"
 
 # the base directory for the generated html files
 htmlDestinationBase="$generatedDirectory"
