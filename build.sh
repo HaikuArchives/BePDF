@@ -44,8 +44,6 @@ function buildProject {
 	else
 		if [ "$folder" == 'xpdf' ] ; then
 			cp "$OBJDIR/libxpdf.a" "../generated/"
-		elif [ "$folder" == 'santa' ] ; then
-			cp "$OBJDIR/libsanta.a" "../generated/"
 		fi
 	fi
 	cd "$current"
@@ -70,7 +68,6 @@ function copyDocs {
 function clean {
 	rm -rf $DESTINATION/BePDF
 
-	rm -rf santa/$OBJDIR
 	rm -rf xpdf/$OBJDIR
 	rm -rf bepdf/$OBJDIR
 }
@@ -99,7 +96,6 @@ fi
 if [ "$option" == "bepdf" ] ; then
 	buildProject $debug bepdf
 else
-	buildProject $debug santa
 	buildProject $debug xpdf
 	buildProject $debug bepdf
 fi

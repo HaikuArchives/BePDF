@@ -14,6 +14,7 @@ Complete version history for BePDF. Most of it comes from when BePDF was on Sour
  - Update GhostScript fonts to 9.10 (was 8.14).
  - Move docs to a separate branch.
  - Large number of fixes to the build script.
+ - Removed libsanta, liblayout, freetype, t1lib from the source tree, using packages now
 
 ### BePDF 1.1.1 Beta 5 - May 6, 2011
  - Updated/corrected Hungarian translation by Robert Dancso (dsjonny).

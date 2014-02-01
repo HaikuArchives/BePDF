@@ -41,9 +41,9 @@
 #include <MBorder.h>
 #include <MBViewWrapper.h>
 // Santa's Gift Bag
-#include <ColumnListView/ColumnListView.h>
-#include <ColumnListView/CLVColumn.h>
-#include <ColumnListView/CLVListItem.h>
+#include <santa/ColumnListView.h>
+#include <santa/CLVColumn.h>
+#include <santa/CLVListItem.h>
 #include <VGroup.h>
 
 #include "Settings.h"

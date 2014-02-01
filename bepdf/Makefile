@@ -94,13 +94,13 @@ RDEFS= beos/BePDF.rdef
 #		and it's name
 #		library: my_lib.a entry: my_lib.a or path/my_lib.a
 LIBS= be \
-stdc++.r4 \
+$(STDCPPLIBS) \
 textencoding \
 tracker \
 translation \
 layout \
-../generated/libxpdf.a \
-../generated/libsanta.a
+santa \
+../generated/libxpdf.a
 
 #	specify additional paths to directories following the standard
 #	libXXX.so or libXXX.a naming scheme.  You can specify full paths
@@ -114,13 +114,7 @@ LIBPATHS=
 #	thes use the form: #include <header>
 #	source file directories are NOT auto-included here
 SYSTEM_INCLUDE_PATHS = /boot/system/develop/headers/liblayout \
-../santa \
-../santa/BetterScrollView \
-../santa/ColumnListView \
-../santa/Cursors \
-../santa/NewStrings \
-../santa/PrefilledBitmap \
-../santa/ScrollViewCorner \
+/boot/system/develop/headers/santa \
 ../xpdf \
 ../xpdf/beos \
 ../xpdf/fofi \

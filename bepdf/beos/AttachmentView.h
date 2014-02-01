@@ -36,9 +36,9 @@
 #include <Object.h>
 
 // santa
-#include <ColumnListView.h>
-#include <CLVListItem.h>
-#include <CLVEasyItem.h>
+#include <santa/ColumnListView.h>
+#include <santa/CLVListItem.h>
+#include <santa/CLVEasyItem.h>
 
 // BePDF
 #include "FileSpec.h"
