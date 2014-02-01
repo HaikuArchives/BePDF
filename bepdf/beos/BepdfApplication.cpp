@@ -49,7 +49,7 @@ static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
 	"© 1998-2000 Hubert Figuiere\n"
     "© 2000-2011 Michael Pfeiffer\n"
-    "© 2013 waddlesplash\n";
+    "© 2013-2014 waddlesplash\n";
 
 static const char * bePDFLocalization = 
     "\nLanguage '";
