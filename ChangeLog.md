@@ -12,6 +12,8 @@ Complete version history for BePDF. Most of it comes from when BePDF was on Sour
  - Drop BeOS support from the code and the docs.
  - Modify start PDF to reflect Haiku being the only supported platform.
  - Update GhostScript fonts to 9.10 (was 8.14).
+ - Move docs to a separate branch.
+ - Large number of fixes to the build script.
 
 ### BePDF 1.1.1 Beta 5 - May 6, 2011
  - Updated/corrected Hungarian translation by Robert Dancso (dsjonny).

@@ -1,14 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 cd $(dirname "$0")
 
 shopt -s extglob
 
-DEFAULT_DOCUMENT=English.pdf
 INFO_SHORT="PDF Reader"
-INFO_LONG="The PDF Reader for BeOS, Haiku and Zeta."
+INFO_LONG="The PDF Reader for Haiku."
 
 DESTINATION="$(pwd)/generated"
-OBJDIR="objects.x86-gcc2-release"
+
+CC_VER=$(gcc -dumpversion | head -c 1)
+OBJDIR=objects.x86-gcc$CC_VER-release
+echo $OBJDIR
 
 # Setup directories and symbolic links
 function setupBinFolder {
@@ -16,9 +18,6 @@ function setupBinFolder {
 	folder="$DESTINATION"
 	
 	rm -rf "$folder/$arch"
-	for file in "Add BePDF to Deskbar" "Remove BePDF from Deskbar" ; do
-		copyattr -v -d "bepdf/$file" "$folder/$arch/$file"
-	done
 	for dir in encodings locale license ; do
 		mkdir -p "$folder/$arch/$dir"
 		cp -R "bepdf/$dir" "$folder/$arch/"
@@ -52,21 +51,24 @@ function buildProject {
 	cd "$current"
 }
 
-function buildDocumentation {
+function copyDocs {
 	arch="$1"
 
-	( 
-		cd bepdf/docs/
-		./make.sh -target "$DESTINATION/docs"
+	(
 		mkdir "$DESTINATION/$arch/docs"
-		cp "$DESTINATION/docs/*.pdf" "$DESTINATION/$arch/docs/"
-		cp "bepdf/docs/Start.pdf" "$DESTINATION/$arch/docs/Start.pdf"
+		cp bepdf/docs/*.pdf "$DESTINATION/$arch/docs/"
+		
+		cd "$DESTINATION/$arch/docs"
+		wget http://haikuarchives.github.io/BePDF/English.pdf
+		wget http://haikuarchives.github.io/BePDF/Deutsch.pdf
+		wget http://haikuarchives.github.io/BePDF/Español.pdf
+		wget http://haikuarchives.github.io/BePDF/Italiano.pdf
+		cd -
 	)
 }
 
 function clean {
 	rm -rf $DESTINATION/BePDF
-	rm -rf $DESTINATION/docs
 
 	rm -rf santa/$OBJDIR
 	rm -rf xpdf/$OBJDIR
@@ -79,12 +81,12 @@ if [ "$option" == "clean" ] ; then
 	exit 0
 fi
 
-if [ ! -e "$DESTINATION/BePDF" ] ; then
+if [ ! -d "$DESTINATION/BePDF" ] ; then
 	setupBinFolder BePDF
 fi
 
-if [ ! -e "$DESTINATION/docs/English.pdf" ] ; then
-	buildDocumentation BePDF
+if [ ! -d "$DESTINATION/BePDF/docs" ] ; then
+	copyDocs BePDF
 fi
 
 debug="FALSE"
