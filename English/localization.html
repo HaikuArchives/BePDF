@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>BePDF - Localization</title>
+<meta name="author" content="Celerick Stephens, Michael Pfeiffer">
+<meta name="date" content="2013-11-10">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="content-language" content="en">
+
+<link rel="stylesheet" type="text/css" href="../BePDF-docu.css" />
+
+</head>
+<body>
+<div class="logo">
+	<a href="../index.html"><img src="../images/BePDF-logo.png" alt="logo" border="0" width="368" height="70" /></a>
+	<div class="title">Localization</div>
+</div>
+<div class="topnav">
+	<p>
+		<a href="table_of_contents.html">Contents</a>
+		&#160;&#160;&#160;
+		Previous: <a href="printing.html">Printing</a>
+		&#160;&#160;&#160;
+		Next: <a href="get_bepdf_for_your_site.html">Get BePDF for your Site</a>
+	</p>
+</div>
+
+<div class="content">
+
+<h1><img src="../images/icon.world_64.jpg" alt="icon.world_64.jpg" hspace="20" width="64" height="64"><a name="localization">Localization</a></h1>
+<hr>
+<p>BePDF version 0.7.6 Alpha 2 and later graciously supports localization.</p>
+<p>For each supported language there is a .catalog file in "locale" subdirectory of the directory in which BePDF is installed.</p>
+<p>If a <i>[your language].catalog</i> already exists, simply open the preferences window in BePDF, select the desired language. The next time BePDF opens, the new language preference will be active.</p>
+<p>If a <i>[your language].catalog</i> does not exist, one can easily be created.</p>
+<ul><li><p>Copy the file "template.catalog" to "<i>[your language].catalog</i>" where [your language] is the name of the desired language, in the desired language.</p></li>
+<li><p>Open <i>[your language].catalog</i> with StyledEdit, and skip the first line and the line at the bottom of the file.</p></li>
+<li><p>Replace the second line (below "CatalogName") with the name of your language, again in your language
+<li><p>Replace the line below "CatalogLanguage" with the name of your language in English.</p></li>
+<li><p>Replace the line below "CatalogAuthor" with your name. CatalogName and CatalogAuthor will be displayed in the About window.</p></li>
+<li><p>The other lines appear in pairs of two lines: the first is an identifier which you must not change, and the second line is the text in English which has to be translated. This line has to be replaced with the translation to your language.<br>
+Please note that some lines have a leading space or a space at the end; the translated line of text should have this too!</p></li></ul>
+<p>If you wish to support other BePDF users, send <i>[your language].catalog</i> in a zip-archive (to guarantee that the 8th bit of each byte is not lost when sent by email) to Michael Pfeiffer and please state if you want to be mentioned in the documentation as the translator with or without your email-address and/or a link to your home page. The catalog file will then be included in the next release of BePDF.</p>
+
+</div>
+</body>
+</html>
