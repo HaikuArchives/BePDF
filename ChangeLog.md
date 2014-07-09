@@ -3,6 +3,8 @@ BePDF ChangeLog
 Complete version history for BePDF. Most of it comes from when BePDF was on SourceForge; the last SourceForge release was 1.1.1b5.
 
 ### BePDF 1.2.0 (unreleased master)
+ - Remove HaikuWare link from the Help menu.
+ - Fix PDF help not opening.
  - Fixed: Bug when searching for text that isn't in the file (#9)
  - Fixed: Status bar of creating new PDF file (#7)
  - Various fixes to the docs.
