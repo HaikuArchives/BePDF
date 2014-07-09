@@ -173,7 +173,6 @@ public:
 		ONLINE_HELP_CMD,
 		BUG_REPORT_CMD,
 		HOME_PAGE_CMD,
-		HAIKUWARE_CMD,
 		CHECK_FOR_UPDATE_CMD,
 		// Type 1 Font Renderer
 		T1_OFF,

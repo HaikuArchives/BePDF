@@ -616,9 +616,6 @@ void PDFWindow::HandleCommand ( int32 cmd, BMessage * msg )
 	case BUG_REPORT_CMD:
 		LaunchHTMLBrowser("http://github.com/HaikuArchives/BePDF/issues/");
 		break;
-	case HAIKUWARE_CMD:
-		LaunchHTMLBrowser("http://haikuware.com/path-to-bepdf");
-		break;
 	case PREFERENCES_FILE_CMD:
 		mPreferencesItem->SetEnabled(false);
 		new PreferencesWindow(gApp->GetSettings(), this);
@@ -989,11 +986,11 @@ BMenuBar* PDFWindow::BuildMenu() {
 			
 		menu = new BMenu(TRANSLATE("Help"));
 		ADD_ITEM (menu, TRANSLATE("Show Help…"), 0, MakeCommandMessage(HELP_CMD));
+		ADD_ITEM (menu, TRANSLATE("Online Help…"), 0, MakeCommandMessage(ONLINE_HELP_CMD));
 
 		ADD_SITEM(menu);
 
 		ADD_ITEM (menu, TRANSLATE("Visit Homepage…"), 0, MakeCommandMessage(HOME_PAGE_CMD));
-		ADD_ITEM (menu, TRANSLATE("View on HaikuWare…"), 0, MakeCommandMessage(HAIKUWARE_CMD));
 		ADD_ITEM (menu, TRANSLATE("Issue Tracker…"), 0, MakeCommandMessage(BUG_REPORT_CMD));
 		ADD_SITEM (menu );
 		ADD_ITEM (menu, TRANSLATE("About BePDF…"), 0, MakeCommandMessage( ABOUT_APP_CMD ) );
@@ -1626,6 +1623,7 @@ PDFWindow::OpenPDFHelp(const char* name) {
 	path.Append(name);
 	BEntry entry(path.Path());
 	if (entry.InitCheck() == B_OK && entry.Exists()) {
+		printf("exists");
 		OpenPDF(path.Path());
 		return true;
 	}
@@ -1634,19 +1632,14 @@ PDFWindow::OpenPDFHelp(const char* name) {
 
 ///////////////////////////////////////////////////////////
 void
-PDFWindow::OpenHelp() {
-#if 1
+PDFWindow::OpenHelp()
+{
 	// help in pdf
 	BString name = gApp->GetSettings()->GetLanguage();
 	name.RemoveLast(".catalog");
 	name.Append(".pdf");
-	if (!OpenPDFHelp(name.String())) OpenPDFHelp("Default.pdf");
-#else
-	// help in html
-	BPath path(*gApp->GetAppPath());
-	path.Append(rel_path);
-	LaunchHTMLBrowser(path.Path());
-#endif
+	name.ReplaceAll("Default", "English");
+	OpenPDFHelp(name.String());
 }
 
 ///////////////////////////////////////////////////////////
