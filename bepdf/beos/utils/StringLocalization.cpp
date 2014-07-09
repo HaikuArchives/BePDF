@@ -55,7 +55,6 @@ char *StringLocalization::GetString(const char *text) {
 	if (mLocale->GetString(&id, &translation) == B_OK) {
 		return (char*)translation->String();
 	} else {
-		fprintf(stderr, "Translation for \"%s\" not found\n", text);
 		return (char*)text;
 	}
 }
