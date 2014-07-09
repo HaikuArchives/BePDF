@@ -2133,9 +2133,9 @@ public:
 			mMainView->GetPageRenderer()->GetAnnotsList(),
 			mMainView->GetAcroForm());
 		if (writer.WriteTo(mPath.String())) {
-			alert = new BAlert(TRANSLATE("Information"), TRANSLATE("PDF file successfully written!"), TRANSLATE("OK"));
+			alert = new BAlert("Information", TRANSLATE("PDF file successfully written!"), TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 		} else {
-			alert = new BAlert(TRANSLATE("Error"), TRANSLATE("Could not write PDF file!"), TRANSLATE("OK"));
+			alert = new BAlert("Error", TRANSLATE("Could not write PDF file!"), TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 		}
 		
 		alert->Go();

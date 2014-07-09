@@ -20,6 +20,9 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+// Haiku
+#include <Alert.h>
+
 // xpdf
 #include <TextOutputDev.h>
 
@@ -28,6 +31,7 @@
 #include "PDFView.h"
 #include "TextConversion.h"
 #include "Thread.h"
+#include "utils/StringLocalization.h"
 
 ///////////////////////////////////////////////////////////
 
@@ -195,6 +199,10 @@ FindThread::Run() {
 
   // not found
 notFound:
+{
+  BAlert *alert = new BAlert("Error", TRANSLATE("Search string not found."), TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
+  alert->Go();
+}
   goto done;
 
 	// found on a different page
