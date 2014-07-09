@@ -194,7 +194,8 @@ AnnotWriter::AnnotWriter(XRef* xref, PDFDoc* doc, AnnotsList* list, AcroForm* ac
 {
 }
 
-AnnotWriter::~AnnotWriter() {
+AnnotWriter::~AnnotWriter()
+{
 }
 
 void AnnotWriter::Write(const char* s) {

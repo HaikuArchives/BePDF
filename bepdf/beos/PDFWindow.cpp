@@ -2129,7 +2129,9 @@ public:
 	int32 Run() {
 		BAlert* alert = NULL;
 
-		AnnotWriter writer(GetXRef(), mMainView->GetPDFDoc(), mMainView->GetPageRenderer()->GetAnnotsList(), mMainView->GetAcroForm());
+		AnnotWriter writer(GetXRef(), mMainView->GetPDFDoc(),
+			mMainView->GetPageRenderer()->GetAnnotsList(),
+			mMainView->GetAcroForm());
 		if (writer.WriteTo(mPath.String())) {
 			alert = new BAlert(TRANSLATE("Information"), TRANSLATE("PDF file successfully written!"), TRANSLATE("OK"));
 		} else {
