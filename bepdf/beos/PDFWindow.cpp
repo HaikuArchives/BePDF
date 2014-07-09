@@ -2139,7 +2139,7 @@ public:
 		}
 		
 		alert->Go();
-		
+		delete this;
 		return 0;
 	}
 	
