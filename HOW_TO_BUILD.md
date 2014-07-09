@@ -6,7 +6,7 @@ Haiku with Package Management (at the time of writing, only nightly builds had t
 
 
 ## Required Packages
-freetype2(+devel), liblayout(+devel), htmldoc.
+freetype2(+devel), liblayout(+devel), libsanta(+devel), bzip2(+devel).
 
 ## Building
 Use the bash script `build.sh` to build BePDF.
@@ -31,7 +31,7 @@ generated/libxpdf.a
 
 The application directory contents is created in
 ```
-  generated/BePDF
+generated/BePDF
 ```
 its contents is mainly copied from folder bepdf:
 ```
