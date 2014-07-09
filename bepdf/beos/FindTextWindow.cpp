@@ -29,7 +29,7 @@
 
 FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text, 
 	BLooper *looper) 
-	: MWindow(BRect(0, 0, 100, 100), 
+	: MWindow(BRect(0, 0, 0, 0), 
 		TRANSLATE("Find Text"), 
 		B_FLOATING_WINDOW_LOOK, 
 		B_MODAL_APP_WINDOW_FEEL, 
