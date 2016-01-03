@@ -22,16 +22,18 @@
 
 #ifndef PRINTING_PROGRESS_WINDOW_H
 #define PRINTING_PROGRESS_WINDOW_H
-#include <MWindow.h>
-#include <MButton.h>
-#include <MStringView.h>
-#include <MProgressBar.h>
+
 #include <Rect.h>
+#include <StatusBar.h>
 #include <String.h>
 #include <SupportDefs.h>
-#include <StatusBar.h>
+#include <Window.h>
 
-class PrintingProgressWindow : public MWindow {
+class BStringView;
+class BButton;
+class BStatusBar;
+
+class PrintingProgressWindow : public BWindow {
 public:
 	PrintingProgressWindow(const char *text, BRect, int32 pages);
 	void SetPage(int32 page);
@@ -41,9 +43,9 @@ public:
 protected:
 	enum { OK, STOPPED, ABORTED } mState;
 	int32 mPages, mPrintedPages;
-	MStringView *mPageString;
-	MButton *mAbort, *mStop;
-	MProgressBar * /*BStatusBar **/mProgress;
+	BStringView *mPageString;
+	BButton *mAbort, *mStop;
+	BStatusBar *mProgress;
 };
 
 class PrintingHiddenWindow : public BWindow {
