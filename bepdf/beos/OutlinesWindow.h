@@ -24,19 +24,16 @@
 #define OUTLINES_WINDOW_H
 
 // xpdf
-#include <XRef.h>
 #include <PDFDoc.h>
+#include <XRef.h>
 // BeOS
-#include <be/app/Looper.h>
-#include <be/support/SupportDefs.h>
-#include <be/support/List.h>
-#include <be/interface/Font.h>
-// layout
-#include <MWindow.h>
-#include <MTextControl.h>
+#include <Font.h>
+#include <Looper.h>
+#include <List.h>
+#include <SupportDefs.h>
 
-#include "Settings.h"
 #include "LayoutUtils.h" // for Bitset
+#include "Settings.h"
 
 class OutlineStyle {
 	const BFont* mFont;
@@ -149,8 +146,9 @@ public:
 	void Activate();
 };
 
+class BTextControl;
 
-class BookmarkWindow : public MWindow {
+class BookmarkWindow : public BWindow {
 public:
 	BookmarkWindow(int pageNum, const char* title, BRect rect, BLooper *looper);
 	void MessageReceived(BMessage *msg);
@@ -161,7 +159,7 @@ public:
 	};
 protected:
 	BLooper      *mLooper;
-	MTextControl *mTitle;
+	BTextControl *mTitle;
 	int           mPageNum;
 };
 
