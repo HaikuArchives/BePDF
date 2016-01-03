@@ -21,17 +21,21 @@
  */
 
 #include <ctype.h>
-#include <be/storage/Path.h>
-#include <be/interface/Region.h>
 
-#include <layout-all.h>
+#include <Box.h>
+#include <Button.h>
+#include <LayoutBuilder.h>
+#include <Path.h>
+#include <Region.h>
+#include <StringView.h>
+#include <TabView.h>
+
+#include "BePDF.h"
 #include "FileInfoWindow.h"
 #include "LayoutUtils.h"
-#include "TextConversion.h"
 #include "StringLocalization.h"
-#include "BePDF.h"
+#include "TextConversion.h"
 
-static minimax maximum(0, 0, 10e10, 10e10, 100);
 
 const int16 FileInfoWindow::noKeys = 9;
 
@@ -162,16 +166,18 @@ BString *FileInfoWindow::GetProperty(Dict *dict, const char *key, time_t *time) 
 	return result;
 }
 
-void FileInfoWindow::AddPair(VGroup *l, VGroup *r, BView *lv, BView *rv) {
-	l->AddChild(lv); r->AddChild(rv);
+void FileInfoWindow::AddPair(BGridView *dest, BView *lv, BView *rv) {
+	BGridLayout *layout = dest->GridLayout();
+	int32 nextRow = layout->CountRows() + 1;
+	layout->AddView(lv, 1, nextRow);
+	layout->AddView(rv, 2, nextRow);
 }
 
-void FileInfoWindow::CreateProperty(VGroup *l, VGroup *r, Dict *dict, const char *key, const char *title) {
-	static minimax mm(0, 0, 60000, 60000, 10);
+void FileInfoWindow::CreateProperty(BGridView *view, Dict *dict, const char *key, const char *title) {
 	time_t time;
 	BString *string = GetProperty(dict, key, &time);
-	AddPair(l, r, new MStringView(title),
-		new MStringView( (string) ? string->String() : "-"));
+	AddPair(view, new BStringView("", title),
+		new BStringView("", (string) ? string->String() : "-"));
 	delete string;
 }
 
@@ -370,53 +376,39 @@ void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 
 void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	PDFLock lock;
-	
-	if (mView) {
-		RemoveChild(mView);
-		delete mView; mView = NULL;
-	}
 
 	mState = NORMAL;
 
-	// Document
-	VGroup *group = new VGroup();
-	VGroup *left, *right;
-	group->AddChild(
-		new HGroup(
-			left = new VGroup(minimax(0,0,6000,6000,1), NULL),
-			right = new VGroup(minimax(0,0,6000,6000,10), NULL),
-			0),
-		0
-	);
-	
+	BTabView *tabs = new BTabView("tabs");
+
+	BGridView *document = new BGridView();
+
 	BPath path;
-	if (file->GetPath(&path) == B_OK) {	
-		char ver[80];
-		sprintf(ver, "%.1f", doc->getPDFVersion());
-		AddPair(left, right, new MStringView(TRANSLATE("Filename:")),
-			new MStringView(path.Leaf()));
-		AddPair(left, right, new MStringView(TRANSLATE("Path:")),
-			new MStringView(path.Path()));
+	if (file->GetPath(&path) == B_OK) {
+		AddPair(document, new BStringView("", TRANSLATE("Filename:")),
+			new BStringView("", path.Leaf()));
+		AddPair(document, new BStringView("", TRANSLATE("Path:")),
+			new BStringView("", path.Path()));
 	}
 
 	Object obj;
 	if (doc->getDocInfo(&obj) && obj.isDict()) {
 		Dict *dict = obj.getDict();
 		
-		CreateProperty(left, right, dict, titleKey, TRANSLATE("Title:"));
-		CreateProperty(left, right, dict, subjectKey, TRANSLATE("Subject:"));
-		CreateProperty(left, right, dict, authorKey, TRANSLATE("Author:"));
-		CreateProperty(left, right, dict, keywordsKey, TRANSLATE("Keywords:"));
-		CreateProperty(left, right, dict, creatorKey, TRANSLATE("Creator:"));
-		CreateProperty(left, right, dict, producerKey, TRANSLATE("Producer:"));
-		CreateProperty(left, right, dict, creationDateKey, TRANSLATE("Created:"));
-		CreateProperty(left, right, dict, modDateKey, TRANSLATE("Modified:"));
+		CreateProperty(document, dict, titleKey, TRANSLATE("Title:"));
+		CreateProperty(document, dict, subjectKey, TRANSLATE("Subject:"));
+		CreateProperty(document, dict, authorKey, TRANSLATE("Author:"));
+		CreateProperty(document, dict, keywordsKey, TRANSLATE("Keywords:"));
+		CreateProperty(document, dict, creatorKey, TRANSLATE("Creator:"));
+		CreateProperty(document, dict, producerKey, TRANSLATE("Producer:"));
+		CreateProperty(document, dict, creationDateKey, TRANSLATE("Created:"));
+		CreateProperty(document, dict, modDateKey, TRANSLATE("Modified:"));
 
 		for (int i = 0; i < dict->getLength(); i++) {
 			if (!IsSystemKey(dict->getKey(i))) {
 				BString title(dict->getKey(i));
 				title << ":";
-				CreateProperty(left, right, dict, dict->getKey(i), title.String());
+				CreateProperty(document, dict, dict->getKey(i), title.String());
 			}
 		}
 	}
@@ -424,27 +416,41 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
     
 	char ver[80];
 	sprintf(ver, "%.1f", doc->getPDFVersion());
-	AddPair(left, right, new MStringView(TRANSLATE("Version:")), new MStringView(ver));
+	AddPair(document, new BStringView("", TRANSLATE("Version:")), new BStringView("", ver));
 
-	AddPair(left, right, new MStringView(TRANSLATE("Linearized:")), 
-		new MStringView(YesNo(doc->isLinearized())));
+	AddPair(document, new BStringView("", TRANSLATE("Linearized:")), 
+		new BStringView("", YesNo(doc->isLinearized())));
+
+	BView *docView = new BView("Document", 0);
+	BLayoutBuilder::Group<>(docView, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(document)
+			.AddGlue()
+		.End()
+		.AddGlue();
+
+	tabs->AddTab(docView);
 
 	// Security
-	VGroup *security = new VGroup(
-		new HGroup(
-			left = new VGroup(minimax(0,0,6000,6000,1), NULL),
-			right = new VGroup(minimax(0,0,6000,6000,10), NULL),
-			0),
-		0
-	);
+	BGridView *security = new BGridView();
 
-	AddPair(left, right, new MStringView(TRANSLATE("Encrypted:")), new MStringView(YesNo(doc->isEncrypted())));
-	AddPair(left, right, new MStringView(TRANSLATE("Printing:")), new MStringView(Allowed(doc->okToPrint())));
-	AddPair(left, right, new MStringView(TRANSLATE("Editing:")), new MStringView(Allowed(doc->okToChange())));
-	AddPair(left, right, new MStringView(TRANSLATE("Copy & paste:")), new MStringView(Allowed(doc->okToCopy())));
-	AddPair(left, right, new MStringView(TRANSLATE("Annotations:")), new MStringView(Allowed(doc->okToAddNotes())));
-	
+	AddPair(security, new BStringView("", TRANSLATE("Encrypted:")), new BStringView("", YesNo(doc->isEncrypted())));
+	AddPair(security, new BStringView("", TRANSLATE("Printing:")), new BStringView("", Allowed(doc->okToPrint())));
+	AddPair(security, new BStringView("", TRANSLATE("Editing:")), new BStringView("", Allowed(doc->okToChange())));
+	AddPair(security, new BStringView("", TRANSLATE("Copy & paste:")), new BStringView("", Allowed(doc->okToCopy())));
+	AddPair(security, new BStringView("", TRANSLATE("Annotations:")), new BStringView("", Allowed(doc->okToAddNotes())));
 
+	BView *secView = new BView("Security", 0);
+	BLayoutBuilder::Group<>(secView, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(security)
+			.AddGlue()
+		.End()
+		.AddGlue();
+
+	tabs->AddTab(secView);
 
 	// Fonts
 	CLVContainerView* containerView;
@@ -455,24 +461,32 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	mFontList->AddColumn(new CLVColumn(TRANSLATE("Type"), 80.0, CLV_SORT_KEYABLE));
 	mFontList->SetSortFunction(FontItem::MyCompare);
 
-	MView *fonts = new VGroup(
-		mFontsBorder = new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Fonts of this page"),
-			new MBViewWrapper(containerView, true, false, false)),
-		new HGroup(
-			mShowAllFonts = new MButton(TRANSLATE("Show All Fonts"), new BMessage(SHOW_ALL_FONTS_MSG), NULL, minimax(-1, -1, -1, -1)),
-			mStop = new MButton(TRANSLATE("Abort"), new BMessage(STOP_MSG), NULL, minimax(-1, -1, -1, -1)),
-			0),
-		0);
+	mFontsBorder = new BBox("border");
+	mFontsBorder->SetLabel(TRANSLATE("Fonts of this page"));
+	mFontsBorder->AddChild(containerView);
+
+	mShowAllFonts = new BButton("showAllFonts", TRANSLATE("Show all fonts"), new BMessage(SHOW_ALL_FONTS_MSG));
+	mStop = new BButton("stop", TRANSLATE("Abort"), new BMessage(STOP_MSG));
+
+	BView *fonts = new BView("Fonts", 0);
+
+	BLayoutBuilder::Group<>(fonts, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(mFontsBorder)
+		.AddGroup(B_HORIZONTAL)
+			.AddGlue()
+			.Add(mShowAllFonts)
+			.Add(mStop)
+		.End();
+
+	tabs->AddTab(fonts);
+
 	mStop->SetEnabled(false);
 	QueryFonts(doc, page);
-	
-	MView *view = new TabGroup(
-		TRANSLATE("Document"), AlignTop(group),
-		TRANSLATE("Security"), AlignTop(security),
-		TRANSLATE("Fonts"), fonts,
-		0);
-		
-	AddChild(mView = dynamic_cast<BView*>(view));
+
+	BLayoutBuilder::Group<>(this)
+		.Add(tabs);
+
 	Show();
 }
 
@@ -487,10 +501,10 @@ void FileInfoWindow::QueryAllFonts(PDFDoc *doc) {
 	PostMessage(FONT_QUERY_STOPPED_NOTIFY);
 }
 
-FileInfoWindow::FileInfoWindow(GlobalSettings *settings, BEntry *file, PDFDoc *doc, 
-	BLooper *looper, int page) 
-	: MWindow(BRect(0, 0, 100, 100), TRANSLATE("File Info"), 
-		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, 0), 
+FileInfoWindow::FileInfoWindow(GlobalSettings *settings, BEntry *file, PDFDoc *doc,
+	BLooper *looper, int page)
+	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("File Info"),
+		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS),
 		mLooper(looper), mSettings(settings), mState(NORMAL) {
 
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
@@ -521,21 +535,21 @@ bool FileInfoWindow::QuitRequested() {
 
 void FileInfoWindow::FrameMoved(BPoint p) {
 	mSettings->SetFileInfoWindowPosition(p);
-	MWindow::FrameMoved(p);
+	BWindow::FrameMoved(p);
 }
 
 void FileInfoWindow::FrameResized(float w, float h) {
 	mSettings->SetFileInfoWindowSize(w, h);
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 }
 
 void FileInfoWindow::MessageReceived(BMessage *msg) {
 	switch (msg->what) {
 	case SHOW_ALL_FONTS_MSG: 
 		mState = QUERY_ALL_FONTS;
-		mShowAllFonts->SetEnabled(false); mStop->SetEnabled(true);
+		mShowAllFonts->SetEnabled(false);
+		mStop->SetEnabled(true);
 		mFontsBorder->SetLabel(TRANSLATE("Searching all fonts…"));
-		mFontsBorder->Invalidate();
 		if (mLooper) {
 			// do searching in another thread (= thread of window)
 			mLooper->PostMessage(START_QUERY_ALL_FONTS_MSG);
@@ -552,12 +566,10 @@ void FileInfoWindow::MessageReceived(BMessage *msg) {
 			mState = NORMAL;
 			mShowAllFonts->SetEnabled(true);			
 			mFontsBorder->SetLabel(TRANSLATE("All fonts of this document (aborted)"));
-			mFontsBorder->Invalidate();
 			break;
 		case QUERY_ALL_FONTS:
 			mState = ALL_FONTS;	mStop->SetEnabled(false);
 			mFontsBorder->SetLabel(TRANSLATE("All fonts of this document"));		
-			mFontsBorder->Invalidate();
 			break;
 		case QUIT:
 			mState = NORMAL; PostMessage(B_QUIT_REQUESTED);
@@ -567,7 +579,7 @@ void FileInfoWindow::MessageReceived(BMessage *msg) {
 		}
 		break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

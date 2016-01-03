@@ -25,32 +25,29 @@
 
 #include <time.h>
 // xpdf
-#include <XRef.h>
-#include <PDFDoc.h>
 #include <GfxFont.h>
+#include <PDFDoc.h>
+#include <XRef.h>
 // BeOS
-#include <be/storage/Entry.h>
-#include <be/app/Looper.h>
-#include <be/support/List.h>
-#include <be/support/String.h>
-// layout
-#include <MWindow.h>
-#include <MRadioGroup.h>
-#include <HGroup.h>
-#include <MListView.h>
-#include <MBorder.h>
-#include <MBViewWrapper.h>
+#include <Entry.h>
+#include <Looper.h>
+#include <List.h>
+#include <String.h>
+#include <Window.h>
 // Santa's Gift Bag
 #include <santa/ColumnListView.h>
 #include <santa/CLVColumn.h>
 #include <santa/CLVListItem.h>
-#include <VGroup.h>
 
 #include "Settings.h"
 
+class BBox;
+class BGridView;
+class BButton;
+
 class PDFDoc;
 
-class FileInfoWindow : public MWindow {
+class FileInfoWindow : public BWindow {
 	BLooper *mLooper;
 	GlobalSettings *mSettings;
 	BView *mView;
@@ -68,7 +65,6 @@ class FileInfoWindow : public MWindow {
 	
 	// font list
 	ColumnListView *mFontList;
-	MBViewWrapper *mFontListWrapper;
 	struct Font {
 		Ref ref;
 		BString name;
@@ -82,11 +78,11 @@ class FileInfoWindow : public MWindow {
 	bool AddFont(BList *list, GfxFont *font);
 	BListItem *FontItem(GfxFont *font);
 	void QueryFonts(PDFDoc *doc, int page);
-	void AddPair(VGroup *l, VGroup *r, BView *lv, BView *rv);	 
-	void CreateProperty(VGroup *l, VGroup *r, Dict *dict, const char *key, const char *title);
+	void AddPair(BGridView *dest, BView *lv, BView *rv);	 
+	void CreateProperty(BGridView *dest, Dict *dict, const char *key, const char *title);
 	
-	MButton *mShowAllFonts, *mStop;
-	MBorder *mFontsBorder;
+	BButton *mShowAllFonts, *mStop;
+	BBox *mFontsBorder;
 
 public:
 	static const char *authorKey, *creationDateKey, *modDateKey, *creatorKey, 
