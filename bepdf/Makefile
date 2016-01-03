@@ -98,7 +98,6 @@ $(STDCPPLIBS) \
 textencoding \
 tracker \
 translation \
-layout \
 santa \
 ../generated/libxpdf.a
 
@@ -113,8 +112,7 @@ LIBPATHS=
 #	additional paths to look for system headers
 #	thes use the form: #include <header>
 #	source file directories are NOT auto-included here
-SYSTEM_INCLUDE_PATHS = /boot/system/develop/headers/liblayout \
-/boot/system/develop/headers/santa \
+SYSTEM_INCLUDE_PATHS = /boot/system/develop/headers/santa \
 ../xpdf \
 ../xpdf/beos \
 ../xpdf/fofi \
