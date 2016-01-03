@@ -23,21 +23,21 @@
 #ifndef _ANNOTATION_WINDOW_H
 #define _ANNOTATION_WINDOW_H
 
+#include <Looper.h>
 #include <Rect.h>
 #include <String.h>
 #include <SupportDefs.h>
-#include <Looper.h>
+#include <Window.h>
 
-#include <MWindow.h>
-#include <MButton.h>
-#include <MStringView.h>
-#include <MPopup.h>
-#include "LayoutUtils.h"
-
-#include "Settings.h"
 #include "Annotation.h"
+#include "LayoutUtils.h"
+#include "Settings.h"
 
-class AnnotationWindow : public MWindow {
+class BMenuField;
+class BTextView;
+class BStringView;
+
+class AnnotationWindow : public BWindow {
 public:
 	AnnotationWindow(GlobalSettings *settings, BLooper *looper);
 	void MessageReceived(BMessage *msg);
@@ -77,11 +77,11 @@ protected:
 	BLooper *mLooper;
 	GlobalSettings *mSettings;
 	BPoint mWindowPos;
-	MStringView *mLabel, *mDate;
-	MTextView *mContents;
-	MPopup* mFont;
-	MPopup* mSize;
-	MPopup* mAlignment;
+	BStringView *mLabel, *mDate;
+	BTextView *mContents;
+	BMenuField* mFont;
+	BMenuField* mSize;
+	BMenuField* mAlignment;
 	Annotation* mAnnotation;
 	bool mEditable;
 };
