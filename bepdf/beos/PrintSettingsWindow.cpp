@@ -21,10 +21,10 @@
  */
 
 #include <Alert.h>
-
-#include <layout-all.h>
-
-#include <MDividable.h>
+#include <Button.h>
+#include <LayoutBuilder.h>
+#include <PopUpMenu.h>
+#include <StringView.h>
 
 #include "BePDF.h"
 #include "LayoutUtils.h"
@@ -33,8 +33,8 @@
 #include "StringLocalization.h"
 
 PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, BLooper *looper) 
-	: MWindow(BRect(0, 0, 100, 100), TRANSLATE("Print Settings"), 
-		B_TITLED_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL, 0), 
+	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("Print Settings"), 
+		B_TITLED_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS), 
 	mDoc(doc), mLooper(looper), mSettings(settings), mZoomValue(settings->GetZoomPrinter()) {
 	
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
@@ -44,78 +44,79 @@ PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, 
 	settings->GetPrinterWindowSize(w, h);
 	ResizeTo(w, h);
 
-	char zoomStr[10];
-	sprintf(zoomStr, "%d", (int)mZoomValue);
-	
-	// Resolution
-	BString label;
-	MPopup* resolution = new MPopup(MakeLabel(label, TRANSLATE("DPI")), NULL);
+	mPrint = new BButton("mPrint", TRANSLATE("Print"), new BMessage(MSG_PRINT));
+
+	BGridLayout *grid;
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGrid()
+			.GetLayout(&grid)
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.AddGlue()
+			.Add(mPrint)
+		.End();
+
+	int32 row = 0;
+
+	BPopUpMenu* resolution = MakePopup(MakeLabel(TRANSLATE("DPI")), grid, row);
 	AddItem(resolution, TRANSLATE("Max. Printer Resolution"), MSG_DPI_CHANGED);
-	resolution->Menu()->AddSeparatorItem();
+	resolution->AddSeparatorItem();
 	AddItem(resolution, "72", MSG_DPI_CHANGED);
 	AddItem(resolution, "300", MSG_DPI_CHANGED);
-//	AddItem(resolution, "600", MSG_DPI_CHANGED);
-//	AddItem(resolution, "720", MSG_DPI_CHANGED);
-//	AddItem(resolution, "1440", MSG_DPI_CHANGED);
 
 	// Page selection
-	MPopup* pages  = new MPopup(MakeLabel(label, TRANSLATE("Pages")), NULL);
+	BPopUpMenu* pages = MakePopup(MakeLabel(TRANSLATE("Pages")), grid, row);
 	AddItem(pages, TRANSLATE("All Pages"), MSG_SELECTION_CHANGED);
 	AddItem(pages, TRANSLATE("Odd Pages"), MSG_SELECTION_CHANGED);
 	AddItem(pages, TRANSLATE("Even Pages"), MSG_SELECTION_CHANGED);
 
 	// Print order
-	MPopup* order = new MPopup(MakeLabel(label, TRANSLATE("Order")), NULL);
+	BPopUpMenu* order = MakePopup(MakeLabel(TRANSLATE("Order")), grid, row);
 	AddItem(order, TRANSLATE("Normal"), MSG_ORDER_CHANGED);
 	AddItem(order, TRANSLATE("Reverse"), MSG_ORDER_CHANGED);
 	
 	// Rotation
-	MPopup* rotation = new MPopup(MakeLabel(label, TRANSLATE("Rotation")), NULL);
+	BPopUpMenu* rotation = MakePopup(MakeLabel(TRANSLATE("Rotation")), grid,
+		row);
 	AddItem(rotation, "0°", MSG_ROTATION_CHANGED);
 	AddItem(rotation, "90°", MSG_ROTATION_CHANGED);
 	AddItem(rotation, "180°", MSG_ROTATION_CHANGED);
 	AddItem(rotation, "270°", MSG_ROTATION_CHANGED);
 
 	// Color mode
-	MPopup* mode  = new MPopup(MakeLabel(label, TRANSLATE("Mode")), NULL);
+	BPopUpMenu* mode = MakePopup(MakeLabel(TRANSLATE("Mode")), grid, row);
 	AddItem(mode, TRANSLATE("Color"), MSG_COLOR_MODE_CHANGED);
 	AddItem(mode, TRANSLATE("Gray scale"), MSG_COLOR_MODE_CHANGED);
-	
-	MView *view = new VGroup(
-		new Space(GetBorder()),
 
-		resolution,
-		pages,
-		order,			
-		rotation,
-		mode,		
-		mZoom = new MTextControl(MakeLabel(label, TRANSLATE("Zoom (%)")), 
-				"", 
-				new BMessage(MSG_ZOOM_CHANGED)), 				
-		new VGroup(
-			mPage = new MTextControl( MakeLabel(label, TRANSLATE("Page")), "1", new BMessage(MSG_PAGE_CHANGED)), 
-			mWidth = new MStringView(""),
-			mHeight = new MStringView(""),
-			new Space(GetFiller()),
-		0),
+	char zoomStr[10];
+	sprintf(zoomStr, "%d", (int)mZoomValue);
 
-		new Space(GetSeparator()),
+	mZoom = new BTextControl("mZoom", MakeLabel(TRANSLATE("Zoom (%)")),
+		zoomStr, new BMessage(MSG_ZOOM_CHANGED));
+	grid->AddItem(mZoom->CreateLabelLayoutItem(), 0, row);
+	grid->AddItem(mZoom->CreateTextViewLayoutItem(), 1, row);
+	row++;
 
-		mPrint = new MButton(TRANSLATE("Print"), new BMessage(MSG_PRINT), NULL, minimax(-1, -1, -1, -1)),
+	mPage = new BTextControl("mPage", MakeLabel(TRANSLATE("Page")), "1",
+		new BMessage(MSG_PAGE_CHANGED));
+	grid->AddItem(mPage->CreateLabelLayoutItem(), 0, row);
+	grid->AddItem(mPage->CreateTextViewLayoutItem(), 1, row);
+	row++;
 
-		new Space(GetBorder()),
-	0);
+	BStringView *width = new BStringView("width", TRANSLATE("Width: "));
+	mWidth = new BStringView("mWidth", "");
+	grid->AddView(width, 0, row);
+	grid->AddView(mWidth, 1, row);
+	row++;
 
-	view = new HGroup(
-		new Space(GetBorder()),
-		view,
-		new Space(GetBorder()),
-		0
-	);
+	BStringView *height = new BStringView("height", TRANSLATE("Height: "));
+	mHeight = new BStringView("mHeight", "");
+	grid->AddView(height, 0, row);
+	grid->AddView(mHeight, 1, row);
 
 	mPrint->SetEnabled(mDoc->okToPrint());
 
-	AddChild(dynamic_cast<BView*>(view));
 	SetDefaultButton(mPrint);
 
 	// Print settings		
@@ -131,11 +132,11 @@ PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, 
 		case 720: i = 5; break;
 //		case 1440: i = 5; break;
 	}
-	resolution->Menu()->ItemAt(i)->SetMarked(true);
+	resolution->ItemAt(i)->SetMarked(true);
 
 	// Page selection
 	if ((settings->GetPrintSelection() >= 0) && (settings->GetPrintSelection() < 3)) {
-		pages->Menu()->ItemAt(settings->GetPrintSelection())->SetMarked(true);
+		pages->ItemAt(settings->GetPrintSelection())->SetMarked(true);
 	}
 	
 	// Print order
@@ -144,11 +145,11 @@ PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, 
 	} else {
 		i = 1;
 	}
-	order->Menu()->ItemAt(i)->SetMarked(true);
+	order->ItemAt(i)->SetMarked(true);
 
 	// Rotation
 	i = int(settings->GetRotationPrinter() / 90) % 4;
-	rotation->Menu()->ItemAt(i)->SetMarked(true);
+	rotation->ItemAt(i)->SetMarked(true);
 
 	// Color mode
 	if (settings->GetPrintColorMode() == GlobalSettings::PRINT_COLOR_MODE) {
@@ -156,17 +157,14 @@ PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, 
 	} else {
 		i = 1;
 	}
-	mode->Menu()->ItemAt(i)->SetMarked(true);
+	mode->ItemAt(i)->SetMarked(true);
 
 	// Zoom
 	mZoom->SetModificationMessage(new BMessage(MSG_ZOOM_CHANGED));
-	mZoom->SetText(zoomStr);
 		
 	// Page size info
 	mPage->SetModificationMessage(new BMessage(MSG_PAGE_CHANGED));
 	GetPageSize(1);
-
-	DivideSame(view, resolution, pages, order, rotation, mode, mZoom, mPage, NULL);
 
 	Show();
 }
@@ -248,7 +246,7 @@ int32 index;
 			break;				
 	}
 	
-	MWindow::MessageReceived(msg);
+	BWindow::MessageReceived(msg);
 }
 
 bool PrintSettingsWindow::QuitRequested() {
@@ -268,33 +266,48 @@ bool PrintSettingsWindow::QuitRequested() {
 
 void PrintSettingsWindow::FrameMoved(BPoint p) {
 	mSettings->SetPrinterWindowPosition(p);
-	MWindow::FrameMoved(p);
+	BWindow::FrameMoved(p);
 }
 
 void PrintSettingsWindow::FrameResized(float w, float h) {
 	mSettings->SetPrinterWindowSize(w, h);
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 }
 
 void PrintSettingsWindow::GetPageSize(uint32 page) {
 	PDFLock lock;
 	BString s; char size[40];
 	sprintf(size, "%4.2f", mDoc->getPageCropWidth(page) / 72.0);
-	s = TRANSLATE("Width: "); s << size << TRANSLATE(" in");
+	s << size << TRANSLATE(" in");
 	mWidth->SetText(s.String());
 	
 	sprintf(size, "%2.2f", mDoc->getPageCropHeight(page) / 72.0);
-	s = TRANSLATE("Height: "); s << size << TRANSLATE(" in");
+	s = "";
+	s << size << TRANSLATE(" in");
 	mHeight->SetText(s.String());
 }
 
 // Appends ":" to text and returns it.
-char* PrintSettingsWindow::MakeLabel(BString& string, const char* text) {
-	string = text;
-	string << ":  ";
-	return const_cast<char*>(string.String());
+const char* PrintSettingsWindow::MakeLabel(const char* text) {
+	static BString tmp;
+	tmp = "";
+	tmp << text << ":";
+	return tmp.String();
 }
 
-void PrintSettingsWindow::AddItem(MPopup* popup, const char* label, uint32 what) {
-	popup->Menu()->AddItem(new BMenuItem(label, new BMessage(what)));	
+void PrintSettingsWindow::AddItem(BPopUpMenu* popup, const char* label, uint32 what) {
+	popup->AddItem(new BMenuItem(label, new BMessage(what)));	
 }
+
+BPopUpMenu* PrintSettingsWindow::MakePopup(const char *label,
+	BGridLayout *layout, int32 &row)
+{
+	BPopUpMenu *menu = new BPopUpMenu("menu");
+	BMenuField *mf = new BMenuField("mf", label, menu);
+	layout->AddItem(mf->CreateLabelLayoutItem(), 0, row);
+	layout->AddItem(mf->CreateMenuBarLayoutItem(), 1, row);
+	row++;
+	return menu;
+}
+
+
