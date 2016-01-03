@@ -22,20 +22,21 @@
 
 #ifndef FIND_TEXT_WINDOW_H
 #define FIND_TEXT_WINDOW_H
+
+#include <Looper.h>
 #include <Rect.h>
 #include <String.h>
 #include <SupportDefs.h>
-#include <Looper.h>
-
-#include <MWindow.h>
-#include <MButton.h>
-#include <MCheckBox.h>
-#include <MTextControl.h>
-#include <MStringView.h>
+#include <Window.h>
 
 #include "Settings.h"
 
-class FindTextWindow : public MWindow {
+class BStringView;
+class BCheckBox;
+class BTextControl;
+class BButton;
+
+class FindTextWindow : public BWindow {
 public:
 	FindTextWindow(GlobalSettings *settings, const char *text, BLooper *looper);
 
@@ -67,10 +68,10 @@ protected:
 	bool mSearching;
 	BLooper* mLooper;
 	GlobalSettings* mSettings;
-	MButton*      mFindStop;
-	MTextControl* mText;
-	MCheckBox*    mIgnoreCase;
-	MCheckBox*    mBackward;
-	MStringView*  mPage;
+	BButton*      mFindStop;
+	BTextControl* mText;
+	BCheckBox*    mIgnoreCase;
+	BCheckBox*    mBackward;
+	BStringView*  mPage;
 };
 #endif
