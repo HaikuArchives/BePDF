@@ -23,21 +23,19 @@
 #ifndef _TRACE_WINDOW_H
 #define _TRACE_WINDOW_H
 
+#include <Locker.h>
+#include <Looper.h>
 #include <Rect.h>
 #include <String.h>
 #include <SupportDefs.h>
-#include <Looper.h>
-#include <Locker.h>
-
-#include <MWindow.h>
-#include <MButton.h>
-#include <MTextView.h>
-#include <MStringView.h>
-#include <MCheckBox.h>
+#include <Window.h>
 
 #include "Settings.h"
 
-class TraceWindow : public MWindow {
+class BCheckBox;
+class BTextView;
+
+class TraceWindow : public BWindow {
 public:
 	TraceWindow(GlobalSettings *settings);
 	void MessageReceived(BMessage *msg);
@@ -61,8 +59,8 @@ protected:
 
 	GlobalSettings *mSettings;
 	BPoint          mWindowPos;
-	MTextView      *mOutput;
-	MCheckBox      *mStdoutCB, 
+	BTextView      *mOutput;
+	BCheckBox      *mStdoutCB, 
 				   *mStderrCB;
 
 	bool            mAutoOpen;
