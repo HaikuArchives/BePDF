@@ -22,16 +22,17 @@
 
 #ifndef PASSWORD_WINDOW_H
 #define PASSWORD_WINDOW_H
+
+#include <Entry.h>
+#include <Looper.h>
 #include <Rect.h>
 #include <String.h>
 #include <SupportDefs.h>
-#include <Looper.h>
-#include <Entry.h>
+#include <Window.h>
 
-#include <MWindow.h>
-#include <MTextView.h>
+class BTextControl;
 
-class PasswordWindow : public MWindow {
+class PasswordWindow : public BWindow {
 public:
 	PasswordWindow(entry_ref *ref, BRect rect, BLooper *looper);
 	void MessageReceived(BMessage *msg);
@@ -39,7 +40,7 @@ public:
 	
 protected:
 	BLooper *mLooper;
-	MTextView *mPassword;
+	BTextControl *mPassword;
 	bool mPasswordSent;
 	entry_ref mEntry;
 	enum PwdKind {
