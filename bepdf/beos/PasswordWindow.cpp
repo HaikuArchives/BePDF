@@ -20,20 +20,25 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include "PasswordWindow.h"
-#include <layout-all.h>
+#include <Button.h>
+#include <LayoutBuilder.h>
+#include <MenuField.h>
 #include <MenuItem.h>
+#include <PopUpMenu.h>
+#include <TextControl.h>
+
 #include "LayoutUtils.h"
+#include "PasswordWindow.h"
 #include "StringLocalization.h"
 
 // remember last settings in class static variable
 enum PasswordWindow::PwdKind PasswordWindow::mPwdKind = USER_PASSWORD;
 
 PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper) 
-	: MWindow(aRect, TRANSLATE("Enter Password"), 
+	: BWindow(aRect, TRANSLATE("Enter Password"), 
 		B_TITLED_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL, 
-		B_NOT_ZOOMABLE) {
+		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS) {
 	mLooper = looper;
 	mPasswordSent = false;
 	mEntry = *ref;
@@ -48,36 +53,25 @@ PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper)
 	MoveTo(aRect.left, aRect.top);
 	ResizeTo(width, height);
 
-	MPopup *pwdKind = new MPopup("", NULL);
+	BPopUpMenu *pwdKind = new BPopUpMenu("pwdKind");
+	BMenuField *pwdKindField = new BMenuField("pwdKindField", "", pwdKind);
 	BMenuItem *item;
-	pwdKind->Menu()->AddItem(item = new BMenuItem(TRANSLATE("User Password"), new BMessage('user'))); 
+	pwdKind->AddItem(item = new BMenuItem(TRANSLATE("User Password"), new BMessage('user'))); 
 	if (mPwdKind == USER_PASSWORD) item->SetMarked(true);
-	pwdKind->Menu()->AddItem(item = new BMenuItem(TRANSLATE("Owner Password"), new BMessage('ownr'))); 
+	pwdKind->AddItem(item = new BMenuItem(TRANSLATE("Owner Password"), new BMessage('ownr'))); 
 	if (mPwdKind == OWNER_PASSWORD) item->SetMarked(true);
-	pwdKind->Menu()->SetLabelFromMarked(true);
-	
-	mPassword = new MTextView(minimax(0, 15));
-	mPassword->HideTyping(true);
-	mPassword->SetViewColor(255, 255, 255);
 
+	mPassword = new BTextControl("mPassword", "", "", NULL);
+	mPassword->TextView()->HideTyping(true);
 
-	MButton *button = new MButton(TRANSLATE("OK"), new BMessage('OK'), NULL, minimax(60, 30, 100, 40, 1));
+	BButton *button = new BButton("button", TRANSLATE("OK"), new BMessage('OK'));
 
-	MGroup *view = new HGroup(
-		new Space(minimax(5, 0, 5, 0, 1)),
-		pwdKind,
-		new VGroup(
-			new Space(),
-			new MScrollView(mPassword),
-			new Space(),
-			NULL
-		),
-		new Space(minimax(10, 0, 10, 0, 1)), 
-		button, 
-		new Space(minimax(5, 0, 5, 0, 1)),
-		0);
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(pwdKindField, 0)
+		.Add(mPassword, 1)
+		.Add(button, 0);
 
-	AddChild(dynamic_cast<BView*>(view));
 	SetDefaultButton(button);
 
 	mPassword->MakeFocus();
@@ -111,7 +105,7 @@ void PasswordWindow::MessageReceived(BMessage *msg) {
 	case 'user': mPwdKind = USER_PASSWORD; break;
 	case 'ownr': mPwdKind = OWNER_PASSWORD; break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

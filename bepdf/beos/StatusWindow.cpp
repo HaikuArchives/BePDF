@@ -20,43 +20,46 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <LayoutBuilder.h>
+#include <StatusBar.h>
+#include <StringView.h>
+
 #include "BeLoadProgressMonitor.h"
 #include "BepdfApplication.h"
 #include "StatusWindow.h"
 #include "StringLocalization.h"
-#include <layout-all.h>
-
 // Implementation of StatusWindow
 
 StatusWindow::StatusWindow(const char *text, BRect aRect) 
-	: MWindow(aRect, TRANSLATE("BePDF Status"), 
+	: BWindow(aRect, TRANSLATE("BePDF Status"), 
 		B_MODAL_WINDOW , 
 		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE) {
-	// center window
-	aRect.OffsetBy(aRect.Width() / 2, aRect.Height() / 2);
-	float width = 300, height = 60;
-	aRect.SetRightBottom(BPoint(aRect.left + width, aRect.top + height));
-	aRect.OffsetBy(-aRect.Width() / 2, -aRect.Height() / 2);
-	MoveTo(aRect.left, aRect.top);
-	ResizeTo(width, height);
-	// view for the background color
 
-	MStringView *stringView = new MStringView(text);
-	mStatus = new MProgressBar(NULL, false);
+	BStringView *stringView = new BStringView("stringView", text);
+	mStatus = new BStatusBar("mStatus");
+	mStatus->SetMaxValue(1);
 	mTotal = -1;
 
-	mText = new MStringView("");
-	
-	MGroup *view = new VGroup(
-		new Space(),
-		stringView,
-		new Space(),
-		mText,
-		mStatus,
-		0);
-	stringView->SetAlignment(B_ALIGN_CENTER);
-	AddChild(dynamic_cast<BView*>(view));
-	
+	mText = new BStringView("mText", "");
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.SetInsets(0)
+		.AddGlue()
+		.AddGroup(B_HORIZONTAL)
+			.AddGlue()
+			.Add(stringView)
+			.AddGlue()
+		.End()
+		.AddGlue()
+		.AddGroup(B_HORIZONTAL)
+			.Add(mText)
+			.AddGlue()
+		.End()
+		.Add(mStatus);
+
+	ResizeTo(500, 100);
+
+	CenterOnScreen();
 	Show();
 }
 
@@ -72,7 +75,7 @@ StatusWindow::MessageReceived(BMessage *msg) {
 		break;
 	case CURRENT_NOTIFY:
 		if (B_OK == msg->FindInt32("current", &p)) {
-			mStatus->SetValue(p / (float)mTotal);
+			mStatus->SetTo(p / (float)mTotal);
 		}
 		break;
 	case TEXT_NOTIFY:
@@ -81,7 +84,7 @@ StatusWindow::MessageReceived(BMessage *msg) {
 		}		
 		break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

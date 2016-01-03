@@ -23,18 +23,18 @@
 #ifndef STATUS_WINDOW_H
 #define STATUS_WINDOW_H
 
+#include <Entry.h>
 #include <Messenger.h>
-
-#include <MWindow.h>
 #include <Rect.h>
 #include <String.h>
-#include <MProgressBar.h>
-#include <MStringView.h>
-#include <Entry.h>
+#include <Window.h>
 
-class StatusWindow : public MWindow {
-	MStringView*  mText;
-	MProgressBar* mStatus;
+class BStringView;
+class BStatusBar;
+
+class StatusWindow : public BWindow {
+	BStringView*  mText;
+	BStatusBar* mStatus;
 	int           mTotal;
 	
 public:

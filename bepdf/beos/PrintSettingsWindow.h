@@ -24,29 +24,30 @@
 #define PRINT_SETTINGS_WINDOW_H
 
 // xpdf
-#include <XRef.h>
 #include <PDFDoc.h>
+#include <XRef.h>
 // BeOS
 #include <Looper.h>
-// layout
-#include <MPopup.h>
-#include <MRadioGroup.h>
-#include <MStringView.h>
-#include <MTextControl.h>
-#include <MWindow.h>
+#include <Window.h>
 
 #include "Settings.h"
 
-class PrintSettingsWindow : public MWindow {
+class BTextControl;
+class BButton;
+class BStringView;
+class BPopUpMenu;
+class BGridLayout;
+
+class PrintSettingsWindow : public BWindow {
 	PDFDoc *mDoc;
 	BLooper *mLooper;
 	GlobalSettings *mSettings;
 	int32 mZoomValue;
-	MTextControl *mZoom;
+	BTextControl *mZoom;
 	
-	MButton      *mPrint;
-	MTextControl *mPage;
-	MStringView  *mWidth, 
+	BButton      *mPrint;
+	BTextControl *mPage;
+	BStringView  *mWidth, 
 	             *mHeight;
 	             
 	enum {
@@ -62,8 +63,9 @@ class PrintSettingsWindow : public MWindow {
 	
 	void GetPageSize(uint32 page);
 	
-	char* MakeLabel(BString& string, const char* text);
-	void AddItem(MPopup* popup, const char* label, uint32 what);
+	const char* MakeLabel(const char* text);
+	void AddItem(BPopUpMenu* popup, const char* label, uint32 what);
+	BPopUpMenu* MakePopup(const char *label, BGridLayout *layout, int32 &row);
 
 public:
 	enum {

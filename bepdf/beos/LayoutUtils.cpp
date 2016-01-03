@@ -19,47 +19,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+#include <stdio.h>
+
+#include <Control.h>
+#include <Window.h>
 
 #include "LayoutUtils.h"
-#include <be/interface/Window.h>
-#include <be/interface/Control.h>
-#include <VGroup.h>
-#include <HGroup.h>
-#include <Space.h>
-
-static minimax maximum(0, 0, 10e10, 10e10, 100);
-static minimax border(3, 3, 3, 3, 0);
-static minimax separator(2, 2, 2, 2, 0);
-
-minimax GetFiller() {
-	return maximum;
-}
-
-minimax GetBorder() {
-	return border;
-}
-
-minimax GetSeparator() {
-	return separator;
-}
-
-MGroup * AlignTop(MView *view) {
-	return new VGroup(view, new Space(maximum), 0);
-}
-
-MGroup * AlignBottom(MView *view) {
-	return new VGroup(new Space(maximum), view, 0);
-}
-
-MGroup * AlignLeft(MView *view) {
-	return new HGroup(view, new Space(maximum), 0);
-}
-
-MGroup * AlignRight(MView *view) {
-	return new HGroup(new Space(maximum), view, 0);
-}
-
-#include <stdio.h>
 
 typedef struct {
 	BListItem **items;
@@ -172,14 +137,14 @@ bool IsOn(BMessage *msg) {
 }
 
 // Implementation of TextView
-TextView::TextView(minimax size)
-	: MTextView(size)
+TextView::TextView(const char *name)
+	: BTextView(name)
 {
 	InitColors();
 }
 
 TextView::TextView(BMessage* msg)
-	: MTextView(msg)
+	: BTextView(msg)
 {
 	InitColors();
 }

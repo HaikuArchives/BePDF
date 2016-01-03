@@ -23,22 +23,10 @@
 #ifndef LAYOUT_UTILS_H
 #define LAYOUT_UTILS_H
 
-#include <be/app/MessageFilter.h>
-#include <layout.h>
-#include <MGroup.h>
-#include <MTextView.h>
-
-minimax GetFiller();
-minimax GetBorder();
-minimax GetSeparator();
-
-MGroup * AlignTop(MView *view);
-MGroup * AlignBottom(MView *view);
-MGroup * AlignLeft(MView *view);
-MGroup * AlignRight(MView *view);
-
-#include <be/interface/ListView.h>
-#include <be/interface/OutlineListView.h>
+#include <ListView.h>
+#include <MessageFilter.h>
+#include <OutlineListView.h>
+#include <TextView.h>
 
 void MakeEmpty(BListView *list);
 void MakeEmpty(BOutlineListView *list);
@@ -73,10 +61,10 @@ bool IsOn(BMessage* msg);
 
 // Sends message (what = CHANGED_NOTIFY, "view" pointer to TextView) to
 // parent window if attached.
-class TextView : public MTextView {
+class TextView : public BTextView {
 public:
-	typedef MTextView inherited;
-	TextView(minimax size = 0);
+	typedef BTextView inherited;
+	TextView(const char *);
 	TextView(BMessage*);
 	
 	enum {

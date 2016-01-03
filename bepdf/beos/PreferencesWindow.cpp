@@ -20,22 +20,27 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <be/storage/Directory.h>
-#include <be/storage/Entry.h>
-#include <be/storage/Path.h>
-#include <be/interface/MenuItem.h>
-
 // xpdf
 #include <GlobalParams.h>
 
-#include <layout-all.h>
+#include <Box.h>
+#include <CheckBox.h>
+#include <Directory.h>
+#include <Entry.h>
+#include <LayoutBuilder.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <ObjectList.h>
+#include <Path.h>
+#include <PopUpMenu.h>
+#include <RadioButton.h>
+#include <ScrollView.h>
+#include <StringView.h>
 
 #include "BepdfApplication.h"
 #include "LayoutUtils.h"
 #include "PreferencesWindow.h"
 #include "StringLocalization.h"
-
-static minimax maximum(0, 0, 10e10, 10e10, 100);
 
 void PreferencesWindow::UpdateWorkspace() {
 	GlobalSettings* settings = gApp->GetSettings();
@@ -68,7 +73,7 @@ void PreferencesWindow::SetupView() {
 	
 	GlobalSettings* settings = gApp->GetSettings();
 	sprintf(workspace, "%d", (int)settings->GetWorkspace());
-	mPreferences = new MOutlineListView();
+	mPreferences = new BOutlineListView("mPreferences");
 
 	BListItem *item;
 	mPreferences->AddItem(new BStringItem(TRANSLATE("Document")));
@@ -83,73 +88,142 @@ void PreferencesWindow::SetupView() {
 		mPreferences->AddItem(new BStringItem(TRANSLATE("Language")));
 	}
 	mPreferences->SetSelectionMessage(new BMessage(PREFERENCE_SELECTED));
+	mPreferences->SetExplicitMinSize(BSize(200, 0));
 
-	MTextControl* author = NULL;
-	
-	mLayers = new LayeredGroup(
-		// Document
-		new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Document"),
-			AlignTop(new VGroup(
-				new MCheckBox(TRANSLATE("Restore Page Number"), new BMessage(RESTORE_PAGE_NO_CHANGED), NULL, settings->GetRestorePageNumber()),
-				new MCheckBox(TRANSLATE("Restore Window Position and Size"), new BMessage(RESTORE_WINDOW_FRAME_CHANGED), NULL, settings->GetRestoreWindowFrame()),
-				mOpenInWorkspace = new MPopup(TRANSLATE("Open in Workspace:"), NULL),
-				author = new MTextControl(TRANSLATE("Author"), (char*)settings->GetAuthor(), new BMessage(AUTHOR_CHANGED)),
-			0))				
-		),
+	BGroupLayout *prefBox = BLayoutBuilder::Group<>(B_HORIZONTAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(mPreferences);
 
-		// Display
-		AlignTop(new VGroup(
-			new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Fullscreen Mode"), 
-				AlignTop(mDisplay[DISPLAY_FULLSCREEN] = new MRadioGroup(new BMessage(QUASI_FULLSCREEN_MODE_CHANGED),
-					TRANSLATE("Show Document view only"),
-					TRANSLATE("Show Toolbar, Statusbar and Scrollbars too"),
-					0))
-			),
-			new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Selection Rectangle"), 
-				AlignTop(mDisplay[DISPLAY_FILLED_SELECTION] = new MRadioGroup(new BMessage(FILLED_SELECTION_CHANGED),
-					TRANSLATE("Filled Rectangle"),
-					TRANSLATE("Stroked Rectangle"),
-					0))
-			),
-			new MCheckBox(TRANSLATE("Invert vertical mouse scrolling"), new BMessage(INVERT_VERTICAL_SCROLLING_CHANGED), NULL, settings->GetInvertVerticalScrolling()),
-			0)	
-		),
-		
-		// FreeType 2
-		new MBorder(M_LABELED_BORDER, 5, TRANSLATE("FreeType 2"),
-			AlignTop(new VGroup(
-				new MCheckBox(TRANSLATE("Hinting"), new BMessage(HINTING_CHANGED), NULL, settings->GetHinting()),
-				0)
-			)
-		),
-		
-		// Asian Fonts
-		new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Asian Fonts"),
-			BuildAsianFontsView()
-		),
-		
-		// localization
-		new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Language"),
-			new VGroup(
-				new MScrollView ( mList = new MListView(), false, true),
-				new MStringView(TRANSLATE("Will take effect at next program launch."), B_ALIGN_LEFT, minimax(10, 10, 65536, 40, 0.10)),
-				0)),
-		0);
+	BBox *preferences = new BBox("preferences");
+	preferences->SetLabel(TRANSLATE("Preferences"));
+	preferences->AddChild(prefBox->View());
+
+	BCheckBox *pageNumber = new BCheckBox("pageNumber",
+		TRANSLATE("Restore Page Number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
+	pageNumber->SetValue(settings->GetRestorePageNumber());
+
+	BCheckBox *windowPos = new BCheckBox("windowPos",
+		TRANSLATE("Restore Window Position and Size"),
+		new BMessage(RESTORE_WINDOW_FRAME_CHANGED));
+	windowPos->SetValue(settings->GetRestoreWindowFrame());
+
+	BPopUpMenu *openMenu = new BPopUpMenu("openMenu");
+	mOpenInWorkspace = new BMenuField("mOpeninWorkspace",
+		TRANSLATE("Open in Workspace:"), openMenu);
+
+	BTextControl *author = new BTextControl("author", TRANSLATE("Author"),
+		settings->GetAuthor(), new BMessage(AUTHOR_CHANGED));
+
+	BGroupLayout *docBox = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(pageNumber)
+		.Add(windowPos)
+		.Add(mOpenInWorkspace)
+		.Add(author)
+		.AddGlue();
+
+	BBox *document = new BBox("document");
+	document->SetLabel("Document");
+	document->AddChild(docBox->View());
+
+	BRadioButton *docOnly = new BRadioButton("docOnly",
+		TRANSLATE("Show Document View only"),
+		new BMessage(QUASI_FULLSCREEN_MODE_OFF));
+	docOnly->SetValue(!(settings->GetQuasiFullscreenMode()));
+
+	BRadioButton *docMore = new BRadioButton("docMore",
+		TRANSLATE("Show Toolbar, Statusbar and Scrollbars too"),
+		new BMessage(QUASI_FULLSCREEN_MODE_ON));
+	docMore->SetValue(settings->GetQuasiFullscreenMode());
+
+	BGroupLayout *fsBox = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(docOnly)
+		.Add(docMore);
+
+	BBox *fullscreen = new BBox("fullscreen");
+	fullscreen->SetLabel(TRANSLATE("Fullscreen Mode"));
+	fullscreen->AddChild(fsBox->View());
+
+	BRadioButton *filledRect = new BRadioButton("filledRect",
+		TRANSLATE("Filled Rectangle"),
+		new BMessage(FILLED_SELECTION_FILLED));
+	filledRect->SetValue(settings->GetFilledSelection());
+
+	BRadioButton *strokedRect = new BRadioButton("strokedRect",
+		TRANSLATE("Stroked Rectangle"),
+		new BMessage(FILLED_SELECTION_STROKED));
+	strokedRect->SetValue(!(settings->GetFilledSelection()));
+
+	BGroupLayout *rectBox = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(filledRect)
+		.Add(strokedRect);
+
+	BBox *selection = new BBox("selection");
+	selection->SetLabel(TRANSLATE("Selection Rectangle"));
+	selection->AddChild(rectBox->View());
+
+	BCheckBox *scrolling = new BCheckBox("scrolling",
+		TRANSLATE("Invert vertical mouse scrolling"),
+		new BMessage(INVERT_VERTICAL_SCROLLING_CHANGED));
+	scrolling->SetValue(settings->GetInvertVerticalScrolling());
+
+	BCheckBox *hinting = new BCheckBox("hinting", TRANSLATE("Hinting"),
+		new BMessage(HINTING_CHANGED));
+	hinting->SetValue(settings->GetHinting());
+
+	BGroupLayout *ftBox = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(hinting)
+		.AddGlue();
+
+	BBox *freetype = new BBox("freetype");
+	freetype->SetLabel(TRANSLATE("FreeType 2"));
+	freetype->AddChild(ftBox->View());
+
+	BBox *asian = new BBox("asian");
+	asian->SetLabel(TRANSLATE("Asian Fonts"));
+	asian->AddChild(BuildAsianFontsView());
+
+	mList = new BListView("mList");
+	BScrollView *langScroll = new BScrollView("langScroll", mList, 0, false,
+		true);
+
+	BStringView *restart = new BStringView("restart",
+		TRANSLATE("Will take effect at next program launch."));
+
+	BGroupLayout *langBox = BLayoutBuilder::Group<>(B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(langScroll)
+		.Add(restart);
+
+	BBox *languages = new BBox("languages");
+	languages->SetLabel(TRANSLATE("Language"));
+	languages->AddChild(langBox->View());
+
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(preferences)
+		.AddCards()
+			.Add(document)
+			.AddGroup(B_VERTICAL)
+				.Add(fullscreen)
+				.Add(selection)
+				.Add(scrolling)
+				.AddGlue()
+			.End()
+			.Add(freetype)
+			.Add(asian)
+			.Add(languages)
+			.GetLayout(&mLayers)
+		.End();
 
 	author->SetModificationMessage(new BMessage(AUTHOR_CHANGED));
-		
-	mView = new HGroup(
-		new MBorder(M_LABELED_BORDER, 5, TRANSLATE("Preferences"),
-			mPreferences
-		), 
-		mLayers, 
-		0);
 
-	AddChild(dynamic_cast<BView*>(mView));
+	mLayers->SetVisibleItem((int32)1);
+	mLayers->SetVisibleItem((int32)0);
 	mPreferences->Select(0);
-
-	mDisplay[DISPLAY_FULLSCREEN]->SetActive(settings->GetQuasiFullscreenMode() ? 1 : 0);
-	mDisplay[DISPLAY_FILLED_SELECTION]->SetActive(settings->GetFilledSelection() ? 0 : 1);
 
 	// localization
 	BPath path(*gApp->GetAppPath()); path.Append("locale");
@@ -184,24 +258,20 @@ void PreferencesWindow::SetupView() {
 
 	BuildWorkspaceMenu(mOpenInWorkspace->Menu());
 	UpdateWorkspace();
+	ResizeToPreferred();
 }
 
-static int compareMPopupLabels(const void* p1, const void* p2) {
-	const MPopup** popup1 = (const MPopup**)p1;
-	const MPopup** popup2 = (const MPopup**)p2;
-	return strcmp((*popup1)->Label(), (*popup2)->Label());
+static int comparePopupLabels(const BMenuField* p1,
+	const BMenuField* p2) {
+	return strcmp(p1->Label(), p2->Label());
 }
 
-MView* PreferencesWindow::BuildAsianFontsView() {
+BView* PreferencesWindow::BuildAsianFontsView() {
 	if (mDisplayCIDFonts->GetSize() == 0) {
-		return new VGroup();
+		return new BView("languages", 0);
 	}
-	
-	BList fonts;
-	// TODO check who deletes dividable
-	MDividable* dividable = new MDividable();
-	dividable->labelwidth = 0;
 
+	BObjectList<BMenuField> menus;
 	for (int32 index = 0; index < mDisplayCIDFonts->GetSize(); index ++) {
 		BString name;
 		BString file;
@@ -210,36 +280,35 @@ MView* PreferencesWindow::BuildAsianFontsView() {
 		
 		BString label(TRANSLATE(name.String()));
 		label << ":";
-		MPopup* popup = new MPopup((char*)label.String(), NULL);
+		BPopUpMenu *popupInner = new BPopUpMenu("");
+		BMenuField *popup = new BMenuField("popup", label.String(), popupInner);
 		FillFontFileMenu(popup, name.String(), file.String());
 
-		// make all labels same size
-		popup->DivideSameAs(dividable);
-		float width = be_plain_font->StringWidth(label.String()) + 5;
-		if (dividable->labelwidth < width) {
-			dividable->labelwidth = width;
-		}
-		
-		fonts.AddItem(popup);
+		menus.AddItem(popup);
 	}
-	
+
 	// sort MPopup alphabetically by label
-	fonts.SortItems(compareMPopupLabels);
-	
-	// add popup menus into vertical group
-	VGroup* group = new VGroup();
+	menus.SortItems(comparePopupLabels);
 
-	for (int32 index = 0; index < fonts.CountItems(); index ++) {
-		group->AddChild((MPopup*)fonts.ItemAt(index));
+	BStringView *restart = new BStringView("restart",
+		TRANSLATE("Will take effect at next program launch."));
+
+	// add popup menus into vertical group
+	BGridLayout *grid = new BGridLayout();
+	BView *ret = new BView("ret" , 0);
+	BLayoutBuilder::Group<>(ret, B_VERTICAL)
+		.SetInsets(B_USE_SMALL_INSETS)
+		.Add(grid)
+		.AddGlue()
+		.Add(restart);
+
+	for (int32 index = 0; index < menus.CountItems(); index ++) {
+		BMenuField *item = menus.ItemAt(index);
+		grid->AddItem(item->CreateLabelLayoutItem(), 0, index);
+		grid->AddItem(item->CreateMenuBarLayoutItem(), 1, index);
 	}
 
-	group->AddChild(new Space(GetFiller()));
-	
-	group->AddChild(new MStringView(
-		TRANSLATE("Will take effect at next program launch."), 
-		B_ALIGN_LEFT));
-	
-	return group;
+	return ret;
 }
 
 static bool endsWith(const BString& string, const char* suffix) {
@@ -344,16 +413,14 @@ void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which 
 
 void PreferencesWindow::ClearView() {
 	MakeEmpty(mList);
-	RemoveChild(dynamic_cast<BView*>(mView));
-	delete mView; mView = NULL;
 }
 
 PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper) 
-	: MWindow(BRect(0, 0, 100, 100)
+	: BWindow(BRect(0, 0, 100, 100)
 		, TRANSLATE("Preferences")
 		, B_TITLED_WINDOW_LOOK, 
 		B_FLOATING_APP_WINDOW_FEEL, 
-		0)
+		B_AUTO_UPDATE_SIZE_LIMITS)
 	, mLooper(looper)
 	, mSettings(settings)
 {	
@@ -385,16 +452,6 @@ public:
 	  BStringItem(name), mFileName(filename) { }
 	const char* FileName() const { return mFileName.String(); }
 };
-
-bool PreferencesWindow::FindRadioGroup(MRadioGroup *group, bool &displayPrinter, int32 &index) {
-	for (int i = 0; i < DISPLAY_NUM; i++) {
-		if (group == mDisplay[i]) {
-			displayPrinter = true; index = i;
-			return true;
-		}
-	} 
-	return false;
-}
 
 bool PreferencesWindow::DecodeMessage(BMessage *msg, int16 &kind, int16 &which, int16 &index) {
 	// assert msg->what == PREFERENCES_CHANGED_NOTIFY
@@ -439,14 +496,12 @@ void PreferencesWindow::DisplayCIDFontSelected(BMessage* msg) {
 }
 
 void PreferencesWindow::MessageReceived(BMessage *msg) {
-	void *ptr;
-	int32 index, which;
-	bool display;
+	int32 index;
 	
 	switch (msg->what) {
 	case PREFERENCE_SELECTED:
 		if (mPreferences->FullListCurrentSelection() >= 0) {
-			mLayers->ActivateLayer(mPreferences->FullListCurrentSelection());
+			mLayers->SetVisibleItem(mPreferences->FullListCurrentSelection());
 		}
 		break;
 	case LANGUAGE_SELECTED:
@@ -464,10 +519,11 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 		break;
 	case RESTORE_WINDOW_FRAME_CHANGED: mSettings->SetRestoreWindowFrame(IsOn(msg));
 		break;
-	case QUASI_FULLSCREEN_MODE_CHANGED: 
-		if (B_OK == msg->FindInt32("index", &index)) {
-			gApp->GetSettings()->SetQuasiFullscreenMode(index == 1 ? true : false);
-		}
+	case QUASI_FULLSCREEN_MODE_ON:
+		gApp->GetSettings()->SetQuasiFullscreenMode(true);
+		break;
+	case QUASI_FULLSCREEN_MODE_OFF:
+		gApp->GetSettings()->SetQuasiFullscreenMode(false);
 		break;
 	case WORKSPACE_CHANGED: {
 		int32 index;
@@ -501,21 +557,19 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 			(char*)(IsOn(msg) ? "yes" : "no"));
 		NotifyRestartDoc();
 		break;
-	default:
-		if ((B_OK == msg->FindPointer("radio", &ptr)) 
-			&& (B_OK == msg->FindInt32("index", &index))
-			&& FindRadioGroup((MRadioGroup*)ptr, display, which)) {
-	
-			BMessage msg(CHANGE_NOTIFY);
-			msg.AddInt16("kind", display ? 0 : 1);
-			msg.AddInt16("which", which);
+	case FILLED_SELECTION_FILLED:
+	case FILLED_SELECTION_STROKED: {
+		BMessage nmsg(CHANGE_NOTIFY);
+		nmsg.AddInt16("kind", DISPLAY);
+		nmsg.AddInt16("which", DISPLAY_FILLED_SELECTION);
 
-			msg.AddInt16("index", index);
-			mLooper->PostMessage(&msg);
+		nmsg.AddInt16("index", msg->what == FILLED_SELECTION_FILLED ? 0 : 1);
+		mLooper->PostMessage(&nmsg);
 		}
+		break;
 	}
 	
-	MWindow::MessageReceived(msg);
+	BWindow::MessageReceived(msg);
 }
 
 bool PreferencesWindow::QuitRequested() {
@@ -529,10 +583,10 @@ bool PreferencesWindow::QuitRequested() {
 
 void PreferencesWindow::FrameMoved(BPoint p) {
 	mSettings->SetPrefsWindowPosition(p);
-	MWindow::FrameMoved(p);
+	BWindow::FrameMoved(p);
 }
 
 void PreferencesWindow::FrameResized(float w, float h) {
 	mSettings->SetPrefsWindowSize(w, h);
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 }

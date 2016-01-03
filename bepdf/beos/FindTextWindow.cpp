@@ -20,68 +20,80 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include "FindTextWindow.h"
 #include <stdio.h>
-#include <layout-all.h>
+
+#include <Box.h>
+#include <Button.h>
+#include <CheckBox.h>
+#include <LayoutBuilder.h>
+#include <StringView.h>
+#include <TextControl.h>
+
+#include "FindTextWindow.h"
 #include "LayoutUtils.h"
-#include "TextConversion.h"
 #include "StringLocalization.h"
+#include "TextConversion.h"
 
 FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text, 
 	BLooper *looper) 
-	: MWindow(BRect(0, 0, 0, 0), 
+	: BWindow(BRect(0, 0, 0, 0), 
 		TRANSLATE("Find Text"), 
 		B_FLOATING_WINDOW_LOOK, 
 		B_MODAL_APP_WINDOW_FEEL, 
-		B_NOT_ZOOMABLE),
+		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS),
 		mLooper(looper), 
 		mSettings(settings) 
 {
-	
+
 	mSearching = false;
-	
+
 	MoveTo(settings->GetFindWindowPosition());
 	float w, h;
 	settings->GetFindWindowSize(w, h);
 	ResizeTo(w, h);
-	
+
 	AddCommonFilter(new EscapeMessageFilter(this, FIND_ABORT_MSG));
 	
-	mText = new MTextControl(TRANSLATE("Find: "), (char*)text, NULL);
-	mText->SetDivider(25);
+	mText = new BTextControl("mText", TRANSLATE("Find: "), text, NULL);
 	mText->TextView()->DisallowChar(B_ESCAPE);
 
-	mPage = new MStringView(TRANSLATE("Page:"));
+	mPage = new BStringView("mPage", TRANSLATE("Page:"));
 
-	mFindStop = new MButton(TRANSLATE("Find"), new BMessage(FIND_MSG));
+	mFindStop = new BButton("mFindStop", TRANSLATE("Find"),
+		new BMessage(FIND_MSG));
 
-	mIgnoreCase = new MCheckBox(TRANSLATE("Ignore Case"), new BMessage(FIND_IGNORE_CASE_MSG), NULL, settings->GetFindIgnoreCase());
-	mBackward = new MCheckBox(TRANSLATE("Search Backwards"), new BMessage(FIND_BACKWARD_MSG), NULL, settings->GetFindBackward());
+	mIgnoreCase = new BCheckBox("mIgnoreCase", TRANSLATE("Ignore Case"),
+		new BMessage(FIND_IGNORE_CASE_MSG));
+	mIgnoreCase->SetValue(settings->GetFindIgnoreCase());
 
-	MGroup *view = new HGroup(
-		new Space(GetBorder()),
-		
-		new VGroup(
-			new Space(GetBorder()),
-			mText,
-			mIgnoreCase,
-			mBackward,
-			mPage,
-			GetFiller(),
-			0),
-		
-		new Space(GetSeparator()),
-		
-		new VGroup(
-			new Space(GetBorder()),
-			mFindStop,
-			new Space(GetBorder()),
-			0),
-		
-		new Space(GetBorder()),
-		0);
+	mBackward = new BCheckBox("mBackward", TRANSLATE("Search Backwards"),
+		new BMessage(FIND_BACKWARD_MSG));
+	mBackward->SetValue(settings->GetFindBackward());
 
-	AddChild(dynamic_cast<BView*>(view));
+	BGroupLayout *optBox = BLayoutBuilder::Group<>(B_HORIZONTAL)
+		.SetInsets(B_USE_SMALL_SPACING)
+		.AddGroup(B_VERTICAL)
+			.Add(mIgnoreCase)
+			.Add(mBackward)
+		.End()
+		.AddGlue();
+
+	BBox *options = new BBox("options");
+	options->SetLabel(TRANSLATE("Options"));
+	options->AddChild(optBox->View());
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(mText)
+		.AddGroup(B_HORIZONTAL)
+			.Add(options)
+			.AddGroup(B_VERTICAL)
+				.Add(mFindStop)
+				.Add(mPage)
+				.AddGlue()
+			.End()
+		.End();
+
 	SetDefaultButton(mFindStop);
 
 	mText->MakeFocus();
@@ -89,12 +101,12 @@ FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 }
 
 void FindTextWindow::FrameMoved(BPoint point) {
-	MWindow::FrameMoved(point);
+	BWindow::FrameMoved(point);
 	mSettings->SetFindWindowPosition(point);
 }
 
 void FindTextWindow::FrameResized(float w, float h) {
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 	mSettings->SetFindWindowSize(w, h);
 }
 
@@ -153,7 +165,7 @@ void FindTextWindow::MessageReceived(BMessage *msg) {
 		PostMessage(B_QUIT_REQUESTED);
 		break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

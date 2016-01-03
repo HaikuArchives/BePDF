@@ -20,58 +20,53 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include "PrintingProgressWindow.h"
 #include <stdio.h>
-#include <layout-all.h>
+
+#include <Button.h>
+#include <LayoutBuilder.h>
+#include <StatusBar.h>
+#include <StringView.h>
+
+#include "PrintingProgressWindow.h"
 #include "StringLocalization.h"
 
 PrintingProgressWindow::PrintingProgressWindow(const char *text, BRect aRect, int32 pages) 
-	: MWindow(aRect, TRANSLATE("BePDF Printing"), 
+	: BWindow(aRect, TRANSLATE("BePDF Printing"), 
 		B_TITLED_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL,
-		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE) {
+		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE|B_AUTO_UPDATE_SIZE_LIMITS) {
 	mPages = pages; mPrintedPages = 0;
 	mState = OK;
 	
 	BString s(TRANSLATE("BePDF printing document: "));
-	s += text;
+	s << text;
 	// center window
-	aRect.OffsetBy(aRect.Width() / 2, aRect.Height() / 2);
-	float width = 300, height = 60;
-	aRect.SetRightBottom(BPoint(aRect.left + width, aRect.top + height));
-	aRect.OffsetBy(-aRect.Width() / 2, -aRect.Height() / 2);
-	MoveTo(aRect.left, aRect.top);
-	ResizeTo(width, height);
 
-	MStringView *stringView = new MStringView(s.String());
+	BStringView *stringView = new BStringView("stringView", s.String());
 
-	mPageString = new MStringView(TRANSLATE("Page:"));
+	mPageString = new BStringView("mPageString", TRANSLATE("Page:"));
 
-	mProgress = new MProgressBar(this);
-	
-	mStop = new MButton(TRANSLATE("Stop"), new BMessage('STOP'));
-	mAbort = new MButton(TRANSLATE("Abort"), new BMessage('ABRT'));
+	mProgress = new BStatusBar("mProgress");
+	mProgress->SetMaxValue(1);
 
+	mStop = new BButton("mStop", TRANSLATE("Stop"), new BMessage('STOP'));
+	mAbort = new BButton("mAbort", TRANSLATE("Abort"), new BMessage('ABRT'));
 
-	MGroup *view = new HGroup(
-		new Space(minimax(5, 0, 5, 0, -1)),
-		new VGroup(
-			stringView,
-			mPageString,
-			new Space(minimax(0, 5, 0, 5)),
-			mProgress,
-			new Space(minimax(0, 5, 0, 5)),
-			// new MBViewWrapper(mProgress),
-			0),
-		new Space(minimax(5, 0, 5, 0, -1)),
-		new VGroup(
-			mStop,
-			mAbort,
-			0),
-		new Space(minimax(2, 0, 2, 0, -1)),
-		0);
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_VERTICAL)
+			.Add(stringView)
+			.Add(mPageString)
+			.Add(mProgress)
+		.End()
+		.AddGroup(B_VERTICAL)
+			.Add(mStop)
+			.Add(mAbort)
+		.End();
 
-	AddChild(dynamic_cast<BView*>(view));
+	ResizeToPreferred();
+	CenterOnScreen();
+
 	SetDefaultButton(mStop);
 	Show();
 }
@@ -82,7 +77,7 @@ void PrintingProgressWindow::SetPage(int32 page) {
 	Lock();
 	mPageString->SetText(buffer);
 	mPrintedPages ++;
-	mProgress->SetValue(mPrintedPages / (float)mPages);
+	mProgress->SetTo(mPrintedPages / (float)mPages);
 	Unlock();
 }
 

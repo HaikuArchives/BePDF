@@ -22,22 +22,23 @@
 
 #include <stdio.h>
 // BeOS
-#include <be/interface/InterfaceDefs.h>
-#include <be/interface/Window.h>
-#include <be/interface/ListItem.h>
-#include <be/interface/OutlineListView.h>
-#include <be/interface/ScrollView.h>
-// liblayout
-#include <layout-all.h>
+#include <Button.h>
+#include <InterfaceDefs.h>
+#include <LayoutBuilder.h>
+#include <ListItem.h>
+#include <OutlineListView.h>
+#include <ScrollView.h>
+#include <TextControl.h>
+#include <Window.h>
 // xpdf
-#include <Object.h>
 #include <Link.h>
+#include <Object.h>
 // BePDF
-#include "OutlinesWindow.h"
-#include "LayoutUtils.h"
-#include "TextConversion.h"
-#include "StringLocalization.h"
 #include "BePDF.h"
+#include "LayoutUtils.h"
+#include "StringLocalization.h"
+#include "TextConversion.h"
+#include "OutlinesWindow.h"
 
 // Implementation of OutlineStyle
 
@@ -563,10 +564,10 @@ void OutlinesView::MessageReceived(BMessage *msg) {
 // BookmarkWindow
 
 BookmarkWindow::BookmarkWindow(int pageNum, const char* title, BRect aRect, BLooper *looper) 
-	: MWindow(aRect, TRANSLATE("Edit title for bookmark"), 
+	: BWindow(aRect, TRANSLATE("Edit title for bookmark"), 
 		B_TITLED_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL, 
-		B_NOT_ZOOMABLE) {
+		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS) {
 	mLooper  = looper;
 	mPageNum = pageNum;
 	
@@ -581,20 +582,15 @@ BookmarkWindow::BookmarkWindow(int pageNum, const char* title, BRect aRect, BLoo
 	MoveTo(aRect.left, aRect.top);
 	ResizeTo(width, height);
 	
-	mTitle = new MTextControl(NULL, (char*)title, NULL);
-	mTitle->SetDivider(70);
+	mTitle = new BTextControl("mTitle", "", title, NULL);
 
-	MButton *button = new MButton(TRANSLATE("OK"), new BMessage('OK'), NULL, minimax(60, 30, 100, 40, 1));
+	BButton *button = new BButton("button", TRANSLATE("OK"), new BMessage('OK'));
+	
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(mTitle)
+		.Add(button);
 
-	MGroup *view = new HGroup(
-		new Space(minimax(5, 0, 5, 0, 1)),
-		mTitle,
-		new Space(minimax(10, 0, 10, 0, 1)), 
-		button, 
-		new Space(minimax(5, 0, 5, 0, 1)),
-		0);
-
-	AddChild(dynamic_cast<BView*>(view));
 	SetDefaultButton(button);
 
 	mTitle->MakeFocus();
@@ -618,7 +614,7 @@ void BookmarkWindow::MessageReceived(BMessage *msg) {
 		Quit();
 		break; }
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

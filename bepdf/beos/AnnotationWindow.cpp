@@ -20,57 +20,75 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <MenuItem.h>
 #include <stdio.h>
-#include <layout-all.h>
-#include "LayoutUtils.h"
-#include "TextConversion.h"
-#include "StringLocalization.h"
+
+#include <LayoutBuilder.h>
+#include <MenuField.h>
+#include <MenuItem.h>
+#include <PopUpMenu.h>
+#include <ScrollView.h>
+#include <StringView.h>
 
 #include "AnnotationWindow.h"
+#include "LayoutUtils.h"
+#include "StringLocalization.h"
+#include "TextConversion.h"
 
 AnnotationWindow::AnnotationWindow(GlobalSettings *settings,  
 	BLooper *looper) 
-	: MWindow(BRect(0, 0, 100, 100), TRANSLATE("Annotation"), 
-		B_FLOATING_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL, 0)
+	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("Annotation"), 
+		B_FLOATING_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL,
+		B_AUTO_UPDATE_SIZE_LIMITS)
 	, mSendNotification(true)
 	, mLooper(looper)
 	, mSettings(settings)
 	, mAnnotation(NULL) {
 	
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
-	
-	VGroup *group = new VGroup(
-		new HGroup(
-			new MStringView(TRANSLATE("Title:")),
-			mLabel = new MStringView("", B_ALIGN_LEFT, minimax(0, 0, 60000, 60000, 1000)),
-			0),
-		new HGroup(
-			new MStringView(TRANSLATE("Date:")),
-			mDate = new MStringView("", B_ALIGN_LEFT, minimax(0, 0, 60000, 60000, 1000)),
-			0),
-		new HGroup(
-			mFont = new MPopup(TRANSLATE("Font:"), NULL),
-			mSize = new MPopup(TRANSLATE("Size:"), NULL),			
-			0),
-		new HGroup(
-			mAlignment = new MPopup(TRANSLATE("Align:"), NULL),
-			0),
-		new MScrollView(mContents = new TextView(minimax(0, 0, 65535, 65535, 100)), false, true),
-		NULL
-	);
+
+	BStringView *titleStatic = new BStringView("titleStatic",
+		TRANSLATE("Title:"));
+	mLabel = new BStringView("mLabel", "");
+
+	BStringView *dateStatic = new BStringView("dateStatic", TRANSLATE("Date:"));
+	mDate = new BStringView("mDate", "");
+
+	BPopUpMenu *alignmentInner = new BPopUpMenu("");
+	mAlignment = new BMenuField("mAlignment", TRANSLATE("Align:"), alignmentInner);
+
+	BPopUpMenu *fontInner = new BPopUpMenu("");
+	mFont = new BMenuField("mFont", TRANSLATE("Font:"), fontInner);
+
+	BPopUpMenu *sizeInner = new BPopUpMenu("");
+	mSize = new BMenuField("mSize", TRANSLATE("Size:"), sizeInner);
+
+	mContents = new TextView("mContents");
+	BScrollView *scroll = new BScrollView("scroll", mContents, 0, false, true);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGrid()
+			.Add(titleStatic, 0, 0)
+			.Add(mLabel, 1, 0)
+			.Add(dateStatic, 0, 1)
+			.Add(mDate, 1, 1)
+			.AddMenuField(mFont, 0, 2)
+			.AddMenuField(mSize, 0, 3)
+			.AddMenuField(mAlignment, 0, 4)
+		.End()
+		.Add(scroll);
+
 	PopulateFontMenu(mFont->Menu());
 	PopulateSizeMenu(mSize->Menu());
 	PopulateAlignmentMenu(mAlignment->Menu());
 	MakeEditable(false);
-	AddChild(dynamic_cast<BView*>(group));
 
 	MoveTo(settings->GetAnnotationWindowPosition());
 	float w, h;
 	settings->GetAnnotationWindowSize(w, h);
 	ResizeTo(w, h);
 	mContents->MakeFocus(true);
-	
+
 	Show();
 }
 
@@ -120,12 +138,12 @@ void AnnotationWindow::PopulateAlignmentMenu(BMenu* menu) {
 void AnnotationWindow::FrameMoved(BPoint point) {
 	mWindowPos = point;
 	mSettings->SetAnnotationWindowPosition(point);
-	MWindow::FrameMoved(point);
+	BWindow::FrameMoved(point);
 }
 
 void AnnotationWindow::FrameResized(float w, float h) {
 	mSettings->SetAnnotationWindowSize(w, h);
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 }
 
 
@@ -189,7 +207,7 @@ void AnnotationWindow::MessageReceived(BMessage *msg) {
 			Notify(CHANGE_NOTIFY);
 			break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

@@ -20,46 +20,72 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <layout-all.h>
+
 #include <kernel/scheduler.h>
+
+#include <Button.h>
+#include <CheckBox.h>
+#include <LayoutBuilder.h>
+#include <ScrollView.h>
+
 #include "LayoutUtils.h"
-#include "TextConversion.h"
 #include "StringLocalization.h"
-
-
+#include "TextConversion.h"
 #include "TraceWindow.h"
 
 TraceWindow::TraceWindow(GlobalSettings *settings) 
-	: MWindow(BRect(0, 0, 100, 100), TRANSLATE("Error Messages"), 
-		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, 0)
+	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("Error Messages"), 
+		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS)
 	, mSettings(settings)
 	, mAutoOpen(settings->GetTraceAutoOpen())
 	, mShowStdout(settings->GetTraceShowStdout())
 	, mShowStderr(settings->GetTraceShowStderr())
 {
-	
+
 	AddCommonFilter(new EscapeMessageFilter(this, HIDE_MSG));
-	
-	VGroup *group = new VGroup(
-		new MScrollView(mOutput = new MTextView(minimax(0, 0, 65535, 65535, 100)), false, true),
-		new HGroup(
-			new MCheckBox(TRANSLATE("Auto Open"), new BMessage(AUTO_OPEN_MSG), NULL, mAutoOpen),
-			new MCheckBox(TRANSLATE("Floating"), new BMessage(FLOATING_MSG), NULL, mSettings->GetTraceFloating()),
-			mStdoutCB = new MCheckBox(TRANSLATE("stdout"), new BMessage(SHOW_STDOUT_MSG), NULL, mShowStdout),
-			mStderrCB = new MCheckBox(TRANSLATE("stderr"), new BMessage(SHOW_STDERR_MSG), NULL, mShowStderr),
-			new MButton(TRANSLATE("Clear"), new BMessage(CLEAR_MSG)),
-			NULL),
-		NULL
-	);
+
+	mOutput = new BTextView("mOutput");
+	mOutput->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+	BScrollView *outScroll = new BScrollView("outScroll", mOutput, 0, false, true);
+
+	BCheckBox *autoOpen = new BCheckBox("autoOpen", TRANSLATE("Auto Open"),
+		new BMessage(AUTO_OPEN_MSG));
+	autoOpen->SetValue(mAutoOpen);
+
+	BCheckBox *floating = new BCheckBox("floating", TRANSLATE("Floating"),
+		new BMessage(FLOATING_MSG));
+	floating->SetValue(mSettings->GetTraceFloating());
+
+	mStdoutCB = new BCheckBox("mStdoutCB", TRANSLATE("stdout"),
+		new BMessage(SHOW_STDOUT_MSG));
+	mStdoutCB->SetValue(mShowStdout);
+
+	mStderrCB = new BCheckBox("mStderrCB", TRANSLATE("stderr"),
+		new BMessage(SHOW_STDERR_MSG));
+	mStderrCB->SetValue(mShowStderr);
+
+	BButton *clear = new BButton("clear", TRANSLATE("Clear"),
+		new BMessage(CLEAR_MSG));
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(outScroll)
+		.AddGroup(B_HORIZONTAL)
+			.Add(autoOpen)
+			.Add(floating)
+			.Add(mStdoutCB)
+			.Add(mStderrCB)
+			.AddGlue()
+			.Add(clear);
+
 	mOutput->MakeEditable(false);
 	mOutput->SetStylable(true);
 	mStdoutCB->SetHighColor(0, 0, 255);
 	mStderrCB->SetHighColor(255, 0, 0);
 	EnableCheckboxes();
-	AddChild(dynamic_cast<BView*>(group));
 
 	MoveTo(settings->GetTraceWindowPosition());
 	float w, h;
@@ -87,12 +113,12 @@ void TraceWindow::UpdateWindowLookAndFeel() {
 void TraceWindow::FrameMoved(BPoint point) {
 	mWindowPos = point;
 	mSettings->SetTraceWindowPosition(point);
-	MWindow::FrameMoved(point);
+	BWindow::FrameMoved(point);
 }
 
 void TraceWindow::FrameResized(float w, float h) {
 	mSettings->SetTraceWindowSize(w, h);
-	MWindow::FrameResized(w, h);
+	BWindow::FrameResized(w, h);
 }
 
 bool TraceWindow::QuitRequested() {
@@ -153,7 +179,7 @@ void TraceWindow::MessageReceived(BMessage* msg) {
 		if (!IsHidden()) Hide();
 		break;
 	default:
-		MWindow::MessageReceived(msg);
+		BWindow::MessageReceived(msg);
 	}
 }
 

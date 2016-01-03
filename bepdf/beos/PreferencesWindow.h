@@ -24,24 +24,24 @@
 #define PREFERENCES_WINDOW_H
 
 // xpdf
-#include <XRef.h>
 #include <PDFDoc.h>
+#include <XRef.h>
 // BeOS
 #include <FindDirectory.h>
 #include <Looper.h>
-// layout
-#include <MWindow.h>
-#include <MRadioGroup.h>
-#include <MListView.h>
-#include <MOutlineListView.h>
-#include <LayeredGroup.h>
-#include <MPopup.h>
-#include <MCheckBox.h>
+#include <Window.h>
 
 #include "DisplayCIDFonts.h"
 #include "Settings.h"
 
-class PreferencesWindow : public MWindow {
+class BView;
+class BMenuField;
+class BOutlineListView;
+class BRadioGroup;
+class BListView;
+class BCardLayout;
+
+class PreferencesWindow : public BWindow {
 public:
 	// message sent to mLooper has this fields:
 	enum {
@@ -80,8 +80,10 @@ private:
 		LANGUAGE_SELECTED             = 'LSel',
 		RESTORE_PAGE_NO_CHANGED       = 'RPch',
 		RESTORE_WINDOW_FRAME_CHANGED  = 'RWch',
-		QUASI_FULLSCREEN_MODE_CHANGED = 'FSch',
-		FILLED_SELECTION_CHANGED      = 'FlSc',
+		QUASI_FULLSCREEN_MODE_ON      = 'FSc0',
+		QUASI_FULLSCREEN_MODE_OFF     = 'FSc1',
+		FILLED_SELECTION_FILLED       = 'FlS0',
+		FILLED_SELECTION_STROKED      = 'FlS1',
 		FONT_SELECTED                 = 'FtSl',
 		OPEN_IN_WORKSPACE_CHANGED     = 'OpWS',
 		WORKSPACE_CHANGED             = 'WSch',
@@ -90,25 +92,22 @@ private:
 		DISPLAY_CID_FONT_SELECTED     = 'DCFs',
 		HINTING_CHANGED               = 'Hint',
 	};
-	MView            *mView;
 	BLooper          *mLooper;
-	MOutlineListView *mPreferences;
-	LayeredGroup     *mLayers;
-	MRadioGroup      *mDisplay[DISPLAY_NUM_MAX];
+	BOutlineListView *mPreferences;
+	BCardLayout      *mLayers;
 	GlobalSettings   *mSettings;
-	MListView        *mList;
-	MPopup           *mOpenInWorkspace;
+	BListView        *mList;
+	BMenuField       *mOpenInWorkspace;
 	DisplayCIDFonts  *mDisplayCIDFonts;
 	BMessage          mFontMenuFields;
 		
 	void SetupView();
-	MView* BuildAsianFontsView();
+	BView* BuildAsianFontsView();
 	DisplayCIDFonts::Type GetType(const char* file);
 	void FillFontFileMenu(BMenuField* menuField, const char* name, const char* file);
 	void FillFontFileMenu(BMenuField* menuField, directory_which which, const char* name, const char* label, const char* file);
 	void DisplayCIDFontSelected(BMessage* msg);
 	void ClearView();
-	bool FindRadioGroup(MRadioGroup *group, bool &displayPrinter, int32 &index);
 	void BuildWorkspaceMenu(BMenu *menu);
 	void SelectMenuItem(int kind, BMessage* msg);
 	void Notify(uint32 what);
