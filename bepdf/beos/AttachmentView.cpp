@@ -4,6 +4,7 @@
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
  * 	 Copyright (C) 2013 waddlesplash.
+ *   Copyright (C) 2016 Adrián Arroyo Calle.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +31,8 @@
 #include <Region.h>
 #include <ScrollView.h>
 
-#include <CLVEasyItem.h>
+#include <private/interface/ColumnListView.h>
+#include <private/interface/ColumnTypes.h>
 
 // bepdf
 #include "Attachments.h"
@@ -56,75 +58,42 @@ enum {
 	kAdditionalVerticalBorder = 2
 };	
 
-static float gMinItemHeight = -1.0;
-
-static float GetMinItemHeight() {
-	if (gMinItemHeight == -1.0) {
-		// ColumnListView uses be_plain_font!
-		font_height height;
-		be_plain_font->GetHeight(&height);
-		gMinItemHeight = 2 * kAdditionalVerticalBorder
-			+ height.ascent + height.descent + height.leading;
-	}
-	return gMinItemHeight;
-}
-
 // Implementation of AttachmentItem
 
 AttachmentItem::AttachmentItem(FileSpec* fileSpec) 
-	: CLVEasyItem(0, 0, false, GetMinItemHeight())
+	: BRow()
 	, mFileSpec(fileSpec)
 {
 	BString fileName;
 	TextToUtf8(fileSpec->GetFileName(), &fileName);
-	SetColumnContent(0, fileName.String());
+	SetField(new BStringField(fileName.String()),0);
 	
 	BString description;
 	TextToUtf8(fileSpec->GetDescription(), &description);
-	SetColumnContent(1, description.String());
+	SetField(new BStringField(description.String()),1);
 }
 
 const char* AttachmentItem::Text() {
-	return GetColumnContentText(0);
-}
-
-int AttachmentItem::Compare(const CLVListItem* item1, const CLVListItem* item2, int32 keyColumn) {
-	AttachmentItem* pa = (AttachmentItem*)item1;
-	AttachmentItem* pb = (AttachmentItem*)item2;
-	return strcmp(pa->GetColumnContentText(keyColumn), pb->GetColumnContentText(keyColumn));
+	BStringField* field = GetField(0);
+	return field->String();
 }
 
 // AttachmentListView
-class AttachmentListView : public ColumnListView {
+class AttachmentListView : public BColumnListView {
 public:
 		AttachmentListView(GlobalSettings* settings, 
 						BRect frame,
-						CLVContainerView** container,
 						const char* name = NULL,
 						uint32 resizingMode = B_FOLLOW_LEFT | B_FOLLOW_TOP,
 						uint32 flags = B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
-						list_view_type type = B_SINGLE_SELECTION_LIST,
-						bool hierarchical = false,
-						bool horizontal = true,					
-						bool vertical = true,
-						bool scroll_view_corner = true,
-						border_style border = B_NO_BORDER,		
-						const BFont* labelFont = be_plain_font) 
-			: ColumnListView(frame, container, name, resizingMode, flags, type, 
-				hierarchical, horizontal, vertical, scroll_view_corner, border, labelFont)
+						border_style border = B_NO_BORDER,
+						bool horizontal = true) 
+			: BColumnListView(frame, name, resizingMode, flags, border, horizontal)
 			, mSettings(settings)
 		{
+			SetSelectionMode(B_MULTIPLE_SELECTION_LIST);
 		}
 		
-		void ColumnWidthChanged(int32 columnIndex, float newWidth) {
-			ColumnListView::ColumnWidthChanged(columnIndex, newWidth);
-			
-			if (columnIndex == 0) {
-				mSettings->SetAttachmentFileNameColumnWidth(newWidth);
-			} else if (columnIndex == 1) {
-				mSettings->SetAttachmentDescriptionColumnWidth(newWidth);
-			}
-		}
 private:
 	GlobalSettings* mSettings;
 };
@@ -189,22 +158,22 @@ AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *s
 	r.right -= B_V_SCROLL_BAR_WIDTH;
 	r.bottom -= B_H_SCROLL_BAR_HEIGHT;
 	
-	CLVContainerView* container;
 	mList = new AttachmentListView(settings,
-		r, &container, NULL, 
+		r, NULL, 
 		B_FOLLOW_ALL_SIDES,
-		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE, 
-		B_MULTIPLE_SELECTION_LIST, 
-		false, true, true, false, 
-		B_FANCY_BORDER);
-	mList->AddColumn(new CLVColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
-	mList->AddColumn(new CLVColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
-	mList->SetSortFunction(AttachmentItem::Compare);
-	AddChild(container);	
+		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
+		B_FANCY_BORDER,
+		true);
+	mList->AddColumn(new BStringColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
+	mList->AddColumn(new BStringColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
+	//mList->AddColumn(new CLVColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
+	//mList->AddColumn(new CLVColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
+	//mList->SetSortFunction(AttachmentItem::Compare);
+	//AddChild(container);	
 }
 
 AttachmentView::~AttachmentView() {
-	MakeEmpty(mList);
+	mList->Clear();
 }
 
 void AttachmentView::AttachedToWindow() {
@@ -283,7 +252,7 @@ void AttachmentView::Fill(XRef* xref, Object *embeddedFiles) {
 	if (attachments.Parse(embeddedFiles)) {
 		attachments.Replace(mList);
 	}
-	if (mList->CountItems() == 0) {
+	if (mList->CountRows() == 0) {
 		// add empty item
 		Empty();
 	}
@@ -291,20 +260,20 @@ void AttachmentView::Fill(XRef* xref, Object *embeddedFiles) {
 }
 
 void AttachmentView::Empty() {
-	MakeEmpty(mList);
-	CLVEasyItem* item = new CLVEasyItem();
-	item->SetColumnContent(0, TRANSLATE("<empty>"));
-	mList->AddItem(item);
+	mList->Clear();
+	BRow* item = new BRow();
+	item->SetField(new BStringField(TRANSLATE("<empty>")),0);
+	mList->AddRow(item);
 }
 
 int32 AttachmentView::AddSelectedAttachments(BMessage* msg) {
 	int32 count = 0;
-	for (int32 i = 0; i < mList->CountItems(); i ++) {
-		if (!mList->IsItemSelected(i)) {
+	for (int32 i = 0; i < mList->CountRows(); i ++) {
+		if (!mList->RowAt(i)->IsSelected()) {
 			continue;
 		}
 		
-		BListItem* item = mList->ItemAt(i);
+		BRow* item = mList->RowAt(i);
 		AttachmentItem* attachment = dynamic_cast<AttachmentItem*>(item);
 		if (attachment == NULL) {
 			continue;
@@ -415,12 +384,12 @@ void AttachmentView::Save(BMessage* msg) {
 AttachmentView::AttachmentSelection AttachmentView::GetAttachmentSelection() 
 {
 	AttachmentSelection selection = kNoAttachmentSelected;
-	for (int32 index = 0; index < mList->CountItems(); index ++) {
-		if (!mList->IsItemSelected(index)) {
+	for (int32 index = 0; index < mList->CountRows(); index ++) {
+		if (!mList->RowAt(index)->IsSelected()) {
 			continue;
 		}
 		
-		BListItem* item = mList->ItemAt(index);
+		BRow* item = mList->RowAt(index);
 		AttachmentItem* attachment = dynamic_cast<AttachmentItem*>(item);
 		if (attachment == NULL) {
 			continue;

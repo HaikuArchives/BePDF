@@ -4,6 +4,7 @@
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
  * 	 Copyright (C) 2013 waddlesplash.
+ *   Copyright (C) 2016 Adrián Arroyo Calle
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,13 +33,11 @@
 #include <be/support/SupportDefs.h>
 #include <be/support/List.h>
 
+#include <private/interface/ColumnListView.h>
+#include <private/interface/ColumnTypes.h>
+
 // xpdf
 #include <Object.h>
-
-// santa
-#include <santa/ColumnListView.h>
-#include <santa/CLVListItem.h>
-#include <santa/CLVEasyItem.h>
 
 // BePDF
 #include "FileSpec.h"
@@ -51,11 +50,11 @@ class ResourceBitmapButton;
 class XRef;
 
 // Column 0 contains file name, column 1 contains description.
-class AttachmentItem : public CLVEasyItem {
+class AttachmentItem : public BRow {
 private:
 	FileSpec mFileSpec;
 	
-	typedef CLVListItem super;
+	typedef BRow super;
 	
 public:
 	// Constructs the AttachmentItem and the values for its columns
@@ -66,14 +65,11 @@ public:
 	
 	// Returns label of column 0.
 	const char* Text();
-
-	// Compare function.
-	static int Compare(const CLVListItem* item1, const CLVListItem* item2, int32 keyColumn);
 };
 
 // AttachmentView displays attachments in a ColumnListView
 class AttachmentView : public BView {
-	ColumnListView* mList;
+	BColumnListView* mList;
 	XRef*           mXRef;
 	InputEnabler    mInputEnabler;
 

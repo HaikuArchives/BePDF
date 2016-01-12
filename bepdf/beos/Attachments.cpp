@@ -29,7 +29,7 @@
 #include "TextConversion.h"
 
 Attachments::~Attachments() {
-	BListItem **items = (BListItem**)mAttachments.Items();
+	AttachmentItem **items = (AttachmentItem**)mAttachments.Items();
 	for (int i = mAttachments.CountItems()-1; i >= 0; i--) {
 		delete items[i];
 	}
@@ -59,9 +59,11 @@ static int sortByName(const void* a, const void* b) {
 	return strcmp(sa, sb);  
 }
 
-void Attachments::Replace(BListView *view) {
-	MakeEmpty(view);
+void Attachments::Replace(BColumnListView *view) {
+	view->Clear();
 	mAttachments.SortItems(sortByName);
-	view->AddList(&mAttachments);
+	for(int i=0;i<mAttachments.CountItems();i++) {
+		view->AddRow((AttachmentItem*)mAttachments.ItemAt(i));
+	}
 	mAttachments.MakeEmpty();
 }
