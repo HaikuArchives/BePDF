@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -56,44 +56,44 @@ enum {
 
 enum {
 	kAdditionalVerticalBorder = 2
-};	
+};
 
 // Implementation of AttachmentItem
 
-AttachmentItem::AttachmentItem(FileSpec* fileSpec) 
+AttachmentItem::AttachmentItem(FileSpec* fileSpec)
 	: BRow()
 	, mFileSpec(fileSpec)
 {
 	BString fileName;
 	TextToUtf8(fileSpec->GetFileName(), &fileName);
 	SetField(new BStringField(fileName.String()),0);
-	
+
 	BString description;
 	TextToUtf8(fileSpec->GetDescription(), &description);
 	SetField(new BStringField(description.String()),1);
 }
 
 const char* AttachmentItem::Text() {
-	BStringField* field = GetField(0);
+	BStringField* field = static_cast<BStringField*>(GetField(0));
 	return field->String();
 }
 
 // AttachmentListView
 class AttachmentListView : public BColumnListView {
 public:
-		AttachmentListView(GlobalSettings* settings, 
+		AttachmentListView(GlobalSettings* settings,
 						BRect frame,
 						const char* name = NULL,
 						uint32 resizingMode = B_FOLLOW_LEFT | B_FOLLOW_TOP,
 						uint32 flags = B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
 						border_style border = B_NO_BORDER,
-						bool horizontal = true) 
+						bool horizontal = true)
 			: BColumnListView(frame, name, resizingMode, flags, border, horizontal)
 			, mSettings(settings)
 		{
 			SetSelectionMode(B_MULTIPLE_SELECTION_LIST);
 		}
-		
+
 private:
 	GlobalSettings* mSettings;
 };
@@ -109,57 +109,57 @@ void AttachmentView::Register(uint32 behavior, BControl* control, int32 cmd) {
 	}
 }
 
-ResourceBitmapButton* 
+ResourceBitmapButton*
 AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name, const char *off, const char *on, const char *off_grey, const char *on_grey, int32 cmd, const char *info, uint32 behavior) {
-	const int buttonSize = kToolbarHeight; 
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize), 
+	const int buttonSize = kToolbarHeight;
+	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
 	                                name, off, on, off_grey, on_grey,
 	                               new BMessage(cmd),
-	                                behavior); 
-	button->SetToolTip(tooltip, TRANSLATE(info)); 
+	                                behavior);
+	button->SetToolTip(tooltip, TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
 }
 
 ///////////////////////////////////////////////////////////
-ResourceBitmapButton* 
+ResourceBitmapButton*
 AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name, const char *off, const char *on, int32 cmd, const char *info, uint32 behavior) {
 	const int buttonSize = kToolbarHeight;
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize), 
-	                                name, off, on, 
+	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
+	                                name, off, on,
 	                                new BMessage(cmd),
-	                                behavior); 
-	button->SetToolTip(tooltip, TRANSLATE(info)); 
+	                                behavior);
+	button->SetToolTip(tooltip, TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
 }
 
-AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags) 
+AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
 	: BView(rect, "attachments", resizeMask, flags | B_FRAME_EVENTS)
 {
 	rect.OffsetTo(0, 0);
 
-	BRect r(rect);	
+	BRect r(rect);
 	r.bottom = 30;
-	ToolBar* toolbar = new ToolBar(r, "toolbar", 
-								B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT, 
+	ToolBar* toolbar = new ToolBar(r, "toolbar",
+								B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT,
 								B_WILL_DRAW | B_FRAME_EVENTS );
 	AddChild(toolbar);
-    
+
     // AddButton(tooltip, toolbar, "open_btn", "OPEN_FILE_OFF", "OPEN_FILE_ON", "OPEN_FILE_OFF_GREYED",  NULL, kOpenCmd, "Open attachment(s).");
 	// Note tooltip text used in method Update() also!
     mSaveButton = AddButton(tooltip, toolbar, "save_file_as_btn", "SAVE_FILE_AS_OFF", "SAVE_FILE_AS_ON", "SAVE_FILE_AS_OFF_GREYED", NULL, kSaveAsCmd, "Save attachment(s) as.");
-	
+
 	rect.top += r.bottom + 1;
 	r = rect;
 	r.InsetBy(2, 2);
 	r.right -= B_V_SCROLL_BAR_WIDTH;
 	r.bottom -= B_H_SCROLL_BAR_HEIGHT;
-	
+
 	mList = new AttachmentListView(settings,
-		r, NULL, 
+		r, NULL,
 		B_FOLLOW_ALL_SIDES,
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
 		B_FANCY_BORDER,
@@ -183,7 +183,7 @@ void AttachmentView::AttachedToWindow() {
 			control->SetTarget(this);
 		}
 	}
-	
+
 	mList->SetSelectionMessage(new BMessage(kSelectionChangedCmd));
 	mList->SetTarget(this);
 }
@@ -217,14 +217,14 @@ void AttachmentView::MessageReceived(BMessage *msg) {
 		{
 			BMessage saveMsg(B_SAVE_REQUESTED);
 			int32 count = AddSelectedAttachments(&saveMsg);
-			
+
 			if (count == 0) {
 				break;
 			}
-			
+
 			if (count == 1) {
 				AttachmentItem* item = GetAttachment(&saveMsg, 0);
-				gApp->OpenSaveFilePanel(this, NULL, &saveMsg, 
+				gApp->OpenSaveFilePanel(this, NULL, &saveMsg,
 					item->GetFileSpec()->GetFileName()->getCString());
 			} else {
 				gApp->OpenSaveToDirectoryFilePanel(this, NULL, &saveMsg);
@@ -268,13 +268,13 @@ int32 AttachmentView::AddSelectedAttachments(BMessage* msg) {
 		if (!mList->RowAt(i)->IsSelected()) {
 			continue;
 		}
-		
+
 		BRow* item = mList->RowAt(i);
 		AttachmentItem* attachment = dynamic_cast<AttachmentItem*>(item);
 		if (attachment == NULL) {
 			continue;
 		}
-		
+
 		msg->AddPointer("attachment",  attachment);
 		count ++;
 	}
@@ -287,13 +287,13 @@ AttachmentItem* AttachmentView::GetAttachment(BMessage* msg, int32 index) {
 	if (msg->FindPointer("attachment", index, &pointer) != B_OK) {
 		return NULL;
 	}
-	
+
 	return (AttachmentItem*)pointer;
 }
 
 class SaveAttachmentThread : public SaveThread {
 public:
-	SaveAttachmentThread(const char* title, XRef* xref, const BMessage* message) 
+	SaveAttachmentThread(const char* title, XRef* xref, const BMessage* message)
 		: SaveThread(title, xref)
 		, mMessage(*message)
 	{
@@ -302,11 +302,11 @@ public:
 	int32 Run() {
 		entry_ref dir;
 		int32 count;
-		
+
 		if (mMessage.FindInt32("count", &count) != B_OK) {
 			return -1;
 		}
-		
+
 		BPath  path;
 		if (count == 1) {
 			BString name;
@@ -327,20 +327,20 @@ public:
 			path.SetTo(&dir);
 		}
 		SetTotal(count);
-				
+
 		// TODO validate item
 		if (count == 1) {
 			SetCurrent(1);
 			AttachmentItem* item = AttachmentView::GetAttachment(&mMessage, 0);
 			if (item != NULL) {
-				SetText(item->GetFileSpec()->GetFileName()->getCString());	
+				SetText(item->GetFileSpec()->GetFileName()->getCString());
 				item->GetFileSpec()->Save(GetXRef(), path.Path());
 			}
 		} else {
 			AttachmentItem* item = AttachmentView::GetAttachment(&mMessage, 0);
 			for (int32 i = 1; item != NULL; i ++) {
 				BString name(item->GetFileSpec()->GetFileName()->getCString());
-				SetText(name.String());	
+				SetText(name.String());
 				SetCurrent(i);
 				for (int postfix = 1; postfix < 50; postfix ++) {
 					BPath file(path);
@@ -351,16 +351,16 @@ public:
 						newName << " " << postfix;
 						file.Append(newName.String());
 					}
-					
+
 					BEntry entry(file.Path());
 					if (entry.Exists()) {
 						continue;
 					}
-					
+
 					item->GetFileSpec()->Save(GetXRef(), file.Path());
 					break;
 				}
-				
+
 				item = AttachmentView::GetAttachment(&mMessage, i);
 			}
 		}
@@ -377,14 +377,14 @@ void AttachmentView::Save(BMessage* msg) {
 	thread->Resume();
 }
 
-AttachmentView::AttachmentSelection AttachmentView::GetAttachmentSelection() 
+AttachmentView::AttachmentSelection AttachmentView::GetAttachmentSelection()
 {
 	AttachmentSelection selection = kNoAttachmentSelected;
 	for (int32 index = 0; index < mList->CountRows(); index ++) {
 		if (!mList->RowAt(index)->IsSelected()) {
 			continue;
 		}
-		
+
 		BRow* item = mList->RowAt(index);
 		AttachmentItem* attachment = dynamic_cast<AttachmentItem*>(item);
 		if (attachment == NULL) {
