@@ -8,6 +8,7 @@
 
 # specify the name of the binary
 NAME= BePDF
+TARGET_DIR= ../dist
 
 # specify the type of binary
 #	APP:	Application
@@ -99,7 +100,7 @@ textencoding \
 tracker \
 translation \
 columnlistview \
-../generated/libxpdf.a
+../xpdf/libxpdf.a
 
 #	specify additional paths to directories following the standard
 #	libXXX.so or libXXX.a naming scheme.  You can specify full paths
@@ -129,7 +130,7 @@ beos/utils
 
 #	specify the level of optimization that you desire
 #	NONE, SOME, FULL
-OPTIMIZE=FULL
+OPTIMIZE=SOME
 
 #	specify any preprocessor symbols to be defined.  The symbols
 #	will be set to a value of 1.  For example specify DEBUG if you want

@@ -1,3 +1,10 @@
 generated/
-obj*/
+objects*/
 *.swp
+
+English.pdf
+Deutsch.pdf
+Español.pdf
+Italiano.pdf
+dist/BePDF
+xpdf/libxpdf.a

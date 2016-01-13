@@ -8,6 +8,7 @@
 
 # specify the name of the binary
 NAME= libxpdf
+TARGET_DIR=.
 
 # specify the type of binary
 #	APP:	Application
