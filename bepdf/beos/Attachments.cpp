@@ -62,7 +62,7 @@ static int sortByName(const void* a, const void* b) {
 void Attachments::Replace(BColumnListView *view) {
 	view->Clear();
 	mAttachments.SortItems(sortByName);
-	for(int i=0;i<mAttachments.CountItems();i++) {
+	for(int32 i = 0; i < mAttachments.CountItems(); i++) {
 		view->AddRow((AttachmentItem*)mAttachments.ItemAt(i));
 	}
 	mAttachments.MakeEmpty();

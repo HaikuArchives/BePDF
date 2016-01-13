@@ -4,7 +4,7 @@
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
  * 	 Copyright (C) 2013 waddlesplash.
- *   Copyright (C) 2016 Adrián Arroyo Calle
+ * 	 Copyright (C) 2016 Adrián Arroyo Calle.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
