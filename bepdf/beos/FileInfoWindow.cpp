@@ -4,6 +4,7 @@
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
  * 	 Copyright (C) 2013 waddlesplash.
+ *   Copyright (C) 2016 Adrián Arroyo Calle
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -203,14 +204,13 @@ static void GetGString(BString &s, GString *g) {
 
 
 // FontItem 
-class FontItem : public CLVListItem
+class FontItem : public BRow
 {
 public:
 	FontItem(uint32 level, bool superitem, bool expanded, const char *name, const char *embName, const char *type);
 	~FontItem() {};
 	void DrawItemColumn(BView* owner, BRect item_column_rect, int32 column_index, bool complete);
 	void Update(BView *owner, const BFont *font);
-	static int MyCompare(const CLVListItem* Item1, const CLVListItem* Item2, int32 KeyColumn);
 
 private:
 	static rgb_color kHighlight, kRedColor, kDimRedColor, kBlackColor, kMedGray;
@@ -225,7 +225,7 @@ rgb_color FontItem::kHighlight = {128, 128, 128, 0},
 	FontItem::kMedGray = {192, 192, 192, 0};
 	
 FontItem::FontItem(uint32 level, bool superitem, bool expanded, const char *name, const char *embName, const char *type) 
-: CLVListItem(level, superitem, expanded, 20.0) {
+: BRow() {
 	fText[0] = name; 
 	fText[1] = embName;
 	fText[2] = type;
@@ -266,7 +266,7 @@ void FontItem::DrawItemColumn(BView* owner, BRect item_column_rect, int32 column
 
 void FontItem::Update(BView *owner, const BFont *font)
 {
-	CLVListItem::Update(owner,font);
+	//BRow::Update(owner,font);
 	font_height FontAttributes;
 	be_plain_font->GetHeight(&FontAttributes);
 	float FontHeight = ceil(FontAttributes.ascent) + ceil(FontAttributes.descent);
@@ -274,14 +274,7 @@ void FontItem::Update(BView *owner, const BFont *font)
 }
 
 
-int FontItem::MyCompare(const CLVListItem* a_Item1, const CLVListItem* a_Item2, int32 KeyColumn)
-{
-	BString* Text1 = &((FontItem*)a_Item1)->fText[KeyColumn];
-	BString* Text2 = &((FontItem*)a_Item2)->fText[KeyColumn];
-	return strcasecmp(Text1->String(), Text2->String());
-}
-
-BListItem *FileInfoWindow::FontItem(GfxFont *font) {
+BRow *FileInfoWindow::FontItem(GfxFont *font) {
 	BString name;
 	GetGString(name, font->getName());
 
@@ -331,7 +324,7 @@ void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 
 	// remove items from font list
 	Lock();
-	MakeEmpty(mFontList);
+	mFontList->Clear();
 	Unlock();
 		
 	BList fontList;
@@ -357,7 +350,7 @@ void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 					font = gfxFontDict->getFont(i);
 					if (font != NULL && AddFont(&fontList, font)) {
 						Lock();
-						mFontList->AddItem(FontItem(font));
+						mFontList->AddRow(FontItem(font));
 						Unlock();
 					}
 				}
@@ -453,17 +446,15 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	tabs->AddTab(secView);
 
 	// Fonts
-	CLVContainerView* containerView;
-	mFontList = new ColumnListView(BRect(0, 0, 100, 100), &containerView, NULL, B_FOLLOW_ALL_SIDES,
-		B_WILL_DRAW|B_FRAME_EVENTS|B_NAVIGABLE, B_SINGLE_SELECTION_LIST, false, true, true, false, B_NO_BORDER);
-	mFontList->AddColumn(new CLVColumn(TRANSLATE("Name"), 150.0, CLV_SORT_KEYABLE));
-	mFontList->AddColumn(new CLVColumn(TRANSLATE("Embedded Name"), 150.0, CLV_SORT_KEYABLE));
-	mFontList->AddColumn(new CLVColumn(TRANSLATE("Type"), 80.0, CLV_SORT_KEYABLE));
-	mFontList->SetSortFunction(FontItem::MyCompare);
+	mFontList = new BColumnListView(BRect(0, 0, 100, 100), NULL, B_FOLLOW_ALL_SIDES,
+		B_WILL_DRAW|B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER,true);
+	mFontList->AddColumn(new BStringColumn(TRANSLATE("Name"), 150.0, 150.0,150.0,true),0);
+	mFontList->AddColumn(new BStringColumn(TRANSLATE("Embedded Name"), 150.0,150.0,150.0,true),1);
+	mFontList->AddColumn(new BStringColumn(TRANSLATE("Type"), 80.0,80.0,80.0,true),2);
 
 	mFontsBorder = new BBox("border");
 	mFontsBorder->SetLabel(TRANSLATE("Fonts of this page"));
-	mFontsBorder->AddChild(containerView);
+	mFontsBorder->AddChild(mFontList);
 
 	mShowAllFonts = new BButton("showAllFonts", TRANSLATE("Show all fonts"), new BMessage(SHOW_ALL_FONTS_MSG));
 	mStop = new BButton("stop", TRANSLATE("Abort"), new BMessage(STOP_MSG));
