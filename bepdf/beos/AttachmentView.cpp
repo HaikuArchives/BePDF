@@ -166,10 +166,6 @@ AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *s
 		true);
 	mList->AddColumn(new BStringColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
 	mList->AddColumn(new BStringColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
-	//mList->AddColumn(new CLVColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
-	//mList->AddColumn(new CLVColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), CLV_SORT_KEYABLE | CLV_TELL_ITEMS_WIDTH));
-	//mList->SetSortFunction(AttachmentItem::Compare);
-	//AddChild(container);	
 }
 
 AttachmentView::~AttachmentView() {
