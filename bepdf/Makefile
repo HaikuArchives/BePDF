@@ -98,7 +98,7 @@ $(STDCPPLIBS) \
 textencoding \
 tracker \
 translation \
-santa \
+columnlistview \
 ../generated/libxpdf.a
 
 #	specify additional paths to directories following the standard

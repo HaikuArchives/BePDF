@@ -28,6 +28,8 @@
 #include <be/support/List.h>
 #include <be/interface/ListView.h>
 
+#include <private/interface/ColumnListView.h>
+
 #include "TreeParser.h"
 
 class Attachments : public NameTreeParser {
@@ -37,7 +39,7 @@ public:
 	~Attachments();
 	
 	bool DoName(const char* name, Object* value);
-	void Replace(BListView *view);
+	void Replace(BColumnListView *view);
 };
 
 #endif

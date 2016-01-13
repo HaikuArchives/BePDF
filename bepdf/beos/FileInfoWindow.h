@@ -4,6 +4,7 @@
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
  * 	 Copyright (C) 2013 waddlesplash.
+ * 	 Copyright (C) 2016 Adrián Arroyo Calle
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,10 +35,9 @@
 #include <List.h>
 #include <String.h>
 #include <Window.h>
-// Santa's Gift Bag
-#include <santa/ColumnListView.h>
-#include <santa/CLVColumn.h>
-#include <santa/CLVListItem.h>
+
+#include <private/interface/ColumnListView.h>
+#include <private/interface/ColumnTypes.h>
 
 #include "Settings.h"
 
@@ -64,7 +64,7 @@ class FileInfoWindow : public BWindow {
 	} mState;
 	
 	// font list
-	ColumnListView *mFontList;
+	BColumnListView *mFontList;
 	struct Font {
 		Ref ref;
 		BString name;
@@ -76,7 +76,7 @@ class FileInfoWindow : public BWindow {
 		};
 	};
 	bool AddFont(BList *list, GfxFont *font);
-	BListItem *FontItem(GfxFont *font);
+	BRow *FontItem(GfxFont *font);
 	void QueryFonts(PDFDoc *doc, int page);
 	void AddPair(BGridView *dest, BView *lv, BView *rv);	 
 	void CreateProperty(BGridView *dest, Dict *dict, const char *key, const char *title);
