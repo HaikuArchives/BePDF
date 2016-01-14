@@ -822,7 +822,7 @@ ResourceBitmapButton* PDFWindow::AddButton(ToolBar* toolBar, const char *name, c
 	                                name, off, on, off_grey, on_grey,
 	                                MakeCommandMessage (cmd),
 	                                behavior);
-	button->SetToolTip(mToolTip, B_TRANSLATE(info));
+	button->SetToolTip(B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -835,7 +835,7 @@ ResourceBitmapButton* PDFWindow::AddButton(ToolBar* toolBar, const char *name, c
 	                                name, off, on,
 	                                MakeCommandMessage (cmd),
 	                                behavior);
-	button->SetToolTip(mToolTip, B_TRANSLATE(info));
+	button->SetToolTip(B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -1046,12 +1046,12 @@ ToolBar* PDFWindow::BuildToolBar() {
 	button = new ResourceBitmapButton (aRect,
 	                                "full_screen_btn", "FULL_SCREEN_OFF", "FULL_SCREEN_ON",
 	                                MakeCommandMessage(FULL_SCREEN_CMD));
-	button->SetToolTip(mToolTip, B_TRANSLATE("Fullscreen mode."));
+	button->SetToolTip(B_TRANSLATE("Fullscreen mode."));
 	mb->AddButton(button);
 	button = new ResourceBitmapButton (aRect,
 	                                "window_btn", "WINDOW_OFF", "WINDOW_ON",
 	                                MakeCommandMessage(FULL_SCREEN_CMD));
-	button->SetToolTip(mToolTip, B_TRANSLATE("Window mode."));
+	button->SetToolTip(B_TRANSLATE("Window mode."));
 	mb->AddButton(button);
 
 

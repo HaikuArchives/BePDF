@@ -119,7 +119,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 	                                name, off, on, off_grey, on_grey,
 	                               new BMessage(cmd),
 	                                behavior);
-	button->SetToolTip(tooltip, B_TRANSLATE(info));
+	button->SetToolTip(B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -133,7 +133,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 	                                name, off, on,
 	                                new BMessage(cmd),
 	                                behavior);
-	button->SetToolTip(tooltip, B_TRANSLATE(info));
+	button->SetToolTip(B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -204,7 +204,7 @@ void AttachmentView::Update() {
 		// Note text used in constructor also!
 		info = B_TRANSLATE("Save attachment(s) as.");
 	}
-	mSaveButton->GetToolTipItem()->SetLabel(info);
+	mSaveButton->SetToolTip(info);
 
 	// Update button state
 	mInputEnabler.SetEnabled(kSaveAsCmd, selection != kNoAttachmentSelected);
