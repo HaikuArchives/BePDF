@@ -28,7 +28,7 @@ BitmapButton::BitmapButton(BRect frame, const char *name,
 		BMessage *message,
 		uint32 behavior, uint32 resizingMode, uint32 flags) :
 		BPictureButton(frame, name,
-			NULL, NULL,
+			&BPicture(), &BPicture(),
 			message,
 			behavior, resizingMode, flags),
 		off(off), on(on), disabledOff(NULL), disabledOn(NULL),
