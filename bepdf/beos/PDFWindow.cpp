@@ -203,11 +203,7 @@ void PDFWindow::SetTotalPageNumber(int pages) {
 	const char *fmt = B_TRANSLATE("of %d");
 	int len = strlen(fmt) + 30;
 	char *label = new char[len];
-#if __INTEL__
 	snprintf (label, len, fmt, pages);
-#else
-	sprintf (label, fmt, pages);
-#endif
 	mTotalPageNumberItem->SetText(label);
 	delete label;
 }
@@ -1095,11 +1091,7 @@ PDFWindow::SetZoomSize (float w, float h)
 void
 PDFWindow::SetPage(int16 page) {
 	char pageStr [64];
-#if __INTEL__
 	snprintf (pageStr, sizeof (pageStr), "%d", page);
-#else
-	sprintf (pageStr, "%d", page);
-#endif
 	mPageNumberItem->SetText (pageStr);
 	mPagesView->Select(page-1);
 	mPagesView->ScrollToSelection();

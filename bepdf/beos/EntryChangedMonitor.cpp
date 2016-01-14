@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,7 +22,7 @@
 
 #include "EntryChangedMonitor.h"
 
-EntryChangedMonitor::EntryChangedMonitor() 
+EntryChangedMonitor::EntryChangedMonitor()
 	: mListener(NULL)
 	, mActive(false)
 {
@@ -52,35 +52,28 @@ void EntryChangedMonitor::StartWatching(entry_ref *ref) {
 void EntryChangedMonitor::StopWatching() {
 	if (mActive) {
 		watch_node(&mNodeRef, B_STOP_WATCHING, this);
-		mActive = false;		
+		mActive = false;
 	}
 }
 
 void EntryChangedMonitor::MessageReceived(BMessage* msg) {
 	if (msg->what != B_NODE_MONITOR)
 		return;
-		
-	int32 opcode;		
+
+	int32 opcode;
 	if (msg->FindInt32("opcode", &opcode) != B_OK)
 		return;
-			
+
 	if (opcode != B_STAT_CHANGED)
 		return;
-	
-	#ifdef __HAIKU__
-	// Haiku sends a B_STAT_CHANGED notification 
+
+	// Haiku sends a B_STAT_CHANGED notification
 	// when attributes are changed too
 	// this leads to an infinite loop, as
 	// BePDF changes file attributes after
 	// loading a file.
 	// TODO check if file has changed and only
 	// then notify the listener
-	#else	
-	// This seems to be a good indicator that the
-	// contents of a file has changed.
-	NotifyListener();
-	#endif
-	
 }
 
 void EntryChangedMonitor::NotifyListener() {

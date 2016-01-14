@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -23,9 +23,7 @@
 #include "AnnotWriter.h"
 
 #include <Debug.h>
-#ifndef __POWERPC__
-	#include <stdlib.h>
-#endif
+#include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
 #include <stdio.h>
@@ -33,7 +31,7 @@
 
 // Implementation of XRefTable
 
-XRefTable::XRefTable(XRef* xref) 
+XRefTable::XRefTable(XRef* xref)
 	: mXRef(xref)
 	, mLength(xref->getSize() + INITIAL_INCREMENT)
 	, mSize(xref->getSize())
@@ -102,7 +100,7 @@ Ref XRefTable::ActivateUnusedEntry(XRefEntryType type) {
 
 XRefEntry* XRefTable::GetXRef(int num) {
 	ASSERT(InRange(num));
-	return &mEntries[num];	
+	return &mEntries[num];
 }
 
 int XRefTable::GetSize() {
@@ -123,7 +121,7 @@ bool XRefTable::HasChanged(int num) {
 
 void XRefTable::DeleteRef(Ref ref) {
 	XRefEntry* e = GetXRef(ref.num);
-	ASSERT(e->type != xrefEntryFree && e->gen == ref.gen && e->gen != DEAD_GEN);	
+	ASSERT(e->type != xrefEntryFree && e->gen == ref.gen && e->gen != DEAD_GEN);
 	e->gen ++; e->type = xrefEntryFree;
 	InsertInUnusedList(ref.num, e);
 }
@@ -244,10 +242,10 @@ void AnnotWriter::WriteObject(Object* obj) {
 	int i;
 	Object o;
 	GString* s = NULL;
-			
+
 	switch (obj->getType()) {
 		 // simple objects
-		case objBool: 
+		case objBool:
 			fprintf(mFile, "%s", obj->getBool() ? "true" : "false");
 			break;
 		case objInt:
@@ -339,8 +337,8 @@ bool AnnotWriter::WriteXRefTable() {
 			XRefEntry* x = mXRefTable.GetXRef(i + first);
 			ASSERT(x->offset >= 0);
 			// write offset, gen and used or unused char
-			fprintf(mFile, "%10.10d %5.5d %c\r\n", 
-				x->offset, x->gen, x->type != xrefEntryFree ? 'n' : 'f'); 
+			fprintf(mFile, "%10.10d %5.5d %c\r\n",
+				x->offset, x->gen, x->type != xrefEntryFree ? 'n' : 'f');
 			}
 		first += nof;
 	}
@@ -476,7 +474,7 @@ bool AnnotWriter::HasAnnotRef(Object* page, Ref &annotRef) {
 bool AnnotWriter::HasEmbeddedContent(Object* page) {
 	ASSERT(page && page->isDict());
 	Object obj;
-	bool embedded = !(page->dictLookupNF("Contents", &obj) && 
+	bool embedded = !(page->dictLookupNF("Contents", &obj) &&
 		(obj.isArray() || obj.isRef() || obj.isNull()));
 	obj.free();
 	return embedded;
@@ -492,13 +490,13 @@ static char* pageDictExcludeKeys[] = { "Annots", NULL };
 bool AnnotWriter::CopyPage(Object* page, Ref pageRef, Ref arrayRef) {
 	Object copy;
 	Object ar;
-	
-	ar.initRef(arrayRef.num, arrayRef.gen);	
-	CopyDict(page, &copy, pageDictExcludeKeys);		
+
+	ar.initRef(arrayRef.num, arrayRef.gen);
+	CopyDict(page, &copy, pageDictExcludeKeys);
 	copy.dictAdd(copyString("Annots"), &ar);
 
 	// write to file
-	WriteObject(pageRef, &copy);	
+	WriteObject(pageRef, &copy);
 	copy.free();
 	return true;
 }
@@ -571,7 +569,7 @@ bool AnnotWriter::UpdateAnnotArray(int pageNo, Annotations* annots, Ref annotArr
 
 bool AnnotWriter::WriteAS(Ref& ref, Annotation* a) {
 	if (is_empty_ref(ref)) return true;
-	
+
 	Object xobj;
 	xobj.initDict(mXRef);
 	// setup XObject dictionary
@@ -582,20 +580,20 @@ bool AnnotWriter::WriteAS(Ref& ref, Annotation* a) {
 	r.x2 -= r.x1; r.y2 -= r.y1;
 	r.x1 = r.y1 = 0;
 	AddRect(&xobj, "BBox", &r);
-	// setup resource dictionary	
-	Object resources, array, name;	
+	// setup resource dictionary
+	Object resources, array, name;
 	resources.initDict(mXRef);
 	array.initArray(mXRef);
 	name.initName("PDF");
 	array.arrayAdd(&name);
 	resources.dictAdd(copyString("ProcSet"), &array);
 	xobj.dictAdd(copyString("Resources"), &resources);
-	
+
 	// create appearance stream
 	AnnotAppearance as;
 	a->Visit(&as);
-	
-	// set length 
+
+	// set length
 	AddInteger(&xobj, "Length", as.GetLength());
 	ASSERT(as.GetLength() > 0);
 
@@ -661,7 +659,7 @@ bool AnnotWriter::WriteTo(const char* name) {
 		UpdateCatalog();
 		ok = WriteXRefTable();
 		ok = ok && WriteFileTrailer();
-	} 
+	}
 	if (mFile) {
 		fclose(mFile); mFile = NULL;
 	}
@@ -785,7 +783,7 @@ void AnnotWriter::DoAnnotation(Annotation* a) {
 	if (a->HasColor()) {
 		AddColor(&mAnnot, "C", a->GetColor());
 	}
-	if (a->GetDate()[0] != 0) { 
+	if (a->GetDate()[0] != 0) {
 		AddString(&mAnnot, "M", (char*)a->GetDate());
 	}
 	AddInteger(&mAnnot, "F", a->GetFlags()->Flags());
@@ -831,7 +829,7 @@ void AnnotWriter::DoStyledAnnot(StyledAnnot* s) {
 		case BorderStyle::underline_style: style = "U";
 	}
 	if (style != NULL) {
-		AddName(&bs, "S", style); // border style	
+		AddName(&bs, "S", style); // border style
 	}
 	AddDict(&mAnnot, "BS", &bs);
 }
@@ -875,14 +873,14 @@ void AnnotWriter::DoFreeText(FreeTextAnnot* a){
 	color = a->GetFontColor();
 	appearance.clear();
 	// color
-	sprintf(buf, "[%g %g %g] rg ", colToDbl(color->r), colToDbl(color->g), colToDbl(color->b)); 
+	sprintf(buf, "[%g %g %g] rg ", colToDbl(color->r), colToDbl(color->g), colToDbl(color->b));
 	appearance.append(buf);
-	
+
 	// font and size
 	sprintf(buf, "/%s %g Tf", font->GetShortName(), a->GetFontSize());
 	appearance.append(buf);
 	a->SetAppearance(&appearance);
-	
+
 	DoStyledAnnot(a);
 	AddAnnotSubtype("FreeText");
 	AddAnnotContents(a);
@@ -890,7 +888,7 @@ void AnnotWriter::DoFreeText(FreeTextAnnot* a){
 	if (a->GetJustification() != left_justify) {
 		AddInteger(&mAnnot, "Q", a->GetJustification());
 	}
-	
+
 	WriteFont(a->GetFont());
 }
 
@@ -1007,7 +1005,7 @@ void AnnotWriter::AssignShortFontNames() {
 			}
 		}
 	}
-	
+
 	// assign short names to standard fonts
 	PDFStandardFonts* stdFonts = AcroForm::GetStandardFonts();
 	int id = 0;
@@ -1025,14 +1023,14 @@ void AnnotWriter::AssignShortFontNames() {
 			sprintf(number, "%d", id);
 			shortName.append(number);
 			font->SetShortName(shortName.getCString());
-			mTemporaryFonts.push_back(font);	
+			mTemporaryFonts.push_back(font);
 			id ++;
 		}
 	}
 }
 
 void AnnotWriter::UnassignShortFontNames() {
-	// reverse steps to have proper state in case file is saved again 
+	// reverse steps to have proper state in case file is saved again
 	std::list<PDFFont*>::iterator it;
 	for (it = mTemporaryFonts.begin(); it != mTemporaryFonts.end(); it ++) {
 		PDFFont* font = *it;
@@ -1074,13 +1072,13 @@ static char* drExcludeKeys[] = {
 
 void AnnotWriter::UpdateAcroForm() {
 	if (mWrittenFonts.empty()) return;
-	
+
 	Object acroForm;
 	Object oldDR;
-	
+
 	acroForm.initDict(mXRef);
 	oldDR.initNull();
-	
+
 	if (is_empty_ref(mAcroForm->GetRef())) {
 		Ref fieldsRef = mXRefTable.GetNewRef(xrefEntryUncompressed);
 		// create empty array for fields
@@ -1088,7 +1086,7 @@ void AnnotWriter::UpdateAcroForm() {
 		fields.initArray(mXRef);
 		WriteObject(fieldsRef, &fields);
 		fields.free();
-		
+
 		// create new AcroForm
 		mAcroFormRef = mXRefTable.GetNewRef(xrefEntryUncompressed);
 		AddName(&acroForm, "Type", "AcroForm");
@@ -1137,7 +1135,7 @@ void AnnotWriter::UpdateCatalog() {
 	root.gen = mXRef->getRootGen();
 	oldCatalogRef.initRef(root.num, root.gen);
 	oldCatalogRef.fetch(mXRef, &oldCatalog);
-	catalog.initDict(mXRef);	
+	catalog.initDict(mXRef);
 	CopyDict(&oldCatalog, &catalog);
 	AddRef(&catalog, "AcroForm", mAcroFormRef);
 	WriteObject(root, &catalog);

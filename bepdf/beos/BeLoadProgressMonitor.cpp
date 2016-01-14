@@ -20,10 +20,6 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#ifdef __GNUC__
-#pragma implementation
-#endif
-
 #include "BeLoadProgressMonitor.h"
 
 #include <stdlib.h>
