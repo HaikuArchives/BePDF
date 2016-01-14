@@ -29,6 +29,7 @@
 #include <be/interface/TextControl.h>
 #include <be/storage/Entry.h>
 #include <be/storage/Path.h>
+#include <private/shared/ToolBar.h>
 
 // BePDF
 #include "EntryChangedMonitor.h"
@@ -46,8 +47,6 @@ class AnnotationWindow;
 class AttachmentView;
 class LayerView;
 class OutlinesView;
-class ResourceBitmapButton;
-class ToolBar;
 
 typedef struct {
 	int mCmd;
@@ -75,7 +74,7 @@ class PDFWindow
 public:
 	enum {
 		// File
-		OPEN_FILE_CMD = 10,
+		OPEN_FILE_CMD = 'PDFW',
 		OPEN_IN_NEW_WINDOW_CMD,
 		NEW_WINDOW_CMD,
 		CLOSE_FILE_CMD,
@@ -216,13 +215,12 @@ public:
 
 private:
 	InputEnabler   mInputEnabler;
-	InputEnabler   mControlValueSetter;
 
 	BEntry         mCurrentFile;
 	FileAttributes mFileAttributes;
 	EntryChangedMonitor mEntryChangedMonitor;
 
-	ToolBar        *mToolBar;
+	BToolBar		*mToolBar;
 	BTextControl   *mPageNumberItem;
 	BStringView    *mTotalPageNumberItem;
 	SplitView      *mSplitView;
@@ -230,7 +228,7 @@ private:
 	LayerView      *mLayerView;
 	BListView      *mPagesView;
 	OutlinesView   *mOutlinesView;
-	ToolBar        *mAnnotationBar;
+	BToolBar		*mAnnotationBar;
 	AttachmentView *mAttachmentView;
 	BStringView    *mStatusText;
 
@@ -274,7 +272,7 @@ public:
 	virtual	bool CanClose();
 	bool IsOk();
 	BMenuBar* BuildMenu();
-	ToolBar* BuildToolBar();
+	BToolBar* BuildToolBar();
 	LayerView* BuildLeftPanel(BRect rect);
 	void SetUpViews (entry_ref * ref, const char *ownerPassword, const char *userPassword, bool *encrypted);
 	void CleanUpBeforeLoad();
@@ -335,26 +333,13 @@ public:
 	void ReleaseAnnotationButton();
 
 protected:
-	bool CancelCommand(int32 cmd, BMessage * msg);
-	virtual void HandleCommand ( int32 cmd, BMessage * msg );
+	bool CancelCommand(BMessage* msg);
 	void Find(const char *s);
 	void AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool marked, char shortcut = 0, uint32 modifiers = 0);
-	typedef ResourceBitmapButton *RBBP;
 
 	// register control depending on behavior at input enabler (behavior == B_ONE_STATE_BUTTON)
 	// or control value setter (behavior == B_TWO_STATE_BUTTON).
 	void Register(uint32 behavior, BControl* control, int32 cmd);
-
-	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name,
-		const char *off, const char *on,
-		int32 cmd, const char *info,
-		uint32 behavior = B_ONE_STATE_BUTTON);
-
-	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name,
-		const char *off, const char *on,
-		const char *off_grey, const char *on_grey,
-		int32 cmd, const char *info,
-		uint32 behavior = B_ONE_STATE_BUTTON);
 
 	void ActivateOutlines();
 
@@ -380,7 +365,7 @@ protected:
 
 	// Annotations
 	void PressAnnotationButton();
-	ToolBar* BuildAnnotToolBar(BRect rect, const char* name, AnnotDesc* desc);
+	BToolBar* BuildAnnotToolBar(BRect rect, const char* name, AnnotDesc* desc);
 	bool TryEditAnnot();
 	void InitAnnotTemplates();
 	void DeleteAnnotTemplates();

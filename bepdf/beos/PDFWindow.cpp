@@ -73,11 +73,11 @@
 #include "PDFWindow.h"
 #include "PreferencesWindow.h"
 #include "PrintSettingsWindow.h"
+#include "ResourceLoader.h"
 #include "SaveThread.h"
 #include "SplitView.h"
 #include "StatusBar.h"
 #include "TraceWindow.h"
-#include "ToolBar.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PDFWindow"
@@ -116,11 +116,7 @@ RecentDocumentsMenu::AddDynamicItem(add_state s)
 	for (int i = 0; list.FindRef("refs", i, &ref) == B_OK; i++) {
 		BEntry entry(&ref);
 		if (entry.Exists() && entry.GetName(name) == B_OK) {
-			if (fWhat == B_REFS_RECEIVED) {
-				msg = new BMessage(fWhat);
-			} else {
-				msg = HWindow::MakeCommandMessage(fWhat);
-			}
+			msg = new BMessage(fWhat);
 			msg->AddRef("refs", &ref);
 			item =  new EntryMenuItem(&ref, name, msg, 0, 0);
 			AddItem(item);
@@ -296,9 +292,9 @@ void PDFWindow::HandlePendingActions(bool ok) {
 		UpdatePageList();
 
 	if (ok) {
-		if (IsPending(UPDATE_OUTLINE_LIST_PENDING)) HandleCommand(SHOW_BOOKMARKS_CMD, NULL);
-		if (IsPending(FILE_INFO_PENDING))           HandleCommand(FILE_INFO_CMD, NULL);
-		if (IsPending(PRINT_SETTINGS_PENDING))      HandleCommand(PRINT_SETTINGS_CMD, NULL);
+		if (IsPending(UPDATE_OUTLINE_LIST_PENDING)) MessageReceived(&BMessage(SHOW_BOOKMARKS_CMD));
+		if (IsPending(FILE_INFO_PENDING))           MessageReceived(&BMessage(FILE_INFO_CMD));
+		if (IsPending(PRINT_SETTINGS_PENDING))      MessageReceived(&BMessage(PRINT_SETTINGS_CMD));
 	}
 	ClearPending();
 }
@@ -373,13 +369,13 @@ void PDFWindow::EntryChanged() {
 }
 
 ///////////////////////////////////////////////////////////
-bool PDFWindow::CancelCommand(int32 cmd, BMessage * msg) {
+bool PDFWindow::CancelCommand(BMessage* msg) {
 	// This is a work around:
 	// This commands aren't allowed in fullscreen mode, otherwise
 	// the windows opened by this commands would be behind the
 	// main window and would not block the main window.
 	if (mFullScreen) {
-		switch(cmd) {
+		switch(msg->what) {
 			case OPEN_FILE_CMD:
 			case RELOAD_FILE_CMD:
 			case PAGESETUP_FILE_CMD:
@@ -394,279 +390,6 @@ bool PDFWindow::CancelCommand(int32 cmd, BMessage * msg) {
 		}
 	}
 	return false;
-}
-
-///////////////////////////////////////////////////////////
-void PDFWindow::HandleCommand ( int32 cmd, BMessage * msg )
-{
-	int page;
-
-	if (CancelCommand(cmd, msg)) return;
-
-	switch ( cmd ) {
-	case OPEN_FILE_CMD:
-		mMainView->WaitForPage();
-		EditAnnotation(false);
-		gApp->OpenFilePanel();
-		break;
-	case NEW_WINDOW_CMD:
-		be_roster->Launch(BEPDF_APP_SIG, 0, (char**)NULL);
-		break;
-	case OPEN_IN_NEW_WINDOW_CMD: {
-		BMessage m(B_REFS_RECEIVED);
-		entry_ref r;
-		if (msg->FindRef("refs", 0, &r) == B_OK) {
-			BEntry entry(&r);
-			BPath path;
-			entry.GetPath(&path);
-			OpenPDF(path.Path());
-		}
-		}
-		break;
-	case RELOAD_FILE_CMD:
-		Reload();
-		break;
-	case SAVE_FILE_AS_CMD:
-		gApp->OpenSaveFilePanel(this, GetPdfFilter());
-		break;
-	case CLOSE_FILE_CMD:
-		mMainView->WaitForPage(true);
-		PostMessage (B_QUIT_REQUESTED );
-		break;
-	case QUIT_APP_CMD:
-	    gApp->Notify(BepdfApplication::NOTIFY_QUIT_MSG);
-		break;
-	case PAGESETUP_FILE_CMD:
-		mMainView->PageSetup ();
-		break;
-	case ABOUT_APP_CMD:
-		be_app->PostMessage (B_ABOUT_REQUESTED);
-		break;
-	case COPY_SELECTION_CMD: mMainView->CopySelection();
-		break;
-	case SELECT_ALL_CMD: mMainView->SelectAll();
-		break;
-	case SELECT_NONE_CMD: mMainView->SelectNone();
-		break;
-	case FIRST_PAGE_CMD:
-		mMainView->MoveToPage (1);
-		break;
-	case PREVIOUS_N_PAGE_CMD:
-		mMainView->MoveToPage(mMainView->Page() - 10);
-		break;
-	case NEXT_N_PAGE_CMD:
-		mMainView->MoveToPage(mMainView->Page() + 10);
-		break;
-	case PREVIOUS_PAGE_CMD:
-		if (B_SHIFT_KEY & modifiers()) {
-			mMainView->ScrollVertical (false, 0.95);
-		} else {
-			page = mMainView->Page();
-			mMainView->MoveToPage (page - 1);
-		}
-		break;
-	case NEXT_PAGE_CMD:
-		if (B_SHIFT_KEY & modifiers()) {
-			mMainView->ScrollVertical (true, 0.95);
-		} else {
-			page = mMainView->Page();
-			mMainView->MoveToPage (page + 1);
-		}
-		break;
-	case LAST_PAGE_CMD:
-		mMainView->MoveToPage (mMainView->GetNumPages());
-		break;
-	case GOTO_PAGE_CMD:
-		{
-			status_t err;
-			BTextControl * control;
-			BControl * ptr;
-
-			err  = msg->FindPointer ("source", (void **)&ptr);
-			control = dynamic_cast <BTextControl *> (ptr);
-			if (control != NULL) {
-				const char *txt = control->Text ();
-				page = atoi (txt);
-				mMainView->MoveToPage (page);
-				mMainView->MakeFocus();
-			}
-			else {
-				/* ERROR */
-			}
-		}
-		break;
-	case PAGE_SELECTED_CMD:
-		page = mPagesView->CurrentSelection(0) + 1;
-		mMainView->MoveToPage(page);
-		break;
-	case GOTO_PAGE_MENU_CMD:
-		mPageNumberItem->MakeFocus();
-		break;
-	case SET_ZOOM_VALUE_CMD:
-		{
-			status_t err;
-			BMenuItem * item;
-			BMenu * menu;
-			BArchivable * ptr;
-			int32 idx;
-
-			err  = msg->FindPointer ("source", (void **)&ptr);
-			item = dynamic_cast <BMenuItem *> (ptr);
-			if (item != NULL) {
-				menu = item->Menu ();
-				if (menu == NULL) {
-					// ERROR
-				}
-				else {
-					idx = menu->IndexOf (item) - FIRST_ZOOM_ITEM_INDEX;
-					if (idx > MAX_ZOOM) {
-						idx = MAX_ZOOM;
-					}
-					SetZoom (idx);
-					mMainView->SetZoom(idx);
-				}
-			}
-		}
-		break;
-	case ZOOM_IN_CMD:
-	case ZOOM_OUT_CMD:
-		mMainView->Zoom(cmd == ZOOM_IN_CMD);
-		break;
-	case FIT_TO_PAGE_WIDTH_CMD:
-		mMainView->FitToPageWidth();
-		break;
-	case FIT_TO_PAGE_CMD:
-		mMainView->FitToPage();
-		break;
-	case SET_ROTATE_VALUE_CMD:
-		{
-			status_t err;
-			BMenuItem * item;
-			BMenu * menu;
-			BArchivable * ptr;
-			int32 idx;
-
-			err  = msg->FindPointer ("source", (void **)&ptr);
-			item = dynamic_cast <BMenuItem *> (ptr);
-			if (item != NULL) {
-				menu = item->Menu ();
-				if (menu == NULL) {
-					// ERROR
-				}
-				else {
-					idx = menu->IndexOf (item);
-					mMainView->SetRotation (idx * 90);
-				}
-			}
-		}
-		break;
-	case ROTATE_CLOCKWISE_CMD: mMainView->RotateClockwise();
-		break;
-	case ROTATE_ANTI_CLOCKWISE_CMD: mMainView->RotateAntiClockwise();
-		break;
-	case HISTORY_BACK_CMD:
-		mMainView->Back ();
-		break;
-	case HISTORY_FORWARD_CMD:
-		mMainView->Forward ();
-		break;
-
-	case FIND_CMD:
-		mMainView->WaitForPage();
-		if (Lock()) {
-			mFindWindow = new FindTextWindow(gApp->GetSettings(), mFindText.String(), this);
-			Unlock();
-		}
-		break;
-	case FIND_NEXT_CMD:
-		mMainView->WaitForPage();
-		if (Lock()) {
-			mFindWindow = new FindTextWindow(gApp->GetSettings(), mFindText.String(), this);
-			Unlock();
-			mFindWindow->PostMessage('FIND');
-		}
-		break;
-/*	case KEYBOARD_SHORTCUTS_CMD: {
-			BAlert *info = new BAlert("Info",
-				"Keyboard Shortcuts:\n\n"
-				"Space - scroll forward on a page\n"
-				"Backspace - scroll backwards on page\n"
-				"Cursor Arrow Keys - scroll incrementally in the direction of the cursor key\n"
-				"Page Up - skip to the previous page\n"
-				"Page Down - skip to the next page\n"
-				"Home - return to the beginning of the document\n"
-				"End - advance to the end of the document\n"
-				"ALT+B - return to the previously viewed page within the document"
-				, "OK");
-			info->Go();
-		}
-		break;*/
-	case HELP_CMD:
-		OpenHelp();
-		break;
-	case ONLINE_HELP_CMD:
-		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/English/table_of_contents.html");
-		break;
-	case HOME_PAGE_CMD:
-		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/");
-		break;
-	case BUG_REPORT_CMD:
-		LaunchHTMLBrowser("http://github.com/HaikuArchives/BePDF/issues/");
-		break;
-	case PREFERENCES_FILE_CMD:
-		mPreferencesItem->SetEnabled(false);
-		new PreferencesWindow(gApp->GetSettings(), this);
-		break;
-	case FILE_INFO_CMD:
-		if (SetPendingIfLocked(FILE_INFO_PENDING)) return;
-		if (!ActivateWindow(mFIWMessenger)) {
-			FileInfoWindow *w;
-			mMainView->WaitForPage();
-			w = new FileInfoWindow(gApp->GetSettings(), &mCurrentFile, mMainView->GetPDFDoc(), this, mFileAttributes.GetPage());
-			mFIWMessenger = new BMessenger(w);
-		}
-		break;
-	case PRINT_SETTINGS_CMD: {
-			if (SetPendingIfLocked(PRINT_SETTINGS_PENDING)) return;
-			PrintSettingsWindow *w;
-			mPrintSettingsWindowOpen = true;
-			UpdateInputEnabler();
-			w = new PrintSettingsWindow(mMainView->GetPDFDoc(), gApp->GetSettings(), this);
-			mPSWMessenger = new BMessenger(w);
-		}
-		break;
-	case SHOW_BOOKMARKS_CMD: ShowBookmarks();
-		break;
-	case SHOW_PAGE_LIST_CMD: ShowPageList();
-		break;
-	case SHOW_ANNOT_TOOLBAR_CMD: ShowAnnotationToolbar();
-		break;
-	case SHOW_ATTACHMENTS_CMD: ShowAttachments();
-		break;
-	case HIDE_LEFT_PANEL_CMD: HideLeftPanel();
-		break;
-	case FULL_SCREEN_CMD: OnFullScreen();
-		break;
-	case ADD_BOOKMARK_CMD: AddBookmark();
-		break;
-	case DELETE_BOOKMARK_CMD: DeleteBookmark();
-		break;
-	case EDIT_BOOKMARK_CMD: EditBookmark();
-		break;
-	case SHOW_TRACER_CMD: OutputTracer::ShowWindow(gApp->GetSettings());
-		break;
-	// Annotation
-	case DONE_EDIT_ANNOT_CMD: EditAnnotation(false);
-		break;
-	// Attachments
-	case ATTACHMENT_SELECTION_CHANGED_MSG:
-		msg->PrintToStream();
-		break;
-	default:
-		if (FIRST_ANNOT_CMD <= cmd && cmd <= LAST_ANNOT_CMD) {
-			InsertAnnotation(cmd);
-		}
-	}
 }
 
 ///////////////////////////////////////////////////////////
@@ -714,7 +437,6 @@ AnnotationWindow* PDFWindow::ShowAnnotationWindow() {
 ///////////////////////////////////////////////////////////
 void PDFWindow::UpdateInputEnabler() {
 	#define ie mInputEnabler
-	#define cvs mControlValueSetter
 	if (mMainView) {
 		PDFDoc* doc = mMainView->GetPDFDoc();
 		int num_pages = mMainView->GetNumPages();
@@ -743,10 +465,10 @@ void PDFWindow::UpdateInputEnabler() {
 
 		int active = mLayerView->Active();
 		// setenable state of
-		cvs.SetEnabled(SHOW_PAGE_LIST_CMD, mShowLeftPanel && active == PAGE_LIST_PANEL);
-		cvs.SetEnabled(SHOW_BOOKMARKS_CMD, mShowLeftPanel && active == BOOKMARKS_PANEL);
-		cvs.SetEnabled(SHOW_ANNOT_TOOLBAR_CMD, mShowLeftPanel && active == ANNOTATIONS_PANEL);
-		cvs.SetEnabled(SHOW_ATTACHMENTS_CMD, mShowLeftPanel && active == ATTACHMENTS_PANEL);
+		mToolBar->SetActionPressed(SHOW_PAGE_LIST_CMD, mShowLeftPanel && active == PAGE_LIST_PANEL);
+		mToolBar->SetActionPressed(SHOW_BOOKMARKS_CMD, mShowLeftPanel && active == BOOKMARKS_PANEL);
+		mToolBar->SetActionPressed(SHOW_ANNOT_TOOLBAR_CMD, mShowLeftPanel && active == ANNOTATIONS_PANEL);
+		mToolBar->SetActionPressed(SHOW_ATTACHMENTS_CMD, mShowLeftPanel && active == ATTACHMENTS_PANEL);
 
 		// set enable state
 		ie.SetEnabled(SHOW_PAGE_LIST_CMD, (!mShowLeftPanel) || active != PAGE_LIST_PANEL);
@@ -784,17 +506,15 @@ void PDFWindow::UpdateInputEnabler() {
 
 		if (Lock()) {
 			ie.Update();
-			cvs.Update();
 			Unlock();
 		}
 	}
 	#undef ie
-	#undef cvs
 }
 
 ///////////////////////////////////////////////////////////
 void PDFWindow::AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool marked, char shortcut, uint32 modifiers) {
-	BMenuItem *item = new BMenuItem(label, MakeCommandMessage (cmd), shortcut, modifiers);
+	BMenuItem *item = new BMenuItem(label, new BMessage(cmd), shortcut, modifiers);
 	item->SetMarked(marked);
 	subMenu->AddItem(item);
 	mInputEnabler.Register(new IEMenuItem(item, cmd));
@@ -804,36 +524,10 @@ void PDFWindow::AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool mark
 void PDFWindow::Register(uint32 behavior, BControl* control, int32 cmd) {
 	if (behavior == B_ONE_STATE_BUTTON) {
 		mInputEnabler.Register(new IEControl(control, cmd));
-	} else {
+	} // else {
 		// behavior == B_TWO_STATE_BUTTON
-		mControlValueSetter.Register(new IEControlValue(control, cmd));
-	}
-}
-
-///////////////////////////////////////////////////////////
-ResourceBitmapButton* PDFWindow::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, const char *off_grey, const char *on_grey, int32 cmd, const char *info, uint32 behavior) {
-	const int buttonSize = TOOLBAR_HEIGHT;
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
-	                                name, off, on, off_grey, on_grey,
-	                                MakeCommandMessage (cmd),
-	                                behavior);
-	button->SetToolTip(B_TRANSLATE(info));
-	toolBar->Add (button);
-	Register(behavior, button, cmd);
-	return button;
-}
-
-///////////////////////////////////////////////////////////
-ResourceBitmapButton* PDFWindow::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, int32 cmd, const char *info, uint32 behavior) {
-	const int buttonSize = TOOLBAR_HEIGHT;
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
-	                                name, off, on,
-	                                MakeCommandMessage (cmd),
-	                                behavior);
-	button->SetToolTip(B_TRANSLATE(info));
-	toolBar->Add (button);
-	Register(behavior, button, cmd);
-	return button;
+//		mControlValueSetter.Register(new IEControlValue(control, cmd));
+//	}
 }
 
 ///////////////////////////////////////////////////////////
@@ -865,56 +559,60 @@ BMenuBar* PDFWindow::BuildMenu() {
 		BMenu * menu = new BMenu(B_TRANSLATE("File"));
 			menu->AddItem(mOpenMenu = new RecentDocumentsMenu(B_TRANSLATE("Open…"),  B_REFS_RECEIVED));
 			menu->AddItem(mNewMenu  = new RecentDocumentsMenu(B_TRANSLATE("Open In New Window…"), OPEN_IN_NEW_WINDOW_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Reload"), 'R', MakeCommandMessage(RELOAD_FILE_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Reload"), 'R', (RELOAD_FILE_CMD));
 			AddItem(menu, B_TRANSLATE("Save As…"), SAVE_FILE_AS_CMD, false, 'S', B_SHIFT_KEY);
 
-			mFileInfoItem = new BMenuItem(B_TRANSLATE("File Info…"),	MakeCommandMessage (FILE_INFO_CMD), 'I');
+			mFileInfoItem = new BMenuItem(B_TRANSLATE("File Info…"),
+				new BMessage(FILE_INFO_CMD), 'I');
 			menu->AddItem(mFileInfoItem);
 
 			ADD_SITEM (menu );
-			ADD_ITEM (menu, B_TRANSLATE("Page Setup…"), 'S', MakeCommandMessage (PAGESETUP_FILE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Print…"), 'P', MakeCommandMessage (PRINT_SETTINGS_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Page Setup…"), 'S',  (PAGESETUP_FILE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Print…"), 'P',  (PRINT_SETTINGS_CMD));
 
 			ADD_SITEM (menu );
 
-			ADD_ITEM ( menu, B_TRANSLATE("Close"), 'W', MakeCommandMessage( CLOSE_FILE_CMD ) );
-			ADD_ITEM ( menu, B_TRANSLATE("Quit"), 'Q' , MakeCommandMessage( QUIT_APP_CMD ));
+			ADD_ITEM ( menu, B_TRANSLATE("Close"), 'W', ( CLOSE_FILE_CMD ) );
+			ADD_ITEM ( menu, B_TRANSLATE("Quit"), 'Q' , ( QUIT_APP_CMD ));
 
 		menuBar->AddItem(menu);
 
 		// Edit
 		menu = new BMenu ( B_TRANSLATE("Edit") );
-			ADD_ITEM (menu, B_TRANSLATE("Copy Selection"), 'C', MakeCommandMessage( COPY_SELECTION_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Copy Selection"), 'C', ( COPY_SELECTION_CMD));
 			ADD_SITEM (menu);
-			ADD_ITEM (menu, B_TRANSLATE("Select All"), 'A', MakeCommandMessage( SELECT_ALL_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Select All"), 'A', ( SELECT_ALL_CMD));
 			AddItem(menu, B_TRANSLATE("Select None"), SELECT_NONE_CMD, false, 'A', B_SHIFT_KEY);
 
 			ADD_SITEM (menu );
 
-			mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences…"),	MakeCommandMessage (PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY);
+			mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences…"),
+				new BMessage(PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY);
 			menu->AddItem(mPreferencesItem);
 		menuBar->AddItem ( menu );
 
 		// Zoom
 		menu = new BMenu ( B_TRANSLATE("View") );
 		int16 zoom = settings->GetZoom();
-			ADD_ITEM(menu, B_TRANSLATE("Bookmarks"), 'B' , MakeCommandMessage(SHOW_BOOKMARKS_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show page list"), 'L', MakeCommandMessage(SHOW_PAGE_LIST_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show annotation tool bar"), 0, MakeCommandMessage(SHOW_ANNOT_TOOLBAR_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show attachments"), 0, MakeCommandMessage(SHOW_ATTACHMENTS_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Hide page list"), 'H', MakeCommandMessage(HIDE_LEFT_PANEL_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Bookmarks"), 'B' , (SHOW_BOOKMARKS_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show page list"), 'L', (SHOW_PAGE_LIST_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show annotation tool bar"), 0, (SHOW_ANNOT_TOOLBAR_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show attachments"), 0, (SHOW_ATTACHMENTS_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Hide page list"), 'H', (HIDE_LEFT_PANEL_CMD));
 
 			ADD_SITEM(menu);
 
-			menu->AddItem(mFullScreenItem = new BMenuItem(B_TRANSLATE("Fullscreen"), MakeCommandMessage(FULL_SCREEN_CMD), B_RETURN));
+			menu->AddItem(mFullScreenItem =
+				new BMenuItem(B_TRANSLATE("Fullscreen"),
+					new BMessage(FULL_SCREEN_CMD), B_RETURN));
 
 			ADD_SITEM(menu);
 
-			ADD_ITEM(menu, B_TRANSLATE("Fit to Page Width"), '/', MakeCommandMessage(FIT_TO_PAGE_WIDTH_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Fit to Page"), '*', MakeCommandMessage(FIT_TO_PAGE_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Fit to Page Width"), '/', (FIT_TO_PAGE_WIDTH_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Fit to Page"), '*', (FIT_TO_PAGE_CMD));
 			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Zoom In"), '+', MakeCommandMessage(ZOOM_IN_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Zoom Out"), '-', MakeCommandMessage(ZOOM_OUT_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Zoom In"), '+', (ZOOM_IN_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Zoom Out"), '-', (ZOOM_OUT_CMD));
 
 			ADD_SITEM(menu);
 
@@ -948,33 +646,34 @@ BMenuBar* PDFWindow::BuildMenu() {
 			menu->AddItem(mRotationMenu);
 
 			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Show Error Messages"), 'M', MakeCommandMessage(SHOW_TRACER_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show Error Messages"), 'M', (SHOW_TRACER_CMD));
 		menuBar->AddItem ( menu );
 
 		// Search
 		menu = new BMenu ( B_TRANSLATE("Search") );
-			ADD_ITEM (menu, B_TRANSLATE("Find…") , 'F', MakeCommandMessage( FIND_CMD));
-			menu->AddItem(new BMenuItem(B_TRANSLATE("Find Next…"), MakeCommandMessage( FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
+			ADD_ITEM (menu, B_TRANSLATE("Find…") , 'F', ( FIND_CMD));
+			menu->AddItem(new BMenuItem(B_TRANSLATE("Find Next…"),
+				new BMessage(FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
 		menuBar->AddItem ( menu );
 
 		// Page
 		menu = new BMenu (B_TRANSLATE("Page"));
-			ADD_ITEM (menu, B_TRANSLATE("First"), 0, MakeCommandMessage (FIRST_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Previous"), 0, MakeCommandMessage (PREVIOUS_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Go To Page"), 'G', MakeCommandMessage (GOTO_PAGE_MENU_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Next"), 0, MakeCommandMessage (NEXT_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Last"), 0, MakeCommandMessage (LAST_PAGE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("First"), 0,  (FIRST_PAGE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Previous"), 0,  (PREVIOUS_PAGE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Go To Page"), 'G',  (GOTO_PAGE_MENU_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Next"), 0,  (NEXT_PAGE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Last"), 0,  (LAST_PAGE_CMD));
 			ADD_SITEM(menu);
-			ADD_ITEM (menu, B_TRANSLATE("Back"), B_LEFT_ARROW, MakeCommandMessage (HISTORY_BACK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Forward"), B_RIGHT_ARROW, MakeCommandMessage (HISTORY_FORWARD_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Back"), B_LEFT_ARROW,  (HISTORY_BACK_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Forward"), B_RIGHT_ARROW,  (HISTORY_FORWARD_CMD));
 		menuBar->AddItem (menu);
 
 		// Bookmarks
 		menu = new BMenu (B_TRANSLATE("Bookmark"));
 
-			ADD_ITEM (menu, B_TRANSLATE("Add"),    0, MakeCommandMessage( ADD_BOOKMARK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Delete"), 0, MakeCommandMessage( DELETE_BOOKMARK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Edit"),   0, MakeCommandMessage( EDIT_BOOKMARK_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Add"),    0, ( ADD_BOOKMARK_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Delete"), 0, ( DELETE_BOOKMARK_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Edit"),   0, ( EDIT_BOOKMARK_CMD));
 
 		menuBar->AddItem(menu);
 
@@ -982,152 +681,157 @@ BMenuBar* PDFWindow::BuildMenu() {
 		UpdateWindowsMenu();
 
 		menu = new BMenu(B_TRANSLATE("Help"));
-		ADD_ITEM (menu, B_TRANSLATE("Show Help…"), 0, MakeCommandMessage(HELP_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Online Help…"), 0, MakeCommandMessage(ONLINE_HELP_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Show Help…"), 0, (HELP_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Online Help…"), 0, (ONLINE_HELP_CMD));
 
 		ADD_SITEM(menu);
 
-		ADD_ITEM (menu, B_TRANSLATE("Visit Homepage…"), 0, MakeCommandMessage(HOME_PAGE_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Issue Tracker…"), 0, MakeCommandMessage(BUG_REPORT_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Visit Homepage…"), 0, (HOME_PAGE_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Issue Tracker…"), 0, (BUG_REPORT_CMD));
 		ADD_SITEM (menu );
-		ADD_ITEM (menu, B_TRANSLATE("About BePDF…"), 0, MakeCommandMessage( ABOUT_APP_CMD ) );
+		ADD_ITEM (menu, B_TRANSLATE("About BePDF…"), 0, ( ABOUT_APP_CMD ) );
 		menuBar->AddItem( menu );
 
 	AddChild(menuBar);
 
 	mOpenMenu->Superitem()->SetTrigger('O');
-	mOpenMenu->Superitem()->SetMessage(MakeCommandMessage( OPEN_FILE_CMD ));
+	mOpenMenu->Superitem()->SetMessage(new BMessage(OPEN_FILE_CMD));
 	mOpenMenu->Superitem()->SetShortcut('O', 0);
 
 	mNewMenu->Superitem()->SetTrigger('N');
-	mNewMenu->Superitem()->SetMessage(MakeCommandMessage( NEW_WINDOW_CMD ));
+	mNewMenu->Superitem()->SetMessage(new BMessage(NEW_WINDOW_CMD));
 	mNewMenu->Superitem()->SetShortcut('N', 0);
 
 	return menuBar;
 }
 
-///////////////////////////////////////////////////////////
-ToolBar* PDFWindow::BuildToolBar() {
-	mToolBar = new ToolBar (BRect(0, mMenuHeight, Bounds().right, mMenuHeight+TOOLBAR_HEIGHT-1), "toolbar",
-								B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT,
-								B_WILL_DRAW | B_FRAME_EVENTS );
-	AddChild (mToolBar);
 
-	ResourceBitmapButton *button;
+BToolBar* PDFWindow::BuildToolBar()
+{
+	mToolBar = new BToolBar(BRect(0, mMenuHeight, Bounds().right,
+		mMenuHeight+TOOLBAR_HEIGHT-1));
+	mToolBar->SetName("toolbar");
+	mToolBar->SetResizingMode(B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT);
+	mToolBar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
+	AddChild(mToolBar);
 
-	// open file
-    AddButton(mToolBar, "open_file_btn", "OPEN_FILE_OFF", "OPEN_FILE_ON", "OPEN_FILE_OFF_GREYED", NULL, OPEN_FILE_CMD, "Open file.");
-	// reload file
-    AddButton(mToolBar, "reload_file_btn", "RELOAD_FILE_OFF", "RELOAD_FILE_ON", "RELOAD_FILE_OFF_GREYED", "RELOAD_FILE_ON_GREYED", RELOAD_FILE_CMD, "Reload file.");
-	// print
-	AddButton(mToolBar, "print_btn", "PRINT_OFF", "PRINT_ON", "PRINT_OFF_GREYED", NULL, PRINT_SETTINGS_CMD, "Print.");
-
-	mToolBar->AddSeparator();
-
-	// bookmarks
-
-	AddButton(mToolBar, "bookmarks_btn", "BOOKMARKS_OFF", "BOOKMARKS_ON", "BOOKMARKS_OFF_GREYED", NULL, SHOW_BOOKMARKS_CMD, "Bookmarks.", B_TWO_STATE_BUTTON);
-	AddButton(mToolBar, "page_list_btn", "PAGE_LIST_OFF", "PAGE_LIST_ON", "PAGE_LIST_OFF_GREYED", NULL, SHOW_PAGE_LIST_CMD, "Show page list.", B_TWO_STATE_BUTTON);
-    AddButton(mToolBar, "show_annot_btn", "SHOW_ANNOT_OFF", "SHOW_ANNOT_ON", "SHOW_ANNOT_OFF_GREYED", NULL, SHOW_ANNOT_TOOLBAR_CMD, "Show annotation tool bar.", B_TWO_STATE_BUTTON);
-    AddButton(mToolBar, "show_annot_btn", "SHOW_ATTACHMENTS_OFF", "SHOW_ATTACHMENTS_ON", SHOW_ATTACHMENTS_CMD, "Show attachments.", B_TWO_STATE_BUTTON);
-	// AddButton(mToolBar, "hide_page_list_btn", "HIDE_PAGE_LIST_OFF", "HIDE_PAGE_LIST_ON", "HIDE_PAGE_LIST_OFF_GREYED", NULL, HIDE_LEFT_PANEL_CMD, "Hide page list.");
+	mToolBar->AddAction(OPEN_FILE_CMD, this, LoadBitmap("OPEN_FILE_ON"),
+		B_TRANSLATE("Open file."));
+	mToolBar->AddAction(RELOAD_FILE_CMD, this, LoadBitmap("RELOAD_FILE_ON"),
+		B_TRANSLATE("Reload file."));
+	mToolBar->AddAction(PRINT_SETTINGS_CMD, this, LoadBitmap("PRINT_ON"),
+		B_TRANSLATE("Print."));
 
 	mToolBar->AddSeparator();
 
-	// window/fullscreen mode
+	mToolBar->AddAction(SHOW_BOOKMARKS_CMD, this, LoadBitmap("BOOKMARKS_ON"),
+		B_TRANSLATE("Bookmarks."), NULL, true);
+	mToolBar->AddAction(SHOW_PAGE_LIST_CMD, this, LoadBitmap("PAGE_LIST_ON"),
+		B_TRANSLATE("Show page list."), NULL, true);
+	mToolBar->AddAction(SHOW_ANNOT_TOOLBAR_CMD, this,
+		LoadBitmap("SHOW_ANNOT_ON"), B_TRANSLATE("Show annotation toolbar."),
+		NULL, true);
+	mToolBar->AddAction(SHOW_ATTACHMENTS_CMD, this,
+		LoadBitmap("SHOW_ATTACHMENTS_ON"), B_TRANSLATE("Show attachments."),
+		NULL, true);
+	// mToolBar->AddAction(HIDE_LEFT_PANEL_CMD, this,
+	//	LoadBitmap("HIDE_PAGE_LIST_ON"), B_TRANSLATE("Hide page list."),
+	//	NULL, true);
+
+	mToolBar->AddSeparator();
+
 	BRect aRect(0, 0, 20, 20);
-	MultiButton *mb = new MultiButton(BRect(0, 0, 19, 19), "full_screen_mbtn", B_FOLLOW_NONE, 0);
-	mToolBar->Add(mb);
-	button = new ResourceBitmapButton (aRect,
-	                                "full_screen_btn", "FULL_SCREEN_OFF", "FULL_SCREEN_ON",
-	                                MakeCommandMessage(FULL_SCREEN_CMD));
+	MultiButton *mb = new MultiButton(BRect(0, 0, 19, 19), "full_screen_mbtn",
+		B_FOLLOW_NONE, 0);
+	mToolBar->AddView(mb);
+
+	ResourceBitmapButton* button = new ResourceBitmapButton(aRect,
+		"full_screen_btn", "FULL_SCREEN_OFF", "FULL_SCREEN_ON",
+		new BMessage(FULL_SCREEN_CMD));
 	button->SetToolTip(B_TRANSLATE("Fullscreen mode."));
 	mb->AddButton(button);
-	button = new ResourceBitmapButton (aRect,
-	                                "window_btn", "WINDOW_OFF", "WINDOW_ON",
-	                                MakeCommandMessage(FULL_SCREEN_CMD));
+	button = new ResourceBitmapButton(aRect,
+		"window_btn", "WINDOW_OFF", "WINDOW_ON",
+		new BMessage(FULL_SCREEN_CMD));
 	button->SetToolTip(B_TRANSLATE("Window mode."));
 	mb->AddButton(button);
 
+	mToolBar->AddSeparator();
+
+	mToolBar->AddAction(FIRST_PAGE_CMD, this, LoadBitmap("FIRST_ON"),
+		B_TRANSLATE("Return to the beginning of the document."));
+	mToolBar->AddAction(PREVIOUS_N_PAGE_CMD, this,
+		LoadBitmap("PREVIOUS_N_ON"),
+		B_TRANSLATE("Skip to the 10th previous page."));
+	mToolBar->AddAction(PREVIOUS_PAGE_CMD, this, LoadBitmap("PREVIOUS_ON"),
+		B_TRANSLATE("Skip to the previous page."));
+	mToolBar->AddAction(NEXT_PAGE_CMD, this, LoadBitmap("NEXT_ON"),
+		B_TRANSLATE("Skip to the next page."));
+	mToolBar->AddAction(NEXT_N_PAGE_CMD, this, LoadBitmap("NEXT_N_ON"),
+		B_TRANSLATE("Skip to the 10th next page."));
+	mToolBar->AddAction(LAST_PAGE_CMD, this, LoadBitmap("LAST_ON"),
+		B_TRANSLATE("Advance to the end of the document."));
 
 	mToolBar->AddSeparator();
 
-	// to first page
-	AddButton(mToolBar, "first_btn", "FIRST_OFF", "FIRST_ON", "FIRST_OFF_GREYED", NULL, FIRST_PAGE_CMD, "Return to the beginning of the document.");
-	// to n-th previous page
-	AddButton(mToolBar, "prev_n_btn", "PREVIOUS_N_OFF", "PREVIOUS_N_ON", "PREVIOUS_N_OFF_GREYED", NULL, PREVIOUS_N_PAGE_CMD,
-		"Skip to the 10th previous page.");
-	// to previous page
-	AddButton(mToolBar, "prev_btn", "PREVIOUS_OFF", "PREVIOUS_ON", "PREVIOUS_OFF_GREYED", NULL, PREVIOUS_PAGE_CMD,
-		"Skip to the previous page.");
-	// to next page
-	AddButton(mToolBar, "next_btn", "NEXT_OFF", "NEXT_ON", "NEXT_OFF_GREYED", NULL, NEXT_PAGE_CMD,
-		"Skip to the next page.");
-	// to 10th next page
-	AddButton(mToolBar, "next_n_btn", "NEXT_N_OFF", "NEXT_N_ON", "NEXT_N_OFF_GREYED", NULL, NEXT_N_PAGE_CMD,
-		"Skip to the 10th next page.");
-	// to last page
-	AddButton(mToolBar, "last_btn", "LAST_OFF", "LAST_ON", "LAST_OFF_GREYED", NULL, LAST_PAGE_CMD,
-		"Advance to the end of the document.");
-
-	mToolBar->AddSeparator();
-
-	// to previous page in history
-	AddButton(mToolBar, "back_btn", "BACK_OFF", "BACK_ON", "BACK_OFF_GREYED", NULL, HISTORY_BACK_CMD,
-		"Back in the page history list.");
-	// to next page in history
-	AddButton(mToolBar, "forward_btn", "FORWARD_OFF", "FORWARD_ON", "FORWARD_OFF_GREYED", NULL, HISTORY_FORWARD_CMD,
-		"Forward in the page history list.");
+	mToolBar->AddAction(HISTORY_BACK_CMD, this, LoadBitmap("BACK_ON"),
+		B_TRANSLATE("Back in the page history list."));
+	mToolBar->AddAction(HISTORY_FORWARD_CMD, this, LoadBitmap("FORWARD_ON"),
+		B_TRANSLATE("Forward in the page history list."));
 
 	mToolBar->AddSeparator();
 
 	// Add "go to page number" TextControl
-	mPageNumberItem	= new BTextControl (BRect (0, 6, 50, 30), "goto_page", "", "", MakeCommandMessage (GOTO_PAGE_CMD));
+	mPageNumberItem	= new BTextControl(BRect (0, 6, 50, 30), "goto_page",
+		"", "", new BMessage(GOTO_PAGE_CMD));
 	mPageNumberItem->SetDivider (0.0);
 	mPageNumberItem->SetAlignment(B_ALIGN_RIGHT, B_ALIGN_RIGHT);
 	mPageNumberItem->SetTarget (this);
 	mPageNumberItem->TextView()->DisallowChar(B_ESCAPE);
-	mInputEnabler.Register(new IETextView(mPageNumberItem->TextView(), GOTO_PAGE_CMD));
+	mInputEnabler.Register(new IETextView(mPageNumberItem->TextView(),
+		GOTO_PAGE_CMD));
 
 	BTextView *t = mPageNumberItem->TextView();
 	BFont font(be_plain_font);
 	t->GetFontAndColor(0, &font);
 	font.SetSize(10);
 	t->SetFontAndColor(0, 1000, &font, B_FONT_SIZE);
-	mToolBar->Add(mPageNumberItem, ToolBar::none);
+	mToolBar->AddView(mPageNumberItem);
 
 	// display total number of pages
-	mTotalPageNumberItem = new BStringView (BRect (0, 0, 50, 22), "total_num_of_pages", "");
+	mTotalPageNumberItem = new BStringView(BRect (0, 0, 50, 22),
+		"total_num_of_pages", "");
 	mTotalPageNumberItem->SetAlignment(B_ALIGN_CENTER);
 	mTotalPageNumberItem->SetFont(&font);
-	mToolBar->Add (mTotalPageNumberItem, ToolBar::none);
+	mToolBar->AddView(mTotalPageNumberItem);
 
 	mToolBar->AddSeparator();
 
-	// zoom to fit page width
-	AddButton(mToolBar, "forward_btn", "FIT_TO_PAGE_WIDTH_OFF", "FIT_TO_PAGE_WIDTH_ON", FIT_TO_PAGE_WIDTH_CMD,
-		"Fit to Page Width.");
-	// zoom to fit page
-	AddButton(mToolBar, "forward_btn", "FIT_TO_PAGE_OFF", "FIT_TO_PAGE_ON", FIT_TO_PAGE_CMD,
-		"Fit to page.");
+	mToolBar->AddAction(FIT_TO_PAGE_WIDTH_CMD, this,
+		LoadBitmap("FIT_TO_PAGE_WIDTH_ON"),
+		B_TRANSLATE("Fit to Page Width."));
+	mToolBar->AddAction(FIT_TO_PAGE_CMD, this, LoadBitmap("FIT_TO_PAGE_ON"),
+		B_TRANSLATE("Fit to page."));
 
 	mToolBar->AddSeparator();
 
-	// rotate clockwise
-	AddButton(mToolBar, "rotate_clockwise_btn", "ROTATE_CLOCKWISE_OFF", "ROTATE_CLOCKWISE_ON", "ROTATE_CLOCKWISE_OFF_GREYED", NULL, ROTATE_CLOCKWISE_CMD, "Rotate clockwise.");
-	// rotate anti-clockwise
-	AddButton(mToolBar, "rotate_anti_clockwise_btn", "ROTATE_ANTI_CLOCKWISE_OFF", "ROTATE_ANTI_CLOCKWISE_ON", "ROTATE_ANTI_CLOCKWISE_OFF_GREYED", NULL, ROTATE_ANTI_CLOCKWISE_CMD, "Rotate anti-clockwise.");
-	// zoom in
-	AddButton(mToolBar, "zoom_in_btn", "ZOOM_IN_OFF", "ZOOM_IN_ON", "ZOOM_IN_OFF_GREYED", NULL, ZOOM_IN_CMD, "Zoom in.");
-	// zoom out
-	AddButton(mToolBar, "zoom_out_btn", "ZOOM_OUT_OFF", "ZOOM_OUT_ON", "ZOOM_OUT_OFF_GREYED", NULL, ZOOM_OUT_CMD, "Zoom out.");
+	mToolBar->AddAction(ROTATE_CLOCKWISE_CMD, this,
+		LoadBitmap("ROTATE_CLOCKWISE_ON"), B_TRANSLATE("Rotate clockwise."));
+	mToolBar->AddAction(ROTATE_ANTI_CLOCKWISE_CMD, this,
+		LoadBitmap("ROTATE_ANTI_CLOCKWISE_ON"),
+		B_TRANSLATE("Rotate anti-clockwise."));
+	mToolBar->AddAction(ZOOM_IN_CMD, this, LoadBitmap("ZOOM_IN_ON"),
+		B_TRANSLATE("Zoom in."));
+	mToolBar->AddAction(ZOOM_OUT_CMD, this, LoadBitmap("ZOOM_OUT_ON"),
+		B_TRANSLATE("Zoom out."));
 
 	mToolBar->AddSeparator();
 
-	// find
-	AddButton(mToolBar, "find_btn", "FIND_OFF", "FIND_ON", FIND_CMD, "Find.");
-	// find next
-	AddButton(mToolBar, "find_next_btn", "FIND_NEXT_OFF", "FIND_NEXT_ON", "FIND_NEXT_OFF_GREYED", NULL, FIND_NEXT_CMD, "Find next.");
+	mToolBar->AddAction(FIND_CMD, this, LoadBitmap("FIND_ON"),
+		B_TRANSLATE("Find."));
+	mToolBar->AddAction(FIND_NEXT_CMD, this, LoadBitmap("FIND_NEXT_ON"),
+		B_TRANSLATE("Find next."));
+	mToolBar->AddGlue();
 	return mToolBar;
 }
 
@@ -1153,7 +857,7 @@ LayerView* PDFWindow::BuildLeftPanel(BRect rect) {
 	mPagesView = new BListView(r, "pagesList", B_SINGLE_SELECTION_LIST,
 		B_FOLLOW_ALL_SIDES,
 		B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS);
-	mPagesView->SetSelectionMessage(MakeCommandMessage( PAGE_SELECTED_CMD ));
+	mPagesView->SetSelectionMessage(new BMessage(PAGE_SELECTED_CMD));
 
 	BView *pageView = new BScrollView ("pageScrollView", mPagesView,
 		B_FOLLOW_ALL_SIDES,
@@ -1414,12 +1118,276 @@ PDFWindow::SetPage(int16 page) {
 	mPagesView->ScrollToSelection();
 }
 
-///////////////////////////////////////////////////////////
+
 void
-PDFWindow::MessageReceived (BMessage * message)
+PDFWindow::MessageReceived(BMessage* message)
 {
+	int page;
 	const char *text;
+
+	if (CancelCommand(message))
+		return;
+
 	switch (message->what) {
+	case OPEN_FILE_CMD:
+		mMainView->WaitForPage();
+		EditAnnotation(false);
+		gApp->OpenFilePanel();
+		break;
+	case NEW_WINDOW_CMD:
+		be_roster->Launch(BEPDF_APP_SIG, 0, (char**)NULL);
+		break;
+	case OPEN_IN_NEW_WINDOW_CMD: {
+		BMessage m(B_REFS_RECEIVED);
+		entry_ref r;
+		if (message->FindRef("refs", 0, &r) == B_OK) {
+			BEntry entry(&r);
+			BPath path;
+			entry.GetPath(&path);
+			OpenPDF(path.Path());
+		}
+		}
+		break;
+	case RELOAD_FILE_CMD:
+		Reload();
+		break;
+	case SAVE_FILE_AS_CMD:
+		gApp->OpenSaveFilePanel(this, GetPdfFilter());
+		break;
+	case CLOSE_FILE_CMD:
+		mMainView->WaitForPage(true);
+		PostMessage (B_QUIT_REQUESTED );
+		break;
+	case QUIT_APP_CMD:
+	    gApp->Notify(BepdfApplication::NOTIFY_QUIT_MSG);
+		break;
+	case PAGESETUP_FILE_CMD:
+		mMainView->PageSetup ();
+		break;
+	case ABOUT_APP_CMD:
+		be_app->PostMessage (B_ABOUT_REQUESTED);
+		break;
+	case COPY_SELECTION_CMD: mMainView->CopySelection();
+		break;
+	case SELECT_ALL_CMD: mMainView->SelectAll();
+		break;
+	case SELECT_NONE_CMD: mMainView->SelectNone();
+		break;
+	case FIRST_PAGE_CMD:
+		mMainView->MoveToPage (1);
+		break;
+	case PREVIOUS_N_PAGE_CMD:
+		mMainView->MoveToPage(mMainView->Page() - 10);
+		break;
+	case NEXT_N_PAGE_CMD:
+		mMainView->MoveToPage(mMainView->Page() + 10);
+		break;
+	case PREVIOUS_PAGE_CMD:
+		if (B_SHIFT_KEY & modifiers()) {
+			mMainView->ScrollVertical (false, 0.95);
+		} else {
+			page = mMainView->Page();
+			mMainView->MoveToPage (page - 1);
+		}
+		break;
+	case NEXT_PAGE_CMD:
+		if (B_SHIFT_KEY & modifiers()) {
+			mMainView->ScrollVertical (true, 0.95);
+		} else {
+			page = mMainView->Page();
+			mMainView->MoveToPage (page + 1);
+		}
+		break;
+	case LAST_PAGE_CMD:
+		mMainView->MoveToPage (mMainView->GetNumPages());
+		break;
+	case GOTO_PAGE_CMD:
+		{
+			status_t err;
+			BTextControl * control;
+			BControl * ptr;
+
+			err  = message->FindPointer ("source", (void **)&ptr);
+			control = dynamic_cast <BTextControl *> (ptr);
+			if (control != NULL) {
+				const char *txt = control->Text ();
+				page = atoi (txt);
+				mMainView->MoveToPage (page);
+				mMainView->MakeFocus();
+			}
+			else {
+				/* ERROR */
+			}
+		}
+		break;
+	case PAGE_SELECTED_CMD:
+		page = mPagesView->CurrentSelection(0) + 1;
+		mMainView->MoveToPage(page);
+		break;
+	case GOTO_PAGE_MENU_CMD:
+		mPageNumberItem->MakeFocus();
+		break;
+	case SET_ZOOM_VALUE_CMD:
+		{
+			status_t err;
+			BMenuItem * item;
+			BMenu * menu;
+			BArchivable * ptr;
+			int32 idx;
+
+			err  = message->FindPointer ("source", (void **)&ptr);
+			item = dynamic_cast <BMenuItem *> (ptr);
+			if (item != NULL) {
+				menu = item->Menu ();
+				if (menu == NULL) {
+					// ERROR
+				}
+				else {
+					idx = menu->IndexOf (item) - FIRST_ZOOM_ITEM_INDEX;
+					if (idx > MAX_ZOOM) {
+						idx = MAX_ZOOM;
+					}
+					SetZoom (idx);
+					mMainView->SetZoom(idx);
+				}
+			}
+		}
+		break;
+	case ZOOM_IN_CMD:
+	case ZOOM_OUT_CMD:
+		mMainView->Zoom(message->what == ZOOM_IN_CMD);
+		break;
+	case FIT_TO_PAGE_WIDTH_CMD:
+		mMainView->FitToPageWidth();
+		break;
+	case FIT_TO_PAGE_CMD:
+		mMainView->FitToPage();
+		break;
+	case SET_ROTATE_VALUE_CMD:
+		{
+			status_t err;
+			BMenuItem * item;
+			BMenu * menu;
+			BArchivable * ptr;
+			int32 idx;
+
+			err  = message->FindPointer ("source", (void **)&ptr);
+			item = dynamic_cast <BMenuItem *> (ptr);
+			if (item != NULL) {
+				menu = item->Menu ();
+				if (menu == NULL) {
+					// ERROR
+				}
+				else {
+					idx = menu->IndexOf (item);
+					mMainView->SetRotation (idx * 90);
+				}
+			}
+		}
+		break;
+	case ROTATE_CLOCKWISE_CMD: mMainView->RotateClockwise();
+		break;
+	case ROTATE_ANTI_CLOCKWISE_CMD: mMainView->RotateAntiClockwise();
+		break;
+	case HISTORY_BACK_CMD:
+		mMainView->Back ();
+		break;
+	case HISTORY_FORWARD_CMD:
+		mMainView->Forward ();
+		break;
+
+	case FIND_CMD:
+		mMainView->WaitForPage();
+		if (Lock()) {
+			mFindWindow = new FindTextWindow(gApp->GetSettings(), mFindText.String(), this);
+			Unlock();
+		}
+		break;
+	case FIND_NEXT_CMD:
+		mMainView->WaitForPage();
+		if (Lock()) {
+			mFindWindow = new FindTextWindow(gApp->GetSettings(), mFindText.String(), this);
+			Unlock();
+			mFindWindow->PostMessage('FIND');
+		}
+		break;
+/*	case KEYBOARD_SHORTCUTS_CMD: {
+			BAlert *info = new BAlert("Info",
+				"Keyboard Shortcuts:\n\n"
+				"Space - scroll forward on a page\n"
+				"Backspace - scroll backwards on page\n"
+				"Cursor Arrow Keys - scroll incrementally in the direction of the cursor key\n"
+				"Page Up - skip to the previous page\n"
+				"Page Down - skip to the next page\n"
+				"Home - return to the beginning of the document\n"
+				"End - advance to the end of the document\n"
+				"ALT+B - return to the previously viewed page within the document"
+				, "OK");
+			info->Go();
+		}
+		break;*/
+	case HELP_CMD:
+		OpenHelp();
+		break;
+	case ONLINE_HELP_CMD:
+		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/English/table_of_contents.html");
+		break;
+	case HOME_PAGE_CMD:
+		LaunchHTMLBrowser("http://haikuarchives.github.io/BePDF/");
+		break;
+	case BUG_REPORT_CMD:
+		LaunchHTMLBrowser("http://github.com/HaikuArchives/BePDF/issues/");
+		break;
+	case PREFERENCES_FILE_CMD:
+		mPreferencesItem->SetEnabled(false);
+		new PreferencesWindow(gApp->GetSettings(), this);
+		break;
+	case FILE_INFO_CMD:
+		if (SetPendingIfLocked(FILE_INFO_PENDING)) return;
+		if (!ActivateWindow(mFIWMessenger)) {
+			FileInfoWindow *w;
+			mMainView->WaitForPage();
+			w = new FileInfoWindow(gApp->GetSettings(), &mCurrentFile, mMainView->GetPDFDoc(), this, mFileAttributes.GetPage());
+			mFIWMessenger = new BMessenger(w);
+		}
+		break;
+	case PRINT_SETTINGS_CMD: {
+			if (SetPendingIfLocked(PRINT_SETTINGS_PENDING)) return;
+			PrintSettingsWindow *w;
+			mPrintSettingsWindowOpen = true;
+			UpdateInputEnabler();
+			w = new PrintSettingsWindow(mMainView->GetPDFDoc(), gApp->GetSettings(), this);
+			mPSWMessenger = new BMessenger(w);
+		}
+		break;
+	case SHOW_BOOKMARKS_CMD: ShowBookmarks();
+		break;
+	case SHOW_PAGE_LIST_CMD: ShowPageList();
+		break;
+	case SHOW_ANNOT_TOOLBAR_CMD: ShowAnnotationToolbar();
+		break;
+	case SHOW_ATTACHMENTS_CMD: ShowAttachments();
+		break;
+	case HIDE_LEFT_PANEL_CMD: HideLeftPanel();
+		break;
+	case FULL_SCREEN_CMD: OnFullScreen();
+		break;
+	case ADD_BOOKMARK_CMD: AddBookmark();
+		break;
+	case DELETE_BOOKMARK_CMD: DeleteBookmark();
+		break;
+	case EDIT_BOOKMARK_CMD: EditBookmark();
+		break;
+	case SHOW_TRACER_CMD: OutputTracer::ShowWindow(gApp->GetSettings());
+		break;
+	// Annotation
+	case DONE_EDIT_ANNOT_CMD: EditAnnotation(false);
+		break;
+	// Attachments
+	case ATTACHMENT_SELECTION_CHANGED_MSG:
+		message->PrintToStream();
+		break;
+
 	case CUSTOM_ZOOM_FACTOR_MSG: {
 		int16 zoom;
 		if (message->FindInt16("zoom", &zoom) == B_OK) {
@@ -1599,7 +1567,10 @@ PDFWindow::MessageReceived (BMessage * message)
 		break;
 
 	default:
-		HWindow::MessageReceived (message);
+		if (FIRST_ANNOT_CMD <= message->what && message->what <= LAST_ANNOT_CMD) {
+			InsertAnnotation(message->what);
+		} else
+			HWindow::MessageReceived(message);
 	}
 }
 
@@ -1926,45 +1897,48 @@ static const int32 kAnnotDescEOL = -1;
 static const int32 kAnnotDescSeparator = -2;
 
 static AnnotDesc annotDescs[] = {
-	{ PDFWindow::ADD_COMMENT_TEXT_ANNOT_CMD, "Add comment text annotation.", "ANNOT_COMMENT"},
-	{ PDFWindow::ADD_HELP_TEXT_ANNOT_CMD, "Add help text annotation.", "ANNOT_HELP"},
-	{ PDFWindow::ADD_INSERT_TEXT_ANNOT_CMD, "Add insert text annotation.", "ANNOT_INSERT"},
-	{ PDFWindow::ADD_KEY_TEXT_ANNOT_CMD, "Add key text annotation.", "ANNOT_KEY"},
-	{ PDFWindow::ADD_NEW_PARAGRAPH_TEXT_ANNOT_CMD, "Add new paragraph text annotation.", "ANNOT_NEW_PARAGRAPH"},
-	{ PDFWindow::ADD_NOTE_TEXT_ANNOT_CMD, "Add note text annotation.", "ANNOT_NOTE"},
-	{ PDFWindow::ADD_PARAGRAPH_TEXT_ANNOT_CMD, "Add paragraph text annotation.", "ANNOT_PARAGRAPH"},
-	{ PDFWindow::ADD_LINK_ANNOT_CMD, "Add link annotation.", "ANNOT_LINK"},
+	{ PDFWindow::ADD_COMMENT_TEXT_ANNOT_CMD, B_TRANSLATE("Add comment text annotation."), "ANNOT_COMMENT"},
+	{ PDFWindow::ADD_HELP_TEXT_ANNOT_CMD, B_TRANSLATE("Add help text annotation."), "ANNOT_HELP"},
+	{ PDFWindow::ADD_INSERT_TEXT_ANNOT_CMD, B_TRANSLATE("Add insert text annotation."), "ANNOT_INSERT"},
+	{ PDFWindow::ADD_KEY_TEXT_ANNOT_CMD, B_TRANSLATE("Add key text annotation."), "ANNOT_KEY"},
+	{ PDFWindow::ADD_NEW_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add new paragraph text annotation."), "ANNOT_NEW_PARAGRAPH"},
+	{ PDFWindow::ADD_NOTE_TEXT_ANNOT_CMD, B_TRANSLATE("Add note text annotation."), "ANNOT_NOTE"},
+	{ PDFWindow::ADD_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add paragraph text annotation."), "ANNOT_PARAGRAPH"},
+	{ PDFWindow::ADD_LINK_ANNOT_CMD, B_TRANSLATE("Add link annotation."), "ANNOT_LINK"},
 	{ kAnnotDescSeparator, NULL, NULL},
-	{ PDFWindow::ADD_FREETEXT_ANNOT_CMD, "Add free text annotation.", "ANNOT_FREETEXT"},
-	{ PDFWindow::ADD_LINE_ANNOT_CMD, "Add line annotation.", "ANNOT_LINE"},
-	{ PDFWindow::ADD_SQUARE_ANNOT_CMD, "Add square annotation.", "ANNOT_SQUARE"},
-	{ PDFWindow::ADD_CIRCLE_ANNOT_CMD, "Add circle annotation.", "ANNOT_CIRCLE"},
-	{ PDFWindow::ADD_HIGHLIGHT_ANNOT_CMD, "Add highlight annotation.", "ANNOT_HIGHLIGHT"},
-	{ PDFWindow::ADD_UNDERLINE_ANNOT_CMD, "Add underline annotation.", "ANNOT_UNDERLINE"},
-	{ PDFWindow::ADD_SQUIGGLY_ANNOT_CMD, "Add squiggly annotation.", "ANNOT_SQUIGGLY"},
-	{ PDFWindow::ADD_STRIKEOUT_ANNOT_CMD, "Add strikeout annotation.", "ANNOT_STRIKEOUT"},
-	{ PDFWindow::ADD_STAMP_ANNOT_CMD, "Add stamp annotation.", "ANNOT_STAMP"},
-	{ PDFWindow::ADD_INK_ANNOT_CMD, "Add ink annotation.", "ANNOT_INK"},
-	{ PDFWindow::ADD_POPUP_ANNOT_CMD, "Add popup annotation.", "ANNOT_POPUP"},
-	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, "Add fileattachment annotation.", "ANNOT_FILEATTACHMENT"},
-	{ PDFWindow::ADD_SOUND_ANNOT_CMD, "Add sound annotation.", "ANNOT_SOUND"},
-	{ PDFWindow::ADD_MOVIE_ANNOT_CMD, "Add movie annotation.", "ANNOT_MOVIE"},
-	{ PDFWindow::ADD_WIDGET_ANNOT_CMD, "Add widget annotation.", "ANNOT_WIDGET"},
-	{ PDFWindow::ADD_PRINTERMARK_ANNOT_CMD, "Add printer mark annotation.", "ANNOT_PRINTERMARK"},
-	{ PDFWindow::ADD_TRAPNET_ANNOT_CMD, "Add trapnet annotation.", "ANNOT_TRAPNET"},
+	{ PDFWindow::ADD_FREETEXT_ANNOT_CMD, B_TRANSLATE("Add free text annotation."), "ANNOT_FREETEXT"},
+	{ PDFWindow::ADD_LINE_ANNOT_CMD, B_TRANSLATE("Add line annotation."), "ANNOT_LINE"},
+	{ PDFWindow::ADD_SQUARE_ANNOT_CMD, B_TRANSLATE("Add square annotation."), "ANNOT_SQUARE"},
+	{ PDFWindow::ADD_CIRCLE_ANNOT_CMD, B_TRANSLATE("Add circle annotation."), "ANNOT_CIRCLE"},
+	{ PDFWindow::ADD_HIGHLIGHT_ANNOT_CMD, B_TRANSLATE("Add highlight annotation."), "ANNOT_HIGHLIGHT"},
+	{ PDFWindow::ADD_UNDERLINE_ANNOT_CMD, B_TRANSLATE("Add underline annotation."), "ANNOT_UNDERLINE"},
+	{ PDFWindow::ADD_SQUIGGLY_ANNOT_CMD, B_TRANSLATE("Add squiggly annotation."), "ANNOT_SQUIGGLY"},
+	{ PDFWindow::ADD_STRIKEOUT_ANNOT_CMD, B_TRANSLATE("Add strikeout annotation."), "ANNOT_STRIKEOUT"},
+	{ PDFWindow::ADD_STAMP_ANNOT_CMD, B_TRANSLATE("Add stamp annotation."), "ANNOT_STAMP"},
+	{ PDFWindow::ADD_INK_ANNOT_CMD, B_TRANSLATE("Add ink annotation."), "ANNOT_INK"},
+	{ PDFWindow::ADD_POPUP_ANNOT_CMD, B_TRANSLATE("Add popup annotation."), "ANNOT_POPUP"},
+	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, B_TRANSLATE("Add fileattachment annotation."), "ANNOT_FILEATTACHMENT"},
+	{ PDFWindow::ADD_SOUND_ANNOT_CMD, B_TRANSLATE("Add sound annotation."), "ANNOT_SOUND"},
+	{ PDFWindow::ADD_MOVIE_ANNOT_CMD, B_TRANSLATE("Add movie annotation."), "ANNOT_MOVIE"},
+	{ PDFWindow::ADD_WIDGET_ANNOT_CMD, B_TRANSLATE("Add widget annotation."), "ANNOT_WIDGET"},
+	{ PDFWindow::ADD_PRINTERMARK_ANNOT_CMD, B_TRANSLATE("Add printer mark annotation."), "ANNOT_PRINTERMARK"},
+	{ PDFWindow::ADD_TRAPNET_ANNOT_CMD, B_TRANSLATE("Add trapnet annotation."), "ANNOT_TRAPNET"},
 	{ kAnnotDescEOL, NULL, NULL}
 };
 
-ToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name, AnnotDesc* desc) {
-	ToolBar* toolbar;
+BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
+	AnnotDesc* desc)
+{
+	BToolBar* toolbar = new BToolBar(rect, B_VERTICAL);
+	toolbar->SetName(name);
+	toolbar->SetResizingMode(B_FOLLOW_TOP_BOTTOM | B_FOLLOW_LEFT_RIGHT);
+	toolbar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
 
-	toolbar = new ToolBar (rect, name,
-								B_FOLLOW_TOP_BOTTOM | B_FOLLOW_LEFT_RIGHT,
-								B_WILL_DRAW | B_FRAME_EVENTS,
-								ToolBar::vertical);
 	// label also used in PDFView!
-    AddButton(toolbar, "done_annot_btn", "DONE_ANNOT_OFF", "DONE_ANNOT_ON", "DONE_ANNOT_OFF_GREYED", NULL, DONE_EDIT_ANNOT_CMD, "Leave annotation editing mode.", B_ONE_STATE_BUTTON);
-    AddButton(toolbar, "save_file_as_btn", "SAVE_FILE_AS_OFF", "SAVE_FILE_AS_ON", SAVE_FILE_AS_CMD, "Save file as.");
+	toolbar->AddAction(DONE_EDIT_ANNOT_CMD, this, LoadBitmap("DONE_ANNOT_ON"),
+		B_TRANSLATE("Leave annotation editing mode."));
+	toolbar->AddAction(SAVE_FILE_AS_CMD, this, LoadBitmap("SAVE_FILE_AS_ON"),
+		B_TRANSLATE("Save file as."));
 
 	toolbar->AddSeparator();
 
@@ -1978,20 +1952,13 @@ ToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name, AnnotDesc* d
 		Annotation* annot = GetAnnotTemplate(desc->mCmd);
 		if (annot == NULL) continue;
 		BString name(desc->mButtonPrefix);
-		BString on(desc->mButtonPrefix);         // button pressed
-		BString off(desc->mButtonPrefix);        // button not pressed
-		BString offGreyed(desc->mButtonPrefix);  // button disabled (and not pressed)
+		BString on(desc->mButtonPrefix);
 		name.ToLower();
 		name << "_btn";
 		on << "_ON";
-		off << "_OFF";
-		offGreyed << "_OFF_GREYED";
 
-		AddButton(toolbar, name.String(),
-			off.String(), on.String(),
-			offGreyed.String(), NULL,
-			desc->mCmd, desc->mToolTip,
-			B_TWO_STATE_BUTTON);
+		toolbar->AddAction(desc->mCmd, this, LoadBitmap(on.String()),
+			desc->mToolTip, NULL, true);
 	}
 	return toolbar;
 }

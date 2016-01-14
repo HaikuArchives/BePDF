@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -27,9 +27,9 @@
 #include <be/interface/Window.h>
 #include <be/support/Locker.h>
 
-#define ADD_ITEM(menu, name, shortcut, msg)                      \
+#define ADD_ITEM(menu, name, shortcut, cmd)                      \
 	{                                                            \
-		BMenuItem* item = new BMenuItem(name, msg, shortcut);    \
+		BMenuItem* item = new BMenuItem(name, new BMessage(cmd), shortcut);    \
 		(menu)->AddItem(item);                                   \
 		mInputEnabler.Register(new IEMenuItem(item));            \
 	}
@@ -37,15 +37,13 @@
 #define ADD_SITEM(menu) \
 		{ (menu)->AddItem(new BSeparatorItem); }
 
-#define STANDARD_CMD_MSG		'SCmd'
-
 extern const char * CMD_IDX_LABEL;
 
 class HWindow
 	: public BWindow
 {
 	typedef BWindow inherited;
-	
+
 public:
 		HWindow(BRect frame, const char * label, window_type type,
 						ulong flags, bool quitWhenClosed = true,
@@ -55,23 +53,17 @@ public:
 	void AskQuit()           { PostMessage(B_QUIT_REQUESTED); };
 	void Zoom(BPoint origin, float width, float height);
 
-	virtual void MessageReceived(BMessage *msg);
 	virtual bool CanClose() = 0;
 
 	static int32 GetWindowCount()
 			{ return mWindowList.CountItems(); };
 
-	static BMessage * MakeCommandMessage(uint32 cmd);
-	 
-protected:
-	virtual void HandleCommand(int32 cmd, BMessage *msg) = 0;
-
 private:
 	bool           mQuitWhenClosed;
 	static BList   mWindowList;
-	static BLocker mWindowListLocker; 
+	static BLocker mWindowListLocker;
 	BRect          mUnzoomedFrame;
-	
+
 	void UnzoomCheck(BRect f);
 };
 
