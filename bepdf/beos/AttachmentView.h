@@ -36,6 +36,8 @@
 #include <private/interface/ColumnListView.h>
 #include <private/interface/ColumnTypes.h>
 
+#include <private/shared/ToolBar.h>
+
 // xpdf
 #include <Object.h>
 
@@ -43,10 +45,7 @@
 #include "FileSpec.h"
 #include "InputEnabler.h"
 #include "Settings.h"
-#include "ToolBar.h"
-#include "ToolTip.h"
 
-class ResourceBitmapButton;
 class XRef;
 
 // Column 0 contains file name, column 1 contains description.
@@ -71,7 +70,6 @@ public:
 class AttachmentView : public BView {
 	BColumnListView* mList;
 	XRef*           mXRef;
-	InputEnabler    mInputEnabler;
 
 	typedef BView super;
 
@@ -93,17 +91,7 @@ public:
 	void Update();
 
 private:
-
-	ResourceBitmapButton* mSaveButton;
-
-	void Register(uint32 behavior, BControl* control, int32 cmd);
-	ResourceBitmapButton* AddButton(ToolBar* toolBar,
-		const char *name, const char *off, const char *on, const char *off_grey,
-		const char *on_grey, int32 cmd, const char *info,
-		uint32 behavior = B_ONE_STATE_BUTTON);
-	ResourceBitmapButton* AddButton(ToolBar* toolBar,
-		const char *name, const char *off, const char *on, int32 cmd,
-		const char *info, uint32 behavior = B_ONE_STATE_BUTTON);
+	BToolBar* fToolBar;
 
 	// Adds selected attachments to msg
 	int32 AddSelectedAttachments(BMessage* msg);

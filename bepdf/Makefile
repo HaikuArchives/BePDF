@@ -70,13 +70,11 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/TraceWindow.cpp \
 	beos/TreeParser.cpp \
 	beos/htk/HWindow.cpp \
-	beos/utils/BitmapButton.cpp \
 	beos/utils/EntryMenuItem.cpp \
 	beos/utils/LayerView.cpp \
 	beos/utils/ResourceLoader.cpp \
 	beos/utils/StatusBar.cpp \
 	beos/utils/Thread.cpp \
-	beos/utils/ToolBar.cpp \
 	# beos/utils/Test.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be

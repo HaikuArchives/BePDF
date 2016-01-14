@@ -37,14 +37,13 @@
 
 // bepdf
 #include "Attachments.h"
-#include "BitmapButton.h"
 #include "BepdfApplication.h" // for save panel
+#include "ResourceLoader.h"
 #include "LayoutUtils.h"
 #include "SaveThread.h"
 #include "StatusWindow.h"
 #include "TextConversion.h"
 #include "Thread.h"
-#include "ToolBar.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "AttachmentView"
@@ -101,43 +100,6 @@ private:
 	GlobalSettings* mSettings;
 };
 
-// Implementation of AttachmentView
-
-void AttachmentView::Register(uint32 behavior, BControl* control, int32 cmd) {
-	if (behavior == B_ONE_STATE_BUTTON) {
-		mInputEnabler.Register(new IEControl(control, cmd));
-	} else {
-		// behavior == B_TWO_STATE_BUTTON
-		// mControlValueSetter.Register(new IEControlValue(control, cmd));
-	}
-}
-
-ResourceBitmapButton*
-AttachmentView::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, const char *off_grey, const char *on_grey, int32 cmd, const char *info, uint32 behavior) {
-	const int buttonSize = kToolbarHeight;
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
-	                                name, off, on, off_grey, on_grey,
-	                               new BMessage(cmd),
-	                                behavior);
-	button->SetToolTip(B_TRANSLATE(info));
-	toolBar->Add (button);
-	Register(behavior, button, cmd);
-	return button;
-}
-
-///////////////////////////////////////////////////////////
-ResourceBitmapButton*
-AttachmentView::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, int32 cmd, const char *info, uint32 behavior) {
-	const int buttonSize = kToolbarHeight;
-	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
-	                                name, off, on,
-	                                new BMessage(cmd),
-	                                behavior);
-	button->SetToolTip(B_TRANSLATE(info));
-	toolBar->Add (button);
-	Register(behavior, button, cmd);
-	return button;
-}
 
 AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
 	: BView(rect, "attachments", resizeMask, flags | B_FRAME_EVENTS)
@@ -146,14 +108,18 @@ AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *lo
 
 	BRect r(rect);
 	r.bottom = 30;
-	ToolBar* toolbar = new ToolBar(r, "toolbar",
-								B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT,
-								B_WILL_DRAW | B_FRAME_EVENTS );
-	AddChild(toolbar);
+	fToolBar = new BToolBar(r);
+	fToolBar->SetName("toolbar");
+	fToolBar->SetResizingMode(B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT);
+	fToolBar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
+	AddChild(fToolBar);
 
-    // AddButton(tooltip, toolbar, "open_btn", "OPEN_FILE_OFF", "OPEN_FILE_ON", "OPEN_FILE_OFF_GREYED",  NULL, kOpenCmd, "Open attachment(s).");
+	//fToolBar->AddAction(kOpenCmd, this, LoadBitmap("OPEN_FILE_ON"),
+	//	B_TRANSLATE("Open attachment(s)."));
+
 	// Note tooltip text used in method Update() also!
-    mSaveButton = AddButton(toolbar, "save_file_as_btn", "SAVE_FILE_AS_OFF", "SAVE_FILE_AS_ON", "SAVE_FILE_AS_OFF_GREYED", NULL, kSaveAsCmd, "Save attachment(s) as.");
+	fToolBar->AddAction(kSaveAsCmd, this, LoadBitmap("SAVE_FILE_AS_ON"),
+		B_TRANSLATE("Save attachment(s) as."));
 
 	rect.top += r.bottom + 1;
 	r = rect;
@@ -171,7 +137,8 @@ AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *lo
 	mList->AddColumn(new BStringColumn(B_TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
 }
 
-AttachmentView::~AttachmentView() {
+AttachmentView::~AttachmentView()
+{
 	mList->Clear();
 }
 
@@ -204,11 +171,10 @@ void AttachmentView::Update() {
 		// Note text used in constructor also!
 		info = B_TRANSLATE("Save attachment(s) as.");
 	}
-	mSaveButton->SetToolTip(info);
+	// mSaveButton->SetToolTip(info); // TODO/FIXME
 
 	// Update button state
-	mInputEnabler.SetEnabled(kSaveAsCmd, selection != kNoAttachmentSelected);
-	mInputEnabler.Update();
+	fToolBar->SetActionEnabled(kSaveAsCmd, selection != kNoAttachmentSelected);
 }
 
 void AttachmentView::MessageReceived(BMessage *msg) {
