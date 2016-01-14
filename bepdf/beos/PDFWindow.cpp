@@ -78,7 +78,6 @@
 #include "StatusBar.h"
 #include "TraceWindow.h"
 #include "ToolBar.h"
-#include "ToolTipItem.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PDFWindow"
@@ -157,7 +156,6 @@ PDFWindow::PDFWindow(entry_ref * ref, BRect frame, bool quitWhenClosed, const ch
 	mFindInProgress = false;
 
 	mZoomMenu = mRotationMenu = NULL;
-	mToolTip = new ToolTip();
 	mLayerView = NULL;
 
 	mOWMessenger = NULL;
@@ -204,9 +202,6 @@ PDFWindow::~PDFWindow()
 	DeleteAnnotTemplates();
 	if (mPagesView) {
 		MakeEmpty(mPagesView);
-	}
-	if (mToolTip) {
-		mToolTip->PostMessage(B_QUIT_REQUESTED);
 	}
 }
 
@@ -1150,7 +1145,7 @@ LayerView* PDFWindow::BuildLeftPanel(BRect rect) {
 
 
 	// r.Set(2, 2, rect.Width() - 2 - B_V_SCROLL_BAR_WIDTH, rect.Height() - 2 - B_H_SCROLL_BAR_HEIGHT);
-	mAttachmentView = new AttachmentView(mToolTip, rect, gApp->GetSettings(), this, B_FOLLOW_ALL, 0);
+	mAttachmentView = new AttachmentView(rect, gApp->GetSettings(), this, B_FOLLOW_ALL, 0);
 
 	r.Set(2, 2, rect.Width() - 2 - B_V_SCROLL_BAR_WIDTH, rect.Height() - 2 - B_H_SCROLL_BAR_HEIGHT);
 
@@ -1206,7 +1201,6 @@ void PDFWindow::SetUpViews(entry_ref * ref, const char *ownerPassword, const cha
 	if (!mMainView->IsOk()) {
 		delete mMainView;
 		mMainView = NULL;
-		mToolTip->PostMessage(B_QUIT_REQUESTED); mToolTip = NULL;
 		return;			//ERROR !
 	}
 	mEntryChangedMonitor.StartWatching(ref);

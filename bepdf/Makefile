@@ -78,8 +78,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/utils/StatusBar.cpp \
 	beos/utils/Thread.cpp \
 	beos/utils/ToolBar.cpp \
-	beos/utils/ToolTip.cpp \
-	beos/utils/ToolTipItem.cpp
 	# beos/utils/Test.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be

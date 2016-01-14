@@ -76,7 +76,7 @@ class AttachmentView : public BView {
 	typedef BView super;
 
 public:
-	AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings* settings,
+	AttachmentView(BRect rect, GlobalSettings* settings,
 		BLooper* looper, uint32 resizeMask, uint32 flags);
 	~AttachmentView();
 	void AttachedToWindow();
@@ -97,11 +97,11 @@ private:
 	ResourceBitmapButton* mSaveButton;
 
 	void Register(uint32 behavior, BControl* control, int32 cmd);
-	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar,
+	ResourceBitmapButton* AddButton(ToolBar* toolBar,
 		const char *name, const char *off, const char *on, const char *off_grey,
 		const char *on_grey, int32 cmd, const char *info,
 		uint32 behavior = B_ONE_STATE_BUTTON);
-	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar,
+	ResourceBitmapButton* AddButton(ToolBar* toolBar,
 		const char *name, const char *off, const char *on, int32 cmd,
 		const char *info, uint32 behavior = B_ONE_STATE_BUTTON);
 

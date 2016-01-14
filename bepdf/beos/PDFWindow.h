@@ -248,7 +248,6 @@ private:
 
 	BMenu          *mZoomMenu,
 	               *mRotationMenu;
-	ToolTip        *mToolTip;
 	BMessenger     *mOWMessenger;  // outlines window messenger
 	BMessenger     *mFIWMessenger; // file info window messenger
 	BMessenger     *mPSWMessenger; // printing settings window messenger

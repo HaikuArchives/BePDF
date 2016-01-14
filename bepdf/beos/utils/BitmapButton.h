@@ -21,8 +21,6 @@
 #include <Button.h>
 #include <Bitmap.h>
 
-#include "ToolTipItem.h"
-
 // Pre-condition:
 //   Bitmap must exist in resource otherwise the BPictureButton constructor
 //   will crash!

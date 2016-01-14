@@ -113,7 +113,7 @@ void AttachmentView::Register(uint32 behavior, BControl* control, int32 cmd) {
 }
 
 ResourceBitmapButton*
-AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name, const char *off, const char *on, const char *off_grey, const char *on_grey, int32 cmd, const char *info, uint32 behavior) {
+AttachmentView::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, const char *off_grey, const char *on_grey, int32 cmd, const char *info, uint32 behavior) {
 	const int buttonSize = kToolbarHeight;
 	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
 	                                name, off, on, off_grey, on_grey,
@@ -127,7 +127,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 
 ///////////////////////////////////////////////////////////
 ResourceBitmapButton*
-AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name, const char *off, const char *on, int32 cmd, const char *info, uint32 behavior) {
+AttachmentView::AddButton(ToolBar* toolBar, const char *name, const char *off, const char *on, int32 cmd, const char *info, uint32 behavior) {
 	const int buttonSize = kToolbarHeight;
 	ResourceBitmapButton *button = new ResourceBitmapButton (BRect (0, 0, buttonSize, buttonSize),
 	                                name, off, on,
@@ -139,7 +139,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 	return button;
 }
 
-AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
+AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
 	: BView(rect, "attachments", resizeMask, flags | B_FRAME_EVENTS)
 {
 	rect.OffsetTo(0, 0);
@@ -153,7 +153,7 @@ AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *s
 
     // AddButton(tooltip, toolbar, "open_btn", "OPEN_FILE_OFF", "OPEN_FILE_ON", "OPEN_FILE_OFF_GREYED",  NULL, kOpenCmd, "Open attachment(s).");
 	// Note tooltip text used in method Update() also!
-    mSaveButton = AddButton(tooltip, toolbar, "save_file_as_btn", "SAVE_FILE_AS_OFF", "SAVE_FILE_AS_ON", "SAVE_FILE_AS_OFF_GREYED", NULL, kSaveAsCmd, "Save attachment(s) as.");
+    mSaveButton = AddButton(toolbar, "save_file_as_btn", "SAVE_FILE_AS_OFF", "SAVE_FILE_AS_ON", "SAVE_FILE_AS_OFF_GREYED", NULL, kSaveAsCmd, "Save attachment(s) as.");
 
 	rect.top += r.bottom + 1;
 	r = rect;
