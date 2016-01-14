@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include <locale/Catalog.h>
 #include <be/app/Application.h>
 #include <be/storage/FilePanel.h>
 #include <be/app/Roster.h>
@@ -45,20 +46,23 @@
 #include "TraceWindow.h"
 #include "FileInfoWindow.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "BepdfApplication"
+
 static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
 	"© 1998-2000 Hubert Figuiere\n"
     "© 2000-2011 Michael Pfeiffer\n"
     "© 2013-2014 Augustin Cavalier\n";
 
-static const char * bePDFLocalization = 
+static const char * bePDFLocalization =
     "\nLanguage '";
 static const char * bePDFLocalizationBy = "' by ";
 
-static const char * GPLCopyright = 
+static const char * GPLCopyright =
     "\n\n"
     "This program is free software under the GNU GPL v2, or any later version.\n";
-    
+
 static const char *PAGE_NUM_MSG = "bepdf:page_num";
 
 static const char *settingsFilename = "BePDF";
@@ -129,7 +133,7 @@ bool PDFFilter::Filter(const entry_ref *ref, BNode *node, struct STAT *st, const
 int main()
 {
 	new BepdfApplication ( );
-	
+
 	be_app->Run();
 
 	delete be_app;
@@ -142,7 +146,7 @@ int main()
 void BepdfApplication::LoadImages(BBitmap* images[], const char* names[], int num) {
 	for (int i = 0; i < num; i++) {
 		images[i] = LoadBitmap(names[i], 'BBMP');
-		if (!images[i]) 
+		if (!images[i])
 			fprintf(stderr, "Could not load bitmap %s\n", names[i]);
 	}
 }
@@ -169,18 +173,18 @@ BepdfApplication::BepdfApplication()
 
 	mStdoutTracer = NULL;
 	mStderrTracer = NULL;
-	pointerCursor = (BCursor*)B_CURSOR_SYSTEM_DEFAULT; 
-	linkCursor = LoadCursor("LINK"); 
+	pointerCursor = (BCursor*)B_CURSOR_SYSTEM_DEFAULT;
+	linkCursor = LoadCursor("LINK");
 	handCursor = LoadCursor("HAND");
 	grabCursor = LoadCursor("GRAB");
 	textSelectionCursor = LoadCursor("TEXT_SELECTION");
 	zoomCursor = LoadCursor("ZOOM");
 	splitVCursor = LoadCursor("SPLIT_VERTICAL");
 	resizeCursor = LoadCursor("RESIZE");
-	
+
 	LoadImages(mAttachmentImages, attachmentNames, FileAttachmentAnnot::no_of_types);
 	LoadImages(mTextAnnotImages,  textAnnotNames,  TextAnnot::no_of_types);
-		
+
 	BEntry entry; app_info info;
 	if (B_OK == be_app->GetAppInfo(&info)) {
 		mTeamID = info.team;
@@ -190,21 +194,13 @@ BepdfApplication::BepdfApplication()
 	} else {
 		mAppPath.SetTo(".");
 	}
-	
+
 	mDefaultPDF = mAppPath;
 	mDefaultPDF.Append("docs/Start.pdf");
-	
+
 	BPath path(mAppPath);
 	LoadSettings();
-	path.Append("locale"); 
-	if (!StringLocalization::Initialize(path, mSettings->GetLanguage())) {
-		const char* s = "Localization catalog not found!";
-		BAlert *info = new BAlert("Fatal Error", s, "Exit", 
-			NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
-		info->Go();
-		exit (-1);
-	}
-		
+
 	InitBePDF();
 }
 
@@ -226,22 +222,22 @@ static void setGlobalParameter(const char* type, const char* arg1, const char* a
 	globalParams->parseLine(line.getCString(), &name, 0);
 }
 
-void 
+void
 BepdfApplication::Initialize()
 {
 	if (!mInitialized) {
 		mInitialized = true;
-		
+
 		// built in fonts
 		BPath fontDirectory(mAppPath);
 		fontDirectory.Append("fonts");
-		
+
 		// built in encodings
 		BPath encodingDirectory(mAppPath);
 		encodingDirectory.Append("encodings");
-		
+
 		InitXpdf(NULL, fontDirectory.Path(), encodingDirectory.Path());
-		
+
 		// system fonts
 		BPath systemFontsPath;
 		if (find_directory(B_BEOS_FONTS_DIRECTORY, &systemFontsPath) == B_OK) {
@@ -256,12 +252,12 @@ BepdfApplication::Initialize()
 				setGlobalParameter("fontDir", fontDirectory.Path());
 			}
 		}
-		
+
 		// CID fonts
 		BMessage msg;
 		mSettings->GetDisplayCIDFonts(msg);
 		DisplayCIDFonts displayNames(msg);
-		
+
 		// record new names
 		bool foundNewName = false;
 		GList* list = globalParams->getCIDToUnicodeNames();
@@ -274,35 +270,35 @@ BepdfApplication::Initialize()
 			displayNames.Set(name->getCString());
 			foundNewName = true;
 		}
-		
+
 		// store in settings
 		if (foundNewName) {
 			msg.MakeEmpty();
 			displayNames.Archive(msg);
 			mSettings->SetDisplayCIDFonts(msg);
-		} 
-		
+		}
+
 		// set CID fonts
 		for (int i = 0; i < list->getLength(); i ++) {
 		    GString* name = (GString*)list->get(i);
 			BString file;
 			DisplayCIDFonts::Type type;
-			
+
 			displayNames.Get(name->getCString(), file, type);
 			if (type == DisplayCIDFonts::kUnknownType ||
 				file.Length() == 0) {
 				continue;
 			}
-			
+
 			if (type == DisplayCIDFonts::kTrueType) {
 				setGlobalParameter("displayCIDFontTT", name->getCString(), file.String());
 			} else {
 				setGlobalParameter("displayCIDFontT1", name->getCString(), file.String());
 			}
 		}
-		
-		deleteGList(list, GString);		
-		
+
+		deleteGList(list, GString);
+
 		// hinting
 		globalParams->setFreeTypeHinting(
 			(char*)(mSettings->GetHinting() ? "yes" : "no"));
@@ -311,9 +307,9 @@ BepdfApplication::Initialize()
 
 ///////////////////////////////////////////////////////////
 BepdfApplication::~BepdfApplication()
-{	
+{
 	SaveSettings();
-	
+
 	delete mSettings; mSettings = NULL;
 
 	delete linkCursor;          linkCursor = NULL;
@@ -323,7 +319,7 @@ BepdfApplication::~BepdfApplication()
 	delete zoomCursor;          zoomCursor = NULL;
 	delete splitVCursor;        splitVCursor = NULL;
 	delete resizeCursor;        resizeCursor = NULL;
-	
+
 	FreeImages(mAttachmentImages, FileAttachmentAnnot::no_of_types);
 	FreeImages(mTextAnnotImages,  TextAnnot::no_of_types);
 
@@ -347,9 +343,9 @@ void BepdfApplication::ReadyToRun()
 		entry_ref defaultDocument;
 		BMessage msg(B_REFS_RECEIVED);
 		get_ref_for_path (mDefaultPDF.Path(), &defaultDocument);
-		msg.AddRef ("refs", &defaultDocument);		
+		msg.AddRef ("refs", &defaultDocument);
 		RefsReceived (&msg);
-		
+
 		if (!mGotSomething) {
 			// on error open file open dialog
 			OpenFilePanel();
@@ -365,13 +361,13 @@ void BepdfApplication::AboutRequested()
 	str += "\nVersion ";
 	str += GetVersion(version);
 	str += "\n";
-	
+
 	str += bePDFCopyright;
 
 	str += bePDFLocalization;
-	str += TRANSLATE("CatalogLanguage");
+	str += B_TRANSLATE("CatalogLanguage");
 	str += bePDFLocalizationBy;
-	str += TRANSLATE("CatalogAuthor");
+	str += B_TRANSLATE("CatalogAuthor");
 	str += "\n";
 
 	str += "\nBePDF is based on XPDF ";
@@ -397,7 +393,7 @@ void BepdfApplication::AboutRequested()
 			v->SetFontAndColor(i+1, i+2, NULL, 0, &red);
 			s += 2;
 		}
-		// first text line 
+		// first text line
 		s = strchr(text, '\n');
 		BFont font;
 		v->GetFontAndColor(0, &font);
@@ -408,8 +404,8 @@ void BepdfApplication::AboutRequested()
 }
 
 /*
-	open a file panel and ask for a PDF file 
-	the file panel will tell by itself if openning have been cancelled 
+	open a file panel and ask for a PDF file
+	the file panel will tell by itself if openning have been cancelled
 	or not.
 */
 void BepdfApplication::OpenFilePanel ()
@@ -425,8 +421,8 @@ void BepdfApplication::OpenFilePanel ()
 }
 
 /*
-	open a file panel and ask for a PDF file 
-	the file panel will tell by itself if openning have been cancelled 
+	open a file panel and ask for a PDF file
+	the file panel will tell by itself if openning have been cancelled
 	or not.
 */
 void BepdfApplication::OpenSaveFilePanel(BHandler* handler, bool fileMode, BRefFilter* filter, BMessage* msg, const char* name) {
@@ -444,7 +440,7 @@ void BepdfApplication::OpenSaveFilePanel(BHandler* handler, bool fileMode, BRefF
 		if (mSaveToDirectoryFilePanel != NULL && mSaveToDirectoryFilePanel->IsShowing()) {
 			mSaveToDirectoryFilePanel->Hide();
 		}
-		
+
 		panel = mSaveFilePanel;
 	} else {
 		// file panel for selection of directory
@@ -452,18 +448,18 @@ void BepdfApplication::OpenSaveFilePanel(BHandler* handler, bool fileMode, BRefF
 			mSaveToDirectoryFilePanel = new BFilePanel (B_OPEN_PANEL,
 							NULL, NULL, B_DIRECTORY_NODE, false, NULL, NULL, true);
 		}
-		
+
 		// hide other file panel
 		if (mSaveFilePanel != NULL && mSaveFilePanel->IsShowing()) {
 			mSaveFilePanel->Hide();
 		}
 
 		panel = mSaveToDirectoryFilePanel;
-	}	
-	
+	}
+
 	// (re)-set to directory of currently opened PDF file
 	// TODO decide if directory should be independent from PDF file
-	panel->SetPanelDirectory(mSettings->GetPanelDirectory());		
+	panel->SetPanelDirectory(mSettings->GetPanelDirectory());
 
 	if (name != NULL) {
 		panel->SetSaveText(name);
@@ -474,20 +470,20 @@ void BepdfApplication::OpenSaveFilePanel(BHandler* handler, bool fileMode, BRefF
 
 	// set/reset filter
 	panel->SetRefFilter(filter);
-	
-	// add kind to message	
+
+	// add kind to message
 	BMessage message(B_SAVE_REQUESTED);
 	if (msg == NULL) {
 		msg = &message;
 	}
 	panel->SetMessage(msg);
-	
+
 	// set target
 	BMessenger msgr(handler);
 	panel->SetTarget(msgr);
-	
+
 	panel->Refresh();
-	
+
 	panel->Show();
 }
 
@@ -521,7 +517,7 @@ void BepdfApplication::Notify(uint32 cmd) {
 	}
 	// notify ourself
 	PostMessage(&msg, (BHandler*)NULL, 0);
-}		
+}
 
 bool BepdfApplication::QuitRequested() {
 	delete mStdoutTracer; mStdoutTracer = NULL;
@@ -544,14 +540,14 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 	int32 count;
 	int32 i;
 	entry_ref ref;
-	
+
 	mReadyToQuit = false;
-		
+
 	msg->GetInfo ( "refs", &type, &count );
 	if ( type != B_REF_TYPE ) {
 		return;
 	}
-	
+
 	BString ownerPassword, userPassword;
 	const char *owner = NULL;
 	const char *user  = NULL;
@@ -561,9 +557,9 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 	if (B_OK == msg->FindString("userPassword", &userPassword)) {
 		user = userPassword.String();
 	}
-	
+
 	Initialize();
-	
+
 	for ( i = --count ; i >= 0; i-- ) {
 		if ( msg->FindRef("refs", i, &ref ) == B_OK ) {
 			/*
@@ -578,20 +574,20 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 				win = new PDFWindow(&ref, rect, false, owner, user, &encrypted);
 				ok = win->IsOk();
 			} else {
-				win = mWindow; 
+				win = mWindow;
 				win->Lock();
 				ok = mWindow->LoadFile(&ref, owner, user, &encrypted);
 				win->Unlock();
-			} 
-			
+			}
+
 			if (!ok) {
 				if (!encrypted) {
-			 		BAlert *error = new BAlert(TRANSLATE("Error"), TRANSLATE("BePDF: Error opening file!"), TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
+			 		BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("BePDF: Error opening file!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 			 		error->Go();
 		 		}
-		 		
+
 		 		if (mWindow == NULL) delete win;
-		 		
+
 		 		if (encrypted) {
 		 			new PasswordWindow(&ref, rect, this);
 		 		}
@@ -602,8 +598,8 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 			// stop after first document
 			mGotSomething = true;
 			break;
-		} 
-	}	
+		}
+	}
 }
 
 
@@ -621,14 +617,14 @@ BepdfApplication::MessageReceived (BMessage * msg)
 	case NOTIFY_QUIT_MSG:
 		if (mWindow) {
 			BWindow* w = mWindow;
-			w->Lock(); 
+			w->Lock();
 			w->PostMessage(B_QUIT_REQUESTED);
 			w->Unlock();
 		}
 		break;
 	case NOTIFY_CLOSE_MSG:
 		if (mWindow) {
-			mWindow->Lock(); 
+			mWindow->Lock();
 			mWindow->UpdateWindowsMenu();
 			mWindow->Unlock();
 		}
@@ -660,11 +656,11 @@ BepdfApplication::ArgvReceived (int32 argc, char **argv)
 	for (int i = 0; i < argc; i ++) {
 		argvCopy[i] = argv[i];
 	}
-	
+
 	int intArgc = argc;
 	ok = parseArgs (GetGlobalArgDesc(), &intArgc, argvCopy);
 	argc = intArgc;
-		
+
 	// check command line
 	if (!(argc == 2 || argc == 3) || GetPrintHelp()) {
 		printUsage(argvCopy[0], "[<PDF-file> [<page>]]", GetGlobalArgDesc());
@@ -740,7 +736,7 @@ static void AddIfMissing(BMessage* m, const char* key, const char* value) {
 
 
 ///////////////////////////////////////////////////////////
-void 
+void
 BepdfApplication::UpdateAttr(BNode &node, const char *name, type_code type, off_t offset, void *buffer, size_t length) {
 	char dummy[10];
 	if (B_ENTRY_NOT_FOUND == node.ReadAttr(name, type, offset, (char*)dummy, sizeof(dummy))) {
@@ -750,11 +746,11 @@ BepdfApplication::UpdateAttr(BNode &node, const char *name, type_code type, off_
 
 
 ///////////////////////////////////////////////////////////
-void 
+void
 BepdfApplication::UpdateFileAttributes(PDFDoc *doc, entry_ref *ref) {
 	BNode node(ref);
 	if (node.InitCheck() != B_OK) return;
-		
+
 	const bool force_overwrite = (modifiers() & B_COMMAND_KEY) == B_COMMAND_KEY;
 
 	if (force_overwrite) {
@@ -769,8 +765,8 @@ BepdfApplication::UpdateFileAttributes(PDFDoc *doc, entry_ref *ref) {
 	UpdateAttr(node, "pdf:linearized", B_BOOL_TYPE, 0, &b, sizeof(b));
 	double d = doc->getPDFVersion();
 	UpdateAttr(node, "pdf:version", B_DOUBLE_TYPE, 0, &d, sizeof(d));
-	
-	Object obj; 
+
+	Object obj;
 	if (doc->getDocInfo(&obj) && obj.isDict()) {
 		Dict *dict = obj.getDict();
 		for (int i = 0; gAttrInfo[i].name; i++) {
@@ -789,7 +785,7 @@ BepdfApplication::UpdateFileAttributes(PDFDoc *doc, entry_ref *ref) {
 			}
 		}
 	}
-	obj.free();	
+	obj.free();
 }
 
 
@@ -798,12 +794,12 @@ const char* BepdfApplication::GetVersion(BString &version) {
 	if (be_app == NULL) {
 		return version.String();
 	}
-	
+
 	app_info info;
 	if (be_app->GetAppInfo(&info) != B_OK) {
 		return version.String();
 	}
-	
+
 	BFile file(&info.ref, B_READ_ONLY);
 	if (file.InitCheck() != B_OK) {
 		return version.String();
@@ -827,7 +823,7 @@ const char* BepdfApplication::GetVersion(BString &version) {
 			break;
 		case 4: variety = "Golden Master";
 			break;
-		case 5: 
+		case 5:
 			if (appVersion.internal == 0) {
 				// hide variety
 				variety = "";
@@ -838,7 +834,7 @@ const char* BepdfApplication::GetVersion(BString &version) {
 			break;
 	};
 	version = "";
-	version << appVersion.major << "." 
+	version << appVersion.major << "."
 		<< appVersion.middle << "."
 		<< appVersion.minor
 		<< " " << variety;

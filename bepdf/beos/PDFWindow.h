@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -37,7 +37,6 @@
 #include "InputEnabler.h"
 #include "PDFView.h"
 #include "SplitView.h"
-#include "StringLocalization.h"
 #include "ToolTip.h"
 
 // xpdf
@@ -59,7 +58,7 @@ typedef struct {
 class RecentDocumentsMenu : public BMenu
 {
 public:
-	RecentDocumentsMenu(const char *title, uint32 what, menu_layout layout = B_ITEMS_IN_COLUMN);	
+	RecentDocumentsMenu(const char *title, uint32 what, menu_layout layout = B_ITEMS_IN_COLUMN);
 	bool AddDynamicItem(add_state s);
 
 private:
@@ -73,7 +72,7 @@ class PDFWindow
 	, public EntryChangedListener
 	, public PositionChangedListener
 {
-public:	
+public:
 	enum {
 		// File
 		OPEN_FILE_CMD = 10,
@@ -98,7 +97,7 @@ public:
 		SELECT_ALL_CMD,
 		SELECT_NONE_CMD,
 		COPY_LINK_CMD,
-		
+
 		// Zoom
 		SET_ZOOM_VALUE_CMD,
 		SET_CUSTOM_ZOOM_FACTOR_CMD,
@@ -106,7 +105,7 @@ public:
 		ZOOM_OUT_CMD,
 		FIT_TO_PAGE_WIDTH_CMD,
 		FIT_TO_PAGE_CMD,
-		
+
 		// Annotations
 		FIRST_ANNOT_CMD,
 			ADD_COMMENT_TEXT_ANNOT_CMD = FIRST_ANNOT_CMD,
@@ -136,7 +135,7 @@ public:
 		ADD_TRAPNET_ANNOT_CMD,
 		LAST_ANNOT_CMD = ADD_TRAPNET_ANNOT_CMD,
 		DONE_EDIT_ANNOT_CMD,
-		
+
 		// Page
 		FIRST_PAGE_CMD,
 		NEXT_N_PAGE_CMD,
@@ -156,13 +155,13 @@ public:
 		ROTATE_ANTI_CLOCKWISE_CMD,
 		// Attachments
 		ATTACHMENT_SELECTION_CHANGED_MSG,
-		
+
 		SHOW_TRACER_CMD,
-		
+
 		// Search
 		FIND_CMD,
 		FIND_NEXT_CMD,
-		
+
 		// User defined bookmarks
 		ADD_BOOKMARK_CMD,
 		DELETE_BOOKMARK_CMD,
@@ -192,13 +191,13 @@ public:
 		// full screen
 		FULL_SCREEN_CMD,
 	};
-	
+
 	enum {
 		TOOLBAR_HEIGHT = 30,
 		TOOLBAR_WIDTH = 30,
 		NUM_ANNOTS = LAST_ANNOT_CMD - FIRST_ANNOT_CMD + 1
 	};
-	
+
 	// active view in left panel
 	enum {
 		PAGE_LIST_PANEL = 0,
@@ -214,7 +213,7 @@ public:
 		FILE_INFO_PENDING =           1 << 2,
 		PRINT_SETTINGS_PENDING =      1 << 3,
 	};
-	
+
 private:
 	InputEnabler   mInputEnabler;
 	InputEnabler   mControlValueSetter;
@@ -222,7 +221,7 @@ private:
 	BEntry         mCurrentFile;
 	FileAttributes mFileAttributes;
 	EntryChangedMonitor mEntryChangedMonitor;
-	
+
 	ToolBar        *mToolBar;
 	BTextControl   *mPageNumberItem;
 	BStringView    *mTotalPageNumberItem;
@@ -242,15 +241,14 @@ private:
 	BMenu          *mOpenMenu, *mNewMenu, *mWindowsMenu;
 
 	float          mMenuHeight;
-	 	
+
 	uint32         mFindState;
 	BString        mFindText;
 	bool           mFindInProgress;
-	
-	BMenu          *mZoomMenu, 
+
+	BMenu          *mZoomMenu,
 	               *mRotationMenu;
 	ToolTip        *mToolTip;
-	StringLocalization *mLocale;
 	BMessenger     *mOWMessenger;  // outlines window messenger
 	BMessenger     *mFIWMessenger; // file info window messenger
 	BMessenger     *mPSWMessenger; // printing settings window messenger
@@ -267,7 +265,7 @@ private:
 
 	Annotation*    mAnnotTemplates[NUM_ANNOTS];
 	BControl*      mPressedAnnotationButton;
-		
+
 public:
 	PDFWindow (entry_ref * ref, BRect frame, bool quitWhenClosed, const char *ownerPassword, const char *userPassword, bool *encrypted);
 	virtual ~PDFWindow();
@@ -275,7 +273,7 @@ public:
 	virtual bool QuitRequested();
 	void SetStatus(const char *text);
 	virtual	bool CanClose();
-	bool IsOk(); 
+	bool IsOk();
 	BMenuBar* BuildMenu();
 	ToolBar* BuildToolBar();
 	LayerView* BuildLeftPanel(BRect rect);
@@ -287,7 +285,7 @@ public:
 	void EntryChanged();
 	void StoreFileAttributes();
 	FileAttributes *GetFileAttributes() { return &mFileAttributes; };
-	
+
 	virtual void FrameMoved (BPoint p);
 	virtual void FrameResized (float width, float height);
 	virtual void MessageReceived (BMessage * message);
@@ -308,20 +306,20 @@ public:
 	static void OpenInWindow(const char* file);
 	AnnotationWindow* GetAnnotationWindow();
 	AnnotationWindow* ShowAnnotationWindow();
-	
+
 	// hook function
 	void NewDoc(PDFDoc *doc);
 	void NewPage(int page);
-	
+
 	enum {
 		PAGE_CHANGE_NOTIFY_MSG = 'Page',	/*message of page change notification*/
 		CUSTOM_ZOOM_FACTOR_MSG = 'CuZo'
 	};
-	
+
 	static char * PAGE_MSG_LABEL;
 
 	const BEntry* CurrentFile() const { return &mCurrentFile; }
-	void UpdateInputEnabler();	
+	void UpdateInputEnabler();
 
 	void UpdateWindowsMenu();
 
@@ -333,39 +331,39 @@ public:
 	void FillPageList();
 	void UpdatePageList();
 	void HandlePendingActions(bool ok);
-	
+
 	void EditAnnotation(bool edit);
 	void ReleaseAnnotationButton();
-		
+
 protected:
 	bool CancelCommand(int32 cmd, BMessage * msg);
 	virtual void HandleCommand ( int32 cmd, BMessage * msg );
 	void Find(const char *s);
 	void AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool marked, char shortcut = 0, uint32 modifiers = 0);
 	typedef ResourceBitmapButton *RBBP;
-	
+
 	// register control depending on behavior at input enabler (behavior == B_ONE_STATE_BUTTON)
 	// or control value setter (behavior == B_TWO_STATE_BUTTON).
 	void Register(uint32 behavior, BControl* control, int32 cmd);
-	
-	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name, 
-		const char *off, const char *on, 
+
+	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name,
+		const char *off, const char *on,
 		int32 cmd, const char *info,
 		uint32 behavior = B_ONE_STATE_BUTTON);
 
-	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name, 
-		const char *off, const char *on, 
-		const char *off_grey, const char *on_grey, 
+	ResourceBitmapButton * AddButton(ToolBar* toolBar, const char *name,
+		const char *off, const char *on,
+		const char *off_grey, const char *on_grey,
 		int32 cmd, const char *info,
 		uint32 behavior = B_ONE_STATE_BUTTON);
 
 	void ActivateOutlines();
-	
+
 	bool ActivateWindow(BMessenger *messenger);
 	void WorkspaceActivated(int32 workspace, bool active);
 	void SetTotalPageNumber(int pages);
 	void InitAfterOpen();
-	
+
 	void ToggleLeftPanel(); // show / hide panel
 	void ShowLeftPanel(int panel);
 	void ShowBookmarks();

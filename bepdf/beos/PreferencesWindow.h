@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -61,23 +61,22 @@ public:
 		FONT_PREDECESSOR_INDEX   = -1,
 		NO_OF_FONTS,
 	};
-	
+
 	static bool DecodeMessage(BMessage *msg, int16 &kind, int16 &which, int16 &index);
 
 	PreferencesWindow(GlobalSettings *settings, BLooper *looper);
 	~PreferencesWindow();
-	
+
 	void MessageReceived(BMessage *msg);
 	virtual bool QuitRequested();
 	virtual void FrameMoved(BPoint point);
 	virtual void FrameResized(float w, float h);
-	
+
 private:
 	int DISPLAY_NUM;
 
 	enum {
 		PREFERENCE_SELECTED           = 'Sele',
-		LANGUAGE_SELECTED             = 'LSel',
 		RESTORE_PAGE_NO_CHANGED       = 'RPch',
 		RESTORE_WINDOW_FRAME_CHANGED  = 'RWch',
 		QUASI_FULLSCREEN_MODE_ON      = 'FSc0',
@@ -100,7 +99,7 @@ private:
 	BMenuField       *mOpenInWorkspace;
 	DisplayCIDFonts  *mDisplayCIDFonts;
 	BMessage          mFontMenuFields;
-		
+
 	void SetupView();
 	BView* BuildAsianFontsView();
 	DisplayCIDFonts::Type GetType(const char* file);

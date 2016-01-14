@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -20,6 +20,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <locale/Catalog.h>
 #include <Button.h>
 #include <LayoutBuilder.h>
 #include <MenuField.h>
@@ -29,22 +30,24 @@
 
 #include "LayoutUtils.h"
 #include "PasswordWindow.h"
-#include "StringLocalization.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PasswordWindow"
 
 // remember last settings in class static variable
 enum PasswordWindow::PwdKind PasswordWindow::mPwdKind = USER_PASSWORD;
 
-PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper) 
-	: BWindow(aRect, TRANSLATE("Enter Password"), 
+PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper)
+	: BWindow(aRect, B_TRANSLATE("Enter Password"),
 		B_TITLED_WINDOW_LOOK,
-		B_MODAL_APP_WINDOW_FEEL, 
+		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS) {
 	mLooper = looper;
 	mPasswordSent = false;
 	mEntry = *ref;
-	
+
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
-	
+
 	// center window
 	aRect.OffsetBy(aRect.Width() / 2, aRect.Height() / 2);
 	float width = 300, height = 45;
@@ -56,15 +59,15 @@ PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper)
 	BPopUpMenu *pwdKind = new BPopUpMenu("pwdKind");
 	BMenuField *pwdKindField = new BMenuField("pwdKindField", "", pwdKind);
 	BMenuItem *item;
-	pwdKind->AddItem(item = new BMenuItem(TRANSLATE("User Password"), new BMessage('user'))); 
+	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("User Password"), new BMessage('user')));
 	if (mPwdKind == USER_PASSWORD) item->SetMarked(true);
-	pwdKind->AddItem(item = new BMenuItem(TRANSLATE("Owner Password"), new BMessage('ownr'))); 
+	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("Owner Password"), new BMessage('ownr')));
 	if (mPwdKind == OWNER_PASSWORD) item->SetMarked(true);
 
 	mPassword = new BTextControl("mPassword", "", "", NULL);
 	mPassword->TextView()->HideTyping(true);
 
-	BButton *button = new BButton("button", TRANSLATE("OK"), new BMessage('OK'));
+	BButton *button = new BButton("button", B_TRANSLATE("OK"), new BMessage('OK'));
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -92,14 +95,14 @@ void PasswordWindow::MessageReceived(BMessage *msg) {
 	case 'OK': {
 		// post message to application to open file with password
 		const char *text = mPassword->Text();
-		
+
 		BMessage msg(B_REFS_RECEIVED);
 		msg.AddRef("refs", &mEntry);
-		msg.AddString(mPwdKind == OWNER_PASSWORD ? 
-						"ownerPassword" : "userPassword", 
+		msg.AddString(mPwdKind == OWNER_PASSWORD ?
+						"ownerPassword" : "userPassword",
 						text);
 		mLooper->PostMessage(&msg, NULL);
-		mPasswordSent = true; 
+		mPasswordSent = true;
 		Quit();
 		break; }
 	case 'user': mPwdKind = USER_PASSWORD; break;

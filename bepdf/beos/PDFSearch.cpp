@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,6 +22,7 @@
 
 // Haiku
 #include <Alert.h>
+#include <locale/Catalog.h>
 
 // xpdf
 #include <TextOutputDev.h>
@@ -31,7 +32,9 @@
 #include "PDFView.h"
 #include "TextConversion.h"
 #include "Thread.h"
-#include "utils/StringLocalization.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PDFSearch"
 
 ///////////////////////////////////////////////////////////
 
@@ -49,9 +52,9 @@ private:
 	CachedPage* GetPage() { return mMainView->GetPage(); }
 	PDFDoc* GetPDFDoc() { return mMainView->GetPDFDoc(); }
 	int CurrentPage() { return mMainView->Page(); }
-	
+
 	void SendPageMsg(int32 page);
-	
+
 	PDFView* mMainView;
 	FindTextWindow *mFindWindow;
 	BString mFindText;
@@ -83,7 +86,7 @@ FindThread::Run() {
 	double xMin, yMin, xMax, yMax;
 	int pg;
 	GBool startAtTop, startAtLast, stopAtLast;
-	
+
 	bool next = true;
 	GBool backward = mBackward;
 	GBool caseSensitive = mCaseSensitive;
@@ -143,7 +146,7 @@ FindThread::Run() {
 	    delete textOut;
 	    goto notFound;
 	  }
-	  // End BePDF 
+	  // End BePDF
 	  SendPageMsg(pg);
       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
@@ -163,7 +166,7 @@ FindThread::Run() {
 	    delete textOut;
 	    goto notFound;
 	  }
-	  // End BePDF 
+	  // End BePDF
 	  SendPageMsg(pg);
       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
@@ -200,7 +203,7 @@ FindThread::Run() {
   // not found
 notFound:
 {
-  BAlert *alert = new BAlert("Error", TRANSLATE("Search string not found."), TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
+  BAlert *alert = new BAlert("Error", B_TRANSLATE("Search string not found."), B_TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
   alert->Go();
 }
   goto done;
@@ -216,7 +219,7 @@ notFound:
   			mCaseSensitive, mBackward,
 			&xMin, &yMin, &xMax, &yMax))
 		// this can happen if coalescing is bad
-		goto notFound; 
+		goto notFound;
 
 	// found: change the selection
  found:
@@ -232,8 +235,8 @@ notFound:
  done:
  	delete u;
  	Window()->PostMessage((uint32)(
- 		found ? 
- 			FindTextWindow::TEXT_FOUND_NOTIFY_MSG : 
+ 		found ?
+ 			FindTextWindow::TEXT_FOUND_NOTIFY_MSG :
  			FindTextWindow::TEXT_NOT_FOUND_NOTIFY_MSG));
  	return 0 /*found*/;
 }
@@ -241,7 +244,7 @@ notFound:
 ///////////////////////////////////////////////////////////
 void PDFView::Find(const char *s, bool ignoreCase, bool backward, FindTextWindow *findWindow) {
 	mStopFindThread = false;
-	FindThread* thread = new FindThread(s, ignoreCase, backward, this, findWindow, &mStopFindThread);	
+	FindThread* thread = new FindThread(s, ignoreCase, backward, this, findWindow, &mStopFindThread);
 	thread->Resume();
 }
 

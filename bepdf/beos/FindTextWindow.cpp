@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 
+#include <locale/Catalog.h>
 #include <Box.h>
 #include <Button.h>
 #include <CheckBox.h>
@@ -31,18 +32,20 @@
 
 #include "FindTextWindow.h"
 #include "LayoutUtils.h"
-#include "StringLocalization.h"
 #include "TextConversion.h"
 
-FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text, 
-	BLooper *looper) 
-	: BWindow(BRect(0, 0, 0, 0), 
-		TRANSLATE("Find Text"), 
-		B_FLOATING_WINDOW_LOOK, 
-		B_MODAL_APP_WINDOW_FEEL, 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "FindTextWindow"
+
+FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
+	BLooper *looper)
+	: BWindow(BRect(0, 0, 0, 0),
+		B_TRANSLATE("Find Text"),
+		B_FLOATING_WINDOW_LOOK,
+		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS),
-		mLooper(looper), 
-		mSettings(settings) 
+		mLooper(looper),
+		mSettings(settings)
 {
 
 	mSearching = false;
@@ -53,20 +56,20 @@ FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 	ResizeTo(w, h);
 
 	AddCommonFilter(new EscapeMessageFilter(this, FIND_ABORT_MSG));
-	
-	mText = new BTextControl("mText", TRANSLATE("Find: "), text, NULL);
+
+	mText = new BTextControl("mText", B_TRANSLATE("Find: "), text, NULL);
 	mText->TextView()->DisallowChar(B_ESCAPE);
 
-	mPage = new BStringView("mPage", TRANSLATE("Page:"));
+	mPage = new BStringView("mPage", B_TRANSLATE("Page:"));
 
-	mFindStop = new BButton("mFindStop", TRANSLATE("Find"),
+	mFindStop = new BButton("mFindStop", B_TRANSLATE("Find"),
 		new BMessage(FIND_MSG));
 
-	mIgnoreCase = new BCheckBox("mIgnoreCase", TRANSLATE("Ignore Case"),
+	mIgnoreCase = new BCheckBox("mIgnoreCase", B_TRANSLATE("Ignore Case"),
 		new BMessage(FIND_IGNORE_CASE_MSG));
 	mIgnoreCase->SetValue(settings->GetFindIgnoreCase());
 
-	mBackward = new BCheckBox("mBackward", TRANSLATE("Search Backwards"),
+	mBackward = new BCheckBox("mBackward", B_TRANSLATE("Search Backwards"),
 		new BMessage(FIND_BACKWARD_MSG));
 	mBackward->SetValue(settings->GetFindBackward());
 
@@ -79,7 +82,7 @@ FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 		.AddGlue();
 
 	BBox *options = new BBox("options");
-	options->SetLabel(TRANSLATE("Options"));
+	options->SetLabel(B_TRANSLATE("Options"));
 	options->AddChild(optBox->View());
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
@@ -133,10 +136,10 @@ void FindTextWindow::MessageReceived(BMessage *msg) {
 		mSearching = true;
 		const char *text = mText->Text();
 		if (strlen(text) == 0) return;
-		mFindStop->SetLabel(TRANSLATE("Stop"));
+		mFindStop->SetLabel(B_TRANSLATE("Stop"));
 		mFindStop->SetMessage(new BMessage(FIND_STOP_MSG));
 		mText->SetEnabled(false);
-		
+
 		BMessage msg(FIND_START_NOTIFY_MSG);
 		msg.AddString("text", text);
 		msg.AddBool("ignoreCase", mIgnoreCase->Value() == B_CONTROL_ON);
@@ -144,13 +147,13 @@ void FindTextWindow::MessageReceived(BMessage *msg) {
 		mLooper->PostMessage(&msg, NULL);
 		break; }
 	case FIND_ABORT_NOTIFY_MSG:
-		mFindStop->SetEnabled(false); 
+		mFindStop->SetEnabled(false);
 		break;
 	case FIND_STOP_MSG:
 		mLooper->PostMessage((uint32)FIND_STOP_NOTIFY_MSG, NULL);
 		break;
 	case FIND_STOP_NOTIFY_MSG:
-		mFindStop->SetLabel(TRANSLATE("Find"));
+		mFindStop->SetLabel(B_TRANSLATE("Find"));
 		mFindStop->SetMessage(new BMessage(FIND_MSG));
 		mText->SetEnabled(true);
 		mSearching = false;
@@ -170,7 +173,7 @@ void FindTextWindow::MessageReceived(BMessage *msg) {
 }
 
 void FindTextWindow::SetPage(int32 page) {
-	const char* fmt = TRANSLATE("Page: %d");
+	const char* fmt = B_TRANSLATE("Page: %d");
 	char* buffer = new char[strlen(fmt)+30];
 	sprintf(buffer, fmt, page);
 	mPage->SetText(buffer);

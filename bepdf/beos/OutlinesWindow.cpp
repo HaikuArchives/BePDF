@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 // BeOS
+#include <locale/Catalog.h>
 #include <Button.h>
 #include <InterfaceDefs.h>
 #include <LayoutBuilder.h>
@@ -36,9 +37,11 @@
 // BePDF
 #include "BePDF.h"
 #include "LayoutUtils.h"
-#include "StringLocalization.h"
 #include "TextConversion.h"
 #include "OutlinesWindow.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "OutlinesWindow"
 
 // Implementation of OutlineStyle
 
@@ -57,7 +60,7 @@ OutlineStyleList::OutlineStyleList() {
 	mFonts[ITALIC_STYLE] = *be_plain_font;
 	mFonts[ITALIC_STYLE].SetFace(B_ITALIC_FACE);
 	mFonts[BOLD_ITALIC_STYLE] = *be_plain_font;
-	mFonts[BOLD_ITALIC_STYLE].SetFace(B_BOLD_FACE | B_ITALIC_FACE);		
+	mFonts[BOLD_ITALIC_STYLE].SetFace(B_BOLD_FACE | B_ITALIC_FACE);
 }
 
 OutlineStyleList::~OutlineStyleList() {
@@ -79,7 +82,7 @@ OutlineStyle* OutlineStyleList::GetStyle(int style, rgb_color color) {
 		OutlineStyle* os = (OutlineStyle*)mList.ItemAt(i);
 		if (os->GetFont() == GetFont(style) && memcmp(os->GetColor(), &color, sizeof(color)) == 0) {
 			return os;
-		}	
+		}
 	}
 	OutlineStyle* os = new OutlineStyle(GetFont(style), color);
 	mList.AddItem(os);
@@ -112,7 +115,7 @@ void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete) {
 	rgb_color kHighlight = {128, 128, 128, 0};
 	rgb_color kWhite = {255, 255, 255, 0};
 	rgb_color color;
-	
+
 	owner->PushState();
 	// select background color
 	if (IsSelected()) {
@@ -131,18 +134,18 @@ void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete) {
 	}
 	// set background color
 	owner->SetLowColor(color);
-	// display text	
+	// display text
 	owner->MovePenTo(frame.left+4, frame.bottom-2);
-	owner->SetFont(mStyle->GetFont());	
+	owner->SetFont(mStyle->GetFont());
 	owner->DrawString(mString.String());
 
 	owner->PopState();
 }
 
-void OutlineListItem::SetLink(LinkDest *dest) { 
+void OutlineListItem::SetLink(LinkDest *dest) {
 	if (dest->isOk() && (mType == linkUndefined)) {
 		mType = linkDest;
-		mLink.dest = dest; 
+		mLink.dest = dest;
 	} else {
 		delete dest;
 	}
@@ -176,7 +179,7 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 			if (current->dictLookup("Count", &count) && count.isInt()) {
 				open = count.getInt() > 0;
 			}
-			count.free();		
+			count.free();
 
 			OutlineListItem *item;
 			if (title.isString()) {
@@ -191,25 +194,25 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 					item = new OutlineListItem(s->String(), level, open, GetDefaultStyle());
 					delete s;
 				} else {
-					item = new OutlineListItem(TRANSLATE("No Title"), level, open, GetDefaultStyle());
+					item = new OutlineListItem(B_TRANSLATE("No Title"), level, open, GetDefaultStyle());
 				}
 			} else {
-				item = new OutlineListItem(TRANSLATE("No Title"), level, open, GetDefaultStyle());
+				item = new OutlineListItem(B_TRANSLATE("No Title"), level, open, GetDefaultStyle());
 			}
 			mList->AddItem(item);
-			
+
 			Object dest;
 			if (current->dictLookup("Dest", &dest)) {
 				if (dest.isName()) {
 					item->SetLink(new GString(dest.getName()));
 				} else if (dest.isArray()) {
 					item->SetLink(new LinkDest(dest.getArray()));
-				} else if (dest.isString()) {					
+				} else if (dest.isString()) {
 					item->SetLink(dest.getString()->copy());
 				}
 			}
 			dest.free();
-			
+
 			Object dict;
 			if (current->dictLookup("A", &dict) && dict.isDict()) {
 				Object s;
@@ -229,19 +232,19 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 				s.free();
 			}
 			dict.free();
-						
-			// PDF 1.4 
+
+			// PDF 1.4
 			rgb_color item_color = {0, 0, 0, 0};
 			Object color;
 			if (current->dictLookup("C", &color) && color.isArray() && color.arrayGetLength() == 3) {
 				Object c;
-				rgb_color rgb;				
+				rgb_color rgb;
 				if (color.arrayGet(0, &c) && c.isReal()) {
 					rgb.red = (int)(255*c.getReal());
 					c.free();
 					if (color.arrayGet(1, &c) && c.isReal()) {
 						rgb.green = (int)(255*c.getReal());
-						c.free();	
+						c.free();
 						if (color.arrayGet(2, &c) && c.isReal()) {
 							rgb.blue = (int)(255*c.getReal());
 							// set font color
@@ -252,7 +255,7 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 				c.free();
 			}
 			color.free();
-			
+
 			Object style;
 			int item_style = OutlineStyleList::PLAIN_STYLE;
 			if (current->dictLookup("F", &style) && style.isInt()) {
@@ -264,15 +267,15 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 				if (italic) item_style |= OutlineStyleList::ITALIC_STYLE;
 			}
 			style.free();
-			
+
 			item->SetStyle(mOutlineStyleList.GetStyle(item_style, item_color));
-/*			
+/*
 			Object aa;
 			if (current->dictLookup("AA", &aa) && !aa.isNull()) {
 				fprintf(stderr, " <AA>\n");
 			}
 			aa.free();
-			
+
 			Object se;
 			if (current->dictLookup("SE", &se) && !se.isNull()) {
 				fprintf(stderr, " <SE>\n");
@@ -289,8 +292,8 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 			if (open) mList->Expand(item); else mList->Collapse(item);
 		}
 		title.free();
-		
-		
+
+
 		Object *next = new Object();
 		if (current->dictLookup("Next", next) && next->isDict() && !next->isNull()) {
 			current->free();
@@ -309,12 +312,12 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 OutlinesView::OutlinesView(BRect rect, Catalog *catalog, BMessage *bookmarks, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags) :
 		BView(rect, "bookmarks", resizeMask, flags),
 		mLooper(looper),
-		mList(NULL), 
+		mList(NULL),
 		mCatalog(NULL),
 		mBookmarks(NULL),
 		mNeedsUpdate(true),
 		mUserDefined(NULL),
-		mEmptyUserBM(NULL) {	
+		mEmptyUserBM(NULL) {
 
 	rect.right -= B_V_SCROLL_BAR_WIDTH + 2;
 	rect.bottom -= B_H_SCROLL_BAR_HEIGHT + 2;
@@ -324,7 +327,7 @@ OutlinesView::OutlinesView(BRect rect, Catalog *catalog, BMessage *bookmarks, Gl
 	scroller->ResizeBy(B_V_SCROLL_BAR_WIDTH, 0);
 	scroller->SetRange(0, 300);
 	scroller->SetSteps(30, 60);
-	mEmptyUserBM = new OutlineListItem(TRANSLATE("<empty>"), 1, true, GetDefaultStyle());
+	mEmptyUserBM = new OutlineListItem(B_TRANSLATE("<empty>"), 1, true, GetDefaultStyle());
 	SetCatalog(catalog, bookmarks);
 	AddChild(view);
 }
@@ -361,24 +364,24 @@ void OutlinesView::Activate() {
 		mList->RemoveItem(mEmptyUserBM); // keep mEmptyUserBM
 		MakeEmpty(mList);
 		Object obj;
-		mList->AddItem(new OutlineListItem(TRANSLATE("Document"), 0, true, GetDefaultStyle()));
+		mList->AddItem(new OutlineListItem(B_TRANSLATE("Document"), 0, true, GetDefaultStyle()));
 		gPdfLock->Lock();
 		if (mCatalog->getOutline()->isDict() && mCatalog->getOutline()->dictLookup("First", &obj) && !obj.isNull()) {
 			ReadOutlines(&obj, 1);
 		}
 		gPdfLock->Unlock();
 		if (mList->CountItems() == 1) {
-			mList->AddItem(new OutlineListItem(TRANSLATE("<empty>"), 1, true, GetDefaultStyle()));
+			mList->AddItem(new OutlineListItem(B_TRANSLATE("<empty>"), 1, true, GetDefaultStyle()));
 		}
 		obj.free();
-		mUserDefined = new OutlineListItem(TRANSLATE("User defined"), 0, true, GetDefaultStyle());
+		mUserDefined = new OutlineListItem(B_TRANSLATE("User defined"), 0, true, GetDefaultStyle());
 		mList->AddItem(mUserDefined);
-		InitUserBookmarks(false);		
+		InitUserBookmarks(false);
 	}
 }
 
 
-// handling of user bookmarks 
+// handling of user bookmarks
 void OutlinesView::InitUserBookmarks(bool initOnly) {
 	mBookmark.Clear();
 	if (mBookmarks == NULL || mBookmarks->IsEmpty()) {
@@ -451,7 +454,7 @@ void OutlinesView::AddUserBookmark(int pageNum, const char *label) {
 	RemoveUserBookmark(pageNum);
 	if (mList->CountItemsUnder(mUserDefined, true) == 1) {
 		mList->RemoveItem(mEmptyUserBM);
-	} 	
+	}
 	OutlineListItem* item;
 	int32 i = 0;
 	int32 index = mList->FullListIndexOf(mUserDefined)+1;
@@ -463,10 +466,10 @@ void OutlinesView::AddUserBookmark(int pageNum, const char *label) {
 		}
 		i ++;
 		item = (OutlineListItem*)mList->ItemUnderAt(mUserDefined, true, i);
-	} 
+	}
 	index += i;
 	OutlineListItem *n = new OutlineListItem(label, 1, true, GetDefaultStyle());
-	n->SetPageNum(pageNum);	
+	n->SetPageNum(pageNum);
 	mList->AddItem(n, index);
 	mBookmark.Set(pageNum, true);
 }
@@ -489,7 +492,7 @@ void OutlinesView::RemoveUserBookmark(int pageNum) {
 	}
 	if (mList->CountItemsUnder(mUserDefined, true) == 0) {
 		mList->AddItem(mEmptyUserBM);
-	} 	
+	}
 }
 
 const char *OutlinesView::GetUserBMLabel(int pageNum) {
@@ -515,7 +518,7 @@ void OutlinesView::MessageReceived(BMessage *msg) {
 				if (link != NULL) {
 					// XXX: race condition: Link handled after a new pdf document has been loaded.
 					// Should add a field to the message that represents the current document,
-					// to check in the handler of this message if still contains a vaild pointer. 
+					// to check in the handler of this message if still contains a vaild pointer.
 					BMessage msg(DEST_NOTIFY);
 					msg.AddPointer("dest", link);
 					mLooper->PostMessage(&msg);
@@ -553,7 +556,7 @@ void OutlinesView::MessageReceived(BMessage *msg) {
 					BMessage msg(STATE_CHANGE_NOTIFY);
 					mLooper->PostMessage(&msg);
 				}
-			}			
+			}
 		}
 	} else {
 		BView::MessageReceived(msg);
@@ -563,29 +566,29 @@ void OutlinesView::MessageReceived(BMessage *msg) {
 
 // BookmarkWindow
 
-BookmarkWindow::BookmarkWindow(int pageNum, const char* title, BRect aRect, BLooper *looper) 
-	: BWindow(aRect, TRANSLATE("Edit title for bookmark"), 
+BookmarkWindow::BookmarkWindow(int pageNum, const char* title, BRect aRect, BLooper *looper)
+	: BWindow(aRect, B_TRANSLATE("Edit title for bookmark"),
 		B_TITLED_WINDOW_LOOK,
-		B_MODAL_APP_WINDOW_FEEL, 
+		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS) {
 	mLooper  = looper;
 	mPageNum = pageNum;
-	
+
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
-	
+
 	// center window
-	
+
 	aRect.OffsetBy(aRect.Width() / 2, aRect.Height() / 2);
 	float width = 300, height = 45;
 	aRect.SetRightBottom(BPoint(aRect.left + width, aRect.top + height));
 	aRect.OffsetBy(-aRect.Width() / 2, -aRect.Height() / 2);
 	MoveTo(aRect.left, aRect.top);
 	ResizeTo(width, height);
-	
+
 	mTitle = new BTextControl("mTitle", "", title, NULL);
 
-	BButton *button = new BButton("button", TRANSLATE("OK"), new BMessage('OK'));
-	
+	BButton *button = new BButton("button", B_TRANSLATE("OK"), new BMessage('OK'));
+
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(mTitle)
@@ -605,8 +608,8 @@ bool BookmarkWindow::QuitRequested() {
 void BookmarkWindow::MessageReceived(BMessage *msg) {
 	switch (msg->what) {
 	case 'OK': {
-		// post message to application 
-	
+		// post message to application
+
 		BMessage msg(BOOKMARK_ENTERED_NOTIFY);
 		msg.AddString("label", mTitle->Text());
 		msg.AddInt32("pageNum", mPageNum);

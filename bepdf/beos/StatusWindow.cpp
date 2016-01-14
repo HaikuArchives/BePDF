@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -20,6 +20,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <locale/Catalog.h>
 #include <LayoutBuilder.h>
 #include <StatusBar.h>
 #include <StringView.h>
@@ -27,12 +28,13 @@
 #include "BeLoadProgressMonitor.h"
 #include "BepdfApplication.h"
 #include "StatusWindow.h"
-#include "StringLocalization.h"
-// Implementation of StatusWindow
 
-StatusWindow::StatusWindow(const char *text, BRect aRect) 
-	: BWindow(aRect, TRANSLATE("BePDF Status"), 
-		B_MODAL_WINDOW , 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "StatusWindow"
+
+StatusWindow::StatusWindow(const char *text, BRect aRect)
+	: BWindow(aRect, B_TRANSLATE("BePDF Status"),
+		B_MODAL_WINDOW ,
 		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE) {
 
 	BStringView *stringView = new BStringView("stringView", text);
@@ -81,7 +83,7 @@ StatusWindow::MessageReceived(BMessage *msg) {
 	case TEXT_NOTIFY:
 		if (B_OK == msg->FindString("text", &s)) {
 			mText->SetText(s.String());
-		}		
+		}
 		break;
 	default:
 		BWindow::MessageReceived(msg);
@@ -120,7 +122,7 @@ ShowStatusWindow::~ShowStatusWindow() {
 
 // Implementation of ShowLoadProgressStatusWindow
 
-ShowLoadProgressStatusWindow::ShowLoadProgressStatusWindow(const char* name) 
+ShowLoadProgressStatusWindow::ShowLoadProgressStatusWindow(const char* name)
 	: ShowStatusWindow(name)
 {
 	BeLoadProgressMonitor::getInstance()->setMessenger(GetMessenger());

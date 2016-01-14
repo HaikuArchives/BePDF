@@ -25,6 +25,7 @@
 #include "AttachmentView.h"
 
 // BeOS
+#include <locale/Catalog.h>
 #include <Entry.h>
 #include <ListView.h>
 #include <Path.h>
@@ -41,10 +42,12 @@
 #include "LayoutUtils.h"
 #include "SaveThread.h"
 #include "StatusWindow.h"
-#include "StringLocalization.h"
 #include "TextConversion.h"
 #include "Thread.h"
 #include "ToolBar.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "AttachmentView"
 
 static const int kToolbarHeight = 30;
 
@@ -116,7 +119,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 	                                name, off, on, off_grey, on_grey,
 	                               new BMessage(cmd),
 	                                behavior);
-	button->SetToolTip(tooltip, TRANSLATE(info));
+	button->SetToolTip(tooltip, B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -130,7 +133,7 @@ AttachmentView::AddButton(::ToolTip* tooltip, ToolBar* toolBar, const char *name
 	                                name, off, on,
 	                                new BMessage(cmd),
 	                                behavior);
-	button->SetToolTip(tooltip, TRANSLATE(info));
+	button->SetToolTip(tooltip, B_TRANSLATE(info));
 	toolBar->Add (button);
 	Register(behavior, button, cmd);
 	return button;
@@ -164,8 +167,8 @@ AttachmentView::AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings *s
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
 		B_FANCY_BORDER,
 		true);
-	mList->AddColumn(new BStringColumn(TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
-	mList->AddColumn(new BStringColumn(TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
+	mList->AddColumn(new BStringColumn(B_TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
+	mList->AddColumn(new BStringColumn(B_TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
 }
 
 AttachmentView::~AttachmentView() {
@@ -194,12 +197,12 @@ void AttachmentView::Update() {
 	// Update tool tip text
 	const char* info = NULL;
 	if (selection == kOneAttachmentSelected) {
-		info = TRANSLATE("Save selected attachment to file.");
+		info = B_TRANSLATE("Save selected attachment to file.");
 	} else if (selection == kMultipleAttachmentsSelected) {
-		info = TRANSLATE("Save selected attachments into directory.");
+		info = B_TRANSLATE("Save selected attachments into directory.");
 	} else {
 		// Note text used in constructor also!
-		info = TRANSLATE("Save attachment(s) as.");
+		info = B_TRANSLATE("Save attachment(s) as.");
 	}
 	mSaveButton->GetToolTipItem()->SetLabel(info);
 
@@ -258,7 +261,7 @@ void AttachmentView::Fill(XRef* xref, Object *embeddedFiles) {
 void AttachmentView::Empty() {
 	mList->Clear();
 	BRow* item = new BRow();
-	item->SetField(new BStringField(TRANSLATE("<empty>")),0);
+	item->SetField(new BStringField(B_TRANSLATE("<empty>")),0);
 	mList->AddRow(item);
 }
 
@@ -372,7 +375,7 @@ private:
 };
 
 void AttachmentView::Save(BMessage* msg) {
-	const char* title = TRANSLATE("Saving attachment(s):");
+	const char* title = B_TRANSLATE("Saving attachment(s):");
 	SaveAttachmentThread* thread = new SaveAttachmentThread(title, mXRef, msg);
 	thread->Resume();
 }

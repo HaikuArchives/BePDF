@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -23,6 +23,7 @@
 // xpdf
 #include <GlobalParams.h>
 
+#include <locale/Catalog.h>
 #include <Box.h>
 #include <CheckBox.h>
 #include <Directory.h>
@@ -40,7 +41,9 @@
 #include "BepdfApplication.h"
 #include "LayoutUtils.h"
 #include "PreferencesWindow.h"
-#include "StringLocalization.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "AnnotationWindow"
 
 void PreferencesWindow::UpdateWorkspace() {
 	GlobalSettings* settings = gApp->GetSettings();
@@ -56,7 +59,7 @@ void PreferencesWindow::UpdateWorkspace() {
 }
 
 void PreferencesWindow::BuildWorkspaceMenu(BMenu *m) {
-	m->AddItem(new BMenuItem(TRANSLATE("current"), new BMessage(WORKSPACE_CHANGED)));
+	m->AddItem(new BMenuItem(B_TRANSLATE("current"), new BMessage(WORKSPACE_CHANGED)));
 	m->AddSeparatorItem();
 	int n = count_workspaces();
 	for (int i = 1; i <= n; i ++) {
@@ -70,23 +73,19 @@ void PreferencesWindow::BuildWorkspaceMenu(BMenu *m) {
 
 void PreferencesWindow::SetupView() {
 	char workspace[3];
-	
+
 	GlobalSettings* settings = gApp->GetSettings();
 	sprintf(workspace, "%d", (int)settings->GetWorkspace());
 	mPreferences = new BOutlineListView("mPreferences");
 
 	BListItem *item;
-	mPreferences->AddItem(new BStringItem(TRANSLATE("Document")));
+	mPreferences->AddItem(new BStringItem(B_TRANSLATE("Document")));
 
-	mPreferences->AddItem(item = new BStringItem(TRANSLATE("Display")));
+	mPreferences->AddItem(item = new BStringItem(B_TRANSLATE("Display")));
 		// reverse order:
-		mPreferences->AddUnder(new BStringItem(TRANSLATE("Asian Fonts")), item);
-		mPreferences->AddUnder(new BStringItem(TRANSLATE("FreeType 2")), item);
-		
-	if (!StringLocalization::FromEnvironmentVariables()) {
-		// XXX This works because it is the last item!
-		mPreferences->AddItem(new BStringItem(TRANSLATE("Language")));
-	}
+		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("Asian Fonts")), item);
+		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("FreeType 2")), item);
+
 	mPreferences->SetSelectionMessage(new BMessage(PREFERENCE_SELECTED));
 	mPreferences->SetExplicitMinSize(BSize(200, 0));
 
@@ -95,23 +94,23 @@ void PreferencesWindow::SetupView() {
 		.Add(mPreferences);
 
 	BBox *preferences = new BBox("preferences");
-	preferences->SetLabel(TRANSLATE("Preferences"));
+	preferences->SetLabel(B_TRANSLATE("Preferences"));
 	preferences->AddChild(prefBox->View());
 
 	BCheckBox *pageNumber = new BCheckBox("pageNumber",
-		TRANSLATE("Restore Page Number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
+		B_TRANSLATE("Restore Page Number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
 	pageNumber->SetValue(settings->GetRestorePageNumber());
 
 	BCheckBox *windowPos = new BCheckBox("windowPos",
-		TRANSLATE("Restore Window Position and Size"),
+		B_TRANSLATE("Restore Window Position and Size"),
 		new BMessage(RESTORE_WINDOW_FRAME_CHANGED));
 	windowPos->SetValue(settings->GetRestoreWindowFrame());
 
 	BPopUpMenu *openMenu = new BPopUpMenu("openMenu");
 	mOpenInWorkspace = new BMenuField("mOpeninWorkspace",
-		TRANSLATE("Open in Workspace:"), openMenu);
+		B_TRANSLATE("Open in Workspace:"), openMenu);
 
-	BTextControl *author = new BTextControl("author", TRANSLATE("Author"),
+	BTextControl *author = new BTextControl("author", B_TRANSLATE("Author"),
 		settings->GetAuthor(), new BMessage(AUTHOR_CHANGED));
 
 	BGroupLayout *docBox = BLayoutBuilder::Group<>(B_VERTICAL)
@@ -127,12 +126,12 @@ void PreferencesWindow::SetupView() {
 	document->AddChild(docBox->View());
 
 	BRadioButton *docOnly = new BRadioButton("docOnly",
-		TRANSLATE("Show Document View only"),
+		B_TRANSLATE("Show Document View only"),
 		new BMessage(QUASI_FULLSCREEN_MODE_OFF));
 	docOnly->SetValue(!(settings->GetQuasiFullscreenMode()));
 
 	BRadioButton *docMore = new BRadioButton("docMore",
-		TRANSLATE("Show Toolbar, Statusbar and Scrollbars too"),
+		B_TRANSLATE("Show Toolbar, Statusbar and Scrollbars too"),
 		new BMessage(QUASI_FULLSCREEN_MODE_ON));
 	docMore->SetValue(settings->GetQuasiFullscreenMode());
 
@@ -142,16 +141,16 @@ void PreferencesWindow::SetupView() {
 		.Add(docMore);
 
 	BBox *fullscreen = new BBox("fullscreen");
-	fullscreen->SetLabel(TRANSLATE("Fullscreen Mode"));
+	fullscreen->SetLabel(B_TRANSLATE("Fullscreen Mode"));
 	fullscreen->AddChild(fsBox->View());
 
 	BRadioButton *filledRect = new BRadioButton("filledRect",
-		TRANSLATE("Filled Rectangle"),
+		B_TRANSLATE("Filled Rectangle"),
 		new BMessage(FILLED_SELECTION_FILLED));
 	filledRect->SetValue(settings->GetFilledSelection());
 
 	BRadioButton *strokedRect = new BRadioButton("strokedRect",
-		TRANSLATE("Stroked Rectangle"),
+		B_TRANSLATE("Stroked Rectangle"),
 		new BMessage(FILLED_SELECTION_STROKED));
 	strokedRect->SetValue(!(settings->GetFilledSelection()));
 
@@ -161,15 +160,15 @@ void PreferencesWindow::SetupView() {
 		.Add(strokedRect);
 
 	BBox *selection = new BBox("selection");
-	selection->SetLabel(TRANSLATE("Selection Rectangle"));
+	selection->SetLabel(B_TRANSLATE("Selection Rectangle"));
 	selection->AddChild(rectBox->View());
 
 	BCheckBox *scrolling = new BCheckBox("scrolling",
-		TRANSLATE("Invert vertical mouse scrolling"),
+		B_TRANSLATE("Invert vertical mouse scrolling"),
 		new BMessage(INVERT_VERTICAL_SCROLLING_CHANGED));
 	scrolling->SetValue(settings->GetInvertVerticalScrolling());
 
-	BCheckBox *hinting = new BCheckBox("hinting", TRANSLATE("Hinting"),
+	BCheckBox *hinting = new BCheckBox("hinting", B_TRANSLATE("Hinting"),
 		new BMessage(HINTING_CHANGED));
 	hinting->SetValue(settings->GetHinting());
 
@@ -179,28 +178,12 @@ void PreferencesWindow::SetupView() {
 		.AddGlue();
 
 	BBox *freetype = new BBox("freetype");
-	freetype->SetLabel(TRANSLATE("FreeType 2"));
+	freetype->SetLabel(B_TRANSLATE("FreeType 2"));
 	freetype->AddChild(ftBox->View());
 
 	BBox *asian = new BBox("asian");
-	asian->SetLabel(TRANSLATE("Asian Fonts"));
+	asian->SetLabel(B_TRANSLATE("Asian Fonts"));
 	asian->AddChild(BuildAsianFontsView());
-
-	mList = new BListView("mList");
-	BScrollView *langScroll = new BScrollView("langScroll", mList, 0, false,
-		true);
-
-	BStringView *restart = new BStringView("restart",
-		TRANSLATE("Will take effect at next program launch."));
-
-	BGroupLayout *langBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_SMALL_INSETS)
-		.Add(langScroll)
-		.Add(restart);
-
-	BBox *languages = new BBox("languages");
-	languages->SetLabel(TRANSLATE("Language"));
-	languages->AddChild(langBox->View());
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -215,7 +198,6 @@ void PreferencesWindow::SetupView() {
 			.End()
 			.Add(freetype)
 			.Add(asian)
-			.Add(languages)
 			.GetLayout(&mLayers)
 		.End();
 
@@ -224,37 +206,6 @@ void PreferencesWindow::SetupView() {
 	mLayers->SetVisibleItem((int32)1);
 	mLayers->SetVisibleItem((int32)0);
 	mPreferences->Select(0);
-
-	// localization
-	BPath path(*gApp->GetAppPath()); path.Append("locale");
-	BDirectory dir(path.Path());
-	int32 selectIndex = 0;
-	if (dir.InitCheck() == B_OK) {
-		mList->SetSelectionMessage(new BMessage(LANGUAGE_SELECTED));
-		BEntry entry; char name[B_FILE_NAME_LENGTH];
-		const char *language = settings->GetLanguage();
-		BStringItem *item;
-		bool selected;
-		bool found = false;
-		int32 i = 0;
-		int32 english = 0;
-		char *s;
-		while (dir.GetNextEntry(&entry) == B_OK) {
-			entry.GetName(name);
-			selected = strcmp(language, name) == 0;
-			if ((s = strstr(name, "catalog")) && strcmp(name, "Template.catalog") != 0 && s[7] == 0) {
-				char *s = strchr(name, '.'); if (s) *s = 0;
-				mList->AddItem(item = new BStringItem(name));
-				if (strcmp(name, "English") == 0) english = i;
-				if (selected) {
-					selectIndex = i;
-					found = true;
-				}
-				i ++;
-			}
-		}
-		mList->Select(found ? selectIndex : english);
-	} 
 
 	BuildWorkspaceMenu(mOpenInWorkspace->Menu());
 	UpdateWorkspace();
@@ -277,8 +228,8 @@ BView* PreferencesWindow::BuildAsianFontsView() {
 		BString file;
 		DisplayCIDFonts::Type type;
 		mDisplayCIDFonts->Get(index, name, file, type);
-		
-		BString label(TRANSLATE(name.String()));
+
+		BString label(B_TRANSLATE(name.String()));
 		label << ":";
 		BPopUpMenu *popupInner = new BPopUpMenu("");
 		BMenuField *popup = new BMenuField("popup", label.String(), popupInner);
@@ -291,7 +242,7 @@ BView* PreferencesWindow::BuildAsianFontsView() {
 	menus.SortItems(comparePopupLabels);
 
 	BStringView *restart = new BStringView("restart",
-		TRANSLATE("Will take effect at next program launch."));
+		B_TRANSLATE("Will take effect at next program launch."));
 
 	// add popup menus into vertical group
 	BGridLayout *grid = new BGridLayout();
@@ -318,7 +269,7 @@ static bool endsWith(const BString& string, const char* suffix) {
 	if (stringLength < suffixLength) {
 		return gFalse;
 	}
-	
+
 	return strcmp(suffix, &stringPtr[stringLength - suffixLength]) == 0;
 }
 
@@ -335,25 +286,25 @@ DisplayCIDFonts::Type PreferencesWindow::GetType(const char* file) {
 }
 
 void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, const char* name, const char* file) {
-	FillFontFileMenu(menuField, B_SYSTEM_FONTS_DIRECTORY, TRANSLATE("System Fonts"), name, file);
-	FillFontFileMenu(menuField, B_USER_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
-	FillFontFileMenu(menuField, B_SYSTEM_NONPACKAGED_FONTS_DIRECTORY, TRANSLATE("System Fonts"), name, file);
-	FillFontFileMenu(menuField, B_USER_NONPACKAGED_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_FONTS_DIRECTORY, B_TRANSLATE("System Fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("System Fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
 
-	// B_USER_FONTS_DIRECTORY is same as B_COMMON_FONTS_DIRECTORY in 
+	// B_USER_FONTS_DIRECTORY is same as B_COMMON_FONTS_DIRECTORY in
 	// BeOS R5
-	// FillFontFileMenu(menu, B_USER_FONTS_DIRECTORY, TRANSLATE("User Fonts"), name, file);
+	// FillFontFileMenu(menu, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
 }
 
 void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which which, const char* label, const char* name, const char* file) {
 	BMenu* menu = menuField->Menu();
 	mFontMenuFields.AddPointer(name, menuField);
-	
+
 	BPath path;
 	if (find_directory(which, &path) != B_OK) {
 		return;
 	}
-	
+
 	BDirectory fontDirectory(path.Path());
 	BEntry entry;
 	BMenu* fontMenu = NULL;
@@ -370,7 +321,7 @@ void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which 
 			if (!fontFile.IsFile()) {
 				continue;
 			}
-			
+
 			BPath filePath;
 			if (fontFile.GetPath(&filePath) != B_OK) {
 				continue;
@@ -379,14 +330,14 @@ void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which 
 			if (GetType(filePath.Path()) == DisplayCIDFonts::kUnknownType) {
 				continue;
 			}
-			
+
 			if (fontMenu == NULL) {
 				// lazy add font menu
 				fontMenu = new BMenu(label);
 				fontMenu->SetRadioMode(false);
 				menu->AddItem(fontMenu);
 			}
-			
+
 			if (fontSubMenu == NULL) {
 				// lazy add sub font menu
 				char name[B_FILE_NAME_LENGTH+1];
@@ -395,14 +346,14 @@ void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which 
 				fontSubMenu->SetRadioMode(false);
 				fontMenu->AddItem(fontSubMenu);
 			}
-			
+
 			// add menu item for font
 			BMessage* msg = new BMessage(DISPLAY_CID_FONT_SELECTED);
 			msg->AddString("name", name);
 			msg->AddString("file", filePath.Path());
 			BMenuItem* item = new BMenuItem(filePath.Leaf(), msg);
 			fontSubMenu->AddItem(item);
-			
+
 			// set label from current font
 			if (strcmp(filePath.Path(), file) == 0) {
 				menuField->MenuItem()->SetLabel(filePath.Leaf());
@@ -415,15 +366,15 @@ void PreferencesWindow::ClearView() {
 	MakeEmpty(mList);
 }
 
-PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper) 
+PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper)
 	: BWindow(BRect(0, 0, 100, 100)
-		, TRANSLATE("Preferences")
-		, B_TITLED_WINDOW_LOOK, 
-		B_FLOATING_APP_WINDOW_FEEL, 
+		, B_TRANSLATE("Preferences")
+		, B_TITLED_WINDOW_LOOK,
+		B_FLOATING_APP_WINDOW_FEEL,
 		B_AUTO_UPDATE_SIZE_LIMITS)
 	, mLooper(looper)
 	, mSettings(settings)
-{	
+{
 	BMessage msg;
 	settings->GetDisplayCIDFonts(msg);
 	mDisplayCIDFonts = new DisplayCIDFonts(msg);
@@ -434,9 +385,9 @@ PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper)
 	float w, h;
 	settings->GetPrefsWindowSize(w, h);
 	ResizeTo(w, h);
-	
+
 	SetupView();
-	
+
 	Show();
 }
 
@@ -455,7 +406,7 @@ public:
 
 bool PreferencesWindow::DecodeMessage(BMessage *msg, int16 &kind, int16 &which, int16 &index) {
 	// assert msg->what == PREFERENCES_CHANGED_NOTIFY
-	return ((B_OK == msg->FindInt16("kind", &kind)) 
+	return ((B_OK == msg->FindInt16("kind", &kind))
 		&& (B_OK == msg->FindInt16("which", &which))
 		&& (B_OK == msg->FindInt16("index", &index)));
 }
@@ -472,7 +423,7 @@ void PreferencesWindow::NotifyRestartDoc() {
 void PreferencesWindow::DisplayCIDFontSelected(BMessage* msg) {
 	BString name;
 	BString file;
-	if (msg->FindString("name", &name) != B_OK || 
+	if (msg->FindString("name", &name) != B_OK ||
 		msg->FindString("file", &file) != B_OK) {
 		return;
 	}
@@ -489,7 +440,7 @@ void PreferencesWindow::DisplayCIDFontSelected(BMessage* msg) {
 	if (mFontMenuFields.FindPointer(name.String(), &pointer) != B_OK) {
 		return;
 	}
-	
+
 	BPath path(file.String());
 	BMenuField* menuField = (BMenuField*)pointer;
 	menuField->MenuItem()->SetLabel(path.Leaf());
@@ -497,22 +448,11 @@ void PreferencesWindow::DisplayCIDFontSelected(BMessage* msg) {
 
 void PreferencesWindow::MessageReceived(BMessage *msg) {
 	int32 index;
-	
+
 	switch (msg->what) {
 	case PREFERENCE_SELECTED:
 		if (mPreferences->FullListCurrentSelection() >= 0) {
 			mLayers->SetVisibleItem(mPreferences->FullListCurrentSelection());
-		}
-		break;
-	case LANGUAGE_SELECTED:
-		if ((B_OK == msg->FindInt32("index", &index)) && (index >= 0)) {
-			BStringItem *item = (BStringItem*)mList->ItemAt(index);
-			if (item) {
-				BString name(item->Text());
-				name << ".catalog";
-				gApp->GetSettings()->SetLanguage(name.String());
-				gApp->SaveSettings();
-			}
 		}
 		break;
 	case RESTORE_PAGE_NO_CHANGED: mSettings->SetRestorePageNumber(IsOn(msg));
@@ -544,7 +484,7 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 			}
 		}
 		break;
-	case INVERT_VERTICAL_SCROLLING_CHANGED: 
+	case INVERT_VERTICAL_SCROLLING_CHANGED:
 		mSettings->SetInvertVerticalScrolling(IsOn(msg));
 		Notify(UPDATE_NOTIFY);
 		break;
@@ -568,7 +508,7 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 		}
 		break;
 	}
-	
+
 	BWindow::MessageReceived(msg);
 }
 

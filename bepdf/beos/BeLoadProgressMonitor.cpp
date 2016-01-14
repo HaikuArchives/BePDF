@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -28,15 +28,18 @@
 
 #include <stdlib.h>
 
+#include <locale/Catalog.h>
 #include <be/app/Looper.h>
 #include <be/app/Message.h>
 
 #include "StatusWindow.h"
-#include "StringLocalization.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "BeLoadProgressMonitor"
 
 static BeLoadProgressMonitor *gMonitor = NULL;
 
-BeLoadProgressMonitor::BeLoadProgressMonitor() 
+BeLoadProgressMonitor::BeLoadProgressMonitor()
   : mMessenger(NULL)
 {
 }
@@ -72,7 +75,7 @@ void BeLoadProgressMonitor::loadingPage(int page) {
 
 void BeLoadProgressMonitor::setStage(LoadProgressMonitor::Stage stage) {
 	if (mMessenger == NULL) return;
-	
+
 	const char* text = NULL;
 	switch (stage) {
 		case LoadProgressMonitor::kBeginLoadPages:
@@ -83,6 +86,6 @@ void BeLoadProgressMonitor::setStage(LoadProgressMonitor::Stage stage) {
 			break;
 	}
 	if (text != NULL) {
-		StatusWindow::SetText(mMessenger, TRANSLATE(text));
+		StatusWindow::SetText(mMessenger, B_TRANSLATE(text));
 	}
 }

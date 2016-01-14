@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -26,18 +26,21 @@
 
 #include <kernel/scheduler.h>
 
+#include <locale/Catalog.h>
 #include <Button.h>
 #include <CheckBox.h>
 #include <LayoutBuilder.h>
 #include <ScrollView.h>
 
 #include "LayoutUtils.h"
-#include "StringLocalization.h"
 #include "TextConversion.h"
 #include "TraceWindow.h"
 
-TraceWindow::TraceWindow(GlobalSettings *settings) 
-	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("Error Messages"), 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "TraceWindow"
+
+TraceWindow::TraceWindow(GlobalSettings *settings)
+	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Error Messages"),
 		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS)
 	, mSettings(settings)
 	, mAutoOpen(settings->GetTraceAutoOpen())
@@ -51,23 +54,23 @@ TraceWindow::TraceWindow(GlobalSettings *settings)
 	mOutput->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	BScrollView *outScroll = new BScrollView("outScroll", mOutput, 0, false, true);
 
-	BCheckBox *autoOpen = new BCheckBox("autoOpen", TRANSLATE("Auto Open"),
+	BCheckBox *autoOpen = new BCheckBox("autoOpen", B_TRANSLATE("Auto Open"),
 		new BMessage(AUTO_OPEN_MSG));
 	autoOpen->SetValue(mAutoOpen);
 
-	BCheckBox *floating = new BCheckBox("floating", TRANSLATE("Floating"),
+	BCheckBox *floating = new BCheckBox("floating", B_TRANSLATE("Floating"),
 		new BMessage(FLOATING_MSG));
 	floating->SetValue(mSettings->GetTraceFloating());
 
-	mStdoutCB = new BCheckBox("mStdoutCB", TRANSLATE("stdout"),
+	mStdoutCB = new BCheckBox("mStdoutCB", B_TRANSLATE("stdout"),
 		new BMessage(SHOW_STDOUT_MSG));
 	mStdoutCB->SetValue(mShowStdout);
 
-	mStderrCB = new BCheckBox("mStderrCB", TRANSLATE("stderr"),
+	mStderrCB = new BCheckBox("mStderrCB", B_TRANSLATE("stderr"),
 		new BMessage(SHOW_STDERR_MSG));
 	mStderrCB->SetValue(mShowStderr);
 
-	BButton *clear = new BButton("clear", TRANSLATE("Clear"),
+	BButton *clear = new BButton("clear", B_TRANSLATE("Clear"),
 		new BMessage(CLEAR_MSG));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
@@ -104,9 +107,9 @@ void TraceWindow::EnableCheckboxes() {
 
 void TraceWindow::UpdateWindowLookAndFeel() {
 	if (mSettings->GetTraceFloating()) {
-		SetLook(B_FLOATING_WINDOW_LOOK); SetFeel(B_FLOATING_APP_WINDOW_FEEL); 
+		SetLook(B_FLOATING_WINDOW_LOOK); SetFeel(B_FLOATING_APP_WINDOW_FEEL);
 	} else {
-		SetLook(B_TITLED_WINDOW_LOOK); SetFeel(B_NORMAL_WINDOW_FEEL); 
+		SetLook(B_TITLED_WINDOW_LOOK); SetFeel(B_NORMAL_WINDOW_FEEL);
 	}
 }
 
@@ -131,7 +134,7 @@ void TraceWindow::WriteData(const char* name, int fd, const char* data, int len)
 	static rgb_color stdout_color = {0, 0, 255, 255};
 
 	if (len == 0) return;
-	
+
 	if (!((fd == 1 && mShowStdout) || (fd == 2 && mShowStderr))) return;
 
 	if (mAutoOpen && IsHidden()) {
@@ -148,26 +151,26 @@ void TraceWindow::WriteData(const char* name, int fd, const char* data, int len)
 	mOutput->SetFontAndColor(cur, end, NULL, 0, (fd == 1) ? &stdout_color : &stderr_color);
 	mOutput->ScrollToOffset(end);
 	mOutput->Invalidate();
-	
+
 }
 
 void TraceWindow::MessageReceived(BMessage* msg) {
 	switch(msg->what) {
-	case AUTO_OPEN_MSG:  
+	case AUTO_OPEN_MSG:
 		mAutoOpen = IsOn(msg);
 		mSettings->SetTraceAutoOpen(mAutoOpen);
 		break;
-	case SHOW_STDOUT_MSG:  
-		mShowStdout = IsOn(msg); 
+	case SHOW_STDOUT_MSG:
+		mShowStdout = IsOn(msg);
 		mSettings->SetTraceShowStdout(mShowStdout);
 		EnableCheckboxes();
 		break;
-	case SHOW_STDERR_MSG:  
+	case SHOW_STDERR_MSG:
 		mShowStderr = IsOn(msg);
 		mSettings->SetTraceShowStderr(mShowStderr);
 		EnableCheckboxes();
 		break;
-	case CLEAR_MSG: 
+	case CLEAR_MSG:
 		mOutput->SelectAll();
 		mOutput->Clear();
 		break;
@@ -190,7 +193,7 @@ TraceWindow* OutputTracer::mWindow = NULL;
 BLocker      OutputTracer::mLock;
 int          OutputTracer::mTracerCount = 0;
 
-OutputTracer::OutputTracer(int fd, const char* name, GlobalSettings* settings) 
+OutputTracer::OutputTracer(int fd, const char* name, GlobalSettings* settings)
 	: mDupFd(-1)
 	, mOutFd(fd)
 	, mInFd(-1)
@@ -210,11 +213,11 @@ OutputTracer::OutputTracer(int fd, const char* name, GlobalSettings* settings)
 		int readFd = fildes[0];
 		int writeFd = fildes[1];
 
-		mDupFd = dup(mOutFd);		
+		mDupFd = dup(mOutFd);
 		mInFd = readFd;
 		dup2(writeFd, mOutFd);
 		close(writeFd);
-		
+
 		mPipeThread = spawn_thread(start_thread, name, suggest_thread_priority(B_USER_INPUT_HANDLING), this);
 		resume_thread(mPipeThread);
 	}
@@ -223,7 +226,7 @@ OutputTracer::OutputTracer(int fd, const char* name, GlobalSettings* settings)
 OutputTracer::~OutputTracer() {
 	status_t status;
 	close(mInFd);
-	dup2(mDupFd, mOutFd); close(mDupFd); 
+	dup2(mDupFd, mOutFd); close(mDupFd);
 	wait_for_thread(mPipeThread, &status);
 	mLock.Lock();
 	mTracerCount --;
@@ -232,7 +235,7 @@ OutputTracer::~OutputTracer() {
 		mWindow->Quit();
 		mWindow = NULL;
 	}
-	mLock.Unlock();	
+	mLock.Unlock();
 }
 
 int32 OutputTracer::start_thread(void *data) {
@@ -265,7 +268,7 @@ void OutputTracer::Run() {
 	const int max = 256;
 	char      buffer[max];
 	int       len;
-	
+
 	while(0 < (len = read(mInFd, buffer, max))) {
 		WriteData(buffer, len);
 	}

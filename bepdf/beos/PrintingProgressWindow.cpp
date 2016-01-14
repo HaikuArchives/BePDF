@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,35 +22,38 @@
 
 #include <stdio.h>
 
+#include <locale/Catalog.h>
 #include <Button.h>
 #include <LayoutBuilder.h>
 #include <StatusBar.h>
 #include <StringView.h>
 
 #include "PrintingProgressWindow.h"
-#include "StringLocalization.h"
 
-PrintingProgressWindow::PrintingProgressWindow(const char *text, BRect aRect, int32 pages) 
-	: BWindow(aRect, TRANSLATE("BePDF Printing"), 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PrintingProgressWindow"
+
+PrintingProgressWindow::PrintingProgressWindow(const char *text, BRect aRect, int32 pages)
+	: BWindow(aRect, B_TRANSLATE("BePDF Printing"),
 		B_TITLED_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE|B_AUTO_UPDATE_SIZE_LIMITS) {
 	mPages = pages; mPrintedPages = 0;
 	mState = OK;
-	
-	BString s(TRANSLATE("BePDF printing document: "));
+
+	BString s(B_TRANSLATE("BePDF printing document: "));
 	s << text;
 	// center window
 
 	BStringView *stringView = new BStringView("stringView", s.String());
 
-	mPageString = new BStringView("mPageString", TRANSLATE("Page:"));
+	mPageString = new BStringView("mPageString", B_TRANSLATE("Page:"));
 
 	mProgress = new BStatusBar("mProgress");
 	mProgress->SetMaxValue(1);
 
-	mStop = new BButton("mStop", TRANSLATE("Stop"), new BMessage('STOP'));
-	mAbort = new BButton("mAbort", TRANSLATE("Abort"), new BMessage('ABRT'));
+	mStop = new BButton("mStop", B_TRANSLATE("Stop"), new BMessage('STOP'));
+	mAbort = new BButton("mAbort", B_TRANSLATE("Abort"), new BMessage('ABRT'));
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -73,7 +76,7 @@ PrintingProgressWindow::PrintingProgressWindow(const char *text, BRect aRect, in
 
 void PrintingProgressWindow::SetPage(int32 page) {
 	char buffer[256];
-	sprintf(buffer, TRANSLATE("Page: %d"), page);
+	sprintf(buffer, B_TRANSLATE("Page: %d"), page);
 	Lock();
 	mPageString->SetText(buffer);
 	mPrintedPages ++;
@@ -105,10 +108,10 @@ void PrintingProgressWindow::MessageReceived(BMessage *msg) {
 }
 
 // PrintingHiddenWindow
-PrintingHiddenWindow::PrintingHiddenWindow(BRect aRect) 
-	: BWindow(aRect, "BePDF Printing Hidden Window", 
+PrintingHiddenWindow::PrintingHiddenWindow(BRect aRect)
+	: BWindow(aRect, "BePDF Printing Hidden Window",
 		B_FLOATING_WINDOW_LOOK,
-		B_NORMAL_WINDOW_FEEL, 
+		B_NORMAL_WINDOW_FEEL,
 		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE) {
 	Show();
 }

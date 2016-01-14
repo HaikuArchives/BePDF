@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 
+#include <locale/Catalog.h>
 #include <LayoutBuilder.h>
 #include <MenuField.h>
 #include <MenuItem.h>
@@ -31,36 +32,39 @@
 
 #include "AnnotationWindow.h"
 #include "LayoutUtils.h"
-#include "StringLocalization.h"
 #include "TextConversion.h"
 
-AnnotationWindow::AnnotationWindow(GlobalSettings *settings,  
-	BLooper *looper) 
-	: BWindow(BRect(0, 0, 100, 100), TRANSLATE("Annotation"), 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "AnnotationWindow"
+
+
+AnnotationWindow::AnnotationWindow(GlobalSettings *settings,
+	BLooper *looper)
+	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Annotation"),
 		B_FLOATING_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL,
 		B_AUTO_UPDATE_SIZE_LIMITS)
 	, mSendNotification(true)
 	, mLooper(looper)
 	, mSettings(settings)
 	, mAnnotation(NULL) {
-	
+
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
 
 	BStringView *titleStatic = new BStringView("titleStatic",
-		TRANSLATE("Title:"));
+		B_TRANSLATE("Title:"));
 	mLabel = new BStringView("mLabel", "");
 
-	BStringView *dateStatic = new BStringView("dateStatic", TRANSLATE("Date:"));
+	BStringView *dateStatic = new BStringView("dateStatic", B_TRANSLATE("Date:"));
 	mDate = new BStringView("mDate", "");
 
 	BPopUpMenu *alignmentInner = new BPopUpMenu("");
-	mAlignment = new BMenuField("mAlignment", TRANSLATE("Align:"), alignmentInner);
+	mAlignment = new BMenuField("mAlignment", B_TRANSLATE("Align:"), alignmentInner);
 
 	BPopUpMenu *fontInner = new BPopUpMenu("");
-	mFont = new BMenuField("mFont", TRANSLATE("Font:"), fontInner);
+	mFont = new BMenuField("mFont", B_TRANSLATE("Font:"), fontInner);
 
 	BPopUpMenu *sizeInner = new BPopUpMenu("");
-	mSize = new BMenuField("mSize", TRANSLATE("Size:"), sizeInner);
+	mSize = new BMenuField("mSize", B_TRANSLATE("Size:"), sizeInner);
 
 	mContents = new TextView("mContents");
 	BScrollView *scroll = new BScrollView("scroll", mContents, 0, false, true);
@@ -100,7 +104,7 @@ void AnnotationWindow::PopulateFontMenu(BMenu* menu) {
 		BMessage* msg = new BMessage(FONT_SELECTED);
 		msg->AddString("font", font->GetName());
 		item = new BMenuItem(font->GetName(), msg);
-		menu->AddItem(item);		
+		menu->AddItem(item);
 	}
 }
 
@@ -113,7 +117,7 @@ void AnnotationWindow::AddSizeItem(BMenu* menu, const char* label, float value) 
 }
 
 void AnnotationWindow::PopulateSizeMenu(BMenu* menu) {
-	AddSizeItem(menu, TRANSLATE("Automatic"), 0.0);
+	AddSizeItem(menu, B_TRANSLATE("Automatic"), 0.0);
 	menu->AddSeparatorItem();
 	for (float f = 8; f < 97; f += 1.0) {
 		char buf[80];
@@ -130,9 +134,9 @@ void AnnotationWindow::PopulateAlignmentMenu(BMenu* menu) {
 	for (uint32 i = 0; i < sizeof(gAlignment)/sizeof(char*); i ++) {
 		BMessage* msg = new BMessage(ALIGNMENT_CHANGED);
 		msg->AddString("alignment", gAlignment[i]);
-		BMenuItem* item = new BMenuItem(TRANSLATE(gAlignment[i]), msg);
+		BMenuItem* item = new BMenuItem(B_TRANSLATE(gAlignment[i]), msg);
 		menu->AddItem(item);
-	}	
+	}
 }
 
 void AnnotationWindow::FrameMoved(BPoint point) {
@@ -203,7 +207,7 @@ void AnnotationWindow::MessageReceived(BMessage *msg) {
 		case FONT_SELECTED:
 		case SIZE_CHANGED:
 		case ALIGNMENT_CHANGED:
-		case TextView::CHANGED_NOTIFY: 
+		case TextView::CHANGED_NOTIFY:
 			Notify(CHANGE_NOTIFY);
 			break;
 	default:
@@ -251,14 +255,14 @@ BMenuItem* AnnotationWindow::FindAlignmentItem(const char* name) {
 void AnnotationWindow::Update(Annotation* a, const char* label, const char* date, const char* contents, const char* font, float size, const char* align) {
 	mAnnotation = a;
 	if (a) {
-		BString title(TRANSLATE("Annotation"));
+		BString title(B_TRANSLATE("Annotation"));
 		title << ": ";
 		AnnotName nameFinder;
 		a->Visit(&nameFinder);
 		title << nameFinder.GetResult();
 		SetTitle(title.String());
 	} else {
-		SetTitle(TRANSLATE("Annotation"));
+		SetTitle(B_TRANSLATE("Annotation"));
 	}
 	mLabel->SetText(label);
 	mDate->SetText(date);

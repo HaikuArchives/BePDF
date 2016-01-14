@@ -16,7 +16,7 @@ TARGET_DIR= ../dist
 TYPE = APP
 
 # 	If you plan to use localization, specify the application's MIME signature.
-APP_MIME_SIG =
+APP_MIME_SIG = application/x-vnd.mp-xpdf
 
 #	The following lines tell Pe and Eddie where the SRCS, RDEFS, and RSRCS are
 #	so that Pe and Eddie can fill them in for you.
@@ -70,14 +70,12 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/TraceWindow.cpp \
 	beos/TreeParser.cpp \
 	beos/htk/HWindow.cpp \
-	beos/locale/Catalog.cpp \
 	beos/utils/BitmapButton.cpp \
 	beos/utils/EntryMenuItem.cpp \
 	beos/utils/LayerView.cpp \
 	beos/utils/MultiButton.cpp \
 	beos/utils/ResourceLoader.cpp \
 	beos/utils/StatusBar.cpp \
-	beos/utils/StringLocalization.cpp \
 	beos/utils/Thread.cpp \
 	beos/utils/ToolBar.cpp \
 	beos/utils/ToolTip.cpp \
@@ -108,8 +106,8 @@ RSRCS =
 #	- 	if your library does not follow the standard library naming scheme,
 #		you need to specify the path to the library and it's name.
 #		(e.g. for mylib.a, specify "mylib.a" or "path/mylib.a")
-LIBS = be textencoding tracker translation columnlistview ../xpdf/libxpdf.a \
-	$(STDCPPLIBS)
+LIBS = be textencoding tracker translation localestub columnlistview \
+	../xpdf/libxpdf.a $(STDCPPLIBS)
 
 #	Specify additional paths to directories following the standard libXXX.so
 #	or libXXX.a naming scheme. You can specify full paths or paths relative

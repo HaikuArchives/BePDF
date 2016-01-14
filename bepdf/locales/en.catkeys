@@ -1,0 +1,206 @@
+1	English	application/x-vnd.mp-xpdf	3472127801
+Close	BepdfApplication		Close
+Go to page %d	PDFView		Go to page %d
+of %d	PDFWindow		of %d
+About BePDF…	PDFWindow		About BePDF…
+BePDF: Launch	PDFView		BePDF: Launch
+Keywords:	FileInfoWindow		Keywords:
+Online Help…	PDFWindow		Online Help…
+All Pages	PrintSettingsWindow		All Pages
+View	PDFWindow		View
+Show annotation tool bar	PDFWindow		Show annotation tool bar
+Copy link	PDFView		Copy link
+<empty>	OutlinesWindow		<empty>
+BePDF printing document: 	PrintingProgressWindow		BePDF printing document: 
+Select All	PDFWindow		Select All
+CatalogLanguage	BepdfApplication		CatalogLanguage
+Clear	TraceWindow		Clear
+Help	PDFWindow		Help
+Saving file attachment:	PDFView		Saving file attachment:
+ in	PrintSettingsWindow		 in
+Document	OutlinesWindow		Document
+Editing of annotations in an encrypted PDF file not supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file not supported yet!
+Go To Page	PDFWindow		Go To Page
+Show Error Messages	PDFWindow		Show Error Messages
+Options	FindTextWindow		Options
+Error	BepdfApplication		Error
+Find…	PDFWindow		Find…
+Reload	PDFWindow		Reload
+Fullscreen Mode	AnnotationWindow		Fullscreen Mode
+Pages	PrintSettingsWindow		Pages
+First	PDFWindow		First
+Page	PrintSettingsWindow		Page
+File	PDFWindow		File
+Ignore Case	FindTextWindow		Ignore Case
+PDF file successfully written!	PDFWindow		PDF file successfully written!
+Page:	FindTextWindow		Page:
+Restore Page Number	AnnotationWindow		Restore Page Number
+Warning	PDFWindow		Warning
+Subject:	FileInfoWindow		Subject:
+Stop	PrintingProgressWindow		Stop
+Will take effect at next program launch.	AnnotationWindow		Will take effect at next program launch.
+Status	PDFWindow		Status
+Zoom In	PDFWindow		Zoom In
+Window mode.	PDFWindow		Window mode.
+Open…	PDFWindow		Open…
+Encrypted:	FileInfoWindow		Encrypted:
+DPI	PrintSettingsWindow		DPI
+No Title	OutlinesWindow		No Title
+Type	FileInfoWindow		Type
+File Name	AttachmentView		File Name
+Search string not found.	PDFSearch		Search string not found.
+Align:	AnnotationWindow		Align:
+Hide page list	PDFWindow		Hide page list
+Floating	TraceWindow		Floating
+Save selected attachment to file.	AttachmentView		Save selected attachment to file.
+Find: 	FindTextWindow		Find: 
+Stroked Rectangle	AnnotationWindow		Stroked Rectangle
+Abort	PrintingProgressWindow		Abort
+Show Help…	PDFWindow		Show Help…
+User Password	PasswordWindow		User Password
+Edit title for bookmark	OutlinesWindow		Edit title for bookmark
+Zoom (%)	PrintSettingsWindow		Zoom (%)
+[link type 'movie' not supported]	PDFView		[link type 'movie' not supported]
+Cancel	PDFView		Cancel
+Title:	AnnotationWindow		Title:
+stdout	TraceWindow		stdout
+Zoom Out	PDFWindow		Zoom Out
+Abort	FileInfoWindow		Abort
+Searching all fonts…	FileInfoWindow		Searching all fonts…
+Denied	FileInfoWindow		Denied
+Gray scale	PrintSettingsWindow		Gray scale
+Print Settings	PrintSettingsWindow		Print Settings
+Selection Rectangle	AnnotationWindow		Selection Rectangle
+Fullscreen mode.	PDFWindow		Fullscreen mode.
+Stop	FindTextWindow		Stop
+Find	FindTextWindow		Find
+Color	PrintSettingsWindow		Color
+[unknown link]	PDFView		[unknown link]
+Open In New Window…	PDFWindow		Open In New Window…
+Show page list	PDFWindow		Show page list
+Back	PDFWindow		Back
+Normal	PrintSettingsWindow		Normal
+CatalogAuthor	BepdfApplication		CatalogAuthor
+Issue Tracker…	PDFWindow		Issue Tracker…
+Window	PDFWindow		Window
+FreeType 2	AnnotationWindow		FreeType 2
+Select None	PDFWindow		Select None
+Close	PDFWindow		Close
+Execute the command:	PDFView		Execute the command:
+Rotation	PrintSettingsWindow		Rotation
+OK	PDFSearch		OK
+Asian Fonts	AnnotationWindow		Asian Fonts
+Author	AnnotationWindow		Author
+Save As…	PDFWindow		Save As…
+Creator:	FileInfoWindow		Creator:
+Find Text	FindTextWindow		Find Text
+Saving attachment(s):	AttachmentView		Saving attachment(s):
+BePDF Status	StatusWindow		BePDF Status
+Page %d	PDFWindow		Page %d
+Fullscreen	PDFWindow		Fullscreen
+Page	PDFWindow		Page
+User Fonts	AnnotationWindow		User Fonts
+All fonts of this document (aborted)	FileInfoWindow		All fonts of this document (aborted)
+Fit to Page	PDFWindow		Fit to Page
+Open In New Window	PDFView		Open In New Window
+Preferences	AnnotationWindow		Preferences
+Automatic	AnnotationWindow		Automatic
+Error Messages	TraceWindow		Error Messages
+Owner Password	PasswordWindow		Owner Password
+Fonts of this page	FileInfoWindow		Fonts of this page
+Font:	AnnotationWindow		Font:
+Find Next…	PDFWindow		Find Next…
+Custom Zoom Factor (%d%%)	PDFWindow		Custom Zoom Factor (%d%%)
+Print	PrintSettingsWindow		Print
+Page Setup…	PDFWindow		Page Setup…
+Preferences…	PDFWindow		Preferences…
+BePDF: Error opening file!	BepdfApplication		BePDF: Error opening file!
+Rotation	PDFWindow		Rotation
+Restore Window Position and Size	AnnotationWindow		Restore Window Position and Size
+Last	PDFWindow		Last
+Save attachment(s) as.	AttachmentView		Save attachment(s) as.
+Path:	FileInfoWindow		Path:
+Name	FileInfoWindow		Name
+Copy Selection	PDFWindow		Copy Selection
+Max. Printer Resolution	PrintSettingsWindow		Max. Printer Resolution
+Reverse	PrintSettingsWindow		Reverse
+Unknown link action type: '%s'	PDFView		Unknown link action type: '%s'
+Filename:	FileInfoWindow		Filename:
+Save selected attachments into directory.	AttachmentView		Save selected attachments into directory.
+Enter Password	PasswordWindow		Enter Password
+Yes	FileInfoWindow		Yes
+Next	PDFWindow		Next
+Annotations:	FileInfoWindow		Annotations:
+Producer:	FileInfoWindow		Producer:
+Auto Open	TraceWindow		Auto Open
+Search Backwards	FindTextWindow		Search Backwards
+Forward	PDFWindow		Forward
+Allowed	FileInfoWindow		Allowed
+Copy & paste:	FileInfoWindow		Copy & paste:
+Open in Workspace:	AnnotationWindow		Open in Workspace:
+Annotation	PDFView		Annotation
+Odd Pages	PrintSettingsWindow		Odd Pages
+current	AnnotationWindow		current
+Modified:	FileInfoWindow		Modified:
+Annotation	AnnotationWindow		Annotation
+Previous	PDFWindow		Previous
+Zoom must be between 25 and 400!	PrintSettingsWindow		Zoom must be between 25 and 400!
+Mode	PrintSettingsWindow		Mode
+User defined	OutlinesWindow		User defined
+Editing:	FileInfoWindow		Editing:
+Title:	FileInfoWindow		Title:
+Display	AnnotationWindow		Display
+OK	OutlinesWindow		OK
+Bookmark	PDFWindow		Bookmark
+Order	PrintSettingsWindow		Order
+Fit to Page Width	PDFWindow		Fit to Page Width
+Description	AttachmentView		Description
+System Fonts	AnnotationWindow		System Fonts
+stderr	TraceWindow		stderr
+File Info…	PDFWindow		File Info…
+Could not write PDF file!	PDFWindow		Could not write PDF file!
+OK	PDFWindow		OK
+Add	PDFWindow		Add
+Edit	PDFWindow		Edit
+OK	PasswordWindow		OK
+Page:	PrintingProgressWindow		Page:
+Created:	FileInfoWindow		Created:
+Quit	PDFWindow		Quit
+BePDF Printing	PrintingProgressWindow		BePDF Printing
+Linearized:	FileInfoWindow		Linearized:
+Visit Homepage…	PDFWindow		Visit Homepage…
+Version:	FileInfoWindow		Version:
+Document	AnnotationWindow		Document
+Filled Rectangle	AnnotationWindow		Filled Rectangle
+No	FileInfoWindow		No
+[internal link]	PDFView		[internal link]
+Show attachments	PDFWindow		Show attachments
+<empty>	AttachmentView		<empty>
+Can not overwrite in BePDF opened PDF file! Choose another file name.	PDFWindow		Can not overwrite in BePDF opened PDF file! Choose another file name.
+OK	PDFView		OK
+Author:	FileInfoWindow		Author:
+Page: %d	PrintingProgressWindow		Page: %d
+Wrong Parameter!	PrintSettingsWindow		Wrong Parameter!
+Height: 	PrintSettingsWindow		Height: 
+Print…	PDFWindow		Print…
+Hinting	AnnotationWindow		Hinting
+Embedded Name	FileInfoWindow		Embedded Name
+Size:	AnnotationWindow		Size:
+Show Document View only	AnnotationWindow		Show Document View only
+Delete	PDFWindow		Delete
+Width: 	PrintSettingsWindow		Width: 
+Date:	AnnotationWindow		Date:
+OK	PrintSettingsWindow		OK
+Invert vertical mouse scrolling	AnnotationWindow		Invert vertical mouse scrolling
+Even Pages	PrintSettingsWindow		Even Pages
+Printing:	FileInfoWindow		Printing:
+Bookmarks	PDFWindow		Bookmarks
+BePDF reading file: 	PDFView		BePDF reading file: 
+Show Toolbar, Statusbar and Scrollbars too	AnnotationWindow		Show Toolbar, Statusbar and Scrollbars too
+Zoom	PDFWindow		Zoom
+File Info	FileInfoWindow		File Info
+Search	PDFWindow		Search
+Saving copy of PDF file:	PDFWindow		Saving copy of PDF file:
+All fonts of this document	FileInfoWindow		All fonts of this document
+Page: %d	FindTextWindow		Page: %d
+Show all fonts	FileInfoWindow		Show all fonts
