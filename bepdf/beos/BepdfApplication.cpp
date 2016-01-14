@@ -173,14 +173,14 @@ BepdfApplication::BepdfApplication()
 
 	mStdoutTracer = NULL;
 	mStderrTracer = NULL;
-	pointerCursor = (BCursor*)B_CURSOR_SYSTEM_DEFAULT;
-	linkCursor = LoadCursor("LINK");
-	handCursor = LoadCursor("HAND");
-	grabCursor = LoadCursor("GRAB");
-	textSelectionCursor = LoadCursor("TEXT_SELECTION");
-	zoomCursor = LoadCursor("ZOOM");
-	splitVCursor = LoadCursor("SPLIT_VERTICAL");
-	resizeCursor = LoadCursor("RESIZE");
+	pointerCursor = new BCursor(B_CURSOR_ID_SYSTEM_DEFAULT);
+	linkCursor = new BCursor(B_CURSOR_ID_CREATE_LINK);
+	handCursor = new BCursor(B_CURSOR_ID_GRAB);
+	grabCursor = new BCursor(B_CURSOR_ID_GRABBING);
+	textSelectionCursor = new BCursor(B_CURSOR_ID_I_BEAM);
+	zoomCursor = new BCursor(B_CURSOR_ID_ZOOM_IN);
+	splitVCursor = new BCursor(B_CURSOR_ID_RESIZE_NORTH_SOUTH);
+	resizeCursor = new BCursor(B_CURSOR_ID_RESIZE_NORTH_WEST_SOUTH_EAST);
 
 	LoadImages(mAttachmentImages, attachmentNames, FileAttachmentAnnot::no_of_types);
 	LoadImages(mTextAnnotImages,  textAnnotNames,  TextAnnot::no_of_types);

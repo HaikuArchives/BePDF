@@ -4,11 +4,10 @@
 #include <TranslationUtils.h>
 #include "ResourceLoader.h"
 
-static const type_code 
+static const type_code
 	icon = 'ICON',
-	miniIcon = 'MICN',
-	cursor = 'CURS';
-	
+	miniIcon = 'MICN';
+
 BBitmap *LoadLargeIcon(const char *name) {
 	BResources *res = BApplication::AppResources();
 	if (res != NULL) {
@@ -89,28 +88,4 @@ BBitmap *LoadBitmap(const char *name, uint32 type_code) {
 
 BBitmap *LoadBitmap(int32 id, uint32 type_code) {
 	return BTranslationUtils::GetBitmap(type_code, id);
-}
-
-BCursor *LoadCursor(const char *name) {
-	BResources *res = BApplication::AppResources();
-	if (res != NULL) {
-		size_t length;
-		const void *crsr = res->LoadResource(cursor, name, &length);
-		if (crsr != NULL) {
-			return new BCursor(crsr);
-		}
-	}
-	return NULL;
-}
-
-BCursor *LoadCursor(int32 id) {
-	BResources *res = BApplication::AppResources();
-	if (res != NULL) {
-		size_t length;
-		const void *crsr = res->LoadResource(cursor, id, &length);
-		if (crsr != NULL) {
-			return new BCursor(crsr);
-		}
-	}
-	return NULL;
 }
