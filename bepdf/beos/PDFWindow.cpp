@@ -58,13 +58,11 @@
 #include "AttachmentView.h"
 #include "BePDF.h"
 #include "BepdfApplication.h"
-#include "BitmapButton.h"
 #include "EntryMenuItem.h"
 #include "FileInfoWindow.h"
 #include "FindTextWindow.h"
 #include "LayerView.h"
 #include "LayoutUtils.h"
-#include "MultiButton.h"
 #include "OutlinesWindow.h"
 #include "PageLabels.h"
 #include "PageRenderer.h"
@@ -469,6 +467,7 @@ void PDFWindow::UpdateInputEnabler() {
 		mToolBar->SetActionPressed(SHOW_BOOKMARKS_CMD, mShowLeftPanel && active == BOOKMARKS_PANEL);
 		mToolBar->SetActionPressed(SHOW_ANNOT_TOOLBAR_CMD, mShowLeftPanel && active == ANNOTATIONS_PANEL);
 		mToolBar->SetActionPressed(SHOW_ATTACHMENTS_CMD, mShowLeftPanel && active == ATTACHMENTS_PANEL);
+		mToolBar->SetActionPressed(FULL_SCREEN_CMD, mFullScreen);
 
 		// set enable state
 		ie.SetEnabled(SHOW_PAGE_LIST_CMD, (!mShowLeftPanel) || active != PAGE_LIST_PANEL);
@@ -740,21 +739,9 @@ BToolBar* PDFWindow::BuildToolBar()
 
 	mToolBar->AddSeparator();
 
-	BRect aRect(0, 0, 20, 20);
-	MultiButton *mb = new MultiButton(BRect(0, 0, 19, 19), "full_screen_mbtn",
-		B_FOLLOW_NONE, 0);
-	mToolBar->AddView(mb);
-
-	ResourceBitmapButton* button = new ResourceBitmapButton(aRect,
-		"full_screen_btn", "FULL_SCREEN_OFF", "FULL_SCREEN_ON",
-		new BMessage(FULL_SCREEN_CMD));
-	button->SetToolTip(B_TRANSLATE("Fullscreen mode."));
-	mb->AddButton(button);
-	button = new ResourceBitmapButton(aRect,
-		"window_btn", "WINDOW_OFF", "WINDOW_ON",
-		new BMessage(FULL_SCREEN_CMD));
-	button->SetToolTip(B_TRANSLATE("Window mode."));
-	mb->AddButton(button);
+	mToolBar->AddAction(FULL_SCREEN_CMD, this,
+		LoadBitmap("FULL_SCREEN_ON"), B_TRANSLATE("Fullscreen mode."),
+		NULL, true);
 
 	mToolBar->AddSeparator();
 
@@ -1795,10 +1782,6 @@ PDFWindow::OnFullScreen() {
 	bool quasiFullScreenMode = gApp->GetSettings()->GetQuasiFullscreenMode();
 	mFullScreen = !mFullScreen;
 	BRect frame;
-	MultiButton *button = (MultiButton*)mToolBar->FindView("full_screen_mbtn");
-	if (button) {
-		button->SetTo(mFullScreen ? 1 : 0);
-	}
 	bool pgList = false;
 	if (mFullScreen) {
 		pgList = mShowLeftPanel;

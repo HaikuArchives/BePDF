@@ -73,7 +73,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/utils/BitmapButton.cpp \
 	beos/utils/EntryMenuItem.cpp \
 	beos/utils/LayerView.cpp \
-	beos/utils/MultiButton.cpp \
 	beos/utils/ResourceLoader.cpp \
 	beos/utils/StatusBar.cpp \
 	beos/utils/Thread.cpp \
