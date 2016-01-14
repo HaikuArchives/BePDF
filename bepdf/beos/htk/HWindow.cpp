@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -30,7 +30,7 @@ extern BScreen *gScreen;
 BDeskbar my_deskbar;
 
 BList HWindow::mWindowList;
-BLocker HWindow::mWindowListLocker; 
+BLocker HWindow::mWindowListLocker;
 
 const char * CMD_IDX_LABEL = "cmd";
 
@@ -41,7 +41,7 @@ HWindow::HWindow(BRect frame, const char * label, window_type type,
 	: BWindow(frame, label, type, flags, workSp),
 	mQuitWhenClosed(quitWhenClosed)
 {
-	mUnzoomedFrame = frame;	
+	mUnzoomedFrame = frame;
 	if (mQuitWhenClosed) {
 		if (mWindowListLocker.Lock()) {
 			mWindowList.AddItem(this);
@@ -103,30 +103,30 @@ void HWindow::Zoom(BPoint origin, float width, float height) {
 }
 
 
-#pragma mark -
+// #pragma mark -
 
 //////////////////////////////////////////////////////////////
 void HWindow::MessageReceived(BMessage * msg)
 {
 	status_t err;
 	int32 cmd;
-	
+
 	switch(msg->what) {
 	case STANDARD_CMD_MSG:
 		err = msg->FindInt32(CMD_IDX_LABEL, &cmd);
 		if (err == B_NO_ERROR) {
 			HandleCommand(cmd, msg);
-		}	
+		}
 		break;
 	default:
 		inherited::MessageReceived(msg);
 		break;
-	}		
+	}
 }
 
 
 
-#pragma mark -
+// #pragma mark -
 
 
 //////////////////////////////////////////////////////////////
@@ -134,8 +134,8 @@ BMessage * HWindow::MakeCommandMessage(ulong cmd)
 {
 	BMessage * aMsg = new BMessage(STANDARD_CMD_MSG);
 	aMsg->AddInt32(CMD_IDX_LABEL, cmd);
-	
-	return aMsg;	
+
+	return aMsg;
 }
 
 

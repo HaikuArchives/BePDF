@@ -27,29 +27,29 @@ BitmapButton::BitmapButton(BRect frame, const char *name,
 		BBitmap *off, BBitmap *on,
 		BMessage *message,
 		uint32 behavior, uint32 resizingMode, uint32 flags) :
-		BPictureButton(frame, name, 
-			&BPicture(), &BPicture(), 
-			message, 
+		BPictureButton(frame, name,
+			NULL, NULL,
+			message,
 			behavior, resizingMode, flags),
 		off(off), on(on), disabledOff(NULL), disabledOn(NULL),
 		toolTipItem(NULL),
 		mouseEnteredView(false) {
 	// resize button to include both bitmaps
 	float width = 0, height = 0;
-	
+
 	if (off) {
 		BRect rect = off->Bounds();
 		width = rect.Width(); height = rect.Height();
 	}
-	
+
 	if (on) {
 		BRect rect = on->Bounds();
 		if (width < rect.Width()) width = rect.Width();
 		if (height < rect.Height()) height = rect.Height();
 	}
-	
+
 	if ((width != 0) && (height != 0)) ResizeTo(width, height);
-} 
+}
 
 BitmapButton::~BitmapButton() {
 	delete toolTipItem; toolTipItem = NULL;
@@ -60,20 +60,20 @@ BitmapButton::~BitmapButton() {
 }
 
 void BitmapButton::AttachedToWindow() {
-	if (off == NULL) return; // already initialized 
+	if (off == NULL) return; // already initialized
 	// generate pictures from buttons
 	BPicture *p = BitmapToPicture(off);
 	SetEnabledOff(p); delete p;
-	
-	p = BitmapToPicture(on);
-	SetEnabledOn(p); delete p;	
 
-	// disabled images: gray enabled image if disabled image not available	
+	p = BitmapToPicture(on);
+	SetEnabledOn(p); delete p;
+
+	// disabled images: gray enabled image if disabled image not available
 	if (disabledOff) {
 		p = BitmapToPicture(disabledOff);
 		delete disabledOff; disabledOff = NULL;
 	} else {
-		p = BitmapToGrayedPicture(off);		
+		p = BitmapToGrayedPicture(off);
 	}
 	SetDisabledOff(p); delete p;
 
@@ -81,7 +81,7 @@ void BitmapButton::AttachedToWindow() {
 		p = BitmapToPicture(disabledOn);
 		delete disabledOn; disabledOn = NULL;
 	} else {
-		p = BitmapToGrayedPicture(on);		
+		p = BitmapToGrayedPicture(on);
 	}
 	SetDisabledOn(p); delete p;
 
@@ -91,7 +91,7 @@ void BitmapButton::AttachedToWindow() {
 }
 
 void BitmapButton::DetachedFromWindow() {
-	if (toolTipItem) toolTipItem->Hide();	
+	if (toolTipItem) toolTipItem->Hide();
 }
 
 void BitmapButton::SetEnabledOn(BBitmap *on) {
@@ -152,9 +152,9 @@ void BitmapButton::Draw(BRect rect) {
 	if (mouseEnteredView && mouseInsideView && IsEnabled()) {
 		rgb_color white = {255, 255, 255, 255}, black = {0, 0, 0, 255};
 		BRect rect(Bounds());
-		BPoint p0(rect.left, rect.top), 
-			p1(rect.right, rect.top), 
-			p2(rect.right, rect.bottom), 
+		BPoint p0(rect.left, rect.top),
+			p1(rect.right, rect.top),
+			p2(rect.right, rect.bottom),
 			p3(rect.left, rect.bottom);
 		BeginLineArray(4);
 		if (Value() == B_CONTROL_OFF) {
@@ -204,36 +204,36 @@ ResourceBitmapButton::ResourceBitmapButton(BRect frame, const char *name,
 		const char *off, const char *on,
 		BMessage *message,
 		uint32 behavior, uint32 resizingMode, uint32 flags) :
-		BitmapButton(frame, name, 
-			LoadBitmap(off), LoadBitmap(on), 
-			message, 
+		BitmapButton(frame, name,
+			LoadBitmap(off), LoadBitmap(on),
+			message,
 			behavior, resizingMode, flags) {
-} 
+}
 
 ResourceBitmapButton::ResourceBitmapButton(BRect frame, const char *name,
 		const char *off, const char *on,
 		const char *disabledOff, const char *disabledOn,
 		BMessage *message,
 		uint32 behavior, uint32 resizingMode, uint32 flags) :
-		BitmapButton(frame, name, 
-			LoadBitmap(off), LoadBitmap(on), 
-			message, 
+		BitmapButton(frame, name,
+			LoadBitmap(off), LoadBitmap(on),
+			message,
 			behavior, resizingMode, flags) {
-			
+
 	if (disabledOff) SetDisabledOff(LoadBitmap(disabledOff));
 	if (disabledOn) SetDisabledOn(LoadBitmap(disabledOn));
-} 
+}
 
 ResourceBitmapButton::ResourceBitmapButton(BRect frame, const char *name,
 		int32 offId, int32 onId,
 		int32 disabledOffId, int32 disabledOnId,
 		BMessage *message,
 		uint32 behavior, uint32 resizingMode, uint32 flags) :
-		BitmapButton(frame, name, 
-			LoadBitmap(offId), LoadBitmap(onId), 
-			message, 
+		BitmapButton(frame, name,
+			LoadBitmap(offId), LoadBitmap(onId),
+			message,
 			behavior, resizingMode, flags) {
 
 	if (disabledOffId != -1) SetDisabledOff(LoadBitmap(disabledOffId));
 	if (disabledOnId != -1) SetDisabledOn(LoadBitmap(disabledOnId));
-} 
+}

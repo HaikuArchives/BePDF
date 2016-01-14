@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -53,16 +53,16 @@ class XRef;
 class AttachmentItem : public BRow {
 private:
 	FileSpec mFileSpec;
-	
+
 	typedef BRow super;
-	
+
 public:
 	// Constructs the AttachmentItem and the values for its columns
 	AttachmentItem(FileSpec* fileSpec);
-	
+
 	// Returns the FileSpec.
 	FileSpec* GetFileSpec() { return &mFileSpec; }
-	
+
 	// Returns label of column 0.
 	const char* Text();
 };
@@ -76,13 +76,13 @@ class AttachmentView : public BView {
 	typedef BView super;
 
 public:
-	AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings* settings, 
+	AttachmentView(::ToolTip* tooltip, BRect rect, GlobalSettings* settings,
 		BLooper* looper, uint32 resizeMask, uint32 flags);
 	~AttachmentView();
 	void AttachedToWindow();
 	void MessageReceived(BMessage* msg);
 
-	// Empties the column list.	
+	// Empties the column list.
 	void Empty();
 	// Fills the column list with attachments.
 	void Fill(XRef* xref, Object* embeddedFiles);
@@ -96,19 +96,19 @@ private:
 
 	ResourceBitmapButton* mSaveButton;
 
-	void Register(uint32 behavior, BControl* control, int32 cmd);	
-	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar, 
-		const char *name, const char *off, const char *on, const char *off_grey, 
-		const char *on_grey, int32 cmd, const char *info, 
+	void Register(uint32 behavior, BControl* control, int32 cmd);
+	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar,
+		const char *name, const char *off, const char *on, const char *off_grey,
+		const char *on_grey, int32 cmd, const char *info,
 		uint32 behavior = B_ONE_STATE_BUTTON);
-	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar, 
-		const char *name, const char *off, const char *on, int32 cmd, 
+	ResourceBitmapButton* AddButton(::ToolTip* tooltip, ToolBar* toolBar,
+		const char *name, const char *off, const char *on, int32 cmd,
 		const char *info, uint32 behavior = B_ONE_STATE_BUTTON);
 
 	// Adds selected attachments to msg
 	int32 AddSelectedAttachments(BMessage* msg);
 	// Saves the attachments stored in msg
-	void Save(BMessage* msg);	
+	void Save(BMessage* msg);
 
 	enum AttachmentSelection {
 		kNoAttachmentSelected,

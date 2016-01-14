@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -36,11 +36,11 @@
 class DisplayCIDFont {
 public:
 	DisplayCIDFont(const char* name, const char* file, DisplayCIDFonts::Type type);
-	
+
 	const char* GetName() const;
 	const char* GetFile() const;
 	DisplayCIDFonts::Type GetType() const;
-	
+
 	void Set(const char* name, const char* file, DisplayCIDFonts::Type type);
 
 private:
@@ -50,13 +50,13 @@ private:
 };
 
 // implementation of DisplayCIDFont
-DisplayCIDFont::DisplayCIDFont(const char* name, const char* file, DisplayCIDFonts::Type type) 
+DisplayCIDFont::DisplayCIDFont(const char* name, const char* file, DisplayCIDFonts::Type type)
 	: mName(name)
 	, mFile(file)
 	, mType(type)
 {
 }
-	
+
 const char* DisplayCIDFont::GetName() const {
 	return mName.String();
 }
@@ -68,7 +68,7 @@ const char* DisplayCIDFont::GetFile() const {
 DisplayCIDFonts::Type DisplayCIDFont::GetType() const {
 	return mType;
 }
-	
+
 void DisplayCIDFont::Set(const char* name, const char* file, DisplayCIDFonts::Type type) {
 	mName = name;
 	mFile = file;
@@ -95,7 +95,7 @@ DisplayCIDFonts::DisplayCIDFonts(const BMessage& DisplayCIDFonts) {
 		}
 		mFonts.AddItem(new DisplayCIDFont(name.String(), file.String(), type));
 	}
-	
+
 
 }
 
@@ -124,7 +124,7 @@ DisplayCIDFont* DisplayCIDFonts::Find(const char* name) const {
 			return Get(index);
 		}
 	}
-	
+
 	return NULL;
 }
 
@@ -139,10 +139,11 @@ status_t DisplayCIDFonts::Archive(BMessage& archive) {
 			typeString = TYPE1;
 		} else if (name->GetType() == kTrueType) {
 			typeString = TRUE_TYPE;
-		}	
+		}
 		msg.AddString(TYPE, typeString);
 		archive.AddMessage(FONT, &msg);
 	}
+	return B_OK;
 }
 
 void DisplayCIDFonts::Get(DisplayCIDFont* font, BString& name, BString& file, Type& type) const {
