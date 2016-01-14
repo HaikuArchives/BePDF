@@ -1,165 +1,189 @@
-## BeOS Generic Makefile v2.0 ##
+## Haiku Generic Makefile v2.6 ##
 
 ## Fill in this file to specify the project being created, and the referenced
-## makefile-engine will do all of the hard work for you.  This handles both
-## Intel and PowerPC builds of the BeOS.
+## Makefile-Engine will do all of the hard work for you. This handles any
+## architecture of Haiku.
 
-## Application Specific Settings ---------------------------------------------
-
-# specify the name of the binary
-NAME= BePDF
+# The name of the binary.
+NAME = BePDF
 TARGET_DIR= ../dist
 
-# specify the type of binary
+# The type of binary, must be one of:
 #	APP:	Application
 #	SHARED:	Shared library or add-on
 #	STATIC:	Static library archive
-#	DRIVER: Kernel Driver
-TYPE= APP
+#	DRIVER: Kernel driver
+TYPE = APP
 
-#	specify the source files to use
-#	full paths or paths relative to the makefile can be included
-# 	all files, regardless of directory, will have their object
-#	files created in the common object directory.
-#	Note that this means this makefile will not work correctly
-#	if two source files with the same name (source.c or source.cpp)
-#	are included from different directories.  Also note that spaces
-#	in folder names do not work well with this makefile.
-SRCS= beos/AnnotAppearance.cpp \
-beos/AnnotWriter.cpp \
-beos/Annotation.cpp \
-beos/AnnotationRenderer.cpp \
-beos/AnnotationWindow.cpp \
-beos/AttachmentView.cpp \
-beos/Attachments.cpp \
-beos/BeFontEncoding.cpp \
-beos/BeLoadProgressMonitor.cpp \
-beos/BePDF.cpp \
-beos/BepdfApplication.cpp \
-beos/BitmapPool.cpp \
-beos/CachedPage.cpp \
-beos/DisplayCIDFonts.cpp \
-beos/EntryChangedMonitor.cpp \
-beos/FileInfoWindow.cpp \
-beos/FileSpec.cpp \
-beos/FindTextWindow.cpp \
-beos/History.cpp \
-beos/InputEnabler.cpp \
-beos/LayoutUtils.cpp \
-beos/OutlinesWindow.cpp \
-beos/PDFPrint.cpp \
-beos/PDFSearch.cpp \
-beos/PDFView.cpp \
-beos/PDFWindow.cpp \
-beos/PageCache.cpp \
-beos/PageLabels.cpp \
-beos/PageRenderer.cpp \
-beos/PasswordWindow.cpp \
-beos/PreferencesWindow.cpp \
-beos/PrintSettingsWindow.cpp \
-beos/PrintingProgressWindow.cpp \
-beos/SaveThread.cpp \
-beos/Settings.cpp \
-beos/SplitView.cpp \
-beos/StatusWindow.cpp \
-beos/TextConversion.cpp \
-beos/TraceWindow.cpp \
-beos/TreeParser.cpp \
-beos/htk/HWindow.cpp \
-beos/locale/Catalog.cpp \
-beos/utils/BitmapButton.cpp \
-beos/utils/EntryMenuItem.cpp \
-beos/utils/LayerView.cpp \
-beos/utils/MultiButton.cpp \
-beos/utils/ResourceLoader.cpp \
-beos/utils/StatusBar.cpp \
-beos/utils/StringLocalization.cpp \
-beos/utils/Thread.cpp \
-beos/utils/ToolBar.cpp \
-beos/utils/ToolTip.cpp \
-beos/utils/ToolTipItem.cpp
-# beos/utils/Test.cpp
+# 	If you plan to use localization, specify the application's MIME signature.
+APP_MIME_SIG =
 
-#	specify the resource files to use
-#	full path or a relative path to the resource file can be used.
-RDEFS= beos/BePDF.rdef
+#	The following lines tell Pe and Eddie where the SRCS, RDEFS, and RSRCS are
+#	so that Pe and Eddie can fill them in for you.
+#%{
+# @src->@
 
-#	specify additional libraries to link against
-#	there are two acceptable forms of library specifications
-#	-	if your library follows the naming pattern of:
-#		libXXX.so or libXXX.a you can simply specify XXX
-#		library: libbe.so entry: be
+#	Specify the source files to use. Full paths or paths relative to the
+#	Makefile can be included. All files, regardless of directory, will have
+#	their object files created in the common object directory. Note that this
+#	means this Makefile will not work correctly if two source files with the
+#	same name (source.c or source.cpp) are included from different directories.
+#	Also note that spaces in folder names do not work well with this Makefile.
+SRCS = beos/AnnotAppearance.cpp \
+	beos/AnnotWriter.cpp \
+	beos/Annotation.cpp \
+	beos/AnnotationRenderer.cpp \
+	beos/AnnotationWindow.cpp \
+	beos/AttachmentView.cpp \
+	beos/Attachments.cpp \
+	beos/BeFontEncoding.cpp \
+	beos/BeLoadProgressMonitor.cpp \
+	beos/BePDF.cpp \
+	beos/BepdfApplication.cpp \
+	beos/BitmapPool.cpp \
+	beos/CachedPage.cpp \
+	beos/DisplayCIDFonts.cpp \
+	beos/EntryChangedMonitor.cpp \
+	beos/FileInfoWindow.cpp \
+	beos/FileSpec.cpp \
+	beos/FindTextWindow.cpp \
+	beos/History.cpp \
+	beos/InputEnabler.cpp \
+	beos/LayoutUtils.cpp \
+	beos/OutlinesWindow.cpp \
+	beos/PDFPrint.cpp \
+	beos/PDFSearch.cpp \
+	beos/PDFView.cpp \
+	beos/PDFWindow.cpp \
+	beos/PageCache.cpp \
+	beos/PageLabels.cpp \
+	beos/PageRenderer.cpp \
+	beos/PasswordWindow.cpp \
+	beos/PreferencesWindow.cpp \
+	beos/PrintSettingsWindow.cpp \
+	beos/PrintingProgressWindow.cpp \
+	beos/SaveThread.cpp \
+	beos/Settings.cpp \
+	beos/SplitView.cpp \
+	beos/StatusWindow.cpp \
+	beos/TextConversion.cpp \
+	beos/TraceWindow.cpp \
+	beos/TreeParser.cpp \
+	beos/htk/HWindow.cpp \
+	beos/locale/Catalog.cpp \
+	beos/utils/BitmapButton.cpp \
+	beos/utils/EntryMenuItem.cpp \
+	beos/utils/LayerView.cpp \
+	beos/utils/MultiButton.cpp \
+	beos/utils/ResourceLoader.cpp \
+	beos/utils/StatusBar.cpp \
+	beos/utils/StringLocalization.cpp \
+	beos/utils/Thread.cpp \
+	beos/utils/ToolBar.cpp \
+	beos/utils/ToolTip.cpp \
+	beos/utils/ToolTipItem.cpp
+	# beos/utils/Test.cpp
+
+#	Specify the resource definition files to use. Full or relative paths can be
+#	used.
+RDEFS = beos/BePDF.rdef
+
+#	Specify the resource files to use. Full or relative paths can be used.
+#	Both RDEFS and RSRCS can be utilized in the same Makefile.
+RSRCS =
+
+# End Pe/Eddie support.
+# @<-src@
+#%}
+
+#	Specify libraries to link against.
+#	There are two acceptable forms of library specifications:
+#	-	if your library follows the naming pattern of libXXX.so or libXXX.a,
+#		you can simply specify XXX for the library. (e.g. the entry for
+#		"libtracker.so" would be "tracker")
 #
-#	- 	if your library does not follow the standard library
-#		naming scheme you need to specify the path to the library
-#		and it's name
-#		library: my_lib.a entry: my_lib.a or path/my_lib.a
-LIBS= be \
-$(STDCPPLIBS) \
-textencoding \
-tracker \
-translation \
-columnlistview \
-../xpdf/libxpdf.a
+#	-	for GCC-independent linking of standard C++ libraries, you can use
+#		$(STDCPPLIBS) instead of the raw "stdc++[.r4] [supc++]" library names.
+#
+#	- 	if your library does not follow the standard library naming scheme,
+#		you need to specify the path to the library and it's name.
+#		(e.g. for mylib.a, specify "mylib.a" or "path/mylib.a")
+LIBS = be textencoding tracker translation columnlistview ../xpdf/libxpdf.a \
+	$(STDCPPLIBS)
 
-#	specify additional paths to directories following the standard
-#	libXXX.so or libXXX.a naming scheme.  You can specify full paths
-#	or paths relative to the makefile.  The paths included may not
-#	be recursive, so include all of the paths where libraries can
-#	be found.  Directories where source files are found are
+#	Specify additional paths to directories following the standard libXXX.so
+#	or libXXX.a naming scheme. You can specify full paths or paths relative
+#	to the Makefile. The paths included are not parsed recursively, so
+#	include all of the paths where libraries must be found. Directories where
+#	source files were specified are	automatically included.
+LIBPATHS =
+
+#	Additional paths to look for system headers. These use the form
+#	"#include <header>". Directories that contain the files in SRCS are
+#	NOT auto-included here.
+SYSTEM_INCLUDE_PATHS = ../xpdf \
+	../xpdf/beos \
+	../xpdf/fofi \
+	../xpdf/goo \
+	../xpdf/splash \
+	../xpdf/xpdf \
+	/system/develop/headers/private/interface
+
+#	Additional paths paths to look for local headers. These use the form
+#	#include "header". Directories that contain the files in SRCS are
 #	automatically included.
-LIBPATHS=
+LOCAL_INCLUDE_PATHS =
 
-#	additional paths to look for system headers
-#	thes use the form: #include <header>
-#	source file directories are NOT auto-included here
-SYSTEM_INCLUDE_PATHS = /boot/system/develop/headers/santa \
-../xpdf \
-../xpdf/beos \
-../xpdf/fofi \
-../xpdf/goo \
-../xpdf/splash \
-../xpdf/xpdf
+#	Specify the level of optimization that you want. Specify either NONE (O0),
+#	SOME (O1), FULL (O2), or leave blank (for the default optimization level).
+OPTIMIZE := SOME
 
-#	additional paths to look for local headers
-#	thes use the form: #include "header"
-#	source file directories are automatically included
-LOCAL_INCLUDE_PATHS = beos/htk \
-beos/locale \
-beos/utils
+# 	Specify the codes for languages you are going to support in this
+# 	application. The default "en" one must be provided too. "make catkeys"
+# 	will recreate only the "locales/en.catkeys" file. Use it as a template
+# 	for creating catkeys for other languages. All localization files must be
+# 	placed in the "locales" subdirectory.
+LOCALES =
 
-#	specify the level of optimization that you desire
-#	NONE, SOME, FULL
-OPTIMIZE=SOME
+#	Specify all the preprocessor symbols to be defined. The symbols will not
+#	have their values set automatically; you must supply the value (if any) to
+#	use. For example, setting DEFINES to "DEBUG=1" will cause the compiler
+#	option "-DDEBUG=1" to be used. Setting DEFINES to "DEBUG" would pass
+#	"-DDEBUG" on the compiler's command line.
+DEFINES =
 
-#	specify any preprocessor symbols to be defined.  The symbols
-#	will be set to a value of 1.  For example specify DEBUG if you want
-#	DEBUG=1 to be set when compiling.
-DEFINES=
-
-#	specify special warning levels
-#	if unspecified default warnings will be used
-#	NONE = supress all warnings
-#	ALL = enable all warnings
+#	Specify the warning level. Either NONE (suppress all warnings),
+#	ALL (enable all warnings), or leave blank (enable default warnings).
 WARNINGS = ALL
 
-#	specify whether image symbols will be created
-#	so that stack crawls in the debugger are meaningful
-#	if TRUE symbols will be created
-SYMBOLS =
+#	With image symbols, stack crawls in the debugger are meaningful.
+#	If set to "TRUE", symbols will be created.
+SYMBOLS :=
 
-#	specify debug settings
-#	if TRUE will allow application to be run from
-#	a source-level debugger
-DEBUGGER =
+#	Includes debug information, which allows the binary to be debugged easily.
+#	If set to "TRUE", debug info will be created.
+DEBUGGER :=
 
-#	specify additional compiler flags for all files
-COMPILER_FLAGS = -Wno-write-strings -fpermissive
+#	Specify any additional compiler flags to be used.
+COMPILER_FLAGS = -fpermissive
 
-#	specify additional linker flags
-LINKER_FLAGS := $(shell freetype-config --libs)
+#	Specify any additional linker flags to be used.
+LINKER_FLAGS = $(shell freetype-config --libs)
 
-## include the makefile-engine
+#	Specify the version of this binary. Example:
+#		-app 3 4 0 d 0 -short 340 -long "340 "`echo -n -e '\302\251'`"1999 GNU GPL"
+#	This may also be specified in a resource.
+APP_VERSION :=
+
+#	(Only used when "TYPE" is "DRIVER"). Specify the desired driver install
+#	location in the /dev hierarchy. Example:
+#		DRIVER_PATH = video/usb
+#	will instruct the "driverinstall" rule to place a symlink to your driver's
+#	binary in ~/add-ons/kernel/drivers/dev/video/usb, so that your driver will
+#	appear at /dev/video/usb when loaded. The default is "misc".
+DRIVER_PATH =
+
+## Include the Makefile-Engine
 DEVEL_DIRECTORY := \
 	$(shell findpaths -r "makefile_engine" B_FIND_PATH_DEVELOP_DIRECTORY)
 include $(DEVEL_DIRECTORY)/etc/makefile-engine
