@@ -9,19 +9,19 @@
 #include <alloc.h>
 #include <memory.h>
 
-#include "OptionalContent.h"
+#include "BeOptionalContent.h"
 
 enum {
 	kDefaultNumberOfIntentNames = 8
 };
 
 // Implementation of Bitvector
-Bitvector::Bitvector(int initialSize) 
+Bitvector::Bitvector(int initialSize)
 	: size(initialSize)
 	, allocatedSize(0)
 	, vector(NULL)
 {
-	resize(initialSize);	
+	resize(initialSize);
 }
 
 Bitvector::~Bitvector() {
@@ -30,7 +30,7 @@ Bitvector::~Bitvector() {
 	size = 0;
 	allocatedSize = 0;
 }
-	
+
 void Bitvector::set(int index) {
 	resize(index + 1);
 	vector[index / 8] |= (1 << (index % 8));
@@ -56,7 +56,7 @@ bool Bitvector::isSet(int index) const {
 	}
 	return false;
 }
-	
+
 void Bitvector::clear() {
 	int bytes = allocatedSize / 8;
 	memset(vector, 0, bytes);
@@ -67,7 +67,7 @@ void Bitvector::resize(int size) {
 	if (this->size < size) {
 		this->size = size;
 	}
-	
+
 	if (allocatedSize < size) {
 		// increase size of vector
 		int bytes = (size + 7) / 8;
@@ -111,7 +111,7 @@ OCIntentNameRegistry::~OCIntentNameRegistry()
 		delete name;
 	}
 }
-	
+
 OCIntentName * OCIntentNameRegistry::get(const char* name)
 {
 	for (int i = 0; i < intents.getLength(); i ++) {
@@ -155,7 +155,7 @@ void OCIntentNameIterator::forward() {
 		index ++;
 	}
 }
-	
+
 OCIntentName* OCIntentNameIterator::next() {
 	if (hasNext()) {
 		OCIntentName* name = registry->get(index);
@@ -166,8 +166,8 @@ OCIntentName* OCIntentNameIterator::next() {
 }
 
 
-// 
-OCIntent::OCIntent() 
+//
+OCIntent::OCIntent()
 	: intentNameIDs(kDefaultNumberOfIntentNames)
 {
 }
@@ -182,7 +182,7 @@ bool OCIntent::init(Object* intent, OCIntentNameRegistry *registry) {
 		intentNameIDs.set(intent->getId());
 		return true;
 	}
-	
+
 	// TODO
 	return false;
 }

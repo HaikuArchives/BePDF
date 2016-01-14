@@ -34,6 +34,7 @@ public:
   // may be NULL, which is treated as an empty string.
   static GBool makeFileKey(int encVersion, int encRevision, int keyLength,
 			   GString *ownerKey, GString *userKey,
+			   GString *ownerEnc, GString *userEnc,
 			   int permissions, GString *fileID,
 			   GString *ownerPassword, GString *userPassword,
 			   Guchar *fileKey, GBool encryptMetadata,
@@ -41,6 +42,8 @@ public:
 
 private:
 
+  static void r6Hash(Guchar *key, int keyLen, const char *pwd, int pwdLen,
+		     char *userKey);
   static GBool makeFileKey2(int encVersion, int encRevision, int keyLength,
 			    GString *ownerKey, GString *userKey,
 			    int permissions, GString *fileID,
@@ -66,6 +69,14 @@ struct DecryptAESState {
   int bufIdx;
 };
 
+struct DecryptAES256State {
+  Guint w[60];
+  Guchar state[16];
+  Guchar cbc[16];
+  Guchar buf[16];
+  int bufIdx;
+};
+
 class DecryptStream: public FilterStream {
 public:
 
@@ -84,12 +95,35 @@ private:
 
   CryptAlgorithm algo;
   int objKeyLength;
-  Guchar objKey[16 + 9];
+  Guchar objKey[32];
 
   union {
     DecryptRC4State rc4;
     DecryptAESState aes;
+    DecryptAES256State aes256;
   } state;
 };
+
+//------------------------------------------------------------------------
+
+struct MD5State {
+  Gulong a, b, c, d;
+  Guchar buf[64];
+  int bufLen;
+  int msgLen;
+  Guchar digest[16];
+};
+
+extern void rc4InitKey(Guchar *key, int keyLen, Guchar *state);
+extern Guchar rc4DecryptByte(Guchar *state, Guchar *x, Guchar *y, Guchar c);
+void md5Start(MD5State *state);
+void md5Append(MD5State *state, Guchar *data, int dataLen);
+void md5Finish(MD5State *state);
+extern void md5(Guchar *msg, int msgLen, Guchar *digest);
+extern void aesKeyExpansion(DecryptAESState *s,
+			    Guchar *objKey, int objKeyLen,
+			    GBool decrypt);
+extern void aesEncryptBlock(DecryptAESState *s, Guchar *in);
+extern void aesDecryptBlock(DecryptAESState *s, Guchar *in, GBool last);
 
 #endif

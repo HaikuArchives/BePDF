@@ -2,6 +2,8 @@
 //
 // SplashPath.cc
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #include <aconf.h>
@@ -53,6 +55,7 @@ SplashPath::SplashPath(SplashPath *path) {
     memcpy(hints, path->hints, hintsLength * sizeof(SplashPathHint));
   } else {
     hints = NULL;
+    hintsLength = hintsSize = 0;
   }
 }
 
@@ -136,11 +139,12 @@ SplashError SplashPath::curveTo(SplashCoord x1, SplashCoord y1,
   return splashOk;
 }
 
-SplashError SplashPath::close() {
+SplashError SplashPath::close(GBool force) {
   if (noCurrentPoint()) {
     return splashErrNoCurPt;
   }
-  if (curSubpath == length - 1 ||
+  if (force ||
+      curSubpath == length - 1 ||
       pts[length - 1].x != pts[curSubpath].x ||
       pts[length - 1].y != pts[curSubpath].y) {
     lineTo(pts[curSubpath].x, pts[curSubpath].y);

@@ -91,15 +91,25 @@ JArithmeticDecoder::JArithmeticDecoder() {
   str = NULL;
   dataLen = 0;
   limitStream = gFalse;
+  nBytesRead = 0;
+  readBuf = -1;
 }
 
 inline Guint JArithmeticDecoder::readByte() {
+  Guint x;
+
   if (limitStream) {
+    if (readBuf >= 0) {
+      x = (Guint)readBuf;
+      readBuf = -1;
+      return x;
+    }
     --dataLen;
     if (dataLen < 0) {
       return 0xff;
     }
   }
+  ++nBytesRead;
   return (Guint)str->getChar() & 0xff;
 }
 
@@ -120,23 +130,55 @@ void JArithmeticDecoder::start() {
 }
 
 void JArithmeticDecoder::restart(int dataLenA) {
-  int oldDataLen;
+  Guint cAdd;
+  GBool prevFF;
+  int k, nBits;
 
-  oldDataLen = dataLen;
-  dataLen = dataLenA;
-  if (oldDataLen == -1) {
+  if (dataLen >= 0) {
+    dataLen = dataLenA;
+  } else if (dataLen == -1) {
+    dataLen = dataLenA;
     buf1 = readByte();
-  } else if (oldDataLen <= -2) {
-    buf0 = readByte();
+  } else {
+    k = (-dataLen - 1) * 8 - ct;
+    dataLen = dataLenA;
+    cAdd = 0;
+    prevFF = gFalse;
+    while (k > 0) {
+      buf0 = readByte();
+      if (prevFF) {
+	cAdd += 0xfe00 - (buf0 << 9);
+	nBits = 7;
+      } else {
+	cAdd += 0xff00 - (buf0 << 8);
+	nBits = 8;
+      }
+      prevFF = buf0 == 0xff;
+      if (k > nBits) {
+	cAdd <<= nBits;
+	k -= nBits;
+      } else {
+	cAdd <<= k;
+	ct = nBits - k;
+	k = 0;
+      }
+    }
+    c += cAdd;
     buf1 = readByte();
   }
 }
 
 void JArithmeticDecoder::cleanup() {
   if (limitStream) {
+    // This saves one extra byte of data from the end of packet i, to
+    // be used in packet i+1.  It's not clear from the JPEG 2000 spec
+    // exactly how this should work, but this kludge does seem to fix
+    // decode of some problematic JPEG 2000 streams.  It may actually
+    // be necessary to buffer an arbitrary number of bytes (not just
+    // one byte), but I haven't run into that case yet.
     while (dataLen > 0) {
-      buf0 = buf1;
-      buf1 = readByte();
+      readBuf = -1;
+      readBuf = readByte();
     }
   }
 }
@@ -306,6 +348,11 @@ Guint JArithmeticDecoder::decodeIAID(Guint codeLen,
 void JArithmeticDecoder::byteIn() {
   if (buf0 == 0xff) {
     if (buf1 > 0x8f) {
+      if (limitStream) {
+	buf0 = buf1;
+	buf1 = readByte();
+	c = c + 0xff00 - (buf0 << 8);
+      }
       ct = 8;
     } else {
       buf0 = buf1;

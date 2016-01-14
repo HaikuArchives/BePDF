@@ -7,6 +7,7 @@
 //
 //========================================================================
 
+#define private public
 #include "aconf.h"
 #include "gmem.h"
 #include "SplashTypes.h"
@@ -35,9 +36,9 @@ BeSplashOutputDev::BeSplashOutputDev(GBool reverseVideoA,
 				   BeSplashOutRedrawCbk redrawCbkA,
 				   void *redrawCbkDataA,
 				   ColorMode colorMode):
-  SplashOutputDev(getSplashColorModeFor(colorMode), 
+  SplashOutputDev(getSplashColorModeFor(colorMode),
   	1,
-  	reverseVideoA, 
+  	reverseVideoA,
   	paperColorA)
 {
   fColorMode = colorMode;
@@ -84,7 +85,7 @@ void BeSplashOutputDev::endPage() {
   if (!fIncrementalUpdate) {
     (*fRedrawCallback)(fRedrawCallbackData, 0, 0, getBitmapWidth(), getBitmapHeight(), true);
   }
-  fText->coalesce(gTrue, gFalse);
+  // fText->coalesce(gTrue, gFalse);
 }
 
 void BeSplashOutputDev::dump() {
@@ -127,16 +128,16 @@ static void initialzeIndexForGray8() {
 	if (gIndexForGray8Initialized) {
 		return;
 	}
-	
+
 	BScreen screen;
 	if (!screen.IsValid()) {
 		return;
 	}
-	
+
 	for (int16 i = 0; i <= 255; i ++) {
 		gIndexForGray8[i] = screen.IndexForColor(i, i, i);
 	}
-	
+
 	gIndexForGray8Initialized = true;
 }
 
@@ -149,14 +150,14 @@ static void gray8_to_cmap8(uchar gray, uchar* dest) {
 }
 
 static void gray8_to_rgb24(uchar gray, uchar* dest) {
-	dest[0] = 
-	dest[1] = 
+	dest[0] =
+	dest[1] =
 	dest[2] = gray;
 }
 
 static void gray8_to_rgb32(uchar gray, uchar* dest) {
-	dest[0] = 
-	dest[1] = 
+	dest[0] =
+	dest[1] =
 	dest[2] = gray;
 	dest[3] = 0;
 }
@@ -196,7 +197,7 @@ void BeSplashOutputDev::redraw(int srcX, int srcY,
   }
   // we support color space with at least one byte per pixel only
   destBPP = pixel_chunk / pixels_per_chunk;
-  
+
   rgb24ToCS = getRGB24ToColorSpace(cs);
   gray8ToCS = getGray8ToColorSpace(cs);
 
@@ -217,7 +218,7 @@ void BeSplashOutputDev::redraw(int srcX, int srcY,
 
   height += srcY;
   width += srcX;
-  
+
   for (y = srcY; y < height; ++y, destRow += destBPR) {
     dest = destRow;
     if (fColorMode == kColorMode) {
@@ -229,11 +230,11 @@ void BeSplashOutputDev::redraw(int srcX, int srcY,
       } else {
         for (x = srcX; x < width; ++x, dest += destBPP) {
           splashBitmap->getPixel(x, y, color);
-          blend24(splashRGB8R(color), splashRGB8G(color), splashRGB8B(color), 
-          	splashBitmap->getAlpha(x, y), 
+          blend24(splashRGB8R(color), splashRGB8G(color), splashRGB8B(color),
+          	splashBitmap->getAlpha(x, y),
           	dest);
         }
-      }      
+      }
     } else {
       for (x = srcX; x < width; ++x, dest += destBPP) {
         splashBitmap->getPixel(x, y, color);
@@ -242,15 +243,15 @@ void BeSplashOutputDev::redraw(int srcX, int srcY,
     }
   }
 
-  view->DrawBitmap(bitmap, 
-    BRect(0, 0, width-1, height-1), 
+  view->DrawBitmap(bitmap,
+    BRect(0, 0, width-1, height-1),
     BRect(destX, destY, destX + width-1, destY + height-1));
-  
-  delete bitmap; 
+
+  delete bitmap;
 }
 
 color_space BeSplashOutputDev::getColorSpace() {
-	
+
 	if (fColorMode == kGrayScaleMode) {
 		if (viewsSupportDrawBitmap(B_GRAY8)) {
 			// Not supported by BeOS R5!
@@ -272,7 +273,7 @@ color_space BeSplashOutputDev::getColorSpace() {
 
 rgb24_to_color_space* BeSplashOutputDev::getRGB24ToColorSpace(color_space cs) {
 	switch (cs) {
-		case B_RGB24: 
+		case B_RGB24:
 			return rgb24_to_rgb24;
 		case B_RGB32:
 			return rgb24_to_rgb32;
@@ -288,7 +289,7 @@ gray8_to_color_space* BeSplashOutputDev::getGray8ToColorSpace(color_space cs) {
 			return gray8_to_cmap8;
 		case B_GRAY8:
 			return gray8_to_gray8;
-		case B_RGB24: 
+		case B_RGB24:
 			return gray8_to_rgb24;
 		case B_RGB32:
 			return gray8_to_rgb32;
@@ -299,7 +300,7 @@ gray8_to_color_space* BeSplashOutputDev::getGray8ToColorSpace(color_space cs) {
 
 bool BeSplashOutputDev::viewsSupportDrawBitmap(color_space cs) {
 	uint32 flags = 0;
-	return bitmaps_support_space(cs, &flags) && 
+	return bitmaps_support_space(cs, &flags) &&
 		((flags & B_VIEWS_SUPPORT_DRAW_BITMAP) != 0);
 }
 
@@ -317,10 +318,11 @@ GBool BeSplashOutputDev::findText(Unicode *s, int len,
 				 GBool caseSensitive, GBool backward,
 				 double *xMin, double *yMin,
 				 double *xMax, double *yMax) {
-				 
+
   return fText->findText(s, len, startAtTop, stopAtBottom,
 		     startAtLast, stopAtLast,
 		     caseSensitive, backward,
+		     false, // wholeWord: TODO
 		     xMin, yMin, xMax, yMax);
 }
 

@@ -34,17 +34,16 @@ SRCS = beos/BeSplashOutputDev.cc \
 	beos/Init.cc \
 	fofi/FoFiBase.cc \
 	fofi/FoFiEncodings.cc \
+	fofi/FoFiIdentifier.cc \
 	fofi/FoFiTrueType.cc \
 	fofi/FoFiType1.cc \
 	fofi/FoFiType1C.cc \
-	goo/gmem.c \
 	goo/parseargs.c  \
 	goo/FixedPoint.cc \
 	goo/GHash.cc \
 	goo/GList.cc \
 	goo/GString.cc \
 	goo/gfile.cc \
-	goo/gmem.cc \
 	goo/gmempp.cc \
 	splash/Splash.cc \
 	splash/SplashBitmap.cc \
@@ -60,11 +59,9 @@ SRCS = beos/BeSplashOutputDev.cc \
 	splash/SplashPattern.cc \
 	splash/SplashScreen.cc \
 	splash/SplashState.cc \
-	splash/SplashT1Font.cc \
-	splash/SplashT1FontEngine.cc \
-	splash/SplashT1FontFile.cc \
 	splash/SplashXPath.cc \
 	splash/SplashXPathScanner.cc \
+	xpdf/AcroForm.cc \
 	xpdf/Annot.cc \
 	xpdf/Array.cc \
 	xpdf/BuiltinFont.cc \
@@ -77,6 +74,7 @@ SRCS = beos/BeSplashOutputDev.cc \
 	xpdf/Dict.cc \
 	xpdf/Error.cc \
 	xpdf/FontEncodingTables.cc \
+	xpdf/Form.cc \
 	xpdf/Function.cc \
 	xpdf/Gfx.cc \
 	xpdf/GfxFont.cc \
@@ -88,9 +86,9 @@ SRCS = beos/BeSplashOutputDev.cc \
 	xpdf/JPXStream.cc \
 	xpdf/Lexer.cc \
 	xpdf/Link.cc \
-	xpdf/LoadProgressMonitor.cc \
 	xpdf/NameToCharCode.cc \
 	xpdf/Object.cc \
+	xpdf/OptionalContent.cc \
 	xpdf/Outline.cc \
 	xpdf/OutputDev.cc \
 	xpdf/PDFCore.cc \
@@ -105,10 +103,13 @@ SRCS = beos/BeSplashOutputDev.cc \
 	xpdf/SplashOutputDev.cc \
 	xpdf/Stream.cc \
 	xpdf/TextOutputDev.cc \
+	xpdf/TextString.cc \
 	xpdf/UnicodeMap.cc \
 	xpdf/UnicodeTypeTable.cc \
-	xpdf/XRef.cc
-	# beos/OptionalContent.cc
+	xpdf/XFAForm.cc \
+	xpdf/XRef.cc \
+	xpdf/Zoox.cc
+	#beos/OptionalContent.cc
 	# xpdf/XPDFApp.cc
 	# xpdf/XPDFCore.cc
 	# xpdf/XPDFTree.cc
@@ -199,7 +200,7 @@ DEBUGGER :=
 COMPILER_FLAGS := $(shell freetype-config --cflags)
 
 #	Specify any additional linker flags to be used.
-LINKER_FLAGS =
+LINKER_FLAGS = $(shell freetype-config --libs)
 
 #	Specify the version of this binary. Example:
 #		-app 3 4 0 d 0 -short 340 -long "340 "`echo -n -e '\302\251'`"1999 GNU GPL"

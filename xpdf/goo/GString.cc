@@ -19,6 +19,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <limits.h>
 #include "gmem.h"
 #include "GString.h"
 
@@ -29,6 +30,12 @@ union GStringFormatArg {
   Guint ui;
   long l;
   Gulong ul;
+#ifdef LLONG_MAX
+  long long ll;
+#endif
+#ifdef ULLONG_MAX
+  unsigned long long ull;
+#endif
   double f;
   char c;
   char *s;
@@ -52,6 +59,18 @@ enum GStringFormatType {
   fmtULongHex,
   fmtULongOctal,
   fmtULongBinary,
+#ifdef LLONG_MAX
+  fmtLongLongDecimal,
+  fmtLongLongHex,
+  fmtLongLongOctal,
+  fmtLongLongBinary,
+#endif
+#ifdef ULLONG_MAX
+  fmtULongLongDecimal,
+  fmtULongLongHex,
+  fmtULongLongOctal,
+  fmtULongLongBinary,
+#endif
   fmtDouble,
   fmtDoubleTrim,
   fmtChar,
@@ -60,9 +79,15 @@ enum GStringFormatType {
   fmtSpace
 };
 
-static char *formatStrings[] = {
+static const char *formatStrings[] = {
   "d", "x", "o", "b", "ud", "ux", "uo", "ub",
   "ld", "lx", "lo", "lb", "uld", "ulx", "ulo", "ulb",
+#ifdef LLONG_MAX
+  "lld", "llx", "llo", "llb",
+#endif
+#ifdef ULLONG_MAX
+  "ulld", "ullx", "ullo", "ullb",
+#endif
   "f", "g",
   "c",
   "s",
@@ -76,6 +101,9 @@ static char *formatStrings[] = {
 static inline int size(int len) {
   int delta;
   for (delta = 8; delta < len && delta < 0x100000; delta <<= 1) ;
+  if (len > INT_MAX - delta) {
+    gMemError("Integer overflow in GString::size()");
+  }
   // this is ((len + 1) + (delta - 1)) & ~(delta - 1)
   return (len + delta) & ~(delta - 1);
 }
@@ -83,6 +111,9 @@ static inline int size(int len) {
 inline void GString::resize(int length1) {
   char *s1;
 
+  if (length1 < 0) {
+    gMemError("GString::resize() with negative length");
+  }
   if (!s) {
     s = new char[size(length1)];
   } else if (size(length1) != size(length)) {
@@ -104,14 +135,8 @@ GString::GString() {
   s[0] = '\0';
 }
 
-GString::GString(const GString& copy) {
-  s = NULL;
-  resize(length = copy.getLength());
-  memcpy(s, copy.getCString(), length + 1);  
-}
-
 GString::GString(const char *sA) {
-  int n = strlen(sA);
+  int n = (int)strlen(sA);
 
   s = NULL;
   resize(length = n);
@@ -143,6 +168,9 @@ GString::GString(GString *str1, GString *str2) {
   int n2 = str2->getLength();
 
   s = NULL;
+  if (n1 > INT_MAX - n2) {
+    gMemError("Integer overflow in GString::GString()");
+  }
   resize(length = n1 + n2);
   memcpy(s, str1->getCString(), n1);
   memcpy(s + n1, str2->getCString(), n2 + 1);
@@ -150,14 +178,14 @@ GString::GString(GString *str1, GString *str2) {
 
 GString *GString::fromInt(int x) {
   char buf[24]; // enough space for 64-bit ints plus a little extra
-  char *p;
+  const char *p;
   int len;
 
   formatInt(x, buf, sizeof(buf), gFalse, 0, 10, &p, &len);
   return new GString(p, len);
 }
 
-GString *GString::format(char *fmt, ...) {
+GString *GString::format(const char *fmt, ...) {
   va_list argList;
   GString *s;
 
@@ -168,7 +196,7 @@ GString *GString::format(char *fmt, ...) {
   return s;
 }
 
-GString *GString::formatv(char *fmt, va_list argList) {
+GString *GString::formatv(const char *fmt, va_list argList) {
   GString *s;
 
   s = new GString();
@@ -187,6 +215,9 @@ GString *GString::clear() {
 }
 
 GString *GString::append(char c) {
+  if (length > INT_MAX - 1) {
+    gMemError("Integer overflow in GString::append()");
+  }
   resize(length + 1);
   s[length++] = c;
   s[length] = '\0';
@@ -196,6 +227,9 @@ GString *GString::append(char c) {
 GString *GString::append(GString *str) {
   int n = str->getLength();
 
+  if (length > INT_MAX - n) {
+    gMemError("Integer overflow in GString::append()");
+  }
   resize(length + n);
   memcpy(s + length, str->getCString(), n + 1);
   length += n;
@@ -203,8 +237,11 @@ GString *GString::append(GString *str) {
 }
 
 GString *GString::append(const char *str) {
-  int n = strlen(str);
+  int n = (int)strlen(str);
 
+  if (length > INT_MAX - n) {
+    gMemError("Integer overflow in GString::append()");
+  }
   resize(length + n);
   memcpy(s + length, str, n + 1);
   length += n;
@@ -212,6 +249,9 @@ GString *GString::append(const char *str) {
 }
 
 GString *GString::append(const char *str, int lengthA) {
+  if (lengthA < 0 || length > INT_MAX - lengthA) {
+    gMemError("Integer overflow in GString::append()");
+  }
   resize(length + lengthA);
   memcpy(s + length, str, lengthA);
   length += lengthA;
@@ -219,7 +259,7 @@ GString *GString::append(const char *str, int lengthA) {
   return this;
 }
 
-GString *GString::appendf(char *fmt, ...) {
+GString *GString::appendf(const char *fmt, ...) {
   va_list argList;
 
   va_start(argList, fmt);
@@ -228,7 +268,7 @@ GString *GString::appendf(char *fmt, ...) {
   return this;
 }
 
-GString *GString::appendfv(char *fmt, va_list argList) {
+GString *GString::appendfv(const char *fmt, va_list argList) {
   GStringFormatArg *args;
   int argsLen, argsSize;
   GStringFormatArg arg;
@@ -237,7 +277,8 @@ GString *GString::appendfv(char *fmt, va_list argList) {
   GStringFormatType ft;
   char buf[65];
   int len, i;
-  char *p0, *p1, *str;
+  const char *p0, *p1;
+  const char *str;
 
   argsLen = 0;
   argsSize = 8;
@@ -274,6 +315,9 @@ GString *GString::appendfv(char *fmt, va_list argList) {
 	zeroFill = *p0 == '0';
 	for (; *p0 >= '0' && *p0 <= '9'; ++p0) {
 	  width = 10 * width + (*p0 - '0');
+	}
+	if (width < 0) {
+	  width = 0;
 	}
 	if (*p0 == '.') {
 	  ++p0;
@@ -336,6 +380,22 @@ GString *GString::appendfv(char *fmt, va_list argList) {
 	  case fmtULongBinary:
 	    args[argsLen].ul = va_arg(argList, Gulong);
 	    break;
+#ifdef LLONG_MAX
+	  case fmtLongLongDecimal:
+	  case fmtLongLongHex:
+	  case fmtLongLongOctal:
+	  case fmtLongLongBinary:
+	    args[argsLen].ll = va_arg(argList, long long);
+	    break;
+#endif
+#ifdef ULLONG_MAX
+	  case fmtULongLongDecimal:
+	  case fmtULongLongHex:
+	  case fmtULongLongOctal:
+	  case fmtULongLongBinary:
+	    args[argsLen].ull = va_arg(argList, unsigned long long);
+	    break;
+#endif
 	  case fmtDouble:
 	  case fmtDoubleTrim:
 	    args[argsLen].f = va_arg(argList, double);
@@ -408,6 +468,38 @@ GString *GString::appendfv(char *fmt, va_list argList) {
 	case fmtULongBinary:
 	  formatUInt(arg.ul, buf, sizeof(buf), zeroFill, width, 2, &str, &len);
 	  break;
+#ifdef LLONG_MAX
+	case fmtLongLongDecimal:
+	  formatInt(arg.ll, buf, sizeof(buf), zeroFill, width, 10, &str, &len);
+	  break;
+	case fmtLongLongHex:
+	  formatInt(arg.ll, buf, sizeof(buf), zeroFill, width, 16, &str, &len);
+	  break;
+	case fmtLongLongOctal:
+	  formatInt(arg.ll, buf, sizeof(buf), zeroFill, width, 8, &str, &len);
+	  break;
+	case fmtLongLongBinary:
+	  formatInt(arg.ll, buf, sizeof(buf), zeroFill, width, 2, &str, &len);
+	  break;
+#endif
+#ifdef ULLONG_MAX
+	case fmtULongLongDecimal:
+	  formatUInt(arg.ull, buf, sizeof(buf), zeroFill, width, 10,
+		     &str, &len);
+	  break;
+	case fmtULongLongHex:
+	  formatUInt(arg.ull, buf, sizeof(buf), zeroFill, width, 16,
+		     &str, &len);
+	  break;
+	case fmtULongLongOctal:
+	  formatUInt(arg.ull, buf, sizeof(buf), zeroFill, width, 8,
+		     &str, &len);
+	  break;
+	case fmtULongLongBinary:
+	  formatUInt(arg.ull, buf, sizeof(buf), zeroFill, width, 2,
+		     &str, &len);
+	  break;
+#endif
 	case fmtDouble:
 	  formatDouble(arg.f, buf, sizeof(buf), prec, gFalse, &str, &len);
 	  break;
@@ -421,13 +513,23 @@ GString *GString::appendfv(char *fmt, va_list argList) {
 	  reverseAlign = !reverseAlign;
 	  break;
 	case fmtString:
-	  str = arg.s;
-	  len = strlen(str);
+	  if (arg.s) {
+	    str = arg.s;
+	    len = (int)strlen(str);
+	  } else {
+	    str = "(null)";
+	    len = 6;
+	  }
 	  reverseAlign = !reverseAlign;
 	  break;
 	case fmtGString:
-	  str = arg.gs->getCString();
-	  len = arg.gs->getLength();
+	  if (arg.gs) {
+	    str = arg.gs->getCString();
+	    len = arg.gs->getLength();
+	  } else {
+	    str = "(null)";
+	    len = 6;
+	  }
 	  reverseAlign = !reverseAlign;
 	  break;
 	case fmtSpace:
@@ -460,7 +562,7 @@ GString *GString::appendfv(char *fmt, va_list argList) {
       
     } else {
       for (p1 = p0 + 1; *p1 && *p1 != '{' && *p1 != '}'; ++p1) ;
-      append(p0, p1 - p0);
+      append(p0, (int)(p1 - p0));
       p0 = p1;
     }
   }
@@ -469,9 +571,15 @@ GString *GString::appendfv(char *fmt, va_list argList) {
   return this;
 }
 
+#ifdef LLONG_MAX
+void GString::formatInt(long long x, char *buf, int bufSize,
+			GBool zeroFill, int width, int base,
+			const char **p, int *len) {
+#else
 void GString::formatInt(long x, char *buf, int bufSize,
 			GBool zeroFill, int width, int base,
-			char **p, int *len) {
+			const char **p, int *len) {
+#endif
   static char vals[17] = "0123456789abcdef";
   GBool neg;
   int start, i, j;
@@ -501,9 +609,15 @@ void GString::formatInt(long x, char *buf, int bufSize,
   *len = bufSize - i;
 }
 
+#ifdef ULLONG_MAX
+void GString::formatUInt(unsigned long long x, char *buf, int bufSize,
+			 GBool zeroFill, int width, int base,
+			 const char **p, int *len) {
+#else
 void GString::formatUInt(Gulong x, char *buf, int bufSize,
 			 GBool zeroFill, int width, int base,
-			 char **p, int *len) {
+			 const char **p, int *len) {
+#endif
   static char vals[17] = "0123456789abcdef";
   int i, j;
 
@@ -526,7 +640,7 @@ void GString::formatUInt(Gulong x, char *buf, int bufSize,
 }
 
 void GString::formatDouble(double x, char *buf, int bufSize, int prec,
-			   GBool trim, char **p, int *len) {
+			   GBool trim, const char **p, int *len) {
   GBool neg, started;
   double x2;
   int d, i, j;
@@ -534,7 +648,7 @@ void GString::formatDouble(double x, char *buf, int bufSize, int prec,
   if ((neg = x < 0)) {
     x = -x;
   }
-  x = floor(x * pow(10, prec) + 0.5);
+  x = floor(x * pow(10.0, prec) + 0.5);
   i = bufSize;
   started = !trim;
   for (j = 0; j < prec && i > 1; ++j) {
@@ -567,6 +681,9 @@ void GString::formatDouble(double x, char *buf, int bufSize, int prec,
 GString *GString::insert(int i, char c) {
   int j;
 
+  if (length > INT_MAX - 1) {
+    gMemError("Integer overflow in GString::insert()");
+  }
   resize(length + 1);
   for (j = length + 1; j > i; --j)
     s[j] = s[j-1];
@@ -579,6 +696,9 @@ GString *GString::insert(int i, GString *str) {
   int n = str->getLength();
   int j;
 
+  if (length > INT_MAX - n) {
+    gMemError("Integer overflow in GString::insert()");
+  }
   resize(length + n);
   for (j = length; j >= i; --j)
     s[j+n] = s[j];
@@ -588,9 +708,12 @@ GString *GString::insert(int i, GString *str) {
 }
 
 GString *GString::insert(int i, const char *str) {
-  int n = strlen(str);
+  int n = (int)strlen(str);
   int j;
 
+  if (length > INT_MAX - n) {
+    gMemError("Integer overflow in GString::insert()");
+  }
   resize(length + n);
   for (j = length; j >= i; --j)
     s[j+n] = s[j];
@@ -602,6 +725,9 @@ GString *GString::insert(int i, const char *str) {
 GString *GString::insert(int i, const char *str, int lengthA) {
   int j;
 
+  if (lengthA < 0 || length > INT_MAX - lengthA) {
+    gMemError("Integer overflow in GString::insert()");
+  }
   resize(length + lengthA);
   for (j = length; j >= i; --j)
     s[j+lengthA] = s[j];
@@ -613,7 +739,7 @@ GString *GString::insert(int i, const char *str, int lengthA) {
 GString *GString::del(int i, int n) {
   int j;
 
-  if (n > 0) {
+  if (i >= 0 && n > 0 && i <= INT_MAX - n) {
     if (i + n > length) {
       n = length - i;
     }

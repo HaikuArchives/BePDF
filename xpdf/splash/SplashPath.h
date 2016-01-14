@@ -2,6 +2,8 @@
 //
 // SplashPath.h
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #ifndef SPLASHPATH_H
@@ -79,8 +81,10 @@ public:
 		      SplashCoord x2, SplashCoord y2,
 		      SplashCoord x3, SplashCoord y3);
 
-  // Close the last subpath, adding a line segment if necessary.
-  SplashError close();
+  // Close the last subpath, adding a line segment if necessary.  If
+  // <force> is true, this adds a line segment even if the current
+  // point is equal to the first point in the subpath.
+  SplashError close(GBool force = gFalse);
 
   // Add a stroke adjustment hint.  The controlling segments are
   // <ctrl0> and <ctrl1> (where segments are identified by their first
@@ -92,7 +96,7 @@ public:
 
   // Get the points on the path.
   int getLength() { return length; }
-  void getPoint(int i, double *x, double *y, Guchar *f)
+  void getPoint(int i, SplashCoord *x, SplashCoord *y, Guchar *f)
     { *x = pts[i].x; *y = pts[i].y; *f = flags[i]; }
 
   // Get the current point.

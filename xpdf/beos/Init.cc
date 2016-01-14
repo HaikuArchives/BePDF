@@ -17,7 +17,6 @@
 // command line options
 //------------------------------------------------------------------------
 
-static char enableT1libStr[16] = "";
 static char enableFreeTypeStr[16] = "";
 static char antialiasStr[16] = "";
 static char hintingStr[16] = "";
@@ -33,10 +32,6 @@ static GBool printVersion = gFalse;
 static GBool printHelp = gFalse;
 
 static ArgDesc argDesc[] = {
-#if HAVE_T1LIB_H
-  {"-t1lib",      argString,      enableT1libStr, sizeof(enableT1libStr),
-   "enable t1lib font rasterizer: yes, no"},
-#endif
 #if HAVE_FREETYPE_FREETYPE_H | HAVE_FREETYPE_H
   {"-freetype",   argString,      enableFreeTypeStr, sizeof(enableFreeTypeStr),
    "enable FreeType font rasterizer: yes, no"},
@@ -83,10 +78,10 @@ void InitXpdf(const char *configFile, const char *fontDirectory, const char* enc
 	globalParams->setTextEOL("unix");
 	globalParams->setAntialias("yes");
 	globalParams->setVectorAntialias("yes");
-	
+
 	// read encodings
 	readEncodings(globalParams, encodingDirectory);
-	
+
 	// set parameters
 	if (paperSize[0]) {
 		if (!globalParams->setPSPaperSize(paperSize)) {
@@ -109,11 +104,6 @@ void InitXpdf(const char *configFile, const char *fontDirectory, const char* enc
 	if (textEOL[0]) {
 		if (!globalParams->setTextEOL(textEOL)) {
 			fprintf(stderr, "Bad '-eol' value on command line\n");
-		}
-	}
-	if (enableT1libStr[0]) {
-		if (!globalParams->setEnableT1lib(enableT1libStr)) {
-			fprintf(stderr, "Bad '-t1lib' value on command line\n");
 		}
 	}
 	if (enableFreeTypeStr[0]) {

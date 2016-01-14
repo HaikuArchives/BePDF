@@ -14,7 +14,7 @@
 #include "GlobalParams.h"
 #include "Object.h"
 #include "PDFDoc.h"
-#ifdef WIN32
+#ifdef _WIN32
 #include "WinPDFCore.h"
 #else
 #include "XPDFCore.h"
@@ -51,7 +51,7 @@ XpdfObject _xpdfGetCatalog(XpdfDoc doc) {
 HWND _xpdfWin32GetWindow(XpdfDoc doc) {
   WinPDFCore *core;
 
-  if (!(core = (WinPDFCore *)((PDFDoc *)doc)->getGUIData())) {
+  if (!(core = (WinPDFCore *)((PDFDoc *)doc)->getCore())) {
     return NULL;
   }
   return core->getDrawFrame();
@@ -62,7 +62,7 @@ HWND _xpdfWin32GetWindow(XpdfDoc doc) {
 Widget _xpdfXGetWindow(XpdfDoc doc) {
   XPDFCore *core;
 
-  if (!(core = (XPDFCore *)((PDFDoc *)doc)->getGUIData())) {
+  if (!(core = (XPDFCore *)((PDFDoc *)doc)->getCore())) {
     return NULL;
   }
   return core->getWidget();

@@ -2,6 +2,8 @@
 //
 // SplashTypes.h
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #ifndef SPLASHTYPES_H
@@ -52,10 +54,10 @@ enum SplashColorMode {
 extern int splashColorModeNComps[];
 
 // max number of components in any SplashColor
+#define splashMaxColorComps 3
 #if SPLASH_CMYK
+#  undef splashMaxColorComps
 #  define splashMaxColorComps 4
-#else
-#  define splashMaxColorComps 3
 #endif
 
 typedef Guchar SplashColor[splashMaxColorComps];

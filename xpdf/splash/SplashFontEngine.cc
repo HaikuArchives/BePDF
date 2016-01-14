@@ -2,6 +2,8 @@
 //
 // SplashFontEngine.cc
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #include <aconf.h>
@@ -12,18 +14,12 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#ifndef WIN32
+#ifndef _WIN32
 #  include <unistd.h>
 #endif
-
-#if HAVE_T1LIB_H
-#include <t1lib.h>
-#endif
-
 #include "gmem.h"
 #include "GString.h"
 #include "SplashMath.h"
-#include "SplashT1FontEngine.h"
 #include "SplashFTFontEngine.h"
 #include "SplashFontFile.h"
 #include "SplashFontFileID.h"
@@ -41,12 +37,9 @@ extern "C" int unlink(char *filename);
 //------------------------------------------------------------------------
 
 SplashFontEngine::SplashFontEngine(
-#if HAVE_T1LIB_H
-				   GBool enableT1lib,
-#endif
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
 				   GBool enableFreeType,
-				   GBool hinting,
+				   Guint freeTypeFlags,
 #endif
 				   GBool aa) {
   int i;
@@ -55,16 +48,9 @@ SplashFontEngine::SplashFontEngine(
     fontCache[i] = NULL;
   }
 
-#if HAVE_T1LIB_H
-  if (enableT1lib) {
-    t1Engine = SplashT1FontEngine::init(aa);
-  } else {
-    t1Engine = NULL;
-  }
-#endif
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (enableFreeType) {
-    ftEngine = SplashFTFontEngine::init(aa, hinting);
+    ftEngine = SplashFTFontEngine::init(aa, freeTypeFlags);
   } else {
     ftEngine = NULL;
   }
@@ -80,11 +66,6 @@ SplashFontEngine::~SplashFontEngine() {
     }
   }
 
-#if HAVE_T1LIB_H
-  if (t1Engine) {
-    delete t1Engine;
-  }
-#endif
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (ftEngine) {
     delete ftEngine;
@@ -108,23 +89,29 @@ SplashFontFile *SplashFontEngine::getFontFile(SplashFontFileID *id) {
 }
 
 SplashFontFile *SplashFontEngine::loadType1Font(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+						GString *fontBuf,
+#else
 						char *fileName,
-						GBool deleteFile, char **enc) {
+						GBool deleteFile,
+#endif
+						const char **enc) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
-#if HAVE_T1LIB_H
-  if (!fontFile && t1Engine) {
-    fontFile = t1Engine->loadType1Font(idA, fileName, deleteFile, enc);
-  }
-#endif
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadType1Font(idA, fileName, deleteFile, enc);
+    fontFile = ftEngine->loadType1Font(idA,
+#if LOAD_FONTS_FROM_MEM
+				       fontBuf,
+#else
+				       fileName, deleteFile,
+#endif
+				       enc);
   }
 #endif
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -138,24 +125,29 @@ SplashFontFile *SplashFontEngine::loadType1Font(SplashFontFileID *idA,
 }
 
 SplashFontFile *SplashFontEngine::loadType1CFont(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+						 GString *fontBuf,
+#else
 						 char *fileName,
 						 GBool deleteFile,
-						 char **enc) {
+#endif
+						 const char **enc) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
-#if HAVE_T1LIB_H
-  if (!fontFile && t1Engine) {
-    fontFile = t1Engine->loadType1CFont(idA, fileName, deleteFile, enc);
-  }
-#endif
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadType1CFont(idA, fileName, deleteFile, enc);
+    fontFile = ftEngine->loadType1CFont(idA,
+#if LOAD_FONTS_FROM_MEM
+					fontBuf,
+#else
+					fileName, deleteFile,
+#endif
+					enc);
   }
 #endif
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -169,19 +161,29 @@ SplashFontFile *SplashFontEngine::loadType1CFont(SplashFontFileID *idA,
 }
 
 SplashFontFile *SplashFontEngine::loadOpenTypeT1CFont(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+						      GString *fontBuf,
+#else
 						      char *fileName,
 						      GBool deleteFile,
-						      char **enc) {
+#endif
+						      const char **enc) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadOpenTypeT1CFont(idA, fileName, deleteFile, enc);
+    fontFile = ftEngine->loadOpenTypeT1CFont(idA,
+#if LOAD_FONTS_FROM_MEM
+					     fontBuf,
+#else
+					     fileName, deleteFile,
+#endif
+					     enc);
   }
 #endif
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -195,18 +197,29 @@ SplashFontFile *SplashFontEngine::loadOpenTypeT1CFont(SplashFontFileID *idA,
 }
 
 SplashFontFile *SplashFontEngine::loadCIDFont(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+					      GString *fontBuf
+#else
 					      char *fileName,
-					      GBool deleteFile) {
+					      GBool deleteFile
+#endif
+					      ) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadCIDFont(idA, fileName, deleteFile);
+    fontFile = ftEngine->loadCIDFont(idA,
+#if LOAD_FONTS_FROM_MEM
+				     fontBuf
+#else
+				     fileName, deleteFile
+#endif
+				     );
   }
 #endif
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -220,18 +233,30 @@ SplashFontFile *SplashFontEngine::loadCIDFont(SplashFontFileID *idA,
 }
 
 SplashFontFile *SplashFontEngine::loadOpenTypeCFFFont(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+						      GString *fontBuf,
+#else
 						      char *fileName,
-						      GBool deleteFile) {
+						      GBool deleteFile,
+#endif
+						      int *codeToGID,
+						      int codeToGIDLen) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadOpenTypeCFFFont(idA, fileName, deleteFile);
+    fontFile = ftEngine->loadOpenTypeCFFFont(idA,
+#if LOAD_FONTS_FROM_MEM
+					     fontBuf,
+#else
+					     fileName, deleteFile,
+#endif
+					     codeToGID, codeToGIDLen);
   }
 #endif
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -245,17 +270,28 @@ SplashFontFile *SplashFontEngine::loadOpenTypeCFFFont(SplashFontFileID *idA,
 }
 
 SplashFontFile *SplashFontEngine::loadTrueTypeFont(SplashFontFileID *idA,
+#if LOAD_FONTS_FROM_MEM
+						   GString *fontBuf,
+#else
 						   char *fileName,
 						   GBool deleteFile,
-						   Gushort *codeToGID,
-						   int codeToGIDLen) {
+#endif
+						   int fontNum,
+						   int *codeToGID,
+						   int codeToGIDLen,
+						   char *fontName) {
   SplashFontFile *fontFile;
 
   fontFile = NULL;
 #if HAVE_FREETYPE_FREETYPE_H || HAVE_FREETYPE_H
   if (!fontFile && ftEngine) {
-    fontFile = ftEngine->loadTrueTypeFont(idA, fileName, deleteFile,
-					  codeToGID, codeToGIDLen);
+    fontFile = ftEngine->loadTrueTypeFont(idA,
+#if LOAD_FONTS_FROM_MEM
+					  fontBuf,
+#else
+					  fileName, deleteFile,
+#endif
+					  fontNum, codeToGID, codeToGIDLen);
   }
 #endif
 
@@ -263,7 +299,7 @@ SplashFontFile *SplashFontEngine::loadTrueTypeFont(SplashFontFileID *idA,
     gfree(codeToGID);
   }
 
-#ifndef WIN32
+#if !LOAD_FONTS_FROM_MEM && !defined(_WIN32)
   // delete the (temporary) font file -- with Unix hard link
   // semantics, this will remove the last link; otherwise it will
   // return an error, leaving the file to be deleted later (if
@@ -287,7 +323,7 @@ SplashFont *SplashFontEngine::getFont(SplashFontFile *fontFile,
   mat[1] = -(textMat[0] * ctm[1] + textMat[1] * ctm[3]);
   mat[2] = textMat[2] * ctm[0] + textMat[3] * ctm[2];
   mat[3] = -(textMat[2] * ctm[1] + textMat[3] * ctm[3]);
-  if (splashAbs(mat[0] * mat[3] - mat[1] * mat[2]) < 0.01) {
+  if (!splashCheckDet(mat[0], mat[1], mat[2], mat[3], 0.01)) {
     // avoid a singular (or close-to-singular) matrix
     mat[0] = 0.01;  mat[1] = 0;
     mat[2] = 0;     mat[3] = 0.01;

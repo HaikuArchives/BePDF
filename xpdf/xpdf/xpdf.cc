@@ -22,7 +22,6 @@
 //------------------------------------------------------------------------
 
 static GBool contView = gFalse;
-static char enableT1libStr[16] = "";
 static char enableFreeTypeStr[16] = "";
 static char antialiasStr[16] = "";
 static char vectorAntialiasStr[16] = "";
@@ -66,10 +65,6 @@ static ArgDesc argDesc[] = {
    "initial zoom level (percent, 'page', 'width')"},
   {"-cont",       argFlag,        &contView,      0,
    "start in continuous view mode" },
-#if HAVE_T1LIB_H
-  {"-t1lib",      argString,      enableT1libStr, sizeof(enableT1libStr),
-   "enable t1lib font rasterizer: yes, no"},
-#endif
 #if HAVE_FREETYPE_FREETYPE_H | HAVE_FREETYPE_H
   {"-freetype",   argString,      enableFreeTypeStr, sizeof(enableFreeTypeStr),
    "enable FreeType font rasterizer: yes, no"},
@@ -103,7 +98,7 @@ static ArgDesc argDesc[] = {
   {"-exec",       argString,      remoteCmd,      sizeof(remoteCmd),
    "execute command on xpdf remote server (with -remote only)"},
   {"-reload",     argFlag,        &doRemoteReload, 0,
-   "reload xpdf remove server window (with -remote only)"},
+   "reload xpdf remote server window (with -remote only)"},
   {"-raise",      argFlag,        &doRemoteRaise, 0,
    "raise xpdf remote server window (with -remote only)"},
   {"-quit",       argFlag,        &doRemoteQuit,  0,
@@ -183,11 +178,6 @@ int main(int argc, char *argv[]) {
   if (textEOL[0]) {
     if (!globalParams->setTextEOL(textEOL)) {
       fprintf(stderr, "Bad '-eol' value on command line\n");
-    }
-  }
-  if (enableT1libStr[0]) {
-    if (!globalParams->setEnableT1lib(enableT1libStr)) {
-      fprintf(stderr, "Bad '-t1lib' value on command line\n");
     }
   }
   if (enableFreeTypeStr[0]) {

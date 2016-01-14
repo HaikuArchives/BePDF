@@ -17,6 +17,7 @@
 #pragma interface
 #endif
 
+#include <limits.h> // for LLONG_MAX and ULLONG_MAX
 #include <stdarg.h>
 #include "gtypes.h"
 
@@ -25,9 +26,6 @@ public:
 
   // Create an empty string.
   GString();
-
-  // Copy constructor
-  GString(const GString& copy);
 
   // Create a string from a C string.
   GString(const char *sA);
@@ -64,26 +62,28 @@ public:
   //     d, x, o, b -- int in decimal, hex, octal, binary
   //     ud, ux, uo, ub -- unsigned int
   //     ld, lx, lo, lb, uld, ulx, ulo, ulb -- long, unsigned long
+  //     lld, llx, llo, llb, ulld, ullx, ullo, ullb
+  //         -- long long, unsigned long long
   //     f, g -- double
   //     c -- char
   //     s -- string (char *)
   //     t -- GString *
   //     w -- blank space; arg determines width
   // To get literal curly braces, use {{ or }}.
-  static GString *format(char *fmt, ...);
-  static GString *formatv(char *fmt, va_list argList);
+  static GString *format(const char *fmt, ...);
+  static GString *formatv(const char *fmt, va_list argList);
 
   // Destructor.
   ~GString();
 
   // Get length.
-  int getLength() const { return length; }
+  int getLength() { return length; }
 
   // Get C string.
-  char *getCString() const { return s; }
+  char *getCString() { return s; }
 
   // Get <i>th character.
-  char getChar(int i) const { return s[i]; }
+  char getChar(int i) { return s[i]; }
 
   // Change <i>th character.
   void setChar(int i, char c) { s[i] = c; }
@@ -98,8 +98,8 @@ public:
   GString *append(const char *str, int lengthA);
 
   // Append a formatted string.
-  GString *appendf(char *fmt, ...);
-  GString *appendfv(char *fmt, va_list argList);
+  GString *appendf(const char *fmt, ...);
+  GString *appendfv(const char *fmt, va_list argList);
 
   // Insert a character or string.
   GString *insert(int i, char c);
@@ -126,14 +126,26 @@ private:
   char *s;
 
   void resize(int length1);
+#ifdef LLONG_MAX
+  static void formatInt(long long x, char *buf, int bufSize,
+			GBool zeroFill, int width, int base,
+			const char **p, int *len);
+#else
   static void formatInt(long x, char *buf, int bufSize,
 			GBool zeroFill, int width, int base,
-			char **p, int *len);
+			const char **p, int *len);
+#endif
+#ifdef ULLONG_MAX
+  static void formatUInt(unsigned long long x, char *buf, int bufSize,
+			 GBool zeroFill, int width, int base,
+			 const char **p, int *len);
+#else
   static void formatUInt(Gulong x, char *buf, int bufSize,
 			 GBool zeroFill, int width, int base,
-			 char **p, int *len);
+			 const char **p, int *len);
+#endif
   static void formatDouble(double x, char *buf, int bufSize, int prec,
-			   GBool trim, char **p, int *len);
+			   GBool trim, const char **p, int *len);
 };
 
 #endif

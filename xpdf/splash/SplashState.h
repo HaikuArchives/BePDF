@@ -2,6 +2,8 @@
 //
 // SplashState.h
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #ifndef SPLASHSTATE_H
@@ -19,6 +21,7 @@ class SplashPattern;
 class SplashScreen;
 class SplashClip;
 class SplashBitmap;
+class SplashPath;
 
 //------------------------------------------------------------------------
 // line cap values
@@ -67,8 +70,17 @@ public:
   void setLineDash(SplashCoord *lineDashA, int lineDashLengthA,
 		   SplashCoord lineDashPhaseA);
 
+  void clipResetToRect(SplashCoord x0, SplashCoord y0,
+		       SplashCoord x1, SplashCoord y1);
+  SplashError clipToRect(SplashCoord x0, SplashCoord y0,
+			 SplashCoord x1, SplashCoord y1);
+  SplashError clipToPath(SplashPath *path, GBool eo);
+
   // Set the soft mask bitmap.
   void setSoftMask(SplashBitmap *softMaskA);
+
+  // Set the transfer function.
+  void setTransfer(Guchar *red, Guchar *green, Guchar *blue, Guchar *gray);
 
 private:
 
@@ -91,9 +103,20 @@ private:
   SplashCoord lineDashPhase;
   GBool strokeAdjust;
   SplashClip *clip;
+  GBool clipIsShared;
   SplashBitmap *softMask;
   GBool deleteSoftMask;
   GBool inNonIsolatedGroup;
+  GBool inKnockoutGroup;
+  Guchar rgbTransferR[256],
+         rgbTransferG[256],
+         rgbTransferB[256];
+  Guchar grayTransfer[256];
+  Guchar cmykTransferC[256],
+         cmykTransferM[256],
+         cmykTransferY[256],
+         cmykTransferK[256];
+  Guint overprintMask;
 
   SplashState *next;		// used by Splash class
 

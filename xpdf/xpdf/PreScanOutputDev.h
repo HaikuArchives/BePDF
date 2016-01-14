@@ -41,6 +41,16 @@ public:
   // Does this device use drawChar() or drawString()?
   virtual GBool useDrawChar() { return gTrue; }
 
+  // Does this device use tilingPatternFill()?  If this returns false,
+  // tiling pattern fills will be reduced to a series of other drawing
+  // operations.
+  virtual GBool useTilingPatternFill() { return gTrue; }
+
+  // Does this device use functionShadedFill(), axialShadedFill(), and
+  // radialShadedFill()?  If this returns false, these shaded fills
+  // will be reduced to a series of other drawing operations.
+  virtual GBool useShadedFills() { return gTrue; }
+
   // Does this device use beginType3Char/endType3Char?  Otherwise,
   // text in Type 3 fonts will be drawn with drawChar/drawString.
   virtual GBool interpretType3Chars() { return gTrue; }
@@ -57,6 +67,15 @@ public:
   virtual void stroke(GfxState *state);
   virtual void fill(GfxState *state);
   virtual void eoFill(GfxState *state);
+  virtual void tilingPatternFill(GfxState *state, Gfx *gfx, Object *strRef,
+				 int paintType, Dict *resDict,
+				 double *mat, double *bbox,
+				 int x0, int y0, int x1, int y1,
+				 double xStep, double yStep);
+  virtual GBool functionShadedFill(GfxState *state,
+				   GfxFunctionShading *shading);
+  virtual GBool axialShadedFill(GfxState *state, GfxAxialShading *shading);
+  virtual GBool radialShadedFill(GfxState *state, GfxRadialShading *shading);
 
   //----- path clipping
   virtual void clip(GfxState *state);
@@ -73,21 +92,22 @@ public:
   //----- image drawing
   virtual void drawImageMask(GfxState *state, Object *ref, Stream *str,
 			     int width, int height, GBool invert,
-			     GBool inlineImg);
+			     GBool inlineImg, GBool interpolate);
   virtual void drawImage(GfxState *state, Object *ref, Stream *str,
 			 int width, int height, GfxImageColorMap *colorMap,
-			 int *maskColors, GBool inlineImg);
+			 int *maskColors, GBool inlineImg, GBool interpolate);
   virtual void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
 			       int width, int height,
 			       GfxImageColorMap *colorMap,
 			       Stream *maskStr, int maskWidth, int maskHeight,
-			       GBool maskInvert);
+			       GBool maskInvert, GBool interpolate);
   virtual void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
 				   int width, int height,
 				   GfxImageColorMap *colorMap,
 				   Stream *maskStr,
 				   int maskWidth, int maskHeight,
-				   GfxImageColorMap *maskColorMap);
+				   GfxImageColorMap *maskColorMap,
+				   GBool interpolate);
 
   //----- transparency groups and soft masks
   virtual void beginTransparencyGroup(GfxState *state, double *bbox,
@@ -110,6 +130,11 @@ public:
   GBool usesTransparency() { return transparency; }
 
   // Returns true if the operations performed since the last call to
+  // clearStats() included any image mask fills with a pattern color
+  // space.
+  GBool usesPatternImageMask() { return patternImgMask; }
+
+  // Returns true if the operations performed since the last call to
   // clearStats() are all rasterizable by GDI calls in GDIOutputDev.
   GBool isAllGDI() { return gdi; }
 
@@ -124,6 +149,7 @@ private:
   GBool mono;
   GBool gray;
   GBool transparency;
+  GBool patternImgMask;
   GBool gdi;
 };
 

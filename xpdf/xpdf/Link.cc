@@ -39,10 +39,10 @@ LinkAction *LinkAction::parseDest(Object *obj) {
 
 LinkAction *LinkAction::parseAction(Object *obj, GString *baseURI) {
   LinkAction *action;
-  Object obj2, obj3, obj4;
+  Object obj2, obj3, obj4, obj5;
 
   if (!obj->isDict()) {
-    error(-1, "Bad annotation action");
+    error(errSyntaxWarning, -1, "Bad annotation action");
     return NULL;
   }
 
@@ -86,13 +86,37 @@ LinkAction *LinkAction::parseAction(Object *obj, GString *baseURI) {
     obj3.free();
     obj4.free();
 
+  // JavaScript action
+  } else if (obj2.isName("JavaScript")) {
+    obj->dictLookup("JS", &obj3);
+    action = new LinkJavaScript(&obj3);
+    obj3.free();
+
+  // SubmitForm action
+  } else if (obj2.isName("SubmitForm")) {
+    obj->dictLookup("F", &obj3);
+    obj->dictLookup("Fields", &obj4);
+    obj->dictLookup("Flags", &obj5);
+    action = new LinkSubmitForm(&obj3, &obj4, &obj5);
+    obj3.free();
+    obj4.free();
+    obj5.free();
+
+  // Hide action
+  } else if (obj2.isName("Hide")) {
+    obj->dictLookupNF("T", &obj3);
+    obj->dictLookup("H", &obj4);
+    action = new LinkHide(&obj3, &obj4);
+    obj3.free();
+    obj4.free();
+
   // unknown action
   } else if (obj2.isName()) {
     action = new LinkUnknown(obj2.getName());
 
   // action is missing or wrong type
   } else {
-    error(-1, "Bad annotation action");
+    error(errSyntaxWarning, -1, "Bad annotation action");
     action = NULL;
   }
 
@@ -117,7 +141,7 @@ GString *LinkAction::getFileSpecName(Object *fileSpecObj) {
 
   // dictionary
   } else if (fileSpecObj->isDict()) {
-#ifdef WIN32
+#ifdef _WIN32
     if (!fileSpecObj->dictLookup("DOS", &obj1)->isString()) {
 #else
     if (!fileSpecObj->dictLookup("Unix", &obj1)->isString()) {
@@ -128,18 +152,18 @@ GString *LinkAction::getFileSpecName(Object *fileSpecObj) {
     if (obj1.isString()) {
       name = obj1.getString()->copy();
     } else {
-      error(-1, "Illegal file spec in link");
+      error(errSyntaxWarning, -1, "Illegal file spec in link");
     }
     obj1.free();
 
   // error
   } else {
-    error(-1, "Illegal file spec in link");
+    error(errSyntaxWarning, -1, "Illegal file spec in link");
   }
 
   // system-dependent path manipulation
   if (name) {
-#ifdef WIN32
+#ifdef _WIN32
     int i, j;
 
     // "//...."             --> "\...."
@@ -202,7 +226,7 @@ LinkDest::LinkDest(Array *a) {
 
   // get page
   if (a->getLength() < 2) {
-    error(-1, "Annotation destination array is too short");
+    error(errSyntaxWarning, -1, "Annotation destination array is too short");
     return;
   }
   a->getNF(0, &obj1);
@@ -214,7 +238,7 @@ LinkDest::LinkDest(Array *a) {
     pageRef.gen = obj1.getRefGen();
     pageIsRef = gTrue;
   } else {
-    error(-1, "Bad annotation destination");
+    error(errSyntaxWarning, -1, "Bad annotation destination");
     goto err2;
   }
   obj1.free();
@@ -235,7 +259,7 @@ LinkDest::LinkDest(Array *a) {
 	changeLeft = gTrue;
 	left = obj2.getNum();
       } else {
-	error(-1, "Bad annotation destination position");
+	error(errSyntaxWarning, -1, "Bad annotation destination position");
 	goto err1;
       }
       obj2.free();
@@ -250,7 +274,7 @@ LinkDest::LinkDest(Array *a) {
 	changeTop = gTrue;
 	top = obj2.getNum();
       } else {
-	error(-1, "Bad annotation destination position");
+	error(errSyntaxWarning, -1, "Bad annotation destination position");
 	goto err1;
       }
       obj2.free();
@@ -265,7 +289,7 @@ LinkDest::LinkDest(Array *a) {
 	changeZoom = gTrue;
 	zoom = obj2.getNum();
       } else {
-	error(-1, "Bad annotation destination position");
+	error(errSyntaxWarning, -1, "Bad annotation destination position");
 	goto err1;
       }
       obj2.free();
@@ -274,7 +298,7 @@ LinkDest::LinkDest(Array *a) {
   // Fit link
   } else if (obj1.isName("Fit")) {
     if (a->getLength() < 2) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFit;
@@ -282,58 +306,67 @@ LinkDest::LinkDest(Array *a) {
   // FitH link
   } else if (obj1.isName("FitH")) {
     if (a->getLength() < 3) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitH;
-    if (!a->get(2, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+    if (a->get(2, &obj2)->isNum()) {
+      top = obj2.getNum();
+      changeTop = gTrue;
+    } else if (obj2.isNull()) {
+      changeTop = gFalse;
+    } else {
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
-    top = obj2.getNum();
     obj2.free();
 
   // FitV link
   } else if (obj1.isName("FitV")) {
     if (a->getLength() < 3) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitV;
-    if (!a->get(2, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+    if (a->get(2, &obj2)->isNum()) {
+      left = obj2.getNum();
+      changeLeft = gTrue;
+    } else if (obj2.isNull()) {
+      changeLeft = gFalse;
+    } else {
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
-    left = obj2.getNum();
     obj2.free();
 
   // FitR link
   } else if (obj1.isName("FitR")) {
     if (a->getLength() < 6) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitR;
-    if (!a->get(2, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+    if (a->get(2, &obj2)->isNum()) {
+      left = obj2.getNum();
+    } else {
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
-    left = obj2.getNum();
     obj2.free();
     if (!a->get(3, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
     bottom = obj2.getNum();
     obj2.free();
     if (!a->get(4, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
     right = obj2.getNum();
     obj2.free();
     if (!a->get(5, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
     top = obj2.getNum();
@@ -342,7 +375,7 @@ LinkDest::LinkDest(Array *a) {
   // FitB link
   } else if (obj1.isName("FitB")) {
     if (a->getLength() < 2) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitB;
@@ -350,34 +383,42 @@ LinkDest::LinkDest(Array *a) {
   // FitBH link
   } else if (obj1.isName("FitBH")) {
     if (a->getLength() < 3) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitBH;
-    if (!a->get(2, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+    if (a->get(2, &obj2)->isNum()) {
+      top = obj2.getNum();
+      changeTop = gTrue;
+    } else if (obj2.isNull()) {
+      changeTop = gFalse;
+    } else {
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
-    top = obj2.getNum();
     obj2.free();
 
   // FitBV link
   } else if (obj1.isName("FitBV")) {
     if (a->getLength() < 3) {
-      error(-1, "Annotation destination array is too short");
+      error(errSyntaxWarning, -1, "Annotation destination array is too short");
       goto err2;
     }
     kind = destFitBV;
-    if (!a->get(2, &obj2)->isNum()) {
-      error(-1, "Bad annotation destination position");
+    if (a->get(2, &obj2)->isNum()) {
+      left = obj2.getNum();
+      changeLeft = gTrue;
+    } else if (obj2.isNull()) {
+      changeLeft = gFalse;
+    } else {
+      error(errSyntaxWarning, -1, "Bad annotation destination position");
       kind = destFit;
     }
-    left = obj2.getNum();
     obj2.free();
 
   // unknown link kind
   } else {
-    error(-1, "Unknown annotation destination type");
+    error(errSyntaxWarning, -1, "Unknown annotation destination type");
     goto err2;
   }
 
@@ -433,7 +474,7 @@ LinkGoTo::LinkGoTo(Object *destObj) {
 
   // error
   } else {
-    error(-1, "Illegal annotation destination");
+    error(errSyntaxWarning, -1, "Illegal annotation destination");
   }
 }
 
@@ -471,7 +512,7 @@ LinkGoToR::LinkGoToR(Object *fileSpecObj, Object *destObj) {
 
   // error
   } else {
-    error(-1, "Illegal annotation destination");
+    error(errSyntaxWarning, -1, "Illegal annotation destination");
   }
 }
 
@@ -500,7 +541,7 @@ LinkLaunch::LinkLaunch(Object *actionObj) {
       fileName = getFileSpecName(&obj1);
     } else {
       obj1.free();
-#ifdef WIN32
+#ifdef _WIN32
       if (actionObj->dictLookup("Win", &obj1)->isDict()) {
 	obj1.dictLookup("F", &obj2);
 	fileName = getFileSpecName(&obj2);
@@ -510,7 +551,7 @@ LinkLaunch::LinkLaunch(Object *actionObj) {
 	}
 	obj2.free();
       } else {
-	error(-1, "Bad launch-type link action");
+	error(errSyntaxWarning, -1, "Bad launch-type link action");
       }
 #else
       //~ This hasn't been defined by Adobe yet, so assume it looks
@@ -524,7 +565,7 @@ LinkLaunch::LinkLaunch(Object *actionObj) {
 	}
 	obj2.free();
       } else {
-	error(-1, "Bad launch-type link action");
+	error(errSyntaxWarning, -1, "Bad launch-type link action");
       }
 #endif
     }
@@ -550,31 +591,34 @@ LinkURI::LinkURI(Object *uriObj, GString *baseURI) {
 
   uri = NULL;
   if (uriObj->isString()) {
-    uri2 = uriObj->getString()->copy();
-    if (baseURI && baseURI->getLength() > 0) {
-      n = strcspn(uri2->getCString(), "/:");
-      if (n == uri2->getLength() || uri2->getChar(n) == '/') {
+    uri2 = uriObj->getString();
+    n = (int)strcspn(uri2->getCString(), "/:");
+    if (n < uri2->getLength() && uri2->getChar(n) == ':') {
+      // "http:..." etc.
+      uri = uri2->copy();
+    } else if (!uri2->cmpN("www.", 4)) {
+      // "www.[...]" without the leading "http://"
+      uri = new GString("http://");
+      uri->append(uri2);
+    } else {
+      // relative URI
+      if (baseURI) {
 	uri = baseURI->copy();
 	c = uri->getChar(uri->getLength() - 1);
-	if (c == '/' || c == '?') {
-	  if (uri2->getChar(0) == '/') {
-	    uri2->del(0);
-	  }
-	} else {
-	  if (uri2->getChar(0) != '/') {
-	    uri->append('/');
-	  }
+	if (c != '/' && c != '?') {
+	  uri->append('/');
 	}
-	uri->append(uri2);
-	delete uri2;
+	if (uri2->getChar(0) == '/') {
+	  uri->append(uri2->getCString() + 1, uri2->getLength() - 1);
+	} else {
+	  uri->append(uri2);
+	}
       } else {
-	uri = uri2;
+	uri = uri2->copy();
       }
-    } else {
-      uri = uri2;
     }
   } else {
-    error(-1, "Illegal URI-type link");
+    error(errSyntaxWarning, -1, "Illegal URI-type link");
   }
 }
 
@@ -612,7 +656,8 @@ LinkMovie::LinkMovie(Object *annotObj, Object *titleObj) {
   } else if (titleObj->isString()) {
     title = titleObj->getString()->copy();
   } else {
-    error(-1, "Movie action is missing both the Annot and T keys");
+    error(errSyntaxError, -1,
+	  "Movie action is missing both the Annot and T keys");
   }
 }
 
@@ -620,6 +665,98 @@ LinkMovie::~LinkMovie() {
   if (title) {
     delete title;
   }
+}
+
+//------------------------------------------------------------------------
+// LinkJavaScript
+//------------------------------------------------------------------------
+
+LinkJavaScript::LinkJavaScript(Object *jsObj) {
+  char buf[4096];
+  int n;
+
+  if (jsObj->isString()) {
+    js = jsObj->getString()->copy();
+  } else if (jsObj->isStream()) {
+    js = new GString();
+    jsObj->streamReset();
+    while ((n = jsObj->getStream()->getBlock(buf, sizeof(buf))) > 0) {
+      js->append(buf, n);
+    }
+    jsObj->streamClose();
+  } else {
+    error(errSyntaxError, -1, "JavaScript action JS key is wrong type");
+    js = NULL;
+  }
+}
+
+LinkJavaScript::~LinkJavaScript() {
+  if (js) {
+    delete js;
+  }
+}
+
+//------------------------------------------------------------------------
+// LinkSubmitForm
+//------------------------------------------------------------------------
+
+LinkSubmitForm::LinkSubmitForm(Object *urlObj, Object *fieldsObj,
+			       Object *flagsObj) {
+  if (urlObj->isString()) {
+    url = urlObj->getString()->copy();
+  } else {
+    error(errSyntaxError, -1, "SubmitForm action URL is wrong type");
+    url = NULL;
+  }
+
+  if (fieldsObj->isArray()) {
+    fieldsObj->copy(&fields);
+  } else {
+    if (!fieldsObj->isNull()) {
+      error(errSyntaxError, -1, "SubmitForm action Fields value is wrong type");
+    }
+    fields.initNull();
+  }
+
+  if (flagsObj->isInt()) {
+    flags = flagsObj->getInt();
+  } else {
+    if (!flagsObj->isNull()) {
+      error(errSyntaxError, -1, "SubmitForm action Flags value is wrong type");
+    }
+    flags = 0;
+  }
+}
+
+LinkSubmitForm::~LinkSubmitForm() {
+  if (url) {
+    delete url;
+  }
+  fields.free();
+}
+
+//------------------------------------------------------------------------
+// LinkHide
+//------------------------------------------------------------------------
+
+LinkHide::LinkHide(Object *fieldsObj, Object *hideFlagObj) {
+  if (fieldsObj->isRef() || fieldsObj->isString() || fieldsObj->isArray()) {
+    fieldsObj->copy(&fields);
+  } else {
+    error(errSyntaxError, -1, "Hide action T value is wrong type");
+    fields.initNull();
+  }
+
+  if (hideFlagObj->isBool()) {
+    hideFlag = hideFlagObj->getBool();
+  } else {
+    error(errSyntaxError, -1, "Hide action H value is wrong type");
+    hideFlag = gFalse;
+  }
+}
+
+LinkHide::~LinkHide() {
+  fields.free();
 }
 
 //------------------------------------------------------------------------
@@ -647,29 +784,29 @@ Link::Link(Dict *dict, GString *baseURI) {
 
   // get rectangle
   if (!dict->lookup("Rect", &obj1)->isArray()) {
-    error(-1, "Annotation rectangle is wrong type");
+    error(errSyntaxError, -1, "Annotation rectangle is wrong type");
     goto err2;
   }
   if (!obj1.arrayGet(0, &obj2)->isNum()) {
-    error(-1, "Bad annotation rectangle");
+    error(errSyntaxError, -1, "Bad annotation rectangle");
     goto err1;
   }
   x1 = obj2.getNum();
   obj2.free();
   if (!obj1.arrayGet(1, &obj2)->isNum()) {
-    error(-1, "Bad annotation rectangle");
+    error(errSyntaxError, -1, "Bad annotation rectangle");
     goto err1;
   }
   y1 = obj2.getNum();
   obj2.free();
   if (!obj1.arrayGet(2, &obj2)->isNum()) {
-    error(-1, "Bad annotation rectangle");
+    error(errSyntaxError, -1, "Bad annotation rectangle");
     goto err1;
   }
   x2 = obj2.getNum();
   obj2.free();
   if (!obj1.arrayGet(3, &obj2)->isNum()) {
-    error(-1, "Bad annotation rectangle");
+    error(errSyntaxError, -1, "Bad annotation rectangle");
     goto err1;
   }
   y2 = obj2.getNum();
@@ -724,7 +861,7 @@ Link::~Link() {
 
 Links::Links(Object *annots, GString *baseURI) {
   Link *link;
-  Object obj1, obj2;
+  Object obj1, obj2, obj3;
   int size;
   int i;
 
@@ -735,7 +872,10 @@ Links::Links(Object *annots, GString *baseURI) {
   if (annots->isArray()) {
     for (i = 0; i < annots->arrayGetLength(); ++i) {
       if (annots->arrayGet(i, &obj1)->isDict()) {
-	if (obj1.dictLookup("Subtype", &obj2)->isName("Link")) {
+	obj1.dictLookup("Subtype", &obj2);
+	obj1.dictLookup("FT", &obj3);
+	if (obj2.isName("Link") ||
+	    (obj2.isName("Widget") && (obj3.isName("Btn") || obj3.isNull()))) {
 	  link = new Link(obj1.getDict(), baseURI);
 	  if (link->isOk()) {
 	    if (numLinks >= size) {
@@ -747,6 +887,7 @@ Links::Links(Object *annots, GString *baseURI) {
 	    delete link;
 	  }
 	}
+	obj3.free();
 	obj2.free();
       }
       obj1.free();

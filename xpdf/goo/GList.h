@@ -36,13 +36,20 @@ public:
   //----- general
 
   // Get the number of elements.
-  int getLength() const { return length; }
+  int getLength() { return length; }
+
+  // Returns a (shallow) copy of this list.
+  GList *copy();
 
   //----- ordered list support
 
   // Return the <i>th element.
   // Assumes 0 <= i < length.
-  void *get(int i) const { return data[i]; }
+  void *get(int i) { return data[i]; }
+
+  // Replace the <i>th element.
+  // Assumes 0 <= i < length.
+  void put(int i, void *p) { data[i] = p; }
 
   // Append an element to the end of the list.
   void append(void *p);
@@ -62,6 +69,9 @@ public:
   // NB: this sorts an array of pointers, so the pointer args need to
   // be double-dereferenced.
   void sort(int (*cmp)(const void *ptr1, const void *ptr2));
+
+  // Reverse the list.
+  void reverse();
 
   //----- control
 

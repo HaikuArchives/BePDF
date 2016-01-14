@@ -11,6 +11,10 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
+#ifdef DEBUG_FP_LINUX
+#  include <fenv.h>
+#  include <fpu_control.h>
+#endif
 #include "parseargs.h"
 #include "GString.h"
 #include "gmem.h"
@@ -147,6 +151,21 @@ int main(int argc, char *argv[]) {
   char *p;
   int exitCode;
 
+#ifdef DEBUG_FP_LINUX
+  // enable exceptions on floating point div-by-zero
+  feenableexcept(FE_DIVBYZERO);
+  // force 64-bit rounding: this avoids changes in output when minor
+  // code changes result in spills of x87 registers; it also avoids
+  // differences in output with valgrind's 64-bit floating point
+  // emulation (yes, this is a kludge; but it's pretty much
+  // unavoidable given the x87 instruction set; see gcc bug 323 for
+  // more info)
+  fpu_control_t cw; 
+  _FPU_GETCW(cw);
+  cw = (cw & ~_FPU_EXTENDED) | _FPU_DOUBLE;
+  _FPU_SETCW(cw);
+#endif
+
   exitCode = 99;
 
   // parse args
@@ -216,6 +235,9 @@ int main(int argc, char *argv[]) {
   if (noCrop) {
     globalParams->setPSCrop(gFalse);
   }
+  if (pageCrop) {
+    globalParams->setPSUseCropBoxAsPage(gTrue);
+  }
   if (expand) {
     globalParams->setPSExpandSmaller(gTrue);
   }
@@ -280,7 +302,7 @@ int main(int argc, char *argv[]) {
 
   // check for print permission
   if (!doc->okToPrint()) {
-    error(-1, "Printing this document is not allowed.");
+    error(errNotAllowed, -1, "Printing this document is not allowed.");
     exitCode = 3;
     goto err1;
   }
@@ -309,24 +331,27 @@ int main(int argc, char *argv[]) {
 
   // check for multi-page EPS or form
   if ((doEPS || doForm) && firstPage != lastPage) {
-    error(-1, "EPS and form files can only contain one page.");
+    error(errCommandLine, -1, "EPS and form files can only contain one page.");
     goto err2;
   }
 
   // write PostScript file
-  psOut = new PSOutputDev(psFileName->getCString(), doc->getXRef(),
-			  doc->getCatalog(), firstPage, lastPage, mode);
+  psOut = new PSOutputDev(psFileName->getCString(), doc,
+			  firstPage, lastPage, mode);
   if (psOut->isOk()) {
     doc->displayPages(psOut, firstPage, lastPage, 72, 72,
-		      0, !pageCrop, globalParams->getPSCrop(), gTrue);
+		      0, !globalParams->getPSUseCropBoxAsPage(),
+		      globalParams->getPSCrop(), gTrue);
   } else {
     delete psOut;
     exitCode = 2;
     goto err2;
   }
-  delete psOut;
-
   exitCode = 0;
+  if (!psOut->checkIO()) {
+    exitCode = 2;
+  }
+  delete psOut;
 
   // clean up
  err2:

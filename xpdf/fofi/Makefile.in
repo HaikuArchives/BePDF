@@ -14,7 +14,7 @@ VPATH = @srcdir@
 GOOSRCDIR = $(srcdir)/../goo
 GOOLIBDIR = ../goo
 
-CXXFLAGS = @CXXFLAGS@ @DEFS@ -I.. -I$(GOOSRCDIR) -I$(srcdir)
+CXXFLAGS = @CXXFLAGS@ @DEFS@ -I.. -I$(srcdir)/.. -I$(GOOSRCDIR) -I$(srcdir)
 
 CXX = @CXX@
 AR = @AR@
@@ -34,6 +34,7 @@ LIBPREFIX = @LIBPREFIX@
 CXX_SRC = \
 	$(srcdir)/FoFiBase.cc \
 	$(srcdir)/FoFiEncodings.cc \
+	$(srcdir)/FoFiIdentifier.cc \
 	$(srcdir)/FoFiTrueType.cc \
 	$(srcdir)/FoFiType1.cc \
 	$(srcdir)/FoFiType1C.cc
@@ -47,6 +48,7 @@ all: $(LIBPREFIX)fofi.a
 FOFI_OBJS = \
 	FoFiBase.o \
 	FoFiEncodings.o \
+	FoFiIdentifier.o \
 	FoFiTrueType.o \
 	FoFiType1.o \
 	FoFiType1C.o
@@ -66,4 +68,4 @@ clean:
 depend:
 	$(CXX) $(CXXFLAGS) -MM $(CXX_SRC) >Makefile.dep
 
-include Makefile.dep
+-include Makefile.dep

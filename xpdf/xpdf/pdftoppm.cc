@@ -8,6 +8,14 @@
 
 #include <aconf.h>
 #include <stdio.h>
+#ifdef _WIN32
+#  include <io.h>
+#  include <fcntl.h>
+#endif
+#ifdef DEBUG_FP_LINUX
+#  include <fenv.h>
+#  include <fpu_control.h>
+#endif
 #include "parseargs.h"
 #include "gmem.h"
 #include "GString.h"
@@ -24,7 +32,6 @@ static int lastPage = 0;
 static int resolution = 150;
 static GBool mono = gFalse;
 static GBool gray = gFalse;
-static char enableT1libStr[16] = "";
 static char enableFreeTypeStr[16] = "";
 static char antialiasStr[16] = "";
 static char vectorAntialiasStr[16] = "";
@@ -46,10 +53,6 @@ static ArgDesc argDesc[] = {
    "generate a monochrome PBM file"},
   {"-gray",   argFlag,     &gray,          0,
    "generate a grayscale PGM file"},
-#if HAVE_T1LIB_H
-  {"-t1lib",      argString,      enableT1libStr, sizeof(enableT1libStr),
-   "enable t1lib font rasterizer: yes, no"},
-#endif
 #if HAVE_FREETYPE_FREETYPE_H | HAVE_FREETYPE_H
   {"-freetype",   argString,      enableFreeTypeStr, sizeof(enableFreeTypeStr),
    "enable FreeType font rasterizer: yes, no"},
@@ -83,13 +86,28 @@ int main(int argc, char *argv[]) {
   PDFDoc *doc;
   GString *fileName;
   char *ppmRoot;
-  char ppmFile[512];
+  GString *ppmFile;
   GString *ownerPW, *userPW;
   SplashColor paperColor;
   SplashOutputDev *splashOut;
   GBool ok;
   int exitCode;
   int pg;
+
+#ifdef DEBUG_FP_LINUX
+  // enable exceptions on floating point div-by-zero
+  feenableexcept(FE_DIVBYZERO);
+  // force 64-bit rounding: this avoids changes in output when minor
+  // code changes result in spills of x87 registers; it also avoids
+  // differences in output with valgrind's 64-bit floating point
+  // emulation (yes, this is a kludge; but it's pretty much
+  // unavoidable given the x87 instruction set; see gcc bug 323 for
+  // more info)
+  fpu_control_t cw; 
+  _FPU_GETCW(cw);
+  cw = (cw & ~_FPU_EXTENDED) | _FPU_DOUBLE;
+  _FPU_SETCW(cw);
+#endif
 
   exitCode = 99;
 
@@ -112,11 +130,6 @@ int main(int argc, char *argv[]) {
   // read config file
   globalParams = new GlobalParams(cfgFileName);
   globalParams->setupBaseFonts(NULL);
-  if (enableT1libStr[0]) {
-    if (!globalParams->setEnableT1lib(enableT1libStr)) {
-      fprintf(stderr, "Bad '-t1lib' value on command line\n");
-    }
-  }
   if (enableFreeTypeStr[0]) {
     if (!globalParams->setEnableFreeType(enableFreeTypeStr)) {
       fprintf(stderr, "Bad '-freetype' value on command line\n");
@@ -165,6 +178,7 @@ int main(int argc, char *argv[]) {
   if (lastPage < 1 || lastPage > doc->getNumPages())
     lastPage = doc->getNumPages();
 
+
   // write PPM files
   if (mono) {
     paperColor[0] = 0xff;
@@ -180,10 +194,18 @@ int main(int argc, char *argv[]) {
   for (pg = firstPage; pg <= lastPage; ++pg) {
     doc->displayPage(splashOut, pg, resolution, resolution, 0,
 		     gFalse, gTrue, gFalse);
-    sprintf(ppmFile, "%.*s-%06d.%s",
-	    (int)sizeof(ppmFile) - 32, ppmRoot, pg,
-	    mono ? "pbm" : gray ? "pgm" : "ppm");
-    splashOut->getBitmap()->writePNMFile(ppmFile);
+    if (!strcmp(ppmRoot, "-")) {
+#ifdef _WIN32
+      _setmode(_fileno(stdout), _O_BINARY);
+#endif
+      splashOut->getBitmap()->writePNMFile(stdout);
+    } else {
+      ppmFile = GString::format("{0:s}-{1:06d}.{2:s}",
+				ppmRoot, pg,
+				mono ? "pbm" : gray ? "pgm" : "ppm");
+      splashOut->getBitmap()->writePNMFile(ppmFile->getCString());
+      delete ppmFile;
+    }
   }
   delete splashOut;
 

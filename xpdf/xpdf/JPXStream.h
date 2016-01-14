@@ -101,24 +101,6 @@ struct JPXTagTreeNode {
 
 //------------------------------------------------------------------------
 
-struct JPXCoeff {
-  Gushort flags;		// flag bits
-  Gushort len;			// number of significant bits in mag
-  Guint mag;			// magnitude value
-};
-
-// coefficient flags
-#define jpxCoeffSignificantB  0
-#define jpxCoeffTouchedB      1
-#define jpxCoeffFirstMagRefB  2
-#define jpxCoeffSignB         7
-#define jpxCoeffSignificant   (1 << jpxCoeffSignificantB)
-#define jpxCoeffTouched       (1 << jpxCoeffTouchedB)
-#define jpxCoeffFirstMagRef   (1 << jpxCoeffFirstMagRefB)
-#define jpxCoeffSign          (1 << jpxCoeffSignB)
-
-//------------------------------------------------------------------------
-
 struct JPXCodeBlock {
   //----- size
   Guint x0, y0, x1, y1;		// bounds
@@ -136,10 +118,13 @@ struct JPXCodeBlock {
   Guint included;		// code-block inclusion in this packet:
 				//   0=not included, 1=included
   Guint nCodingPasses;		// number of coding passes in this pkt
-  Guint dataLen;		// pkt data length
+  Guint *dataLen;		// data lengths (one per codeword segment)
+  Guint dataLenSize;		// size of the dataLen array
 
   //----- coefficient data
-  JPXCoeff *coeffs;		// the coefficients
+  int *coeffs;
+  char *touched;		// coefficient 'touched' flags
+  Gushort len;			// coefficient length
   JArithmeticDecoder		// arithmetic decoder
     *arithDecoder;
   JArithmeticDecoderStats	// arithmetic decoder stats
@@ -214,6 +199,7 @@ struct JPXTileComp {
 
   //----- computed
   Guint x0, y0, x1, y1;		// bounds of the tile-comp, in ref coords
+  Guint w, h;			// data size = {x1 - x0, y1 - y0} >> reduction
   Guint cbW;			// code-block width
   Guint cbH;			// code-block height
 
@@ -230,6 +216,8 @@ struct JPXTileComp {
 //------------------------------------------------------------------------
 
 struct JPXTile {
+  GBool init;
+
   //----- from the COD segments (main and tile)
   Guint progOrder;		// progression order
   Guint nLayers;		// number of layers
@@ -246,6 +234,9 @@ struct JPXTile {
   Guint precinct;		//   precinct
   Guint layer;			//   layer
 
+  //----- tile part info
+  Guint nextTilePart;		// next expected tile-part
+
   //----- children
   JPXTileComp *tileComps;	// the tile-components (len = JPXImage.nComps)
 };
@@ -259,6 +250,11 @@ struct JPXImage {
   Guint xTileSize, yTileSize;	// size of tiles
   Guint xTileOffset,		// offset of first tile
         yTileOffset;
+  Guint xSizeR, ySizeR;		// size of reference grid >> reduction
+  Guint xOffsetR, yOffsetR;	// image offset >> reduction
+  Guint xTileSizeR, yTileSizeR;	// size of tiles >> reduction
+  Guint xTileOffsetR,		// offset of first tile >> reduction
+        yTileOffsetR;
   Guint nComps;			// number of components
 
   //----- computed
@@ -267,6 +263,14 @@ struct JPXImage {
 
   //----- children
   JPXTile *tiles;		// the tiles (len = nXTiles * nYTiles)
+};
+
+//------------------------------------------------------------------------
+
+enum JPXDecodeResult {
+  jpxDecodeOk,
+  jpxDecodeNonFatalError,
+  jpxDecodeFatalError
 };
 
 //------------------------------------------------------------------------
@@ -281,18 +285,19 @@ public:
   virtual void close();
   virtual int getChar();
   virtual int lookChar();
-  virtual GString *getPSFilter(int psLevel, char *indent);
+  virtual GString *getPSFilter(int psLevel, const char *indent);
   virtual GBool isBinary(GBool last = gTrue);
   virtual void getImageParams(int *bitsPerComponent,
 			      StreamColorSpaceMode *csMode);
+  void reduceResolution(int reductionA) { reduction = reductionA; }
 
 private:
 
   void fillReadBuf();
   void getImageParams2(int *bitsPerComponent, StreamColorSpaceMode *csMode);
-  GBool readBoxes();
+  JPXDecodeResult readBoxes();
   GBool readColorSpecBox(Guint dataLen);
-  GBool readCodestream(Guint len);
+  JPXDecodeResult readCodestream(Guint len);
   GBool readTilePart();
   GBool readTilePartData(Guint tileIdx,
 			 Guint tilePartLen, GBool tilePartToEOC);
@@ -304,12 +309,9 @@ private:
 			  JPXCodeBlock *cb);
   void inverseTransform(JPXTileComp *tileComp);
   void inverseTransformLevel(JPXTileComp *tileComp,
-			     Guint r, JPXResLevel *resLevel,
-			     Guint nx0, Guint ny0,
-			     Guint nx1, Guint ny1);
-  void inverseTransform1D(JPXTileComp *tileComp,
-			  int *data, Guint stride,
-			  Guint i0, Guint i1);
+			     Guint r, JPXResLevel *resLevel);
+  void inverseTransform1D(JPXTileComp *tileComp, int *data,
+			  Guint offset, Guint n);
   GBool inverseMultiCompAndDC(JPXTile *tile);
   GBool readBoxHdr(Guint *boxType, Guint *boxLen, Guint *dataLen);
   int readMarkerHdr(int *segType, Guint *segLen);
@@ -318,13 +320,18 @@ private:
   GBool readUWord(Guint *x);
   GBool readULong(Guint *x);
   GBool readNBytes(int nBytes, GBool signd, int *x);
-  GBool readBits(int nBits, Guint *x);
   void startBitBuf(Guint byteCountA);
+  GBool readBits(int nBits, Guint *x);
+  void skipSOP();
+  void skipEPH();
   Guint finishBitBuf();
+
+  BufStream *bufStr;		// buffered stream (for lookahead)
 
   Guint nComps;			// number of components
   Guint *bpc;			// bits per component, for each component
   Guint width, height;		// image size
+  int reduction;		// log2(reduction in resolution)
   GBool haveImgHdr;		// set if a JP2/JPX image header has been
 				//   found
   JPXColorSpec cs;		// color specification

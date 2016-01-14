@@ -18,10 +18,10 @@
 #include "gtypes.h"
 #include "Object.h"
 
+class GList;
 class Dict;
 class Stream;
-struct PSObject;
-class PSStack;
+struct PSCode;
 
 //------------------------------------------------------------------------
 // Function
@@ -39,7 +39,7 @@ public:
   virtual ~Function();
 
   // Construct a function.  Returns NULL if unsuccessful.
-  static Function *parse(Object *funcObj);
+  static Function *parse(Object *funcObj, int recursion = 0);
 
   // Initialize the entries common to all function types.
   GBool init(Dict *dict);
@@ -129,10 +129,12 @@ private:
     decode[funcMaxOutputs][2];
   double			// input multipliers
     inputMul[funcMaxInputs];
-  int idxMul[funcMaxInputs];	// sample array index multipliers
+  int *idxOffset;
   double *samples;		// the samples
   int nSamples;			// size of the samples array
   double *sBuf;			// buffer for the transform function
+  double cacheIn[funcMaxInputs];
+  double cacheOut[funcMaxOutputs];
   GBool ok;
 };
 
@@ -171,7 +173,7 @@ private:
 class StitchingFunction: public Function {
 public:
 
-  StitchingFunction(Object *funcObj, Dict *dict);
+  StitchingFunction(Object *funcObj, Dict *dict, int recursion);
   virtual ~StitchingFunction();
   virtual Function *copy() { return new StitchingFunction(this); }
   virtual int getType() { return 3; }
@@ -215,14 +217,19 @@ public:
 private:
 
   PostScriptFunction(PostScriptFunction *func);
-  GBool parseCode(Stream *str, int *codePtr);
+  GBool parseCode(GList *tokens, int *tokPtr, int *codePtr);
+  void addCode(int *codePtr, int op);
+  void addCodeI(int *codePtr, int op, int x);
+  void addCodeD(int *codePtr, int op, double x);
   GString *getToken(Stream *str);
-  void resizeCode(int newSize);
-  void exec(PSStack *stack, int codePtr);
+  int exec(double *stack, int sp0);
 
   GString *codeString;
-  PSObject *code;
+  PSCode *code;
+  int codeLen;
   int codeSize;
+  double cacheIn[funcMaxInputs];
+  double cacheOut[funcMaxOutputs];
   GBool ok;
 };
 

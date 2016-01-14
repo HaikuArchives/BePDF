@@ -2,6 +2,8 @@
 //
 // SplashFTFont.h
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #ifndef SPLASHFTFONT_H
@@ -29,7 +31,7 @@ class SplashFTFont: public SplashFont {
 public:
 
   SplashFTFont(SplashFTFontFile *fontFileA, SplashCoord *matA,
-	       SplashCoord *textMatA, GBool hinting);
+	       SplashCoord *textMatA);
 
   virtual ~SplashFTFont();
 
@@ -46,8 +48,6 @@ public:
   virtual SplashPath *getGlyphPath(int c);
 
 private:
-
-  GBool hinting;
 
   FT_Size sizeObj;
   FT_Matrix matrix;

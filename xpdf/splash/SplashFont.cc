@@ -2,6 +2,8 @@
 //
 // SplashFont.cc
 //
+// Copyright 2003-2013 Glyph & Cog, LLC
+//
 //========================================================================
 
 #include <aconf.h>
@@ -16,6 +18,13 @@
 #include "SplashGlyphBitmap.h"
 #include "SplashFontFile.h"
 #include "SplashFont.h"
+
+//------------------------------------------------------------------------
+
+// font cache size parameters
+#define splashFontCacheAssoc   8
+#define splashFontCacheMaxSets 8
+#define splashFontCacheSize    (128*1024)
 
 //------------------------------------------------------------------------
 
@@ -64,16 +73,11 @@ void SplashFont::initCache() {
   }
 
   // set up the glyph pixmap cache
-  cacheAssoc = 8;
-  if (glyphSize <= 256) {
-    cacheSets = 8;
-  } else if (glyphSize <= 512) {
-    cacheSets = 4;
-  } else if (glyphSize <= 1024) {
-    cacheSets = 2;
-  } else {
-    cacheSets = 1;
-  }
+  cacheAssoc = splashFontCacheAssoc;
+  for (cacheSets = splashFontCacheMaxSets;
+       cacheSets > 1 &&
+	 cacheSets * cacheAssoc * glyphSize > splashFontCacheSize;
+       cacheSets >>= 1) ;
   cache = (Guchar *)gmallocn(cacheSets * cacheAssoc, glyphSize);
   cacheTags = (SplashFontCacheTag *)gmallocn(cacheSets * cacheAssoc,
 					     sizeof(SplashFontCacheTag));

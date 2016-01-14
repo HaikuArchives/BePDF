@@ -17,11 +17,18 @@
 #include <ctype.h>
 #include <math.h>
 #include "gmem.h"
+#include "GList.h"
 #include "Object.h"
 #include "Dict.h"
 #include "Stream.h"
 #include "Error.h"
 #include "Function.h"
+
+//------------------------------------------------------------------------
+
+// Max depth of nested functions.  This is used to catch infinite
+// loops in the function object structure.
+#define recursionLimit 8
 
 //------------------------------------------------------------------------
 // Function
@@ -33,11 +40,16 @@ Function::Function() {
 Function::~Function() {
 }
 
-Function *Function::parse(Object *funcObj) {
+Function *Function::parse(Object *funcObj, int recursion) {
   Function *func;
   Dict *dict;
   int funcType;
   Object obj1;
+
+  if (recursion > recursionLimit) {
+    error(errSyntaxError, -1, "Loop detected in function objects");
+    return NULL;
+  }
 
   if (funcObj->isStream()) {
     dict = funcObj->streamGetDict();
@@ -46,12 +58,12 @@ Function *Function::parse(Object *funcObj) {
   } else if (funcObj->isName("Identity")) {
     return new IdentityFunction();
   } else {
-    error(-1, "Expected function dictionary or stream");
+    error(errSyntaxError, -1, "Expected function dictionary or stream");
     return NULL;
   }
 
   if (!dict->lookup("FunctionType", &obj1)->isInt()) {
-    error(-1, "Function type is missing or wrong type");
+    error(errSyntaxError, -1, "Function type is missing or wrong type");
     obj1.free();
     return NULL;
   }
@@ -63,11 +75,11 @@ Function *Function::parse(Object *funcObj) {
   } else if (funcType == 2) {
     func = new ExponentialFunction(funcObj, dict);
   } else if (funcType == 3) {
-    func = new StitchingFunction(funcObj, dict);
+    func = new StitchingFunction(funcObj, dict, recursion);
   } else if (funcType == 4) {
     func = new PostScriptFunction(funcObj, dict);
   } else {
-    error(-1, "Unimplemented function type (%d)", funcType);
+    error(errSyntaxError, -1, "Unimplemented function type ({0:d})", funcType);
     return NULL;
   }
   if (!func->isOk()) {
@@ -84,26 +96,27 @@ GBool Function::init(Dict *dict) {
 
   //----- Domain
   if (!dict->lookup("Domain", &obj1)->isArray()) {
-    error(-1, "Function is missing domain");
+    error(errSyntaxError, -1, "Function is missing domain");
     goto err2;
   }
   m = obj1.arrayGetLength() / 2;
   if (m > funcMaxInputs) {
-    error(-1, "Functions with more than %d inputs are unsupported",
+    error(errSyntaxError, -1,
+	  "Functions with more than {0:d} inputs are unsupported",
 	  funcMaxInputs);
     goto err2;
   }
   for (i = 0; i < m; ++i) {
     obj1.arrayGet(2*i, &obj2);
     if (!obj2.isNum()) {
-      error(-1, "Illegal value in function domain array");
+      error(errSyntaxError, -1, "Illegal value in function domain array");
       goto err1;
     }
     domain[i][0] = obj2.getNum();
     obj2.free();
     obj1.arrayGet(2*i+1, &obj2);
     if (!obj2.isNum()) {
-      error(-1, "Illegal value in function domain array");
+      error(errSyntaxError, -1, "Illegal value in function domain array");
       goto err1;
     }
     domain[i][1] = obj2.getNum();
@@ -118,21 +131,22 @@ GBool Function::init(Dict *dict) {
     hasRange = gTrue;
     n = obj1.arrayGetLength() / 2;
     if (n > funcMaxOutputs) {
-      error(-1, "Functions with more than %d outputs are unsupported",
+      error(errSyntaxError, -1,
+	    "Functions with more than {0:d} outputs are unsupported",
 	    funcMaxOutputs);
       goto err2;
     }
     for (i = 0; i < n; ++i) {
       obj1.arrayGet(2*i, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function range array");
+	error(errSyntaxError, -1, "Illegal value in function range array");
 	goto err1;
       }
       range[i][0] = obj2.getNum();
       obj2.free();
       obj1.arrayGet(2*i+1, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function range array");
+	error(errSyntaxError, -1, "Illegal value in function range array");
 	goto err1;
       }
       range[i][1] = obj2.getNum();
@@ -191,8 +205,10 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
   Guint buf, bitMask;
   int bits;
   Guint s;
-  int i;
+  double in[funcMaxInputs];
+  int i, j, t, bit, idx;
 
+  idxOffset = NULL;
   samples = NULL;
   sBuf = NULL;
   ok = gFalse;
@@ -202,11 +218,12 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
     goto err1;
   }
   if (!hasRange) {
-    error(-1, "Type 0 function is missing range");
+    error(errSyntaxError, -1, "Type 0 function is missing range");
     goto err1;
   }
   if (m > sampledFuncMaxInputs) {
-    error(-1, "Sampled functions with more than %d inputs are unsupported",
+    error(errSyntaxError, -1,
+	  "Sampled functions with more than {0:d} inputs are unsupported",
 	  sampledFuncMaxInputs);
     goto err1;
   }
@@ -216,7 +233,7 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
 
   //----- get the stream
   if (!funcObj->isStream()) {
-    error(-1, "Type 0 function isn't a stream");
+    error(errSyntaxError, -1, "Type 0 function isn't a stream");
     goto err1;
   }
   str = funcObj->getStream();
@@ -224,27 +241,45 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
   //----- Size
   if (!dict->lookup("Size", &obj1)->isArray() ||
       obj1.arrayGetLength() != m) {
-    error(-1, "Function has missing or invalid size array");
+    error(errSyntaxError, -1, "Function has missing or invalid size array");
     goto err2;
   }
   for (i = 0; i < m; ++i) {
     obj1.arrayGet(i, &obj2);
     if (!obj2.isInt()) {
-      error(-1, "Illegal value in function size array");
+      error(errSyntaxError, -1, "Illegal value in function size array");
       goto err3;
     }
     sampleSize[i] = obj2.getInt();
+    if (sampleSize[i] <= 0) {
+      error(errSyntaxError, -1, "Illegal non-positive value in function size array");
+      goto err3;
+    }
     obj2.free();
   }
   obj1.free();
-  idxMul[0] = n;
-  for (i = 1; i < m; ++i) {
-    idxMul[i] = idxMul[i-1] * sampleSize[i-1];
+  idxOffset = (int *)gmallocn(1 << m, sizeof(int));
+  for (i = 0; i < (1<<m); ++i) {
+    idx = 0;
+    for (j = m - 1, t = i; j >= 1; --j, t <<= 1) {
+      if (sampleSize[j] == 1) {
+	bit = 0;
+      } else {
+	bit = (t >> (m - 1)) & 1;
+      }
+      idx = (idx + bit) * sampleSize[j-1];
+    }
+    if (sampleSize[0] == 1) {
+      bit = 0;
+    } else {
+      bit = (t >> (m - 1)) & 1;
+    }
+    idxOffset[i] = (idx + bit) * n;
   }
 
   //----- BitsPerSample
   if (!dict->lookup("BitsPerSample", &obj1)->isInt()) {
-    error(-1, "Function has missing or invalid BitsPerSample");
+    error(errSyntaxError, -1, "Function has missing or invalid BitsPerSample");
     goto err2;
   }
   sampleBits = obj1.getInt();
@@ -257,14 +292,14 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
     for (i = 0; i < m; ++i) {
       obj1.arrayGet(2*i, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function encode array");
+	error(errSyntaxError, -1, "Illegal value in function encode array");
 	goto err3;
       }
       encode[i][0] = obj2.getNum();
       obj2.free();
       obj1.arrayGet(2*i+1, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function encode array");
+	error(errSyntaxError, -1, "Illegal value in function encode array");
 	goto err3;
       }
       encode[i][1] = obj2.getNum();
@@ -288,14 +323,14 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
     for (i = 0; i < n; ++i) {
       obj1.arrayGet(2*i, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function decode array");
+	error(errSyntaxError, -1, "Illegal value in function decode array");
 	goto err3;
       }
       decode[i][0] = obj2.getNum();
       obj2.free();
       obj1.arrayGet(2*i+1, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function decode array");
+	error(errSyntaxError, -1, "Illegal value in function decode array");
 	goto err3;
       }
       decode[i][1] = obj2.getNum();
@@ -316,7 +351,7 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
   samples = (double *)gmallocn(nSamples, sizeof(double));
   buf = 0;
   bits = 0;
-  bitMask = (1 << sampleBits) - 1;
+  bitMask = (sampleBits < 32) ? ((1 << sampleBits) - 1) : 0xffffffffU;
   str->reset();
   for (i = 0; i < nSamples; ++i) {
     if (sampleBits == 8) {
@@ -341,6 +376,13 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
   }
   str->close();
 
+  // set up the cache
+  for (i = 0; i < m; ++i) {
+    in[i] = domain[i][0];
+    cacheIn[i] = in[i] - 1;
+  }
+  transform(in, cacheOut);
+
   ok = gTrue;
   return;
 
@@ -353,6 +395,9 @@ SampledFunction::SampledFunction(Object *funcObj, Dict *dict) {
 }
 
 SampledFunction::~SampledFunction() {
+  if (idxOffset) {
+    gfree(idxOffset);
+  }
   if (samples) {
     gfree(samples);
   }
@@ -363,6 +408,8 @@ SampledFunction::~SampledFunction() {
 
 SampledFunction::SampledFunction(SampledFunction *func) {
   memcpy(this, func, sizeof(SampledFunction));
+  idxOffset = (int *)gmallocn(1 << m, sizeof(int));
+  memcpy(idxOffset, func->idxOffset, (1 << m) * (int)sizeof(int));
   samples = (double *)gmallocn(nSamples, sizeof(double));
   memcpy(samples, func->samples, nSamples * sizeof(double));
   sBuf = (double *)gmallocn(1 << m, sizeof(double));
@@ -370,38 +417,54 @@ SampledFunction::SampledFunction(SampledFunction *func) {
 
 void SampledFunction::transform(double *in, double *out) {
   double x;
-  int e[funcMaxInputs][2];
+  int e[funcMaxInputs];
   double efrac0[funcMaxInputs];
   double efrac1[funcMaxInputs];
-  int i, j, k, idx, t;
+  int i, j, k, idx0, t;
+
+  // check the cache
+  for (i = 0; i < m; ++i) {
+    if (in[i] != cacheIn[i]) {
+      break;
+    }
+  }
+  if (i == m) {
+    for (i = 0; i < n; ++i) {
+      out[i] = cacheOut[i];
+    }
+    return;
+  }
 
   // map input values into sample array
   for (i = 0; i < m; ++i) {
     x = (in[i] - domain[i][0]) * inputMul[i] + encode[i][0];
-    if (x < 0) {
+    if (x < 0 || x != x) {  // x!=x is a more portable version of isnan(x)
       x = 0;
     } else if (x > sampleSize[i] - 1) {
       x = sampleSize[i] - 1;
     }
-    e[i][0] = (int)x;
-    if ((e[i][1] = e[i][0] + 1) >= sampleSize[i]) {
+    e[i] = (int)x;
+    if (e[i] == sampleSize[i] - 1 && sampleSize[i] > 1) {
       // this happens if in[i] = domain[i][1]
-      e[i][1] = e[i][0];
+      e[i] = sampleSize[i] - 2;
     }
-    efrac1[i] = x - e[i][0];
+    efrac1[i] = x - e[i];
     efrac0[i] = 1 - efrac1[i];
   }
+
+  // compute index for the first sample to be used
+  idx0 = 0;
+  for (k = m - 1; k >= 1; --k) {
+    idx0 = (idx0 + e[k]) * sampleSize[k-1];
+  }
+  idx0 = (idx0 + e[0]) * n;
 
   // for each output, do m-linear interpolation
   for (i = 0; i < n; ++i) {
 
     // pull 2^m values out of the sample array
     for (j = 0; j < (1<<m); ++j) {
-      idx = i;
-      for (k = 0, t = j; k < m; ++k, t >>= 1) {
-	idx += idxMul[k] * (e[k][t & 1]);
-      }
-      sBuf[j] = samples[idx];
+      sBuf[j] = samples[idx0 + idxOffset[j] + i];
     }
 
     // do m sets of interpolations
@@ -418,6 +481,14 @@ void SampledFunction::transform(double *in, double *out) {
     } else if (out[i] > range[i][1]) {
       out[i] = range[i][1];
     }
+  }
+
+  // save current result in the cache
+  for (i = 0; i < m; ++i) {
+    cacheIn[i] = in[i];
+  }
+  for (i = 0; i < n; ++i) {
+    cacheOut[i] = out[i];
   }
 }
 
@@ -436,21 +507,21 @@ ExponentialFunction::ExponentialFunction(Object *funcObj, Dict *dict) {
     goto err1;
   }
   if (m != 1) {
-    error(-1, "Exponential function with more than one input");
+    error(errSyntaxError, -1, "Exponential function with more than one input");
     goto err1;
   }
 
   //----- C0
   if (dict->lookup("C0", &obj1)->isArray()) {
     if (hasRange && obj1.arrayGetLength() != n) {
-      error(-1, "Function's C0 array is wrong length");
+      error(errSyntaxError, -1, "Function's C0 array is wrong length");
       goto err2;
     }
     n = obj1.arrayGetLength();
     for (i = 0; i < n; ++i) {
       obj1.arrayGet(i, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function C0 array");
+	error(errSyntaxError, -1, "Illegal value in function C0 array");
 	goto err3;
       }
       c0[i] = obj2.getNum();
@@ -458,7 +529,7 @@ ExponentialFunction::ExponentialFunction(Object *funcObj, Dict *dict) {
     }
   } else {
     if (hasRange && n != 1) {
-      error(-1, "Function's C0 array is wrong length");
+      error(errSyntaxError, -1, "Function's C0 array is wrong length");
       goto err2;
     }
     n = 1;
@@ -469,13 +540,13 @@ ExponentialFunction::ExponentialFunction(Object *funcObj, Dict *dict) {
   //----- C1
   if (dict->lookup("C1", &obj1)->isArray()) {
     if (obj1.arrayGetLength() != n) {
-      error(-1, "Function's C1 array is wrong length");
+      error(errSyntaxError, -1, "Function's C1 array is wrong length");
       goto err2;
     }
     for (i = 0; i < n; ++i) {
       obj1.arrayGet(i, &obj2);
       if (!obj2.isNum()) {
-	error(-1, "Illegal value in function C1 array");
+	error(errSyntaxError, -1, "Illegal value in function C1 array");
 	goto err3;
       }
       c1[i] = obj2.getNum();
@@ -483,7 +554,7 @@ ExponentialFunction::ExponentialFunction(Object *funcObj, Dict *dict) {
     }
   } else {
     if (n != 1) {
-      error(-1, "Function's C1 array is wrong length");
+      error(errSyntaxError, -1, "Function's C1 array is wrong length");
       goto err2;
     }
     c1[0] = 1;
@@ -492,7 +563,7 @@ ExponentialFunction::ExponentialFunction(Object *funcObj, Dict *dict) {
 
   //----- N (exponent)
   if (!dict->lookup("N", &obj1)->isNum()) {
-    error(-1, "Function has missing or invalid N");
+    error(errSyntaxError, -1, "Function has missing or invalid N");
     goto err2;
   }
   e = obj1.getNum();
@@ -544,7 +615,8 @@ void ExponentialFunction::transform(double *in, double *out) {
 // StitchingFunction
 //------------------------------------------------------------------------
 
-StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
+StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict,
+				     int recursion) {
   Object obj1, obj2;
   int i;
 
@@ -559,13 +631,14 @@ StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
     goto err1;
   }
   if (m != 1) {
-    error(-1, "Stitching function with more than one input");
+    error(errSyntaxError, -1, "Stitching function with more than one input");
     goto err1;
   }
 
   //----- Functions
   if (!dict->lookup("Functions", &obj1)->isArray()) {
-    error(-1, "Missing 'Functions' entry in stitching function");
+    error(errSyntaxError, -1,
+	  "Missing 'Functions' entry in stitching function");
     goto err1;
   }
   k = obj1.arrayGetLength();
@@ -577,12 +650,14 @@ StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
     funcs[i] = NULL;
   }
   for (i = 0; i < k; ++i) {
-    if (!(funcs[i] = Function::parse(obj1.arrayGet(i, &obj2)))) {
+    if (!(funcs[i] = Function::parse(obj1.arrayGet(i, &obj2),
+				     recursion + 1))) {
       goto err2;
     }
-    if (i > 0 && (funcs[i]->getInputSize() != 1 ||
-		  funcs[i]->getOutputSize() != funcs[0]->getOutputSize())) {
-      error(-1, "Incompatible subfunctions in stitching function");
+    if (funcs[i]->getInputSize() != 1 ||
+	(i > 0 && funcs[i]->getOutputSize() != funcs[0]->getOutputSize())) {
+      error(errSyntaxError, -1,
+	    "Incompatible subfunctions in stitching function");
       goto err2;
     }
     obj2.free();
@@ -592,13 +667,15 @@ StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
   //----- Bounds
   if (!dict->lookup("Bounds", &obj1)->isArray() ||
       obj1.arrayGetLength() != k - 1) {
-    error(-1, "Missing or invalid 'Bounds' entry in stitching function");
+    error(errSyntaxError, -1,
+	  "Missing or invalid 'Bounds' entry in stitching function");
     goto err1;
   }
   bounds[0] = domain[0][0];
   for (i = 1; i < k; ++i) {
     if (!obj1.arrayGet(i - 1, &obj2)->isNum()) {
-      error(-1, "Invalid type in 'Bounds' array in stitching function");
+      error(errSyntaxError, -1,
+	    "Invalid type in 'Bounds' array in stitching function");
       goto err2;
     }
     bounds[i] = obj2.getNum();
@@ -610,12 +687,14 @@ StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
   //----- Encode
   if (!dict->lookup("Encode", &obj1)->isArray() ||
       obj1.arrayGetLength() != 2 * k) {
-    error(-1, "Missing or invalid 'Encode' entry in stitching function");
+    error(errSyntaxError, -1,
+	  "Missing or invalid 'Encode' entry in stitching function");
     goto err1;
   }
   for (i = 0; i < 2 * k; ++i) {
     if (!obj1.arrayGet(i, &obj2)->isNum()) {
-      error(-1, "Invalid type in 'Encode' array in stitching function");
+      error(errSyntaxError, -1,
+	    "Invalid type in 'Encode' array in stitching function");
       goto err2;
     }
     encode[i] = obj2.getNum();
@@ -646,7 +725,7 @@ StitchingFunction::StitchingFunction(Object *funcObj, Dict *dict) {
 StitchingFunction::StitchingFunction(StitchingFunction *func) {
   int i;
 
-  k = func->k;
+  memcpy(this, func, sizeof(StitchingFunction));
   funcs = (Function **)gmallocn(k, sizeof(Function *));
   for (i = 0; i < k; ++i) {
     funcs[i] = func->funcs[i]->copy();
@@ -700,56 +779,58 @@ void StitchingFunction::transform(double *in, double *out) {
 // PostScriptFunction
 //------------------------------------------------------------------------
 
-enum PSOp {
-  psOpAbs,
-  psOpAdd,
-  psOpAnd,
-  psOpAtan,
-  psOpBitshift,
-  psOpCeiling,
-  psOpCopy,
-  psOpCos,
-  psOpCvi,
-  psOpCvr,
-  psOpDiv,
-  psOpDup,
-  psOpEq,
-  psOpExch,
-  psOpExp,
-  psOpFalse,
-  psOpFloor,
-  psOpGe,
-  psOpGt,
-  psOpIdiv,
-  psOpIndex,
-  psOpLe,
-  psOpLn,
-  psOpLog,
-  psOpLt,
-  psOpMod,
-  psOpMul,
-  psOpNe,
-  psOpNeg,
-  psOpNot,
-  psOpOr,
-  psOpPop,
-  psOpRoll,
-  psOpRound,
-  psOpSin,
-  psOpSqrt,
-  psOpSub,
-  psOpTrue,
-  psOpTruncate,
-  psOpXor,
-  psOpIf,
-  psOpIfelse,
-  psOpReturn
-};
+// This is not an enum, because we can't foreward-declare the enum
+// type in Function.h
+#define psOpAbs       0
+#define psOpAdd       1
+#define psOpAnd       2
+#define psOpAtan      3
+#define psOpBitshift  4
+#define psOpCeiling   5
+#define psOpCopy      6
+#define psOpCos       7
+#define psOpCvi       8
+#define psOpCvr       9
+#define psOpDiv      10
+#define psOpDup      11
+#define psOpEq       12
+#define psOpExch     13
+#define psOpExp      14
+#define psOpFalse    15
+#define psOpFloor    16
+#define psOpGe       17
+#define psOpGt       18
+#define psOpIdiv     19
+#define psOpIndex    20
+#define psOpLe       21
+#define psOpLn       22
+#define psOpLog      23
+#define psOpLt       24
+#define psOpMod      25
+#define psOpMul      26
+#define psOpNe       27
+#define psOpNeg      28
+#define psOpNot      29
+#define psOpOr       30
+#define psOpPop      31
+#define psOpRoll     32
+#define psOpRound    33
+#define psOpSin      34
+#define psOpSqrt     35
+#define psOpSub      36
+#define psOpTrue     37
+#define psOpTruncate 38
+#define psOpXor      39
+#define psOpPush     40
+#define psOpJ        41
+#define psOpJz       42
+
+#define nPSOps 43
 
 // Note: 'if' and 'ifelse' are parsed separately.
 // The rest are listed here in alphabetical order.
-// The index in this table is equivalent to the entry in PSOp.
-char *psOpNames[] = {
+// The index in this table is equivalent to the psOpXXX defines.
+static const char *psOpNames[] = {
   "abs",
   "add",
   "and",
@@ -792,217 +873,24 @@ char *psOpNames[] = {
   "xor"
 };
 
-#define nPSOps (sizeof(psOpNames) / sizeof(char *))
-
-enum PSObjectType {
-  psBool,
-  psInt,
-  psReal,
-  psOperator,
-  psBlock
-};
-
-// In the code array, 'if'/'ifelse' operators take up three slots
-// plus space for the code in the subclause(s).
-//
-//         +---------------------------------+
-//         | psOperator: psOpIf / psOpIfelse |
-//         +---------------------------------+
-//         | psBlock: ptr=<A>                |
-//         +---------------------------------+
-//         | psBlock: ptr=<B>                |
-//         +---------------------------------+
-//         | if clause                       |
-//         | ...                             |
-//         | psOperator: psOpReturn          |
-//         +---------------------------------+
-//     <A> | else clause                     |
-//         | ...                             |
-//         | psOperator: psOpReturn          |
-//         +---------------------------------+
-//     <B> | ...                             |
-//
-// For 'if', pointer <A> is present in the code stream but unused.
-
-struct PSObject {
-  PSObjectType type;
+struct PSCode {
+  int op;
   union {
-    GBool booln;		// boolean (stack only)
-    int intg;			// integer (stack and code)
-    double real;		// real (stack and code)
-    PSOp op;			// operator (code only)
-    int blk;			// if/ifelse block pointer (code only)
-  };
+    double d;
+    int i;
+  } val;
 };
 
 #define psStackSize 100
 
-class PSStack {
-public:
-
-  PSStack() { sp = psStackSize; }
-  void pushBool(GBool booln);
-  void pushInt(int intg);
-  void pushReal(double real);
-  GBool popBool();
-  int popInt();
-  double popNum();
-  GBool empty() { return sp == psStackSize; }
-  GBool topIsInt() { return sp < psStackSize && stack[sp].type == psInt; }
-  GBool topTwoAreInts()
-    { return sp < psStackSize - 1 &&
-	     stack[sp].type == psInt &&
-             stack[sp+1].type == psInt; }
-  GBool topIsReal() { return sp < psStackSize && stack[sp].type == psReal; }
-  GBool topTwoAreNums()
-    { return sp < psStackSize - 1 &&
-	     (stack[sp].type == psInt || stack[sp].type == psReal) &&
-	     (stack[sp+1].type == psInt || stack[sp+1].type == psReal); }
-  void copy(int n);
-  void roll(int n, int j);
-  void index(int i);
-  void pop();
-
-private:
-
-  GBool checkOverflow(int n = 1);
-  GBool checkUnderflow();
-  GBool checkType(PSObjectType t1, PSObjectType t2);
-
-  PSObject stack[psStackSize];
-  int sp;
-};
-
-GBool PSStack::checkOverflow(int n) {
-  if (sp - n < 0) {
-    error(-1, "Stack overflow in PostScript function");
-    return gFalse;
-  }
-  return gTrue;
-}
-
-GBool PSStack::checkUnderflow() {
-  if (sp == psStackSize) {
-    error(-1, "Stack underflow in PostScript function");
-    return gFalse;
-  }
-  return gTrue;
-}
-
-GBool PSStack::checkType(PSObjectType t1, PSObjectType t2) {
-  if (stack[sp].type != t1 && stack[sp].type != t2) {
-    error(-1, "Type mismatch in PostScript function");
-    return gFalse;
-  }
-  return gTrue;
-}
-
-void PSStack::pushBool(GBool booln) {
-  if (checkOverflow()) {
-    stack[--sp].type = psBool;
-    stack[sp].booln = booln;
-  }
-}
-
-void PSStack::pushInt(int intg) {
-  if (checkOverflow()) {
-    stack[--sp].type = psInt;
-    stack[sp].intg = intg;
-  }
-}
-
-void PSStack::pushReal(double real) {
-  if (checkOverflow()) {
-    stack[--sp].type = psReal;
-    stack[sp].real = real;
-  }
-}
-
-GBool PSStack::popBool() {
-  if (checkUnderflow() && checkType(psBool, psBool)) {
-    return stack[sp++].booln;
-  }
-  return gFalse;
-}
-
-int PSStack::popInt() {
-  if (checkUnderflow() && checkType(psInt, psInt)) {
-    return stack[sp++].intg;
-  }
-  return 0;
-}
-
-double PSStack::popNum() {
-  double ret;
-
-  if (checkUnderflow() && checkType(psInt, psReal)) {
-    ret = (stack[sp].type == psInt) ? (double)stack[sp].intg : stack[sp].real;
-    ++sp;
-    return ret;
-  }
-  return 0;
-}
-
-void PSStack::copy(int n) {
-  int i;
-
-  if (sp + n > psStackSize) {
-    error(-1, "Stack underflow in PostScript function");
-    return;
-  }
-  if (!checkOverflow(n)) {
-    return;
-  }
-  for (i = sp + n - 1; i >= sp; --i) {
-    stack[i - n] = stack[i];
-  }
-  sp -= n;
-}
-
-void PSStack::roll(int n, int j) {
-  PSObject obj;
-  int i, k;
-
-  if (j >= 0) {
-    j %= n;
-  } else {
-    j = -j % n;
-    if (j != 0) {
-      j = n - j;
-    }
-  }
-  if (n <= 0 || j == 0) {
-    return;
-  }
-  for (i = 0; i < j; ++i) {
-    obj = stack[sp];
-    for (k = sp; k < sp + n - 1; ++k) {
-      stack[k] = stack[k+1];
-    }
-    stack[sp + n - 1] = obj;
-  }
-}
-
-void PSStack::index(int i) {
-  if (!checkOverflow()) {
-    return;
-  }
-  --sp;
-  stack[sp] = stack[sp + 1 + i];
-}
-
-void PSStack::pop() {
-  if (!checkUnderflow()) {
-    return;
-  }
-  ++sp;
-}
-
 PostScriptFunction::PostScriptFunction(Object *funcObj, Dict *dict) {
   Stream *str;
-  int codePtr;
+  GList *tokens;
   GString *tok;
+  double in[funcMaxInputs];
+  int tokPtr, codePtr, i;
 
+  codeString = NULL;
   code = NULL;
   codeSize = 0;
   ok = gFalse;
@@ -1012,170 +900,187 @@ PostScriptFunction::PostScriptFunction(Object *funcObj, Dict *dict) {
     goto err1;
   }
   if (!hasRange) {
-    error(-1, "Type 4 function is missing range");
+    error(errSyntaxError, -1, "Type 4 function is missing range");
     goto err1;
   }
 
   //----- get the stream
   if (!funcObj->isStream()) {
-    error(-1, "Type 4 function isn't a stream");
+    error(errSyntaxError, -1, "Type 4 function isn't a stream");
     goto err1;
   }
   str = funcObj->getStream();
 
-  //----- parse the function
+  //----- tokenize the function
   codeString = new GString();
+  tokens = new GList();
   str->reset();
-  if (!(tok = getToken(str)) || tok->cmp("{")) {
-    error(-1, "Expected '{' at start of PostScript function");
-    if (tok) {
-      delete tok;
-    }
-    goto err1;
-  }
-  delete tok;
-  codePtr = 0;
-  if (!parseCode(str, &codePtr)) {
-    goto err2;
+  while ((tok = getToken(str))) {
+    tokens->append(tok);
   }
   str->close();
+
+  //----- parse the function
+  if (tokens->getLength() < 1 ||
+      ((GString *)tokens->get(0))->cmp("{")) {
+    error(errSyntaxError, -1, "Expected '{' at start of PostScript function");
+    goto err2;
+  }
+  tokPtr = 1;
+  codePtr = 0;
+  if (!parseCode(tokens, &tokPtr, &codePtr)) {
+    goto err2;
+  }
+  codeLen = codePtr;
+
+  //----- set up the cache
+  for (i = 0; i < m; ++i) {
+    in[i] = domain[i][0];
+    cacheIn[i] = in[i] - 1;
+  }
+  transform(in, cacheOut);
 
   ok = gTrue;
 
  err2:
-  str->close();
+  deleteGList(tokens, GString);
  err1:
   return;
 }
 
 PostScriptFunction::PostScriptFunction(PostScriptFunction *func) {
   memcpy(this, func, sizeof(PostScriptFunction));
-  code = (PSObject *)gmallocn(codeSize, sizeof(PSObject));
-  memcpy(code, func->code, codeSize * sizeof(PSObject));
   codeString = func->codeString->copy();
+  code = (PSCode *)gmallocn(codeSize, sizeof(PSCode));
+  memcpy(code, func->code, codeSize * sizeof(PSCode));
 }
 
 PostScriptFunction::~PostScriptFunction() {
   gfree(code);
-  delete codeString;
+  if (codeString) {
+    delete codeString;
+  }
 }
 
 void PostScriptFunction::transform(double *in, double *out) {
-  PSStack *stack;
-  int i;
+  double stack[psStackSize];
+  double x;
+  int sp, i;
 
-  stack = new PSStack();
+  // check the cache
   for (i = 0; i < m; ++i) {
-    //~ may need to check for integers here
-    stack->pushReal(in[i]);
-  }
-  exec(stack, 0);
-  for (i = n - 1; i >= 0; --i) {
-    out[i] = stack->popNum();
-    if (out[i] < range[i][0]) {
-      out[i] = range[i][0];
-    } else if (out[i] > range[i][1]) {
-      out[i] = range[i][1];
+    if (in[i] != cacheIn[i]) {
+      break;
     }
   }
-  // if (!stack->empty()) {
-  //   error(-1, "Extra values on stack at end of PostScript function");
+  if (i == m) {
+    for (i = 0; i < n; ++i) {
+      out[i] = cacheOut[i];
+    }
+    return;
+  }
+
+  for (i = 0; i < m; ++i) {
+    stack[psStackSize - 1 - i] = in[i];
+  }
+  sp = exec(stack, psStackSize - m);
+  // if (sp < psStackSize - n) {
+  //   error(errSyntaxWarning, -1,
+  // 	  "Extra values on stack at end of PostScript function");
   // }
-  delete stack;
+  if (sp > psStackSize - n) {
+    error(errSyntaxError, -1, "Stack underflow in PostScript function");
+    sp = psStackSize - n;
+  }
+  for (i = 0; i < n; ++i) {
+    x = stack[sp + n - 1 - i];
+    if (x < range[i][0]) {
+      out[i] = range[i][0];
+    } else if (x > range[i][1]) {
+      out[i] = range[i][1];
+    } else {
+      out[i] = x;
+    }
+  }
+
+  // save current result in the cache
+  for (i = 0; i < m; ++i) {
+    cacheIn[i] = in[i];
+  }
+  for (i = 0; i < n; ++i) {
+    cacheOut[i] = out[i];
+  }
 }
 
-GBool PostScriptFunction::parseCode(Stream *str, int *codePtr) {
+GBool PostScriptFunction::parseCode(GList *tokens, int *tokPtr, int *codePtr) {
   GString *tok;
   char *p;
-  GBool isReal;
-  int opPtr, elsePtr;
   int a, b, mid, cmp;
+  int codePtr0, codePtr1;
 
   while (1) {
-    if (!(tok = getToken(str))) {
-      error(-1, "Unexpected end of PostScript function stream");
+    if (*tokPtr >= tokens->getLength()) {
+      error(errSyntaxError, -1,
+	    "Unexpected end of PostScript function stream");
       return gFalse;
     }
+    tok = (GString *)tokens->get((*tokPtr)++);
     p = tok->getCString();
     if (isdigit(*p) || *p == '.' || *p == '-') {
-      isReal = gFalse;
-      for (++p; *p; ++p) {
-	if (*p == '.') {
-	  isReal = gTrue;
-	  break;
-	}
-      }
-      resizeCode(*codePtr);
-      if (isReal) {
-	code[*codePtr].type = psReal;
-	code[*codePtr].real = atof(tok->getCString());
-      } else {
-	code[*codePtr].type = psInt;
-	code[*codePtr].intg = atoi(tok->getCString());
-      }
-      ++*codePtr;
-      delete tok;
+      addCodeD(codePtr, psOpPush, atof(tok->getCString()));
     } else if (!tok->cmp("{")) {
-      delete tok;
-      opPtr = *codePtr;
-      *codePtr += 3;
-      resizeCode(opPtr + 2);
-      if (!parseCode(str, codePtr)) {
+      codePtr0 = *codePtr;
+      addCodeI(codePtr, psOpJz, 0);
+      if (!parseCode(tokens, tokPtr, codePtr)) {
 	return gFalse;
       }
-      if (!(tok = getToken(str))) {
-	error(-1, "Unexpected end of PostScript function stream");
+      if (*tokPtr >= tokens->getLength()) {
+	error(errSyntaxError, -1,
+	      "Unexpected end of PostScript function stream");
 	return gFalse;
       }
-      if (!tok->cmp("{")) {
-	elsePtr = *codePtr;
-	if (!parseCode(str, codePtr)) {
-	  return gFalse;
-	}
-	delete tok;
-	if (!(tok = getToken(str))) {
-	  error(-1, "Unexpected end of PostScript function stream");
-	  return gFalse;
-	}
-      } else {
-	elsePtr = -1;
-      }
+      tok = (GString *)tokens->get((*tokPtr)++);
       if (!tok->cmp("if")) {
-	if (elsePtr >= 0) {
-	  error(-1, "Got 'if' operator with two blocks in PostScript function");
+	code[codePtr0].val.i = *codePtr;
+      } else if (!tok->cmp("{")) {
+	codePtr1 = *codePtr;
+	addCodeI(codePtr, psOpJ, 0);
+	code[codePtr0].val.i = *codePtr;
+	if (!parseCode(tokens, tokPtr, codePtr)) {
 	  return gFalse;
 	}
-	code[opPtr].type = psOperator;
-	code[opPtr].op = psOpIf;
-	code[opPtr+2].type = psBlock;
-	code[opPtr+2].blk = *codePtr;
-      } else if (!tok->cmp("ifelse")) {
-	if (elsePtr < 0) {
-	  error(-1, "Got 'ifelse' operator with one blocks in PostScript function");
+	if (*tokPtr >= tokens->getLength()) {
+	  error(errSyntaxError, -1,
+		"Unexpected end of PostScript function stream");
 	  return gFalse;
 	}
-	code[opPtr].type = psOperator;
-	code[opPtr].op = psOpIfelse;
-	code[opPtr+1].type = psBlock;
-	code[opPtr+1].blk = elsePtr;
-	code[opPtr+2].type = psBlock;
-	code[opPtr+2].blk = *codePtr;
+	tok = (GString *)tokens->get((*tokPtr)++);
+	if (!tok->cmp("ifelse")) {
+	  code[codePtr1].val.i = *codePtr;
+	} else {
+	  error(errSyntaxError, -1,
+		"Expected 'ifelse' in PostScript function stream");
+	  return gFalse;
+	}
       } else {
-	error(-1, "Expected if/ifelse operator in PostScript function");
-	delete tok;
+	error(errSyntaxError, -1,
+	      "Expected 'if' in PostScript function stream");
 	return gFalse;
       }
-      delete tok;
     } else if (!tok->cmp("}")) {
-      delete tok;
-      resizeCode(*codePtr);
-      code[*codePtr].type = psOperator;
-      code[*codePtr].op = psOpReturn;
-      ++*codePtr;
       break;
+    } else if (!tok->cmp("if")) {
+      error(errSyntaxError, -1,
+	    "Unexpected 'if' in PostScript function stream");
+      return gFalse;
+    } else if (!tok->cmp("ifelse")) {
+      error(errSyntaxError, -1,
+	    "Unexpected 'ifelse' in PostScript function stream");
+      return gFalse;
     } else {
       a = -1;
       b = nPSOps;
+      cmp = 0; // make gcc happy
       // invariant: psOpNames[a] < tok < psOpNames[b]
       while (b - a > 1) {
 	mid = (a + b) / 2;
@@ -1189,19 +1094,56 @@ GBool PostScriptFunction::parseCode(Stream *str, int *codePtr) {
 	}
       }
       if (cmp != 0) {
-	error(-1, "Unknown operator '%s' in PostScript function",
-	      tok->getCString());
-	delete tok;
+	error(errSyntaxError, -1,
+	      "Unknown operator '{0:t}' in PostScript function",
+	      tok);
 	return gFalse;
       }
-      delete tok;
-      resizeCode(*codePtr);
-      code[*codePtr].type = psOperator;
-      code[*codePtr].op = (PSOp)a;
-      ++*codePtr;
+      addCode(codePtr, a);
     }
   }
   return gTrue;
+}
+
+void PostScriptFunction::addCode(int *codePtr, int op) {
+  if (*codePtr >= codeSize) {
+    if (codeSize) {
+      codeSize *= 2;
+    } else {
+      codeSize = 16;
+    }
+    code = (PSCode *)greallocn(code, codeSize, sizeof(PSCode));
+  }
+  code[*codePtr].op = op;
+  ++(*codePtr);
+}
+
+void PostScriptFunction::addCodeI(int *codePtr, int op, int x) {
+  if (*codePtr >= codeSize) {
+    if (codeSize) {
+      codeSize *= 2;
+    } else {
+      codeSize = 16;
+    }
+    code = (PSCode *)greallocn(code, codeSize, sizeof(PSCode));
+  }
+  code[*codePtr].op = op;
+  code[*codePtr].val.i = x;
+  ++(*codePtr);
+}
+
+void PostScriptFunction::addCodeD(int *codePtr, int op, double x) {
+  if (*codePtr >= codeSize) {
+    if (codeSize) {
+      codeSize *= 2;
+    } else {
+      codeSize = 16;
+    }
+    code = (PSCode *)greallocn(code, codeSize, sizeof(PSCode));
+  }
+  code[*codePtr].op = op;
+  code[*codePtr].val.d = x;
+  ++(*codePtr);
 }
 
 GString *PostScriptFunction::getToken(Stream *str) {
@@ -1213,7 +1155,8 @@ GString *PostScriptFunction::getToken(Stream *str) {
   comment = gFalse;
   while (1) {
     if ((c = str->getChar()) == EOF) {
-      break;
+      delete s;
+      return NULL;
     }
     codeString->append(c);
     if (comment) {
@@ -1252,322 +1195,362 @@ GString *PostScriptFunction::getToken(Stream *str) {
   return s;
 }
 
-void PostScriptFunction::resizeCode(int newSize) {
-  if (newSize >= codeSize) {
-    codeSize += 64;
-    code = (PSObject *)greallocn(code, codeSize, sizeof(PSObject));
-  }
-}
+int PostScriptFunction::exec(double *stack, int sp0) {
+  PSCode *c;
+  double tmp[psStackSize];
+  double t;
+  int sp, ip, nn, k, i;
 
-void PostScriptFunction::exec(PSStack *stack, int codePtr) {
-  int i1, i2;
-  double r1, r2;
-  GBool b1, b2;
-
-  while (1) {
-    switch (code[codePtr].type) {
-    case psInt:
-      stack->pushInt(code[codePtr++].intg);
+  sp = sp0;
+  ip = 0;
+  while (ip < codeLen) {
+    c = &code[ip++];
+    switch(c->op) {
+    case psOpAbs:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = fabs(stack[sp]);
       break;
-    case psReal:
-      stack->pushReal(code[codePtr++].real);
+    case psOpAdd:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] + stack[sp];
+      ++sp;
       break;
-    case psOperator:
-      switch (code[codePtr++].op) {
-      case psOpAbs:
-	if (stack->topIsInt()) {
-	  stack->pushInt(abs(stack->popInt()));
-	} else {
-	  stack->pushReal(fabs(stack->popNum()));
-	}
-	break;
-      case psOpAdd:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushInt(i1 + i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushReal(r1 + r2);
-	}
-	break;
-      case psOpAnd:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushInt(i1 & i2);
-	} else {
-	  b2 = stack->popBool();
-	  b1 = stack->popBool();
-	  stack->pushBool(b1 && b2);
-	}
-	break;
-      case psOpAtan:
-	r2 = stack->popNum();
-	r1 = stack->popNum();
-	stack->pushReal(atan2(r1, r2));
-	break;
-      case psOpBitshift:
-	i2 = stack->popInt();
-	i1 = stack->popInt();
-	if (i2 > 0) {
-	  stack->pushInt(i1 << i2);
-	} else if (i2 < 0) {
-	  stack->pushInt((int)((Guint)i1 >> i2));
-	} else {
-	  stack->pushInt(i1);
-	}
-	break;
-      case psOpCeiling:
-	if (!stack->topIsInt()) {
-	  stack->pushReal(ceil(stack->popNum()));
-	}
-	break;
-      case psOpCopy:
-	stack->copy(stack->popInt());
-	break;
-      case psOpCos:
-	stack->pushReal(cos(stack->popNum()));
-	break;
-      case psOpCvi:
-	if (!stack->topIsInt()) {
-	  stack->pushInt((int)stack->popNum());
-	}
-	break;
-      case psOpCvr:
-	if (!stack->topIsReal()) {
-	  stack->pushReal(stack->popNum());
-	}
-	break;
-      case psOpDiv:
-	r2 = stack->popNum();
-	r1 = stack->popNum();
-	stack->pushReal(r1 / r2);
-	break;
-      case psOpDup:
-	stack->copy(1);
-	break;
-      case psOpEq:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 == i2);
-	} else if (stack->topTwoAreNums()) {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 == r2);
-	} else {
-	  b2 = stack->popBool();
-	  b1 = stack->popBool();
-	  stack->pushBool(b1 == b2);
-	}
-	break;
-      case psOpExch:
-	stack->roll(2, 1);
-	break;
-      case psOpExp:
-	r2 = stack->popNum();
-	r1 = stack->popNum();
-	stack->pushReal(pow(r1, r2));
-	break;
-      case psOpFalse:
-	stack->pushBool(gFalse);
-	break;
-      case psOpFloor:
-	if (!stack->topIsInt()) {
-	  stack->pushReal(floor(stack->popNum()));
-	}
-	break;
-      case psOpGe:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 >= i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 >= r2);
-	}
-	break;
-      case psOpGt:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 > i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 > r2);
-	}
-	break;
-      case psOpIdiv:
-	i2 = stack->popInt();
-	i1 = stack->popInt();
-	stack->pushInt(i1 / i2);
-	break;
-      case psOpIndex:
-	stack->index(stack->popInt());
-	break;
-      case psOpLe:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 <= i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 <= r2);
-	}
-	break;
-      case psOpLn:
-	stack->pushReal(log(stack->popNum()));
-	break;
-      case psOpLog:
-	stack->pushReal(log10(stack->popNum()));
-	break;
-      case psOpLt:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 < i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 < r2);
-	}
-	break;
-      case psOpMod:
-	i2 = stack->popInt();
-	i1 = stack->popInt();
-	stack->pushInt(i1 % i2);
-	break;
-      case psOpMul:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  //~ should check for out-of-range, and push a real instead
-	  stack->pushInt(i1 * i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushReal(r1 * r2);
-	}
-	break;
-      case psOpNe:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushBool(i1 != i2);
-	} else if (stack->topTwoAreNums()) {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushBool(r1 != r2);
-	} else {
-	  b2 = stack->popBool();
-	  b1 = stack->popBool();
-	  stack->pushBool(b1 != b2);
-	}
-	break;
-      case psOpNeg:
-	if (stack->topIsInt()) {
-	  stack->pushInt(-stack->popInt());
-	} else {
-	  stack->pushReal(-stack->popNum());
-	}
-	break;
-      case psOpNot:
-	if (stack->topIsInt()) {
-	  stack->pushInt(~stack->popInt());
-	} else {
-	  stack->pushBool(!stack->popBool());
-	}
-	break;
-      case psOpOr:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushInt(i1 | i2);
-	} else {
-	  b2 = stack->popBool();
-	  b1 = stack->popBool();
-	  stack->pushBool(b1 || b2);
-	}
-	break;
-      case psOpPop:
-	stack->pop();
-	break;
-      case psOpRoll:
-	i2 = stack->popInt();
-	i1 = stack->popInt();
-	stack->roll(i1, i2);
-	break;
-      case psOpRound:
-	if (!stack->topIsInt()) {
-	  r1 = stack->popNum();
-	  stack->pushReal((r1 >= 0) ? floor(r1 + 0.5) : ceil(r1 - 0.5));
-	}
-	break;
-      case psOpSin:
-	stack->pushReal(sin(stack->popNum()));
-	break;
-      case psOpSqrt:
-	stack->pushReal(sqrt(stack->popNum()));
-	break;
-      case psOpSub:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushInt(i1 - i2);
-	} else {
-	  r2 = stack->popNum();
-	  r1 = stack->popNum();
-	  stack->pushReal(r1 - r2);
-	}
-	break;
-      case psOpTrue:
-	stack->pushBool(gTrue);
-	break;
-      case psOpTruncate:
-	if (!stack->topIsInt()) {
-	  r1 = stack->popNum();
-	  stack->pushReal((r1 >= 0) ? floor(r1) : ceil(r1));
-	}
-	break;
-      case psOpXor:
-	if (stack->topTwoAreInts()) {
-	  i2 = stack->popInt();
-	  i1 = stack->popInt();
-	  stack->pushInt(i1 ^ i2);
-	} else {
-	  b2 = stack->popBool();
-	  b1 = stack->popBool();
-	  stack->pushBool(b1 ^ b2);
-	}
-	break;
-      case psOpIf:
-	b1 = stack->popBool();
-	if (b1) {
-	  exec(stack, codePtr + 2);
-	}
-	codePtr = code[codePtr + 1].blk;
-	break;
-      case psOpIfelse:
-	b1 = stack->popBool();
-	if (b1) {
-	  exec(stack, codePtr + 2);
-	} else {
-	  exec(stack, code[codePtr].blk);
-	}
-	codePtr = code[codePtr + 1].blk;
-	break;
-      case psOpReturn:
-	return;
+    case psOpAnd:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = (int)stack[sp + 1] & (int)stack[sp];
+      ++sp;
+      break;
+    case psOpAtan:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = atan2(stack[sp + 1], stack[sp]);
+      ++sp;
+      break;
+    case psOpBitshift:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      k = (int)stack[sp + 1];
+      nn = (int)stack[sp];
+      if (nn > 0) {
+	stack[sp + 1] = k << nn;
+      } else if (nn < 0) {
+	stack[sp + 1] = k >> -nn;
+      } else {
+	stack[sp + 1] = k;
+      }
+      ++sp;
+      break;
+    case psOpCeiling:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = ceil(stack[sp]);
+      break;
+    case psOpCopy:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      nn = (int)stack[sp++];
+      if (nn < 0) {
+	goto invalidArg;
+      }
+      if (sp + nn > psStackSize) {
+	goto underflow;
+      }
+      if (sp - nn < 0) {
+	goto overflow;
+      }
+      for (i = 0; i < nn; ++i) {
+	stack[sp - nn + i] = stack[sp + i];
+      }
+      sp -= nn;
+      break;
+    case psOpCos:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = cos(stack[sp]);
+      break;
+    case psOpCvi:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = (int)stack[sp];
+      break;
+    case psOpCvr:
+      if (sp >= psStackSize) {
+	goto underflow;
       }
       break;
-    default:
-      error(-1, "Internal: bad object in PostScript function code");
+    case psOpDiv:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] / stack[sp];
+      ++sp;
+      break;
+    case psOpDup:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      if (sp < 1) {
+	goto overflow;
+      }
+      stack[sp - 1] = stack[sp];
+      --sp;
+      break;
+    case psOpEq:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] == stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpExch:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      t = stack[sp];
+      stack[sp] = stack[sp + 1];
+      stack[sp + 1] = t;
+      break;
+    case psOpExp:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = pow(stack[sp + 1], stack[sp]);
+      ++sp;
+      break;
+    case psOpFalse:
+      if (sp < 1) {
+	goto overflow;
+      }
+      stack[sp - 1] = 0;
+      --sp;
+      break;
+    case psOpFloor:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = floor(stack[sp]);
+      break;
+    case psOpGe:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] >= stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpGt:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] > stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpIdiv:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = (int)stack[sp + 1] / (int)stack[sp];
+      ++sp;
+      break;
+    case psOpIndex:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      k = (int)stack[sp];
+      if (k < 0) {
+	goto invalidArg;
+      }
+      if (sp + 1 + k >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = stack[sp + 1 + k];
+      break;
+    case psOpLe:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] <= stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpLn:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = log(stack[sp]);
+      break;
+    case psOpLog:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = log10(stack[sp]);
+      break;
+    case psOpLt:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] < stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpMod:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = (int)stack[sp + 1] % (int)stack[sp];
+      ++sp;
+      break;
+    case psOpMul:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] * stack[sp];
+      ++sp;
+      break;
+    case psOpNe:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] != stack[sp] ? 1 : 0;
+      ++sp;
+      break;
+    case psOpNeg:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = -stack[sp];
+      break;
+    case psOpNot:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = stack[sp] == 0 ? 1 : 0;
+      break;
+    case psOpOr:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = (int)stack[sp + 1] | (int)stack[sp];
+      ++sp;
+      break;
+    case psOpPop:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      ++sp;
+      break;
+    case psOpRoll:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      k = (int)stack[sp++];
+      nn = (int)stack[sp++];
+      if (nn < 0) {
+	goto invalidArg;
+      }
+      if (sp + nn > psStackSize) {
+	goto underflow;
+      }
+      if (k >= 0) {
+	k %= nn;
+      } else {
+	k = -k % nn;
+	if (k) {
+	  k = nn - k;
+	}
+      }
+      for (i = 0; i < nn; ++i) {
+	tmp[i] = stack[sp + i];
+      }
+      for (i = 0; i < nn; ++i) {
+	stack[sp + i] = tmp[(i + k) % nn];
+      }
+      break;
+    case psOpRound:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      t = stack[sp];
+      stack[sp] = (t >= 0) ? floor(t + 0.5) : ceil(t - 0.5);
+      break;
+    case psOpSin:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = sin(stack[sp]);
+      break;
+    case psOpSqrt:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp] = sqrt(stack[sp]);
+      break;
+    case psOpSub:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = stack[sp + 1] - stack[sp];
+      ++sp;
+      break;
+    case psOpTrue:
+      if (sp < 1) {
+	goto overflow;
+      }
+      stack[sp - 1] = 1;
+      --sp;
+      break;
+    case psOpTruncate:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      t = stack[sp];
+      stack[sp] = (t >= 0) ? floor(t) : ceil(t);
+      break;
+    case psOpXor:
+      if (sp + 1 >= psStackSize) {
+	goto underflow;
+      }
+      stack[sp + 1] = (int)stack[sp + 1] ^ (int)stack[sp];
+      ++sp;
+      break;
+    case psOpPush:
+      if (sp < 1) {
+	goto overflow;
+      }
+      stack[--sp] = c->val.d;
+      break;
+    case psOpJ:
+      ip = c->val.i;
+      break;
+    case psOpJz:
+      if (sp >= psStackSize) {
+	goto underflow;
+      }
+      k = (int)stack[sp++];
+      if (k == 0) {
+	ip = c->val.i;
+      }
       break;
     }
   }
+  return sp;
+
+ underflow:
+  error(errSyntaxError, -1, "Stack underflow in PostScript function");
+  return sp;
+ overflow:
+  error(errSyntaxError, -1, "Stack overflow in PostScript function");
+  return sp;
+ invalidArg:
+  error(errSyntaxError, -1, "Invalid arg in PostScript function");
+  return sp;
 }

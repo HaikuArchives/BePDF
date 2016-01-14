@@ -26,8 +26,9 @@ class OutputDev;
 class Links;
 class LinkAction;
 class LinkDest;
-class LoadProgressMonitor;
 class Outline;
+class OptionalContent;
+class PDFCore;
 
 //------------------------------------------------------------------------
 // PDFDoc
@@ -37,16 +38,13 @@ class PDFDoc {
 public:
 
   PDFDoc(GString *fileNameA, GString *ownerPassword = NULL,
-	 GString *userPassword = NULL, void *guiDataA = NULL, 
-	 LoadProgressMonitor *monitor = NULL);
-#ifdef WIN32
+	 GString *userPassword = NULL, PDFCore *coreA = NULL);
+#ifdef _WIN32
   PDFDoc(wchar_t *fileNameA, int fileNameLen, GString *ownerPassword = NULL,
-	 GString *userPassword = NULL, void *guiDataA = NULL, 
-	 LoadProgressMonitor *monitor = NULL);
+	 GString *userPassword = NULL, PDFCore *coreA = NULL);
 #endif
   PDFDoc(BaseStream *strA, GString *ownerPassword = NULL,
-	 GString *userPassword = NULL, void *guiDataA = NULL, 
-	 LoadProgressMonitor *monitor = NULL);
+	 GString *userPassword = NULL, PDFCore *coreA = NULL);
   ~PDFDoc();
 
   // Was PDF document successfully opened?
@@ -57,6 +55,9 @@ public:
 
   // Get file name.
   GString *getFileName() { return fileName; }
+#ifdef _WIN32
+  wchar_t *getFileNameU() { return fileNameU; }
+#endif
 
   // Get the xref table.
   XRef *getXRef() { return xref; }
@@ -94,18 +95,14 @@ public:
 		   double hDPI, double vDPI, int rotate,
 		   GBool useMediaBox, GBool crop, GBool printing,
 		   GBool (*abortCheckCbk)(void *data) = NULL,
-		   void *abortCheckCbkData = NULL,
-	       GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
-	       void *annotDisplayDecideCbkData = NULL);
+		   void *abortCheckCbkData = NULL);
 
   // Display a range of pages.
   void displayPages(OutputDev *out, int firstPage, int lastPage,
 		    double hDPI, double vDPI, int rotate,
 		    GBool useMediaBox, GBool crop, GBool printing,
 		    GBool (*abortCheckCbk)(void *data) = NULL,
-		    void *abortCheckCbkData = NULL,
-	        GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
-	        void *annotDisplayDecideCbkData = NULL);
+		    void *abortCheckCbkData = NULL);
 
   // Display part of a page.
   void displayPageSlice(OutputDev *out, int page,
@@ -113,9 +110,7 @@ public:
 			GBool useMediaBox, GBool crop, GBool printing,
 			int sliceX, int sliceY, int sliceW, int sliceH,
 			GBool (*abortCheckCbk)(void *data) = NULL,
-			void *abortCheckCbkData = NULL,
-	        GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
-	        void *annotDisplayDecideCbkData = NULL);
+			void *abortCheckCbkData = NULL);
 
   // Find a page, given its object ID.  Returns page number, or 0 if
   // not found.
@@ -137,6 +132,9 @@ public:
   // Return the outline object.
   Outline *getOutline() { return outline; }
 #endif
+
+  // Return the OptionalContent object.
+  OptionalContent *getOptionalContent() { return optContent; }
 
   // Is the file encrypted?
   GBool isEncrypted() { return xref->isEncrypted(); }
@@ -164,32 +162,45 @@ public:
   // Save this file with another name.
   GBool saveAs(GString *name);
 
-  // Return a pointer to the GUI (XPDFCore or WinPDFCore object).
-  void *getGUIData() { return guiData; }
+  // Return a pointer to the PDFCore object.
+  PDFCore *getCore() { return core; }
+
+  // Get the list of embedded files.
+  int getNumEmbeddedFiles() { return catalog->getNumEmbeddedFiles(); }
+  Unicode *getEmbeddedFileName(int idx)
+    { return catalog->getEmbeddedFileName(idx); }
+  int getEmbeddedFileNameLength(int idx)
+    { return catalog->getEmbeddedFileNameLength(idx); }
+  GBool saveEmbeddedFile(int idx, char *path);
+#ifdef _WIN32
+  GBool saveEmbeddedFile(int idx, wchar_t *path, int pathLen);
+#endif
+  char *getEmbeddedFileMem(int idx, int *size);
 
 
 private:
 
-  GBool setup(GString *ownerPassword, GString *userPassword, 
-	       LoadProgressMonitor *monitor);
+  GBool setup(GString *ownerPassword, GString *userPassword);
+  GBool setup2(GString *ownerPassword, GString *userPassword,
+	       GBool repairXRef);
   void checkHeader();
   GBool checkEncryption(GString *ownerPassword, GString *userPassword);
+  GBool saveEmbeddedFile2(int idx, FILE *f);
 
   GString *fileName;
-#if USE_FILE
-  File *file;
-#else  
-  FILE *file;
+#ifdef _WIN32
+  wchar_t *fileNameU;
 #endif
+  FILE *file;
   BaseStream *str;
-  void *guiData;
+  PDFCore *core;
   double pdfVersion;
   XRef *xref;
   Catalog *catalog;
 #ifndef DISABLE_OUTLINE
   Outline *outline;
 #endif
-
+  OptionalContent *optContent;
 
   GBool ok;
   int errCode;

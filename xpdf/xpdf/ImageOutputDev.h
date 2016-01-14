@@ -40,6 +40,11 @@ public:
   // Check if file was successfully created.
   virtual GBool isOk() { return ok; }
 
+  // Does this device use tilingPatternFill()?  If this returns false,
+  // tiling pattern fills will be reduced to a series of other drawing
+  // operations.
+  virtual GBool useTilingPatternFill() { return gTrue; }
+
   // Does this device use beginType3Char/endType3Char?  Otherwise,
   // text in Type 3 fonts will be drawn with drawChar/drawString.
   virtual GBool interpretType3Chars() { return gFalse; }
@@ -56,13 +61,32 @@ public:
   // Does this device use drawChar() or drawString()?
   virtual GBool useDrawChar() { return gFalse; }
 
+  //----- path painting
+  virtual void tilingPatternFill(GfxState *state, Gfx *gfx, Object *strRef,
+				 int paintType, Dict *resDict,
+				 double *mat, double *bbox,
+				 int x0, int y0, int x1, int y1,
+				 double xStep, double yStep);
+
   //----- image drawing
   virtual void drawImageMask(GfxState *state, Object *ref, Stream *str,
 			     int width, int height, GBool invert,
-			     GBool inlineImg);
+			     GBool inlineImg, GBool interpolate);
   virtual void drawImage(GfxState *state, Object *ref, Stream *str,
 			 int width, int height, GfxImageColorMap *colorMap,
-			 int *maskColors, GBool inlineImg);
+			 int *maskColors, GBool inlineImg, GBool interpolate);
+  virtual void drawMaskedImage(GfxState *state, Object *ref, Stream *str,
+			       int width, int height,
+			       GfxImageColorMap *colorMap,
+			       Stream *maskStr, int maskWidth, int maskHeight,
+			       GBool maskInvert, GBool interpolate);
+  virtual void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
+				   int width, int height,
+				   GfxImageColorMap *colorMap,
+				   Stream *maskStr,
+				   int maskWidth, int maskHeight,
+				   GfxImageColorMap *maskColorMap,
+				   GBool interpolate);
 
 private:
 
