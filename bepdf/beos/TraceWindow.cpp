@@ -40,7 +40,7 @@
 #define B_TRANSLATION_CONTEXT "TraceWindow"
 
 TraceWindow::TraceWindow(GlobalSettings *settings)
-	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Error Messages"),
+	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Error messages"),
 		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS)
 	, mSettings(settings)
 	, mAutoOpen(settings->GetTraceAutoOpen())
@@ -54,7 +54,7 @@ TraceWindow::TraceWindow(GlobalSettings *settings)
 	mOutput->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	BScrollView *outScroll = new BScrollView("outScroll", mOutput, 0, false, true);
 
-	BCheckBox *autoOpen = new BCheckBox("autoOpen", B_TRANSLATE("Auto Open"),
+	BCheckBox *autoOpen = new BCheckBox("autoOpen", B_TRANSLATE("Auto open"),
 		new BMessage(AUTO_OPEN_MSG));
 	autoOpen->SetValue(mAutoOpen);
 

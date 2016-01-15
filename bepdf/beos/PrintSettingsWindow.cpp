@@ -36,7 +36,7 @@
 #define B_TRANSLATION_CONTEXT "PrintSettingsWindow"
 
 PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, BLooper *looper)
-	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Print Settings"),
+	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("Print settings"),
 		B_TITLED_WINDOW_LOOK, B_FLOATING_APP_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS),
 	mDoc(doc), mLooper(looper), mSettings(settings), mZoomValue(settings->GetZoomPrinter()) {
 
@@ -63,16 +63,16 @@ PrintSettingsWindow::PrintSettingsWindow(PDFDoc *doc, GlobalSettings *settings, 
 	int32 row = 0;
 
 	BPopUpMenu* resolution = MakePopup(MakeLabel(B_TRANSLATE("DPI")), grid, row);
-	AddItem(resolution, B_TRANSLATE("Max. Printer Resolution"), MSG_DPI_CHANGED);
+	AddItem(resolution, B_TRANSLATE("Max. printer resolution"), MSG_DPI_CHANGED);
 	resolution->AddSeparatorItem();
 	AddItem(resolution, "72", MSG_DPI_CHANGED);
 	AddItem(resolution, "300", MSG_DPI_CHANGED);
 
 	// Page selection
 	BPopUpMenu* pages = MakePopup(MakeLabel(B_TRANSLATE("Pages")), grid, row);
-	AddItem(pages, B_TRANSLATE("All Pages"), MSG_SELECTION_CHANGED);
-	AddItem(pages, B_TRANSLATE("Odd Pages"), MSG_SELECTION_CHANGED);
-	AddItem(pages, B_TRANSLATE("Even Pages"), MSG_SELECTION_CHANGED);
+	AddItem(pages, B_TRANSLATE("All pages"), MSG_SELECTION_CHANGED);
+	AddItem(pages, B_TRANSLATE("Odd pages"), MSG_SELECTION_CHANGED);
+	AddItem(pages, B_TRANSLATE("Even pages"), MSG_SELECTION_CHANGED);
 
 	// Print order
 	BPopUpMenu* order = MakePopup(MakeLabel(B_TRANSLATE("Order")), grid, row);
@@ -255,7 +255,7 @@ int32 index;
 bool PrintSettingsWindow::QuitRequested() {
 	bool quit = (mZoomValue >= 25) && (mZoomValue <= 400);
 	if (!quit) {
-		BAlert *warning = new BAlert(B_TRANSLATE("Wrong Parameter!"),
+		BAlert *warning = new BAlert(B_TRANSLATE("Wrong parameter!"),
 			B_TRANSLATE("Zoom must be between 25 and 400!"), B_TRANSLATE("OK"),
 			NULL, NULL,
 			B_WIDTH_AS_USUAL, B_STOP_ALERT);

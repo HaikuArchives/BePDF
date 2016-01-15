@@ -1563,7 +1563,7 @@ PDFView::ShowAnnotPopUpMenu(BPoint point) {
 
 	if (dynamic_cast<FileAttachmentAnnot*>(mAnnotation) != NULL) {
 		menu->AddSeparatorItem();
-		AddAnnotItem(menu, "Save File Attachment As…", SAVE_FILE_ATTACHMENT_ANNOT_MSG);
+		AddAnnotItem(menu, "Save file attachment as" B_UTF8_ELLIPSIS, SAVE_FILE_ATTACHMENT_ANNOT_MSG);
 	}
 
 	menu->AddSeparatorItem();
@@ -1588,7 +1588,7 @@ PDFView::ShowPopUpMenu(BPoint point, LinkAction* action) {
 	if (IsLinkToPDF(action, &s)) {
 		msg = new BMessage(OPEN_FILE_MSG);
 		msg->AddString("file", s);
-		i = new BMenuItem(B_TRANSLATE("Open In New Window"), msg);
+		i = new BMenuItem(B_TRANSLATE("Open in new window"), msg);
 		i->SetTarget(this);
 		menu->AddItem(i);
 	}

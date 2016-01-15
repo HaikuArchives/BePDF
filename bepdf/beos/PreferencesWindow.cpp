@@ -83,7 +83,7 @@ void PreferencesWindow::SetupView() {
 
 	mPreferences->AddItem(item = new BStringItem(B_TRANSLATE("Display")));
 		// reverse order:
-		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("Asian Fonts")), item);
+		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("Asian fonts")), item);
 		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("FreeType 2")), item);
 
 	mPreferences->SetSelectionMessage(new BMessage(PREFERENCE_SELECTED));
@@ -98,17 +98,17 @@ void PreferencesWindow::SetupView() {
 	preferences->AddChild(prefBox->View());
 
 	BCheckBox *pageNumber = new BCheckBox("pageNumber",
-		B_TRANSLATE("Restore Page Number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
+		B_TRANSLATE("Restore page number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
 	pageNumber->SetValue(settings->GetRestorePageNumber());
 
 	BCheckBox *windowPos = new BCheckBox("windowPos",
-		B_TRANSLATE("Restore Window Position and Size"),
+		B_TRANSLATE("Restore window position and size"),
 		new BMessage(RESTORE_WINDOW_FRAME_CHANGED));
 	windowPos->SetValue(settings->GetRestoreWindowFrame());
 
 	BPopUpMenu *openMenu = new BPopUpMenu("openMenu");
 	mOpenInWorkspace = new BMenuField("mOpeninWorkspace",
-		B_TRANSLATE("Open in Workspace:"), openMenu);
+		B_TRANSLATE("Open in workspace:"), openMenu);
 
 	BTextControl *author = new BTextControl("author", B_TRANSLATE("Author"),
 		settings->GetAuthor(), new BMessage(AUTHOR_CHANGED));
@@ -126,12 +126,12 @@ void PreferencesWindow::SetupView() {
 	document->AddChild(docBox->View());
 
 	BRadioButton *docOnly = new BRadioButton("docOnly",
-		B_TRANSLATE("Show Document View only"),
+		B_TRANSLATE("Show document view only"),
 		new BMessage(QUASI_FULLSCREEN_MODE_OFF));
 	docOnly->SetValue(!(settings->GetQuasiFullscreenMode()));
 
 	BRadioButton *docMore = new BRadioButton("docMore",
-		B_TRANSLATE("Show Toolbar, Statusbar and Scrollbars too"),
+		B_TRANSLATE("Show toolbar, statusbar and scrollbars, too"),
 		new BMessage(QUASI_FULLSCREEN_MODE_ON));
 	docMore->SetValue(settings->GetQuasiFullscreenMode());
 
@@ -141,16 +141,16 @@ void PreferencesWindow::SetupView() {
 		.Add(docMore);
 
 	BBox *fullscreen = new BBox("fullscreen");
-	fullscreen->SetLabel(B_TRANSLATE("Fullscreen Mode"));
+	fullscreen->SetLabel(B_TRANSLATE("Fullscreen mode"));
 	fullscreen->AddChild(fsBox->View());
 
 	BRadioButton *filledRect = new BRadioButton("filledRect",
-		B_TRANSLATE("Filled Rectangle"),
+		B_TRANSLATE("Filled rectangle"),
 		new BMessage(FILLED_SELECTION_FILLED));
 	filledRect->SetValue(settings->GetFilledSelection());
 
 	BRadioButton *strokedRect = new BRadioButton("strokedRect",
-		B_TRANSLATE("Stroked Rectangle"),
+		B_TRANSLATE("Stroked rectangle"),
 		new BMessage(FILLED_SELECTION_STROKED));
 	strokedRect->SetValue(!(settings->GetFilledSelection()));
 
@@ -160,7 +160,7 @@ void PreferencesWindow::SetupView() {
 		.Add(strokedRect);
 
 	BBox *selection = new BBox("selection");
-	selection->SetLabel(B_TRANSLATE("Selection Rectangle"));
+	selection->SetLabel(B_TRANSLATE("Selection rectangle"));
 	selection->AddChild(rectBox->View());
 
 	BCheckBox *scrolling = new BCheckBox("scrolling",
@@ -182,7 +182,7 @@ void PreferencesWindow::SetupView() {
 	freetype->AddChild(ftBox->View());
 
 	BBox *asian = new BBox("asian");
-	asian->SetLabel(B_TRANSLATE("Asian Fonts"));
+	asian->SetLabel(B_TRANSLATE("Asian fonts"));
 	asian->AddChild(BuildAsianFontsView());
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
@@ -286,14 +286,14 @@ DisplayCIDFonts::Type PreferencesWindow::GetType(const char* file) {
 }
 
 void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, const char* name, const char* file) {
-	FillFontFileMenu(menuField, B_SYSTEM_FONTS_DIRECTORY, B_TRANSLATE("System Fonts"), name, file);
-	FillFontFileMenu(menuField, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
-	FillFontFileMenu(menuField, B_SYSTEM_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("System Fonts"), name, file);
-	FillFontFileMenu(menuField, B_USER_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_FONTS_DIRECTORY, B_TRANSLATE("System fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User fonts"), name, file);
+	FillFontFileMenu(menuField, B_SYSTEM_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("System fonts"), name, file);
+	FillFontFileMenu(menuField, B_USER_NONPACKAGED_FONTS_DIRECTORY, B_TRANSLATE("User fonts"), name, file);
 
 	// B_USER_FONTS_DIRECTORY is same as B_COMMON_FONTS_DIRECTORY in
 	// BeOS R5
-	// FillFontFileMenu(menu, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User Fonts"), name, file);
+	// FillFontFileMenu(menu, B_USER_FONTS_DIRECTORY, B_TRANSLATE("User fonts"), name, file);
 }
 
 void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which which, const char* label, const char* name, const char* file) {

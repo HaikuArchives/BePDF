@@ -59,9 +59,9 @@ PasswordWindow::PasswordWindow(entry_ref *ref, BRect aRect, BLooper *looper)
 	BPopUpMenu *pwdKind = new BPopUpMenu("pwdKind");
 	BMenuField *pwdKindField = new BMenuField("pwdKindField", "", pwdKind);
 	BMenuItem *item;
-	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("User Password"), new BMessage('user')));
+	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("User password"), new BMessage('user')));
 	if (mPwdKind == USER_PASSWORD) item->SetMarked(true);
-	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("Owner Password"), new BMessage('ownr')));
+	pwdKind->AddItem(item = new BMenuItem(B_TRANSLATE("Owner password"), new BMessage('ownr')));
 	if (mPwdKind == OWNER_PASSWORD) item->SetMarked(true);
 
 	mPassword = new BTextControl("mPassword", "", "", NULL);
