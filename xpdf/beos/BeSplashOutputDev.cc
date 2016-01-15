@@ -47,7 +47,9 @@ BeSplashOutputDev::BeSplashOutputDev(GBool reverseVideoA,
   fRedrawCallbackData = redrawCbkDataA;
 
   // create text object
-  fText = new TextPage(gFalse);
+  TextOutputControl control;
+  control.mode = textOutRawOrder;
+  fText = new TextPage(&control);
 }
 
 BeSplashOutputDev::~BeSplashOutputDev() {
@@ -332,6 +334,8 @@ GString *BeSplashOutputDev::getText(double xMin, double yMin, double xMax, doubl
 
 TextPage *BeSplashOutputDev::acquireText() {
 	TextPage *textPage = fText;
-	fText = new TextPage(gFalse);
+	TextOutputControl control;
+	control.mode = textOutRawOrder;
+	fText = new TextPage(&control);
 	return textPage;
 }
