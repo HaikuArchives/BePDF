@@ -133,7 +133,9 @@ FindThread::Run() {
   if (!onePageOnly) {
 
     // search following/previous pages
-    textOut = new TextOutputDev(NULL, gTrue, gFalse, gFalse);
+    TextOutputControl control;
+    control.mode = textOutPhysLayout;
+    textOut = new TextOutputDev(NULL, &control, gFalse);
     if (!textOut->isOk()) {
       delete textOut;
       goto notFound;
@@ -150,7 +152,7 @@ FindThread::Run() {
 	  SendPageMsg(pg);
       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
-			    caseSensitive, backward,
+			    caseSensitive, backward, false, // TODO/FIXME: wordwise
 			    &xMin, &yMin, &xMax, &yMax)) {
 	delete textOut;
 	goto foundPage;
@@ -170,7 +172,7 @@ FindThread::Run() {
 	  SendPageMsg(pg);
       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
-			    caseSensitive, backward,
+			    caseSensitive, backward, false, // TODO/FIXME wordwise
 			    &xMin, &yMin, &xMax, &yMax)) {
 	delete textOut;
 	goto foundPage;

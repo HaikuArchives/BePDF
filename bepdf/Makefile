@@ -37,7 +37,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/AttachmentView.cpp \
 	beos/Attachments.cpp \
 	beos/BeFontEncoding.cpp \
-	beos/BeLoadProgressMonitor.cpp \
 	beos/BePDF.cpp \
 	beos/BepdfApplication.cpp \
 	beos/BitmapPool.cpp \

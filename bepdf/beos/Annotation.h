@@ -55,7 +55,7 @@ class WidgetAnnot;
 class PrinterMarkAnnot;
 class TrapNetAnnot;
 
-class AcroForm;
+class BePDFAcroForm;
 
 extern Ref empty_ref;
 
@@ -380,7 +380,7 @@ private:
 public:
 	FreeTextAnnot(PDFRectangle rect, PDFFont* font);
 	FreeTextAnnot(FreeTextAnnot* copy);
-	FreeTextAnnot(Dict* annot, AcroForm* acroForm);
+	FreeTextAnnot(Dict* annot, BePDFAcroForm* acroForm);
 	
 	Annotation* Clone() { return new FreeTextAnnot(this); }
 
@@ -634,7 +634,7 @@ private:
 	const char* mResult;
 };
 
-class AcroForm {
+class BePDFAcroForm {
 private:
 	static PDFStandardFonts* mStandardFonts;
 	Ref                      mRef;
@@ -645,8 +645,8 @@ private:
 	void ParseFont(const char* shortName, Ref ref, Dict* font);
 	
 public:
-	AcroForm(XRef* xref, Object* acroForm);
-	~AcroForm();
+	BePDFAcroForm(XRef* xref, Object* acroForm);
+	~BePDFAcroForm();
 	
 	static PDFStandardFonts* GetStandardFonts();
 	
@@ -675,7 +675,7 @@ private:
 	
 public:
 	Annotations(Annotations* copy);
-	Annotations(Object* annots, AcroForm* acroForm);
+	Annotations(Object* annots, BePDFAcroForm* acroForm);
 	~Annotations();
 	
 	int Length() const    { return mLength; }

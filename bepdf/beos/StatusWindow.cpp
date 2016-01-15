@@ -25,7 +25,6 @@
 #include <StatusBar.h>
 #include <StringView.h>
 
-#include "BeLoadProgressMonitor.h"
 #include "BepdfApplication.h"
 #include "StatusWindow.h"
 
@@ -125,10 +124,8 @@ ShowStatusWindow::~ShowStatusWindow() {
 ShowLoadProgressStatusWindow::ShowLoadProgressStatusWindow(const char* name)
 	: ShowStatusWindow(name)
 {
-	BeLoadProgressMonitor::getInstance()->setMessenger(GetMessenger());
 }
 
 ShowLoadProgressStatusWindow::~ShowLoadProgressStatusWindow() {
-	BeLoadProgressMonitor::getInstance()->setMessenger(NULL);
 }
 

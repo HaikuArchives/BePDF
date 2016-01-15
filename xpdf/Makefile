@@ -44,6 +44,7 @@ SRCS = beos/BeSplashOutputDev.cc \
 	goo/GList.cc \
 	goo/GString.cc \
 	goo/gfile.cc \
+	goo/gmem.cc \
 	goo/gmempp.cc \
 	splash/Splash.cc \
 	splash/SplashBitmap.cc \

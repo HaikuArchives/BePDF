@@ -98,7 +98,7 @@ AnnotationWindow::AnnotationWindow(GlobalSettings *settings,
 
 void AnnotationWindow::PopulateFontMenu(BMenu* menu) {
 	BMenuItem* item;
-	PDFStandardFonts* stdFonts = AcroForm::GetStandardFonts();
+	PDFStandardFonts* stdFonts = BePDFAcroForm::GetStandardFonts();
 	for (int i = 0; i < stdFonts->CountFonts(); i ++) {
 		PDFFont* font = stdFonts->FontAt(i);
 		BMessage* msg = new BMessage(FONT_SELECTED);

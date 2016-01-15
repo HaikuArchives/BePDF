@@ -640,7 +640,7 @@ FreeTextAnnot::FreeTextAnnot(FreeTextAnnot* copy)
 	
 }
 
-FreeTextAnnot::FreeTextAnnot(Dict* d, AcroForm* acroForm) 
+FreeTextAnnot::FreeTextAnnot(Dict* d, BePDFAcroForm* acroForm) 
 	: StyledAnnot(d)
 	, mAppearance("")
 	, mJustification(left_justify)
@@ -655,7 +655,7 @@ FreeTextAnnot::FreeTextAnnot(Dict* d, AcroForm* acroForm)
 	}
 	obj.free();
 
-	mJustification = acroForm->GetJustification(); // inherit property from AcroForm
+	mJustification = acroForm->GetJustification(); // inherit property from BePDFAcroForm
 	if (d->lookup("Q", &obj) && obj.isInt()) {
 		int j = obj.getInt();
 		if (j >= left_justify && j <= right_justify) 
@@ -668,7 +668,7 @@ FreeTextAnnot::FreeTextAnnot(Dict* d, AcroForm* acroForm)
 	if (mAppearance.cmp("") != 0) {
 		appearance = mAppearance.getCString();
 	} else {
-		// inherit it from AcroForm if it is not defined in annotation
+		// inherit it from BePDFAcroForm if it is not defined in annotation
 		appearance = acroForm->GetAppearance();
 	}
 	
@@ -1134,11 +1134,11 @@ AnnotName::~AnnotName()
 }
 
 
-// Implementation of AcroForm
+// Implementation of BePDFAcroForm
 
-PDFStandardFonts* AcroForm::mStandardFonts = NULL;
+PDFStandardFonts* BePDFAcroForm::mStandardFonts = NULL;
 
-PDFStandardFonts* AcroForm::GetStandardFonts() {
+PDFStandardFonts* BePDFAcroForm::GetStandardFonts() {
 	if (mStandardFonts == NULL) {
 		mStandardFonts = new PDFStandardFonts();
 	}
@@ -1146,7 +1146,7 @@ PDFStandardFonts* AcroForm::GetStandardFonts() {
 }
 
 
-AcroForm::AcroForm(XRef* xref, Object* acroFormRef) 
+BePDFAcroForm::BePDFAcroForm(XRef* xref, Object* acroFormRef) 
 	: mRef(empty_ref)
 	, mJustification(left_justify)
 {
@@ -1200,7 +1200,7 @@ AcroForm::AcroForm(XRef* xref, Object* acroFormRef)
 	obj.free();
 }
 
-AcroForm::~AcroForm() {
+BePDFAcroForm::~BePDFAcroForm() {
 	std::list<PDFFont*>::iterator it;
 	for (it = mFonts.begin(); it != mFonts.end(); it ++) {
 		PDFFont* font = *it;
@@ -1208,7 +1208,7 @@ AcroForm::~AcroForm() {
 	}
 }
 
-void AcroForm::ParseFont(const char* shortName, Ref ref, Dict* dict) {
+void BePDFAcroForm::ParseFont(const char* shortName, Ref ref, Dict* dict) {
 	bool isType1;
 	GString baseFont;
 	GString encoding;
@@ -1276,7 +1276,7 @@ error:
 	obj.free();
 }
 
-PDFFont* AcroForm::FindFontByShortName(const char* name) {
+PDFFont* BePDFAcroForm::FindFontByShortName(const char* name) {
 	std::list<PDFFont*>::iterator it;
 	for (it = mFonts.begin(); it != mFonts.end(); it ++) {
 		PDFFont* font = *it;
@@ -1301,7 +1301,7 @@ Annotations::Annotations(Annotations* copy)
 	}		
 }
 
-Annotations::Annotations(Object* annots, AcroForm* acroForm) 
+Annotations::Annotations(Object* annots, BePDFAcroForm* acroForm) 
 	: mMax(0)
 	, mLength(0)
 	, mAnnots(NULL)

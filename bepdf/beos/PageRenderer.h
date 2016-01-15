@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -31,6 +31,7 @@
 #include <XRef.h>
 #include <PDFDoc.h>
 #include "Annotation.h"
+#include "Annot.h"
 #include "BeSplashOutputDev.h"
 
 class CachedPage;
@@ -45,7 +46,7 @@ protected:
 	void GetSize(int pageNo, float *width, float *height, int32 zoom);
 	void ResizeBitmap(float width, float height);
 	void SetPDFPage(int index, bool valid, float width, float height);
-	void Draw(int page, int pageNo, float left, float top);	
+	void Draw(int page, int pageNo, float left, float top);
 
 	Links *CreateLinks(int pageNo);
 	void DrawAnnotations();
@@ -69,13 +70,13 @@ protected:
 	color_space    mColorSpace;
 #if 0
 	PageMode       mPageMode;
-#endif	
+#endif
 	// temporary fields valid while rendering
 	struct {
 		bool valid;
 		float width, height;
 	} mPDFPage[2];
-	
+
 	thread_id   mRenderingThread;
 	CachedPage *mPage;
 	BBitmap    *mBitmap;
@@ -85,26 +86,26 @@ protected:
 	bool        mEditAnnot;
 	bool        mDoRendering;
 
-	AcroForm   *mAcroForm;
+	BePDFAcroForm   *mBePDFAcroForm;
 	// the annotation of the current document
 	AnnotsList   mAnnotations;
 	Annotations* GetAnnotations();
-	
+
 public:
-	PageRenderer();	
+	PageRenderer();
 	~PageRenderer();
 	AnnotsList* GetAnnotsList() { return &mAnnotations; }
 	Annotations* GetAnnotationsForPage(int pageNo);
-	AcroForm* GetAcroForm() { return mAcroForm; }
+	BePDFAcroForm* GetBePDFAcroForm() { return mBePDFAcroForm; }
 
 	// have to be set, before Start() may be called
     void NewFile(entry_ref *ref);
-	void SetDoc(PDFDoc *doc, AcroForm* acroForm);
+	void SetDoc(PDFDoc *doc, BePDFAcroForm* acroForm);
 	void StartDoc(color_space colorSpace);
 	void SetPassword(BString *owner, BString *user);
-	
+
 	void SetListener(BLooper *looper, BHandler *handler);
-	
+
 	enum {
 		// page contents has change; update required
 		UPDATE_MSG = 'PRup',
@@ -113,7 +114,7 @@ public:
 		// sent to listener when rendering process has been aborted
 		ABORT_MSG = 'PRab'
 	};
-	
+
 	// start rendering of a page asynchronosly
 	// returns an unique identifier in id (id is greater than or equal to zero)
 	void Start(CachedPage *page, int pageNo, int zoom, int rotate, thread_id *id, bool editAnnot);
@@ -121,21 +122,21 @@ public:
 	void Abort();
 	// waits for rendering process to finish; returns immediatly when no process runs
 	void Wait();
-	
+
 	friend int32 page_rendering_thread(void *data);
-	
+
 	static void GetParameter(BMessage *msg, thread_id *id, BBitmap **bitmap);
-	
+
 	float GetWidth() const { return mWidth; }
 	float GetHeight() const { return mHeight; }
 	BeSplashOutputDev *GetOutputDev() const { return mOutputDev; }
-	
-#if 0	
+
+#if 0
 	enum PageMode {
 		ONE_PAGE,
 		TWO_PAGES
 	};
-	
+
 	void SetPageMode(PageMode mode);
 	PageMode GetPageMode() const;
 #endif

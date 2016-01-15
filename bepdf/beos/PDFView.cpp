@@ -56,7 +56,6 @@
 // BePDF
 #include "AnnotationWindow.h"
 #include "AnnotWriter.h"
-#include "BeLoadProgressMonitor.h"
 #include "BePDF.h"
 #include "BepdfApplication.h"
 #include "CachedPage.h"
@@ -113,7 +112,7 @@ PDFView::PDFView (entry_ref * ref, FileAttributes *fileAttributes, BRect frame,
 	GlobalSettings *settings = gApp->GetSettings();
 	SetViewColor(B_TRANSPARENT_COLOR);
 	// init member variables
-	mDoc = NULL; mAcroForm = NULL;
+	mDoc = NULL; mBePDFAcroForm = NULL;
 	mOk = false;
 	mZoom = settings->GetZoom(); // DEF_ZOOM;
 	mBitmap = NULL;
@@ -248,7 +247,7 @@ PDFView::OpenFile(entry_ref *ref, const char *ownerPassword, const char *userPas
 	GString *owner = ConvertPassword(ownerPassword);
 	GString *user  = ConvertPassword(userPassword);
 
-	PDFDoc *newDoc = new PDFDoc (fileName, owner, user, NULL, BeLoadProgressMonitor::getInstance());
+	PDFDoc *newDoc = new PDFDoc (fileName, owner, user, NULL);
 	delete owner; delete user;
 
 	UpdatePanelDirectory(&path);
@@ -336,9 +335,10 @@ PDFView::LoadFile(entry_ref *ref, FileAttributes *fileAttributes, const char *ow
 		}
 		return false;
 	}
-	delete mAcroForm;
-	mAcroForm = new AcroForm(mDoc->getXRef(), mDoc->getCatalog()->getAcroFormRef());
-	mPageRenderer.SetDoc(mDoc, mAcroForm);
+	delete mBePDFAcroForm;
+	mBePDFAcroForm = new BePDFAcroForm(mDoc->getXRef(),
+		mDoc->getCatalog()->getAcroForm());
+	mPageRenderer.SetDoc(mDoc, mBePDFAcroForm);
 	BepdfApplication::UpdateFileAttributes(mDoc, ref);
 
 	float left, top;
@@ -2468,7 +2468,7 @@ PDFView::UpdateAnnotation(Annotation* a, const char* contents, const char* font,
 		mAnnotInEditor->SetChanged();
 		FreeTextAnnot* ft = dynamic_cast<FreeTextAnnot*>(mAnnotInEditor);
 		if (ft && font) {
-			ft->SetFont(AcroForm::GetStandardFonts()->FindByName(font));
+			ft->SetFont(BePDFAcroForm::GetStandardFonts()->FindByName(font));
 			ft->SetFontSize(size);
 			ft->SetJustification(ToFreeTextJustification(align));
 		}

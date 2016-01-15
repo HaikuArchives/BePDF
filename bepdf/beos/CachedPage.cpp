@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -38,7 +38,7 @@ CachedPage::~CachedPage() {
 /////////////////////////////////////////////////////////////////////////
 void CachedPage::InitCTM(OutputDev *outputDev) {
 	for (int i = 0; i < 6; i++) mCtm[i] = outputDev->getDefCTM()[i];
-	for (int i = 0; i < 6; i++) mIctm[i] = outputDev->getDefICTM()[i];	
+	for (int i = 0; i < 6; i++) mIctm[i] = outputDev->getDefICTM()[i];
 }
 
 void CachedPage::CvtDevToUser(int dx, int dy, double *ux, double *uy) {
@@ -59,15 +59,15 @@ void CachedPage::SetLinks(Links *links) {
 
 LinkAction *CachedPage::FindLink(double x, double y) {
 	if (mLinks) {
-		return mLinks->find(x, y); 
+		return mLinks->find(x, y);
 	} else {
 		return NULL;
 	}
 }
 
-GBool CachedPage::OnLink(double x, double y) { 
+GBool CachedPage::OnLink(double x, double y) {
 	if (mLinks) {
-		return mLinks->onLink(x, y); 
+		return mLinks->onLink(x, y);
 	} else {
 		return false;
 	}
@@ -85,9 +85,9 @@ GBool CachedPage::FindText(Unicode *s, int len,
 		 GBool startAtLast, GBool stopAtLast,
 		 GBool caseSensitive, GBool backward,
 		double *xMin, double *yMin, double *xMax, double *yMax) {
-	if (mText && mText->findText(s, len, startAtTop, stopAtBottom, 
+	if (mText && mText->findText(s, len, startAtTop, stopAtBottom,
 		startAtLast, stopAtLast,
-		caseSensitive, backward,
+		caseSensitive, backward, false, // wordwise -- TODO/FIXME
 		xMin, yMin, xMax, yMax)) {
 		return gTrue;
 	}
@@ -112,5 +112,5 @@ void CachedPage::SetBitmap(BBitmap *bitmap, int32 width, int32 height) {
 void CachedPage::MakeEmpty() {
 	delete mLinks; mLinks = NULL;
 	delete mText; mText = NULL;
-	// don't delete mBitmap 
+	// don't delete mBitmap
 }

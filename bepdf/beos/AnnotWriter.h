@@ -114,14 +114,14 @@ bool CanWrite(Annotation* annot);
 class AnnotWriter : public AnnotVisitor {
 	PDFDoc*         mDoc;
 	AnnotsList      mAnnots;
-	AcroForm*       mAcroForm;
+	BePDFAcroForm*       mBePDFAcroForm;
 	XRef*           mXRef;
 	XRefTable       mXRefTable;
 	// changed during pdf generation:
 	Ref             mPageRef;
 	Ref             mASRef;
 	Ref             mInfoRef;
-	Ref             mAcroFormRef;
+	Ref             mBePDFAcroFormRef;
 	std::list<PDFFont*>  mTemporaryFonts; // not already stored in old PDF file
 	std::list<PDFFont*>  mWrittenFonts;
 
@@ -155,7 +155,7 @@ class AnnotWriter : public AnnotVisitor {
 
 /* AcroFrom:
 	1. Assign unique short names to fonts
-	   1.1. Take names from existing AcroFrom DR assign ref to font (done in AcroForm constructor)
+	   1.1. Take names from existing AcroFrom DR assign ref to font (done in BePDFAcroForm constructor)
 	   1.2. Assign to remainig fonts names in the form /F%d
 	2. Write all new or changed FreeText annotations
 	   2.1. Write annotation and assign ref if necessary 
@@ -172,7 +172,7 @@ class AnnotWriter : public AnnotVisitor {
 	void UnassignShortFontNames();
 	void WriteFont(PDFFont* font);
 	void AddFonts(Object* dict, std::list<PDFFont*>* fonts);
-	void UpdateAcroForm();
+	void UpdateBePDFAcroForm();
 	void UpdateCatalog();
 	
 	bool CopyFile(const char* name);
@@ -208,7 +208,7 @@ class AnnotWriter : public AnnotVisitor {
 	bool UpdateAnnot(Annotation* annot);
 
 public:
-	AnnotWriter(XRef* xref, PDFDoc* doc, AnnotsList* list, AcroForm* acroForm);
+	AnnotWriter(XRef* xref, PDFDoc* doc, AnnotsList* list, BePDFAcroForm* acroForm);
 	~AnnotWriter();
 	bool WriteTo(const char* name);
 

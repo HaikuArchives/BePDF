@@ -181,10 +181,10 @@ bool CanWrite(Annotation* annot) {
 }
 
 // Implementation of AnnotWriter
-AnnotWriter::AnnotWriter(XRef* xref, PDFDoc* doc, AnnotsList* list, AcroForm* acroForm)
+AnnotWriter::AnnotWriter(XRef* xref, PDFDoc* doc, AnnotsList* list, BePDFAcroForm* acroForm)
 	: mDoc(doc)
 	, mAnnots(list) // make a copy
-	, mAcroForm(acroForm)
+	, mBePDFAcroForm(acroForm)
 	, mXRef(xref)
 	, mXRefTable(xref)
 	, mASRef(empty_ref)
@@ -655,7 +655,7 @@ bool AnnotWriter::WriteTo(const char* name) {
 	}
 	if (ok) {
 		UpdateInfoDict();
-		UpdateAcroForm();
+		UpdateBePDFAcroForm();
 		UpdateCatalog();
 		ok = WriteXRefTable();
 		ok = ok && WriteFileTrailer();
@@ -995,7 +995,7 @@ void AnnotWriter::AssignShortFontNames() {
 	// scan all fonts
 	std::list<int> fontIDs;
 	{
-		std::list<PDFFont*>* fonts = mAcroForm->GetFonts();
+		std::list<PDFFont*>* fonts = mBePDFAcroForm->GetFonts();
 		std::list<PDFFont*>::iterator it;
 		for (it = fonts->begin(); it != fonts->end(); it ++) {
 			int d;
@@ -1007,7 +1007,7 @@ void AnnotWriter::AssignShortFontNames() {
 	}
 
 	// assign short names to standard fonts
-	PDFStandardFonts* stdFonts = AcroForm::GetStandardFonts();
+	PDFStandardFonts* stdFonts = BePDFAcroForm::GetStandardFonts();
 	int id = 0;
 	std::list<int>::iterator it;
 	fontIDs.sort();
@@ -1070,7 +1070,7 @@ static char* drExcludeKeys[] = {
 	"Font", NULL
 };
 
-void AnnotWriter::UpdateAcroForm() {
+void AnnotWriter::UpdateBePDFAcroForm() {
 	if (mWrittenFonts.empty()) return;
 
 	Object acroForm;
@@ -1079,7 +1079,7 @@ void AnnotWriter::UpdateAcroForm() {
 	acroForm.initDict(mXRef);
 	oldDR.initNull();
 
-	if (is_empty_ref(mAcroForm->GetRef())) {
+	if (is_empty_ref(mBePDFAcroForm->GetRef())) {
 		Ref fieldsRef = mXRefTable.GetNewRef(xrefEntryUncompressed);
 		// create empty array for fields
 		Object fields;
@@ -1087,23 +1087,23 @@ void AnnotWriter::UpdateAcroForm() {
 		WriteObject(fieldsRef, &fields);
 		fields.free();
 
-		// create new AcroForm
-		mAcroFormRef = mXRefTable.GetNewRef(xrefEntryUncompressed);
-		AddName(&acroForm, "Type", "AcroForm");
+		// create new BePDFAcroForm
+		mBePDFAcroFormRef = mXRefTable.GetNewRef(xrefEntryUncompressed);
+		AddName(&acroForm, "Type", "BePDFAcroForm");
 		AddRef(&acroForm, "Fields", fieldsRef);
 	} else {
-		// copy existing AcroForm except DR
-		mAcroFormRef = mAcroForm->GetRef();
+		// copy existing BePDFAcroForm except DR
+		mBePDFAcroFormRef = mBePDFAcroForm->GetRef();
 		Object ref;
 		Object oldForm;
-		ref.initRef(mAcroFormRef.num, mAcroFormRef.gen);
+		ref.initRef(mBePDFAcroFormRef.num, mBePDFAcroFormRef.gen);
 		ref.fetch(mXRef, &oldForm);
 		CopyDict(&oldForm, &acroForm, acroFormExcludeKeys);
 		oldForm.dictLookup("DR", &oldDR);
 		oldForm.free();
 		ref.free();
 	}
-	// Add DR to AcroForm
+	// Add DR to BePDFAcroForm
 	Object dr;
 	dr.initDict(mXRef);
 	if (oldDR.isDict()) {
@@ -1114,19 +1114,19 @@ void AnnotWriter::UpdateAcroForm() {
 	Object font;
 	font.initDict(mXRef);
 	// add old fonts
-	AddFonts(&font, mAcroForm->GetFonts());
+	AddFonts(&font, mBePDFAcroForm->GetFonts());
 	// add new fonts
 	AddFonts(&font, &mWrittenFonts);
 	AddDict(&dr, "Font", &font);
 	AddDict(&acroForm, "DR", &dr);
-	WriteObject(mAcroFormRef, &acroForm);
+	WriteObject(mBePDFAcroFormRef, &acroForm);
 	acroForm.free();
 }
 
 void AnnotWriter::UpdateCatalog() {
-	// Return if AcroForm has not been written or ref exists already in Catalog
-	if (is_empty_ref(mAcroFormRef) || !is_empty_ref(mAcroForm->GetRef())) return;
-	// Copy catalog and add ref to new AcroForm
+	// Return if BePDFAcroForm has not been written or ref exists already in Catalog
+	if (is_empty_ref(mBePDFAcroFormRef) || !is_empty_ref(mBePDFAcroForm->GetRef())) return;
+	// Copy catalog and add ref to new BePDFAcroForm
 	Ref root;
 	Object oldCatalogRef;
 	Object oldCatalog;
@@ -1137,7 +1137,7 @@ void AnnotWriter::UpdateCatalog() {
 	oldCatalogRef.fetch(mXRef, &oldCatalog);
 	catalog.initDict(mXRef);
 	CopyDict(&oldCatalog, &catalog);
-	AddRef(&catalog, "AcroForm", mAcroFormRef);
+	AddRef(&catalog, "BePDFAcroForm", mBePDFAcroFormRef);
 	WriteObject(root, &catalog);
 	catalog.free();
 	oldCatalog.free();

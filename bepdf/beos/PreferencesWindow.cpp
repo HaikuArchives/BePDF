@@ -493,8 +493,8 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 		break;
 	case HINTING_CHANGED:
 		mSettings->SetHinting(IsOn(msg));
-		globalParams->setFreeTypeHinting(
-			(char*)(IsOn(msg) ? "yes" : "no"));
+		//globalParams->setFreeTypeHinting(
+		//	(char*)(IsOn(msg) ? "yes" : "no")); // TODO/FIXME hinting
 		NotifyRestartDoc();
 		break;
 	case FILLED_SELECTION_FILLED:

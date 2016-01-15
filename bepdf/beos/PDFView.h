@@ -59,7 +59,7 @@ class PDFView
 private:
 	bool mLoading;
 	PDFDoc * mDoc;
-	AcroForm* mAcroForm;
+	BePDFAcroForm* mBePDFAcroForm;
 	bool mOk;
 	int mZoom;
 	BBitmap * mBitmap;
@@ -292,7 +292,7 @@ public:
 	void UpdateSettings(GlobalSettings* settings);
 	
 	// Annotation
-	AcroForm* GetAcroForm() { return mAcroForm; }
+	BePDFAcroForm* GetBePDFAcroForm() { return mBePDFAcroForm; }
 	void BeginEditAnnot();
 	void InsertAnnotation(Annotation* a);
 	void ClearAnnotationWindow();

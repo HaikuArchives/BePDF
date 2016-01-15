@@ -257,15 +257,16 @@ void PDFWindow::FillPageList() {
 
 
 void PDFWindow::UpdatePageList() {
+	#warning FIXME: PageList
 	gPdfLock->Lock();
 	PageLabels labels(mMainView->GetNumPages()-1);
-	if (labels.Parse(mMainView->GetPDFDoc()->getCatalog()->getPageLabels())) {
-		labels.Replace(mPagesView);
-	}
+	//if (labels.Parse(mMainView->GetPDFDoc()->getCatalog()->getPageLabels())) {
+	//	labels.Replace(mPagesView);
+	//}
 
 	// update attachments as well
-	mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
-		mMainView->GetPDFDoc()->getCatalog()->getEmbeddedFiles());
+	//mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
+	//	mMainView->GetPDFDoc()->getCatalog()->getEmbeddedFiles()); // FIXME
 
 	gPdfLock->Unlock();
 }
@@ -1987,7 +1988,7 @@ void PDFWindow::InitAnnotTemplates() {
 	line[0] = PDFPoint(rect.x1, rect.y1);
 	line[1] = PDFPoint(rect.x2, rect.y1);
 
-	PDFFont* font = AcroForm::GetStandardFonts()->FindByName("Helvetica");
+	PDFFont* font = BePDFAcroForm::GetStandardFonts()->FindByName("Helvetica");
 	ASSERT(font != NULL);
 	SetAnnotTemplate(ADD_FREETEXT_ANNOT_CMD, new FreeTextAnnot(rect, font));
 
@@ -2062,7 +2063,7 @@ public:
 
 		AnnotWriter writer(GetXRef(), mMainView->GetPDFDoc(),
 			mMainView->GetPageRenderer()->GetAnnotsList(),
-			mMainView->GetAcroForm());
+			mMainView->GetBePDFAcroForm());
 		if (writer.WriteTo(mPath.String())) {
 			alert = new BAlert("Information", B_TRANSLATE("PDF file successfully written!"), B_TRANSLATE("OK"), 0, 0, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 		} else {

@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -76,25 +76,25 @@ GBool PageRenderer::AnnotDisplayDecideCallback(Annot *annot, void *data) {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-PageRenderer::PageRenderer() : 
+PageRenderer::PageRenderer() :
 	mOwnerPassword(NULL),
 	mUserPassword(NULL),
-	mDoc(NULL), 
+	mDoc(NULL),
 	mOffscreenView(
 		new BView(BRect(0, 0, 100, 100), "", B_FOLLOW_NONE, B_WILL_DRAW | B_SUBPIXEL_PRECISE)),
-	mOutputDev(new BeSplashOutputDev(gFalse, 
-		getPaperColor(), 
+	mOutputDev(new BeSplashOutputDev(gFalse,
+		getPaperColor(),
 		gTrue, // incremental
 		RedrawCallback, this)),
-	mLooper(NULL), 
+	mLooper(NULL),
 	mHandler(NULL),
 	mRenderingThread(-1),
 	mPage(NULL),
 	mBitmap(NULL),
-	mAcroForm(NULL)
+	mBePDFAcroForm(NULL)
 	/* mPageMode(ONE_PAGE) */
-{ 
-	mOutputDev->startDoc(NULL);	
+{
+	mOutputDev->startDoc(NULL);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -106,9 +106,9 @@ PageRenderer::~PageRenderer() {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-void PageRenderer::SetDoc(PDFDoc *doc, AcroForm* acroForm) {
-	mDoc = doc; 
-	mAcroForm = acroForm;
+void PageRenderer::SetDoc(PDFDoc *doc, BePDFAcroForm* acroForm) {
+	mDoc = doc;
+	mBePDFAcroForm = acroForm;
 	mAnnotations.SetSize(doc->getNumPages());
 	mOutputDev->startDoc(doc->getXRef());
 }
@@ -176,8 +176,8 @@ void PageRenderer::ResizeBitmap(float width, float height) {
 	mBitmap = mPage->GetBitmap();
 	if (!mBitmap || (mColorSpace != mBitmap->ColorSpace()) || (width > mPage->GetWidth()) || (height > mPage->GetHeight())) {
 		delete mBitmap;
-		
-		mBitmap = new BBitmap(BRect (0, 0, width, height), 
+
+		mBitmap = new BBitmap(BRect (0, 0, width, height),
 								mColorSpace, true, false);
 		mPage->SetBitmap(mBitmap, width, height);
 	} else {
@@ -200,11 +200,11 @@ void PageRenderer::Start(CachedPage *page, int pageNo, int zoom, int rotation, t
 	mPage = page;
 	mEditAnnot = editAnnot;
 	mPageNo = pageNo; mZoom = zoom; mRotate = rotation;
-	
+
 	GetSize(pageNo, &mWidth, &mHeight, mZoom);
-	
+
 	SetPDFPage(0, true, mWidth, mHeight);
-#if 0	
+#if 0
 	if ((mPageMode == TWO_PAGES) && (pageNo + 1 <= mDoc->getNumPages())) {
 		float width, height;
 		GetSize(pageNo + 1, &width, &height);
@@ -215,10 +215,10 @@ void PageRenderer::Start(CachedPage *page, int pageNo, int zoom, int rotation, t
 	}
 #endif
 	ResizeBitmap(mWidth, mHeight);
-	
+
 	mPage->MakeEmpty();
 	mPage->SetState(CachedPage::RENDERING);
-	
+
 	// start new thread
 	mDoRendering = true;
 	mRenderingThread = spawn_thread(page_rendering_thread, "page_rendering_thread", B_NORMAL_PRIORITY, this);
@@ -257,13 +257,13 @@ void PageRenderer::Draw(int page, int pageNo, float left, float top) {
 	mBitmap->AddChild(mOffscreenView);
 	// render pdf page
 
-	mDoc->displayPage (mOutputDev, pageNo, 
-		mZoom, mZoom, // h/v DPI 
-		mRotate, 
+	mDoc->displayPage (mOutputDev, pageNo,
+		mZoom, mZoom, // h/v DPI
+		mRotate,
 		gFalse, // use media box
 		gFalse, // crop
 		gTrue, // printing
-		AbortCheckCallback, this, AnnotDisplayDecideCallback, this);
+		AbortCheckCallback, this); // , AnnotDisplayDecideCallback, this
 	mOffscreenView->Sync ();
 	// detach offscreen view
 	mOffscreenView->RemoveSelf();
@@ -279,7 +279,7 @@ Annotations* PageRenderer::GetAnnotationsForPage(int pageNo) {
 	if (mAnnotations.Get(i) == NULL) {
 		Object annotsDict;
 		mDoc->getCatalog()->getPage(pageNo)->getAnnots(&annotsDict);
-		mAnnotations.Set(i, new Annotations(&annotsDict, mAcroForm));
+		mAnnotations.Set(i, new Annotations(&annotsDict, mBePDFAcroForm));
 		annotsDict.free();
 	}
 	return mAnnotations.Get(i);
@@ -300,11 +300,11 @@ void PageRenderer::DrawAnnotations() {
 	if (!mEditAnnot) {
 		// attach view
 		mBitmap->AddChild(mOffscreenView);
-	
-		DrawAnnotations(mOffscreenView, false);	
+
+		DrawAnnotations(mOffscreenView, false);
 		AnnotSorter s;
 		mPage->GetAnnotations()->Sort(&s);
-		
+
 		mOffscreenView->Sync();
 		// detach offscreen view
 		mOffscreenView->RemoveSelf();
@@ -337,14 +337,14 @@ void PageRenderer::Render() {
 	mPage->InitCTM(mOutputDev);
 	mPage->SetLinks(CreateLinks(mPageNo));
 	mPage->SetText(mOutputDev->acquireText());
-	DrawAnnotations();	
-#if 0	
+	DrawAnnotations();
+#if 0
 	if (mDoRendering && mPDFPage[1].valid) {
 		Draw(1, mPageNo+1, mPDFPage[0].width, 0);
 	}
 #endif
 	mBitmap->Unlock ();
-	
+
 	// notify listener
 	uint32 what;
 	if (!mDoRendering) {

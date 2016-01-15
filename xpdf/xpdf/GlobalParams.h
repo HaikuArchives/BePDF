@@ -311,6 +311,11 @@ public:
   void setPrintCommands(GBool printCommandsA);
   void setErrQuiet(GBool errQuietA);
 
+  // Returns a GList of GStrings with the collection names of the
+  // CIDToUnicode hash map.
+  // Note: Use deleteGList(list, GString) after usage of returned list.
+  GList *getCIDToUnicodeNames();
+
   //----- security handlers
 
   void addSecurityHandler(XpdfSecurityHandler *handler);

@@ -1265,6 +1265,22 @@ void GlobalParams::parseCIDToUnicode(GList *tokens, GString *fileName,
   cidToUnicodes->add(collection->copy(), name->copy());
 }
 
+
+GList* GlobalParams::getCIDToUnicodeNames() {
+
+  GList *list = new GList();
+  GString *key;
+  void *value;
+  GHashIter *iter = NULL;
+  cidToUnicodes->startIter(&iter);
+  while (cidToUnicodes->getNext(&iter, &key, &value)) {
+  	list->append(key->copy());
+  }
+  cidToUnicodes->killIter(&iter);
+  return list;
+}
+
+
 void GlobalParams::parseUnicodeToUnicode(GList *tokens, GString *fileName,
 					 int line) {
   GString *font, *file, *old;
@@ -1952,7 +1968,7 @@ static void getWinFontDir(char *winFontDir) {
   // shell32.dll (Win95 and WinNT4), so do a dynamic load
   winFontDir[0] = '\0';
   if ((shell32Lib = LoadLibraryA("shell32.dll"))) {
-    if ((SHGetSpecialFolderPathFunc = 
+    if ((SHGetSpecialFolderPathFunc =
 	 (BOOL (__stdcall *)(HWND hwndOwner, LPSTR lpszPath,
 			     int nFolder, BOOL fCreate))
 	 GetProcAddress(shell32Lib, "SHGetSpecialFolderPathA"))) {
