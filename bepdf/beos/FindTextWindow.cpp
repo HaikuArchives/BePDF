@@ -40,7 +40,7 @@
 FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 	BLooper *looper)
 	: BWindow(BRect(0, 0, 0, 0),
-		B_TRANSLATE("Find Text"),
+		B_TRANSLATE("Find text"),
 		B_FLOATING_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS),
@@ -65,11 +65,11 @@ FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 	mFindStop = new BButton("mFindStop", B_TRANSLATE("Find"),
 		new BMessage(FIND_MSG));
 
-	mIgnoreCase = new BCheckBox("mIgnoreCase", B_TRANSLATE("Ignore Case"),
+	mIgnoreCase = new BCheckBox("mIgnoreCase", B_TRANSLATE("Ignore case"),
 		new BMessage(FIND_IGNORE_CASE_MSG));
 	mIgnoreCase->SetValue(settings->GetFindIgnoreCase());
 
-	mBackward = new BCheckBox("mBackward", B_TRANSLATE("Search Backwards"),
+	mBackward = new BCheckBox("mBackward", B_TRANSLATE("Search backwards"),
 		new BMessage(FIND_BACKWARD_MSG));
 	mBackward->SetValue(settings->GetFindBackward());
 

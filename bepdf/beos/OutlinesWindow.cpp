@@ -194,10 +194,10 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 					item = new OutlineListItem(s->String(), level, open, GetDefaultStyle());
 					delete s;
 				} else {
-					item = new OutlineListItem(B_TRANSLATE("No Title"), level, open, GetDefaultStyle());
+					item = new OutlineListItem(B_TRANSLATE("No title"), level, open, GetDefaultStyle());
 				}
 			} else {
-				item = new OutlineListItem(B_TRANSLATE("No Title"), level, open, GetDefaultStyle());
+				item = new OutlineListItem(B_TRANSLATE("No title"), level, open, GetDefaultStyle());
 			}
 			mList->AddItem(item);
 

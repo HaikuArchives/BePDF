@@ -34,7 +34,7 @@
 #define B_TRANSLATION_CONTEXT "PrintingProgressWindow"
 
 PrintingProgressWindow::PrintingProgressWindow(const char *text, BRect aRect, int32 pages)
-	: BWindow(aRect, B_TRANSLATE("BePDF Printing"),
+	: BWindow(aRect, B_TRANSLATE("BePDF printing"),
 		B_TITLED_WINDOW_LOOK,
 		B_MODAL_APP_WINDOW_FEEL,
 		B_NOT_RESIZABLE|B_NOT_ZOOMABLE|B_NOT_CLOSABLE|B_AUTO_UPDATE_SIZE_LIMITS) {

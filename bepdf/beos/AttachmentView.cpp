@@ -115,11 +115,11 @@ AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *lo
 	AddChild(fToolBar);
 
 	//fToolBar->AddAction(kOpenCmd, this, LoadBitmap("OPEN_FILE_ON"),
-	//	B_TRANSLATE("Open attachment(s)."));
+	//	B_TRANSLATE("Open attachment(s)"));
 
 	// Note tooltip text used in method Update() also!
 	fToolBar->AddAction(kSaveAsCmd, this, LoadBitmap("SAVE_FILE_AS_ON"),
-		B_TRANSLATE("Save attachment(s) as."));
+		B_TRANSLATE("Save attachment(s) as"));
 
 	rect.top += r.bottom + 1;
 	r = rect;
@@ -133,7 +133,7 @@ AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *lo
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
 		B_FANCY_BORDER,
 		true);
-	mList->AddColumn(new BStringColumn(B_TRANSLATE("File Name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
+	mList->AddColumn(new BStringColumn(B_TRANSLATE("File name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
 	mList->AddColumn(new BStringColumn(B_TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
 }
 
@@ -164,12 +164,12 @@ void AttachmentView::Update() {
 	// Update tool tip text
 	const char* info = NULL;
 	if (selection == kOneAttachmentSelected) {
-		info = B_TRANSLATE("Save selected attachment to file.");
+		info = B_TRANSLATE("Save selected attachment to file");
 	} else if (selection == kMultipleAttachmentsSelected) {
-		info = B_TRANSLATE("Save selected attachments into directory.");
+		info = B_TRANSLATE("Save selected attachments into directory");
 	} else {
 		// Note text used in constructor also!
-		info = B_TRANSLATE("Save attachment(s) as.");
+		info = B_TRANSLATE("Save attachment(s) as");
 	}
 	// mSaveButton->SetToolTip(info); // TODO/FIXME
 

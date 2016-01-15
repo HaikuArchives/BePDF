@@ -552,18 +552,18 @@ BMenuBar* PDFWindow::BuildMenu() {
 	BMenuBar * menuBar = new BMenuBar(BRect(0, 0, 1024, 18), "mainBar");
 		// File
 		BMenu * menu = new BMenu(B_TRANSLATE("File"));
-			menu->AddItem(mOpenMenu = new RecentDocumentsMenu(B_TRANSLATE("Open…"),  B_REFS_RECEIVED));
-			menu->AddItem(mNewMenu  = new RecentDocumentsMenu(B_TRANSLATE("Open In New Window…"), OPEN_IN_NEW_WINDOW_CMD));
+			menu->AddItem(mOpenMenu = new RecentDocumentsMenu(B_TRANSLATE("Open" B_UTF8_ELLIPSIS),  B_REFS_RECEIVED));
+			menu->AddItem(mNewMenu  = new RecentDocumentsMenu(B_TRANSLATE("Open in new window" B_UTF8_ELLIPSIS), OPEN_IN_NEW_WINDOW_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Reload"), 'R', (RELOAD_FILE_CMD));
-			AddItem(menu, B_TRANSLATE("Save As…"), SAVE_FILE_AS_CMD, false, 'S', B_SHIFT_KEY);
+			AddItem(menu, B_TRANSLATE("Save as" B_UTF8_ELLIPSIS), SAVE_FILE_AS_CMD, false, 'S', B_SHIFT_KEY);
 
-			mFileInfoItem = new BMenuItem(B_TRANSLATE("File Info…"),
+			mFileInfoItem = new BMenuItem(B_TRANSLATE("File info" B_UTF8_ELLIPSIS),
 				new BMessage(FILE_INFO_CMD), 'I');
 			menu->AddItem(mFileInfoItem);
 
 			ADD_SITEM (menu );
-			ADD_ITEM (menu, B_TRANSLATE("Page Setup…"), 'S',  (PAGESETUP_FILE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Print…"), 'P',  (PRINT_SETTINGS_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Page setup" B_UTF8_ELLIPSIS), 'S',  (PAGESETUP_FILE_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Print" B_UTF8_ELLIPSIS), 'P',  (PRINT_SETTINGS_CMD));
 
 			ADD_SITEM (menu );
 
@@ -574,14 +574,14 @@ BMenuBar* PDFWindow::BuildMenu() {
 
 		// Edit
 		menu = new BMenu ( B_TRANSLATE("Edit") );
-			ADD_ITEM (menu, B_TRANSLATE("Copy Selection"), 'C', ( COPY_SELECTION_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Copy selection"), 'C', ( COPY_SELECTION_CMD));
 			ADD_SITEM (menu);
-			ADD_ITEM (menu, B_TRANSLATE("Select All"), 'A', ( SELECT_ALL_CMD));
-			AddItem(menu, B_TRANSLATE("Select None"), SELECT_NONE_CMD, false, 'A', B_SHIFT_KEY);
+			ADD_ITEM (menu, B_TRANSLATE("Select all"), 'A', ( SELECT_ALL_CMD));
+			AddItem(menu, B_TRANSLATE("Select none"), SELECT_NONE_CMD, false, 'A', B_SHIFT_KEY);
 
 			ADD_SITEM (menu );
 
-			mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences…"),
+			mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences" B_UTF8_ELLIPSIS),
 				new BMessage(PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY);
 			menu->AddItem(mPreferencesItem);
 		menuBar->AddItem ( menu );
@@ -603,11 +603,11 @@ BMenuBar* PDFWindow::BuildMenu() {
 
 			ADD_SITEM(menu);
 
-			ADD_ITEM(menu, B_TRANSLATE("Fit to Page Width"), '/', (FIT_TO_PAGE_WIDTH_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Fit to Page"), '*', (FIT_TO_PAGE_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Fit to page width"), '/', (FIT_TO_PAGE_WIDTH_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Fit to page"), '*', (FIT_TO_PAGE_CMD));
 			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Zoom In"), '+', (ZOOM_IN_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Zoom Out"), '-', (ZOOM_OUT_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Zoom in"), '+', (ZOOM_IN_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Zoom out"), '-', (ZOOM_OUT_CMD));
 
 			ADD_SITEM(menu);
 
@@ -641,13 +641,13 @@ BMenuBar* PDFWindow::BuildMenu() {
 			menu->AddItem(mRotationMenu);
 
 			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Show Error Messages"), 'M', (SHOW_TRACER_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show error messages"), 'M', (SHOW_TRACER_CMD));
 		menuBar->AddItem ( menu );
 
 		// Search
 		menu = new BMenu ( B_TRANSLATE("Search") );
-			ADD_ITEM (menu, B_TRANSLATE("Find…") , 'F', ( FIND_CMD));
-			menu->AddItem(new BMenuItem(B_TRANSLATE("Find Next…"),
+			ADD_ITEM (menu, B_TRANSLATE("Find" B_UTF8_ELLIPSIS) , 'F', ( FIND_CMD));
+			menu->AddItem(new BMenuItem(B_TRANSLATE("Find next" B_UTF8_ELLIPSIS),
 				new BMessage(FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
 		menuBar->AddItem ( menu );
 
@@ -655,7 +655,7 @@ BMenuBar* PDFWindow::BuildMenu() {
 		menu = new BMenu (B_TRANSLATE("Page"));
 			ADD_ITEM (menu, B_TRANSLATE("First"), 0,  (FIRST_PAGE_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Previous"), 0,  (PREVIOUS_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Go To Page"), 'G',  (GOTO_PAGE_MENU_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Go to page"), 'G',  (GOTO_PAGE_MENU_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Next"), 0,  (NEXT_PAGE_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Last"), 0,  (LAST_PAGE_CMD));
 			ADD_SITEM(menu);
@@ -676,15 +676,15 @@ BMenuBar* PDFWindow::BuildMenu() {
 		UpdateWindowsMenu();
 
 		menu = new BMenu(B_TRANSLATE("Help"));
-		ADD_ITEM (menu, B_TRANSLATE("Show Help…"), 0, (HELP_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Online Help…"), 0, (ONLINE_HELP_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Show help" B_UTF8_ELLIPSIS), 0, (HELP_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Online help" B_UTF8_ELLIPSIS), 0, (ONLINE_HELP_CMD));
 
 		ADD_SITEM(menu);
 
-		ADD_ITEM (menu, B_TRANSLATE("Visit Homepage…"), 0, (HOME_PAGE_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Issue Tracker…"), 0, (BUG_REPORT_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Visit homepage" B_UTF8_ELLIPSIS), 0, (HOME_PAGE_CMD));
+		ADD_ITEM (menu, B_TRANSLATE("Issue tracker" B_UTF8_ELLIPSIS), 0, (BUG_REPORT_CMD));
 		ADD_SITEM (menu );
-		ADD_ITEM (menu, B_TRANSLATE("About BePDF…"), 0, ( ABOUT_APP_CMD ) );
+		ADD_ITEM (menu, B_TRANSLATE("About BePDF" B_UTF8_ELLIPSIS), 0, ( ABOUT_APP_CMD ) );
 		menuBar->AddItem( menu );
 
 	AddChild(menuBar);
@@ -711,56 +711,56 @@ BToolBar* PDFWindow::BuildToolBar()
 	AddChild(mToolBar);
 
 	mToolBar->AddAction(OPEN_FILE_CMD, this, LoadBitmap("OPEN_FILE_ON"),
-		B_TRANSLATE("Open file."));
+		B_TRANSLATE("Open file"));
 	mToolBar->AddAction(RELOAD_FILE_CMD, this, LoadBitmap("RELOAD_FILE_ON"),
-		B_TRANSLATE("Reload file."));
+		B_TRANSLATE("Reload file"));
 	mToolBar->AddAction(PRINT_SETTINGS_CMD, this, LoadBitmap("PRINT_ON"),
-		B_TRANSLATE("Print."));
+		B_TRANSLATE("Print"));
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(SHOW_BOOKMARKS_CMD, this, LoadBitmap("BOOKMARKS_ON"),
-		B_TRANSLATE("Bookmarks."), NULL, true);
+		B_TRANSLATE("Bookmarks"), NULL, true);
 	mToolBar->AddAction(SHOW_PAGE_LIST_CMD, this, LoadBitmap("PAGE_LIST_ON"),
-		B_TRANSLATE("Show page list."), NULL, true);
+		B_TRANSLATE("Show page list"), NULL, true);
 	mToolBar->AddAction(SHOW_ANNOT_TOOLBAR_CMD, this,
-		LoadBitmap("SHOW_ANNOT_ON"), B_TRANSLATE("Show annotation toolbar."),
+		LoadBitmap("SHOW_ANNOT_ON"), B_TRANSLATE("Show annotation toolbar"),
 		NULL, true);
 	mToolBar->AddAction(SHOW_ATTACHMENTS_CMD, this,
-		LoadBitmap("SHOW_ATTACHMENTS_ON"), B_TRANSLATE("Show attachments."),
+		LoadBitmap("SHOW_ATTACHMENTS_ON"), B_TRANSLATE("Show attachments"),
 		NULL, true);
 	// mToolBar->AddAction(HIDE_LEFT_PANEL_CMD, this,
-	//	LoadBitmap("HIDE_PAGE_LIST_ON"), B_TRANSLATE("Hide page list."),
+	//	LoadBitmap("HIDE_PAGE_LIST_ON"), B_TRANSLATE("Hide page list"),
 	//	NULL, true);
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(FULL_SCREEN_CMD, this,
-		LoadBitmap("FULL_SCREEN_ON"), B_TRANSLATE("Fullscreen mode."),
+		LoadBitmap("FULL_SCREEN_ON"), B_TRANSLATE("Fullscreen mode"),
 		NULL, true);
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(FIRST_PAGE_CMD, this, LoadBitmap("FIRST_ON"),
-		B_TRANSLATE("Return to the beginning of the document."));
+		B_TRANSLATE("Go to start of document"));
 	mToolBar->AddAction(PREVIOUS_N_PAGE_CMD, this,
 		LoadBitmap("PREVIOUS_N_ON"),
-		B_TRANSLATE("Skip to the 10th previous page."));
+		B_TRANSLATE("Go back 10 pages"));
 	mToolBar->AddAction(PREVIOUS_PAGE_CMD, this, LoadBitmap("PREVIOUS_ON"),
-		B_TRANSLATE("Skip to the previous page."));
+		B_TRANSLATE("Go to previous page"));
 	mToolBar->AddAction(NEXT_PAGE_CMD, this, LoadBitmap("NEXT_ON"),
-		B_TRANSLATE("Skip to the next page."));
+		B_TRANSLATE("Go to next page"));
 	mToolBar->AddAction(NEXT_N_PAGE_CMD, this, LoadBitmap("NEXT_N_ON"),
-		B_TRANSLATE("Skip to the 10th next page."));
+		B_TRANSLATE("Go forward 10 pages"));
 	mToolBar->AddAction(LAST_PAGE_CMD, this, LoadBitmap("LAST_ON"),
-		B_TRANSLATE("Advance to the end of the document."));
+		B_TRANSLATE("Go to end of document"));
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(HISTORY_BACK_CMD, this, LoadBitmap("BACK_ON"),
-		B_TRANSLATE("Back in the page history list."));
+		B_TRANSLATE("Back in page history list"));
 	mToolBar->AddAction(HISTORY_FORWARD_CMD, this, LoadBitmap("FORWARD_ON"),
-		B_TRANSLATE("Forward in the page history list."));
+		B_TRANSLATE("Forward in page history list"));
 
 	mToolBar->AddSeparator();
 
@@ -792,28 +792,28 @@ BToolBar* PDFWindow::BuildToolBar()
 
 	mToolBar->AddAction(FIT_TO_PAGE_WIDTH_CMD, this,
 		LoadBitmap("FIT_TO_PAGE_WIDTH_ON"),
-		B_TRANSLATE("Fit to Page Width."));
+		B_TRANSLATE("Fit to page width"));
 	mToolBar->AddAction(FIT_TO_PAGE_CMD, this, LoadBitmap("FIT_TO_PAGE_ON"),
-		B_TRANSLATE("Fit to page."));
+		B_TRANSLATE("Fit to page"));
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(ROTATE_CLOCKWISE_CMD, this,
-		LoadBitmap("ROTATE_CLOCKWISE_ON"), B_TRANSLATE("Rotate clockwise."));
+		LoadBitmap("ROTATE_CLOCKWISE_ON"), B_TRANSLATE("Rotate clockwise"));
 	mToolBar->AddAction(ROTATE_ANTI_CLOCKWISE_CMD, this,
 		LoadBitmap("ROTATE_ANTI_CLOCKWISE_ON"),
-		B_TRANSLATE("Rotate anti-clockwise."));
+		B_TRANSLATE("Rotate anti-clockwise"));
 	mToolBar->AddAction(ZOOM_IN_CMD, this, LoadBitmap("ZOOM_IN_ON"),
-		B_TRANSLATE("Zoom in."));
+		B_TRANSLATE("Zoom in"));
 	mToolBar->AddAction(ZOOM_OUT_CMD, this, LoadBitmap("ZOOM_OUT_ON"),
-		B_TRANSLATE("Zoom out."));
+		B_TRANSLATE("Zoom out"));
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(FIND_CMD, this, LoadBitmap("FIND_ON"),
-		B_TRANSLATE("Find."));
+		B_TRANSLATE("Find"));
 	mToolBar->AddAction(FIND_NEXT_CMD, this, LoadBitmap("FIND_NEXT_ON"),
-		B_TRANSLATE("Find next."));
+		B_TRANSLATE("Find next"));
 	mToolBar->AddGlue();
 	return mToolBar;
 }
@@ -999,7 +999,7 @@ void PDFWindow::SetZoom(int16 zoom) {
 			delete item;
 		}
 		char label[256];
-		sprintf(label, B_TRANSLATE("Custom Zoom Factor (%d%%)"), -zoom * 100 / 72);
+		sprintf(label, B_TRANSLATE("Custom zoom factor (%d%%)"), -zoom * 100 / 72);
 		BMessage *msg = new BMessage(CUSTOM_ZOOM_FACTOR_MSG);
 		msg->AddInt16("zoom", zoom);
 		item = new BMenuItem(label, msg, 0);
@@ -1872,32 +1872,32 @@ static const int32 kAnnotDescEOL = -1;
 static const int32 kAnnotDescSeparator = -2;
 
 static AnnotDesc annotDescs[] = {
-	{ PDFWindow::ADD_COMMENT_TEXT_ANNOT_CMD, B_TRANSLATE("Add comment text annotation."), "ANNOT_COMMENT"},
-	{ PDFWindow::ADD_HELP_TEXT_ANNOT_CMD, B_TRANSLATE("Add help text annotation."), "ANNOT_HELP"},
-	{ PDFWindow::ADD_INSERT_TEXT_ANNOT_CMD, B_TRANSLATE("Add insert text annotation."), "ANNOT_INSERT"},
-	{ PDFWindow::ADD_KEY_TEXT_ANNOT_CMD, B_TRANSLATE("Add key text annotation."), "ANNOT_KEY"},
-	{ PDFWindow::ADD_NEW_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add new paragraph text annotation."), "ANNOT_NEW_PARAGRAPH"},
-	{ PDFWindow::ADD_NOTE_TEXT_ANNOT_CMD, B_TRANSLATE("Add note text annotation."), "ANNOT_NOTE"},
-	{ PDFWindow::ADD_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add paragraph text annotation."), "ANNOT_PARAGRAPH"},
-	{ PDFWindow::ADD_LINK_ANNOT_CMD, B_TRANSLATE("Add link annotation."), "ANNOT_LINK"},
+	{ PDFWindow::ADD_COMMENT_TEXT_ANNOT_CMD, B_TRANSLATE("Add comment text annotation"), "ANNOT_COMMENT"},
+	{ PDFWindow::ADD_HELP_TEXT_ANNOT_CMD, B_TRANSLATE("Add help text annotation"), "ANNOT_HELP"},
+	{ PDFWindow::ADD_INSERT_TEXT_ANNOT_CMD, B_TRANSLATE("Add insert text annotation"), "ANNOT_INSERT"},
+	{ PDFWindow::ADD_KEY_TEXT_ANNOT_CMD, B_TRANSLATE("Add key text annotation"), "ANNOT_KEY"},
+	{ PDFWindow::ADD_NEW_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add new paragraph text annotation"), "ANNOT_NEW_PARAGRAPH"},
+	{ PDFWindow::ADD_NOTE_TEXT_ANNOT_CMD, B_TRANSLATE("Add note text annotation"), "ANNOT_NOTE"},
+	{ PDFWindow::ADD_PARAGRAPH_TEXT_ANNOT_CMD, B_TRANSLATE("Add paragraph text annotation"), "ANNOT_PARAGRAPH"},
+	{ PDFWindow::ADD_LINK_ANNOT_CMD, B_TRANSLATE("Add link annotation"), "ANNOT_LINK"},
 	{ kAnnotDescSeparator, NULL, NULL},
-	{ PDFWindow::ADD_FREETEXT_ANNOT_CMD, B_TRANSLATE("Add free text annotation."), "ANNOT_FREETEXT"},
-	{ PDFWindow::ADD_LINE_ANNOT_CMD, B_TRANSLATE("Add line annotation."), "ANNOT_LINE"},
-	{ PDFWindow::ADD_SQUARE_ANNOT_CMD, B_TRANSLATE("Add square annotation."), "ANNOT_SQUARE"},
-	{ PDFWindow::ADD_CIRCLE_ANNOT_CMD, B_TRANSLATE("Add circle annotation."), "ANNOT_CIRCLE"},
-	{ PDFWindow::ADD_HIGHLIGHT_ANNOT_CMD, B_TRANSLATE("Add highlight annotation."), "ANNOT_HIGHLIGHT"},
-	{ PDFWindow::ADD_UNDERLINE_ANNOT_CMD, B_TRANSLATE("Add underline annotation."), "ANNOT_UNDERLINE"},
-	{ PDFWindow::ADD_SQUIGGLY_ANNOT_CMD, B_TRANSLATE("Add squiggly annotation."), "ANNOT_SQUIGGLY"},
-	{ PDFWindow::ADD_STRIKEOUT_ANNOT_CMD, B_TRANSLATE("Add strikeout annotation."), "ANNOT_STRIKEOUT"},
-	{ PDFWindow::ADD_STAMP_ANNOT_CMD, B_TRANSLATE("Add stamp annotation."), "ANNOT_STAMP"},
-	{ PDFWindow::ADD_INK_ANNOT_CMD, B_TRANSLATE("Add ink annotation."), "ANNOT_INK"},
-	{ PDFWindow::ADD_POPUP_ANNOT_CMD, B_TRANSLATE("Add popup annotation."), "ANNOT_POPUP"},
-	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, B_TRANSLATE("Add fileattachment annotation."), "ANNOT_FILEATTACHMENT"},
-	{ PDFWindow::ADD_SOUND_ANNOT_CMD, B_TRANSLATE("Add sound annotation."), "ANNOT_SOUND"},
-	{ PDFWindow::ADD_MOVIE_ANNOT_CMD, B_TRANSLATE("Add movie annotation."), "ANNOT_MOVIE"},
-	{ PDFWindow::ADD_WIDGET_ANNOT_CMD, B_TRANSLATE("Add widget annotation."), "ANNOT_WIDGET"},
-	{ PDFWindow::ADD_PRINTERMARK_ANNOT_CMD, B_TRANSLATE("Add printer mark annotation."), "ANNOT_PRINTERMARK"},
-	{ PDFWindow::ADD_TRAPNET_ANNOT_CMD, B_TRANSLATE("Add trapnet annotation."), "ANNOT_TRAPNET"},
+	{ PDFWindow::ADD_FREETEXT_ANNOT_CMD, B_TRANSLATE("Add free text annotation"), "ANNOT_FREETEXT"},
+	{ PDFWindow::ADD_LINE_ANNOT_CMD, B_TRANSLATE("Add line annotation"), "ANNOT_LINE"},
+	{ PDFWindow::ADD_SQUARE_ANNOT_CMD, B_TRANSLATE("Add square annotation"), "ANNOT_SQUARE"},
+	{ PDFWindow::ADD_CIRCLE_ANNOT_CMD, B_TRANSLATE("Add circle annotation"), "ANNOT_CIRCLE"},
+	{ PDFWindow::ADD_HIGHLIGHT_ANNOT_CMD, B_TRANSLATE("Add highlight annotation"), "ANNOT_HIGHLIGHT"},
+	{ PDFWindow::ADD_UNDERLINE_ANNOT_CMD, B_TRANSLATE("Add underline annotation"), "ANNOT_UNDERLINE"},
+	{ PDFWindow::ADD_SQUIGGLY_ANNOT_CMD, B_TRANSLATE("Add squiggly annotation"), "ANNOT_SQUIGGLY"},
+	{ PDFWindow::ADD_STRIKEOUT_ANNOT_CMD, B_TRANSLATE("Add strikeout annotation"), "ANNOT_STRIKEOUT"},
+	{ PDFWindow::ADD_STAMP_ANNOT_CMD, B_TRANSLATE("Add stamp annotation"), "ANNOT_STAMP"},
+	{ PDFWindow::ADD_INK_ANNOT_CMD, B_TRANSLATE("Add ink annotation"), "ANNOT_INK"},
+	{ PDFWindow::ADD_POPUP_ANNOT_CMD, B_TRANSLATE("Add popup annotation"), "ANNOT_POPUP"},
+	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, B_TRANSLATE("Add fileattachment annotation"), "ANNOT_FILEATTACHMENT"},
+	{ PDFWindow::ADD_SOUND_ANNOT_CMD, B_TRANSLATE("Add sound annotation"), "ANNOT_SOUND"},
+	{ PDFWindow::ADD_MOVIE_ANNOT_CMD, B_TRANSLATE("Add movie annotation"), "ANNOT_MOVIE"},
+	{ PDFWindow::ADD_WIDGET_ANNOT_CMD, B_TRANSLATE("Add widget annotation"), "ANNOT_WIDGET"},
+	{ PDFWindow::ADD_PRINTERMARK_ANNOT_CMD, B_TRANSLATE("Add printer mark annotation"), "ANNOT_PRINTERMARK"},
+	{ PDFWindow::ADD_TRAPNET_ANNOT_CMD, B_TRANSLATE("Add trapnet annotation"), "ANNOT_TRAPNET"},
 	{ kAnnotDescEOL, NULL, NULL}
 };
 
@@ -1911,9 +1911,9 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 
 	// label also used in PDFView!
 	toolbar->AddAction(DONE_EDIT_ANNOT_CMD, this, LoadBitmap("DONE_ANNOT_ON"),
-		B_TRANSLATE("Leave annotation editing mode."));
+		B_TRANSLATE("Leave annotation editing mode"));
 	toolbar->AddAction(SAVE_FILE_AS_CMD, this, LoadBitmap("SAVE_FILE_AS_ON"),
-		B_TRANSLATE("Save file as."));
+		B_TRANSLATE("Save file as"));
 
 	toolbar->AddSeparator();
 
@@ -1940,7 +1940,7 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 
 bool PDFWindow::TryEditAnnot() {
 	if (mMainView->GetPDFDoc()->isEncrypted()) {
-		BAlert* alert = new BAlert(B_TRANSLATE("Warning"), B_TRANSLATE("Editing of annotations in an encrypted PDF file not supported yet!"), B_TRANSLATE("OK"));
+		BAlert* alert = new BAlert(B_TRANSLATE("Warning"), B_TRANSLATE("Editing of annotations in an encrypted PDF file isn't supported yet!"), B_TRANSLATE("OK"));
 		alert->Go();
 		return false;
 	} else {
@@ -2102,7 +2102,7 @@ void PDFWindow::SaveFile(BMessage* msg) {
 			thread->Resume();
 		} else {
 			BAlert* alert = NULL;
-			alert = new BAlert(B_TRANSLATE("Warning"), B_TRANSLATE("Can not overwrite in BePDF opened PDF file! Choose another file name."), B_TRANSLATE("OK"));
+			alert = new BAlert(B_TRANSLATE("Warning"), B_TRANSLATE("Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name."), B_TRANSLATE("OK"));
 			alert->Go();
 		}
 	}

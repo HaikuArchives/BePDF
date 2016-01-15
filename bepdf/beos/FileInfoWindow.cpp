@@ -451,7 +451,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	mFontList = new BColumnListView(BRect(0, 0, 100, 100), NULL, B_FOLLOW_ALL_SIDES,
 		B_WILL_DRAW|B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER,true);
 	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Name"), 150.0, 150.0,150.0,true),0);
-	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Embedded Name"), 150.0,150.0,150.0,true),1);
+	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Embedded name"), 150.0,150.0,150.0,true),1);
 	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Type"), 80.0,80.0,80.0,true),2);
 
 	mFontsBorder = new BBox("border");
@@ -496,7 +496,7 @@ void FileInfoWindow::QueryAllFonts(PDFDoc *doc) {
 
 FileInfoWindow::FileInfoWindow(GlobalSettings *settings, BEntry *file, PDFDoc *doc,
 	BLooper *looper, int page)
-	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("File Info"),
+	: BWindow(BRect(0, 0, 100, 100), B_TRANSLATE("File info"),
 		B_TITLED_WINDOW_LOOK, B_NORMAL_WINDOW_FEEL, B_AUTO_UPDATE_SIZE_LIMITS),
 		mLooper(looper), mSettings(settings), mState(NORMAL) {
 
@@ -542,7 +542,7 @@ void FileInfoWindow::MessageReceived(BMessage *msg) {
 		mState = QUERY_ALL_FONTS;
 		mShowAllFonts->SetEnabled(false);
 		mStop->SetEnabled(true);
-		mFontsBorder->SetLabel(B_TRANSLATE("Searching all fonts…"));
+		mFontsBorder->SetLabel(B_TRANSLATE("Searching all fonts" B_UTF8_ELLIPSIS));
 		if (mLooper) {
 			// do searching in another thread (= thread of window)
 			mLooper->PostMessage(START_QUERY_ALL_FONTS_MSG);
