@@ -95,7 +95,6 @@ private:
 	BOutlineListView *mPreferences;
 	BCardLayout      *mLayers;
 	GlobalSettings   *mSettings;
-	BListView        *mList;
 	BMenuField       *mOpenInWorkspace;
 	DisplayCIDFonts  *mDisplayCIDFonts;
 	BMessage          mFontMenuFields;

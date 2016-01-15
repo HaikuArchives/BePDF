@@ -362,8 +362,8 @@ void PreferencesWindow::FillFontFileMenu(BMenuField* menuField, directory_which 
 	}
 }
 
-void PreferencesWindow::ClearView() {
-	MakeEmpty(mList);
+void PreferencesWindow::ClearView()
+{
 }
 
 PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper)
