@@ -256,12 +256,15 @@ void PDFWindow::FillPageList() {
 
 
 void PDFWindow::UpdatePageList() {
-	#warning FIXME: PageList
 	gPdfLock->Lock();
 	PageLabels labels(mMainView->GetNumPages()-1);
-	//if (labels.Parse(mMainView->GetPDFDoc()->getCatalog()->getPageLabels())) {
-	//	labels.Replace(mPagesView);
-	//}
+	Object catDict;
+	mMainView->GetPDFDoc()->getXRef()->getCatalog(&catDict);
+	Object* pageLabels = new Object;
+	catDict.dictLookup("PageLabels", pageLabels);
+	if (labels.Parse(pageLabels)) {
+		labels.Replace(mPagesView);
+	}
 
 	// update attachments as well
 	mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
