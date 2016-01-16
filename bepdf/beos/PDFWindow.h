@@ -35,7 +35,6 @@
 #include "EntryChangedMonitor.h"
 #include "FindTextWindow.h"
 #include "HWindow.h"
-#include "InputEnabler.h"
 #include "PDFView.h"
 #include "SplitView.h"
 #include "ToolTip.h"
@@ -214,8 +213,6 @@ public:
 	};
 
 private:
-	InputEnabler   mInputEnabler;
-
 	BEntry         mCurrentFile;
 	FileAttributes mFileAttributes;
 	EntryChangedMonitor mEntryChangedMonitor;
@@ -234,6 +231,7 @@ private:
 
 	BMessage       *mPrintSettings;
 	FindTextWindow *mFindWindow;
+	BMenuBar*		fMenuBar;
 	BMenuItem      *mPreferencesItem, *mFileInfoItem, // *mPrintSettingsItem,
 	               *mFullScreenItem;
 	BMenu          *mOpenMenu, *mNewMenu, *mWindowsMenu;
@@ -337,10 +335,6 @@ protected:
 	bool CancelCommand(BMessage* msg);
 	void Find(const char *s);
 	void AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool marked, char shortcut = 0, uint32 modifiers = 0);
-
-	// register control depending on behavior at input enabler (behavior == B_ONE_STATE_BUTTON)
-	// or control value setter (behavior == B_TWO_STATE_BUTTON).
-	void Register(uint32 behavior, BControl* control, int32 cmd);
 
 	void ActivateOutlines();
 

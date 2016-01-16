@@ -46,7 +46,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/FileSpec.cpp \
 	beos/FindTextWindow.cpp \
 	beos/History.cpp \
-	beos/InputEnabler.cpp \
 	beos/LayoutUtils.cpp \
 	beos/OutlinesWindow.cpp \
 	beos/PDFPrint.cpp \
@@ -72,8 +71,7 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/utils/LayerView.cpp \
 	beos/utils/ResourceLoader.cpp \
 	beos/utils/StatusBar.cpp \
-	beos/utils/Thread.cpp \
-	# beos/utils/Test.cpp
+	beos/utils/Thread.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.

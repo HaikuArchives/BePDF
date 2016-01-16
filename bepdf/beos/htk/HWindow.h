@@ -31,7 +31,6 @@
 	{                                                            \
 		BMenuItem* item = new BMenuItem(name, new BMessage(cmd), shortcut);    \
 		(menu)->AddItem(item);                                   \
-		mInputEnabler.Register(new IEMenuItem(item));            \
 	}
 
 #define ADD_SITEM(menu) \

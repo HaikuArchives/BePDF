@@ -432,104 +432,90 @@ AnnotationWindow* PDFWindow::ShowAnnotationWindow() {
 	return w;
 }
 
-///////////////////////////////////////////////////////////
-void PDFWindow::UpdateInputEnabler() {
-	#define ie mInputEnabler
+
+void PDFWindow::UpdateInputEnabler()
+{
 	if (mMainView) {
 		PDFDoc* doc = mMainView->GetPDFDoc();
 		int num_pages = mMainView->GetNumPages();
 		int page = mMainView->Page();
 		bool b = num_pages > 1 && page != 1;
 
-		ie.SetEnabled(FIRST_PAGE_CMD,      b);
-		ie.SetEnabled(PREVIOUS_PAGE_CMD,   b);
-		ie.SetEnabled(PREVIOUS_N_PAGE_CMD, b);
+		fMenuBar->FindItem(FIRST_PAGE_CMD)->SetEnabled(b);
+		mToolBar->SetActionEnabled(FIRST_PAGE_CMD, b);
+		fMenuBar->FindItem(PREVIOUS_PAGE_CMD)->SetEnabled(b);
+		mToolBar->SetActionEnabled(PREVIOUS_N_PAGE_CMD, b);
 
 		b = num_pages > 1 && page != num_pages;
-		ie.SetEnabled(LAST_PAGE_CMD,       b);
-		ie.SetEnabled(NEXT_PAGE_CMD,       b);
-		ie.SetEnabled(NEXT_N_PAGE_CMD,     b);
+		fMenuBar->FindItem(LAST_PAGE_CMD)->SetEnabled(b);
+		mToolBar->SetActionEnabled(LAST_PAGE_CMD, b);
+		fMenuBar->FindItem(NEXT_PAGE_CMD)->SetEnabled(b);
+		mToolBar->SetActionEnabled(NEXT_PAGE_CMD, b);
+		mToolBar->SetActionEnabled(NEXT_N_PAGE_CMD, b);
 
-		ie.SetEnabled(GOTO_PAGE_CMD,   num_pages > 1);
+		mPageNumberItem->SetEnabled(num_pages > 1);
 
-		ie.SetEnabled(HISTORY_FORWARD_CMD, mMainView->CanGoForward());
-		ie.SetEnabled(HISTORY_BACK_CMD, mMainView->CanGoBack());
+		mToolBar->SetActionEnabled(HISTORY_FORWARD_CMD, mMainView->CanGoForward());
+		mToolBar->SetActionEnabled(HISTORY_BACK_CMD, mMainView->CanGoBack());
 
 		int32 dpi = mMainView->GetZoomDPI();
-		ie.SetEnabled(ZOOM_IN_CMD,  dpi != ZOOM_DPI_MAX);
-		ie.SetEnabled(ZOOM_OUT_CMD, dpi != ZOOM_DPI_MIN);
+		mToolBar->SetActionEnabled(ZOOM_IN_CMD, dpi != ZOOM_DPI_MAX);
+		mToolBar->SetActionEnabled(ZOOM_OUT_CMD, dpi != ZOOM_DPI_MIN);
 
-		ie.SetEnabled(FIND_NEXT_CMD, mFindText.Length() > 0);
+		mToolBar->SetActionEnabled(FIND_NEXT_CMD, mFindText.Length() > 0);
 
 		int active = mLayerView->Active();
-		// setenable state of
 		mToolBar->SetActionPressed(SHOW_PAGE_LIST_CMD, mShowLeftPanel && active == PAGE_LIST_PANEL);
 		mToolBar->SetActionPressed(SHOW_BOOKMARKS_CMD, mShowLeftPanel && active == BOOKMARKS_PANEL);
 		mToolBar->SetActionPressed(SHOW_ANNOT_TOOLBAR_CMD, mShowLeftPanel && active == ANNOTATIONS_PANEL);
 		mToolBar->SetActionPressed(SHOW_ATTACHMENTS_CMD, mShowLeftPanel && active == ATTACHMENTS_PANEL);
 		mToolBar->SetActionPressed(FULL_SCREEN_CMD, mFullScreen);
 
-		// set enable state
-		ie.SetEnabled(SHOW_PAGE_LIST_CMD, (!mShowLeftPanel) || active != PAGE_LIST_PANEL);
-		ie.SetEnabled(SHOW_BOOKMARKS_CMD, (!mShowLeftPanel) || active != BOOKMARKS_PANEL);
-		ie.SetEnabled(SHOW_ANNOT_TOOLBAR_CMD, (!mShowLeftPanel) || active != ANNOTATIONS_PANEL);
-		ie.SetEnabled(SHOW_ATTACHMENTS_CMD, (!mShowLeftPanel) || active != ATTACHMENTS_PANEL);
-		ie.SetEnabled(HIDE_LEFT_PANEL_CMD, mShowLeftPanel);
+		fMenuBar->FindItem(SHOW_PAGE_LIST_CMD)
+			->SetMarked(mShowLeftPanel && active == PAGE_LIST_PANEL);
+		fMenuBar->FindItem(SHOW_BOOKMARKS_CMD)
+			->SetMarked(mShowLeftPanel && active == BOOKMARKS_PANEL);
+		fMenuBar->FindItem(SHOW_ANNOT_TOOLBAR_CMD)
+			->SetMarked(mShowLeftPanel && active == ANNOTATIONS_PANEL);
+		fMenuBar->FindItem(SHOW_ATTACHMENTS_CMD)
+			->SetMarked(mShowLeftPanel && active == ATTACHMENTS_PANEL);
+		fMenuBar->FindItem(HIDE_LEFT_PANEL_CMD)->SetMarked(mShowLeftPanel);
 
-		ie.SetEnabled(OPEN_FILE_CMD,      !mFullScreen);
-		ie.SetEnabled(RELOAD_FILE_CMD,    !mFullScreen);
-		ie.SetEnabled(PRINT_SETTINGS_CMD, !mFullScreen && !mPrintSettingsWindowOpen && doc->okToPrint());
+		fMenuBar->FindItem(OPEN_FILE_CMD)->SetEnabled(!mFullScreen);
+		mToolBar->SetActionEnabled(OPEN_FILE_CMD, !mFullScreen);
+		fMenuBar->FindItem(RELOAD_FILE_CMD)->SetEnabled(!mFullScreen);
+		mToolBar->SetActionEnabled(RELOAD_FILE_CMD, !mFullScreen);
+		fMenuBar->FindItem(PRINT_SETTINGS_CMD)
+			->SetEnabled(!mFullScreen && !mPrintSettingsWindowOpen && doc->okToPrint());
+		mToolBar->SetActionEnabled(PRINT_SETTINGS_CMD,
+			!mFullScreen && !mPrintSettingsWindowOpen && doc->okToPrint());
 
 		// PDF security settings
 		bool okToCopy = doc->okToCopy();
-		ie.SetEnabled(COPY_SELECTION_CMD, okToCopy);
-		ie.SetEnabled(SELECT_ALL_CMD,     okToCopy);
-		ie.SetEnabled(SELECT_NONE_CMD,    okToCopy);
+		fMenuBar->FindItem(COPY_SELECTION_CMD)->SetEnabled(okToCopy);
+		fMenuBar->FindItem(SELECT_ALL_CMD)->SetEnabled(okToCopy);
+		fMenuBar->FindItem(SELECT_NONE_CMD)->SetEnabled(okToCopy);
 
 		bool hasBookmark = mOutlinesView->HasUserBookmark(page);
 		bool selected    = hasBookmark && mOutlinesView->IsUserBMSelected();
-		ie.SetEnabled(ADD_BOOKMARK_CMD,   !hasBookmark);
-		ie.SetEnabled(EDIT_BOOKMARK_CMD,   selected);
-		ie.SetEnabled(DELETE_BOOKMARK_CMD, selected);
+		fMenuBar->FindItem(ADD_BOOKMARK_CMD)->SetEnabled(!hasBookmark);
+		fMenuBar->FindItem(EDIT_BOOKMARK_CMD)->SetEnabled(selected);
+		fMenuBar->FindItem(DELETE_BOOKMARK_CMD)->SetEnabled(selected);
 
 		// Annotation
 		bool editAnnot = mMainView->EditingAnnot();
-
-		ie.SetEnabled(DONE_EDIT_ANNOT_CMD, editAnnot);
-
-		bool canCopy = (!editAnnot) && mMainView->HasSelection();
-		ie.SetEnabled(SELECT_ALL_CMD,     !editAnnot);
-		ie.SetEnabled(COPY_SELECTION_CMD, canCopy);
-		ie.SetEnabled(SELECT_NONE_CMD,    canCopy);
-
-
-		if (Lock()) {
-			ie.Update();
-			Unlock();
-		}
+		mToolBar->SetActionEnabled(DONE_EDIT_ANNOT_CMD, editAnnot);
 	}
-	#undef ie
 }
 
-///////////////////////////////////////////////////////////
+
 void PDFWindow::AddItem(BMenu *subMenu, const char *label, uint32 cmd, bool marked, char shortcut, uint32 modifiers) {
 	BMenuItem *item = new BMenuItem(label, new BMessage(cmd), shortcut, modifiers);
 	item->SetMarked(marked);
 	subMenu->AddItem(item);
-	mInputEnabler.Register(new IEMenuItem(item, cmd));
 }
 
-///////////////////////////////////////////////////////////
-void PDFWindow::Register(uint32 behavior, BControl* control, int32 cmd) {
-	if (behavior == B_ONE_STATE_BUTTON) {
-		mInputEnabler.Register(new IEControl(control, cmd));
-	} // else {
-		// behavior == B_TWO_STATE_BUTTON
-//		mControlValueSetter.Register(new IEControlValue(control, cmd));
-//	}
-}
 
-///////////////////////////////////////////////////////////
 void PDFWindow::UpdateWindowsMenu() {
 /*
 	BMenuItem *item;
@@ -775,8 +761,6 @@ BToolBar* PDFWindow::BuildToolBar()
 	mPageNumberItem->SetAlignment(B_ALIGN_RIGHT, B_ALIGN_RIGHT);
 	mPageNumberItem->SetTarget (this);
 	mPageNumberItem->TextView()->DisallowChar(B_ESCAPE);
-	mInputEnabler.Register(new IETextView(mPageNumberItem->TextView(),
-		GOTO_PAGE_CMD));
 
 	BTextView *t = mPageNumberItem->TextView();
 	BFont font(be_plain_font);
@@ -874,8 +858,8 @@ void PDFWindow::SetUpViews(entry_ref * ref, const char *ownerPassword, const cha
 	font.SetSize(10);
 
 	SetSizeLimits(500, 10000, 120, 10000);
-	BMenuBar* menuBar = BuildMenu();
-	mMenuHeight = menuBar->Frame().Height() + 1;
+	fMenuBar = BuildMenu();
+	mMenuHeight = fMenuBar->Frame().Height() + 1;
 	BuildToolBar();
 
 	/* Main View is right view of SplitView */

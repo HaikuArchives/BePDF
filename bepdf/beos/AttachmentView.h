@@ -44,7 +44,6 @@
 
 // BePDF
 #include "FileSpec.h"
-#include "InputEnabler.h"
 #include "Settings.h"
 
 class XRef;
