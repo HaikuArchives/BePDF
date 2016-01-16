@@ -133,8 +133,9 @@ RecentDocumentsMenu::AddDynamicItem(add_state s)
 /*
 	Check errors that may happen
 */
-PDFWindow::PDFWindow(entry_ref * ref, BRect frame, bool quitWhenClosed, const char *ownerPassword, const char *userPassword, bool *encrypted)
-	: HWindow(frame, "PDF", B_DOCUMENT_WINDOW, 0, quitWhenClosed)
+PDFWindow::PDFWindow(entry_ref* ref, BRect frame, const char *ownerPassword,
+	const char *userPassword, bool *encrypted)
+	: BWindow(frame, "PDF", B_DOCUMENT_WINDOW, 0)
 {
 	mMainView = NULL;
 	mPagesView = NULL;
@@ -1552,7 +1553,7 @@ PDFWindow::MessageReceived(BMessage* message)
 		if (FIRST_ANNOT_CMD <= message->what && message->what <= LAST_ANNOT_CMD) {
 			InsertAnnotation(message->what);
 		} else
-			HWindow::MessageReceived(message);
+			BWindow::MessageReceived(message);
 	}
 }
 

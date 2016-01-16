@@ -67,7 +67,7 @@ private:
 
 
 class PDFWindow
-	: public HWindow
+	: public BWindow
 	, public EntryChangedListener
 	, public PositionChangedListener
 {
@@ -264,7 +264,8 @@ private:
 	BControl*      mPressedAnnotationButton;
 
 public:
-	PDFWindow (entry_ref * ref, BRect frame, bool quitWhenClosed, const char *ownerPassword, const char *userPassword, bool *encrypted);
+	PDFWindow (entry_ref* ref, BRect frame, const char *ownerPassword,
+		const char *userPassword, bool *encrypted);
 	virtual ~PDFWindow();
 
 	virtual bool QuitRequested();

@@ -560,7 +560,7 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 			bool ok;
 			bool encrypted = false;
 			if (mWindow == NULL) {
-				win = new PDFWindow(&ref, rect, false, owner, user, &encrypted);
+				win = new PDFWindow(&ref, rect, owner, user, &encrypted);
 				ok = win->IsOk();
 			} else {
 				win = mWindow;
