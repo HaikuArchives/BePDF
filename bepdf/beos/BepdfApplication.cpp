@@ -298,10 +298,6 @@ BepdfApplication::Initialize()
 		}
 
 		deleteGList(list, GString);
-
-		// hinting
-		//globalParams->setFreeTypeHinting( // TODO/FIXME
-		//	(char*)(mSettings->GetHinting() ? "yes" : "no"));
 	}
 }
 

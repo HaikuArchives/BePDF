@@ -89,7 +89,6 @@ private:
 		AUTHOR_CHANGED                = 'Atch',
 		INVERT_VERTICAL_SCROLLING_CHANGED = 'IvSl',
 		DISPLAY_CID_FONT_SELECTED     = 'DCFs',
-		HINTING_CHANGED               = 'Hint',
 	};
 	BLooper          *mLooper;
 	BOutlineListView *mPreferences;

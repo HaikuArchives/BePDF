@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -98,7 +98,6 @@
   do(float,   Float,  AttachmentsPosition,    attachmentsPosition,                           200.0) \
   do(int8,    Int8,   LeftPanel,              leftPanel,                                         0) \
                                                                                                     \
-  do(bool,    Bool,   Hinting,                hinting,                                       false) \
   do(int8,    Int8,   PrintColorMode,	      printColorMode,                                    0) \
   do(int32,  Int32,   Workspace,              workspace,                                         1) \
   do(bool,    Bool,   OpenInWorkspace,        wrkspcOpen,                                    false) \
@@ -111,9 +110,9 @@
                                                                                                     \
   do(float,   Float,  AttachmentFileNameColumnWidth,     attachmentFileNameColumnWidth,      170.0) \
   do(float,   Float,  AttachmentDescriptionColumnWidth,  attachmentDescriptionColumnWidth,   120.0)
-  
-  
-  
+
+
+
 #define WINDOW_SETTINGS(do)          \
   do(Window,         Window)         \
   do(PrefsWindow,    PrefsWin)       \
@@ -141,13 +140,13 @@
 
 #define SIZE_ACCESSOR(method, accessor) \
   void Get##method##Size(float &w, float &h) const { w = Get##accessor##Width(); h = Get##accessor##Height(); } \
-  void Set##method##Size(float w, float h)   { Set##accessor##Width(w);    Set##accessor##Height(h); }  
-	
+  void Set##method##Size(float w, float h)   { Set##accessor##Width(w);    Set##accessor##Height(h); }
+
 // Renamed class Settings to GlobalSettings because of Linker warning
 // in PPC Crosscompiler (libtracker)
 class _EXPORT GlobalSettings : public BArchivable {
 	bool mChanged;
-	
+
 	// file open settings
 	BString mPanelDirectory;
 	BString mDefaultPanelDirectory;
@@ -156,7 +155,7 @@ class _EXPORT GlobalSettings : public BArchivable {
 
 	SETTINGS(DECLARE_VARIABLE)
 	STRING_SETTINGS(DECLARE_STRING_VARIABLE)
-	
+
 public:
 	GlobalSettings();
 	bool HasChanged() const;
@@ -170,14 +169,14 @@ public:
 
 	void SetPanelDirectory(const char *dir);
 	const char *GetPanelDirectory() const;
-	
+
 	void SetDisplayCIDFonts(const BMessage& fonts);
 	void GetDisplayCIDFonts(BMessage& fonts) const;
-	
+
 	// helper functions
 	BRect GetWindowRect() const;
 
-	// BArchivable: 
+	// BArchivable:
 	GlobalSettings(BMessage *archive);
 	status_t Archive(BMessage *archive, bool deep = true) const;
 	static BArchivable *Instantiate(BMessage *archive);
@@ -185,11 +184,11 @@ public:
 	enum {
 		NORMAL_PRINT_ORDER = 0,
 		REVERSE_PRINT_ORDER,
-		
+
 		PRINT_ALL_PAGES = 0,
 		PRINT_ODD_PAGES = 1,
 		PRINT_EVEN_PAGES = 2,
-		
+
 		PRINT_COLOR_MODE = 0,
 		PRINT_MONOCHROME_MODE = 1,
 	};
@@ -203,7 +202,7 @@ class FileAttributes {
 	int32    page;
 	float    left, top;
 	BMessage bookmarks;
-	
+
 public:
 	void SetPage(int32 page);
 	int32 GetPage() const;
@@ -211,7 +210,7 @@ public:
 	void GetLeftTop(float &left, float &top);
 	void SetBookmarks(BMessage *bookmarks) { this->bookmarks = *bookmarks; }
 	BMessage *GetBookmarks()               { return &bookmarks; }
-	
+
 	// read/write settings from/to attributes
 	bool Read(entry_ref *ref, GlobalSettings *s);
 	bool Write(entry_ref *ref, GlobalSettings *s);

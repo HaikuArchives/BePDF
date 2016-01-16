@@ -168,19 +168,6 @@ void PreferencesWindow::SetupView() {
 		new BMessage(INVERT_VERTICAL_SCROLLING_CHANGED));
 	scrolling->SetValue(settings->GetInvertVerticalScrolling());
 
-	BCheckBox *hinting = new BCheckBox("hinting", B_TRANSLATE("Hinting"),
-		new BMessage(HINTING_CHANGED));
-	hinting->SetValue(settings->GetHinting());
-
-	BGroupLayout *ftBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_SMALL_INSETS)
-		.Add(hinting)
-		.AddGlue();
-
-	BBox *freetype = new BBox("freetype");
-	freetype->SetLabel(B_TRANSLATE("FreeType 2"));
-	freetype->AddChild(ftBox->View());
-
 	BBox *asian = new BBox("asian");
 	asian->SetLabel(B_TRANSLATE("Asian fonts"));
 	asian->AddChild(BuildAsianFontsView());
@@ -196,7 +183,6 @@ void PreferencesWindow::SetupView() {
 				.Add(scrolling)
 				.AddGlue()
 			.End()
-			.Add(freetype)
 			.Add(asian)
 			.GetLayout(&mLayers)
 		.End();
@@ -490,12 +476,6 @@ void PreferencesWindow::MessageReceived(BMessage *msg) {
 		break;
 	case DISPLAY_CID_FONT_SELECTED:
 		DisplayCIDFontSelected(msg);
-		break;
-	case HINTING_CHANGED:
-		mSettings->SetHinting(IsOn(msg));
-		//globalParams->setFreeTypeHinting(
-		//	(char*)(IsOn(msg) ? "yes" : "no")); // TODO/FIXME hinting
-		NotifyRestartDoc();
 		break;
 	case FILLED_SELECTION_FILLED:
 	case FILLED_SELECTION_STROKED: {
