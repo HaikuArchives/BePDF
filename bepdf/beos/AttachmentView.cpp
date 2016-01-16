@@ -171,7 +171,6 @@ void AttachmentView::MessageReceived(BMessage *msg) {
 			}
 
 			if (count == 1) {
-				AttachmentItem* item = GetAttachment(&saveMsg, 0);
 				gApp->OpenSaveFilePanel(this, NULL, &saveMsg, "");
 			} else {
 				gApp->OpenSaveToDirectoryFilePanel(this, NULL, &saveMsg);
@@ -204,7 +203,7 @@ void AttachmentView::Fill(XRef* xref, PDFDoc* doc)
 			char buf[4];
 			for (int j = 0; j < catalog->getEmbeddedFileNameLength(i); j++) {
 				int32 len = mapUTF8(catalog->getEmbeddedFileName(i)[j],
-					(const char*)&buf, 4);
+					(char*)&buf, 4);
 				str.Append((const char*)&buf, len);
 			}
 			mList->AddRow(new AttachmentItem(str, i));
@@ -254,13 +253,14 @@ class SaveAttachmentThread : public SaveThread {
 public:
 	SaveAttachmentThread(const char* title, XRef* xref, PDFDoc* doc, const BMessage* message)
 		: SaveThread(title, xref),
-		fDoc(doc),
-		mMessage(*message)
+		mMessage(*message),
+		fDoc(doc)
 	{
 	}
 
-	void ActuallySave(const char* path, int fileIdx) {
-		fDoc->saveEmbeddedFile(fileIdx, path);
+	void ActuallySave(BString path, int fileIdx) {
+		fDoc->saveEmbeddedFile(fileIdx, path.LockBuffer(path.Length()));
+		path.UnlockBuffer();
 	}
 
 	int32 Run() {

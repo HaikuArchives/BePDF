@@ -291,9 +291,19 @@ void PDFWindow::HandlePendingActions(bool ok) {
 		UpdatePageList();
 
 	if (ok) {
-		if (IsPending(UPDATE_OUTLINE_LIST_PENDING)) MessageReceived(&BMessage(SHOW_BOOKMARKS_CMD));
-		if (IsPending(FILE_INFO_PENDING))           MessageReceived(&BMessage(FILE_INFO_CMD));
-		if (IsPending(PRINT_SETTINGS_PENDING))      MessageReceived(&BMessage(PRINT_SETTINGS_CMD));
+		BMessage msg;
+		if (IsPending(UPDATE_OUTLINE_LIST_PENDING)) {
+			msg.what = SHOW_BOOKMARKS_CMD;
+			MessageReceived(&msg);
+		}
+		if (IsPending(FILE_INFO_PENDING)) {
+			msg.what = FILE_INFO_CMD;
+			MessageReceived(&msg);
+		}
+		if (IsPending(PRINT_SETTINGS_PENDING)) {
+			msg.what = PRINT_SETTINGS_CMD;
+			MessageReceived(&msg);
+		}
 	}
 	ClearPending();
 }
@@ -1168,21 +1178,19 @@ PDFWindow::MessageReceived(BMessage* message)
 	case LAST_PAGE_CMD:
 		mMainView->MoveToPage (mMainView->GetNumPages());
 		break;
-	case GOTO_PAGE_CMD:
-		{
+	case GOTO_PAGE_CMD: {
 			status_t err;
 			BTextControl * control;
 			BControl * ptr;
 
-			err  = message->FindPointer ("source", (void **)&ptr);
+			err = message->FindPointer ("source", (void **)&ptr);
 			control = dynamic_cast <BTextControl *> (ptr);
-			if (control != NULL) {
+			if (err == B_OK && control != NULL) {
 				const char *txt = control->Text ();
 				page = atoi (txt);
 				mMainView->MoveToPage (page);
 				mMainView->MakeFocus();
-			}
-			else {
+			} else {
 				/* ERROR */
 			}
 		}
@@ -1194,22 +1202,20 @@ PDFWindow::MessageReceived(BMessage* message)
 	case GOTO_PAGE_MENU_CMD:
 		mPageNumberItem->MakeFocus();
 		break;
-	case SET_ZOOM_VALUE_CMD:
-		{
+	case SET_ZOOM_VALUE_CMD: {
 			status_t err;
 			BMenuItem * item;
 			BMenu * menu;
 			BArchivable * ptr;
 			int32 idx;
 
-			err  = message->FindPointer ("source", (void **)&ptr);
+			err = message->FindPointer ("source", (void **)&ptr);
 			item = dynamic_cast <BMenuItem *> (ptr);
-			if (item != NULL) {
-				menu = item->Menu ();
+			if (err == B_OK && item != NULL) {
+				menu = item->Menu();
 				if (menu == NULL) {
 					// ERROR
-				}
-				else {
+				} else {
 					idx = menu->IndexOf (item) - FIRST_ZOOM_ITEM_INDEX;
 					if (idx > MAX_ZOOM) {
 						idx = MAX_ZOOM;
@@ -1230,22 +1236,20 @@ PDFWindow::MessageReceived(BMessage* message)
 	case FIT_TO_PAGE_CMD:
 		mMainView->FitToPage();
 		break;
-	case SET_ROTATE_VALUE_CMD:
-		{
+	case SET_ROTATE_VALUE_CMD: {
 			status_t err;
 			BMenuItem * item;
 			BMenu * menu;
 			BArchivable * ptr;
 			int32 idx;
 
-			err  = message->FindPointer ("source", (void **)&ptr);
-			item = dynamic_cast <BMenuItem *> (ptr);
-			if (item != NULL) {
-				menu = item->Menu ();
+			err = message->FindPointer ("source", (void **)&ptr);
+			item = dynamic_cast <BMenuItem *>(ptr);
+			if (err == B_OK && item != NULL) {
+				menu = item->Menu();
 				if (menu == NULL) {
 					// ERROR
-				}
-				else {
+				} else {
 					idx = menu->IndexOf (item);
 					mMainView->SetRotation (idx * 90);
 				}

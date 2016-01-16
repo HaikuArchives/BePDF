@@ -100,9 +100,10 @@ TraceWindow::TraceWindow(GlobalSettings *settings)
 	Show(); Lock(); Hide(); Unlock();
 }
 
-void TraceWindow::EnableCheckboxes() {
-	mStdoutCB->SetEnabled(mShowStdout && mShowStderr || !mShowStdout);
-	mStderrCB->SetEnabled(mShowStdout && mShowStderr || !mShowStderr);
+void TraceWindow::EnableCheckboxes()
+{
+	mStdoutCB->SetEnabled((mShowStdout && mShowStderr) || !mShowStdout);
+	mStderrCB->SetEnabled((mShowStdout && mShowStderr) || !mShowStderr);
 }
 
 void TraceWindow::UpdateWindowLookAndFeel() {

@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -28,7 +28,7 @@
 #include <malloc.h>
 
 
-GlobalSettings::GlobalSettings() : 
+GlobalSettings::GlobalSettings() :
 	mChanged(false)
 {
 	SETTINGS(DEFINE_VARIABLE)
@@ -81,7 +81,7 @@ BRect GlobalSettings::GetWindowRect() const {
 	return rect;
 }
 
-// BArchivable: 
+// BArchivable:
 GlobalSettings::GlobalSettings(BMessage *archive) {
 	mChanged = false;
 
@@ -90,7 +90,7 @@ GlobalSettings::GlobalSettings(BMessage *archive) {
 
 	if (B_OK != archive->FindString("panelDirectory", &mPanelDirectory))
 		mPanelDirectory = mDefaultPanelDirectory;
-	
+
 	archive->FindMessage("displayCIDFonts", &mDisplayCIDFonts);
 }
 
@@ -141,8 +141,9 @@ BPath path(filename);
 }
 
 
-// FileAttributes
-#pragma mark ------- FileAttributes --------
+// #pragma mark - FileAttributes
+
+
 void FileAttributes::SetPage(int32 page) {
 	this->page = page;
 }
@@ -157,7 +158,7 @@ void FileAttributes::SetLeftTop(float left, float top) {
 }
 
 void FileAttributes::GetLeftTop(float &left, float &top) {
-	left = this->left; top = this->top;	
+	left = this->left; top = this->top;
 }
 
 bool FileAttributes::Read(entry_ref *ref, GlobalSettings *s) {
@@ -174,7 +175,7 @@ bool FileAttributes::Read(entry_ref *ref, GlobalSettings *s) {
 		if ((sizeof(pos_x) != node.ReadAttr("bepdf:pos_x", B_INT32_TYPE, 0, &pos_x, sizeof(pos_x))) ||
 		   (sizeof(pos_y) != node.ReadAttr("bepdf:pos_y", B_INT32_TYPE, 0, &pos_y, sizeof(pos_y)))) {
 			BPoint pos = s->GetWindowPosition();
-			pos_x = (int32)pos.x; 
+			pos_x = (int32)pos.x;
 			pos_y = (int32)pos.y;
 		}
 		if ((sizeof(width) != node.ReadAttr("bepdf:width", B_INT32_TYPE, 0, &width, sizeof(width))) ||
@@ -192,17 +193,17 @@ bool FileAttributes::Read(entry_ref *ref, GlobalSettings *s) {
 		if (sizeof(top) != node.ReadAttr("bepdf:top", B_FLOAT_TYPE, 0, &top, sizeof(top))) {
 			top = 0;
 		}
-		
+
 		if (s->GetRestoreWindowFrame()) {
 			s->SetWindowPosition(BPoint(pos_x, pos_y));
 			s->SetWindowSize(width, height);
 		}
-		
+
 		if (s->GetRestorePageNumber()) {
 			s->SetZoom(zoom);
 			s->SetRotation(rotation);
 		}
-		
+
 		// read bookmarks
 		ssize_t buf_size = 65536;
 		ssize_t attr_size = 0;
@@ -235,15 +236,15 @@ bool FileAttributes::Write(entry_ref *ref, GlobalSettings *s) {
 		int32 i;
 		BPoint pos = s->GetWindowPosition();
 		i = (int32)pos.x;
-		if (sizeof(int32) != node.WriteAttr("bepdf:pos_x", B_INT32_TYPE, 0, &i, sizeof(i))) return false; 
+		if (sizeof(int32) != node.WriteAttr("bepdf:pos_x", B_INT32_TYPE, 0, &i, sizeof(i))) return false;
 		i = (int32)pos.y;
-		if (sizeof(int32) != node.WriteAttr("bepdf:pos_y", B_INT32_TYPE, 0, &i, sizeof(i))) return false; 
+		if (sizeof(int32) != node.WriteAttr("bepdf:pos_y", B_INT32_TYPE, 0, &i, sizeof(i))) return false;
 		float width, height;
 		s->GetWindowSize(width, height);
 		i = (int32)width;
-		if (sizeof(int32) != node.WriteAttr("bepdf:width", B_INT32_TYPE, 0, &i, sizeof(i))) return false; 
+		if (sizeof(int32) != node.WriteAttr("bepdf:width", B_INT32_TYPE, 0, &i, sizeof(i))) return false;
 		i = (int32)height;
-		if (sizeof(int32) != node.WriteAttr("bepdf:height", B_INT32_TYPE, 0, &i, sizeof(i))) return false; 
+		if (sizeof(int32) != node.WriteAttr("bepdf:height", B_INT32_TYPE, 0, &i, sizeof(i))) return false;
 		// current page
 		int16 zoom = s->GetZoom();
 		if (sizeof(zoom) != node.WriteAttr("bepdf:zoom", B_INT16_TYPE, 0, &zoom, sizeof(zoom))) return false;

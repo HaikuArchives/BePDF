@@ -647,11 +647,11 @@ BepdfApplication::ArgvReceived (int32 argc, char **argv)
 	}
 
 	int intArgc = argc;
-	ok = parseArgs (GetGlobalArgDesc(), &intArgc, argvCopy);
+	ok = parseArgs(GetGlobalArgDesc(), &intArgc, argvCopy);
 	argc = intArgc;
 
 	// check command line
-	if (!(argc == 2 || argc == 3) || GetPrintHelp()) {
+	if (!ok || !(argc == 2 || argc == 3) || GetPrintHelp()) {
 		printUsage(argvCopy[0], "[<PDF-file> [<page>]]", GetGlobalArgDesc());
 		exit(1);
 	}
@@ -714,15 +714,6 @@ static struct {
 	{"pdf:linearized",  "Linearized",  NULL,           B_BOOL_TYPE},
 	{NULL, NULL, NULL, 0}
 };
-
-static void AddIfMissing(BMessage* m, const char* key, const char* value) {
-	BString v;
-	for (int i = 0; B_OK == m->FindString(key, i, &v); i++) {
-		if (strcmp(v.String(), value) == 0) return; // found
-	}
-	m->AddString(key, value);
-}
-
 
 ///////////////////////////////////////////////////////////
 void

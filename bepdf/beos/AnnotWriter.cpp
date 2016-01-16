@@ -337,7 +337,7 @@ bool AnnotWriter::WriteXRefTable() {
 			XRefEntry* x = mXRefTable.GetXRef(i + first);
 			ASSERT(x->offset >= 0);
 			// write offset, gen and used or unused char
-			fprintf(mFile, "%10.10d %5.5d %c\r\n",
+			fprintf(mFile, "%10.10lld %5.5d %c\r\n",
 				x->offset, x->gen, x->type != xrefEntryFree ? 'n' : 'f');
 			}
 		first += nof;

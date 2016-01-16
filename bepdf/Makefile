@@ -153,7 +153,7 @@ SYMBOLS :=
 DEBUGGER :=
 
 #	Specify any additional compiler flags to be used.
-COMPILER_FLAGS = -fpermissive
+COMPILER_FLAGS = -Wno-write-strings
 
 #	Specify any additional linker flags to be used.
 LINKER_FLAGS = $(shell freetype-config --libs)

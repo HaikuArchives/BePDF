@@ -433,8 +433,6 @@ void PreferencesWindow::DisplayCIDFontSelected(BMessage* msg) {
 }
 
 void PreferencesWindow::MessageReceived(BMessage *msg) {
-	int32 index;
-
 	switch (msg->what) {
 	case PREFERENCE_SELECTED:
 		if (mPreferences->FullListCurrentSelection() >= 0) {
