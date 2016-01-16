@@ -40,7 +40,7 @@
 
 // xpdf
 #include <Object.h>
-#include <Catalog.h>
+#include <PDFDoc.h>
 
 // BePDF
 #include "FileSpec.h"
@@ -52,16 +52,17 @@ class XRef;
 // Column 0 contains file name, column 1 contains description.
 class AttachmentItem : public BRow {
 private:
-	FileSpec mFileSpec;
+	BString fFileName;
+	int fFileIdx;
 
 	typedef BRow super;
 
 public:
 	// Constructs the AttachmentItem and the values for its columns
-	AttachmentItem(FileSpec* fileSpec);
+	AttachmentItem(BString fileName, int fileIdx);
 
-	// Returns the FileSpec.
-	FileSpec* GetFileSpec() { return &mFileSpec; }
+	BString GetFileName() { return fFileName; }
+	int GetFileIndex() { return fFileIdx; }
 
 	// Returns label of column 0.
 	const char* Text();
@@ -84,7 +85,7 @@ public:
 	// Empties the column list.
 	void Empty();
 	// Fills the column list with attachments.
-	void Fill(XRef* xref, Catalog* catalog);
+	void Fill(XRef* xref, PDFDoc* doc);
 
 	// Returns the AttachmentItem at the specified index in msg.
 	static AttachmentItem* GetAttachment(BMessage* msg, int32 index);
@@ -92,7 +93,8 @@ public:
 	void Update();
 
 private:
-	BToolBar* fToolBar;
+	BToolBar*	fToolBar;
+	PDFDoc*		fDoc;
 
 	// Adds selected attachments to msg
 	int32 AddSelectedAttachments(BMessage* msg);

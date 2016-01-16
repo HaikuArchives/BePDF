@@ -265,7 +265,7 @@ void PDFWindow::UpdatePageList() {
 
 	// update attachments as well
 	mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
-		mMainView->GetPDFDoc()->getCatalog());
+		mMainView->GetPDFDoc());
 
 	gPdfLock->Unlock();
 }

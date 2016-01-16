@@ -65,17 +65,16 @@ enum {
 
 // Implementation of AttachmentItem
 
-AttachmentItem::AttachmentItem(FileSpec* fileSpec)
-	: BRow()
-	, mFileSpec(fileSpec)
+AttachmentItem::AttachmentItem(BString fileName, int fileIdx)
+	: BRow(),
+	  fFileName(fileName),
+	  fFileIdx(fileIdx)
 {
-	BString fileName;
-	TextToUtf8(fileSpec->GetFileName(), &fileName);
-	SetField(new BStringField(fileName.String()),0);
+	SetField(new BStringField(fileName.String()), 0);
 
-	BString description;
-	TextToUtf8(fileSpec->GetDescription(), &description);
-	SetField(new BStringField(description.String()),1);
+	//BString description;
+	//TextToUtf8(fileSpec->GetDescription(), &description);
+	//SetField(new BStringField(description.String()),1);
 }
 
 const char* AttachmentItem::Text() {
@@ -173,8 +172,7 @@ void AttachmentView::MessageReceived(BMessage *msg) {
 
 			if (count == 1) {
 				AttachmentItem* item = GetAttachment(&saveMsg, 0);
-				gApp->OpenSaveFilePanel(this, NULL, &saveMsg,
-					item->GetFileSpec()->GetFileName()->getCString());
+				gApp->OpenSaveFilePanel(this, NULL, &saveMsg, "");
 			} else {
 				gApp->OpenSaveToDirectoryFilePanel(this, NULL, &saveMsg);
 			}
@@ -191,10 +189,12 @@ void AttachmentView::MessageReceived(BMessage *msg) {
 	}
 }
 
-void AttachmentView::Fill(XRef* xref, Catalog* catalog)
+void AttachmentView::Fill(XRef* xref, PDFDoc* doc)
 {
 	mList->Clear();
 	mXRef = xref;
+	Catalog* catalog = doc->getCatalog();
+	fDoc = doc;
 	if (catalog->getNumEmbeddedFiles() == 0) {
 		// add empty item
 		Empty();
@@ -207,8 +207,7 @@ void AttachmentView::Fill(XRef* xref, Catalog* catalog)
 					(const char*)&buf, 4);
 				str.Append((const char*)&buf, len);
 			}
-			item->SetField(new BStringField(str.String()), 0);
-			mList->AddRow(item);
+			mList->AddRow(new AttachmentItem(str, i));
 		}
 	}
 	Update();
@@ -235,7 +234,7 @@ int32 AttachmentView::AddSelectedAttachments(BMessage* msg) {
 			continue;
 		}
 
-		msg->AddPointer("attachment",  attachment);
+		msg->AddPointer("attachment", attachment);
 		count ++;
 	}
 	msg->AddInt32("count", count);
@@ -253,10 +252,15 @@ AttachmentItem* AttachmentView::GetAttachment(BMessage* msg, int32 index) {
 
 class SaveAttachmentThread : public SaveThread {
 public:
-	SaveAttachmentThread(const char* title, XRef* xref, const BMessage* message)
-		: SaveThread(title, xref)
-		, mMessage(*message)
+	SaveAttachmentThread(const char* title, XRef* xref, PDFDoc* doc, const BMessage* message)
+		: SaveThread(title, xref),
+		fDoc(doc),
+		mMessage(*message)
 	{
+	}
+
+	void ActuallySave(const char* path, int fileIdx) {
+		fDoc->saveEmbeddedFile(fileIdx, path);
 	}
 
 	int32 Run() {
@@ -267,20 +271,18 @@ public:
 			return -1;
 		}
 
-		BPath  path;
+		BPath path;
 		if (count == 1) {
 			BString name;
 			if (mMessage.FindRef("directory", &dir) != B_OK ||
-				mMessage.FindString("name", &name) != B_OK)
-			{
+				mMessage.FindString("name", &name) != B_OK)	{
 				// should not happen
 				return -1;
 			}
 			path.SetTo(&dir);
 			path.Append(name.String());
 		} else {
-			if (mMessage.FindRef("refs", &dir) != B_OK)
-			{
+			if (mMessage.FindRef("refs", &dir) != B_OK)	{
 				// should not happen
 				return -1;
 			}
@@ -293,13 +295,13 @@ public:
 			SetCurrent(1);
 			AttachmentItem* item = AttachmentView::GetAttachment(&mMessage, 0);
 			if (item != NULL) {
-				SetText(item->GetFileSpec()->GetFileName()->getCString());
-				item->GetFileSpec()->Save(GetXRef(), path.Path());
+				SetText(item->GetFileName());
+				ActuallySave(path.Path(), item->GetFileIndex());
 			}
 		} else {
 			AttachmentItem* item = AttachmentView::GetAttachment(&mMessage, 0);
 			for (int32 i = 1; item != NULL; i ++) {
-				BString name(item->GetFileSpec()->GetFileName()->getCString());
+				BString name(item->GetFileName());
 				SetText(name.String());
 				SetCurrent(i);
 				for (int postfix = 1; postfix < 50; postfix ++) {
@@ -317,7 +319,7 @@ public:
 						continue;
 					}
 
-					item->GetFileSpec()->Save(GetXRef(), file.Path());
+					ActuallySave(file.Path(), item->GetFileIndex());
 					break;
 				}
 
@@ -329,11 +331,12 @@ public:
 
 private:
 	BMessage         mMessage;
+	PDFDoc*			fDoc;
 };
 
 void AttachmentView::Save(BMessage* msg) {
 	const char* title = B_TRANSLATE("Saving attachment(s):");
-	SaveAttachmentThread* thread = new SaveAttachmentThread(title, mXRef, msg);
+	SaveAttachmentThread* thread = new SaveAttachmentThread(title, mXRef, fDoc, msg);
 	thread->Resume();
 }
 
