@@ -35,7 +35,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/AnnotationRenderer.cpp \
 	beos/AnnotationWindow.cpp \
 	beos/AttachmentView.cpp \
-	beos/Attachments.cpp \
 	beos/BeFontEncoding.cpp \
 	beos/BePDF.cpp \
 	beos/BepdfApplication.cpp \

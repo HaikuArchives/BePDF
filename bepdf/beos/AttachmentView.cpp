@@ -31,12 +31,12 @@
 #include <Path.h>
 #include <Region.h>
 #include <ScrollView.h>
+#include <LayoutBuilder.h>
 
 #include <private/interface/ColumnListView.h>
 #include <private/interface/ColumnTypes.h>
 
 // bepdf
-#include "Attachments.h"
 #include "BepdfApplication.h" // for save panel
 #include "ResourceLoader.h"
 #include "LayoutUtils.h"
@@ -44,6 +44,9 @@
 #include "StatusWindow.h"
 #include "TextConversion.h"
 #include "Thread.h"
+
+// xpdf
+#include <UTF8.h>
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "AttachmentView"
@@ -80,39 +83,14 @@ const char* AttachmentItem::Text() {
 	return field->String();
 }
 
-// AttachmentListView
-class AttachmentListView : public BColumnListView {
-public:
-		AttachmentListView(GlobalSettings* settings,
-						BRect frame,
-						const char* name = NULL,
-						uint32 resizingMode = B_FOLLOW_LEFT | B_FOLLOW_TOP,
-						uint32 flags = B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
-						border_style border = B_NO_BORDER,
-						bool horizontal = true)
-			: BColumnListView(frame, name, resizingMode, flags, border, horizontal)
-			, mSettings(settings)
-		{
-			SetSelectionMode(B_MULTIPLE_SELECTION_LIST);
-		}
-
-private:
-	GlobalSettings* mSettings;
-};
-
 
 AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
 	: BView(rect, "attachments", resizeMask, flags | B_FRAME_EVENTS)
 {
-	rect.OffsetTo(0, 0);
-
-	BRect r(rect);
-	r.bottom = 30;
-	fToolBar = new BToolBar(r);
+	fToolBar = new BToolBar;
 	fToolBar->SetName("toolbar");
 	fToolBar->SetResizingMode(B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT);
 	fToolBar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
-	AddChild(fToolBar);
 
 	//fToolBar->AddAction(kOpenCmd, this, LoadBitmap("OPEN_FILE_ON"),
 	//	B_TRANSLATE("Open attachment(s)"));
@@ -120,21 +98,23 @@ AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *lo
 	// Note tooltip text used in method Update() also!
 	fToolBar->AddAction(kSaveAsCmd, this, LoadBitmap("SAVE_FILE_AS_ON"),
 		B_TRANSLATE("Save attachment(s) as"));
+	fToolBar->AddGlue();
 
-	rect.top += r.bottom + 1;
-	r = rect;
-	r.InsetBy(2, 2);
-	r.right -= B_V_SCROLL_BAR_WIDTH;
-	r.bottom -= B_H_SCROLL_BAR_HEIGHT;
-
-	mList = new AttachmentListView(settings,
-		r, NULL,
-		B_FOLLOW_ALL_SIDES,
+	mList = new BColumnListView(NULL,
 		B_WILL_DRAW | B_FRAME_EVENTS | B_NAVIGABLE,
 		B_FANCY_BORDER,
 		true);
-	mList->AddColumn(new BStringColumn(B_TRANSLATE("File name"), settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
-	mList->AddColumn(new BStringColumn(B_TRANSLATE("Description"), settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
+	mList->SetSelectionMode(B_MULTIPLE_SELECTION_LIST);
+	mList->AddColumn(new BStringColumn(B_TRANSLATE("File name"),
+		settings->GetAttachmentFileNameColumnWidth(), 10, 1000, true),0);
+	mList->AddColumn(new BStringColumn(B_TRANSLATE("Description"),
+		settings->GetAttachmentDescriptionColumnWidth(), 10, 1000, true),1);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.SetInsets(0)
+		.Add(fToolBar)
+		.Add(mList)
+	.End();
 }
 
 AttachmentView::~AttachmentView()
@@ -211,20 +191,31 @@ void AttachmentView::MessageReceived(BMessage *msg) {
 	}
 }
 
-void AttachmentView::Fill(XRef* xref, Object *embeddedFiles) {
+void AttachmentView::Fill(XRef* xref, Catalog* catalog)
+{
+	mList->Clear();
 	mXRef = xref;
-	Attachments attachments;
-	if (attachments.Parse(embeddedFiles)) {
-		attachments.Replace(mList);
-	}
-	if (mList->CountRows() == 0) {
+	if (catalog->getNumEmbeddedFiles() == 0) {
 		// add empty item
 		Empty();
+	} else {
+		for (int i = 0; i < catalog->getNumEmbeddedFiles(); i++) {
+			BString str;
+			char buf[4];
+			for (int j = 0; j < catalog->getEmbeddedFileNameLength(i); j++) {
+				int32 len = mapUTF8(catalog->getEmbeddedFileName(i)[j],
+					(const char*)&buf, 4);
+				str.Append((const char*)&buf, len);
+			}
+			item->SetField(new BStringField(str.String()), 0);
+			mList->AddRow(item);
+		}
 	}
 	Update();
 }
 
-void AttachmentView::Empty() {
+void AttachmentView::Empty()
+{
 	mList->Clear();
 	BRow* item = new BRow();
 	item->SetField(new BStringField(B_TRANSLATE("<empty>")),0);

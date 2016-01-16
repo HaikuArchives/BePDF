@@ -54,7 +54,6 @@
 // BePDF
 #include "AnnotationWindow.h"
 #include "AnnotWriter.h"
-#include "Attachments.h"
 #include "AttachmentView.h"
 #include "BePDF.h"
 #include "BepdfApplication.h"
@@ -265,8 +264,8 @@ void PDFWindow::UpdatePageList() {
 	//}
 
 	// update attachments as well
-	//mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
-	//	mMainView->GetPDFDoc()->getCatalog()->getEmbeddedFiles()); // FIXME
+	mAttachmentView->Fill(mMainView->GetPDFDoc()->getXRef(),
+		mMainView->GetPDFDoc()->getCatalog());
 
 	gPdfLock->Unlock();
 }

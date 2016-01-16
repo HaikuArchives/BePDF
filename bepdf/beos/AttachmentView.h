@@ -40,6 +40,7 @@
 
 // xpdf
 #include <Object.h>
+#include <Catalog.h>
 
 // BePDF
 #include "FileSpec.h"
@@ -83,7 +84,7 @@ public:
 	// Empties the column list.
 	void Empty();
 	// Fills the column list with attachments.
-	void Fill(XRef* xref, Object* embeddedFiles);
+	void Fill(XRef* xref, Catalog* catalog);
 
 	// Returns the AttachmentItem at the specified index in msg.
 	static AttachmentItem* GetAttachment(BMessage* msg, int32 index);
