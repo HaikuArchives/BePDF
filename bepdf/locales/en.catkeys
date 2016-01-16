@@ -1,255 +1,247 @@
-1	English	application/x-vnd.mp-xpdf	826072473
+1	English	application/x-vnd.mp-xpdf	93390073
 Close	BepdfApplication		Close
 Go to page %d	PDFView		Go to page %d
 of %d	PDFWindow		of %d
+Zoom in	PDFWindow		Zoom in
 About BePDF…	PDFWindow		About BePDF…
 BePDF: Launch	PDFView		BePDF: Launch
+Go to next page	PDFWindow		Go to next page
 Keywords:	FileInfoWindow		Keywords:
-Online Help…	PDFWindow		Online Help…
-Add help text annotation.	PDFWindow		Add help text annotation.
-Add comment text annotation.	PDFWindow		Add comment text annotation.
-All Pages	PrintSettingsWindow		All Pages
+All pages	PrintSettingsWindow		All pages
 View	PDFWindow		View
 Show annotation tool bar	PDFWindow		Show annotation tool bar
-Add link annotation.	PDFWindow		Add link annotation.
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Show toolbar, statusbar and scrollbars, too
 Copy link	PDFView		Copy link
 <empty>	OutlinesWindow		<empty>
 BePDF printing document: 	PrintingProgressWindow		BePDF printing document: 
-Bookmarks.	PDFWindow		Bookmarks.
-Select All	PDFWindow		Select All
-CatalogLanguage	BepdfApplication		CatalogLanguage
+Select none	PDFWindow		Select none
+Add trapnet annotation	PDFWindow		Add trapnet annotation
+Add underline annotation	PDFWindow		Add underline annotation
 Clear	TraceWindow		Clear
-Skip to the 10th next page.	PDFWindow		Skip to the 10th next page.
-Add strikeout annotation.	PDFWindow		Add strikeout annotation.
+Show help…	PDFWindow		Show help…
 Help	PDFWindow		Help
 Saving file attachment:	PDFView		Saving file attachment:
+Add popup annotation	PDFWindow		Add popup annotation
+BePDF printing	PrintingProgressWindow		BePDF printing
  in	PrintSettingsWindow		 in
 Document	OutlinesWindow		Document
-Editing of annotations in an encrypted PDF file not supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file not supported yet!
-Go To Page	PDFWindow		Go To Page
-Show Error Messages	PDFWindow		Show Error Messages
 Options	FindTextWindow		Options
 Error	BepdfApplication		Error
 Find…	PDFWindow		Find…
 Reload	PDFWindow		Reload
-Fullscreen Mode	AnnotationWindow		Fullscreen Mode
+Open in new window	PDFView		Open in new window
 Pages	PrintSettingsWindow		Pages
 First	PDFWindow		First
 Page	PrintSettingsWindow		Page
-Find next.	PDFWindow		Find next.
+Fullscreen mode	AnnotationWindow		Fullscreen mode
+Fit to page	PDFWindow		Fit to page
+Add key text annotation	PDFWindow		Add key text annotation
+Auto open	TraceWindow		Auto open
 File	PDFWindow		File
-Ignore Case	FindTextWindow		Ignore Case
+Ignore case	FindTextWindow		Ignore case
 PDF file successfully written!	PDFWindow		PDF file successfully written!
 Page:	FindTextWindow		Page:
-Restore Page Number	AnnotationWindow		Restore Page Number
 Warning	PDFWindow		Warning
-Back in the page history list.	PDFWindow		Back in the page history list.
+Zoom out	PDFWindow		Zoom out
 Subject:	FileInfoWindow		Subject:
 Stop	PrintingProgressWindow		Stop
+Save selected attachments into directory	AttachmentView		Save selected attachments into directory
 Will take effect at next program launch.	AnnotationWindow		Will take effect at next program launch.
-Add stamp annotation.	PDFWindow		Add stamp annotation.
-Skip to the 10th previous page.	PDFWindow		Skip to the 10th previous page.
+Show error messages	PDFWindow		Show error messages
+Add movie annotation	PDFWindow		Add movie annotation
+Max. printer resolution	PrintSettingsWindow		Max. printer resolution
 Status	PDFWindow		Status
-Zoom out.	PDFWindow		Zoom out.
-Zoom In	PDFWindow		Zoom In
 Open…	PDFWindow		Open…
 Encrypted:	FileInfoWindow		Encrypted:
 DPI	PrintSettingsWindow		DPI
-No Title	OutlinesWindow		No Title
 Type	FileInfoWindow		Type
-File Name	AttachmentView		File Name
 Search string not found.	PDFSearch		Search string not found.
+Filled rectangle	AnnotationWindow		Filled rectangle
+File name	AttachmentView		File name
 Align:	AnnotationWindow		Align:
 Hide page list	PDFWindow		Hide page list
-Forward in the page history list.	PDFWindow		Forward in the page history list.
 Floating	TraceWindow		Floating
-Save selected attachment to file.	AttachmentView		Save selected attachment to file.
-Open file.	PDFWindow		Open file.
 Find: 	FindTextWindow		Find: 
-Stroked Rectangle	AnnotationWindow		Stroked Rectangle
-Fit to Page Width.	PDFWindow		Fit to Page Width.
+Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Language 'English', translated by the BePDF authors.
+Add widget annotation	PDFWindow		Add widget annotation
+Add insert text annotation	PDFWindow		Add insert text annotation
+Find	PDFWindow		Find
 Abort	PrintingProgressWindow		Abort
-Add printer mark annotation.	PDFWindow		Add printer mark annotation.
-Show Help…	PDFWindow		Show Help…
-User Password	PasswordWindow		User Password
+Add ink annotation	PDFWindow		Add ink annotation
+Go to start of document	PDFWindow		Go to start of document
 Edit title for bookmark	OutlinesWindow		Edit title for bookmark
 Zoom (%)	PrintSettingsWindow		Zoom (%)
-Zoom in.	PDFWindow		Zoom in.
 [link type 'movie' not supported]	PDFView		[link type 'movie' not supported]
 Cancel	PDFView		Cancel
+Go to previous page	PDFWindow		Go to previous page
 Title:	AnnotationWindow		Title:
 stdout	TraceWindow		stdout
-Zoom Out	PDFWindow		Zoom Out
 Abort	FileInfoWindow		Abort
 Searching all fonts…	FileInfoWindow		Searching all fonts…
-Add new paragraph text annotation.	PDFWindow		Add new paragraph text annotation.
+Save as…	PDFWindow		Save as…
 Denied	FileInfoWindow		Denied
 Gray scale	PrintSettingsWindow		Gray scale
-Print Settings	PrintSettingsWindow		Print Settings
-Selection Rectangle	AnnotationWindow		Selection Rectangle
-Fullscreen mode.	PDFWindow		Fullscreen mode.
+Reload file	PDFWindow		Reload file
+Find next…	PDFWindow		Find next…
+User fonts	AnnotationWindow		User fonts
 Stop	FindTextWindow		Stop
-Find.	PDFWindow		Find.
 Find	FindTextWindow		Find
+Asian fonts	AnnotationWindow		Asian fonts
+Restore window position and size	AnnotationWindow		Restore window position and size
+Fullscreen mode	PDFWindow		Fullscreen mode
 Color	PrintSettingsWindow		Color
 [unknown link]	PDFView		[unknown link]
-Open In New Window…	PDFWindow		Open In New Window…
 Show page list	PDFWindow		Show page list
 Back	PDFWindow		Back
 Normal	PrintSettingsWindow		Normal
-CatalogAuthor	BepdfApplication		CatalogAuthor
-Issue Tracker…	PDFWindow		Issue Tracker…
 Window	PDFWindow		Window
 FreeType 2	AnnotationWindow		FreeType 2
-Add popup annotation.	PDFWindow		Add popup annotation.
-Select None	PDFWindow		Select None
-Add movie annotation.	PDFWindow		Add movie annotation.
+Add note text annotation	PDFWindow		Add note text annotation
 Close	PDFWindow		Close
+Add printer mark annotation	PDFWindow		Add printer mark annotation
+Go forward 10 pages	PDFWindow		Go forward 10 pages
 Execute the command:	PDFView		Execute the command:
 Rotation	PrintSettingsWindow		Rotation
+Save attachment(s) as	AttachmentView		Save attachment(s) as
 OK	PDFSearch		OK
-Asian Fonts	AnnotationWindow		Asian Fonts
 Author	AnnotationWindow		Author
-Save As…	PDFWindow		Save As…
+Open in workspace:	AnnotationWindow		Open in workspace:
 Creator:	FileInfoWindow		Creator:
-Find Text	FindTextWindow		Find Text
 Saving attachment(s):	AttachmentView		Saving attachment(s):
-Advance to the end of the document.	PDFWindow		Advance to the end of the document.
-Show attachments.	PDFWindow		Show attachments.
-BePDF Status	StatusWindow		BePDF Status
+Find text	FindTextWindow		Find text
 Page %d	PDFWindow		Page %d
-Add line annotation.	PDFWindow		Add line annotation.
-Add widget annotation.	PDFWindow		Add widget annotation.
-Add note text annotation.	PDFWindow		Add note text annotation.
-Add circle annotation.	PDFWindow		Add circle annotation.
+Forward in page history list	PDFWindow		Forward in page history list
+BePDF status	StatusWindow		BePDF status
+Rotate anti-clockwise	PDFWindow		Rotate anti-clockwise
+Add new paragraph text annotation	PDFWindow		Add new paragraph text annotation
+User password	PasswordWindow		User password
+Go to page	PDFWindow		Go to page
+No title	OutlinesWindow		No title
 Fullscreen	PDFWindow		Fullscreen
+Add sound annotation	PDFWindow		Add sound annotation
+Add comment text annotation	PDFWindow		Add comment text annotation
 Page	PDFWindow		Page
-User Fonts	AnnotationWindow		User Fonts
 All fonts of this document (aborted)	FileInfoWindow		All fonts of this document (aborted)
-Fit to Page	PDFWindow		Fit to Page
-Add trapnet annotation.	PDFWindow		Add trapnet annotation.
-Open In New Window	PDFView		Open In New Window
+Save selected attachment to file	AttachmentView		Save selected attachment to file
+File info…	PDFWindow		File info…
 Preferences	AnnotationWindow		Preferences
-Show annotation toolbar.	PDFWindow		Show annotation toolbar.
+Page setup…	PDFWindow		Page setup…
+Show document view only	AnnotationWindow		Show document view only
 Automatic	AnnotationWindow		Automatic
-Error Messages	TraceWindow		Error Messages
-Owner Password	PasswordWindow		Owner Password
+Print settings	PrintSettingsWindow		Print settings
 Fonts of this page	FileInfoWindow		Fonts of this page
-Add squiggly annotation.	PDFWindow		Add squiggly annotation.
+Print	PDFWindow		Print
+Issue tracker…	PDFWindow		Issue tracker…
 Font:	AnnotationWindow		Font:
-Find Next…	PDFWindow		Find Next…
-Custom Zoom Factor (%d%%)	PDFWindow		Custom Zoom Factor (%d%%)
+Restore page number	AnnotationWindow		Restore page number
 Print	PrintSettingsWindow		Print
-Page Setup…	PDFWindow		Page Setup…
 Preferences…	PDFWindow		Preferences…
 BePDF: Error opening file!	BepdfApplication		BePDF: Error opening file!
 Rotation	PDFWindow		Rotation
-Restore Window Position and Size	AnnotationWindow		Restore Window Position and Size
 Last	PDFWindow		Last
-Save attachment(s) as.	AttachmentView		Save attachment(s) as.
+System fonts	AnnotationWindow		System fonts
+Add stamp annotation	PDFWindow		Add stamp annotation
 Path:	FileInfoWindow		Path:
+Add squiggly annotation	PDFWindow		Add squiggly annotation
 Name	FileInfoWindow		Name
-Rotate anti-clockwise.	PDFWindow		Rotate anti-clockwise.
-Copy Selection	PDFWindow		Copy Selection
-Max. Printer Resolution	PrintSettingsWindow		Max. Printer Resolution
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.
 Reverse	PrintSettingsWindow		Reverse
 Unknown link action type: '%s'	PDFView		Unknown link action type: '%s'
 Filename:	FileInfoWindow		Filename:
-Save selected attachments into directory.	AttachmentView		Save selected attachments into directory.
 Enter Password	PasswordWindow		Enter Password
+Copy selection	PDFWindow		Copy selection
 Yes	FileInfoWindow		Yes
-Add free text annotation.	PDFWindow		Add free text annotation.
-Add underline annotation.	PDFWindow		Add underline annotation.
+Add free text annotation	PDFWindow		Add free text annotation
 Next	PDFWindow		Next
 Annotations:	FileInfoWindow		Annotations:
 Producer:	FileInfoWindow		Producer:
-Auto Open	TraceWindow		Auto Open
-Search Backwards	FindTextWindow		Search Backwards
+Stroked rectangle	AnnotationWindow		Stroked rectangle
 Forward	PDFWindow		Forward
-Return to the beginning of the document.	PDFWindow		Return to the beginning of the document.
 Allowed	FileInfoWindow		Allowed
 Copy & paste:	FileInfoWindow		Copy & paste:
-Add ink annotation.	PDFWindow		Add ink annotation.
-Open in Workspace:	AnnotationWindow		Open in Workspace:
-Add insert text annotation.	PDFWindow		Add insert text annotation.
-Rotate clockwise.	PDFWindow		Rotate clockwise.
+Odd pages	PrintSettingsWindow		Odd pages
+Add line annotation	PDFWindow		Add line annotation
+Add circle annotation	PDFWindow		Add circle annotation
 Annotation	PDFView		Annotation
-Odd Pages	PrintSettingsWindow		Odd Pages
+Save file as	PDFWindow		Save file as
+Show annotation toolbar	PDFWindow		Show annotation toolbar
 current	AnnotationWindow		current
+Search backwards	FindTextWindow		Search backwards
 Modified:	FileInfoWindow		Modified:
+Add link annotation	PDFWindow		Add link annotation
 Annotation	AnnotationWindow		Annotation
 Previous	PDFWindow		Previous
-Add fileattachment annotation.	PDFWindow		Add fileattachment annotation.
+Error messages	TraceWindow		Error messages
 Zoom must be between 25 and 400!	PrintSettingsWindow		Zoom must be between 25 and 400!
 Mode	PrintSettingsWindow		Mode
+Leave annotation editing mode	PDFWindow		Leave annotation editing mode
+Rotate clockwise	PDFWindow		Rotate clockwise
 User defined	OutlinesWindow		User defined
-Save file as.	PDFWindow		Save file as.
-Skip to the previous page.	PDFWindow		Skip to the previous page.
+Find next	PDFWindow		Find next
+Add strikeout annotation	PDFWindow		Add strikeout annotation
 Editing:	FileInfoWindow		Editing:
 Title:	FileInfoWindow		Title:
+Owner password	PasswordWindow		Owner password
+Selection rectangle	AnnotationWindow		Selection rectangle
 Display	AnnotationWindow		Display
 OK	OutlinesWindow		OK
 Bookmark	PDFWindow		Bookmark
 Order	PrintSettingsWindow		Order
-Reload file.	PDFWindow		Reload file.
-Fit to Page Width	PDFWindow		Fit to Page Width
 Description	AttachmentView		Description
-System Fonts	AnnotationWindow		System Fonts
 stderr	TraceWindow		stderr
-Add key text annotation.	PDFWindow		Add key text annotation.
-File Info…	PDFWindow		File Info…
 Could not write PDF file!	PDFWindow		Could not write PDF file!
 OK	PDFWindow		OK
 Add	PDFWindow		Add
-Add sound annotation.	PDFWindow		Add sound annotation.
 Edit	PDFWindow		Edit
 OK	PasswordWindow		OK
 Page:	PrintingProgressWindow		Page:
+Online help…	PDFWindow		Online help…
 Created:	FileInfoWindow		Created:
-Add paragraph text annotation.	PDFWindow		Add paragraph text annotation.
-Skip to the next page.	PDFWindow		Skip to the next page.
 Quit	PDFWindow		Quit
-BePDF Printing	PrintingProgressWindow		BePDF Printing
 Linearized:	FileInfoWindow		Linearized:
-Visit Homepage…	PDFWindow		Visit Homepage…
 Version:	FileInfoWindow		Version:
 Document	AnnotationWindow		Document
-Filled Rectangle	AnnotationWindow		Filled Rectangle
-Add highlight annotation.	PDFWindow		Add highlight annotation.
+Back in page history list	PDFWindow		Back in page history list
+Open file	PDFWindow		Open file
+Visit homepage…	PDFWindow		Visit homepage…
 No	FileInfoWindow		No
 [internal link]	PDFView		[internal link]
-Fit to page.	PDFWindow		Fit to page.
 Show attachments	PDFWindow		Show attachments
+Add paragraph text annotation	PDFWindow		Add paragraph text annotation
 <empty>	AttachmentView		<empty>
-Can not overwrite in BePDF opened PDF file! Choose another file name.	PDFWindow		Can not overwrite in BePDF opened PDF file! Choose another file name.
-Leave annotation editing mode.	PDFWindow		Leave annotation editing mode.
 OK	PDFView		OK
 Author:	FileInfoWindow		Author:
 Page: %d	PrintingProgressWindow		Page: %d
-Wrong Parameter!	PrintSettingsWindow		Wrong Parameter!
+Go back 10 pages	PDFWindow		Go back 10 pages
 Height: 	PrintSettingsWindow		Height: 
 Print…	PDFWindow		Print…
-Hinting	AnnotationWindow		Hinting
-Show page list.	PDFWindow		Show page list.
-Embedded Name	FileInfoWindow		Embedded Name
+Go to end of document	PDFWindow		Go to end of document
 Size:	AnnotationWindow		Size:
-Show Document View only	AnnotationWindow		Show Document View only
+Embedded name	FileInfoWindow		Embedded name
 Delete	PDFWindow		Delete
+Select all	PDFWindow		Select all
 Width: 	PrintSettingsWindow		Width: 
+Add square annotation	PDFWindow		Add square annotation
 Date:	AnnotationWindow		Date:
 OK	PrintSettingsWindow		OK
+Even pages	PrintSettingsWindow		Even pages
 Invert vertical mouse scrolling	AnnotationWindow		Invert vertical mouse scrolling
-Even Pages	PrintSettingsWindow		Even Pages
+Fit to page width	PDFWindow		Fit to page width
 Printing:	FileInfoWindow		Printing:
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF is based on XPDF %s, %s.
+Add fileattachment annotation	PDFWindow		Add fileattachment annotation
 Bookmarks	PDFWindow		Bookmarks
 BePDF reading file: 	PDFView		BePDF reading file: 
-Show Toolbar, Statusbar and Scrollbars too	AnnotationWindow		Show Toolbar, Statusbar and Scrollbars too
+Wrong parameter!	PrintSettingsWindow		Wrong parameter!
 Zoom	PDFWindow		Zoom
-Add square annotation.	PDFWindow		Add square annotation.
-File Info	FileInfoWindow		File Info
 Search	PDFWindow		Search
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file isn't supported yet!
 Saving copy of PDF file:	PDFWindow		Saving copy of PDF file:
 All fonts of this document	FileInfoWindow		All fonts of this document
+File info	FileInfoWindow		File info
+Add help text annotation	PDFWindow		Add help text annotation
+Custom zoom factor (%d%%)	PDFWindow		Custom zoom factor (%d%%)
+Open in new window…	PDFWindow		Open in new window…
+Add highlight annotation	PDFWindow		Add highlight annotation
 Page: %d	FindTextWindow		Page: %d
 Show all fonts	FileInfoWindow		Show all fonts
-Print.	PDFWindow		Print.
