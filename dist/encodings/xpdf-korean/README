@@ -2,12 +2,12 @@ Xpdf: Korean support package
 ============================
 
 Xpdf project: http://www.foolabs.com/xpdf/
-2005-jul-07
+2011-sep-02
 
 If this package includes CMap files, they contain their own copyright
 notices and distribution conditions.  All other files in the package
 are Copyright 2002-2005 Glyph & Cog, LLC, and are licensed under the
-GNU General Public License (GPL), version 2.
+GNU General Public License (GPL), version 2 or 3.
 
 This package provides support files needed to use the Xpdf tools with
 Korean PDF files.
@@ -38,5 +38,5 @@ need to install a Korean font.  A free TrueType font is available:
 
     ftp://ftp.mizi.com/pub/baekmuk/baekmuk-ttf-2.1.tar.gz
 
-After installing a Japanese font, add appropriate "displayCIDFontTT"
+After installing a Korean font, add appropriate "fontFileCC"
 lines to your xpdfrc file (see the sample in "add-to-xpdfrc").

@@ -2,12 +2,12 @@ Xpdf: Cyrillic support package
 ==============================
 
 Xpdf project: http://www.foolabs.com/xpdf/
-2003-jun-28
+2011-aug-15
 
 If this package includes CMap files, they contain their own copyright
 notices and distribution conditions.  All other files in the package
 are Copyright 2002 Glyph & Cog, LLC, and are licensed under the GNU
-General Public License (GPL), version 2.
+General Public License (GPL), version 2 or 3.
 
 This package provides support files needed to use the Xpdf tools with
 Cyrillic PDF files.
