@@ -66,7 +66,6 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/TextConversion.cpp \
 	beos/TraceWindow.cpp \
 	beos/TreeParser.cpp \
-	beos/htk/HWindow.cpp \
 	beos/utils/EntryMenuItem.cpp \
 	beos/utils/LayerView.cpp \
 	beos/utils/ResourceLoader.cpp \

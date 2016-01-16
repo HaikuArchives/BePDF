@@ -23,10 +23,6 @@
 #ifndef _H_WINDOW_H_
 #define _H_WINDOW_H_
 
-#include <be/app/AppDefs.h>
-#include <be/interface/Window.h>
-#include <be/support/Locker.h>
-
 #define ADD_ITEM(menu, name, shortcut, cmd)                      \
 	{                                                            \
 		BMenuItem* item = new BMenuItem(name, new BMessage(cmd), shortcut);    \
@@ -35,36 +31,6 @@
 
 #define ADD_SITEM(menu) \
 		{ (menu)->AddItem(new BSeparatorItem); }
-
-extern const char * CMD_IDX_LABEL;
-
-class HWindow
-	: public BWindow
-{
-	typedef BWindow inherited;
-
-public:
-		HWindow(BRect frame, const char * label, window_type type,
-						ulong flags, bool quitWhenClosed = true,
-						ulong workSp = B_CURRENT_WORKSPACE);
-	virtual ~HWindow();
-
-	void AskQuit()           { PostMessage(B_QUIT_REQUESTED); };
-	void Zoom(BPoint origin, float width, float height);
-
-	virtual bool CanClose() = 0;
-
-	static int32 GetWindowCount()
-			{ return mWindowList.CountItems(); };
-
-private:
-	bool           mQuitWhenClosed;
-	static BList   mWindowList;
-	static BLocker mWindowListLocker;
-	BRect          mUnzoomedFrame;
-
-	void UnzoomCheck(BRect f);
-};
 
 
 #endif
