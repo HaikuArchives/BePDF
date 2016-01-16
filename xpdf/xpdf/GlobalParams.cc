@@ -95,6 +95,23 @@ static struct {
   const char *obliqueFont;	// name of font to oblique
   double obliqueFactor;		// oblique sheer factor
 } displayFontTab[] = {
+#if defined(__BEOS__) || defined(__HAIKU__)
+  {"Courier",               "NimbusMonL-Regu", "cour.ttf",    "Courier",      "Courier",                NULL,             0},
+  {"Courier-Bold",          "NimbusMonL-Bold", "courbd.ttf",  "Courier",      "Courier Bold",           NULL,             0},
+  {"Courier-BoldOblique",   "NimbusMonL-BoldObli", "courbi.ttf",  "Courier",      "Courier Bold Oblique",   "Courier-Bold",   0.212557},
+  {"Courier-Oblique",       "NimbusMonL-ReguObli", "couri.ttf",   "Courier",      "Courier Oblique",        "Courier",        0.212557},
+  {"Helvetica",             "NimbusSanL-Regu", "arial.ttf",   "Helvetica",    "Helvetica",              NULL,             0},
+  {"Helvetica-Bold",        "NimbusSanL-Bold", "arialbd.ttf", "Helvetica",    "Helvetica-Bold",         NULL,             0},
+  {"Helvetica-BoldOblique", "NimbusSanL-ReguItal", "arialbi.ttf", "Helvetica",    "Helvetica Bold Oblique", "Helvetica-Bold", 0.212557},
+  {"Helvetica-Oblique",     "NimbusSanL-BoldItal", "ariali.ttf",  "Helvetica",    "Helvetica Oblique",      "Helvetica",      0.212557},
+  {"Symbol",                "StandardSymL", NULL,          "Symbol",       "Symbol",                 NULL,             0},
+  {"Times-Bold",            "NimbusRomNo9L-Medi", "timesbd.ttf", "Times",        "Times-Bold",             NULL,             0},
+  {"Times-BoldItalic",      "NimbusRomNo9L-MediItal", "timesbi.ttf", "Times",        "Times-BoldItalic",       NULL,             0},
+  {"Times-Italic",          "NimbusRomNo9L-ReguItal", "timesi.ttf",  "Times",        "Times-Italic",           NULL,             0},
+  {"Times-Roman",           "NimbusRomNo9L-Regu", "times.ttf",   "Times",        "Times-Roman",            NULL,             0},
+  {"ZapfDingbats",          "Dingbats", NULL,          "ZapfDingbats", "Zapf Dingbats",          NULL,             0},
+  {NULL}
+#else
   {"Courier",               "n022003l.pfb", "cour.ttf",    "Courier",      "Courier",                NULL,             0},
   {"Courier-Bold",          "n022004l.pfb", "courbd.ttf",  "Courier",      "Courier Bold",           NULL,             0},
   {"Courier-BoldOblique",   "n022024l.pfb", "courbi.ttf",  "Courier",      "Courier Bold Oblique",   "Courier-Bold",   0.212557},
@@ -110,6 +127,7 @@ static struct {
   {"Times-Roman",           "n021003l.pfb", "times.ttf",   "Times",        "Times-Roman",            NULL,             0},
   {"ZapfDingbats",          "d050000l.pfb", NULL,          "ZapfDingbats", "Zapf Dingbats",          NULL,             0},
   {NULL}
+#endif
 };
 
 #ifdef _WIN32
