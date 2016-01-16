@@ -53,11 +53,7 @@ static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
 	"© 1998-2000 Hubert Figuiere\n"
     "© 2000-2011 Michael Pfeiffer\n"
-    "© 2013-2014 Augustin Cavalier\n";
-
-static const char * bePDFLocalization =
-    "\nLanguage '";
-static const char * bePDFLocalizationBy = "' by ";
+    "© 2013-2016 waddlesplash\n";
 
 static const char * GPLCopyright =
     "\n\n"
@@ -360,16 +356,13 @@ void BepdfApplication::AboutRequested()
 
 	str += bePDFCopyright;
 
-	str += bePDFLocalization;
-	str += B_TRANSLATE("CatalogLanguage");
-	str += bePDFLocalizationBy;
-	str += B_TRANSLATE("CatalogAuthor");
 	str += "\n";
+	str += B_TRANSLATE_COMMENT("Language 'English', translated by the BePDF authors.",
+		"Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.");
+	str += "\n\n";
 
-	str += "\nBePDF is based on XPDF ";
-	str += xpdfVersion;
-	str += ", ";
-	str += xpdfCopyright;
+	str += BString().SetToFormat(B_TRANSLATE_COMMENT("BePDF is based on XPDF %s, %s.", "XPDF version, copyright"),
+		xpdfVersion, xpdfCopyright);
 
 	str += GPLCopyright;
 
