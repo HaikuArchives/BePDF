@@ -50,6 +50,7 @@
 #include <be/storage/NodeMonitor.h>
 #include <be/support/Beep.h>
 #include <be/support/Debug.h>
+#include <LayoutBuilder.h>
 
 // BePDF
 #include "AnnotationWindow.h"
@@ -534,36 +535,35 @@ void PDFWindow::UpdateWindowsMenu() {
 */
 }
 
-///////////////////////////////////////////////////////////
-BMenuBar* PDFWindow::BuildMenu() {
+
+BMenuBar* PDFWindow::BuildMenu()
+{
 	BString label;
 	GlobalSettings* settings = gApp->GetSettings();
 
-	BMenuBar * menuBar = new BMenuBar(BRect(0, 0, 1024, 18), "mainBar");
-		// File
-		BMenu * menu = new BMenu(B_TRANSLATE("File"));
-			menu->AddItem(mOpenMenu = new RecentDocumentsMenu(B_TRANSLATE("Open" B_UTF8_ELLIPSIS),  B_REFS_RECEIVED));
-			menu->AddItem(mNewMenu  = new RecentDocumentsMenu(B_TRANSLATE("Open in new window" B_UTF8_ELLIPSIS), OPEN_IN_NEW_WINDOW_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Reload"), 'R', (RELOAD_FILE_CMD));
-			AddItem(menu, B_TRANSLATE("Save as" B_UTF8_ELLIPSIS), SAVE_FILE_AS_CMD, false, 'S', B_SHIFT_KEY);
-
-			mFileInfoItem = new BMenuItem(B_TRANSLATE("File info" B_UTF8_ELLIPSIS),
-				new BMessage(FILE_INFO_CMD), 'I');
-			menu->AddItem(mFileInfoItem);
-
-			ADD_SITEM (menu );
-			ADD_ITEM (menu, B_TRANSLATE("Page setup" B_UTF8_ELLIPSIS), 'S',  (PAGESETUP_FILE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Print" B_UTF8_ELLIPSIS), 'P',  (PRINT_SETTINGS_CMD));
-
-			ADD_SITEM (menu );
-
-			ADD_ITEM ( menu, B_TRANSLATE("Close"), 'W', ( CLOSE_FILE_CMD ) );
-			ADD_ITEM ( menu, B_TRANSLATE("Quit"), 'Q' , ( QUIT_APP_CMD ));
-
-		menuBar->AddItem(menu);
+	BMenuBar* menuBar = new BMenuBar(BRect(0, 0, 1024, 18), "mainBar");
+	BLayoutBuilder::Menu<>(menuBar)
+		.AddMenu(B_TRANSLATE("File"))
+			.AddItem(mOpenMenu = new RecentDocumentsMenu(
+				B_TRANSLATE("Open" B_UTF8_ELLIPSIS), B_REFS_RECEIVED))
+			.AddItem(mNewMenu  = new RecentDocumentsMenu(
+				B_TRANSLATE("Open in new window" B_UTF8_ELLIPSIS),
+				OPEN_IN_NEW_WINDOW_CMD))
+			.AddItem(B_TRANSLATE("Reload"), RELOAD_FILE_CMD, 'R')
+			.AddItem(B_TRANSLATE("Save as" B_UTF8_ELLIPSIS),
+				SAVE_FILE_AS_CMD, 'S', B_SHIFT_KEY)
+			.AddItem(mFileInfoItem = new BMenuItem(B_TRANSLATE("File info" B_UTF8_ELLIPSIS),
+				new BMessage(FILE_INFO_CMD), 'I'))
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Page setup" B_UTF8_ELLIPSIS), PAGESETUP_FILE_CMD, 'S')
+			.AddItem(B_TRANSLATE("Print" B_UTF8_ELLIPSIS), PRINT_SETTINGS_CMD, 'P')
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Close"), CLOSE_FILE_CMD, 'W')
+			.AddItem(B_TRANSLATE("Quit"), QUIT_APP_CMD, 'Q')
+		.End();
 
 		// Edit
-		menu = new BMenu ( B_TRANSLATE("Edit") );
+		BMenu* menu = new BMenu ( B_TRANSLATE("Edit") );
 			ADD_ITEM (menu, B_TRANSLATE("Copy selection"), 'C', ( COPY_SELECTION_CMD));
 			ADD_SITEM (menu);
 			ADD_ITEM (menu, B_TRANSLATE("Select all"), 'A', ( SELECT_ALL_CMD));
