@@ -15,7 +15,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Start.svg">
+   sodipodi:docname="Start.pdf">
   <defs
      id="defs2987">
     <radialGradient
@@ -717,574 +717,577 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       y="-2.2606483"
-       x="-9.466506"
-       height="780.82452"
-       width="1004.9767"
-       id="rect3868"
-       style="fill:url(#radialGradient3709);fill-opacity:1" />
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="238.95918"
-       y="268.16327"
-       id="text3774"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3776"
-         x="238.95918"
+    <g
+       id="g3167">
+      <rect
+         style="fill:url(#radialGradient3709);fill-opacity:1"
+         id="rect3868"
+         width="1004.9767"
+         height="780.82452"
+         x="-9.466506"
+         y="-2.2606483" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3774"
          y="268.16327"
-         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT">Welcome to the premier PDF reader for Haiku</tspan></text>
-    <g
-       id="g3780"
-       transform="matrix(0.50757521,0,0,0.50757521,146.74047,433.24802)">
-      <path
-         id="path3782"
-         transform="matrix(1.2501,0,0,1.2501,6.5004,6.5004)"
-         d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
-         style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.4"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3784"
-         transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
-         d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
-         style="fill:none;stroke:#545454;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="40"
-         x2="128"
-         y1="1.99"
-         x1="128"
-         gradientUnits="userSpaceOnUse"
-         id="gradient0">
-        <stop
-           id="stop3787"
-           stop-color="#ffffff"
-           offset="0" />
-        <stop
-           id="stop3789"
-           stop-color="#e5e5e5"
-           offset="1"
-           style="stop-color:#d8d8d8;stop-opacity:1;" />
-      </linearGradient>
-      <path
-         id="path3791"
-         transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
-         d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
-         style="fill:none;stroke:url(#linearGradient3571);stroke-width:4;stroke-linecap:round"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3793"
-         transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
-         d="M 18,8 C 12.47,8 8,12.47 8,18 8,23.52 12.47,28 18,28 23.52,28 28,23.52 28,18 28,12.47 23.52,8 18,8 z"
-         style="fill:none;stroke:#215ace;stroke-width:4"
-         inkscape:connector-curvature="0" />
-      <radialGradient
-         gradientTransform="matrix(0.1562,0,0,0.1562,15,15)"
-         r="64"
-         cy="0"
-         cx="0"
-         gradientUnits="userSpaceOnUse"
-         id="gradient1">
-        <stop
-           id="stop3796"
-           stop-color="#ffffff"
-           offset="0" />
-        <stop
-           id="stop3798"
-           stop-color="#bdeafa"
-           offset="1" />
-      </radialGradient>
-      <path
-         id="path3800"
-         transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
-         d="M 18,8 C 12.47,8 8,12.47 8,18 8,23.52 12.47,28 18,28 23.52,28 28,23.52 28,18 28,12.47 23.52,8 18,8 z"
-         style="fill:url(#radialGradient3573)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3802"
-         transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
-         d="m 16,20 h -4 v -4 h 4 v -4 h 4 v 4 h 4 v 4 h -4 v 4 h -4 v -4 z"
-         style="fill:#215ace"
-         inkscape:connector-curvature="0" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
-       x="185.87753"
-       y="459.28574"
-       id="text3823"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3825"
-         x="185.87753"
+         x="304.95917"
+         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
+           y="268.16327"
+           x="304.95917"
+           id="tspan3776"
+           sodipodi:role="line">The premier PDF reader for Haiku</tspan></text>
+      <g
+         transform="matrix(0.50757521,0,0,0.50757521,146.74047,433.24802)"
+         id="g3780">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.4"
+           d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
+           transform="matrix(1.2501,0,0,1.2501,6.5004,6.5004)"
+           id="path3782" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#545454;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
+           d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
+           transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
+           id="path3784" />
+        <linearGradient
+           id="gradient0"
+           gradientUnits="userSpaceOnUse"
+           x1="128"
+           y1="1.99"
+           x2="128"
+           y2="40">
+          <stop
+             offset="0"
+             stop-color="#ffffff"
+             id="stop3787" />
+          <stop
+             style="stop-color:#d8d8d8;stop-opacity:1;"
+             offset="1"
+             stop-color="#e5e5e5"
+             id="stop3789" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:url(#linearGradient3571);stroke-width:4;stroke-linecap:round"
+           d="M 38,38 33,33 M 18,4 C 10.26,4 4,10.26 4,18 4,25.73 10.26,32 18,32 25.73,32 32,25.73 32,18 32,10.26 25.73,4 18,4 z"
+           transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
+           id="path3791" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#215ace;stroke-width:4"
+           d="M 18,8 C 12.47,8 8,12.47 8,18 8,23.52 12.47,28 18,28 23.52,28 28,23.52 28,18 28,12.47 23.52,8 18,8 z"
+           transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
+           id="path3793" />
+        <radialGradient
+           id="gradient1"
+           gradientUnits="userSpaceOnUse"
+           cx="0"
+           cy="0"
+           r="64"
+           gradientTransform="matrix(0.1562,0,0,0.1562,15,15)">
+          <stop
+             offset="0"
+             stop-color="#ffffff"
+             id="stop3796" />
+          <stop
+             offset="1"
+             stop-color="#bdeafa"
+             id="stop3798" />
+        </radialGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#radialGradient3573)"
+           d="M 18,8 C 12.47,8 8,12.47 8,18 8,23.52 12.47,28 18,28 23.52,28 28,23.52 28,18 28,12.47 23.52,8 18,8 z"
+           transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
+           id="path3800" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#215ace"
+           d="m 16,20 h -4 v -4 h 4 v -4 h 4 v 4 h 4 v 4 h -4 v 4 h -4 v -4 z"
+           transform="matrix(1.2501,0,0,1.2501,4.0001,4.0001)"
+           id="path3802" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3823"
          y="459.28574"
-         style="font-size:24px">view any PDF document</tspan></text>
-    <g
-       id="g3829"
-       transform="matrix(0.5,0,0,0.5,142.5102,491.2315)">
-      <path
-         id="path3831"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="m 0,32 v 6 H 11 V 32 H 0 z"
-         style="fill:#fbff00"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3833"
-         transform="matrix(1.3003,0,0,1.3003,6.6006,7.5917)"
-         d="M 12,18 24,30 40,9 33,2 12,18 z m -3,10 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z m -4,5 5,3 4,-4 -4,-4 -5,5 z"
-         style="fill:none;stroke:#000000;stroke-width:4;stroke-linejoin:round;stroke-opacity:0.4"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3835"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="M 12,18 24,30 40,9 33,2 12,18 z m -3,10 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z m -4,5 5,3 4,-4 -4,-4 -5,5 z"
-         style="fill:none;stroke:#bf5000;stroke-width:4;stroke-linejoin:round"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="32"
-         x2="128"
-         y1="4"
-         x1="128"
-         gradientUnits="userSpaceOnUse"
-         id="gradient0-8">
-        <stop
-           id="stop3838"
-           stop-color="#ffff80"
-           offset="0" />
-        <stop
-           id="stop3840"
-           stop-color="#ffd400"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3842"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="M 12,18 24,30 40,9 33,2 12,18 z"
-         style="fill:url(#linearGradient3575)"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="-64"
-         x2="14"
-         y1="-64"
-         x1="6"
-         gradientUnits="userSpaceOnUse"
-         id="gradient1-7">
-        <stop
-           id="stop3845"
-           stop-color="#ffff80"
-           offset="0" />
-        <stop
-           id="stop3847"
-           stop-color="#ffd400"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3849"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="m 5,33 5,3 4,-4 -4,-4 -5,5 z"
-         style="fill:url(#linearGradient3577)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3851"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="m 9,28 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z"
-         style="fill:#010101"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3853"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="M 15,18 33,4 38,9 33,6 17.06,20.1 15,18 z"
-         style="fill:#ffffff;fill-opacity:0.5411"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3855"
-         transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
-         d="m 11,27 1,1 3,-3 5,3 -7,-7 c 0,3 -1,5 -2,6 z"
-         style="fill:#ffffff;fill-opacity:0.5411"
-         inkscape:connector-curvature="0" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
-       x="187.67346"
-       y="515.18372"
-       id="text3878"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3880"
-         x="187.67346"
+         x="185.87753"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
+         xml:space="preserve"><tspan
+           style="font-size:24px"
+           y="459.28574"
+           x="185.87753"
+           id="tspan3825"
+           sodipodi:role="line">view any PDF document</tspan></text>
+      <g
+         transform="matrix(0.5,0,0,0.5,142.5102,491.2315)"
+         id="g3829">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#fbff00"
+           d="m 0,32 v 6 H 11 V 32 H 0 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3831" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linejoin:round;stroke-opacity:0.4"
+           d="M 12,18 24,30 40,9 33,2 12,18 z m -3,10 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z m -4,5 5,3 4,-4 -4,-4 -5,5 z"
+           transform="matrix(1.3003,0,0,1.3003,6.6006,7.5917)"
+           id="path3833" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#bf5000;stroke-width:4;stroke-linejoin:round"
+           d="M 12,18 24,30 40,9 33,2 12,18 z m -3,10 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z m -4,5 5,3 4,-4 -4,-4 -5,5 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3835" />
+        <linearGradient
+           id="gradient0-8"
+           gradientUnits="userSpaceOnUse"
+           x1="128"
+           y1="4"
+           x2="128"
+           y2="32">
+          <stop
+             offset="0"
+             stop-color="#ffff80"
+             id="stop3838" />
+          <stop
+             offset="1"
+             stop-color="#ffd400"
+             id="stop3840" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3575)"
+           d="M 12,18 24,30 40,9 33,2 12,18 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3842" />
+        <linearGradient
+           id="gradient1-7"
+           gradientUnits="userSpaceOnUse"
+           x1="6"
+           y1="-64"
+           x2="14"
+           y2="-64">
+          <stop
+             offset="0"
+             stop-color="#ffff80"
+             id="stop3845" />
+          <stop
+             offset="1"
+             stop-color="#ffd400"
+             id="stop3847" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3577)"
+           d="m 5,33 5,3 4,-4 -4,-4 -5,5 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3849" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#010101"
+           d="m 9,28 5,5 c 1,-1 4,-3 8,-2 1,0 2,-1 2,-1 L 12,18 c 0,0 -1,1 -1,2 1,4 -1,7 -2,8 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3851" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff;fill-opacity:0.5411"
+           d="M 15,18 33,4 38,9 33,6 17.06,20.1 15,18 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3853" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff;fill-opacity:0.5411"
+           d="m 11,27 1,1 3,-3 5,3 -7,-7 c 0,3 -1,5 -2,6 z"
+           transform="matrix(1.3003,0,0,1.3003,4,4.9911)"
+           id="path3855" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3878"
          y="515.18372"
-         style="font-size:24px">annotate unencrypted PDF documents</tspan></text>
-    <g
-       id="g3884"
-       transform="matrix(0.5,0,0,0.5,146.54338,547.2189)">
-      <path
-         id="path3886"
-         transform="translate(6,5)"
-         d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
-         style="fill:#010101;fill-opacity:0.36470002"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3888"
-         d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
-         style="fill:none;stroke:#010101;stroke-width:4"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="2.99"
-         x2="-67"
-         y1="90.989998"
-         x1="-67"
-         gradientUnits="userSpaceOnUse"
-         id="gradient0-3">
-        <stop
-           id="stop3891"
-           stop-color="#cc0505"
-           offset="0.4187" />
-        <stop
-           id="stop3893"
-           stop-color="#ff4444"
-           offset="0.8328" />
-        <stop
-           id="stop3895"
-           stop-color="#010101"
-           offset="0.8404" />
-        <stop
-           id="stop3897"
-           stop-color="#010101"
-           offset="0.8573" />
-        <stop
-           id="stop3899"
-           stop-color="#ccdb52"
-           offset="0.8726" />
-      </linearGradient>
-      <path
-         id="path3901"
-         d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
-         style="fill:url(#linearGradient3579)"
-         inkscape:connector-curvature="0" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
-       x="187.53059"
-       y="570.9184"
-       id="text3919"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3921"
-         x="187.53059"
+         x="187.67346"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
+         xml:space="preserve"><tspan
+           style="font-size:24px"
+           y="515.18372"
+           x="187.67346"
+           id="tspan3880"
+           sodipodi:role="line">annotate un-encrypted PDF documents</tspan></text>
+      <g
+         transform="matrix(0.5,0,0,0.5,146.54338,547.2189)"
+         id="g3884">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#010101;fill-opacity:0.36470002"
+           d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
+           transform="translate(6,5)"
+           id="path3886" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:4"
+           d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
+           id="path3888" />
+        <linearGradient
+           id="gradient0-3"
+           gradientUnits="userSpaceOnUse"
+           x1="-67"
+           y1="90.989998"
+           x2="-67"
+           y2="2.99">
+          <stop
+             offset="0.4187"
+             stop-color="#cc0505"
+             id="stop3891" />
+          <stop
+             offset="0.8328"
+             stop-color="#ff4444"
+             id="stop3893" />
+          <stop
+             offset="0.8404"
+             stop-color="#010101"
+             id="stop3895" />
+          <stop
+             offset="0.8573"
+             stop-color="#010101"
+             id="stop3897" />
+          <stop
+             offset="0.8726"
+             stop-color="#ccdb52"
+             id="stop3899" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3579)"
+           d="m 16,8 v 32 c 0,0 0,5 -2,13 5,-4 16,-9 16,-20 1,12 14,23 18,23 C 44,41 44,36 44,36 V 8 H 16 z"
+           id="path3901" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3919"
          y="570.9184"
-         style="font-size:24px">add user-defined bookmarks to unencrypted PDF documents</tspan></text>
-    <g
-       id="g3925"
-       transform="translate(289.92089,162.16442)">
-      <linearGradient
-         y2="-21.67"
-         x2="29.280001"
-         y1="-1.54"
-         x1="-22.700001"
-         gradientUnits="userSpaceOnUse"
-         id="gradient0-4">
-        <stop
-           id="stop3928"
-           stop-opacity="0.6549"
-           stop-color="#a0a0a0"
-           offset="0" />
-        <stop
-           id="stop3930"
-           stop-opacity="0.647"
-           stop-color="#ebebeb"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3932"
-         transform="translate(-0.25,-4.5)"
-         d="M 58,10 C 50,8 22,22 38,38 40,40 60,12 58,10 z"
-         style="fill:url(#linearGradient3581)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3934"
-         transform="translate(-0.25,-4.5)"
-         d="M 58,10 C 50,8 22,22 38,38 40,40 60,12 58,10 z"
-         style="fill:none;stroke:#010101;stroke-width:1.5"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="-21.67"
-         x2="29.280001"
-         y1="-1.54"
-         x1="-22.700001"
-         gradientUnits="userSpaceOnUse"
-         id="gradient1-2">
-        <stop
-           id="stop3937"
-           stop-opacity="0.6549"
-           stop-color="#a0a0a0"
-           offset="0" />
-        <stop
-           id="stop3939"
-           stop-opacity="0.647"
-           stop-color="#ebebeb"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3941"
-         transform="translate(-0.25,-4.5)"
-         d="m 36,36 c 0,0 6,-2 -8,-14 -5.93,-5.09 -12,-10 -24,-6 -7.82,2.6 0,12 8,14 6.18,1.54 24,6 24,6 z"
-         style="fill:url(#linearGradient3583)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3943"
-         transform="translate(-0.25,-4.5)"
-         d="m 36,36 c 0,0 6,-2 -8,-14 -5.93,-5.09 -12,-10 -24,-6 -7.82,2.6 0,12 8,14 6.18,1.54 24,6 24,6 z"
-         style="fill:none;stroke:#010101;stroke-width:1.5"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="54.959999"
-         x2="93.07"
-         y1="26.01"
-         x1="87.879997"
-         gradientUnits="userSpaceOnUse"
-         id="gradient2">
-        <stop
-           id="stop3946"
-           stop-color="#4c3a00"
-           offset="0.6125" />
-        <stop
-           id="stop3948"
-           stop-color="#b59701"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3950"
-         transform="translate(-0.25,-4.5)"
-         d="m 26,55 c 0,0 3.62,3.12 -3.38,7.12"
-         style="fill:none;stroke:url(#linearGradient3585);stroke-width:4"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="54.959999"
-         x2="93.07"
-         y1="26.01"
-         x1="87.879997"
-         gradientUnits="userSpaceOnUse"
-         id="gradient3">
-        <stop
-           id="stop3953"
-           stop-color="#4c3a00"
-           offset="0.6125" />
-        <stop
-           id="stop3955"
-           stop-color="#b59701"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3957"
-         transform="translate(-0.25,-4.5)"
-         d="m 44,54 c 0,0 1,3 0,4"
-         style="fill:none;stroke:url(#linearGradient3587);stroke-width:3"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="50.490002"
-         x2="-30.530001"
-         y1="68.860001"
-         x1="-27.24"
-         gradientUnits="userSpaceOnUse"
-         id="gradient4">
-        <stop
-           id="stop3960"
-           stop-color="#998900"
-           offset="0.0992" />
-        <stop
-           id="stop3962"
-           stop-color="#ffff00"
-           offset="0.9612" />
-      </linearGradient>
-      <path
-         id="path3964"
-         transform="translate(-0.25,-4.5)"
-         d="M 34,42 C 34,42 6,30 8,56 c 0.38,4.99 8,4 10,2 8,2 18,-8 18,-8 l -2,-8 z"
-         style="fill:url(#linearGradient3589)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3966"
-         transform="translate(-0.25,-4.5)"
-         d="M 34,42 C 34,42 6,30 8,56 c 0.38,4.99 8,4 10,2 8,2 18,-8 18,-8 l -2,-8 z"
-         style="fill:none;stroke:#010101;stroke-width:2"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="50.490002"
-         x2="-30.530001"
-         y1="68.860001"
-         x1="-27.24"
-         gradientUnits="userSpaceOnUse"
-         id="gradient5">
-        <stop
-           id="stop3969"
-           stop-color="#998900"
-           offset="0.0992" />
-        <stop
-           id="stop3971"
-           stop-color="#ffff00"
-           offset="0.9612" />
-      </linearGradient>
-      <path
-         id="path3973"
-         transform="translate(-0.25,-4.5)"
-         d="m 42,36 c 0,0 -9.75,-7 -12,4 -2.64,12.88 8,18 20,14 6.36,-2.12 -8,-18 -8,-18 z"
-         style="fill:url(#linearGradient3591)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3975"
-         transform="translate(-0.25,-4.5)"
-         d="m 42,36 c 0,0 -9.75,-7 -12,4 -2.64,12.88 8,18 20,14 6.36,-2.12 -8,-18 -8,-18 z"
-         style="fill:none;stroke:#010101;stroke-width:2"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="54.959999"
-         x2="93.07"
-         y1="26.01"
-         x1="87.879997"
-         gradientUnits="userSpaceOnUse"
-         id="gradient6">
-        <stop
-           id="stop3978"
-           stop-color="#4c3a00"
-           offset="0.6125" />
-        <stop
-           id="stop3980"
-           stop-color="#b59701"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3982"
-         transform="translate(-0.25,-4.5)"
-         d="m 37,49 c 0,0 -6,3 0,10"
-         style="fill:none;stroke:url(#linearGradient3593);stroke-width:3"
-         inkscape:connector-curvature="0" />
-      <linearGradient
-         y2="54.959999"
-         x2="93.07"
-         y1="26.01"
-         x1="87.879997"
-         gradientUnits="userSpaceOnUse"
-         id="gradient7">
-        <stop
-           id="stop3985"
-           stop-color="#4c3a00"
-           offset="0.6125" />
-        <stop
-           id="stop3987"
-           stop-color="#b59701"
-           offset="1" />
-      </linearGradient>
-      <path
-         id="path3989"
-         transform="translate(-0.25,-4.5)"
-         d="M 14.12,57.12 C 14.12,57.12 9,63 7,63"
-         style="fill:none;stroke:url(#linearGradient3595);stroke-width:4"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3991"
-         transform="translate(-0.25,-4.5)"
-         d="m 50,31 c 0,0 5,-8 7,-8"
-         style="fill:none;stroke:#010101;stroke-width:3"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3993"
-         transform="translate(-0.25,-4.5)"
-         d="m 54,32 c 0,0 8,-7 10,-5"
-         style="fill:none;stroke:#010101;stroke-width:3"
-         inkscape:connector-curvature="0" />
-      <radialGradient
-         gradientTransform="matrix(0.2513,0,0,0.3294,44.4166,37.4166)"
-         r="64"
-         cy="0"
-         cx="0"
-         gradientUnits="userSpaceOnUse"
-         id="gradient8">
-        <stop
-           id="stop3996"
-           stop-color="#9f8f00"
-           offset="0" />
-        <stop
-           id="stop3998"
-           stop-color="#edd501"
-           offset="1" />
-      </radialGradient>
-      <path
-         id="path4000"
-         transform="translate(-0.25,-4.5)"
-         d="M 46,30 C 46,30 66,26 58,54 48,62 44,52 42,48 35.91,35.83 46,30 46,30 z"
-         style="fill:url(#radialGradient3597)"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4002"
-         transform="translate(-0.25,-4.5)"
-         d="M 46,30 C 46,30 66,26 58,54 48,62 44,52 42,48 35.91,35.83 46,30 46,30 z"
-         style="fill:none;stroke:#010101;stroke-width:2"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4004"
-         transform="matrix(1.1923,0,0,1.1294,-10.2115,-9.911)"
-         d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
-         style="fill:none;stroke:#010101;stroke-width:2"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4006"
-         transform="matrix(1.1923,0,0,1.1294,-10.2115,-9.911)"
-         d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
-         style="fill:#ffffff"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4008"
-         transform="matrix(0.8574,0,0,0.7495,4.9784,8.3559)"
-         d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
-         style="fill:#010101"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4010"
-         transform="translate(-0.25,-4.5)"
-         d="m 15.37,41.12 c 0,0 -8.5,11 3.5,16.88"
-         style="fill:none;stroke:#010101;stroke-width:3;stroke-linecap:square"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4012"
-         transform="translate(-0.25,-4.5)"
-         d="m 21.25,40.75 c 0,0 -8.75,10.5 6.75,15.25"
-         style="fill:none;stroke:#010101;stroke-width:3;stroke-linecap:square"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path4014"
-         transform="translate(-0.25,-4.5)"
-         d="m 27.5,40.5 c 0,0 -6.5,6.25 2.5,12.5"
-         style="fill:none;stroke:#010101;stroke-width:3"
-         inkscape:connector-curvature="0" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000cf;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
-       x="377.10825"
-       y="228.27319"
-       id="text4103"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4105"
-         x="377.10825"
+         x="187.53059"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
+         xml:space="preserve"><tspan
+           style="font-size:24px"
+           y="570.9184"
+           x="187.53059"
+           id="tspan3921"
+           sodipodi:role="line">add user-defined bookmarks to un-encrypted PDF documents</tspan></text>
+      <g
+         transform="translate(289.92089,162.16442)"
+         id="g3925">
+        <linearGradient
+           id="gradient0-4"
+           gradientUnits="userSpaceOnUse"
+           x1="-22.700001"
+           y1="-1.54"
+           x2="29.280001"
+           y2="-21.67">
+          <stop
+             offset="0"
+             stop-color="#a0a0a0"
+             stop-opacity="0.6549"
+             id="stop3928" />
+          <stop
+             offset="1"
+             stop-color="#ebebeb"
+             stop-opacity="0.647"
+             id="stop3930" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3581)"
+           d="M 58,10 C 50,8 22,22 38,38 40,40 60,12 58,10 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3932" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:1.5"
+           d="M 58,10 C 50,8 22,22 38,38 40,40 60,12 58,10 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3934" />
+        <linearGradient
+           id="gradient1-2"
+           gradientUnits="userSpaceOnUse"
+           x1="-22.700001"
+           y1="-1.54"
+           x2="29.280001"
+           y2="-21.67">
+          <stop
+             offset="0"
+             stop-color="#a0a0a0"
+             stop-opacity="0.6549"
+             id="stop3937" />
+          <stop
+             offset="1"
+             stop-color="#ebebeb"
+             stop-opacity="0.647"
+             id="stop3939" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3583)"
+           d="m 36,36 c 0,0 6,-2 -8,-14 -5.93,-5.09 -12,-10 -24,-6 -7.82,2.6 0,12 8,14 6.18,1.54 24,6 24,6 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3941" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:1.5"
+           d="m 36,36 c 0,0 6,-2 -8,-14 -5.93,-5.09 -12,-10 -24,-6 -7.82,2.6 0,12 8,14 6.18,1.54 24,6 24,6 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3943" />
+        <linearGradient
+           id="gradient2"
+           gradientUnits="userSpaceOnUse"
+           x1="87.879997"
+           y1="26.01"
+           x2="93.07"
+           y2="54.959999">
+          <stop
+             offset="0.6125"
+             stop-color="#4c3a00"
+             id="stop3946" />
+          <stop
+             offset="1"
+             stop-color="#b59701"
+             id="stop3948" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:url(#linearGradient3585);stroke-width:4"
+           d="m 26,55 c 0,0 3.62,3.12 -3.38,7.12"
+           transform="translate(-0.25,-4.5)"
+           id="path3950" />
+        <linearGradient
+           id="gradient3"
+           gradientUnits="userSpaceOnUse"
+           x1="87.879997"
+           y1="26.01"
+           x2="93.07"
+           y2="54.959999">
+          <stop
+             offset="0.6125"
+             stop-color="#4c3a00"
+             id="stop3953" />
+          <stop
+             offset="1"
+             stop-color="#b59701"
+             id="stop3955" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:url(#linearGradient3587);stroke-width:3"
+           d="m 44,54 c 0,0 1,3 0,4"
+           transform="translate(-0.25,-4.5)"
+           id="path3957" />
+        <linearGradient
+           id="gradient4"
+           gradientUnits="userSpaceOnUse"
+           x1="-27.24"
+           y1="68.860001"
+           x2="-30.530001"
+           y2="50.490002">
+          <stop
+             offset="0.0992"
+             stop-color="#998900"
+             id="stop3960" />
+          <stop
+             offset="0.9612"
+             stop-color="#ffff00"
+             id="stop3962" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3589)"
+           d="M 34,42 C 34,42 6,30 8,56 c 0.38,4.99 8,4 10,2 8,2 18,-8 18,-8 l -2,-8 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3964" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:2"
+           d="M 34,42 C 34,42 6,30 8,56 c 0.38,4.99 8,4 10,2 8,2 18,-8 18,-8 l -2,-8 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3966" />
+        <linearGradient
+           id="gradient5"
+           gradientUnits="userSpaceOnUse"
+           x1="-27.24"
+           y1="68.860001"
+           x2="-30.530001"
+           y2="50.490002">
+          <stop
+             offset="0.0992"
+             stop-color="#998900"
+             id="stop3969" />
+          <stop
+             offset="0.9612"
+             stop-color="#ffff00"
+             id="stop3971" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3591)"
+           d="m 42,36 c 0,0 -9.75,-7 -12,4 -2.64,12.88 8,18 20,14 6.36,-2.12 -8,-18 -8,-18 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3973" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:2"
+           d="m 42,36 c 0,0 -9.75,-7 -12,4 -2.64,12.88 8,18 20,14 6.36,-2.12 -8,-18 -8,-18 z"
+           transform="translate(-0.25,-4.5)"
+           id="path3975" />
+        <linearGradient
+           id="gradient6"
+           gradientUnits="userSpaceOnUse"
+           x1="87.879997"
+           y1="26.01"
+           x2="93.07"
+           y2="54.959999">
+          <stop
+             offset="0.6125"
+             stop-color="#4c3a00"
+             id="stop3978" />
+          <stop
+             offset="1"
+             stop-color="#b59701"
+             id="stop3980" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:url(#linearGradient3593);stroke-width:3"
+           d="m 37,49 c 0,0 -6,3 0,10"
+           transform="translate(-0.25,-4.5)"
+           id="path3982" />
+        <linearGradient
+           id="gradient7"
+           gradientUnits="userSpaceOnUse"
+           x1="87.879997"
+           y1="26.01"
+           x2="93.07"
+           y2="54.959999">
+          <stop
+             offset="0.6125"
+             stop-color="#4c3a00"
+             id="stop3985" />
+          <stop
+             offset="1"
+             stop-color="#b59701"
+             id="stop3987" />
+        </linearGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:url(#linearGradient3595);stroke-width:4"
+           d="M 14.12,57.12 C 14.12,57.12 9,63 7,63"
+           transform="translate(-0.25,-4.5)"
+           id="path3989" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:3"
+           d="m 50,31 c 0,0 5,-8 7,-8"
+           transform="translate(-0.25,-4.5)"
+           id="path3991" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:3"
+           d="m 54,32 c 0,0 8,-7 10,-5"
+           transform="translate(-0.25,-4.5)"
+           id="path3993" />
+        <radialGradient
+           id="gradient8"
+           gradientUnits="userSpaceOnUse"
+           cx="0"
+           cy="0"
+           r="64"
+           gradientTransform="matrix(0.2513,0,0,0.3294,44.4166,37.4166)">
+          <stop
+             offset="0"
+             stop-color="#9f8f00"
+             id="stop3996" />
+          <stop
+             offset="1"
+             stop-color="#edd501"
+             id="stop3998" />
+        </radialGradient>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#radialGradient3597)"
+           d="M 46,30 C 46,30 66,26 58,54 48,62 44,52 42,48 35.91,35.83 46,30 46,30 z"
+           transform="translate(-0.25,-4.5)"
+           id="path4000" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:2"
+           d="M 46,30 C 46,30 66,26 58,54 48,62 44,52 42,48 35.91,35.83 46,30 46,30 z"
+           transform="translate(-0.25,-4.5)"
+           id="path4002" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:2"
+           d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
+           transform="matrix(1.1923,0,0,1.1294,-10.2115,-9.911)"
+           id="path4004" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff"
+           d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
+           transform="matrix(1.1923,0,0,1.1294,-10.2115,-9.911)"
+           id="path4006" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#010101"
+           d="m 50,36 c -1.8,0 -4,3.05 -4,6 0,2.93 2.2,6 4,6 1.79,0 4,-3.07 4,-6 0,-2.94 -2.21,-6 -4,-6 z"
+           transform="matrix(0.8574,0,0,0.7495,4.9784,8.3559)"
+           id="path4008" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:3;stroke-linecap:square"
+           d="m 15.37,41.12 c 0,0 -8.5,11 3.5,16.88"
+           transform="translate(-0.25,-4.5)"
+           id="path4010" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:3;stroke-linecap:square"
+           d="m 21.25,40.75 c 0,0 -8.75,10.5 6.75,15.25"
+           transform="translate(-0.25,-4.5)"
+           id="path4012" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#010101;stroke-width:3"
+           d="m 27.5,40.5 c 0,0 -6.5,6.25 2.5,12.5"
+           transform="translate(-0.25,-4.5)"
+           id="path4014" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4103"
          y="228.27319"
-         style="font-size:100px;fill:#0000cf;fill-opacity:1">B<tspan
-   style="fill:#ff0000;fill-opacity:1"
-   id="tspan4107">e</tspan><tspan
-   style="fill:#000000"
-   id="tspan4111">PDF</tspan></tspan></text>
-    <path
-       sodipodi:type="arc"
-       style="fill:url(#radialGradient3599);fill-opacity:1;stroke:none;filter:url(#filter4046)"
-       id="path4020"
-       sodipodi:cx="320.62024"
-       sodipodi:cy="230.12804"
-       sodipodi:rx="29.453302"
-       sodipodi:ry="4.7125282"
-       d="m 350.07354,230.12804 a 29.453302,4.7125282 0 1 1 -58.9066,0 29.453302,4.7125282 0 1 1 58.9066,0 z" />
+         x="377.10825"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000cf;fill-opacity:1;stroke:none;font-family:Baskerville BT;-inkscape-font-specification:Baskerville BT"
+         xml:space="preserve"><tspan
+           style="font-size:100px;fill:#0000cf;fill-opacity:1"
+           y="228.27319"
+           x="377.10825"
+           id="tspan4105"
+           sodipodi:role="line">B<tspan
+   id="tspan4107"
+   style="fill:#ff0000;fill-opacity:1">e</tspan><tspan
+   id="tspan4111"
+   style="fill:#000000">PDF</tspan></tspan></text>
+      <path
+         d="m 350.07354,230.12804 a 29.453302,4.7125282 0 1 1 -58.9066,0 29.453302,4.7125282 0 1 1 58.9066,0 z"
+         sodipodi:ry="4.7125282"
+         sodipodi:rx="29.453302"
+         sodipodi:cy="230.12804"
+         sodipodi:cx="320.62024"
+         id="path4020"
+         style="fill:url(#radialGradient3599);fill-opacity:1;stroke:none;filter:url(#filter4046)"
+         sodipodi:type="arc" />
+    </g>
   </g>
 </svg>
