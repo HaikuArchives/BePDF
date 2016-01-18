@@ -69,8 +69,6 @@ public:
 
 	void MessageReceived(BMessage *msg);
 	virtual bool QuitRequested();
-	virtual void FrameMoved(BPoint point);
-	virtual void FrameResized(float w, float h);
 
 private:
 	int DISPLAY_NUM;

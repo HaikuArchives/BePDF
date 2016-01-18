@@ -58,10 +58,6 @@
   do(float,   Float,  WindowWidth,            winWidth,                                        780) \
   do(float,   Float,  WindowHeight,           winHeight,                                       740) \
                                                                                                     \
-  do(BPoint,  Point,  PrefsWindowPosition,    prefsWinPos,                        BPoint(100, 100)) \
-  do(float,   Float,  PrefsWinWidth,          prefsWinWidth,                                   600) \
-  do(float,   Float,  PrefsWinHeight,         prefsWinHeight,                                   80) \
-                                                                                                    \
   do(BPoint,  Point,  PrinterWindowPosition,  printWinPos,                        BPoint(100, 100)) \
   do(float,   Float,  PrintWinWidth,          printWinWidth,                                   100) \
   do(float,   Float,  PrintWinHeight,         printWinHeight,                                   80) \
@@ -112,7 +108,6 @@
 
 #define WINDOW_SETTINGS(do)          \
   do(Window,         Window)         \
-  do(PrefsWindow,    PrefsWin)       \
   do(PrinterWindow,  PrintWin)       \
   do(FindWindow,     FindWin)        \
   do(FileInfoWindow, FileInfoWin)    \

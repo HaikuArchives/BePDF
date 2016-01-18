@@ -188,7 +188,8 @@ void PreferencesWindow::SetupView() {
 
 	BuildWorkspaceMenu(mOpenInWorkspace->Menu());
 	UpdateWorkspace();
-	ResizeToPreferred();
+	ResizeTo(0, 0);
+	CenterOnScreen();
 }
 
 static int comparePopupLabels(const BMenuField* p1,
@@ -360,11 +361,6 @@ PreferencesWindow::PreferencesWindow(GlobalSettings *settings, BLooper *looper)
 
 	AddCommonFilter(new EscapeMessageFilter(this, B_QUIT_REQUESTED));
 
-	MoveTo(settings->GetPrefsWindowPosition());
-	float w, h;
-	settings->GetPrefsWindowSize(w, h);
-	ResizeTo(w, h);
-
 	SetupView();
 
 	Show();
@@ -490,14 +486,4 @@ bool PreferencesWindow::QuitRequested() {
 	}
 	ClearView();
 	return true;
-}
-
-void PreferencesWindow::FrameMoved(BPoint p) {
-	mSettings->SetPrefsWindowPosition(p);
-	BWindow::FrameMoved(p);
-}
-
-void PreferencesWindow::FrameResized(float w, float h) {
-	mSettings->SetPrefsWindowSize(w, h);
-	BWindow::FrameResized(w, h);
 }
