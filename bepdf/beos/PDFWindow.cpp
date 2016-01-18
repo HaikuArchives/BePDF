@@ -132,7 +132,7 @@ RecentDocumentsMenu::AddDynamicItem(add_state s)
 */
 PDFWindow::PDFWindow(entry_ref* ref, BRect frame, const char *ownerPassword,
 	const char *userPassword, bool *encrypted)
-	: BWindow(frame, "PDF", B_DOCUMENT_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS)
+	: BWindow(frame, "PDF", B_DOCUMENT_WINDOW, 0)
 {
 	mMainView = NULL;
 	mPagesView = NULL;
@@ -180,6 +180,8 @@ PDFWindow::PDFWindow(entry_ref* ref, BRect frame, const char *ownerPassword,
 		mMainView->Redraw();
 		InitAfterOpen();
 	}
+
+	SetSizeLimits(938, 10000, 131, 10000);
 }
 
 
@@ -1642,22 +1644,20 @@ PDFWindow::OnFullScreen()
 	bool quasiFullScreenMode = gApp->GetSettings()->GetQuasiFullscreenMode();
 	mFullScreen = !mFullScreen;
 	BRect frame;
-	bool pgList = false;
 	if (mFullScreen) {
-		pgList = mShowLeftPanel;
-		if (pgList) ToggleLeftPanel(); // left panel
 		mWindowFrame = Frame();
 		frame = gScreen->Frame();
 		if (quasiFullScreenMode) {
 			frame.OffsetBy(0, -fMenuBar->Bounds().Height());
 			frame.bottom += fMenuBar->Bounds().Height();
 		} else {
+			HideLeftPanel();
 			BRect bounds = mMainView->Parent()->ConvertToScreen(mMainView->Frame());
 			frame.bottom += mWindowFrame.IntegerHeight() - bounds.IntegerHeight();
 			frame.right += mWindowFrame.IntegerWidth() - bounds.IntegerWidth();
 			frame.OffsetBy(-bounds.left+mWindowFrame.left, -bounds.top+mWindowFrame.top);
 		}
-		mFullScreenItem->SetLabel(B_TRANSLATE("Window"));
+		mFullScreenItem->SetMarked(true);
 		SetFeel(B_FLOATING_ALL_WINDOW_FEEL);
 		SetFlags(Flags() | B_NOT_RESIZABLE | B_NOT_MOVABLE);
 		Activate(true);
@@ -1665,12 +1665,11 @@ PDFWindow::OnFullScreen()
 		SetFeel(B_NORMAL_WINDOW_FEEL);
 		SetFlags(Flags() & ~(B_NOT_RESIZABLE | B_NOT_MOVABLE));
 		frame = mWindowFrame;
-		mFullScreenItem->SetLabel(B_TRANSLATE("Fullscreen"));
+		mFullScreenItem->SetMarked(false);
 	}
 	MoveTo(frame.left, frame.top);
 	ResizeTo(frame.Width(), frame.Height());
 
-	if (pgList) ToggleLeftPanel(); // show left panel
 	UpdateInputEnabler();
 }
 
