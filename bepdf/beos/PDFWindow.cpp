@@ -827,8 +827,8 @@ BCardView* PDFWindow::BuildLeftPanel()
 	BView *pageView = new BScrollView("pageScrollView", mPagesView,
 		B_FRAME_EVENTS, true, true, B_FANCY_BORDER);
 
-	layerView->CardLayout()->AddView(pageView);
 	layerView->CardLayout()->AddView(mOutlinesView);
+	layerView->CardLayout()->AddView(pageView);
 	layerView->CardLayout()->AddView(BuildAnnotToolBar("annotationToolBar", NULL));
 	layerView->CardLayout()->AddView(mAttachmentView);
 
