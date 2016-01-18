@@ -62,11 +62,11 @@ TraceWindow::TraceWindow(GlobalSettings *settings)
 		new BMessage(FLOATING_MSG));
 	floating->SetValue(mSettings->GetTraceFloating());
 
-	mStdoutCB = new BCheckBox("mStdoutCB", B_TRANSLATE("stdout"),
+	mStdoutCB = new BCheckBox("mStdoutCB", "stdout",
 		new BMessage(SHOW_STDOUT_MSG));
 	mStdoutCB->SetValue(mShowStdout);
 
-	mStderrCB = new BCheckBox("mStderrCB", B_TRANSLATE("stderr"),
+	mStderrCB = new BCheckBox("mStderrCB", "stderr",
 		new BMessage(SHOW_STDERR_MSG));
 	mStderrCB->SetValue(mShowStderr);
 

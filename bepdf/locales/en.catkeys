@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	93390073
+1	English	application/x-vnd.mp-xpdf	2492278867
 Close	BepdfApplication		Close
 Go to page %d	PDFView		Go to page %d
 of %d	PDFWindow		of %d
@@ -41,6 +41,7 @@ File	PDFWindow		File
 Ignore case	FindTextWindow		Ignore case
 PDF file successfully written!	PDFWindow		PDF file successfully written!
 Page:	FindTextWindow		Page:
+Beta	BepdfApplication		Beta
 Warning	PDFWindow		Warning
 Zoom out	PDFWindow		Zoom out
 Subject:	FileInfoWindow		Subject:
@@ -75,7 +76,6 @@ Zoom (%)	PrintSettingsWindow		Zoom (%)
 Cancel	PDFView		Cancel
 Go to previous page	PDFWindow		Go to previous page
 Title:	AnnotationWindow		Title:
-stdout	TraceWindow		stdout
 Abort	FileInfoWindow		Abort
 Searching all fonts…	FileInfoWindow		Searching all fonts…
 Save as…	PDFWindow		Save as…
@@ -84,6 +84,7 @@ Gray scale	PrintSettingsWindow		Gray scale
 Reload file	PDFWindow		Reload file
 Find next…	PDFWindow		Find next…
 User fonts	AnnotationWindow		User fonts
+Gamma	BepdfApplication		Gamma
 Stop	FindTextWindow		Stop
 Find	FindTextWindow		Find
 Asian fonts	AnnotationWindow		Asian fonts
@@ -95,7 +96,6 @@ Show page list	PDFWindow		Show page list
 Back	PDFWindow		Back
 Normal	PrintSettingsWindow		Normal
 Window	PDFWindow		Window
-FreeType 2	AnnotationWindow		FreeType 2
 Add note text annotation	PDFWindow		Add note text annotation
 Close	PDFWindow		Close
 Add printer mark annotation	PDFWindow		Add printer mark annotation
@@ -107,12 +107,12 @@ OK	PDFSearch		OK
 Author	AnnotationWindow		Author
 Open in workspace:	AnnotationWindow		Open in workspace:
 Creator:	FileInfoWindow		Creator:
+Golden Master	BepdfApplication		Golden Master
 Saving attachment(s):	AttachmentView		Saving attachment(s):
 Find text	FindTextWindow		Find text
 Page %d	PDFWindow		Page %d
 Forward in page history list	PDFWindow		Forward in page history list
 BePDF status	StatusWindow		BePDF status
-Rotate anti-clockwise	PDFWindow		Rotate anti-clockwise
 Add new paragraph text annotation	PDFWindow		Add new paragraph text annotation
 User password	PasswordWindow		User password
 Go to page	PDFWindow		Go to page
@@ -143,6 +143,7 @@ System fonts	AnnotationWindow		System fonts
 Add stamp annotation	PDFWindow		Add stamp annotation
 Path:	FileInfoWindow		Path:
 Add squiggly annotation	PDFWindow		Add squiggly annotation
+Alpha	BepdfApplication		Alpha
 Name	FileInfoWindow		Name
 Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.
 Reverse	PrintSettingsWindow		Reverse
@@ -159,6 +160,7 @@ Stroked rectangle	AnnotationWindow		Stroked rectangle
 Forward	PDFWindow		Forward
 Allowed	FileInfoWindow		Allowed
 Copy & paste:	FileInfoWindow		Copy & paste:
+Version	BepdfApplication		Version
 Odd pages	PrintSettingsWindow		Odd pages
 Add line annotation	PDFWindow		Add line annotation
 Add circle annotation	PDFWindow		Add circle annotation
@@ -167,6 +169,7 @@ Save file as	PDFWindow		Save file as
 Show annotation toolbar	PDFWindow		Show annotation toolbar
 current	AnnotationWindow		current
 Search backwards	FindTextWindow		Search backwards
+Development	BepdfApplication		Development
 Modified:	FileInfoWindow		Modified:
 Add link annotation	PDFWindow		Add link annotation
 Annotation	AnnotationWindow		Annotation
@@ -188,7 +191,6 @@ OK	OutlinesWindow		OK
 Bookmark	PDFWindow		Bookmark
 Order	PrintSettingsWindow		Order
 Description	AttachmentView		Description
-stderr	TraceWindow		stderr
 Could not write PDF file!	PDFWindow		Could not write PDF file!
 OK	PDFWindow		OK
 Add	PDFWindow		Add
@@ -209,6 +211,7 @@ No	FileInfoWindow		No
 Show attachments	PDFWindow		Show attachments
 Add paragraph text annotation	PDFWindow		Add paragraph text annotation
 <empty>	AttachmentView		<empty>
+Unknown	BepdfApplication		Unknown
 OK	PDFView		OK
 Author:	FileInfoWindow		Author:
 Page: %d	PrintingProgressWindow		Page: %d
@@ -216,6 +219,7 @@ Go back 10 pages	PDFWindow		Go back 10 pages
 Height: 	PrintSettingsWindow		Height: 
 Print…	PDFWindow		Print…
 Go to end of document	PDFWindow		Go to end of document
+Rotate counter-clockwise	PDFWindow		Rotate counter-clockwise
 Size:	AnnotationWindow		Size:
 Embedded name	FileInfoWindow		Embedded name
 Delete	PDFWindow		Delete
@@ -226,6 +230,7 @@ Date:	AnnotationWindow		Date:
 OK	PrintSettingsWindow		OK
 Even pages	PrintSettingsWindow		Even pages
 Invert vertical mouse scrolling	AnnotationWindow		Invert vertical mouse scrolling
+Final	BepdfApplication		Final
 Fit to page width	PDFWindow		Fit to page width
 Printing:	FileInfoWindow		Printing:
 BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF is based on XPDF %s, %s.

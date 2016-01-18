@@ -349,8 +349,9 @@ void BepdfApplication::ReadyToRun()
 void BepdfApplication::AboutRequested()
 {
 	BString version;
-	BString str("BePDF");
-	str += "\nVersion ";
+	BString str("BePDF\n");
+	str += B_TRANSLATE("Version");
+	str += " ";
 	str += GetVersion(version);
 	str += "\n";
 
@@ -791,17 +792,17 @@ const char* BepdfApplication::GetVersion(BString &version) {
 		return version.String();
 	}
 
-	BString variety = "Unknown";
+	BString variety = B_TRANSLATE("Unknown");
 	switch (appVersion.variety) {
-		case 0: variety = "Development";
+		case 0: variety = B_TRANSLATE("Development");
 			break;
-		case 1: variety = "Alpha";
+		case 1: variety = B_TRANSLATE("Alpha");
 			break;
-		case 2: variety = "Beta";
+		case 2: variety = B_TRANSLATE("Beta");
 			break;
-		case 3: variety = "Gamma";
+		case 3: variety = B_TRANSLATE("Gamma");
 			break;
-		case 4: variety = "Golden Master";
+		case 4: variety = B_TRANSLATE("Golden Master");
 			break;
 		case 5:
 			if (appVersion.internal == 0) {
@@ -809,7 +810,7 @@ const char* BepdfApplication::GetVersion(BString &version) {
 				variety = "";
 			}
 			else {
-				variety = "Final";
+				variety = B_TRANSLATE("Final");
 			}
 			break;
 	};

@@ -800,7 +800,7 @@ BToolBar* PDFWindow::BuildToolBar()
 		LoadVectorIcon("ROTATE_CLOCKWISE"), B_TRANSLATE("Rotate clockwise"));
 	mToolBar->AddAction(ROTATE_ANTI_CLOCKWISE_CMD, this,
 		LoadVectorIcon("ROTATE_ANTI_CLOCKWISE"),
-		B_TRANSLATE("Rotate anti-clockwise"));
+		B_TRANSLATE("Rotate counter-clockwise"));
 	mToolBar->AddAction(ZOOM_IN_CMD, this, LoadVectorIcon("ZOOM_IN"),
 		B_TRANSLATE("Zoom in"));
 	mToolBar->AddAction(ZOOM_OUT_CMD, this, LoadVectorIcon("ZOOM_OUT"),
