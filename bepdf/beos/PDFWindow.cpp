@@ -710,56 +710,57 @@ BToolBar* PDFWindow::BuildToolBar()
 	mToolBar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
 	AddChild(mToolBar);
 
-	mToolBar->AddAction(OPEN_FILE_CMD, this, LoadBitmap("OPEN_FILE_ON"),
+	mToolBar->AddAction(OPEN_FILE_CMD, this, LoadVectorIcon("OPEN_FILE"),
 		B_TRANSLATE("Open file"));
-	mToolBar->AddAction(RELOAD_FILE_CMD, this, LoadBitmap("RELOAD_FILE_ON"),
+	mToolBar->AddAction(RELOAD_FILE_CMD, this, LoadVectorIcon("RELOAD_FILE"),
 		B_TRANSLATE("Reload file"));
-	mToolBar->AddAction(PRINT_SETTINGS_CMD, this, LoadBitmap("PRINT_ON"),
+	mToolBar->AddAction(PRINT_SETTINGS_CMD, this, LoadVectorIcon("PRINT"),
 		B_TRANSLATE("Print"));
 
 	mToolBar->AddSeparator();
 
-	mToolBar->AddAction(SHOW_BOOKMARKS_CMD, this, LoadBitmap("BOOKMARKS_ON"),
+	mToolBar->AddAction(SHOW_BOOKMARKS_CMD, this, LoadVectorIcon("BOOKMARKS"),
 		B_TRANSLATE("Bookmarks"), NULL, true);
-	mToolBar->AddAction(SHOW_PAGE_LIST_CMD, this, LoadBitmap("PAGE_LIST_ON"),
-		B_TRANSLATE("Show page list"), NULL, true);
+	mToolBar->AddAction(SHOW_PAGE_LIST_CMD, this,
+		LoadVectorIcon("SHOW_PAGE_LIST"), B_TRANSLATE("Show page list"), NULL,
+		true);
 	mToolBar->AddAction(SHOW_ANNOT_TOOLBAR_CMD, this,
-		LoadBitmap("SHOW_ANNOT_ON"), B_TRANSLATE("Show annotation toolbar"),
+		LoadVectorIcon("SHOW_ANNOT"), B_TRANSLATE("Show annotation toolbar"),
 		NULL, true);
 	mToolBar->AddAction(SHOW_ATTACHMENTS_CMD, this,
-		LoadBitmap("SHOW_ATTACHMENTS_ON"), B_TRANSLATE("Show attachments"),
+		LoadVectorIcon("SHOW_ATTACHMENTS"), B_TRANSLATE("Show attachments"),
 		NULL, true);
 	// mToolBar->AddAction(HIDE_LEFT_PANEL_CMD, this,
-	//	LoadBitmap("HIDE_PAGE_LIST_ON"), B_TRANSLATE("Hide page list"),
+	//	LoadVectorIcon("HIDE_PAGE_LIST"), B_TRANSLATE("Hide page list"),
 	//	NULL, true);
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(FULL_SCREEN_CMD, this,
-		LoadBitmap("FULL_SCREEN_ON"), B_TRANSLATE("Fullscreen mode"),
+		LoadVectorIcon("FULL_SCREEN"), B_TRANSLATE("Fullscreen mode"),
 		NULL, true);
 
 	mToolBar->AddSeparator();
 
-	mToolBar->AddAction(FIRST_PAGE_CMD, this, LoadBitmap("FIRST_ON"),
+	mToolBar->AddAction(FIRST_PAGE_CMD, this, LoadVectorIcon("FIRST"),
 		B_TRANSLATE("Go to start of document"));
 	mToolBar->AddAction(PREVIOUS_N_PAGE_CMD, this,
-		LoadBitmap("PREVIOUS_N_ON"),
+		LoadVectorIcon("PREVIOUS_N"),
 		B_TRANSLATE("Go back 10 pages"));
-	mToolBar->AddAction(PREVIOUS_PAGE_CMD, this, LoadBitmap("PREVIOUS_ON"),
+	mToolBar->AddAction(PREVIOUS_PAGE_CMD, this, LoadVectorIcon("PREVIOUS"),
 		B_TRANSLATE("Go to previous page"));
-	mToolBar->AddAction(NEXT_PAGE_CMD, this, LoadBitmap("NEXT_ON"),
+	mToolBar->AddAction(NEXT_PAGE_CMD, this, LoadVectorIcon("NEXT"),
 		B_TRANSLATE("Go to next page"));
-	mToolBar->AddAction(NEXT_N_PAGE_CMD, this, LoadBitmap("NEXT_N_ON"),
+	mToolBar->AddAction(NEXT_N_PAGE_CMD, this, LoadVectorIcon("NEXT_N"),
 		B_TRANSLATE("Go forward 10 pages"));
-	mToolBar->AddAction(LAST_PAGE_CMD, this, LoadBitmap("LAST_ON"),
+	mToolBar->AddAction(LAST_PAGE_CMD, this, LoadVectorIcon("LAST"),
 		B_TRANSLATE("Go to end of document"));
 
 	mToolBar->AddSeparator();
 
-	mToolBar->AddAction(HISTORY_BACK_CMD, this, LoadBitmap("BACK_ON"),
+	mToolBar->AddAction(HISTORY_BACK_CMD, this, LoadVectorIcon("BACK"),
 		B_TRANSLATE("Back in page history list"));
-	mToolBar->AddAction(HISTORY_FORWARD_CMD, this, LoadBitmap("FORWARD_ON"),
+	mToolBar->AddAction(HISTORY_FORWARD_CMD, this, LoadVectorIcon("FORWARD"),
 		B_TRANSLATE("Forward in page history list"));
 
 	mToolBar->AddSeparator();
@@ -789,28 +790,28 @@ BToolBar* PDFWindow::BuildToolBar()
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(FIT_TO_PAGE_WIDTH_CMD, this,
-		LoadBitmap("FIT_TO_PAGE_WIDTH_ON"),
+		LoadVectorIcon("FIT_TO_PAGE_WIDTH"),
 		B_TRANSLATE("Fit to page width"));
-	mToolBar->AddAction(FIT_TO_PAGE_CMD, this, LoadBitmap("FIT_TO_PAGE_ON"),
+	mToolBar->AddAction(FIT_TO_PAGE_CMD, this, LoadVectorIcon("FIT_TO_PAGE"),
 		B_TRANSLATE("Fit to page"));
 
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(ROTATE_CLOCKWISE_CMD, this,
-		LoadBitmap("ROTATE_CLOCKWISE_ON"), B_TRANSLATE("Rotate clockwise"));
+		LoadVectorIcon("ROTATE_CLOCKWISE"), B_TRANSLATE("Rotate clockwise"));
 	mToolBar->AddAction(ROTATE_ANTI_CLOCKWISE_CMD, this,
-		LoadBitmap("ROTATE_ANTI_CLOCKWISE_ON"),
+		LoadVectorIcon("ROTATE_ANTI_CLOCKWISE"),
 		B_TRANSLATE("Rotate anti-clockwise"));
-	mToolBar->AddAction(ZOOM_IN_CMD, this, LoadBitmap("ZOOM_IN_ON"),
+	mToolBar->AddAction(ZOOM_IN_CMD, this, LoadVectorIcon("ZOOM_IN"),
 		B_TRANSLATE("Zoom in"));
-	mToolBar->AddAction(ZOOM_OUT_CMD, this, LoadBitmap("ZOOM_OUT_ON"),
+	mToolBar->AddAction(ZOOM_OUT_CMD, this, LoadVectorIcon("ZOOM_OUT"),
 		B_TRANSLATE("Zoom out"));
 
 	mToolBar->AddSeparator();
 
-	mToolBar->AddAction(FIND_CMD, this, LoadBitmap("FIND_ON"),
+	mToolBar->AddAction(FIND_CMD, this, LoadVectorIcon("FIND"),
 		B_TRANSLATE("Find"));
-	mToolBar->AddAction(FIND_NEXT_CMD, this, LoadBitmap("FIND_NEXT_ON"),
+	mToolBar->AddAction(FIND_NEXT_CMD, this, LoadVectorIcon("FIND_NEXT"),
 		B_TRANSLATE("Find next"));
 	mToolBar->AddGlue();
 	return mToolBar;
@@ -1917,11 +1918,9 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 		}
 
 		Annotation* annot = GetAnnotTemplate(desc->mCmd);
-		if (annot == NULL) continue;
-		BString name(desc->mButtonPrefix);
+		if (annot == NULL)
+			continue;
 		BString on(desc->mButtonPrefix);
-		name.ToLower();
-		name << "_btn";
 		on << "_ON";
 
 		toolbar->AddAction(desc->mCmd, this, LoadBitmap(on.String()),
