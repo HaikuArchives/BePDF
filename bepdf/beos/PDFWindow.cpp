@@ -766,11 +766,11 @@ BToolBar* PDFWindow::BuildToolBar()
 	mToolBar->AddSeparator();
 
 	// Add "go to page number" TextControl
-	mPageNumberItem	= new BTextControl(BRect (0, 6, 50, 30), "goto_page",
+	mPageNumberItem	= new BTextControl("goto_page",
 		"", "", new BMessage(GOTO_PAGE_CMD));
-	mPageNumberItem->SetDivider (0.0);
+	mPageNumberItem->SetDivider(0.0);
 	mPageNumberItem->SetAlignment(B_ALIGN_RIGHT, B_ALIGN_RIGHT);
-	mPageNumberItem->SetTarget (this);
+	mPageNumberItem->SetTarget(this);
 	mPageNumberItem->TextView()->DisallowChar(B_ESCAPE);
 
 	BTextView *t = mPageNumberItem->TextView();
@@ -781,8 +781,7 @@ BToolBar* PDFWindow::BuildToolBar()
 	mToolBar->AddView(mPageNumberItem);
 
 	// display total number of pages
-	mTotalPageNumberItem = new BStringView(BRect (0, 0, 50, 22),
-		"total_num_of_pages", "");
+	mTotalPageNumberItem = new BStringView("total_num_of_pages", "");
 	mTotalPageNumberItem->SetAlignment(B_ALIGN_CENTER);
 	mTotalPageNumberItem->SetFont(&font);
 	mToolBar->AddView(mTotalPageNumberItem);
