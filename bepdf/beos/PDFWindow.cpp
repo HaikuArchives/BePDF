@@ -1855,10 +1855,7 @@ void PDFWindow::EditBookmark() {
 	}
 }
 
-// Annotations
-#if 0
-#pragma mark *********** Annotation ***************
-#endif
+// #pragma mark - Annotations
 
 static const int32 kAnnotDescEOL = -1;
 static const int32 kAnnotDescSeparator = -2;
@@ -1902,9 +1899,9 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 	toolbar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
 
 	// label also used in PDFView!
-	toolbar->AddAction(DONE_EDIT_ANNOT_CMD, this, LoadBitmap("DONE_ANNOT_ON"),
+	toolbar->AddAction(DONE_EDIT_ANNOT_CMD, this, LoadVectorIcon("DONE_ANNOT"),
 		B_TRANSLATE("Leave annotation editing mode"));
-	toolbar->AddAction(SAVE_FILE_AS_CMD, this, LoadBitmap("SAVE_FILE_AS_ON"),
+	toolbar->AddAction(SAVE_FILE_AS_CMD, this, LoadVectorIcon("SAVE_FILE_AS"),
 		B_TRANSLATE("Save file as"));
 
 	toolbar->AddSeparator();
@@ -1919,12 +1916,11 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 		Annotation* annot = GetAnnotTemplate(desc->mCmd);
 		if (annot == NULL)
 			continue;
-		BString on(desc->mButtonPrefix);
-		on << "_ON";
 
-		toolbar->AddAction(desc->mCmd, this, LoadBitmap(on.String()),
+		toolbar->AddAction(desc->mCmd, this, LoadVectorIcon(desc->mButtonPrefix),
 			desc->mToolTip, NULL, true);
 	}
+	toolbar->AddGlue();
 	return toolbar;
 }
 
