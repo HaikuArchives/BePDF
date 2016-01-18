@@ -210,73 +210,20 @@ static void GetGString(BString &s, GString *g) {
 class FontItem : public BRow
 {
 public:
-	FontItem(uint32 level, bool superitem, bool expanded, const char *name, const char *embName, const char *type);
+	FontItem(const char *name, const char *embName, const char *type);
 	~FontItem() {};
-	void DrawItemColumn(BView* owner, BRect item_column_rect, int32 column_index, bool complete);
-	void Update(BView *owner, const BFont *font);
-
-private:
-	static rgb_color kHighlight, kRedColor, kDimRedColor, kBlackColor, kMedGray;
-	BString fText[3];
-	float fTextOffset;
 };
 
-rgb_color FontItem::kHighlight = {128, 128, 128, 0},
-	FontItem::kRedColor = {255, 0, 0, 0},
-	FontItem::kDimRedColor = {128, 0, 0, 0},
-	FontItem::kBlackColor = {0, 0, 0, 0},
-	FontItem::kMedGray = {192, 192, 192, 0};
-
-FontItem::FontItem(uint32 level, bool superitem, bool expanded, const char *name, const char *embName, const char *type)
-: BRow() {
-	fText[0] = name;
-	fText[1] = embName;
-	fText[2] = type;
-}
-
-void FontItem::DrawItemColumn(BView* owner, BRect item_column_rect, int32 column_index, bool complete)
+FontItem::FontItem(const char *name, const char *embName, const char *type)
+	: BRow()
 {
-	rgb_color color;
-	rgb_color White = {255, 255, 255};
-	rgb_color BeListSelectGrey = {128, 128, 128};
-	rgb_color Black = {0, 0, 0};
-	bool selected = IsSelected();
-	if(selected)
-		color = BeListSelectGrey;
-	else
-		color = White;
-	owner->SetLowColor(color);
-	owner->SetDrawingMode(B_OP_COPY);
-	if(selected || complete)
-	{
-		owner->SetHighColor(color);
-		owner->FillRect(item_column_rect);
-	}
-	BRegion Region;
-	Region.Include(item_column_rect);
-	owner->ConstrainClippingRegion(&Region);
-	if (column_index == 2) {
-		owner->SetHighColor(selected ? kDimRedColor : kRedColor);
-	} else {
-		owner->SetHighColor(Black);
-	}
-	if(column_index >= 0)
-		owner->DrawString(fText[column_index].String(),
-			BPoint(item_column_rect.left+2.0,item_column_rect.top+fTextOffset));
-	owner->ConstrainClippingRegion(NULL);
+	SetField(new BStringField(name), 0);
+	SetField(new BStringField(embName), 1);
+	SetField(new BStringField(type), 2);
 }
 
-
-void FontItem::Update(BView *owner, const BFont *font)
+BRow* FileInfoWindow::FontItem(GfxFont* font)
 {
-	font_height FontAttributes;
-	be_plain_font->GetHeight(&FontAttributes);
-	float FontHeight = ceil(FontAttributes.ascent) + ceil(FontAttributes.descent);
-	fTextOffset = ceil(FontAttributes.ascent) + (Height()-FontHeight)/2.0;
-}
-
-
-BRow *FileInfoWindow::FontItem(GfxFont *font) {
 	BString name;
 	GetGString(name, font->getName());
 
@@ -290,39 +237,26 @@ BRow *FileInfoWindow::FontItem(GfxFont *font) {
 
 	BString type;
 	switch (font->getType()) {
-	case fontUnknownType: type = "Unknown Type";
-		break;
-	case fontType1: type = "Type 1";
-		break;
-	case fontType1C: type = "Type 1C";
-		break;
-	case fontType3: type = "Type 3";
-		break;
-	case fontTrueType: type = "TrueType";
-		break;
-	case fontCIDType0: type = "CID Type 0";
-		break;
-	case fontCIDType0C: type = "CID Type 0C";
-		break;
-	case fontCIDType2: type = "CID Type 2";
-		break;
-	case fontType1COT: type = "Type 1C OpenType";
-		break;
-	case fontTrueTypeOT: type = "TrueType 0 OpenType";
-		break;
-	case fontCIDType0COT: type = "CID Type 0C OpenType";
-		break;
-	case fontCIDType2OT: type = "CID Type2 OpenType";
-		break;
+	case fontUnknownType: type = "Unknown Type"; break;
+	case fontType1: 	type = "Type 1"; break;
+	case fontType1C:	type = "Type 1C"; break;
+	case fontType3:		type = "Type 3"; break;
+	case fontTrueType:	type = "TrueType"; break;
+	case fontCIDType0:	type = "CID Type 0"; break;
+	case fontCIDType0C: type = "CID Type 0C"; break;
+	case fontCIDType2:	type = "CID Type 2"; break;
+	case fontType1COT:	type = "Type 1C (OpenType)"; break;
+	case fontTrueTypeOT:type = "TrueType 0 (OpenType)"; break;
+	case fontCIDType0COT:type = "CID Type 0C (OpenType)"; break;
+	case fontCIDType2OT:type = "CID Type2 (OpenType)"; break;
 	}
-	return new ::FontItem(0, false, false, name.String(), embName.String(), type.String());
+	return new ::FontItem(name.String(), embName.String(), type.String());
 }
 
-void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 
+void FileInfoWindow::QueryFonts(PDFDoc *doc, int page)
+{
 	Catalog *catalog = doc->getCatalog();
-	GfxFontDict *gfxFontDict;
-	GfxFont *font;
 
 	// remove items from font list
 	Lock();
@@ -343,22 +277,28 @@ void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 		Page *page = catalog->getPage(pg);
 		Dict *resDict;
 		if ((resDict = page->getResourceDict()) != NULL) {
-			Object fontDict;
-			resDict->lookup("Font", &fontDict);
-			if (fontDict.isDict()) {
-				// TODO check if ref to Font dict has to be passed in!
-				gfxFontDict = new GfxFontDict(doc->getXRef(), NULL, fontDict.getDict());
-				for (int i = 0; i < gfxFontDict->getNumFonts(); i++) {
-					font = gfxFontDict->getFont(i);
-					if (font != NULL && AddFont(&fontList, font)) {
-						Lock();
-						mFontList->AddRow(FontItem(font));
-						Unlock();
+			Object obj1;
+			resDict->lookupNF("Font", &obj1);
+			if (obj1.isRef()) {
+				Object obj2;
+				obj1.fetch(doc->getXRef(), &obj2);
+				if (obj2.isDict()) {
+					Ref r = obj1.getRef();
+					GfxFontDict* gfxFontDict = new GfxFontDict(doc->getXRef(),
+						&r, obj2.getDict());
+					for (int i = 0; i < gfxFontDict->getNumFonts(); i++) {
+						GfxFont* font = gfxFontDict->getFont(i);
+						if (font != NULL && AddFont(&fontList, font)) {
+							Lock();
+							mFontList->AddRow(FileInfoWindow::FontItem(font));
+							Unlock();
+						}
 					}
+					obj2.free();
+					delete gfxFontDict;
 				}
-				delete gfxFontDict;
 			}
-			fontDict.free();
+			obj1.free();
 		}
 	}
 
@@ -366,7 +306,7 @@ void FileInfoWindow::QueryFonts(PDFDoc *doc, int page) {
 	for (int i = 0; i < fontList.CountItems(); i++) {
 		delete ids[i];
 	}
-	return ;
+	return;
 }
 
 void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
