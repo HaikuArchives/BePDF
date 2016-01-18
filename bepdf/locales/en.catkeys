@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	2492278867
+1	English	application/x-vnd.mp-xpdf	3016894423
 Close	BepdfApplication		Close
 Go to page %d	PDFView		Go to page %d
 of %d	PDFWindow		of %d
@@ -51,7 +51,6 @@ Will take effect at next program launch.	AnnotationWindow		Will take effect at n
 Show error messages	PDFWindow		Show error messages
 Add movie annotation	PDFWindow		Add movie annotation
 Max. printer resolution	PrintSettingsWindow		Max. printer resolution
-Status	PDFWindow		Status
 Open…	PDFWindow		Open…
 Encrypted:	FileInfoWindow		Encrypted:
 DPI	PrintSettingsWindow		DPI
@@ -95,7 +94,6 @@ Color	PrintSettingsWindow		Color
 Show page list	PDFWindow		Show page list
 Back	PDFWindow		Back
 Normal	PrintSettingsWindow		Normal
-Window	PDFWindow		Window
 Add note text annotation	PDFWindow		Add note text annotation
 Close	PDFWindow		Close
 Add printer mark annotation	PDFWindow		Add printer mark annotation
@@ -185,6 +183,7 @@ Add strikeout annotation	PDFWindow		Add strikeout annotation
 Editing:	FileInfoWindow		Editing:
 Title:	FileInfoWindow		Title:
 Owner password	PasswordWindow		Owner password
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
 Selection rectangle	AnnotationWindow		Selection rectangle
 Display	AnnotationWindow		Display
 OK	OutlinesWindow		OK
