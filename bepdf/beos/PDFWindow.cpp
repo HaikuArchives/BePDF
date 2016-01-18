@@ -1663,6 +1663,7 @@ PDFWindow::OnFullScreen()
 		Activate(true);
 	} else {
 		SetFeel(B_NORMAL_WINDOW_FEEL);
+		SetWorkspaces(B_CURRENT_WORKSPACE);
 		SetFlags(Flags() & ~(B_NOT_RESIZABLE | B_NOT_MOVABLE));
 		frame = mWindowFrame;
 		mFullScreenItem->SetMarked(false);
