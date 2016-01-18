@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -680,7 +680,7 @@ static BeCharacterEncoding _beZapfdingbatsEncoding[] = {
 
 BeFontEncoding gZapfdingbatsEncoding(_beZapfdingbatsEncoding);
 
-#endif 
+#endif
 
 static const char *emptyString = "";
 
@@ -706,13 +706,13 @@ int32 BeFontEncoding::toUtf8(uint16 unicode, char *string) {
 	s[0] = unicode / 256;
 	s[1] = unicode % 256;
 
-	convert_to_utf8(B_UNICODE_CONVERSION, 
-		s, 
+	convert_to_utf8(B_UNICODE_CONVERSION,
+		s,
 		&srcLength,
-		string, 
-		&length, 
+		string,
+		&length,
 		&state);
-		
+
 	string[length] = 0;
 	return length;
 }
@@ -734,7 +734,7 @@ BeFontEncoding::BeFontEncoding(BeCharacterEncoding *encoding) {
 			strcpy(map[enc->code], enc->utf8);
 		}
 		enc ++;	size ++;
-	}	
+	}
 }
 
 int32 BeFontEncoding::getIndex(const char *name) {

@@ -1,9 +1,9 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
- * 	 Copyright (C) 2013 waddlesplash.
+ * 	 Copyright (C) 2013-2016 waddlesplash.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,18 +22,20 @@
 
 #include "BePDF.h"
 
-LOCKER_CLASS *gPdfLock   = NULL;
-BScreen *gScreen = NULL;
+BLocker* gPdfLock = NULL;
+BScreen* gScreen = NULL;
 
-void InitBePDF() {
+void InitBePDF()
+{
 	gScreen = new BScreen();
-	gPdfLock   = new LOCKER_CLASS();
+	gPdfLock = new BLocker();
 }
 
-void ExitBePDF() {
+void ExitBePDF()
+{
 	delete gScreen;
 	gScreen = NULL;
-	
+
 	delete gPdfLock;
 	gPdfLock = NULL;
 }

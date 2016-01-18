@@ -132,7 +132,6 @@
     _##name = value;
 
 #define STRING_SETTINGS(do)                     \
-  do(Language,           language,   "Default.catalog") \
   do(Author,             author,     "")
 
 #define SIZE_ACCESSOR(method, accessor) \

@@ -82,19 +82,12 @@ static const char* textAnnotNames[] = {
 	"UNKNOWN_TEXT_ANNOT"
 };
 
-// the name of struct "stat" depends on OS
-#ifdef __HAIKU__
-	#define STAT stat_beos
-#else // BEOS
-	#define STAT stat
-#endif
-
 // Implementation of PDFFilter
 class PDFFilter : public BRefFilter {
 	static const char *valid_filetypes[];
 
 public:
-	bool Filter(const entry_ref *ref, BNode *node, struct STAT *st, const char *filetype);
+	bool Filter(const entry_ref *ref, BNode *node, struct stat_beos *st, const char *filetype);
 };
 
 static PDFFilter pdfFilter;
@@ -112,7 +105,7 @@ const char * PDFFilter::valid_filetypes[] = {
 	NULL
 };
 
-bool PDFFilter::Filter(const entry_ref *ref, BNode *node, struct STAT *st, const char *filetype) {
+bool PDFFilter::Filter(const entry_ref *ref, BNode *node, struct stat_beos *st, const char *filetype) {
 	for (int i = 0; valid_filetypes[i]; i++) {
 		if (strcmp(filetype, valid_filetypes[i]) == 0) return true;
 		// check file extension if filetype has not been set to application/pdf

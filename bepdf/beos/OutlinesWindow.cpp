@@ -109,9 +109,9 @@ OutlineListItem::~OutlineListItem() {
 	else if (mType == linkString) delete mLink.string;
 }
 
-#define dim(x) x
 
-void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete) {
+void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete)
+{
 	rgb_color kHighlight = {128, 128, 128, 0};
 	rgb_color kWhite = {255, 255, 255, 0};
 	rgb_color color;
@@ -130,7 +130,7 @@ void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete) {
 	if (IsEnabled()) {
 		owner->SetHighColor(*mStyle->GetColor());
 	} else {
-		owner->SetHighColor(dim(*mStyle->GetColor()));
+		owner->SetHighColor(*mStyle->GetColor());
 	}
 	// set background color
 	owner->SetLowColor(color);

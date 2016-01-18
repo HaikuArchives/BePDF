@@ -84,8 +84,6 @@ char * PDFWindow::PAGE_MSG_LABEL = "page";
 #define PATH_HELP        "docs/help.html"
 #define PATH_PDF_HELP    "docs/BePDF.pdf"
 
-#define FIRST_ZOOM_ITEM_INDEX 0
-
 // Implementation of RecentDocumentsMenu
 
 RecentDocumentsMenu::RecentDocumentsMenu(const char *title, uint32 what, menu_layout layout)
@@ -819,7 +817,6 @@ BCardView* PDFWindow::BuildLeftPanel()
 		mFileAttributes.GetBookmarks(), gApp->GetSettings(),
 		this, B_FRAME_EVENTS);
 
-	// r.Set(2, 2, rect.Width() - 2 - B_V_SCROLL_BAR_WIDTH, rect.Height() - 2 - B_H_SCROLL_BAR_HEIGHT);
 	mAttachmentView = new AttachmentView(gApp->GetSettings(), this, 0);
 
 	// LayerView contains the page numbers
@@ -869,11 +866,6 @@ void PDFWindow::SetUpViews(entry_ref* ref,
 	.End();
 	fMainContainer->SetExplicitMinSize(BSize(0, 0));
 
-	#define STATUS_TEXT_WIDTH 200
-	#define PAGE_NUM_WIDTH 50
-	#define TOTAL_PAGE_WIDTH 50
-	#define SCROLL_BAR_WIDTH 300
-
 	// left view of SplitView is a LayerView
 	mLayerView = BuildLeftPanel();
 
@@ -910,7 +902,7 @@ void PDFWindow::SetZoom(int16 zoom)
 	BMenuItem *item;
 	gApp->GetSettings()->SetZoom(zoom);
 	if (zoom >= MIN_ZOOM) {
-		item = mZoomMenu->ItemAt(zoom - MIN_ZOOM + FIRST_ZOOM_ITEM_INDEX);
+		item = mZoomMenu->ItemAt(zoom - MIN_ZOOM);
 		if (item != NULL)
 			item->SetMarked(true);
 	} else {
@@ -1127,7 +1119,7 @@ PDFWindow::MessageReceived(BMessage* message)
 				if (menu == NULL) {
 					// ERROR
 				} else {
-					idx = menu->IndexOf (item) - FIRST_ZOOM_ITEM_INDEX;
+					idx = menu->IndexOf(item);
 					if (idx > MAX_ZOOM) {
 						idx = MAX_ZOOM;
 					}
@@ -1501,12 +1493,8 @@ PDFWindow::OpenPDFHelp(const char* name)
 void
 PDFWindow::OpenHelp()
 {
-	// help in pdf
-	BString name = gApp->GetSettings()->GetLanguage();
-	name.RemoveLast(".catalog");
-	name.Append(".pdf");
-	name.ReplaceAll("Default", "English");
-	OpenPDFHelp(name.String());
+	OpenPDFHelp(B_TRANSLATE_COMMENT("English.pdf",
+		"Replace with the PDF name of the help document, if there is one for your language."));
 }
 
 

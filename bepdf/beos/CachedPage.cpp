@@ -72,10 +72,9 @@ GBool CachedPage::OnLink(double x, double y) {
 		return false;
 	}
 }
-/////////////////////////////////////////////////////////////////////////
-#define xoutRound(x) ((int)(x + 0.5))
 
-void CachedPage::SetText(TextPage *text) {
+void CachedPage::SetText(TextPage *text)
+{
 	// ASSERT(mText == NULL);
 	mText = text;
 }

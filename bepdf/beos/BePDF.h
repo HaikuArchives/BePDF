@@ -1,9 +1,9 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
- * 	 Copyright (C) 2013 waddlesplash.
+ * 	 Copyright (C) 2013-2016 waddlesplash.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,25 +26,8 @@
 #include <be/support/Locker.h>
 #include <be/interface/Screen.h>
 
-
-#if 1
-  // enable locking
-  #define LOCKER_CLASS BLocker
-#else
-  // disable locking
-  #define LOCKER_CLASS MyLocker
-
-class MyLocker {
-public:
-	bool     Lock()                             { return true; }
-	status_t LockWithTimeout(bigtime_t timeout) { return B_OK; }
-	void     Unlock()                           { }
-};
-
-#endif
-
-// global lock 
-extern LOCKER_CLASS *gPdfLock;
+// global lock
+extern BLocker *gPdfLock;
 // the BScreen initialized with InitBePDF()
 extern BScreen *gScreen;
 

@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -20,30 +20,30 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#define DEBUG 1
-#include <Debug.h>
 #include "History.h"
 
-HistoryPosition::HistoryPosition(HistoryFile* file, int page, int16 zoom, int32 left, int32 top, float rotation) 
+#include <cassert>
+
+HistoryPosition::HistoryPosition(HistoryFile* file, int page, int16 zoom, int32 left, int32 top, float rotation)
 	: mFile(file)
 	, mPage(page)
 	, mZoom(zoom)
 	, mLeft(left)
 	, mTop(top)
-	, mRotation(rotation) 
+	, mRotation(rotation)
 {
 	file->IncreaseUseCount();
-}	
+}
 
 HistoryPosition::~HistoryPosition() {
 	mFile->DecreaseUseCount();
 }
 
-HistoryFile::HistoryFile(entry_ref ref, const char* ownerPassword, const char* userPassword) 
+HistoryFile::HistoryFile(entry_ref ref, const char* ownerPassword, const char* userPassword)
 	: fRef(ref)
 	, fOwnerPassword(NULL)
 	, fUserPassword(NULL)
-	, fUseCount(0) 
+	, fUseCount(0)
 {
 	if (ownerPassword) {
 		fOwnerPassword = new BString(ownerPassword);
@@ -54,7 +54,7 @@ HistoryFile::HistoryFile(entry_ref ref, const char* ownerPassword, const char* u
 }
 
 HistoryFile::~HistoryFile() {
-	delete fOwnerPassword; 
+	delete fOwnerPassword;
 	delete fUserPassword;
 }
 
@@ -96,7 +96,7 @@ void History::Add(HistoryEntry* e) {
 }
 
 void History::AddPosition(int page, int16 zoom, int32 left, int32 top, float rotation) {
-	ASSERT(mFile != NULL);
+	assert(mFile != NULL);
 	Add(new HistoryPosition(mFile, page, zoom, left, top, rotation));
 }
 

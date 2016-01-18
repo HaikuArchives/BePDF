@@ -88,10 +88,6 @@ static const int kZoomDPI[MAX_ZOOM - MIN_ZOOM + 1] = {
 };
 #endif
 
-#define DEF_ZOOM	5
-
-#define USE_GS_RENDERER 0
-
 #define OPEN_FILE_MSG                  'open'
 #define COPY_LINK_MSG                  'cplk'
 #define DELETE_ANNOT_MSG               'dele'
@@ -110,7 +106,7 @@ PDFView::PDFView (entry_ref* ref, FileAttributes *fileAttributes,
 	// init member variables
 	mDoc = NULL; mBePDFAcroForm = NULL;
 	mOk = false;
-	mZoom = settings->GetZoom(); // DEF_ZOOM;
+	mZoom = settings->GetZoom();
 	mBitmap = NULL;
 	mPage = new CachedPage();
 	mCurrentPage = 0;
@@ -2499,9 +2495,9 @@ PDFView::UpdateAnnotation(Annotation* a, BMessage* data) {
 }
 
 
-///////////////////////////////////////////////////////////
 void
-PDFView::ShowAnnotWindow(bool editable, bool updateOnly) {
+PDFView::ShowAnnotWindow(bool editable, bool updateOnly)
+{
 	SyncAnnotation(false);
 	if (editable) {
 		mAnnotInEditor = mAnnotation;

@@ -30,11 +30,10 @@
 #include "Annotation.h"
 
 #if 0
-#define LOG(text) fprintf(stderr, text)
+#define LOG(text) fprintf(stderr, "%s\n", text)
 #else
 #define LOG(text)
 #endif
-#define CR LOG("\n")
 
 
 #define COPYN(N) for (n = N; n && date[i]; n--) s[j++] = date[i++];
@@ -1329,7 +1328,7 @@ Annotations::Annotations(Object* annots, BePDFAcroForm* acroForm)
 				if (annot.dictLookup("Subtype", &subType) && subType.isName()) {
 					const char* s = subType.getName();
 					Annotation* a = NULL;
-					LOG(s); CR;
+					LOG(s);
 					if (strcmp(s, "Text") == 0) {
 						a = new TextAnnot(annot.getDict());
 					} else if (strcmp(s, "FreeText") == 0) {
