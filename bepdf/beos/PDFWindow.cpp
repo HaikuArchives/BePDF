@@ -1781,7 +1781,7 @@ BView* PDFWindow::BuildAnnotToolBar(const char* name, AnnotDesc* desc)
 			LoadVectorIcon(desc->mButtonPrefix), desc->mToolTip, NULL, true);
 	}
 
-	BScrollView* sc = new BScrollView("AnnotToolbarScroll", mAnnotationBar,
+	/*BScrollView* sc = new BScrollView("AnnotToolbarScroll", mAnnotationBar,
 		0, false, true, B_PLAIN_BORDER);
 	sc->SetExplicitMinSize(BSize(0, 0));
 	BScrollBar* sb = sc->ScrollBar(B_VERTICAL);
@@ -1789,11 +1789,11 @@ BView* PDFWindow::BuildAnnotToolBar(const char* name, AnnotDesc* desc)
 	sb->GetRange(NULL, &range);
 	sb->SetRange(0, range * 0.35);
 	sb->SetSteps(5, 15);
-	sb->SetProportion(0.5);
+	sb->SetProportion(0.5);*/
 	BView* CV = new BView("CV", 0);
 	BLayoutBuilder::Group<>(CV, B_HORIZONTAL)
 		.AddGlue(0)
-		.Add(sc)
+		.Add(mAnnotationBar)
 		.AddGlue(0)
 	.End();
 	return CV;
