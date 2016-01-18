@@ -95,7 +95,8 @@ RecentDocumentsMenu::RecentDocumentsMenu(const char *title, uint32 what, menu_la
 bool
 RecentDocumentsMenu::AddDynamicItem(add_state s)
 {
-	if (s != B_INITIAL_ADD) return false;
+	if (s != B_INITIAL_ADD)
+		return false;
 
 	BMenuItem *item;
 	BMessage list, *msg;
@@ -106,7 +107,7 @@ RecentDocumentsMenu::AddDynamicItem(add_state s)
 		delete item;
 	}
 
-	be_roster->GetRecentDocuments(&list, 20, "application/pdf", NULL);
+	be_roster->GetRecentDocuments(&list, 20, NULL, BEPDF_APP_SIG);
 	for (int i = 0; list.FindRef("refs", i, &ref) == B_OK; i++) {
 		BEntry entry(&ref);
 		if (entry.Exists() && entry.GetName(name) == B_OK) {
