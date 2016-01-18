@@ -81,9 +81,6 @@
 
 char * PDFWindow::PAGE_MSG_LABEL = "page";
 
-#define PATH_HELP        "docs/help.html"
-#define PATH_PDF_HELP    "docs/BePDF.pdf"
-
 // Implementation of RecentDocumentsMenu
 
 RecentDocumentsMenu::RecentDocumentsMenu(const char *title, uint32 what, menu_layout layout)
@@ -876,6 +873,8 @@ void PDFWindow::SetUpViews(entry_ref* ref,
 	mSplitView = new BSplitView(B_HORIZONTAL);
 	mSplitView->AddChild(mLayerView, 1);
 	mSplitView->AddChild(fMainContainer, 9);
+	mSplitView->SetInsets(0);
+	mSplitView->SetSpacing(4);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.SetInsets(0, 0, -1, -1)
