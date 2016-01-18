@@ -1484,7 +1484,6 @@ PDFWindow::OpenPDFHelp(const char* name)
 	path.Append(name);
 	BEntry entry(path.Path());
 	if (entry.InitCheck() == B_OK && entry.Exists()) {
-		printf("exists");
 		OpenPDF(path.Path());
 		return true;
 	}
