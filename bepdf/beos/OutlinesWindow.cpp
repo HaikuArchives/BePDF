@@ -309,27 +309,22 @@ void OutlinesView::ReadOutlines(Object *o, uint32 level) {
 	delete current;
 }
 
-OutlinesView::OutlinesView(BRect rect, Catalog *catalog, BMessage *bookmarks, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags) :
-		BView(rect, "bookmarks", resizeMask, flags),
-		mLooper(looper),
-		mList(NULL),
-		mCatalog(NULL),
-		mBookmarks(NULL),
-		mNeedsUpdate(true),
-		mUserDefined(NULL),
-		mEmptyUserBM(NULL) {
-
-	rect.right -= B_V_SCROLL_BAR_WIDTH + 2;
-	rect.bottom -= B_H_SCROLL_BAR_HEIGHT + 2;
-	rect.top += 2; rect.left += 2;
-	BScrollView *view = new BScrollView ("", mList = new BOutlineListView(rect, "", B_SINGLE_SELECTION_LIST, B_FOLLOW_ALL), B_FOLLOW_ALL, 0, true, true);
-	BScrollBar *scroller = view->ScrollBar(B_HORIZONTAL);
-	scroller->ResizeBy(B_V_SCROLL_BAR_WIDTH, 0);
-	scroller->SetRange(0, 300);
-	scroller->SetSteps(30, 60);
-	mEmptyUserBM = new OutlineListItem(B_TRANSLATE("<empty>"), 1, true, GetDefaultStyle());
+OutlinesView::OutlinesView(Catalog *catalog, BMessage *bookmarks,
+	GlobalSettings *settings, BLooper *looper, uint32 flags)
+	:
+	BScrollView("BookmarksScroll", NULL, 0, true, true),
+	mLooper(looper),
+	mList(NULL),
+	mCatalog(NULL),
+	mBookmarks(NULL),
+	mNeedsUpdate(true),
+	mUserDefined(NULL),
+	mEmptyUserBM(NULL)
+{
+	SetTarget(mList = new BOutlineListView("", B_SINGLE_SELECTION_LIST));
+	mEmptyUserBM = new OutlineListItem(B_TRANSLATE("<empty>"), 1, true,
+		GetDefaultStyle());
 	SetCatalog(catalog, bookmarks);
-	AddChild(view);
 }
 
 OutlinesView::~OutlinesView() {

@@ -83,8 +83,8 @@ const char* AttachmentItem::Text() {
 }
 
 
-AttachmentView::AttachmentView(BRect rect, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags)
-	: BView(rect, "attachments", resizeMask, flags | B_FRAME_EVENTS)
+AttachmentView::AttachmentView(GlobalSettings *settings, BLooper *looper, uint32 flags)
+	: BView("attachments", flags | B_FRAME_EVENTS)
 {
 	fToolBar = new BToolBar;
 	fToolBar->SetName("toolbar");

@@ -676,7 +676,7 @@ resource(76, "ANNOT_PARAGRAPH") #'VICN' array {
 	$"4400000A03010100"
 };
 
-## MISSING resource(77, "ANNOT_LINK") #'VICN' array {
+## UNUSED resource(77, "ANNOT_LINK") #'VICN' array {
 
 resource(78, "ANNOT_FREETEXT") #'VICN' array {
 	$"6E636966030400660500020016020000003C6000C000000000004C000048A000"
@@ -686,7 +686,7 @@ resource(78, "ANNOT_FREETEXT") #'VICN' array {
 	$"0A02010002408000000000000000408000440000440000"
 };
 
-## MISSING resource(79, "ANNOT_LINE") #'VICN' array {
+## UNUSED resource(79, "ANNOT_LINE") #'VICN' array {
 
 resource(80, "ANNOT_SQUARE") #'VICN' array {
 	$"6E6369660204006603005900010A044945492521252145020A00010012408BA2"
@@ -745,15 +745,15 @@ resource(85, "ANNOT_STRIKEOUT") #'VICN' array {
 	$"8222040A0201002042330A0401041001178100040A0301033020100117840004"
 };
 
-# MISSING resource(86, "ANNOT_STAMP") #'VICN' array {
-# MISSING resource(87, "ANNOT_INK") #'VICN' array {
-# MISSING resource(88, "ANNOT_POPUP") #'VICN' array {
-# MISSING resource(89, "ANNOT_FILEATTACHMENT") #'VICN' array {
-# MISSING resource(90, "ANNOT_SOUND") #'VICN' array {
-# MISSING resource(91, "ANNOT_MOVIE") #'VICN' array {
-# MISSING resource(92, "ANNOT_WIDGET") #'VICN' array {
-# MISSING resource(93, "ANNOT_PRINTERMARK") #'VICN' array {
-# MISSING resource(94, "ANNOT_TRAPNET") #'VICN' array {
+# UNUSED resource(86, "ANNOT_STAMP") #'VICN' array {
+# UNUSED resource(87, "ANNOT_INK") #'VICN' array {
+# UNUSED resource(88, "ANNOT_POPUP") #'VICN' array {
+# UNUSED resource(89, "ANNOT_FILEATTACHMENT") #'VICN' array {
+# UNUSED resource(90, "ANNOT_SOUND") #'VICN' array {
+# UNUSED resource(91, "ANNOT_MOVIE") #'VICN' array {
+# UNUSED resource(92, "ANNOT_WIDGET") #'VICN' array {
+# UNUSED resource(93, "ANNOT_PRINTERMARK") #'VICN' array {
+# UNUSED resource(94, "ANNOT_TRAPNET") #'VICN' array {
 
 
 resource vector_icon {

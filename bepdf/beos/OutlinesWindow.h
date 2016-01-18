@@ -1,4 +1,4 @@
-/*  
+/*
  * BePDF: The PDF reader for Haiku.
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
@@ -42,26 +42,26 @@ class OutlineStyle {
 public:
 	OutlineStyle(const BFont* font, rgb_color color);
 	const BFont* GetFont() const { return mFont; }
-	const rgb_color* GetColor() const { return &mColor; }	
+	const rgb_color* GetColor() const { return &mColor; }
 };
 
 class OutlineStyleList {
 	BList mList; // of OutlineStyle
 	BFont mFonts[4];
-	
-	static void Initialize();	
+
+	static void Initialize();
 public:
 	OutlineStyleList();
 	~OutlineStyleList();
-	
+
 	enum {
 		PLAIN_STYLE,
 		BOLD_STYLE,
 		ITALIC_STYLE,
 		BOLD_ITALIC_STYLE
 	};
-	
-	const BFont* GetFont(int style) const;	
+
+	const BFont* GetFont(int style) const;
 	OutlineStyle* GetStyle(int style, rgb_color color);
 	OutlineStyle* GetDefaultStyle();
 };
@@ -80,7 +80,7 @@ class OutlineListItem : public BListItem {
 		int       pageNum;
 	} mLink;
 	OutlineStyle *mStyle;
-	
+
 public:
 	OutlineListItem(const char *string, uint32 level, bool expanded, OutlineStyle* style);
 	virtual ~OutlineListItem();
@@ -89,9 +89,9 @@ public:
 	void SetLink(LinkDest *dest);
 	void SetLink(GString *s);
 	void SetPageNum(int pageNum);
-	
+
 	void DrawItem(BView* owner, BRect frame, bool complete);
-	
+
 	bool isDest() const        { return mType == linkDest; }
 	bool isString() const      { return mType == linkString; }
 	bool isPageNum() const     { return mType == linkPageNum; }
@@ -100,9 +100,9 @@ public:
 	int getPageNum() const     { return mLink.pageNum; }
 };
 
-class OutlinesView : public BView {
+class OutlinesView : public BScrollView {
 	BLooper          *mLooper;
-	OutlineStyleList  mOutlineStyleList;     
+	OutlineStyleList  mOutlineStyleList;
 	BOutlineListView *mList;
 	Catalog          *mCatalog;
 	BMessage         *mBookmarks;    // archived bookmarks
@@ -111,7 +111,7 @@ class OutlinesView : public BView {
 	OutlineListItem  *mEmptyUserBM;  // cached value
 	Bitset            mBookmark;
 
-	void ReadOutlines(Object *o, uint32 level);		
+	void ReadOutlines(Object *o, uint32 level);
 	OutlineListItem* FindUserBookmark(int pageNum);
 	void InsertUserBookmark(int pageNum, const char *label);
 	void InitUserBookmarks(bool initOnly);
@@ -128,8 +128,8 @@ public:
 		QUIT_NOTIFY         = 'ORQt',
 		STATE_CHANGE_NOTIFY = 'OWCg'
 	};
-	
-	OutlinesView(BRect rect, Catalog *catalog, BMessage *bookmarks, GlobalSettings *settings, BLooper *looper, uint32 resizeMask, uint32 flags);
+
+	OutlinesView(Catalog *catalog, BMessage *bookmarks, GlobalSettings *settings, BLooper *looper, uint32 flags);
 	~OutlinesView();
 	void AttachedToWindow();
 	void MessageReceived(BMessage *msg);
@@ -137,12 +137,12 @@ public:
 	void SetCatalog(Catalog *catalog, BMessage* bookmarks);
 	bool HasUserBookmark(int pageNum);
 	bool IsUserBMSelected();
-	const char *GetUserBMLabel(int pageNum); 
+	const char *GetUserBMLabel(int pageNum);
 	void AddUserBookmark(int pageNum, const char *label);
 	void RemoveUserBookmark(int pageNum);
 	// fills BMessage with bookmarks to be stored in FileAttributes
 	bool GetBookmarks(BMessage *bookmarks);
-	
+
 	void Activate();
 };
 
@@ -153,7 +153,7 @@ public:
 	BookmarkWindow(int pageNum, const char* title, BRect rect, BLooper *looper);
 	void MessageReceived(BMessage *msg);
 	bool QuitRequested();
-	
+
 	enum {
 		BOOKMARK_ENTERED_NOTIFY = 'BMEt'
 	};

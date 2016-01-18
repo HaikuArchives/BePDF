@@ -30,13 +30,14 @@
 #include <be/storage/Entry.h>
 #include <be/storage/Path.h>
 #include <private/shared/ToolBar.h>
+#include <SplitView.h>
+#include <CardView.h>
 
 // BePDF
 #include "EntryChangedMonitor.h"
 #include "FindTextWindow.h"
 #include "htk/HWindow.h"
 #include "PDFView.h"
-#include "SplitView.h"
 #include "ToolTip.h"
 
 // xpdf
@@ -44,7 +45,6 @@
 
 class AnnotationWindow;
 class AttachmentView;
-class LayerView;
 class OutlinesView;
 
 typedef struct {
@@ -68,7 +68,6 @@ private:
 class PDFWindow
 	: public BWindow
 	, public EntryChangedListener
-	, public PositionChangedListener
 {
 public:
 	enum {
@@ -198,10 +197,10 @@ public:
 
 	// active view in left panel
 	enum {
-		PAGE_LIST_PANEL = 0,
-		BOOKMARKS_PANEL = 1,
-		ANNOTATIONS_PANEL = 2,
-		ATTACHMENTS_PANEL = 3,
+		BOOKMARKS_PANEL = 0,
+		PAGE_LIST_PANEL,
+		ANNOTATIONS_PANEL,
+		ATTACHMENTS_PANEL,
 	};
 
 	// pending mask
@@ -220,14 +219,14 @@ private:
 	BToolBar		*mToolBar;
 	BTextControl   *mPageNumberItem;
 	BStringView    *mTotalPageNumberItem;
-	SplitView      *mSplitView;
-	PDFView        *mMainView;
-	LayerView      *mLayerView;
+	BSplitView*		mSplitView;
+	PDFView*		mMainView;
+	BView*			fMainContainer;
+	BCardView*		mLayerView;
 	BListView      *mPagesView;
 	OutlinesView   *mOutlinesView;
-	BToolBar		*mAnnotationBar;
+	BToolBar*		mAnnotationBar;
 	AttachmentView *mAttachmentView;
-	BStringView    *mStatusText;
 
 	BMessage       *mPrintSettings;
 	FindTextWindow *mFindWindow;
@@ -235,8 +234,6 @@ private:
 	BMenuItem      *mPreferencesItem, *mFileInfoItem, // *mPrintSettingsItem,
 	               *mFullScreenItem;
 	BMenu          *mOpenMenu, *mNewMenu, *mWindowsMenu;
-
-	float          mMenuHeight;
 
 	uint32         mFindState;
 	BString        mFindText;
@@ -267,12 +264,11 @@ public:
 	virtual ~PDFWindow();
 
 	virtual bool QuitRequested();
-	void SetStatus(const char *text);
 	virtual	bool CanClose();
 	bool IsOk();
 	BMenuBar* BuildMenu();
 	BToolBar* BuildToolBar();
-	LayerView* BuildLeftPanel(BRect rect);
+	BCardView* BuildLeftPanel();
 	void SetUpViews (entry_ref * ref, const char *ownerPassword, const char *userPassword, bool *encrypted);
 	void CleanUpBeforeLoad();
 	bool IsCurrentFile(entry_ref* ref) const;
@@ -285,7 +281,6 @@ public:
 	virtual void FrameMoved (BPoint p);
 	virtual void FrameResized (float width, float height);
 	virtual void MessageReceived (BMessage * message);
-	virtual void PositionChanged(SplitView* view, float position);
 	void SetZoomSize (float w, float h);
 	void SetZoom(int16 zoom);
 	void SetRotation(float rotation);
@@ -345,10 +340,6 @@ protected:
 
 	void ToggleLeftPanel(); // show / hide panel
 	void ShowLeftPanel(int panel);
-	void ShowBookmarks();
-	void ShowPageList();
-	void ShowAnnotationToolbar();
-	void ShowAttachments();
 	void HideLeftPanel();
 
 	void OnFullScreen();
@@ -360,7 +351,7 @@ protected:
 
 	// Annotations
 	void PressAnnotationButton();
-	BToolBar* BuildAnnotToolBar(BRect rect, const char* name, AnnotDesc* desc);
+	BView* BuildAnnotToolBar(const char* name, AnnotDesc* desc);
 	bool TryEditAnnot();
 	void InitAnnotTemplates();
 	void DeleteAnnotTemplates();

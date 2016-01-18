@@ -3,7 +3,7 @@
  * 	 Copyright (C) 1997 Benoit Triquet.
  * 	 Copyright (C) 1998-2000 Hubert Figuiere.
  * 	 Copyright (C) 2000-2011 Michael Pfeiffer.
- * 	 Copyright (C) 2013 waddlesplash.
+ * 	 Copyright (C) 2013-2016 waddlesplash.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,6 @@
 #include "EntryMenuItem.h"
 #include "FileInfoWindow.h"
 #include "FindTextWindow.h"
-#include "LayerView.h"
 #include "LayoutUtils.h"
 #include "OutlinesWindow.h"
 #include "PageLabels.h"
@@ -73,7 +72,6 @@
 #include "PrintSettingsWindow.h"
 #include "ResourceLoader.h"
 #include "SaveThread.h"
-#include "SplitView.h"
 #include "StatusBar.h"
 #include "TraceWindow.h"
 
@@ -136,7 +134,7 @@ RecentDocumentsMenu::AddDynamicItem(add_state s)
 */
 PDFWindow::PDFWindow(entry_ref* ref, BRect frame, const char *ownerPassword,
 	const char *userPassword, bool *encrypted)
-	: BWindow(frame, "PDF", B_DOCUMENT_WINDOW, 0)
+	: BWindow(frame, "PDF", B_DOCUMENT_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	mMainView = NULL;
 	mPagesView = NULL;
@@ -144,7 +142,6 @@ PDFWindow::PDFWindow(entry_ref* ref, BRect frame, const char *ownerPassword,
 	mPageNumberItem = NULL;
 	mPrintSettings = NULL;
 	mTotalPageNumberItem = NULL;
-	mStatusText = NULL;
 	mFindWindow = NULL;
 	mPreferencesItem = NULL;
 	mFileInfoItem =  NULL;
@@ -475,7 +472,7 @@ void PDFWindow::UpdateInputEnabler()
 
 		mToolBar->SetActionEnabled(FIND_NEXT_CMD, mFindText.Length() > 0);
 
-		int active = mLayerView->Active();
+		int active = mLayerView->CardLayout()->VisibleIndex();
 		mToolBar->SetActionPressed(SHOW_PAGE_LIST_CMD, mShowLeftPanel && active == PAGE_LIST_PANEL);
 		mToolBar->SetActionPressed(SHOW_BOOKMARKS_CMD, mShowLeftPanel && active == BOOKMARKS_PANEL);
 		mToolBar->SetActionPressed(SHOW_ANNOT_TOOLBAR_CMD, mShowLeftPanel && active == ANNOTATIONS_PANEL);
@@ -551,7 +548,7 @@ BMenuBar* PDFWindow::BuildMenu()
 	BString label;
 	GlobalSettings* settings = gApp->GetSettings();
 
-	BMenuBar* menuBar = new BMenuBar(BRect(0, 0, 1024, 18), "mainBar");
+	BMenuBar* menuBar = new BMenuBar("mainBar");
 	BLayoutBuilder::Menu<>(menuBar)
 		.AddMenu(B_TRANSLATE("File"))
 			.AddItem(mOpenMenu = new RecentDocumentsMenu(
@@ -687,8 +684,6 @@ BMenuBar* PDFWindow::BuildMenu()
 		ADD_ITEM (menu, B_TRANSLATE("About BePDF" B_UTF8_ELLIPSIS), 0, ( ABOUT_APP_CMD ) );
 		menuBar->AddItem( menu );
 
-	AddChild(menuBar);
-
 	mOpenMenu->Superitem()->SetTrigger('O');
 	mOpenMenu->Superitem()->SetMessage(new BMessage(OPEN_FILE_CMD));
 	mOpenMenu->Superitem()->SetShortcut('O', 0);
@@ -703,12 +698,10 @@ BMenuBar* PDFWindow::BuildMenu()
 
 BToolBar* PDFWindow::BuildToolBar()
 {
-	mToolBar = new BToolBar(BRect(0, mMenuHeight, Bounds().right,
-		mMenuHeight+TOOLBAR_HEIGHT-1));
+	mToolBar = new BToolBar;
 	mToolBar->SetName("toolbar");
 	mToolBar->SetResizingMode(B_FOLLOW_TOP | B_FOLLOW_LEFT_RIGHT);
 	mToolBar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
-	AddChild(mToolBar);
 
 	mToolBar->AddAction(OPEN_FILE_CMD, this, LoadVectorIcon("OPEN_FILE"),
 		B_TRANSLATE("Open file"));
@@ -768,8 +761,8 @@ BToolBar* PDFWindow::BuildToolBar()
 	// Add "go to page number" TextControl
 	mPageNumberItem	= new BTextControl("goto_page",
 		"", "", new BMessage(GOTO_PAGE_CMD));
-	mPageNumberItem->SetDivider(0.0);
-	mPageNumberItem->SetAlignment(B_ALIGN_RIGHT, B_ALIGN_RIGHT);
+	mPageNumberItem->SetExplicitMaxSize(BSize(50, 25));
+	mPageNumberItem->SetAlignment(B_ALIGN_CENTER, B_ALIGN_CENTER);
 	mPageNumberItem->SetTarget(this);
 	mPageNumberItem->TextView()->DisallowChar(B_ESCAPE);
 
@@ -783,7 +776,7 @@ BToolBar* PDFWindow::BuildToolBar()
 	// display total number of pages
 	mTotalPageNumberItem = new BStringView("total_num_of_pages", "");
 	mTotalPageNumberItem->SetAlignment(B_ALIGN_CENTER);
-	mTotalPageNumberItem->SetFont(&font);
+	mTotalPageNumberItem->SetFontSize(10);
 	mToolBar->AddView(mTotalPageNumberItem);
 
 	mToolBar->AddSeparator();
@@ -817,173 +810,103 @@ BToolBar* PDFWindow::BuildToolBar()
 }
 
 
-///////////////////////////////////////////////////////////
-LayerView* PDFWindow::BuildLeftPanel(BRect rect) {
-	BRect r(rect);
-	LayerView* layerView;
-	layerView = new LayerView(rect, "layers", B_FOLLOW_LEFT | B_FOLLOW_TOP_BOTTOM, B_FRAME_EVENTS);
+BCardView* PDFWindow::BuildLeftPanel()
+{
+	BCardView* layerView = new BCardView("layers");
 
 	// PageList
-	mOutlinesView = new OutlinesView(rect, mMainView->GetPDFDoc()->getCatalog(),
-	                                 mFileAttributes.GetBookmarks(), gApp->GetSettings(),
-	                                 this, B_FOLLOW_ALL, B_FRAME_EVENTS);
-
+	mOutlinesView = new OutlinesView(mMainView->GetPDFDoc()->getCatalog(),
+		mFileAttributes.GetBookmarks(), gApp->GetSettings(),
+		this, B_FRAME_EVENTS);
 
 	// r.Set(2, 2, rect.Width() - 2 - B_V_SCROLL_BAR_WIDTH, rect.Height() - 2 - B_H_SCROLL_BAR_HEIGHT);
-	mAttachmentView = new AttachmentView(rect, gApp->GetSettings(), this, B_FOLLOW_ALL, 0);
-
-	r.Set(2, 2, rect.Width() - 2 - B_V_SCROLL_BAR_WIDTH, rect.Height() - 2 - B_H_SCROLL_BAR_HEIGHT);
+	mAttachmentView = new AttachmentView(gApp->GetSettings(), this, 0);
 
 	// LayerView contains the page numbers
-	mPagesView = new BListView(r, "pagesList", B_SINGLE_SELECTION_LIST,
-		B_FOLLOW_ALL_SIDES,
+	mPagesView = new BListView("pagesList", B_SINGLE_SELECTION_LIST,
 		B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS);
 	mPagesView->SetSelectionMessage(new BMessage(PAGE_SELECTED_CMD));
 
-	BView *pageView = new BScrollView ("pageScrollView", mPagesView,
-		B_FOLLOW_ALL_SIDES,
-		B_FRAME_EVENTS,
-		true, true, B_FANCY_BORDER);
+	BView *pageView = new BScrollView("pageScrollView", mPagesView,
+		B_FRAME_EVENTS, true, true, B_FANCY_BORDER);
 
-	r = rect;
-	r.right = r.left + TOOLBAR_WIDTH;
-	mAnnotationBar = BuildAnnotToolBar(r, "annotationToolBar", NULL);
-	mAnnotationBar->ResizeBy(rect.right - r.right, 0);
-
-	layerView->AddLayer(pageView);
-	layerView->AddLayer(mOutlinesView);
-	layerView->AddLayer(mAnnotationBar);
-	layerView->AddLayer(mAttachmentView);
+	layerView->CardLayout()->AddView(pageView);
+	layerView->CardLayout()->AddView(mOutlinesView);
+	layerView->CardLayout()->AddView(BuildAnnotToolBar("annotationToolBar", NULL));
+	layerView->CardLayout()->AddView(mAttachmentView);
 
 	return layerView;
 }
 
-///////////////////////////////////////////////////////////
-void PDFWindow::SetUpViews(entry_ref * ref, const char *ownerPassword, const char *userPassword, bool *encrypted)
-{
-	BScrollView * mainScrollView;
-	BScrollBar * scroller;
-	BRect rect;
-	BFont font(be_plain_font);
-	font.SetSize(10);
 
-	SetSizeLimits(500, 10000, 120, 10000);
+void PDFWindow::SetUpViews(entry_ref* ref,
+	const char *ownerPassword, const char *userPassword, bool *encrypted)
+{
 	fMenuBar = BuildMenu();
-	mMenuHeight = fMenuBar->Frame().Height() + 1;
 	BuildToolBar();
 
-	/* Main View is right view of SplitView */
-	BRect r(0, mToolBar->Frame().bottom+1, Bounds().right, Bounds().bottom);
-	float height = r.Height();
-	float width = r.Width();
-
-	BRect viewRect(64, 2, width - B_V_SCROLL_BAR_WIDTH, height - B_H_SCROLL_BAR_HEIGHT);
-	mMainView = new PDFView(ref, &mFileAttributes, viewRect, "mainView",
-				B_FOLLOW_ALL, B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS,
-				ownerPassword, userPassword, encrypted);
+	mMainView = new PDFView(ref, &mFileAttributes, "mainView",
+		B_WILL_DRAW | B_NAVIGABLE | B_FRAME_EVENTS,
+		ownerPassword, userPassword, encrypted);
 
 	mCurrentFile.SetTo(ref);
 	if (!mMainView->IsOk()) {
 		delete mMainView;
 		mMainView = NULL;
-		return;			//ERROR !
+		return; // ERROR!
 	}
 	mEntryChangedMonitor.StartWatching(ref);
 
-	// ScrollView of mMainView
-	mainScrollView = new BScrollView ("scrollView", mMainView, B_FOLLOW_ALL, 0, true, true, B_FANCY_BORDER );
+	fMainContainer = new BView("ScrollContainer", 0);
+	BScrollView* mainScrollView = new BScrollView("scrollView",
+		mMainView, 0, true, true, B_FANCY_BORDER);
 	mainScrollView->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+	mainScrollView->SetExplicitMinSize(BSize(0, 0));
 
+	BLayoutBuilder::Group<>(fMainContainer, B_VERTICAL, 0)
+		.SetInsets(0, 0, -1, -1)
+		.Add(mainScrollView)
+	.End();
+	fMainContainer->SetExplicitMinSize(BSize(0, 0));
 
 	#define STATUS_TEXT_WIDTH 200
 	#define PAGE_NUM_WIDTH 50
 	#define TOTAL_PAGE_WIDTH 50
 	#define SCROLL_BAR_WIDTH 300
 
-	rect.Set(0, 0, 50, height);
-
 	// left view of SplitView is a LayerView
-	mLayerView = BuildLeftPanel(rect);
+	mLayerView = BuildLeftPanel();
 
 	// SplitView
-	mSplitView = new SplitView(r, "splitView", mLayerView, mainScrollView, TOOLBAR_WIDTH, 380);
-	AddChild(mSplitView);
+	mSplitView = new BSplitView(B_HORIZONTAL);
+	mSplitView->AddChild(mLayerView, 1);
+	mSplitView->AddChild(fMainContainer, 9);
 
-	// Set Scrollbar parameters for pageView
-	scroller = mPagesView->ScrollBar(B_HORIZONTAL);
-	scroller->ResizeBy(B_V_SCROLL_BAR_WIDTH, 0);
-	scroller->SetRange(0, 300);
-	scroller->SetSteps(30, 60);
-
-	scroller = mainScrollView->ScrollBar (B_HORIZONTAL);
-
-	rect = mainScrollView->Bounds();
-
-	// Statusbar
-	BRect sbr(rect.left+2, rect.bottom - B_H_SCROLL_BAR_HEIGHT - 1, rect.right - SCROLL_BAR_WIDTH - B_V_SCROLL_BAR_WIDTH - 1, rect.bottom);
-	StatusBar *sb = new StatusBar(sbr, "status_bar", B_FOLLOW_LEFT_RIGHT | B_FOLLOW_BOTTOM, 0);
-	mainScrollView->AddChild(sb);
-
-	rect = sb->Bounds();
-	int w = rect.IntegerWidth(), h = rect.IntegerHeight();
-
-	// Status Text
-	mStatusText = new BStringView (BRect (1, 2, w - 1, h), "status_text", B_TRANSLATE("Status"));
-	mStatusText->SetResizingMode(B_FOLLOW_BOTTOM | B_FOLLOW_LEFT_RIGHT);
-	mStatusText->SetFont(&font);
-	sb->AddChild(mStatusText);
-
-	rect = mainScrollView->Bounds();
-	scroller->MoveTo(rect.right - SCROLL_BAR_WIDTH - B_V_SCROLL_BAR_WIDTH, rect.bottom - B_H_SCROLL_BAR_HEIGHT - 1);
-	scroller->ResizeTo(SCROLL_BAR_WIDTH, B_H_SCROLL_BAR_HEIGHT);
-	scroller->SetResizingMode(B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.SetInsets(0, 0, -1, -1)
+		.Add(fMenuBar)
+		.Add(mToolBar)
+		.Add(mSplitView)
+	.End();
 
 	SetTotalPageNumber(mMainView->GetNumPages());
 
     GlobalSettings *s = gApp->GetSettings();
-    // restore position of page list
-	mSplitView->Split(s->GetSplitPosition());
-	// set listener now, so position of current left panel
-	// is not changed by previous method invocation
-	mSplitView->SetListener(this);
 
 	// show or hide panel that is stored in settings
+	ShowLeftPanel(s->GetLeftPanel());
 	if (!s->GetShowLeftPanel()) {
 		// hide panel
 		ToggleLeftPanel();
-	} else {
-		switch (s->GetLeftPanel()) {
-			case PAGE_LIST_PANEL:
-				// nothing to do, panel already displayed
-				break;
-			case BOOKMARKS_PANEL: ShowBookmarks();
-				break;
-			case ANNOTATIONS_PANEL: ShowAnnotationToolbar();
-				break;
-			case ATTACHMENTS_PANEL: ShowAttachments();
-				break;
-		}
 	}
 
 	// set focus to PDFView, so it receives mouse and keyboard events
-	mMainView->MakeFocus ();
-}
-
-// Called when position of split view has changed.
-void PDFWindow::PositionChanged(SplitView *view, float position) {
-	// Remember new position
-	if (gApp->GetSettings()->GetLeftPanel() == PDFWindow::PAGE_LIST_PANEL) {
-		gApp->GetSettings()->SetSplitPosition(position);
-	} else if (gApp->GetSettings()->GetLeftPanel() == PDFWindow::BOOKMARKS_PANEL) {
-		gApp->GetSettings()->SetOutlinesPosition(position);
-	} else if (gApp->GetSettings()->GetLeftPanel() == PDFWindow::ATTACHMENTS_PANEL) {
-		gApp->GetSettings()->SetAttachmentsPosition(position);
-	}
+	mMainView->MakeFocus();
 }
 
 
-///////////////////////////////////////////////////////////
-void PDFWindow::SetZoom(int16 zoom) {
+void PDFWindow::SetZoom(int16 zoom)
+{
 	BMenuItem *item;
 	gApp->GetSettings()->SetZoom(zoom);
 	if (zoom >= MIN_ZOOM) {
@@ -1016,11 +939,7 @@ int16 i;
 	BMenuItem *item = mRotationMenu->ItemAt(i);
 	item->SetMarked(true);
 }
-///////////////////////////////////////////////////////////
-void PDFWindow::SetStatus(const char *text) {
-	mStatusText->SetText(text);
-}
-///////////////////////////////////////////////////////////
+
 void PDFWindow::NewDoc(PDFDoc *doc) {
 	Catalog *catalog = doc->getCatalog();
 
@@ -1069,19 +988,11 @@ void PDFWindow::FrameResized (float width, float height)
 	}
 }
 
-///////////////////////////////////////////////////////////
-void
-PDFWindow::SetZoomSize (float w, float h)
-{
-	float width = w + B_V_SCROLL_BAR_WIDTH,
-	height = h + mMenuHeight + TOOLBAR_HEIGHT + B_H_SCROLL_BAR_HEIGHT;
-	return;
 
-	SetSizeLimits (100, width, 100, height);
-	BRect bounds(Bounds());
-	if (bounds.Width() < width) width = bounds.Width();
-	if (bounds.Height() < height) height = bounds.Height();
-	ResizeTo(width, height);
+void
+PDFWindow::SetZoomSize(float w, float h)
+{
+	// TODO / FIXME
 }
 
 ///////////////////////////////////////////////////////////
@@ -1133,7 +1044,7 @@ PDFWindow::MessageReceived(BMessage* message)
 		break;
 	case CLOSE_FILE_CMD:
 		mMainView->WaitForPage(true);
-		PostMessage (B_QUIT_REQUESTED );
+		PostMessage(B_QUIT_REQUESTED);
 		break;
 	case QUIT_APP_CMD:
 	    gApp->Notify(BepdfApplication::NOTIFY_QUIT_MSG);
@@ -1142,7 +1053,7 @@ PDFWindow::MessageReceived(BMessage* message)
 		mMainView->PageSetup ();
 		break;
 	case ABOUT_APP_CMD:
-		be_app->PostMessage (B_ABOUT_REQUESTED);
+		be_app->PostMessage(B_ABOUT_REQUESTED);
 		break;
 	case COPY_SELECTION_CMD: mMainView->CopySelection();
 		break;
@@ -1151,7 +1062,7 @@ PDFWindow::MessageReceived(BMessage* message)
 	case SELECT_NONE_CMD: mMainView->SelectNone();
 		break;
 	case FIRST_PAGE_CMD:
-		mMainView->MoveToPage (1);
+		mMainView->MoveToPage(1);
 		break;
 	case PREVIOUS_N_PAGE_CMD:
 		mMainView->MoveToPage(mMainView->Page() - 10);
@@ -1331,15 +1242,32 @@ PDFWindow::MessageReceived(BMessage* message)
 			mPSWMessenger = new BMessenger(w);
 		}
 		break;
-	case SHOW_BOOKMARKS_CMD: ShowBookmarks();
+	case SHOW_BOOKMARKS_CMD:
+		if (mShowLeftPanel && mLayerView->CardLayout()->VisibleIndex() == BOOKMARKS_PANEL)
+			HideLeftPanel();
+		else
+			ShowLeftPanel(BOOKMARKS_PANEL);
 		break;
-	case SHOW_PAGE_LIST_CMD: ShowPageList();
+	case SHOW_PAGE_LIST_CMD:
+		if (mShowLeftPanel && mLayerView->CardLayout()->VisibleIndex() == PAGE_LIST_PANEL)
+			HideLeftPanel();
+		else
+			ShowLeftPanel(PAGE_LIST_PANEL);
 		break;
-	case SHOW_ANNOT_TOOLBAR_CMD: ShowAnnotationToolbar();
+	case SHOW_ANNOT_TOOLBAR_CMD:
+		if (mShowLeftPanel && mLayerView->CardLayout()->VisibleIndex() == ANNOTATIONS_PANEL)
+			HideLeftPanel();
+		else
+			ShowLeftPanel(ANNOTATIONS_PANEL);
 		break;
-	case SHOW_ATTACHMENTS_CMD: ShowAttachments();
+	case SHOW_ATTACHMENTS_CMD:
+		if (mShowLeftPanel && mLayerView->CardLayout()->VisibleIndex() == ATTACHMENTS_PANEL)
+			HideLeftPanel();
+		else
+			ShowLeftPanel(ATTACHMENTS_PANEL);
 		break;
-	case HIDE_LEFT_PANEL_CMD: HideLeftPanel();
+	case HIDE_LEFT_PANEL_CMD:
+		HideLeftPanel();
 		break;
 	case FULL_SCREEN_CMD: OnFullScreen();
 		break;
@@ -1546,16 +1474,17 @@ PDFWindow::MessageReceived(BMessage* message)
 }
 
 
-///////////////////////////////////////////////////////////
 void
-PDFWindow::OpenPDF(const char* file) {
+PDFWindow::OpenPDF(const char* file)
+{
 	char *argv[2] = { (char*)file, NULL };
 	be_roster->Launch(BEPDF_APP_SIG, 1, argv);
 }
 
-///////////////////////////////////////////////////////////
+
 bool
-PDFWindow::OpenPDFHelp(const char* name) {
+PDFWindow::OpenPDFHelp(const char* name)
+{
 	BPath path(*gApp->GetAppPath());
 	path.Append("docs");
 	path.Append(name);
@@ -1568,7 +1497,7 @@ PDFWindow::OpenPDFHelp(const char* name) {
 	return false;
 }
 
-///////////////////////////////////////////////////////////
+
 void
 PDFWindow::OpenHelp()
 {
@@ -1580,14 +1509,15 @@ PDFWindow::OpenHelp()
 	OpenPDFHelp(name.String());
 }
 
-///////////////////////////////////////////////////////////
+
 void
-PDFWindow::LaunchHTMLBrowser(const char *path) {
+PDFWindow::LaunchHTMLBrowser(const char *path)
+{
 	char *argv[2] = {(char*)path, NULL};
 	be_roster->Launch("text/html", 1, argv);
 }
 
-///////////////////////////////////////////////////////////
+
 void
 PDFWindow::LaunchInHome(const char *rel_path) {
 	BPath path(*gApp->GetAppPath());
@@ -1638,9 +1568,10 @@ PDFWindow::GetEntryRef(const char* file, entry_ref* ref) {
 	return false;
 }
 
-///////////////////////////////////////////////////////////
+
 void
-PDFWindow::Launch(const char *file) {
+PDFWindow::Launch(const char *file)
+{
 	entry_ref r;
 	if (GetEntryRef(file, &r)) {
 		be_roster->Launch(&r);
@@ -1648,7 +1579,8 @@ PDFWindow::Launch(const char *file) {
 }
 
 void
-PDFWindow::OpenInWindow(const char *file) {
+PDFWindow::OpenInWindow(const char *file)
+{
 	entry_ref r;
 	if (GetEntryRef(file, &r)) {
 		BMessage msg(B_REFS_RECEIVED);
@@ -1657,49 +1589,31 @@ PDFWindow::OpenInWindow(const char *file) {
 	}
 }
 
-#if 0
-#pragma mark *********** Left Panel ***************
-#endif
 
-///////////////////////////////////////////////////////////
+// #pragma mark - Left Panel
+
+
 void
-PDFWindow::ActivateOutlines() {
+PDFWindow::ActivateOutlines()
+{
 	// mMainView->WaitForPage();
-	if (mLayerView->Active() == BOOKMARKS_PANEL && mShowLeftPanel) {
+	if (mLayerView->CardLayout()->VisibleIndex() == BOOKMARKS_PANEL &&
+		mShowLeftPanel) {
 		mMainView->WaitForPage();
 		mOutlinesView->Activate();
 	}
 }
 
-///////////////////////////////////////////////////////////
-void
-PDFWindow::ShowLeftPanel(int panel) {
-	if (mShowLeftPanel && mLayerView->Active() == panel) {
-		// hide panel if tool bar item is clicked a second time
-		ToggleLeftPanel();
-		return;
-	}
 
+void
+PDFWindow::ShowLeftPanel(int panel)
+{
 	if (!mShowLeftPanel) {
 		ToggleLeftPanel();
 	}
-	if (mLayerView->Active() != panel) {
-		float pos = 0;
-		switch (panel) {
-			case BOOKMARKS_PANEL: pos = gApp->GetSettings()->GetOutlinesPosition();
-				break;
-			case PAGE_LIST_PANEL: pos = gApp->GetSettings()->GetSplitPosition();
-				break;
-			case ANNOTATIONS_PANEL: pos = TOOLBAR_WIDTH;
-				break;
-			case ATTACHMENTS_PANEL: pos = gApp->GetSettings()->GetAttachmentsPosition();
-				break;
-		}
+	if (mLayerView->CardLayout()->VisibleIndex() != panel) {
 		gApp->GetSettings()->SetLeftPanel(panel);
-		mSplitView->AllowUserSplit(panel != ANNOTATIONS_PANEL);
-		mSplitView->Split(pos);
-		mLayerView->SetActive(panel);
-		UpdateInputEnabler();
+		mLayerView->CardLayout()->SetVisibleItem(panel);
 		if (panel == BOOKMARKS_PANEL) {
 			ActivateOutlines();
 		}
@@ -1707,62 +1621,36 @@ PDFWindow::ShowLeftPanel(int panel) {
 	UpdateInputEnabler();
 }
 
-///////////////////////////////////////////////////////////
-void
-PDFWindow::ShowBookmarks() {
-	ShowLeftPanel(BOOKMARKS_PANEL);
-}
 
-///////////////////////////////////////////////////////////
 void
-PDFWindow::ShowPageList() {
-	ShowLeftPanel(PAGE_LIST_PANEL);
-}
-
-///////////////////////////////////////////////////////////
-void
-PDFWindow::ShowAnnotationToolbar() {
-	ShowLeftPanel(ANNOTATIONS_PANEL);
-}
-
-///////////////////////////////////////////////////////////
-void
-PDFWindow::ShowAttachments() {
-	ShowLeftPanel(ATTACHMENTS_PANEL);
-}
-
-///////////////////////////////////////////////////////////
-void
-PDFWindow::HideLeftPanel() {
+PDFWindow::HideLeftPanel()
+{
 	if (mShowLeftPanel) {
 		ToggleLeftPanel();
 	}
 }
 
-///////////////////////////////////////////////////////////
+
 void
-PDFWindow::ToggleLeftPanel() {
+PDFWindow::ToggleLeftPanel()
+{
 	mShowLeftPanel = !mShowLeftPanel;
-	UpdateInputEnabler();
-	float w = mSplitView->Left()->Bounds().Width()+SplitView::SEPARATION+1;
+	mSplitView->SetItemCollapsed(0, !mShowLeftPanel);
 	gApp->GetSettings()->SetShowLeftPanel(mShowLeftPanel);
 	if (mShowLeftPanel) {
 		ActivateOutlines();
 		mSplitView->SetFlags(B_NAVIGABLE | mSplitView->Flags());
-		mSplitView->ResizeBy(-w, 0);
-		mSplitView->MoveBy(w, 0);
 	} else {
-		// Hide left panel moves the left panel "outside" of the left window border.
-		// The SplitView has to be resized so it fits into the window.
 		mSplitView->SetFlags((~B_NAVIGABLE) & mSplitView->Flags());
-		mSplitView->ResizeBy(w, 0);
-		mSplitView->MoveBy(-w, 0);
 	}
+	UpdateInputEnabler();
 	mMainView->Resize();
 }
 
+
 void
-PDFWindow::OnFullScreen() {
+PDFWindow::OnFullScreen()
+{
 	bool quasiFullScreenMode = gApp->GetSettings()->GetQuasiFullscreenMode();
 	mFullScreen = !mFullScreen;
 	BRect frame;
@@ -1773,8 +1661,8 @@ PDFWindow::OnFullScreen() {
 		mWindowFrame = Frame();
 		frame = gScreen->Frame();
 		if (quasiFullScreenMode) {
-			frame.OffsetBy(0, -mMenuHeight);
-			frame.bottom += mMenuHeight;
+			frame.OffsetBy(0, -fMenuBar->Bounds().Height());
+			frame.bottom += fMenuBar->Bounds().Height();
 		} else {
 			BRect bounds = mMainView->Parent()->ConvertToScreen(mMainView->Frame());
 			frame.bottom += mWindowFrame.IntegerHeight() - bounds.IntegerHeight();
@@ -1795,17 +1683,6 @@ PDFWindow::OnFullScreen() {
 	ResizeTo(frame.Width(), frame.Height());
 
 	if (pgList) ToggleLeftPanel(); // show left panel
-
-	if (!quasiFullScreenMode) {
-		if (mFullScreen) {
-			// increase size of page list
-			mLayerView->ResizeBy(0, 1);
-		} else {
-			// decrease size of page list
-			mLayerView->ResizeBy(0, -1);
-		}
-	}
-
 	UpdateInputEnabler();
 }
 
@@ -1830,12 +1707,10 @@ void PDFWindow::WorkspaceActivated(int32 workspace, bool active) {
 	}
 }
 
-// User defined bookmarks
-#if 0
-#pragma mark *********** Bookmark ***************
-#endif
+// #pragma mark - User-defined bookmarks
 
-void PDFWindow::AddBookmark() {
+void PDFWindow::AddBookmark()
+{
 	char buffer[256];
 	sprintf(buffer, B_TRANSLATE("Page %d"), mMainView->Page());
 	new BookmarkWindow(mMainView->Page(), buffer, BRect(30, 30, 300, 200), this);
@@ -1890,26 +1765,23 @@ static AnnotDesc annotDescs[] = {
 	{ kAnnotDescEOL, NULL, NULL}
 };
 
-BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
-	AnnotDesc* desc)
+BView* PDFWindow::BuildAnnotToolBar(const char* name, AnnotDesc* desc)
 {
-	BToolBar* toolbar = new BToolBar(rect, B_VERTICAL);
-	toolbar->SetName(name);
-	toolbar->SetResizingMode(B_FOLLOW_TOP_BOTTOM | B_FOLLOW_LEFT_RIGHT);
-	toolbar->SetFlags(B_WILL_DRAW | B_FRAME_EVENTS);
+	mAnnotationBar = new BToolBar(B_VERTICAL);
+	mAnnotationBar->SetName(name);
 
-	// label also used in PDFView!
-	toolbar->AddAction(DONE_EDIT_ANNOT_CMD, this, LoadVectorIcon("DONE_ANNOT"),
+	mAnnotationBar->AddAction(DONE_EDIT_ANNOT_CMD, this,
+		LoadVectorIcon("DONE_ANNOT"),
 		B_TRANSLATE("Leave annotation editing mode"));
-	toolbar->AddAction(SAVE_FILE_AS_CMD, this, LoadVectorIcon("SAVE_FILE_AS"),
-		B_TRANSLATE("Save file as"));
+	mAnnotationBar->AddAction(SAVE_FILE_AS_CMD, this,
+		LoadVectorIcon("SAVE_FILE_AS"), B_TRANSLATE("Save file as"));
 
-	toolbar->AddSeparator();
+	mAnnotationBar->AddSeparator();
 
 	// add buttons for supported annotations
 	for (desc = annotDescs; desc->mCmd != kAnnotDescEOL; desc ++) {
 		if (desc->mCmd == kAnnotDescSeparator) {
-			toolbar->AddSeparator();
+			mAnnotationBar->AddSeparator();
 			continue;
 		}
 
@@ -1917,11 +1789,26 @@ BToolBar* PDFWindow::BuildAnnotToolBar(BRect rect, const char* name,
 		if (annot == NULL)
 			continue;
 
-		toolbar->AddAction(desc->mCmd, this, LoadVectorIcon(desc->mButtonPrefix),
-			desc->mToolTip, NULL, true);
+		mAnnotationBar->AddAction(desc->mCmd, this,
+			LoadVectorIcon(desc->mButtonPrefix), desc->mToolTip, NULL, true);
 	}
-	toolbar->AddGlue();
-	return toolbar;
+
+	BScrollView* sc = new BScrollView("AnnotToolbarScroll", mAnnotationBar,
+		0, false, true, B_PLAIN_BORDER);
+	sc->SetExplicitMinSize(BSize(0, 0));
+	BScrollBar* sb = sc->ScrollBar(B_VERTICAL);
+	float range;
+	sb->GetRange(NULL, &range);
+	sb->SetRange(0, range * 0.35);
+	sb->SetSteps(5, 15);
+	sb->SetProportion(0.5);
+	BView* CV = new BView("CV", 0);
+	BLayoutBuilder::Group<>(CV, B_HORIZONTAL)
+		.AddGlue(0)
+		.Add(sc)
+		.AddGlue(0)
+	.End();
+	return CV;
 }
 
 bool PDFWindow::TryEditAnnot() {

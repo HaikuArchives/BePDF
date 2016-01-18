@@ -93,9 +93,6 @@
   do(bool,    Bool,   ShowLeftPanel,          showLeftPanel,                                  true) \
   do(bool,    Bool,   QuasiFullscreenMode,    quasiFullscreenMode,                            true) \
   do(bool,    Bool,   FilledSelection,        filledSelection,                                true) \
-  do(float,   Float,  SplitPosition,          splitPosition,                                  60.0) \
-  do(float,   Float,  OutlinesPosition,       outlinesPosition,                              120.0) \
-  do(float,   Float,  AttachmentsPosition,    attachmentsPosition,                           200.0) \
   do(int8,    Int8,   LeftPanel,              leftPanel,                                         0) \
                                                                                                     \
   do(int8,    Int8,   PrintColorMode,	      printColorMode,                                    0) \

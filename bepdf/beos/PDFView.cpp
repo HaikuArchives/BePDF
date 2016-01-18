@@ -100,14 +100,10 @@ static const int kZoomDPI[MAX_ZOOM - MIN_ZOOM + 1] = {
 #define SAVE_FILE_ATTACHMENT_ANNOT_MSG 'save'
 
 ///////////////////////////////////////////////////////////////////////////
-PDFView::PDFView (entry_ref * ref, FileAttributes *fileAttributes, BRect frame,
-								const char *name,
-								uint32 resizeMask,
-								uint32 flags,
-								const char *ownerPassword,
-								const char *userPassword,
-								bool *encrypted)
-	: BView (frame, name, resizeMask, flags)
+PDFView::PDFView (entry_ref* ref, FileAttributes *fileAttributes,
+	const char *name, uint32 flags, const char *ownerPassword,
+	const char *userPassword, bool *encrypted)
+	: BView(name, flags)
 {
 	GlobalSettings *settings = gApp->GetSettings();
 	SetViewColor(B_TRANSPARENT_COLOR);
@@ -1659,18 +1655,15 @@ PDFView::LinkToString(LinkAction* action, BString* string) {
 	*string = s;
 }
 
-void
-PDFView::SetStatus(const char* s) {
-	PDFWindow* w = GetPDFWindow();
-	if (w) w->SetStatus(s);
-}
 
-///////////////////////////////////////////////////////////////////////////
 void
-PDFView::DisplayLink(BPoint point) {
-LinkAction *action;
-BString str;
-	if (mRendering || mDragStarted || (mDoc == NULL) || (mDoc->getNumPages() == 0)) return;
+PDFView::DisplayLink(BPoint point)
+{
+	LinkAction *action;
+	BString str;
+	if (mRendering || mDragStarted || (mDoc == NULL) ||
+		(mDoc->getNumPages() == 0))
+		return;
 
 	BPoint p = CorrectMousePos(point);
 	// over selection?
@@ -1690,12 +1683,14 @@ BString str;
 			mLinkAction = NULL;
 			mAnnotation = annot;
 			SetViewCursor(gApp->linkCursor);
-			SetStatus(B_TRANSLATE("Annotation"));
+			SetToolTip(B_TRANSLATE("Annotation"));
+			ShowToolTip();
 		}
 		return;
 	} else if (mAnnotation) {
 		// moved out side of annotation
-		SetStatus("");
+		SetToolTip("");
+		HideToolTip();
 		SetViewCursor(gApp->handCursor);
 		mAnnotation = NULL;
 	}
@@ -1707,12 +1702,14 @@ BString str;
 			SetViewCursor(gApp->linkCursor);
 			mLinkAction = action;
 			LinkToString(action, &str);
-			SetStatus( str.String() );
+			SetToolTip( str.String() );
+			ShowToolTip();
 		}
 	} else {
 		if (mLinkAction) {
 			mLinkAction = NULL;
-			SetStatus("");
+			SetToolTip("");
+			HideToolTip();
 		}
 		SetViewCursor(gApp->handCursor);
 	}

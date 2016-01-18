@@ -61,15 +61,12 @@ SRCS = beos/AnnotAppearance.cpp \
 	beos/PrintingProgressWindow.cpp \
 	beos/SaveThread.cpp \
 	beos/Settings.cpp \
-	beos/SplitView.cpp \
 	beos/StatusWindow.cpp \
 	beos/TextConversion.cpp \
 	beos/TraceWindow.cpp \
 	beos/TreeParser.cpp \
 	beos/utils/EntryMenuItem.cpp \
-	beos/utils/LayerView.cpp \
 	beos/utils/ResourceLoader.cpp \
-	beos/utils/StatusBar.cpp \
 	beos/utils/Thread.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be

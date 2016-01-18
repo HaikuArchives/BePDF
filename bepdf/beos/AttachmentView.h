@@ -75,8 +75,8 @@ class AttachmentView : public BView {
 	typedef BView super;
 
 public:
-	AttachmentView(BRect rect, GlobalSettings* settings,
-		BLooper* looper, uint32 resizeMask, uint32 flags);
+	AttachmentView(GlobalSettings* settings,
+		BLooper* looper, uint32 flags);
 	~AttachmentView();
 	void AttachedToWindow();
 	void MessageReceived(BMessage* msg);
