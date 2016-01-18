@@ -77,6 +77,8 @@ void PreferencesWindow::SetupView() {
 	GlobalSettings* settings = gApp->GetSettings();
 	sprintf(workspace, "%d", (int)settings->GetWorkspace());
 	mPreferences = new BOutlineListView("mPreferences");
+	BScrollView* prefScroll = new BScrollView("SV", mPreferences,
+		B_FRAME_EVENTS | B_WILL_DRAW, false, true);
 
 	BListItem *item;
 	mPreferences->AddItem(new BStringItem(B_TRANSLATE("Document")));
@@ -84,18 +86,9 @@ void PreferencesWindow::SetupView() {
 	mPreferences->AddItem(item = new BStringItem(B_TRANSLATE("Display")));
 		// reverse order:
 		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("Asian fonts")), item);
-		mPreferences->AddUnder(new BStringItem(B_TRANSLATE("FreeType 2")), item);
 
 	mPreferences->SetSelectionMessage(new BMessage(PREFERENCE_SELECTED));
 	mPreferences->SetExplicitMinSize(BSize(200, 0));
-
-	BGroupLayout *prefBox = BLayoutBuilder::Group<>(B_HORIZONTAL)
-		.SetInsets(B_USE_SMALL_INSETS)
-		.Add(mPreferences);
-
-	BBox *preferences = new BBox("preferences");
-	preferences->SetLabel(B_TRANSLATE("Preferences"));
-	preferences->AddChild(prefBox->View());
 
 	BCheckBox *pageNumber = new BCheckBox("pageNumber",
 		B_TRANSLATE("Restore page number"), new BMessage(RESTORE_PAGE_NO_CHANGED));
@@ -174,7 +167,7 @@ void PreferencesWindow::SetupView() {
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.Add(preferences)
+		.Add(prefScroll)
 		.AddCards()
 			.Add(document)
 			.AddGroup(B_VERTICAL)
