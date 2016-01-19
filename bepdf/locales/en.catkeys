@@ -1,5 +1,6 @@
-1	English	application/x-vnd.mp-xpdf	3016894423
+1	English	application/x-vnd.mp-xpdf	3928239873
 Close	BepdfApplication		Close
+Show bookmarks	PDFWindow		Show bookmarks
 Go to page %d	PDFView		Go to page %d
 of %d	PDFWindow		of %d
 Zoom in	PDFWindow		Zoom in
@@ -54,6 +55,7 @@ Max. printer resolution	PrintSettingsWindow		Max. printer resolution
 Open…	PDFWindow		Open…
 Encrypted:	FileInfoWindow		Encrypted:
 DPI	PrintSettingsWindow		DPI
+Save file attachment as…	PDFView		Save file attachment as…
 Type	FileInfoWindow		Type
 Search string not found.	PDFSearch		Search string not found.
 Filled rectangle	AnnotationWindow		Filled rectangle
@@ -107,6 +109,7 @@ Open in workspace:	AnnotationWindow		Open in workspace:
 Creator:	FileInfoWindow		Creator:
 Golden Master	BepdfApplication		Golden Master
 Saving attachment(s):	AttachmentView		Saving attachment(s):
+Properties	PDFView		Properties
 Find text	FindTextWindow		Find text
 Page %d	PDFWindow		Page %d
 Forward in page history list	PDFWindow		Forward in page history list
@@ -117,6 +120,7 @@ Go to page	PDFWindow		Go to page
 No title	OutlinesWindow		No title
 Fullscreen	PDFWindow		Fullscreen
 Add sound annotation	PDFWindow		Add sound annotation
+Document	FileInfoWindow		Document
 Add comment text annotation	PDFWindow		Add comment text annotation
 Page	PDFWindow		Page
 All fonts of this document (aborted)	FileInfoWindow		All fonts of this document (aborted)
@@ -129,6 +133,7 @@ Automatic	AnnotationWindow		Automatic
 Print settings	PrintSettingsWindow		Print settings
 Fonts of this page	FileInfoWindow		Fonts of this page
 Print	PDFWindow		Print
+Fonts	FileInfoWindow		Fonts
 Issue tracker…	PDFWindow		Issue tracker…
 Font:	AnnotationWindow		Font:
 Restore page number	AnnotationWindow		Restore page number
@@ -200,11 +205,13 @@ Online help…	PDFWindow		Online help…
 Created:	FileInfoWindow		Created:
 Quit	PDFWindow		Quit
 Linearized:	FileInfoWindow		Linearized:
+Delete	PDFView		Delete
 Version:	FileInfoWindow		Version:
 Document	AnnotationWindow		Document
 Back in page history list	PDFWindow		Back in page history list
 Open file	PDFWindow		Open file
 Visit homepage…	PDFWindow		Visit homepage…
+Leave annotation editing mode	PDFView		Leave annotation editing mode
 No	FileInfoWindow		No
 [internal link]	PDFView		[internal link]
 Show attachments	PDFWindow		Show attachments
@@ -215,6 +222,7 @@ OK	PDFView		OK
 Author:	FileInfoWindow		Author:
 Page: %d	PrintingProgressWindow		Page: %d
 Go back 10 pages	PDFWindow		Go back 10 pages
+Security	FileInfoWindow		Security
 Height: 	PrintSettingsWindow		Height: 
 Print…	PDFWindow		Print…
 Go to end of document	PDFWindow		Go to end of document
@@ -234,12 +242,12 @@ Fit to page width	PDFWindow		Fit to page width
 Printing:	FileInfoWindow		Printing:
 BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF is based on XPDF %s, %s.
 Add fileattachment annotation	PDFWindow		Add fileattachment annotation
-Bookmarks	PDFWindow		Bookmarks
 BePDF reading file: 	PDFView		BePDF reading file: 
 Wrong parameter!	PrintSettingsWindow		Wrong parameter!
 Zoom	PDFWindow		Zoom
 Search	PDFWindow		Search
 Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file isn't supported yet!
+Edit	PDFView		Edit
 Saving copy of PDF file:	PDFWindow		Saving copy of PDF file:
 All fonts of this document	FileInfoWindow		All fonts of this document
 File info	FileInfoWindow		File info
