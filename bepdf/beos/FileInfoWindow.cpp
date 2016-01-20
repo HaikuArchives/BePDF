@@ -356,7 +356,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	AddPair(document, new BStringView("", B_TRANSLATE("Linearized:")),
 		new BStringView("", YesNo(doc->isLinearized())));
 
-	BView *docView = new BView("Document", 0);
+	BView *docView = new BView(B_TRANSLATE("Document"), 0);
 	BLayoutBuilder::Group<>(docView, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
@@ -376,7 +376,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	AddPair(security, new BStringView("", B_TRANSLATE("Copy & paste:")), new BStringView("", Allowed(doc->okToCopy())));
 	AddPair(security, new BStringView("", B_TRANSLATE("Annotations:")), new BStringView("", Allowed(doc->okToAddNotes())));
 
-	BView *secView = new BView("Security", 0);
+	BView *secView = new BView(B_TRANSLATE("Security"), 0);
 	BLayoutBuilder::Group<>(secView, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
@@ -401,7 +401,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	mShowAllFonts = new BButton("showAllFonts", B_TRANSLATE("Show all fonts"), new BMessage(SHOW_ALL_FONTS_MSG));
 	mStop = new BButton("stop", B_TRANSLATE("Abort"), new BMessage(STOP_MSG));
 
-	BView *fonts = new BView("Fonts", 0);
+	BView *fonts = new BView(B_TRANSLATE("Fonts"), 0);
 
 	BLayoutBuilder::Group<>(fonts, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
