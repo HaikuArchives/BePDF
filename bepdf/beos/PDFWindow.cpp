@@ -584,7 +584,7 @@ BMenuBar* PDFWindow::BuildMenu()
 		// Zoom
 		menu = new BMenu ( B_TRANSLATE("View") );
 		int16 zoom = settings->GetZoom();
-			ADD_ITEM(menu, B_TRANSLATE("Bookmarks"), 'B' , (SHOW_BOOKMARKS_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Show bookmarks"), 'B' , (SHOW_BOOKMARKS_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Show page list"), 'L', (SHOW_PAGE_LIST_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Show annotation tool bar"), 0, (SHOW_ANNOT_TOOLBAR_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Show attachments"), 0, (SHOW_ATTACHMENTS_CMD));
@@ -711,7 +711,7 @@ BToolBar* PDFWindow::BuildToolBar()
 	mToolBar->AddSeparator();
 
 	mToolBar->AddAction(SHOW_BOOKMARKS_CMD, this, LoadVectorIcon("BOOKMARKS"),
-		B_TRANSLATE("Bookmarks"), NULL, true);
+		B_TRANSLATE("Show bookmarks"), NULL, true);
 	mToolBar->AddAction(SHOW_PAGE_LIST_CMD, this,
 		LoadVectorIcon("SHOW_PAGE_LIST"), B_TRANSLATE("Show page list"), NULL,
 		true);

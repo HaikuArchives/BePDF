@@ -1548,19 +1548,21 @@ PDFView::ShowAnnotPopUpMenu(BPoint point) {
 	BPopUpMenu* menu = new BPopUpMenu("PopUpMenu");
 	menu->SetAsyncAutoDestruct(true);
 
-	AddAnnotItem(menu, mEditAnnot ? "Leave annotation editing mode" : "Edit", EDIT_ANNOT_MSG);
+	AddAnnotItem(menu, mEditAnnot ?
+		B_TRANSLATE("Leave annotation editing mode") : B_TRANSLATE("Edit"), EDIT_ANNOT_MSG);
 
-	item = AddAnnotItem(menu, "Delete", DELETE_ANNOT_MSG);
+	item = AddAnnotItem(menu, B_TRANSLATE("Delete"), DELETE_ANNOT_MSG);
 	item->SetEnabled(mEditAnnot);
 
 	if (dynamic_cast<FileAttachmentAnnot*>(mAnnotation) != NULL) {
 		menu->AddSeparatorItem();
-		AddAnnotItem(menu, "Save file attachment as" B_UTF8_ELLIPSIS, SAVE_FILE_ATTACHMENT_ANNOT_MSG);
+		AddAnnotItem(menu, B_TRANSLATE("Save file attachment as" B_UTF8_ELLIPSIS),
+			SAVE_FILE_ATTACHMENT_ANNOT_MSG);
 	}
 
 	menu->AddSeparatorItem();
 
-	AddAnnotItem(menu, "Properties", PROPERTIES_ANNOT_MSG);
+	AddAnnotItem(menu, B_TRANSLATE("Properties"), PROPERTIES_ANNOT_MSG);
 
 	point -= BPoint(10, 10);
 	menu->Go(point, true, false, false);
