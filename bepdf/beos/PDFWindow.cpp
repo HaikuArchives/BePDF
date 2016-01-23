@@ -485,7 +485,7 @@ void PDFWindow::UpdateInputEnabler()
 			->SetMarked(mShowLeftPanel && active == ANNOTATIONS_PANEL);
 		fMenuBar->FindItem(SHOW_ATTACHMENTS_CMD)
 			->SetMarked(mShowLeftPanel && active == ATTACHMENTS_PANEL);
-		fMenuBar->FindItem(HIDE_LEFT_PANEL_CMD)->SetMarked(mShowLeftPanel);
+		fMenuBar->FindItem(HIDE_LEFT_PANEL_CMD)->SetEnabled(mShowLeftPanel);
 
 		fMenuBar->FindItem(OPEN_FILE_CMD)->SetEnabled(!mFullScreen);
 		mToolBar->SetActionEnabled(OPEN_FILE_CMD, !mFullScreen);
@@ -588,7 +588,7 @@ BMenuBar* PDFWindow::BuildMenu()
 			ADD_ITEM(menu, B_TRANSLATE("Show page list"), 'L', (SHOW_PAGE_LIST_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Show annotation tool bar"), 0, (SHOW_ANNOT_TOOLBAR_CMD));
 			ADD_ITEM(menu, B_TRANSLATE("Show attachments"), 0, (SHOW_ATTACHMENTS_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Hide page list"), 'H', (HIDE_LEFT_PANEL_CMD));
+			ADD_ITEM(menu, B_TRANSLATE("Hide side bar"), 'H', (HIDE_LEFT_PANEL_CMD));
 
 			ADD_SITEM(menu);
 
@@ -1779,6 +1779,7 @@ BView* PDFWindow::BuildAnnotToolBar(const char* name, AnnotDesc* desc)
 		mAnnotationBar->AddAction(desc->mCmd, this,
 			LoadVectorIcon(desc->mButtonPrefix), desc->mToolTip, NULL, true);
 	}
+	mAnnotationBar->AddGlue();
 
 	/*BScrollView* sc = new BScrollView("AnnotToolbarScroll", mAnnotationBar,
 		0, false, true, B_PLAIN_BORDER);
