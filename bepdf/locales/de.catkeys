@@ -1,4 +1,4 @@
-1	German	application/x-vnd.mp-xpdf	3928239873
+1	German	application/x-vnd.mp-xpdf	3140665422
 Close	BepdfApplication		Schließen
 Show bookmarks	PDFWindow		Lesezeichen zeigen
 Go to page %d	PDFView		Zur Seite %d gehen
@@ -61,7 +61,6 @@ Search string not found.	PDFSearch		Die gesuchte Zeichenkette wurde nicht gefund
 Filled rectangle	AnnotationWindow		Gefülltes Rechteck
 File name	AttachmentView		Dateiname
 Align:	AnnotationWindow		Ausrichtung:
-Hide page list	PDFWindow		Seitenliste ausblenden
 Floating	TraceWindow		Schweben
 Find: 	FindTextWindow		Suchen:
 Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	BePDF wurde von Humdinger Ins Deutsche übersetzt.
@@ -163,6 +162,7 @@ Stroked rectangle	AnnotationWindow		Rechteckige Kontur
 Forward	PDFWindow		Vorwärts
 Allowed	FileInfoWindow		Gestattet
 Copy & paste:	FileInfoWindow		Kopieren & Einfügen:
+Hide side bar	PDFWindow		Seitenleiste ausblenden
 Version	BepdfApplication		Version
 Odd pages	PrintSettingsWindow		Ungerade Seiten
 Add line annotation	PDFWindow		Anmerkung: Linie

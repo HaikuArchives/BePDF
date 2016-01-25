@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	3928239873
+1	English	application/x-vnd.mp-xpdf	3140665422
 Close	BepdfApplication		Close
 Show bookmarks	PDFWindow		Show bookmarks
 Go to page %d	PDFView		Go to page %d
@@ -61,7 +61,6 @@ Search string not found.	PDFSearch		Search string not found.
 Filled rectangle	AnnotationWindow		Filled rectangle
 File name	AttachmentView		File name
 Align:	AnnotationWindow		Align:
-Hide page list	PDFWindow		Hide page list
 Floating	TraceWindow		Floating
 Find: 	FindTextWindow		Find: 
 Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Language 'English', translated by the BePDF authors.
@@ -163,6 +162,7 @@ Stroked rectangle	AnnotationWindow		Stroked rectangle
 Forward	PDFWindow		Forward
 Allowed	FileInfoWindow		Allowed
 Copy & paste:	FileInfoWindow		Copy & paste:
+Hide side bar	PDFWindow		Hide side bar
 Version	BepdfApplication		Version
 Odd pages	PrintSettingsWindow		Odd pages
 Add line annotation	PDFWindow		Add line annotation
