@@ -31,7 +31,7 @@ EntryMenuItem::EntryMenuItem(entry_ref* ref, const char* label, BMessage* messag
 	BNode node(ref);
 	BString title;
 	if (node.InitCheck() == B_OK) {
-		if (node.ReadAttrString("pdf:title", &title) == B_OK && title.Length() > 0) {
+		if (node.ReadAttrString("PDF:title", &title) == B_OK && title.Length() > 0) {
 			title << " (" << label << ")";
 			SetLabel(title.String());
 		}

@@ -695,17 +695,17 @@ static struct {
 	const char *pdf_name;
 	int32 type_code;
 } gAttrInfo[] = {
-	{"pdf:subject",     "Subject",     "Subject",      B_STRING_TYPE},
-	{"pdf:title",       "Title",       "Title",        B_STRING_TYPE},
-	{"pdf:creator",     "Creator",     "Creator",      B_STRING_TYPE},
-	{"pdf:author",      "Author",      "Author",       B_STRING_TYPE},
-	{"pdf:keywords",    "Keywords",    "Keywords",     B_STRING_TYPE},
-	{"pdf:producer",    "Producer",    "Producer",     B_STRING_TYPE},
-	{"pdf:created",     "Created",     "CreationDate", B_TIME_TYPE},
-	{"pdf:modified",    "Modified",    "ModDate",      B_TIME_TYPE},
-	{"pdf:pages",       "Pages",       NULL,           B_INT32_TYPE},
-	{"pdf:version",     "Version",     NULL,           B_DOUBLE_TYPE},
-	{"pdf:linearized",  "Linearized",  NULL,           B_BOOL_TYPE},
+	{"PDF:subject",     "Subject",     "Subject",      B_STRING_TYPE},
+	{"PDF:title",       "Title",       "Title",        B_STRING_TYPE},
+	{"PDF:creator",     "Creator",     "Creator",      B_STRING_TYPE},
+	{"PDF:author",      "Author",      "Author",       B_STRING_TYPE},
+	{"PDF:keywords",    "Keywords",    "Keywords",     B_STRING_TYPE},
+	{"PDF:producer",    "Producer",    "Producer",     B_STRING_TYPE},
+	{"PDF:created",     "Created",     "CreationDate", B_TIME_TYPE},
+	{"PDF:modified",    "Modified",    "ModDate",      B_TIME_TYPE},
+	{"PDF:pages",       "Pages",       NULL,           B_INT32_TYPE},
+	{"PDF:version",     "Version",     NULL,           B_DOUBLE_TYPE},
+	{"PDF:linearized",  "Linearized",  NULL,           B_BOOL_TYPE},
 	{NULL, NULL, NULL, 0}
 };
 
@@ -734,11 +734,11 @@ BepdfApplication::UpdateFileAttributes(PDFDoc *doc, entry_ref *ref) {
 	}
 
 	int32 pages = (int32)doc->getNumPages();
-	UpdateAttr(node, "pdf:pages", B_INT32_TYPE, 0, &pages, sizeof(int32));
+	UpdateAttr(node, "PDF:pages", B_INT32_TYPE, 0, &pages, sizeof(int32));
 	bool b = doc->isLinearized();
-	UpdateAttr(node, "pdf:linearized", B_BOOL_TYPE, 0, &b, sizeof(b));
+	UpdateAttr(node, "PDF:linearized", B_BOOL_TYPE, 0, &b, sizeof(b));
 	double d = doc->getPDFVersion();
-	UpdateAttr(node, "pdf:version", B_DOUBLE_TYPE, 0, &d, sizeof(d));
+	UpdateAttr(node, "PDF:version", B_DOUBLE_TYPE, 0, &d, sizeof(d));
 
 	Object obj;
 	if (doc->getDocInfo(&obj) && obj.isDict()) {
