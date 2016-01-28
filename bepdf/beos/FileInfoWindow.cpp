@@ -314,7 +314,7 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 
 	mState = NORMAL;
 
-	BTabView *tabs = new BTabView("tabs");
+	BTabView *tabs = new BTabView("tabs", B_WIDTH_FROM_LABEL);
 
 	BGridView *document = new BGridView();
 
@@ -394,18 +394,14 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Embedded name"), 150.0,150.0,150.0,true),1);
 	mFontList->AddColumn(new BStringColumn(B_TRANSLATE("Type"), 80.0,80.0,80.0,true),2);
 
-	mFontsBorder = new BBox("border");
-	mFontsBorder->SetLabel(B_TRANSLATE("Fonts of this page"));
-	mFontsBorder->AddChild(mFontList);
-
 	mShowAllFonts = new BButton("showAllFonts", B_TRANSLATE("Show all fonts"), new BMessage(SHOW_ALL_FONTS_MSG));
 	mStop = new BButton("stop", B_TRANSLATE("Abort"), new BMessage(STOP_MSG));
 
-	BView *fonts = new BView(B_TRANSLATE("Fonts"), 0);
+	BView *fonts = new BView(B_TRANSLATE("Fonts of this page"), 0);
 
 	BLayoutBuilder::Group<>(fonts, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.Add(mFontsBorder)
+		.Add(mFontList)
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(mShowAllFonts)
@@ -413,11 +409,13 @@ void FileInfoWindow::Refresh(BEntry *file, PDFDoc *doc, int page) {
 		.End();
 
 	tabs->AddTab(fonts);
+	tabs->SetBorder(B_NO_BORDER);
 
 	mStop->SetEnabled(false);
 	QueryFonts(doc, page);
 
 	BLayoutBuilder::Group<>(this)
+		.SetInsets(0, B_USE_WINDOW_INSETS, 0, 0)
 		.Add(tabs);
 
 	Show();

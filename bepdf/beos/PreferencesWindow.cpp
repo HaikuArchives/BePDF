@@ -106,11 +106,13 @@ void PreferencesWindow::SetupView() {
 	BTextControl *author = new BTextControl("author", B_TRANSLATE("Author"),
 		settings->GetAuthor(), new BMessage(AUTHOR_CHANGED));
 
-	BGroupLayout *docBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_SMALL_INSETS)
+	BGroupLayout *docBox = BLayoutBuilder::Group<>(B_VERTICAL, 0)
+		.SetInsets(B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, 0)
 		.Add(pageNumber)
 		.Add(windowPos)
+		.AddStrut(B_USE_ITEM_INSETS)
 		.Add(mOpenInWorkspace)
+		.AddStrut(B_USE_SMALL_INSETS)
 		.Add(author)
 		.AddGlue();
 
@@ -128,10 +130,11 @@ void PreferencesWindow::SetupView() {
 		new BMessage(QUASI_FULLSCREEN_MODE_ON));
 	docMore->SetValue(settings->GetQuasiFullscreenMode());
 
-	BGroupLayout *fsBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_SMALL_INSETS)
+	BGroupLayout *fsBox = BLayoutBuilder::Group<>(B_VERTICAL, 0)
+		.SetInsets(B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, 0)
 		.Add(docOnly)
-		.Add(docMore);
+		.Add(docMore)
+		.AddStrut(B_USE_SMALL_INSETS);
 
 	BBox *fullscreen = new BBox("fullscreen");
 	fullscreen->SetLabel(B_TRANSLATE("Fullscreen mode"));
@@ -147,10 +150,11 @@ void PreferencesWindow::SetupView() {
 		new BMessage(FILLED_SELECTION_STROKED));
 	strokedRect->SetValue(!(settings->GetFilledSelection()));
 
-	BGroupLayout *rectBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_SMALL_INSETS)
+	BGroupLayout *rectBox = BLayoutBuilder::Group<>(B_VERTICAL, 0)
+		.SetInsets(B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, B_USE_SMALL_INSETS, 0)
 		.Add(filledRect)
-		.Add(strokedRect);
+		.Add(strokedRect)
+		.AddStrut(B_USE_SMALL_INSETS);
 
 	BBox *selection = new BBox("selection");
 	selection->SetLabel(B_TRANSLATE("Selection rectangle"));
