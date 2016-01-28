@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	3140665422
+1	English	application/x-vnd.mp-xpdf	1147160503
 Close	BepdfApplication		Close
 Show bookmarks	PDFWindow		Show bookmarks
 Go to page %d	PDFView		Go to page %d
@@ -115,7 +115,6 @@ Forward in page history list	PDFWindow		Forward in page history list
 BePDF status	StatusWindow		BePDF status
 Add new paragraph text annotation	PDFWindow		Add new paragraph text annotation
 User password	PasswordWindow		User password
-Go to page	PDFWindow		Go to page
 No title	OutlinesWindow		No title
 Fullscreen	PDFWindow		Fullscreen
 Add sound annotation	PDFWindow		Add sound annotation
@@ -132,7 +131,6 @@ Automatic	AnnotationWindow		Automatic
 Print settings	PrintSettingsWindow		Print settings
 Fonts of this page	FileInfoWindow		Fonts of this page
 Print	PDFWindow		Print
-Fonts	FileInfoWindow		Fonts
 Issue tracker…	PDFWindow		Issue tracker…
 Font:	AnnotationWindow		Font:
 Restore page number	AnnotationWindow		Restore page number
@@ -163,6 +161,7 @@ Forward	PDFWindow		Forward
 Allowed	FileInfoWindow		Allowed
 Copy & paste:	FileInfoWindow		Copy & paste:
 Hide side bar	PDFWindow		Hide side bar
+Jump to page	PDFWindow		Jump to page
 Version	BepdfApplication		Version
 Odd pages	PrintSettingsWindow		Odd pages
 Add line annotation	PDFWindow		Add line annotation

@@ -75,7 +75,8 @@ FindTextWindow::FindTextWindow(GlobalSettings *settings, const char *text,
 
 	BGroupLayout *optBox = BLayoutBuilder::Group<>(B_HORIZONTAL)
 		.SetInsets(B_USE_SMALL_SPACING)
-		.AddGroup(B_VERTICAL)
+		.AddGroup(B_VERTICAL, 0)
+			.SetInsets(B_USE_SMALL_INSETS, 0, B_USE_SMALL_INSETS, 0)
 			.Add(mIgnoreCase)
 			.Add(mBackward)
 		.End()

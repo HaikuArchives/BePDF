@@ -643,14 +643,14 @@ BMenuBar* PDFWindow::BuildMenu()
 		menu = new BMenu ( B_TRANSLATE("Search") );
 			ADD_ITEM (menu, B_TRANSLATE("Find" B_UTF8_ELLIPSIS) , 'F', ( FIND_CMD));
 			menu->AddItem(new BMenuItem(B_TRANSLATE("Find next" B_UTF8_ELLIPSIS),
-				new BMessage(FIND_NEXT_CMD), 'F', B_SHIFT_KEY));
+				new BMessage(FIND_NEXT_CMD), 'G'));
 		menuBar->AddItem ( menu );
 
 		// Page
 		menu = new BMenu (B_TRANSLATE("Page"));
 			ADD_ITEM (menu, B_TRANSLATE("First"), 0,  (FIRST_PAGE_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Previous"), 0,  (PREVIOUS_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Go to page"), 'G',  (GOTO_PAGE_MENU_CMD));
+			ADD_ITEM (menu, B_TRANSLATE("Jump to page"), 'J',  (GOTO_PAGE_MENU_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Next"), 0,  (NEXT_PAGE_CMD));
 			ADD_ITEM (menu, B_TRANSLATE("Last"), 0,  (LAST_PAGE_CMD));
 			ADD_SITEM(menu);
@@ -1184,7 +1184,7 @@ PDFWindow::MessageReceived(BMessage* message)
 		if (Lock()) {
 			mFindWindow = new FindTextWindow(gApp->GetSettings(), mFindText.String(), this);
 			Unlock();
-			mFindWindow->PostMessage('FIND');
+			mFindWindow->PostMessage('Find');
 		}
 		break;
 /*	case KEYBOARD_SHORTCUTS_CMD: {
