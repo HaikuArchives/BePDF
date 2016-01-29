@@ -543,6 +543,15 @@ void PDFWindow::UpdateWindowsMenu() {
 
 BMenuBar* PDFWindow::BuildMenu()
 {
+#define ADD_ITEM(menu, name, shortcut, cmd)                      \
+	{                                                            \
+		BMenuItem* item = new BMenuItem(name, new BMessage(cmd), shortcut);    \
+		(menu)->AddItem(item);                                   \
+	}
+
+#define ADD_SITEM(menu) \
+		{ (menu)->AddItem(new BSeparatorItem); }
+
 	BString label;
 	GlobalSettings* settings = gApp->GetSettings();
 

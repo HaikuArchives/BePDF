@@ -36,7 +36,6 @@
 // BePDF
 #include "EntryChangedMonitor.h"
 #include "FindTextWindow.h"
-#include "htk/HWindow.h"
 #include "PDFView.h"
 #include "ToolTip.h"
 
