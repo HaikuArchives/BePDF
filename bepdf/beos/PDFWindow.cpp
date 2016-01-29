@@ -866,7 +866,7 @@ void PDFWindow::SetUpViews(entry_ref* ref,
 	fMainContainer = new BView("ScrollContainer", 0);
 	BScrollView* mainScrollView = new BScrollView("scrollView",
 		mMainView, 0, true, true, B_FANCY_BORDER);
-	mainScrollView->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+	mainScrollView->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 	mainScrollView->SetExplicitMinSize(BSize(0, 0));
 
 	BLayoutBuilder::Group<>(fMainContainer, B_VERTICAL, 0)

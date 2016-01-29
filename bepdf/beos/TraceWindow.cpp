@@ -51,7 +51,7 @@ TraceWindow::TraceWindow(GlobalSettings *settings)
 	AddCommonFilter(new EscapeMessageFilter(this, HIDE_MSG));
 
 	mOutput = new BTextView("mOutput");
-	mOutput->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+	mOutput->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 	BScrollView *outScroll = new BScrollView("outScroll", mOutput, 0, false, true);
 
 	BCheckBox *autoOpen = new BCheckBox("autoOpen", B_TRANSLATE("Auto open"),
