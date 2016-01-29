@@ -1,21 +1,21 @@
 BePDF
 =====
 
-This is a PDF reader that is based on xpdf 3.02. It handles PDF files up to PDF version 1.6 (Adobe Reader 7).
+This is a PDF reader that is based on [XPDF](http://www.foolabs.com/xpdf/) 3.04. It handles PDF files up to PDF version 1.7 (Adobe Reader 9+).
 
 List of Features
 
-  -  Viewing of encrypted and password protected PDF 1.5 files.
-      -  Opens file dropped on window.
-      -  Navigation (with keyboard, toolbar, dragging with the mouse, mouse wheel, links).
-      -  Displays annotations.
-      -  Zooming (in/out, selecting a rectangle with the mouse).
-      -  Rotating the page.
-      -  Can show a page list, bookmarks and attachments.
-      -  Window mode or fullscreen mode.
-      -  Japanese, Chinese (simplified, traditional) and Korean font support.
-      -  Renders embedded fonts (Type 1, Truetype) with FreeType 2 library.
-      -  Multithreaded (rendering is done in a separate thread).
+  -  Viewing of encrypted and password protected PDF 1.7 files.
+  -  Opens file dropped on window.
+  -  Navigation (with keyboard, toolbar, dragging with the mouse, mouse wheel, links).
+  -  Displays annotations.
+  -  Zooming (in/out, selecting a rectangle with the mouse).
+  -  Rotating the page.
+  -  Can show a page list, bookmarks and attachments.
+  -  Window mode or fullscreen mode.
+  -  Japanese, Chinese (simplified, traditional) and Korean font support.
+  -  Renders embedded fonts (Type 1, Truetype) with FreeType 2 library.
+  -  Multithreaded (rendering is done in a separate thread).
   -  Editing (Annotations can be added to an unencrypted PDF file)
   -  File Attachment Annotations and Attachments can be saved.
   -  Printing (range of pages; even or odd pages only; reverse or in order).
