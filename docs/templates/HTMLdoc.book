@@ -1,7 +1,6 @@
 #HTMLDOC 1.8.28
 -t ps2 -f "../../HTMLDOC_PS_FILE" --book --toclevels 2 --no-numbered --toctitle "HTMLDOC_TOC_TITLE" --title --titleimage "titlepage.html" --textcolor #000000 --linkcolor #a35b04 --linkstyle plain --bodycolor #ffffff --size Letter --left 1.00in --right 0.50in --top 0.50in --bottom 0.50in --header .t. --header1 ... --footer h.1 --nup 1 --tocheader ... --tocfooter ..i --portrait --color --no-pscommands --no-xrxcomments --compression=9 --jpeg=0 --fontsize 11.0 --fontspacing 1.2 --headingfont Helvetica --bodyfont Sans --headfootsize 10.9 --headfootfont Helvetica --charset iso-8859-1 --browserwidth 680 --no-strict --no-overflow
 about_bepdf.html
-installation.html
 graphical_user_interface.html
 preferences.html
 keyboard_commands.html
@@ -10,5 +9,4 @@ tracker_attributes.html
 creating_and_editing_annotations.html
 printing.html
 localization.html
-upcoming_features.html
 acknowledgements.html
