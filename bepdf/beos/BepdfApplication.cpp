@@ -695,15 +695,15 @@ static struct {
 	const char *pdf_name;
 	int32 type_code;
 } gAttrInfo[] = {
-	{"PDF:subject",     "Subject",     "Subject",      B_STRING_TYPE},
-	{"PDF:title",       "Title",       "Title",        B_STRING_TYPE},
-	{"PDF:creator",     "Creator",     "Creator",      B_STRING_TYPE},
-	{"PDF:author",      "Author",      "Author",       B_STRING_TYPE},
-	{"PDF:keywords",    "Keywords",    "Keywords",     B_STRING_TYPE},
+	{"META:subject",    "Subject",     "Subject",      B_STRING_TYPE},
+	{"META:title",      "Title",       "Title",        B_STRING_TYPE},
+	{"META:creator",    "Creator",     "Creator",      B_STRING_TYPE},
+	{"META:author",     "Author",      "Author",       B_STRING_TYPE},
+	{"META:keyw",    	"Keywords",    "Keywords",     B_STRING_TYPE},
 	{"PDF:producer",    "Producer",    "Producer",     B_STRING_TYPE},
 	{"PDF:created",     "Created",     "CreationDate", B_TIME_TYPE},
 	{"PDF:modified",    "Modified",    "ModDate",      B_TIME_TYPE},
-	{"PDF:pages",       "Pages",       NULL,           B_INT32_TYPE},
+	{"META:pages",      "Pages",       NULL,           B_INT32_TYPE},
 	{"PDF:version",     "Version",     NULL,           B_DOUBLE_TYPE},
 	{"PDF:linearized",  "Linearized",  NULL,           B_BOOL_TYPE},
 	{NULL, NULL, NULL, 0}
@@ -734,7 +734,7 @@ BepdfApplication::UpdateFileAttributes(PDFDoc *doc, entry_ref *ref) {
 	}
 
 	int32 pages = (int32)doc->getNumPages();
-	UpdateAttr(node, "PDF:pages", B_INT32_TYPE, 0, &pages, sizeof(int32));
+	UpdateAttr(node, "META:pages", B_INT32_TYPE, 0, &pages, sizeof(int32));
 	bool b = doc->isLinearized();
 	UpdateAttr(node, "PDF:linearized", B_BOOL_TYPE, 0, &b, sizeof(b));
 	double d = doc->getPDFVersion();
