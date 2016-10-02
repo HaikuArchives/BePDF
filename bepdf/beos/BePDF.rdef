@@ -1,11 +1,11 @@
 resource app_flags B_MULTIPLE_LAUNCH;
 
 resource app_version {
-	major  = 1,
-	middle = 2,
-	minor  = 0,
+	major  = 2,
+	middle = 0,
+	minor  = 1,
 
-	variety = B_APPV_DEVELOPMENT,
+	variety = B_APPV_BETA,
 	internal = 0,
 
 	short_info = "BePDF",
