@@ -29,7 +29,7 @@
 #include <be/app/Roster.h>
 #include <be/interface/Screen.h>
 #include <be/StorageKit.h>
-#include <be/be_apps/Deskbar/Deskbar.h>
+#include <Deskbar.h>
 #include <be/interface/Alert.h>
 
 #include <gtypes.h>
