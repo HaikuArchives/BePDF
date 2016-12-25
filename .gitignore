@@ -1,6 +1,7 @@
 generated/
 objects*/
 *.swp
+*docs-build*
 
 English.pdf
 Deutsch.pdf
