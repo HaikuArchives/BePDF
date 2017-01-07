@@ -543,17 +543,10 @@ void PDFWindow::UpdateWindowsMenu() {
 
 BMenuBar* PDFWindow::BuildMenu()
 {
-#define ADD_ITEM(menu, name, shortcut, cmd)                      \
-	{                                                            \
-		BMenuItem* item = new BMenuItem(name, new BMessage(cmd), shortcut);    \
-		(menu)->AddItem(item);                                   \
-	}
-
-#define ADD_SITEM(menu) \
-		{ (menu)->AddItem(new BSeparatorItem); }
-
 	BString label;
 	GlobalSettings* settings = gApp->GetSettings();
+	int16 zoom = settings->GetZoom();
+	float rotation = settings->GetRotation();
 
 	BMenuBar* menuBar = new BMenuBar("mainBar");
 	BLayoutBuilder::Menu<>(menuBar)
@@ -574,122 +567,101 @@ BMenuBar* PDFWindow::BuildMenu()
 			.AddSeparator()
 			.AddItem(B_TRANSLATE("Close"), CLOSE_FILE_CMD, 'W')
 			.AddItem(B_TRANSLATE("Quit"), QUIT_APP_CMD, 'Q')
+		.End()
+
+		.AddMenu(B_TRANSLATE("Edit"))
+			.AddItem(B_TRANSLATE("Copy selection"), COPY_SELECTION_CMD, 'C')
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Select all"), SELECT_ALL_CMD, 'A')
+			.AddItem(B_TRANSLATE("Select none"), SELECT_NONE_CMD, 'A', B_SHIFT_KEY)
+			.AddSeparator()
+			.AddItem(mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences" B_UTF8_ELLIPSIS),
+										new BMessage(PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY))
+		.End()
+
+		.AddMenu(B_TRANSLATE("View"))
+			.AddItem(B_TRANSLATE("Show bookmarks"), SHOW_BOOKMARKS_CMD, 'B')
+			.AddItem(B_TRANSLATE("Show page list"), SHOW_PAGE_LIST_CMD, 'L')
+			.AddItem(B_TRANSLATE("Show annotation tool bar"), SHOW_ANNOT_TOOLBAR_CMD)
+			.AddItem(B_TRANSLATE("Show attachments"), SHOW_ATTACHMENTS_CMD)
+			.AddItem(B_TRANSLATE("Hide side bar"), HIDE_LEFT_PANEL_CMD, 'H')
+			.AddSeparator()
+			.AddItem(mFullScreenItem = new BMenuItem(B_TRANSLATE("Fullscreen"),
+													new BMessage(FULL_SCREEN_CMD), B_RETURN))
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Fit to page width"), (FIT_TO_PAGE_WIDTH_CMD), '/')
+			.AddItem(B_TRANSLATE("Fit to page"), (FIT_TO_PAGE_CMD), '*')
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Zoom in"), (ZOOM_IN_CMD), '+')
+			.AddItem(B_TRANSLATE("Zoom out"), (ZOOM_OUT_CMD), '-')
+			.AddSeparator()
+
+			.AddMenu(mZoomMenu = new BMenu(B_TRANSLATE("Zoom")))
+				.AddItem("25%", SET_ZOOM_VALUE_CMD, MIN_ZOOM == zoom)
+				.AddItem("33%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 1 == zoom)
+				.AddItem("50%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 2 == zoom)
+				.AddItem("66%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 3 == zoom)
+				.AddItem("75%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 4 == zoom)
+				.AddItem("100%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 5 == zoom)
+				.AddItem("125%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 6 == zoom)
+				.AddItem("150%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 7 == zoom)
+				.AddItem("175%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 8 == zoom)
+				.AddItem("200%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 9 == zoom)
+				.AddItem("300%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 10 == zoom)
+			.End()
+
+			.AddSeparator()
+
+			.AddMenu(mRotationMenu = new BMenu(B_TRANSLATE("Rotation")))
+				.AddItem("0°", SET_ROTATE_VALUE_CMD, rotation == 0)
+				.AddItem("90°", SET_ROTATE_VALUE_CMD, rotation == 90)
+				.AddItem("180°", SET_ROTATE_VALUE_CMD, rotation == 180)
+				.AddItem("270°", SET_ROTATE_VALUE_CMD, rotation == 270)
+			.End()
+
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Show error messages"), SHOW_TRACER_CMD, 'M')
+		.End()
+
+		.AddMenu(B_TRANSLATE("Search"))
+			.AddItem(B_TRANSLATE("Find" B_UTF8_ELLIPSIS), FIND_CMD, 'F')
+			.AddItem(B_TRANSLATE("Find next" B_UTF8_ELLIPSIS), new BMessage(FIND_NEXT_CMD), 'G')
+		.End()
+
+		.AddMenu(B_TRANSLATE("Page"))
+			.AddItem(B_TRANSLATE("First"), FIRST_PAGE_CMD)
+			.AddItem(B_TRANSLATE("Previous"), PREVIOUS_PAGE_CMD)
+			.AddItem(B_TRANSLATE("Jump to page"), GOTO_PAGE_MENU_CMD, 'J')
+			.AddItem(B_TRANSLATE("Next"), NEXT_PAGE_CMD)
+			.AddItem(B_TRANSLATE("Last"), LAST_PAGE_CMD)
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Back"), HISTORY_BACK_CMD, B_LEFT_ARROW)
+			.AddItem(B_TRANSLATE("Forward"), HISTORY_FORWARD_CMD, B_RIGHT_ARROW)
+		.End()
+
+		.AddMenu(B_TRANSLATE("Bookmark"))
+			.AddItem(B_TRANSLATE("Add"), ADD_BOOKMARK_CMD)
+			.AddItem(B_TRANSLATE("Delete"), DELETE_BOOKMARK_CMD)
+			.AddItem(B_TRANSLATE("Edit"), EDIT_BOOKMARK_CMD)
+		.End()
+
+		.AddMenu(B_TRANSLATE("Help"))
+			.AddItem(B_TRANSLATE("Show help" B_UTF8_ELLIPSIS), HELP_CMD)
+			.AddItem(B_TRANSLATE("Online help" B_UTF8_ELLIPSIS), ONLINE_HELP_CMD)
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("Visit homepage" B_UTF8_ELLIPSIS), HOME_PAGE_CMD)
+			.AddItem(B_TRANSLATE("Issue tracker" B_UTF8_ELLIPSIS), BUG_REPORT_CMD)
+			.AddSeparator()
+			.AddItem(B_TRANSLATE("About BePDF" B_UTF8_ELLIPSIS), ABOUT_APP_CMD)
 		.End();
 
-		// Edit
-		BMenu* menu = new BMenu ( B_TRANSLATE("Edit") );
-			ADD_ITEM (menu, B_TRANSLATE("Copy selection"), 'C', ( COPY_SELECTION_CMD));
-			ADD_SITEM (menu);
-			ADD_ITEM (menu, B_TRANSLATE("Select all"), 'A', ( SELECT_ALL_CMD));
-			AddItem(menu, B_TRANSLATE("Select none"), SELECT_NONE_CMD, false, 'A', B_SHIFT_KEY);
+		mZoomMenu->SetRadioMode (true);
+		if (zoom < MIN_ZOOM) SetZoom(zoom);
 
-			ADD_SITEM (menu );
-
-			mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences" B_UTF8_ELLIPSIS),
-				new BMessage(PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY);
-			menu->AddItem(mPreferencesItem);
-		menuBar->AddItem ( menu );
-
-		// Zoom
-		menu = new BMenu ( B_TRANSLATE("View") );
-		int16 zoom = settings->GetZoom();
-			ADD_ITEM(menu, B_TRANSLATE("Show bookmarks"), 'B' , (SHOW_BOOKMARKS_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show page list"), 'L', (SHOW_PAGE_LIST_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show annotation tool bar"), 0, (SHOW_ANNOT_TOOLBAR_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Show attachments"), 0, (SHOW_ATTACHMENTS_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Hide side bar"), 'H', (HIDE_LEFT_PANEL_CMD));
-
-			ADD_SITEM(menu);
-
-			menu->AddItem(mFullScreenItem =
-				new BMenuItem(B_TRANSLATE("Fullscreen"),
-					new BMessage(FULL_SCREEN_CMD), B_RETURN));
-
-			ADD_SITEM(menu);
-
-			ADD_ITEM(menu, B_TRANSLATE("Fit to page width"), '/', (FIT_TO_PAGE_WIDTH_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Fit to page"), '*', (FIT_TO_PAGE_CMD));
-			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Zoom in"), '+', (ZOOM_IN_CMD));
-			ADD_ITEM(menu, B_TRANSLATE("Zoom out"), '-', (ZOOM_OUT_CMD));
-
-			ADD_SITEM(menu);
-
-			mZoomMenu = new BMenu (B_TRANSLATE("Zoom"));
-			mZoomMenu->SetRadioMode (true);
-
-			AddItem(mZoomMenu, "25%", SET_ZOOM_VALUE_CMD, MIN_ZOOM == zoom);
-			AddItem(mZoomMenu, "33%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 1 == zoom);
-			AddItem(mZoomMenu, "50%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 2 == zoom);
-			AddItem(mZoomMenu, "66%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 3 == zoom);
-			AddItem(mZoomMenu, "75%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 4 == zoom);
-			AddItem(mZoomMenu, "100%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 5 == zoom);
-			AddItem(mZoomMenu, "125%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 6 == zoom);
-			AddItem(mZoomMenu, "150%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 7 == zoom);
-			AddItem(mZoomMenu, "175%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 8 == zoom);
-			AddItem(mZoomMenu, "200%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 9 == zoom);
-			AddItem(mZoomMenu, "300%", SET_ZOOM_VALUE_CMD, MIN_ZOOM + 10 == zoom);
-
-			if (zoom < MIN_ZOOM) SetZoom(zoom);
-			menu->AddItem (mZoomMenu);
-
-			ADD_SITEM(menu);
-
-			mRotationMenu = new BMenu (B_TRANSLATE("Rotation"));
-			mRotationMenu->SetRadioMode(true);
-			float rotation = settings->GetRotation();
-				AddItem(mRotationMenu, "0°", SET_ROTATE_VALUE_CMD, rotation == 0);
-				AddItem(mRotationMenu, "90°", SET_ROTATE_VALUE_CMD, rotation == 90);
-				AddItem(mRotationMenu, "180°", SET_ROTATE_VALUE_CMD, rotation == 180);
-				AddItem(mRotationMenu, "270°", SET_ROTATE_VALUE_CMD, rotation == 270);
-			menu->AddItem(mRotationMenu);
-
-			ADD_SITEM(menu);
-			ADD_ITEM(menu, B_TRANSLATE("Show error messages"), 'M', (SHOW_TRACER_CMD));
-		menuBar->AddItem ( menu );
-
-		// Search
-		menu = new BMenu ( B_TRANSLATE("Search") );
-			ADD_ITEM (menu, B_TRANSLATE("Find" B_UTF8_ELLIPSIS) , 'F', ( FIND_CMD));
-			menu->AddItem(new BMenuItem(B_TRANSLATE("Find next" B_UTF8_ELLIPSIS),
-				new BMessage(FIND_NEXT_CMD), 'G'));
-		menuBar->AddItem ( menu );
-
-		// Page
-		menu = new BMenu (B_TRANSLATE("Page"));
-			ADD_ITEM (menu, B_TRANSLATE("First"), 0,  (FIRST_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Previous"), 0,  (PREVIOUS_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Jump to page"), 'J',  (GOTO_PAGE_MENU_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Next"), 0,  (NEXT_PAGE_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Last"), 0,  (LAST_PAGE_CMD));
-			ADD_SITEM(menu);
-			ADD_ITEM (menu, B_TRANSLATE("Back"), B_LEFT_ARROW,  (HISTORY_BACK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Forward"), B_RIGHT_ARROW,  (HISTORY_FORWARD_CMD));
-		menuBar->AddItem (menu);
-
-		// Bookmarks
-		menu = new BMenu (B_TRANSLATE("Bookmark"));
-
-			ADD_ITEM (menu, B_TRANSLATE("Add"),    0, ( ADD_BOOKMARK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Delete"), 0, ( DELETE_BOOKMARK_CMD));
-			ADD_ITEM (menu, B_TRANSLATE("Edit"),   0, ( EDIT_BOOKMARK_CMD));
-
-		menuBar->AddItem(menu);
+		mRotationMenu->SetRadioMode(true);
 
 //		menuBar->AddItem ( mWindowsMenu = new BMenu(B_TRANSLATE("Window")) );
 		UpdateWindowsMenu();
-
-		menu = new BMenu(B_TRANSLATE("Help"));
-		ADD_ITEM (menu, B_TRANSLATE("Show help" B_UTF8_ELLIPSIS), 0, (HELP_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Online help" B_UTF8_ELLIPSIS), 0, (ONLINE_HELP_CMD));
-
-		ADD_SITEM(menu);
-
-		ADD_ITEM (menu, B_TRANSLATE("Visit homepage" B_UTF8_ELLIPSIS), 0, (HOME_PAGE_CMD));
-		ADD_ITEM (menu, B_TRANSLATE("Issue tracker" B_UTF8_ELLIPSIS), 0, (BUG_REPORT_CMD));
-		ADD_SITEM (menu );
-		ADD_ITEM (menu, B_TRANSLATE("About BePDF" B_UTF8_ELLIPSIS), 0, ( ABOUT_APP_CMD ) );
-		menuBar->AddItem( menu );
 
 	mOpenMenu->Superitem()->SetTrigger('O');
 	mOpenMenu->Superitem()->SetMessage(new BMessage(OPEN_FILE_CMD));
