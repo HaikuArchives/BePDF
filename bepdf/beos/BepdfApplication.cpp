@@ -490,7 +490,7 @@ void BepdfApplication::Notify(uint32 cmd) {
 	BMessage msg(cmd);
 	// notify all but this team
 	for (int i = n; i >= 0; i --) {
-		team_id who = (team_id)list.ItemAt(i);
+		team_id who = (team_id)(addr_t)list.ItemAt(i);
 		if (who == mTeamID) continue; // skip own team
 		status_t status;
 		BMessenger app(BEPDF_APP_SIG, who, &status);
