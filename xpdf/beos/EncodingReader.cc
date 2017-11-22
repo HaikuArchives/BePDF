@@ -2,6 +2,7 @@
 
 #include "aconf.h"
 #include "gfile.h"
+#include "GDir.h"
 #include "GlobalParams.h"
 #include "GString.h"
 #include <string.h>
@@ -29,7 +30,7 @@ static GBool endsWith(GString* string, const char* suffix) {
 	if (stringLength < suffixLength) {
 		return gFalse;
 	}
-	
+
 	return strcmp(suffix, &stringPtr[stringLength - suffixLength]) == 0;
 }
 
@@ -103,46 +104,46 @@ static void readFromDirectory(GlobalParams* globalParams, const char* directoryN
 	GDir directory((char*)directoryName);
 	GDirEntry* entry;
 	GString string; // used to create temporary file or directory path
-	
+
 	// Read nameToUnicode and unicodeMap,
 	// record cidToUnicode collection name and whether there is a CMap directory
 	while ((entry = directory.getNextEntry())) {
-	
+
 		GString* name = entry->getName();
-		
+
 		if (entry->isDir()) {
-		
+
 			if (name->cmp("CMap") == 0) {
 				hasCMapDirectory = gTrue;
 			}
-			
+
 		} else if (endsWith(name, ".cidToUnicode")) {
-		
+
 			if (collection == NULL) {
 				collection = extractEncoding(name);
 			} else {
 				// warning: more than one cidToUnicode file!
 			}
-			
+
 		} else if (endsWith(name, ".nameToUnicode")) {
-		
-			addNameToUnicode(globalParams, 
+
+			addNameToUnicode(globalParams,
 				makePath(string, directoryName, name->getCString()));
-				
+
 		} else if (endsWith(name, ".unicodeMap")) {
-		
+
 			GString* encoding = extractEncoding(name);
 			if (encoding == NULL) {
 				// warning: missing encoding in .unicodeMap file name
 				continue;
 			}
-			
-			addUnicodeMap(globalParams, 
+
+			addUnicodeMap(globalParams,
 				encoding->getCString(),
 				makePath(string, directoryName, name->getCString()));
-			
+
 			delete encoding;
-			
+
 		}
 		delete entry;
 	}
@@ -150,19 +151,19 @@ static void readFromDirectory(GlobalParams* globalParams, const char* directoryN
 	// add cidToUnicode, cMapDir and toUnicodeDir
 	if (hasCMapDirectory) {
 		addToUnicodeDir(globalParams, makePath(string, directoryName, "CMap"));
-		
+
 		if (collection != NULL) {
 			// still string contains CMap directory
 			addCMapDir(globalParams, collection->getCString(), string.getCString());
-			
+
 			makePath(string, directoryName, collection->getCString());
-			string.append(".cidToUnicode");			
-			addCidToUnicode(globalParams, collection->getCString(), string.getCString());			
+			string.append(".cidToUnicode");
+			addCidToUnicode(globalParams, collection->getCString(), string.getCString());
 		} else {
 			// warning: CMap directory without .cidToUnicode file!
 		}
 	}
-	
+
 	delete collection;
 }
 

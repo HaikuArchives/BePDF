@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "gtypes.h"
 #include "gmem.h"
+#include "gmempp.h"
 #include "parseargs.h"
 #include "GlobalParams.h"
 #include "PDFDoc.h"

@@ -33,6 +33,7 @@
 #include <be/interface/Alert.h>
 
 #include <gtypes.h>
+#include <GHash.h>
 #include <parseargs.h>
 #include "config.h"
 #include "Error.h"
@@ -53,7 +54,7 @@ static const char * bePDFCopyright =
 	"© 1997 Benoit Triquet\n"
 	"© 1998-2000 Hubert Figuiere\n"
     "© 2000-2011 Michael Pfeiffer\n"
-    "© 2013-2016 waddlesplash\n";
+    "© 2013-2017 waddlesplash\n";
 
 static const char * GPLCopyright =
     "\n\n"
@@ -211,6 +212,20 @@ static void setGlobalParameter(const char* type, const char* arg1, const char* a
 	globalParams->parseLine(line.getCString(), &name, 0);
 }
 
+/* copied from xpdf/GlobalParams.cc as it was removed in XPDF 4 */
+GList* getCIDToUnicodeNames(GlobalParams* globalParams) {
+  GList *list = new GList();
+  GString *key;
+  void *value;
+  GHashIter *iter = NULL;
+  globalParams->cidToUnicodes->startIter(&iter);
+  while (globalParams->cidToUnicodes->getNext(&iter, &key, &value)) {
+       list->append(key->copy());
+  }
+  globalParams->cidToUnicodes->killIter(&iter);
+  return list;
+}
+
 void
 BepdfApplication::Initialize()
 {
@@ -249,7 +264,7 @@ BepdfApplication::Initialize()
 
 		// record new names
 		bool foundNewName = false;
-		GList* list = globalParams->getCIDToUnicodeNames();
+		GList* list = getCIDToUnicodeNames(globalParams);
 		for (int i = 0; i < list->getLength(); i ++) {
 			GString* name = (GString*)list->get(i);
 			if (displayNames.Contains(name->getCString())) {

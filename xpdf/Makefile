@@ -32,6 +32,7 @@ APP_MIME_SIG =
 SRCS = beos/BeSplashOutputDev.cc \
 	beos/EncodingReader.cc \
 	beos/Init.cc \
+	beos/GDir.cc \
 	fofi/FoFiBase.cc \
 	fofi/FoFiEncodings.cc \
 	fofi/FoFiIdentifier.cc \
@@ -70,9 +71,9 @@ SRCS = beos/BeSplashOutputDev.cc \
 	xpdf/CMap.cc \
 	xpdf/Catalog.cc \
 	xpdf/CharCodeToUnicode.cc \
-	xpdf/CoreOutputDev.cc \
 	xpdf/Decrypt.cc \
 	xpdf/Dict.cc \
+	xpdf/DisplayState.cc \
 	xpdf/Error.cc \
 	xpdf/FontEncodingTables.cc \
 	xpdf/Form.cc \
@@ -105,24 +106,16 @@ SRCS = beos/BeSplashOutputDev.cc \
 	xpdf/Stream.cc \
 	xpdf/TextOutputDev.cc \
 	xpdf/TextString.cc \
+	xpdf/TileCache.cc \
+	xpdf/TileCompositor.cc \
+	xpdf/TileMap.cc \
 	xpdf/UnicodeMap.cc \
 	xpdf/UnicodeTypeTable.cc \
+	xpdf/UTF8.cc \
 	xpdf/XFAForm.cc \
 	xpdf/XRef.cc \
 	xpdf/Zoox.cc
 	#beos/OptionalContent.cc
-	# xpdf/XPDFApp.cc
-	# xpdf/XPDFCore.cc
-	# xpdf/XPDFTree.cc
-	# xpdf/XPDFViewer.cc
-	# xpdf/XpdfPluginAPI.cc
-	# xpdf/pdffonts.cc
-	# xpdf/pdfimages.cc
-	# xpdf/pdfinfo.cc
-	# xpdf/pdftoppm.cc
-	# xpdf/pdftops.cc
-	# xpdf/pdftotext.cc
-	# xpdf/xpdf.cc
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.

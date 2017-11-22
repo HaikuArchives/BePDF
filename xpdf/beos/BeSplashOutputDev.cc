@@ -42,7 +42,7 @@ BeSplashOutputDev::BeSplashOutputDev(GBool reverseVideoA,
   	paperColorA)
 {
   fColorMode = colorMode;
-  fIncrementalUpdate = incrementalUpdateA;
+  fIncrementalUpdate = false; // broken since XPDF 4
   fRedrawCallback = redrawCbkA;
   fRedrawCallbackData = redrawCbkDataA;
 
