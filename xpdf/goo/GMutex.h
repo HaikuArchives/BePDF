@@ -62,7 +62,7 @@ typedef pthread_mutex_t GMutex;
 //------------------------------------------------------------------------
 
 // NB: this must be "long" to work on Windows
-typedef long GAtomicCounter;
+typedef int32 GAtomicCounter;
 
 // Increment *counter by one and return the final value (after the
 // increment).
