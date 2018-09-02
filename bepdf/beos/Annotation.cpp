@@ -1321,37 +1321,36 @@ Annotations::Annotations(Object* annots, BePDFAcroForm* acroForm)
 		Object annot;
 		if (annots->arrayGet(i, &annot) && annot.isDict()) {
 			Object type; // optional, "Annot" if present
-			if (annot.dictLookup("Type", &type) && (type.isNull() ||
-				type.isName()) && strcmp(type.getName(), "Annot") == 0) {
+			if (annot.dictLookup("Type", &type) && (type.isNull()
+				|| type.isName()) && type.isName("Annot")) {
 
 				Object subType;
 				if (annot.dictLookup("Subtype", &subType) && subType.isName()) {
-					const char* s = subType.getName();
 					Annotation* a = NULL;
 					LOG(s);
-					if (strcmp(s, "Text") == 0) {
+					if (subType.isName("Text")) {
 						a = new TextAnnot(annot.getDict());
-					} else if (strcmp(s, "FreeText") == 0) {
+					} else if (subType.isName("FreeText")) {
 						a = new FreeTextAnnot(annot.getDict(), acroForm);
-					} else if (strcmp(s, "Highlight") == 0) {
+					} else if (subType.isName("Highlight")) {
 						a = new HighlightAnnot(annot.getDict());
-					} else if (strcmp(s, "Underline") == 0) {
+					} else if (subType.isName("Underline")) {
 						a = new UnderlineAnnot(annot.getDict());
-					} else if (strcmp(s, "Squiggly") == 0) {
+					} else if (subType.isName("Squiggly")) {
 						a = new SquigglyAnnot(annot.getDict());
-					} else if (strcmp(s, "StrikeOut") == 0) {
+					} else if (subType.isName("StrikeOut")) {
 						a = new StrikeOutAnnot(annot.getDict());
-					} else if (strcmp(s, "Line") == 0) {
+					} else if (subType.isName("Line")) {
 						a = new LineAnnot(annot.getDict());
-					} else if (strcmp(s, "Square") == 0) {
+					} else if (subType.isName("Square")) {
 						a = new SquareAnnot(annot.getDict());
-					} else if (strcmp(s, "Circle") == 0) {
+					} else if (subType.isName("Circle")) {
 						a = new CircleAnnot(annot.getDict());
-					} else if (strcmp(s, "Stamp") == 0) {
+					} else if (subType.isName("Stamp")) {
 						a = new StampAnnot(annot.getDict());
-					} else if (strcmp(s, "Ink") == 0) {
+					} else if (subType.isName("Ink")) {
 						a = new InkAnnot(annot.getDict());
-					} else if (strcmp(s, "FileAttachment") == 0){
+					} else if (subType.isName("FileAttachment") == 0){
 						a = new FileAttachmentAnnot(annot.getDict());
 					}
 
