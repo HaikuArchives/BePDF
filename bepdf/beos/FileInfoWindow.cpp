@@ -480,7 +480,6 @@ void FileInfoWindow::MessageReceived(BMessage *msg) {
 		mState = QUERY_ALL_FONTS;
 		mShowAllFonts->SetEnabled(false);
 		mStop->SetEnabled(true);
-		mFontsBorder->SetLabel(B_TRANSLATE("Searching all fonts" B_UTF8_ELLIPSIS));
 		if (mLooper) {
 			// do searching in another thread (= thread of window)
 			mLooper->PostMessage(START_QUERY_ALL_FONTS_MSG);
@@ -496,11 +495,9 @@ void FileInfoWindow::MessageReceived(BMessage *msg) {
 		case STOP:
 			mState = NORMAL;
 			mShowAllFonts->SetEnabled(true);
-			mFontsBorder->SetLabel(B_TRANSLATE("All fonts of this document (aborted)"));
 			break;
 		case QUERY_ALL_FONTS:
 			mState = ALL_FONTS;	mStop->SetEnabled(false);
-			mFontsBorder->SetLabel(B_TRANSLATE("All fonts of this document"));
 			break;
 		case QUIT:
 			mState = NORMAL; PostMessage(B_QUIT_REQUESTED);

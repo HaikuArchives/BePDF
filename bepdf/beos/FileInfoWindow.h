@@ -82,7 +82,6 @@ class FileInfoWindow : public BWindow {
 	void CreateProperty(BGridView *dest, Dict *dict, const char *key, const char *title);
 	
 	BButton *mShowAllFonts, *mStop;
-	BBox *mFontsBorder;
 
 public:
 	static const char *authorKey, *creationDateKey, *modDateKey, *creatorKey, 
