@@ -40,11 +40,13 @@ void Thread::SetPriority(int32 priority) {
 }
 	
 status_t Thread::Resume() {
-	if (InitCheck() != B_OK) {
+	status_t result = InitCheck();
+	if (result != B_OK) {
 		delete this;
+		return result;
 	}
 	
-	status_t result = resume_thread(mThreadId);
+	result = resume_thread(mThreadId);
 	if (result != B_OK) {
 		delete this;
 	}
