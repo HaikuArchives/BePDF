@@ -1724,7 +1724,7 @@ static AnnotDesc annotDescs[] = {
 	{ PDFWindow::ADD_STAMP_ANNOT_CMD, B_TRANSLATE("Add stamp annotation"), "ANNOT_STAMP"},
 	{ PDFWindow::ADD_INK_ANNOT_CMD, B_TRANSLATE("Add ink annotation"), "ANNOT_INK"},
 	{ PDFWindow::ADD_POPUP_ANNOT_CMD, B_TRANSLATE("Add popup annotation"), "ANNOT_POPUP"},
-	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, B_TRANSLATE("Add fileattachment annotation"), "ANNOT_FILEATTACHMENT"},
+	{ PDFWindow::ADD_FILEATTACHMENT_ANNOT_CMD, B_TRANSLATE("Add file attachment annotation"), "ANNOT_FILEATTACHMENT"},
 	{ PDFWindow::ADD_SOUND_ANNOT_CMD, B_TRANSLATE("Add sound annotation"), "ANNOT_SOUND"},
 	{ PDFWindow::ADD_MOVIE_ANNOT_CMD, B_TRANSLATE("Add movie annotation"), "ANNOT_MOVIE"},
 	{ PDFWindow::ADD_WIDGET_ANNOT_CMD, B_TRANSLATE("Add widget annotation"), "ANNOT_WIDGET"},
