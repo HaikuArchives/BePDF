@@ -1,258 +1,255 @@
-1	English	application/x-vnd.mp-xpdf	1147160503
-Close	BepdfApplication		Закрити
-Show bookmarks	PDFWindow		Показати закладки
-Go to page %d	PDFView		Перейти до сторінки %d
-of %d	PDFWindow		з %d
-Zoom in	PDFWindow		Збільшити
+1	English	application/x-vnd.mp-xpdf	1689344215
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Редагування анотацій у зашифрованому PDF файлі не підтримується!
+Selection rectangle	AnnotationWindow		Прямокутник виділення
 About BePDF…	PDFWindow		Про BePDF…
-BePDF: Launch	PDFView		BePDF: Запуск
-Go to next page	PDFWindow		Перейти до наступної сторінки
-Keywords:	FileInfoWindow		Ключові слова:
-All pages	PrintSettingsWindow		Усі сторінки
-View	PDFWindow		Вигляд
-Show annotation tool bar	PDFWindow		Показати панель анотацій
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Показати панель інструментів, рядок стану та смугу прокрутки
-Copy link	PDFView		Копіювати посилання
-<empty>	OutlinesWindow		<пусто>
-BePDF printing document: 	PrintingProgressWindow		BePDF друкує документ: 
-Select none	PDFWindow		Зняти виділення
-Add trapnet annotation	PDFWindow		Додати треппінг
-Add underline annotation	PDFWindow		Додати підкреслення
-Clear	TraceWindow		Очистити
-Show help…	PDFWindow		Показати довідку…
-Help	PDFWindow		Довідка
-Saving file attachment:	PDFView		Збереження вкладеного файлу:
-Add popup annotation	PDFWindow		Додати спливаючу виноску
-BePDF printing	PrintingProgressWindow		BePDF друкує
- in	PrintSettingsWindow		 в
-Document	OutlinesWindow		Документ
-Options	FindTextWindow		Параметри
-Error	BepdfApplication		Помилка
-Find…	PDFWindow		Знайти…
-Reload	PDFWindow		Перезавантажити
-Open in new window	PDFView		Відкрити у новому вікні
-Pages	PrintSettingsWindow		Сторінки
-First	PDFWindow		Перша
-Page	PrintSettingsWindow		Сторінка
-Fullscreen mode	AnnotationWindow		Повноекранний режим
-Fit to page	PDFWindow		За розміром сторінки
-Add key text annotation	PDFWindow		Додати ключ
-Auto open	TraceWindow		Автовідкриття
-File	PDFWindow		Файл
-Ignore case	FindTextWindow		Ігнорувати регістр
-PDF file successfully written!	PDFWindow		PDF файл успішно збережений!
-Page:	FindTextWindow		Сторінка:
-Beta	BepdfApplication		Бета
-Warning	PDFWindow		Увага
-Zoom out	PDFWindow		Зменшити
-Subject:	FileInfoWindow		Тема:
-Stop	PrintingProgressWindow		Зупинити
-Save selected attachments into directory	AttachmentView		Зберегти вибрані вкладення до папки
-Will take effect at next program launch.	AnnotationWindow		Зміни набудуть чинності при наступному запуску програми.
-Show error messages	PDFWindow		Показати повідомлення про помилки
-Add movie annotation	PDFWindow		Додати відео
-Max. printer resolution	PrintSettingsWindow		Макс. роздатність принтера
-Open…	PDFWindow		Відкрити…
-Encrypted:	FileInfoWindow		Зашифрований:
-DPI	PrintSettingsWindow		DPI
-Save file attachment as…	PDFView		Зберегти вкладений файл як…
-Type	FileInfoWindow		Тип
-Search string not found.	PDFSearch		Шуканий текст не знайдено.
-Filled rectangle	AnnotationWindow		Заповнений прямокутник
-File name	AttachmentView		Ім’я файлу
-Align:	AnnotationWindow		Вирівнювання:
-Floating	TraceWindow		Плаваючий
-Find: 	FindTextWindow		Знайти:
-Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Мова 'Українська', переклад Олексія Лугіна.
-Add widget annotation	PDFWindow		Додати віджет
-Add insert text annotation	PDFWindow		Додати вставку тексту
-Find	PDFWindow		Знайти
-Abort	PrintingProgressWindow		Перервати
-Add ink annotation	PDFWindow		Додати рукописний текст
-Go to start of document	PDFWindow		Перейти на початок документа
-Edit title for bookmark	OutlinesWindow		Редагувати назву закладки
-Zoom (%)	PrintSettingsWindow		Масштаб (%)
-[link type 'movie' not supported]	PDFView		[тип посилання 'відео' не підтримується]
 Cancel	PDFView		Скасувати
 Go to previous page	PDFWindow		Перейти до попередньої сторінки
-Title:	AnnotationWindow		Назва:
-Abort	FileInfoWindow		Перервати
-Searching all fonts…	FileInfoWindow		Шукати усі шрифти…
-Save as…	PDFWindow		Зберегти як…
-Denied	FileInfoWindow		Відмовлено
-Gray scale	PrintSettingsWindow		Відтінки сірого
-Reload file	PDFWindow		Перезавантажити файл
-Find next…	PDFWindow		Знайти далі…
-User fonts	AnnotationWindow		Шрифти користувача
-Gamma	BepdfApplication		Гамма
-Stop	FindTextWindow		Зупинити
-Find	FindTextWindow		Знайти
-Asian fonts	AnnotationWindow		Азійські шрифти
-Restore window position and size	AnnotationWindow		Відновити позицію та розмір вікна
-Fullscreen mode	PDFWindow		Повноекранний режим
-Color	PrintSettingsWindow		Колір
-[unknown link]	PDFView		[невідоме посилання]
-Show page list	PDFWindow		Показати список сторінок
-Back	PDFWindow		Назад
-Normal	PrintSettingsWindow		Звичайний
-Add note text annotation	PDFWindow		Додати примітку
-Close	PDFWindow		Закрити
-Add printer mark annotation	PDFWindow		Додати мітку принтера
-Go forward 10 pages	PDFWindow		Перейти вперед на 10 сторінок
-Execute the command:	PDFView		Виконати команду:
-Rotation	PrintSettingsWindow		Обертання
-Save attachment(s) as	AttachmentView		Зберегти вкладення як
-OK	PDFSearch		OK
-Author	AnnotationWindow		Автор
-Open in workspace:	AnnotationWindow		Робочий простір:
-Creator:	FileInfoWindow		Розробник:
-Golden Master	BepdfApplication		Золотий Майстер
-Saving attachment(s):	AttachmentView		Збереження вкладень:
-Properties	PDFView		Властивості
-Find text	FindTextWindow		Знайти текст
-Page %d	PDFWindow		Сторінка %d
-Forward in page history list	PDFWindow		Вперед по списку історії сторінок
-BePDF status	StatusWindow		BePDF статус
-Add new paragraph text annotation	PDFWindow		Додати новий параграф
-User password	PasswordWindow		Пароль користувача
-No title	OutlinesWindow		Без назви
-Fullscreen	PDFWindow		На весь екран
-Add sound annotation	PDFWindow		Додати звук
-Document	FileInfoWindow		Документ
-Add comment text annotation	PDFWindow		Додати коментар
-Page	PDFWindow		Сторінка
-All fonts of this document (aborted)	FileInfoWindow		Усі шрифти цього документа (перервано)
-Save selected attachment to file	AttachmentView		Зберегти виділене вкладення до файлу
-File info…	PDFWindow		Інформація про файл…
-Preferences	AnnotationWindow		Налаштування
-Page setup…	PDFWindow		Параметри сторінки…
-Show document view only	AnnotationWindow		Лише перегляд документа
-Automatic	AnnotationWindow		Автоматично
-Print settings	PrintSettingsWindow		Параметри друку
-Fonts of this page	FileInfoWindow		Шрифти з цієї сторінки
-Print	PDFWindow		Друк
-Issue tracker…	PDFWindow		Трекер проблем та побажань…
-Font:	AnnotationWindow		Шрифт:
-Restore page number	AnnotationWindow		Відновити номер сторінки
-Print	PrintSettingsWindow		Друк
-Preferences…	PDFWindow		Налаштування…
-BePDF: Error opening file!	BepdfApplication		BePDF: Помилка відкриття файлу!
-Rotation	PDFWindow		Обертання
-Last	PDFWindow		Остання
-System fonts	AnnotationWindow		Системні шрифти
-Add stamp annotation	PDFWindow		Додати штамп
-Path:	FileInfoWindow		Шлях:
-Add squiggly annotation	PDFWindow		Додати хвилясте підреслення
-Alpha	BepdfApplication		Альфа
-Name	FileInfoWindow		Ім’я
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Неможливо перезаписати PDF файл, який в даний час відкритий в BePDF! Виберіть інше ім'я файлу.
-Reverse	PrintSettingsWindow		Зворотний порядок
-Unknown link action type: '%s'	PDFView		Невідомий тип посилання на дію: '%s'
-Filename:	FileInfoWindow		Ім’я файлу:
-Enter Password	PasswordWindow		Введіть пароль
-Copy selection	PDFWindow		Копіювати виділене
-Yes	FileInfoWindow		Так
-Add free text annotation	PDFWindow		Додати довільний текст
-Next	PDFWindow		Наступна
-Annotations:	FileInfoWindow		Анотації:
-Producer:	FileInfoWindow		Виробник:
-Stroked rectangle	AnnotationWindow		Окантований прямокутник
-Forward	PDFWindow		Вперед
-Allowed	FileInfoWindow		Дозволено
-Copy & paste:	FileInfoWindow		Копіювати і вставити:
-Hide side bar	PDFWindow		Приховати бічну панель
-Jump to page	PDFWindow		Перейти до сторінки
-Version	BepdfApplication		Версія
-Odd pages	PrintSettingsWindow		Непарні сторінки
-Add line annotation	PDFWindow		Додати лінію
-Add circle annotation	PDFWindow		Додати окружність
-Annotation	PDFView		Анотація
-Save file as	PDFWindow		Зберегти файл як
-Show annotation toolbar	PDFWindow		Показати панель анотацій
-current	AnnotationWindow		поточний
-Search backwards	FindTextWindow		Шукати в зворотному напрямку
-Development	BepdfApplication		Розробка
-Modified:	FileInfoWindow		Змінений:
-Add link annotation	PDFWindow		Додати посилання
-Annotation	AnnotationWindow		Анотація
-Previous	PDFWindow		Попередня
-Error messages	TraceWindow		Повідомлення про помилки
-Zoom must be between 25 and 400!	PrintSettingsWindow		Масштаб має бути між 25 та 400!
-Mode	PrintSettingsWindow		Режим
-Leave annotation editing mode	PDFWindow		Вийти з режиму анотацій
-Rotate clockwise	PDFWindow		Обертати за годинниковою стрілкою
-User defined	OutlinesWindow		Визначене користувачем
-Find next	PDFWindow		Знайти далі
+Subject:	FileInfoWindow		Тема:
+Filled rectangle	AnnotationWindow		Заповнений прямокутник
 Add strikeout annotation	PDFWindow		Додати закреслення
-Editing:	FileInfoWindow		Редагування:
-Title:	FileInfoWindow		Заголовок:
 Owner password	PasswordWindow		Пароль власника
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Selection rectangle	AnnotationWindow		Прямокутник виділення
-Display	AnnotationWindow		Відображення
-OK	OutlinesWindow		OK
-Bookmark	PDFWindow		Закладка
-Order	PrintSettingsWindow		Порядок
-Description	AttachmentView		Опис
-Could not write PDF file!	PDFWindow		Помилка збереження PDF файлу!
-OK	PDFWindow		OK
-Add	PDFWindow		Додати
-Edit	PDFWindow		Редагувати
-OK	PasswordWindow		OK
-Page:	PrintingProgressWindow		Сторінка:
-Online help…	PDFWindow		Довідка онлайн…
-Created:	FileInfoWindow		Створений:
-Quit	PDFWindow		Вийти
-Linearized:	FileInfoWindow		Лінеаризований:
-Delete	PDFView		Видалити
-Version:	FileInfoWindow		Версія:
-Document	AnnotationWindow		Документ
-Back in page history list	PDFWindow		Назад по списку історії сторінок
-Open file	PDFWindow		Відкрити файл
-Visit homepage…	PDFWindow		Домашня сторінка…
-Leave annotation editing mode	PDFView		Вийти з режиму анотацій
-No	FileInfoWindow		Ні
-[internal link]	PDFView		[внутрішнє посилання]
-Show attachments	PDFWindow		Показати вкладення
-Add paragraph text annotation	PDFWindow		Додати параграф
-<empty>	AttachmentView		<пусто>
-Unknown	BepdfApplication		Невідомо
-OK	PDFView		OK
-Author:	FileInfoWindow		Автор:
-Page: %d	PrintingProgressWindow		Сторінка: %d
-Go back 10 pages	PDFWindow		Перейти назад на 10 сторінок
-Security	FileInfoWindow		Безпека
-Height: 	PrintSettingsWindow		Висота: 
-Print…	PDFWindow		Друк…
-Go to end of document	PDFWindow		Перейти в кінець документа
-Rotate counter-clockwise	PDFWindow		Обертати проти годинникової стрілки
-Size:	AnnotationWindow		Розмір:
-Embedded name	FileInfoWindow		Вбудоване ім’я
+Add insert text annotation	PDFWindow		Додати вставку тексту
 Delete	PDFWindow		Видалити
-Select all	PDFWindow		Виділити все
-Width: 	PrintSettingsWindow		Ширина:
-Add square annotation	PDFWindow		Додати прямокутник
-Date:	AnnotationWindow		Дата:
-OK	PrintSettingsWindow		OK
-Even pages	PrintSettingsWindow		Парні сторінки
-Invert vertical mouse scrolling	AnnotationWindow		Інвертувати вертикальну прокрутку мишки
-Final	BepdfApplication		Фінал
-Fit to page width	PDFWindow		За шириною сторінки
+Color	PrintSettingsWindow		Колір
+View	PDFWindow		Вигляд
+Search string not found.	PDFSearch		Шуканий текст не знайдено.
+Normal	PrintSettingsWindow		Звичайний
+System fonts	AnnotationWindow		Системні шрифти
+Add widget annotation	PDFWindow		Додати віджет
+Zoom in	PDFWindow		Збільшити
+Unknown link action type: '%s'	PDFView		Невідомий тип посилання на дію: '%s'
+Page:	FindTextWindow		Сторінка:
+Rotation	PrintSettingsWindow		Обертання
+Gamma	BepdfApplication		Гамма
+Error messages	TraceWindow		Повідомлення про помилки
+Jump to page	PDFWindow		Перейти до сторінки
+Fullscreen mode	AnnotationWindow		Повноекранний режим
+BePDF printing	PrintingProgressWindow		BePDF друкує
+BePDF status	StatusWindow		BePDF статус
+Mode	PrintSettingsWindow		Режим
+Save as…	PDFWindow		Зберегти як…
+Execute the command:	PDFView		Виконати команду:
+Issue tracker…	PDFWindow		Трекер проблем та побажань…
 Printing:	FileInfoWindow		Друк:
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF базується на XPDF %s, %s.
-Add fileattachment annotation	PDFWindow		Вкласти файл
-BePDF reading file: 	PDFView		BePDF читає файл: 
-Wrong parameter!	PrintSettingsWindow		Неправильний параметр!
+Font:	AnnotationWindow		Шрифт:
+Zoom must be between 25 and 400!	PrintSettingsWindow		Масштаб має бути між 25 та 400!
+Open…	PDFWindow		Відкрити…
+Save attachment(s) as	AttachmentView		Зберегти вкладення як
+OK	PDFView		OK
+Date:	AnnotationWindow		Дата:
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Показати панель інструментів, рядок стану та смугу прокрутки
+Show page list	PDFWindow		Показати список сторінок
+current	AnnotationWindow		поточний
+OK	PasswordWindow		OK
+Name	FileInfoWindow		Ім’я
+Document	OutlinesWindow		Документ
+Hide side bar	PDFWindow		Приховати бічну панель
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Неможливо перезаписати PDF файл, який в даний час відкритий в BePDF! Виберіть інше ім'я файлу.
+Invert vertical mouse scrolling	AnnotationWindow		Інвертувати вертикальну прокрутку мишки
+Page setup…	PDFWindow		Параметри сторінки…
+Add ink annotation	PDFWindow		Додати рукописний текст
+Stroked rectangle	AnnotationWindow		Окантований прямокутник
+Find: 	FindTextWindow		Знайти:
 Zoom	PDFWindow		Масштаб
-Search	PDFWindow		Шукати
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Редагування анотацій у зашифрованому PDF файлі не підтримується!
-Edit	PDFView		Редагувати
-Saving copy of PDF file:	PDFWindow		Збереження копії PDF файлу:
-All fonts of this document	FileInfoWindow		Усі шрифти цього документа
-File info	FileInfoWindow		Інформація про файл
-Add help text annotation	PDFWindow		Додати довідку
-Custom zoom factor (%d%%)	PDFWindow		Довільний масштаб (%d%%)
+Open in workspace:	AnnotationWindow		Робочий простір:
+BePDF reading file: 	PDFView		BePDF читає файл: 
+Go to next page	PDFWindow		Перейти до наступної сторінки
+Add square annotation	PDFWindow		Додати прямокутник
+[internal link]	PDFView		[внутрішнє посилання]
+Restore page number	AnnotationWindow		Відновити номер сторінки
+Fonts of this page	FileInfoWindow		Шрифти з цієї сторінки
+Last	PDFWindow		Остання
+Abort	FileInfoWindow		Перервати
+Find next	PDFWindow		Знайти далі
+All pages	PrintSettingsWindow		Усі сторінки
+Show annotation toolbar	PDFWindow		Показати панель анотацій
+File name	AttachmentView		Ім’я файлу
+Go to start of document	PDFWindow		Перейти на початок документа
+Go back 10 pages	PDFWindow		Перейти назад на 10 сторінок
+Go forward 10 pages	PDFWindow		Перейти вперед на 10 сторінок
+Add file attachment annotation	PDFWindow		Вкласти файл
+Show annotation tool bar	PDFWindow		Показати панель анотацій
+Fit to page width	PDFWindow		За шириною сторінки
+DPI	PrintSettingsWindow		DPI
+Find…	PDFWindow		Знайти…
+Odd pages	PrintSettingsWindow		Непарні сторінки
+Add sound annotation	PDFWindow		Додати звук
+Show bookmarks	PDFWindow		Показати закладки
+Max. printer resolution	PrintSettingsWindow		Макс. роздатність принтера
+Quit	PDFWindow		Вийти
+File	PDFWindow		Файл
+Options	FindTextWindow		Параметри
+Fullscreen mode	PDFWindow		Повноекранний режим
+Find text	FindTextWindow		Знайти текст
+Clear	TraceWindow		Очистити
+Print	PrintSettingsWindow		Друк
+Online help…	PDFWindow		Довідка онлайн…
+Enter Password	PasswordWindow		Введіть пароль
+Filename:	FileInfoWindow		Ім’я файлу:
+Embedded name	FileInfoWindow		Вбудоване ім’я
+Copy link	PDFView		Копіювати посилання
+First	PDFWindow		Перша
+Add	PDFWindow		Додати
 Open in new window…	PDFWindow		Відкрити у новому вікні…
+<empty>	AttachmentView		<пусто>
+Preferences…	PDFWindow		Налаштування…
+OK	PDFSearch		OK
+Version	BepdfApplication		Версія
+Delete	PDFView		Видалити
+Zoom (%)	PrintSettingsWindow		Масштаб (%)
+Type	FileInfoWindow		Тип
+Custom zoom factor (%d%%)	PDFWindow		Довільний масштаб (%d%%)
+Add stamp annotation	PDFWindow		Додати штамп
+Abort	PrintingProgressWindow		Перервати
+Align:	AnnotationWindow		Вирівнювання:
+Go to end of document	PDFWindow		Перейти в кінець документа
+Beta	BepdfApplication		Бета
+Auto open	TraceWindow		Автовідкриття
+Back	PDFWindow		Назад
+Pages	PrintSettingsWindow		Сторінки
+Add movie annotation	PDFWindow		Додати відео
+Final	BepdfApplication		Фінал
+Add circle annotation	PDFWindow		Додати окружність
+BePDF printing document: 	PrintingProgressWindow		BePDF друкує документ: 
+Show error messages	PDFWindow		Показати повідомлення про помилки
+Document	FileInfoWindow		Документ
+Width: 	PrintSettingsWindow		Ширина:
+Author:	FileInfoWindow		Автор:
 Add highlight annotation	PDFWindow		Додати виділення
+Add new paragraph text annotation	PDFWindow		Додати новий параграф
+of %d	PDFWindow		з %d
+Security	FileInfoWindow		Безпека
+Denied	FileInfoWindow		Відмовлено
+Save file as	PDFWindow		Зберегти файл як
+Order	PrintSettingsWindow		Порядок
+Properties	PDFView		Властивості
+Add comment text annotation	PDFWindow		Додати коментар
+Description	AttachmentView		Опис
+Add underline annotation	PDFWindow		Додати підкреслення
+BePDF: Launch	PDFView		BePDF: Запуск
+Saving copy of PDF file:	PDFWindow		Збереження копії PDF файлу:
 Page: %d	FindTextWindow		Сторінка: %d
+Page	PDFWindow		Сторінка
+Add squiggly annotation	PDFWindow		Додати хвилясте підреслення
+Annotation	PDFView		Анотація
+Add trapnet annotation	PDFWindow		Додати треппінг
+Producer:	FileInfoWindow		Виробник:
+Keywords:	FileInfoWindow		Ключові слова:
+Forward in page history list	PDFWindow		Вперед по списку історії сторінок
+Page:	PrintingProgressWindow		Сторінка:
+BePDF: Error opening file!	BepdfApplication		BePDF: Помилка відкриття файлу!
+Find next…	PDFWindow		Знайти далі…
+Display	AnnotationWindow		Відображення
+Visit homepage…	PDFWindow		Домашня сторінка…
+Even pages	PrintSettingsWindow		Парні сторінки
+Stop	FindTextWindow		Зупинити
+Print	PDFWindow		Друк
+Add link annotation	PDFWindow		Додати посилання
+ in	PrintSettingsWindow		 в
+Unknown	BepdfApplication		Невідомо
+[link type 'movie' not supported]	PDFView		[тип посилання 'відео' не підтримується]
+Annotation	AnnotationWindow		Анотація
+Bookmark	PDFWindow		Закладка
+Next	PDFWindow		Наступна
+Reverse	PrintSettingsWindow		Зворотний порядок
+Close	BepdfApplication		Закрити
+Page: %d	PrintingProgressWindow		Сторінка: %d
+Select none	PDFWindow		Зняти виділення
+Rotate counter-clockwise	PDFWindow		Обертати проти годинникової стрілки
+Alpha	BepdfApplication		Альфа
+<empty>	OutlinesWindow		<пусто>
+Add key text annotation	PDFWindow		Додати ключ
+Forward	PDFWindow		Вперед
+Size:	AnnotationWindow		Розмір:
+Asian fonts	AnnotationWindow		Азійські шрифти
+Golden Master	BepdfApplication		Золотий Майстер
+Author	AnnotationWindow		Автор
+User fonts	AnnotationWindow		Шрифти користувача
+Zoom out	PDFWindow		Зменшити
+Restore window position and size	AnnotationWindow		Відновити позицію та розмір вікна
+Modified:	FileInfoWindow		Змінений:
+Go to page %d	PDFView		Перейти до сторінки %d
+OK	OutlinesWindow		OK
+Copy selection	PDFWindow		Копіювати виділене
+Annotations:	FileInfoWindow		Анотації:
+Select all	PDFWindow		Виділити все
+PDF file successfully written!	PDFWindow		PDF файл успішно збережений!
+OK	PDFWindow		OK
+Previous	PDFWindow		Попередня
+File info	FileInfoWindow		Інформація про файл
+Search	PDFWindow		Шукати
+Leave annotation editing mode	PDFView		Вийти з режиму анотацій
+Edit	PDFView		Редагувати
+Saving attachment(s):	AttachmentView		Збереження вкладень:
+Leave annotation editing mode	PDFWindow		Вийти з режиму анотацій
+OK	PrintSettingsWindow		OK
+Add free text annotation	PDFWindow		Додати довільний текст
+Open file	PDFWindow		Відкрити файл
+Preferences	AnnotationWindow		Налаштування
+Print settings	PrintSettingsWindow		Параметри друку
+Back in page history list	PDFWindow		Назад по списку історії сторінок
+Find	PDFWindow		Знайти
+Yes	FileInfoWindow		Так
+[unknown link]	PDFView		[невідоме посилання]
+Will take effect at next program launch.	AnnotationWindow		Зміни набудуть чинності при наступному запуску програми.
+Floating	TraceWindow		Плаваючий
+Add help text annotation	PDFWindow		Додати довідку
+Stop	PrintingProgressWindow		Зупинити
+Add popup annotation	PDFWindow		Додати спливаючу виноску
+Show attachments	PDFWindow		Показати вкладення
+Edit	PDFWindow		Редагувати
+Show help…	PDFWindow		Показати довідку…
+Add printer mark annotation	PDFWindow		Додати мітку принтера
+Search backwards	FindTextWindow		Шукати в зворотному напрямку
+Reload	PDFWindow		Перезавантажити
+Add line annotation	PDFWindow		Додати лінію
+Help	PDFWindow		Довідка
+Rotation	PDFWindow		Обертання
+Show document view only	AnnotationWindow		Лише перегляд документа
+Encrypted:	FileInfoWindow		Зашифрований:
+Gray scale	PrintSettingsWindow		Відтінки сірого
+Save file attachment as…	PDFView		Зберегти вкладений файл як…
+Close	PDFWindow		Закрити
+No title	OutlinesWindow		Без назви
+Page	PrintSettingsWindow		Сторінка
+Created:	FileInfoWindow		Створений:
+Title:	AnnotationWindow		Назва:
+Saving file attachment:	PDFView		Збереження вкладеного файлу:
+Open in new window	PDFView		Відкрити у новому вікні
+Height: 	PrintSettingsWindow		Висота: 
+File info…	PDFWindow		Інформація про файл…
+Allowed	FileInfoWindow		Дозволено
+Add paragraph text annotation	PDFWindow		Додати параграф
+Development	BepdfApplication		Розробка
+Linearized:	FileInfoWindow		Лінеаризований:
+No	FileInfoWindow		Ні
+Fit to page	PDFWindow		За розміром сторінки
+Reload file	PDFWindow		Перезавантажити файл
+Document	AnnotationWindow		Документ
+Path:	FileInfoWindow		Шлях:
+Print…	PDFWindow		Друк…
+Copy & paste:	FileInfoWindow		Копіювати і вставити:
+Page %d	PDFWindow		Сторінка %d
+Edit title for bookmark	OutlinesWindow		Редагувати назву закладки
+Version:	FileInfoWindow		Версія:
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Automatic	AnnotationWindow		Автоматично
+Title:	FileInfoWindow		Заголовок:
+Warning	PDFWindow		Увага
+User defined	OutlinesWindow		Визначене користувачем
+Fullscreen	PDFWindow		На весь екран
+Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Мова 'Українська', переклад Олексія Лугіна.
+Save selected attachment to file	AttachmentView		Зберегти виділене вкладення до файлу
+Add note text annotation	PDFWindow		Додати примітку
+Editing:	FileInfoWindow		Редагування:
+User password	PasswordWindow		Пароль користувача
+Find	FindTextWindow		Знайти
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF базується на XPDF %s, %s.
+Could not write PDF file!	PDFWindow		Помилка збереження PDF файлу!
+Ignore case	FindTextWindow		Ігнорувати регістр
+Creator:	FileInfoWindow		Розробник:
+Error	BepdfApplication		Помилка
+Save selected attachments into directory	AttachmentView		Зберегти вибрані вкладення до папки
+Wrong parameter!	PrintSettingsWindow		Неправильний параметр!
+Rotate clockwise	PDFWindow		Обертати за годинниковою стрілкою
 Show all fonts	FileInfoWindow		Показати усі шрифти
