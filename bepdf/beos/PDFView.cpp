@@ -1362,12 +1362,18 @@ PDFView::HandleLink(BPoint point) {
 	char *s;
 	BString pdfFile;
 
+	action = OnLink(point);
 	if (mAnnotation) {
-		ShowAnnotWindow(false);
-		return true;
+		LinkAnnot* link = dynamic_cast<LinkAnnot*>(mAnnotation);
+		if(link == NULL) {
+			ShowAnnotWindow(false);
+			return true;
+		} else {
+			action = link->GetLinkAction();
+		}
 	}
 
-	if ((action = OnLink(point)) != NULL) {
+	if (action != NULL) {
 		// PDFLock lock;
 
 		if (IsLinkToPDF(action, &pdfFile)) {
@@ -1681,7 +1687,13 @@ PDFView::DisplayLink(BPoint point)
 			mLinkAction = NULL;
 			mAnnotation = annot;
 			SetViewCursor(gApp->linkCursor);
-			SetToolTip(B_TRANSLATE("Annotation"));
+			LinkAnnot* link = dynamic_cast<LinkAnnot*>(annot);
+			if(link == NULL) {
+				SetToolTip(B_TRANSLATE("Annotation"));
+			} else {
+				LinkToString(link->GetLinkAction(), &str);
+				SetToolTip( str.String() );
+			}
 			ShowToolTip();
 		}
 		return;

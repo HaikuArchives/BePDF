@@ -589,6 +589,36 @@ void TextAnnot::Print() {
 	fprintf(stderr, "Open: %s\n", IsOpen() ? "true" : "false");
 }
 
+LinkAnnot::LinkAnnot(LinkAnnot* copy)
+	: Annotation(copy),
+	mLinkAction(NULL)
+{
+}
+
+
+LinkAnnot::LinkAnnot(Dict* d)
+	: Annotation(d),
+	mLinkAction(NULL)
+{
+	Object obj;
+
+	// look for destination
+  if (d->lookup("Dest", &obj) && !obj.isNull()) {
+    mLinkAction = LinkAction::parseDest(&obj);
+  // look for action
+  } else {
+    if (d->lookup("A", &obj) && obj.isDict()) {
+      mLinkAction = LinkAction::parseAction(&obj/*, baseURI*/);
+    }
+  }
+  obj.free();
+}
+
+void LinkAnnot::Print() {
+	fprintf(stderr, "Link\n");
+	Annotation::Print();
+}
+
 free_text_justification ToFreeTextJustification(const char* name) {
 	if (strcmp(name, "left") == 0) return left_justify;
 	if (strcmp(name, "centered") == 0) return centered;
@@ -1350,7 +1380,9 @@ Annotations::Annotations(Object* annots, BePDFAcroForm* acroForm)
 						a = new StampAnnot(annot.getDict());
 					} else if (subType.isName("Ink")) {
 						a = new InkAnnot(annot.getDict());
-					} else if (subType.isName("FileAttachment") == 0){
+					} else if (subType.isName("Link")) {
+						a = new LinkAnnot(annot.getDict());
+					} else if (subType.isName("FileAttachment") == 0) {
 						a = new FileAttachmentAnnot(annot.getDict());
 					}
 
