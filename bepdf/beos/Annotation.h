@@ -345,6 +345,22 @@ public:
 	virtual void Print();
 };
 
+class LinkAnnot : public Annotation {
+private:
+	LinkAction			 *mLinkAction;
+
+public:
+	LinkAnnot(LinkAnnot* copy);
+	LinkAnnot(Dict* annot);
+
+	Annotation* Clone() { return new LinkAnnot(this); }
+
+	LinkAction* GetLinkAction()    { return mLinkAction; }
+
+	virtual void Visit(AnnotVisitor* v) { v->DoLink(this); }
+	virtual void Print();
+};
+
 class StyledAnnot : public Annotation {
 private:
 	BorderStyle mStyle;
