@@ -112,16 +112,14 @@ OutlineListItem::~OutlineListItem() {
 
 void OutlineListItem::DrawItem(BView* owner, BRect frame, bool complete)
 {
-	rgb_color kHighlight = {128, 128, 128, 0};
-	rgb_color kWhite = {255, 255, 255, 0};
 	rgb_color color;
 
 	owner->PushState();
 	// select background color
 	if (IsSelected()) {
-		color = kHighlight;
+		color = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
 	} else {
-		color = kWhite;
+		color = ui_color(B_LIST_BACKGROUND_COLOR);
 	}
 	// fill background
 	owner->SetHighColor(color);
