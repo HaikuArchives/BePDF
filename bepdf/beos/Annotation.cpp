@@ -603,15 +603,13 @@ LinkAnnot::LinkAnnot(Dict* d)
 	Object obj;
 
 	// look for destination
-  if (d->lookup("Dest", &obj) && !obj.isNull()) {
-    mLinkAction = LinkAction::parseDest(&obj);
-  // look for action
-  } else {
-    if (d->lookup("A", &obj) && obj.isDict()) {
-      mLinkAction = LinkAction::parseAction(&obj/*, baseURI*/);
-    }
-  }
-  obj.free();
+	if (d->lookup("Dest", &obj) && !obj.isNull()) {
+		mLinkAction = LinkAction::parseDest(&obj);
+	// look for action
+	} else if (d->lookup("A", &obj) && obj.isDict()) {
+		mLinkAction = LinkAction::parseAction(&obj/*, baseURI*/);
+	}
+	obj.free();
 }
 
 void LinkAnnot::Print() {
