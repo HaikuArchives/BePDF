@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	1689344215
+1	English	application/x-vnd.mp-xpdf	1765081836
 Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file isn't supported yet!
 Selection rectangle	AnnotationWindow		Selection rectangle
 About BePDF…	PDFWindow		About BePDF…
@@ -40,8 +40,8 @@ Date:	AnnotationWindow		Date:
 Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Show toolbar, statusbar and scrollbars, too
 Show page list	PDFWindow		Show page list
 current	AnnotationWindow		current
-OK	PasswordWindow		OK
 Name	FileInfoWindow		Name
+OK	PasswordWindow		OK
 Document	OutlinesWindow		Document
 Hide side bar	PDFWindow		Hide side bar
 Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.
@@ -238,7 +238,6 @@ Title:	FileInfoWindow		Title:
 Warning	PDFWindow		Warning
 User defined	OutlinesWindow		User defined
 Fullscreen	PDFWindow		Fullscreen
-Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Language 'English', translated by the BePDF authors.
 Save selected attachment to file	AttachmentView		Save selected attachment to file
 Add note text annotation	PDFWindow		Add note text annotation
 Editing:	FileInfoWindow		Editing:

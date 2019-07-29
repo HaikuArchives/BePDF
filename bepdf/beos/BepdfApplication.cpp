@@ -364,11 +364,7 @@ void BepdfApplication::AboutRequested()
 	str += "\n";
 
 	str += bePDFCopyright;
-
 	str += "\n";
-	str += B_TRANSLATE_COMMENT("Language 'English', translated by the BePDF authors.",
-		"Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.");
-	str += "\n\n";
 
 	str += BString().SetToFormat(B_TRANSLATE_COMMENT("BePDF is based on XPDF %s, %s.", "XPDF version, copyright"),
 		xpdfVersion, xpdfCopyright);
