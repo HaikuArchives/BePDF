@@ -4,7 +4,7 @@ This is a PDF reader that is based on [XPDF](http://www.foolabs.com/xpdf/) 4.0. 
 
 ![BePDF Screenshoot](BePDF.png "BePDF")
 
-List of Features
+### List of features:
 
   -  Viewing of encrypted and password protected PDF 1.7 files.
   -  Opens file dropped on window.
