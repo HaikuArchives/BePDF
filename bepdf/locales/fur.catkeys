@@ -1,0 +1,255 @@
+1	Friulian	application/x-vnd.mp-xpdf	1689344215
+Close	BepdfApplication		Siere
+Error	BepdfApplication		Erôr
+Beta	BepdfApplication		Beta
+Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Lenghe furlane, voltât di Fabio Tomat.
+Gamma	BepdfApplication		Gamma
+Golden Master	BepdfApplication		Golden Master
+BePDF: Error opening file!	BepdfApplication		BePDF: Erôr tal vierzi il file!
+Alpha	BepdfApplication		Alfa
+Version	BepdfApplication		Version
+Development	BepdfApplication		Disvilup
+Unknown	BepdfApplication		No cognossût
+Final	BepdfApplication		Finâl
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF al è basât su XPDF %s, %s.
+Show bookmarks	PDFWindow		Mostre segnelibris
+of %d	PDFWindow		di %d
+Zoom in	PDFWindow		Ingrandìs
+About BePDF…	PDFWindow		Informazions su BePDF…
+Go to next page	PDFWindow		Va ae prossime pagjine
+View	PDFWindow		Visualize
+Show annotation tool bar	PDFWindow		Mostre sbare dai struments des notis
+Select none	PDFWindow		No sta selezionâ nie
+Add trapnet annotation	PDFWindow		Zonte notis 'trapnet'
+Add underline annotation	PDFWindow		Zonte note sotlineade
+Show help…	PDFWindow		Mostre jutori…
+Help	PDFWindow		Jutori
+Add popup annotation	PDFWindow		Zonte note di popup
+Find…	PDFWindow		Cjate…
+Reload	PDFWindow		Torne cjarie
+First	PDFWindow		Prin
+Fit to page	PDFWindow		Jemple la pagjine
+Add key text annotation	PDFWindow		Zonte note di test clâf
+File	PDFWindow		File
+PDF file successfully written!	PDFWindow		File PDF scrit cun sucès!
+Warning	PDFWindow		Avertiment
+Zoom out	PDFWindow		Impiçulìs
+Show error messages	PDFWindow		Mostre messaçs di erôr
+Add movie annotation	PDFWindow		Zonte note di animazion
+Open…	PDFWindow		Vierç…
+Add widget annotation	PDFWindow		Zonte note di widget
+Add insert text annotation	PDFWindow		Zonte note di test inserît
+Find	PDFWindow		Cjate
+Add ink annotation	PDFWindow		Zonte note di ingjustri
+Go to start of document	PDFWindow		Va al inizi dal document
+Go to previous page	PDFWindow		Va ae pagjine precedente
+Save as…	PDFWindow		Salve come…
+Reload file	PDFWindow		Torne cjarie il file
+Find next…	PDFWindow		Cjate il prossim…
+Fullscreen mode	PDFWindow		Modalitât plen visôr
+Show page list	PDFWindow		Mostre liste des pagjinis
+Back	PDFWindow		Indaûr
+Add note text annotation	PDFWindow		Zonte note di note testuâl
+Close	PDFWindow		Siere
+Add printer mark annotation	PDFWindow		Zonte note di segn di stampe
+Go forward 10 pages	PDFWindow		Va indenant di 10 pagjinis
+Page %d	PDFWindow		Pagjine %d
+Forward in page history list	PDFWindow		Indenant te liste de cronologjie des pagjinis
+Add new paragraph text annotation	PDFWindow		Zonte note di test di gnûf paragraf
+Fullscreen	PDFWindow		Plen visôr
+Add sound annotation	PDFWindow		Zonte note sonore
+Add comment text annotation	PDFWindow		Zonte note di coment testuâl
+Page	PDFWindow		Pagjine
+File info…	PDFWindow		Informazions file…
+Page setup…	PDFWindow		Impostazions pagjine…
+Print	PDFWindow		Stampe
+Issue tracker…	PDFWindow		Inseguiment erôrs…
+Preferences…	PDFWindow		Preferencis…
+Rotation	PDFWindow		Rotazion
+Last	PDFWindow		Ultin
+Add stamp annotation	PDFWindow		Zonte note di stampe
+Add squiggly annotation	PDFWindow		Zonte note sotlineade a ondis
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		No si pues sorescrivi un file PDF che al è ancjemò viert in BePDF! Par plasê sielç un altri non pal file.
+Copy selection	PDFWindow		Copie selezion
+Add free text annotation	PDFWindow		Zonte note di test libar
+Next	PDFWindow		Prossim
+Forward	PDFWindow		Indenant
+Hide side bar	PDFWindow		Plat sbare laterâl
+Jump to page	PDFWindow		Va ae pagjine
+Add line annotation	PDFWindow		Zonte note di linie
+Add circle annotation	PDFWindow		Zonte note circolâr
+Save file as	PDFWindow		Salve file come
+Show annotation toolbar	PDFWindow		Mostre sbare struments notis
+Add link annotation	PDFWindow		Zonte note di colegament
+Previous	PDFWindow		Precedent
+Leave annotation editing mode	PDFWindow		Lasse modalitât modifiche notis
+Rotate clockwise	PDFWindow		Volte in sens orari
+Find next	PDFWindow		Cjate prossim
+Add strikeout annotation	PDFWindow		Zonte note stricade
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Bookmark	PDFWindow		Segnelibri
+Could not write PDF file!	PDFWindow		Impussibil scrivi il file PDF!
+OK	PDFWindow		Va ben
+Add	PDFWindow		Zonte
+Edit	PDFWindow		Modifiche
+Online help…	PDFWindow		Jutori online…
+Quit	PDFWindow		Jes
+Back in page history list	PDFWindow		Indaûr te liste de cronologjie des pagjinis
+Open file	PDFWindow		Vierç file
+Visit homepage…	PDFWindow		Visite pagjine iniziâl…
+Show attachments	PDFWindow		Mostre alegâts
+Add paragraph text annotation	PDFWindow		Zonte note di paragraf testuâl
+Go back 10 pages	PDFWindow		Va indaûr di 10 pagjinis
+Print…	PDFWindow		Stampe…
+Go to end of document	PDFWindow		Va ae fin dal document
+Rotate counter-clockwise	PDFWindow		Volte in sens anti-orari
+Delete	PDFWindow		Elimine
+Select all	PDFWindow		Selezione dut
+Add square annotation	PDFWindow		Zonte note di cuadrât
+Fit to page width	PDFWindow		Jemple la pagjine in largjece
+Zoom	PDFWindow		Ingrandiment
+Search	PDFWindow		Cîr
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		La modifiche des notis intun PDF cifrât no je ancjemò supuartade!
+Saving copy of PDF file:	PDFWindow		Salvament copie dal file PDF:
+Add help text annotation	PDFWindow		Zonte note di test di jutori
+Custom zoom factor (%d%%)	PDFWindow		Fatôr di ingrandiment personalizât (%d%%)
+Open in new window…	PDFWindow		Vierç intun gnûf barcon…
+Add highlight annotation	PDFWindow		Zonte note evidenziade
+Add file attachment annotation	PDFWindow		Zonte note di alegât di file
+Go to page %d	PDFView		Va ae pagjine %d
+BePDF: Launch	PDFView		BePDF: Invie
+Copy link	PDFView		Copie colegament
+Saving file attachment:	PDFView		Salvament alegât dal file:
+Open in new window	PDFView		Vierç intun gnûf barcon
+Save file attachment as…	PDFView		Salve la zonte dal file come…
+[link type 'movie' not supported]	PDFView		[gjenar di colegament 'movie' no supuartât]
+Cancel	PDFView		Anule
+[unknown link]	PDFView		[colegament no cognossût]
+Execute the command:	PDFView		Eseguìs il comant:
+Properties	PDFView		Proprietâts
+Unknown link action type: '%s'	PDFView		Gjenar di azion dal colegament no cognossût: '%s'
+Annotation	PDFView		Note
+Delete	PDFView		Elimine
+Leave annotation editing mode	PDFView		Lasse la modalitât di modifiche notis
+[internal link]	PDFView		[colegament interni]
+OK	PDFView		Va ben
+BePDF reading file: 	PDFView		BePDF leture file:
+Edit	PDFView		Modifiche
+Keywords:	FileInfoWindow		Peraulis clâf:
+Subject:	FileInfoWindow		Ogjet:
+Encrypted:	FileInfoWindow		Cifrât:
+Type	FileInfoWindow		Gjenar
+Abort	FileInfoWindow		Cancele
+Denied	FileInfoWindow		Dineât
+Creator:	FileInfoWindow		Creadôr:
+Document	FileInfoWindow		Document
+Fonts of this page	FileInfoWindow		Caratars di cheste pagjine
+Path:	FileInfoWindow		Percors:
+Name	FileInfoWindow		Non
+Filename:	FileInfoWindow		Non file:
+Yes	FileInfoWindow		Sì
+Annotations:	FileInfoWindow		Notis:
+Producer:	FileInfoWindow		Produtôr:
+Allowed	FileInfoWindow		Permetût
+Copy & paste:	FileInfoWindow		Copie e tache:
+Modified:	FileInfoWindow		Modificât:
+Editing:	FileInfoWindow		Modifiche:
+Title:	FileInfoWindow		Titul:
+Created:	FileInfoWindow		Creât:
+Linearized:	FileInfoWindow		Linearizât:
+Version:	FileInfoWindow		Version:
+No	FileInfoWindow		No
+Author:	FileInfoWindow		Autôr:
+Security	FileInfoWindow		Sigurece
+Embedded name	FileInfoWindow		Non incorporât
+Printing:	FileInfoWindow		Stampe:
+File info	FileInfoWindow		Informazions file
+Show all fonts	FileInfoWindow		Mostre ducj i caratars
+All pages	PrintSettingsWindow		Dutis lis pagjinis
+ in	PrintSettingsWindow		in
+Pages	PrintSettingsWindow		Pagjinis
+Page	PrintSettingsWindow		Pagjine
+Max. printer resolution	PrintSettingsWindow		Risoluzion stampadore massime
+DPI	PrintSettingsWindow		DPI
+Zoom (%)	PrintSettingsWindow		Ingrandiment (%)
+Gray scale	PrintSettingsWindow		Scjale di grîs
+Color	PrintSettingsWindow		Colôr
+Normal	PrintSettingsWindow		Normâl
+Rotation	PrintSettingsWindow		Rotazion
+Print settings	PrintSettingsWindow		Impostazions di stampe
+Print	PrintSettingsWindow		Stampe
+Reverse	PrintSettingsWindow		Contrari
+Odd pages	PrintSettingsWindow		Pagjinis dispar
+Zoom must be between 25 and 400!	PrintSettingsWindow		L'ingrandiment al scugne jessi tra 25 e 400!
+Mode	PrintSettingsWindow		Modalitât
+Order	PrintSettingsWindow		Ordin
+Height: 	PrintSettingsWindow		Altece:
+Width: 	PrintSettingsWindow		Largjece:
+OK	PrintSettingsWindow		Va ben
+Even pages	PrintSettingsWindow		Pagjinis pâr
+Wrong parameter!	PrintSettingsWindow		Parametri sbaliât!
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Mostre ancje la sbare dai struments, chê di stât e chês di scoriment
+Fullscreen mode	AnnotationWindow		Modalitât plen visôr
+Will take effect at next program launch.	AnnotationWindow		Si varan i efiets al prossim inviament di program.
+Filled rectangle	AnnotationWindow		Retangul jemplât
+Align:	AnnotationWindow		Met in rie:
+Title:	AnnotationWindow		Titul:
+User fonts	AnnotationWindow		Caratars dal utent
+Asian fonts	AnnotationWindow		Caratars asiatics
+Restore window position and size	AnnotationWindow		Ripristine posizion e dimension dal barcon
+Author	AnnotationWindow		Autôr
+Open in workspace:	AnnotationWindow		Vierç tal spazi di lavôr:
+Preferences	AnnotationWindow		Preferencis
+Show document view only	AnnotationWindow		Mostre dome la viodude dal document
+Automatic	AnnotationWindow		Automatic
+Font:	AnnotationWindow		Caratar:
+Restore page number	AnnotationWindow		Ripristine numar di pagjine
+System fonts	AnnotationWindow		Caratars di sisteme
+Stroked rectangle	AnnotationWindow		Retangul lizêr
+current	AnnotationWindow		atuâl
+Annotation	AnnotationWindow		Note
+Selection rectangle	AnnotationWindow		Retangul di selezion
+Display	AnnotationWindow		Visualize
+Document	AnnotationWindow		Document
+Size:	AnnotationWindow		Dimension:
+Date:	AnnotationWindow		Date:
+Invert vertical mouse scrolling	AnnotationWindow		Invertìs scoriment verticâl dal mouse
+<empty>	OutlinesWindow		<vueit>
+Document	OutlinesWindow		Document
+Edit title for bookmark	OutlinesWindow		Modifiche titul pal segnelibri
+No title	OutlinesWindow		Nissun titul
+User defined	OutlinesWindow		Definît dal utent
+OK	OutlinesWindow		Va ben
+BePDF printing document: 	PrintingProgressWindow		Stampe di document BePDF:
+BePDF printing	PrintingProgressWindow		Stampe BePDF
+Stop	PrintingProgressWindow		Ferme
+Abort	PrintingProgressWindow		Interomp
+Page:	PrintingProgressWindow		Pagjine:
+Page: %d	PrintingProgressWindow		Pagjine: %d
+Clear	TraceWindow		Nete
+Auto open	TraceWindow		Auto-vierç
+Floating	TraceWindow		Flutuant
+Error messages	TraceWindow		Messaçs di erôr
+Options	FindTextWindow		Opzions
+Ignore case	FindTextWindow		Ignore maiusculis/minusculis
+Page:	FindTextWindow		Pagjine:
+Find: 	FindTextWindow		Cjate:
+Stop	FindTextWindow		Ferme
+Find	FindTextWindow		Cjate
+Find text	FindTextWindow		Cjate test
+Search backwards	FindTextWindow		Cîr indaûr
+Page: %d	FindTextWindow		Pagjine: %d
+Save selected attachments into directory	AttachmentView		Salve lis zontis selezionadis inte cartele
+File name	AttachmentView		Non dal file
+Save attachment(s) as	AttachmentView		Salve alegât(s) come
+Saving attachment(s):	AttachmentView		Salvament alegât(s):
+Save selected attachment to file	AttachmentView		Salve la zonte selezionade sul file
+Description	AttachmentView		Descrizion
+<empty>	AttachmentView		<vueit>
+Search string not found.	PDFSearch		Stringhe di ricercje no cjatade.
+OK	PDFSearch		Va ben
+BePDF status	StatusWindow		Stât di BePDF
+User password	PasswordWindow		Password utent
+Enter Password	PasswordWindow		Inserìs Password
+Owner password	PasswordWindow		Password proprietari
+OK	PasswordWindow		Va ben

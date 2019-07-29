@@ -1,255 +1,255 @@
-1	English	application/x-vnd.mp-xpdf	1689344215
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		A edição de anotações num ficheiro PDF encrostado ainda não é suportada!
-Selection rectangle	AnnotationWindow		Retângulo de seleção
-About BePDF…	PDFWindow		Acerca do BePDF…
-Cancel	PDFView		Cancelar
-Go to previous page	PDFWindow		Retroceder para a página anterior
-Subject:	FileInfoWindow		Assunto:
-Filled rectangle	AnnotationWindow		Retângulo com preenchimento
-Add strikeout annotation	PDFWindow		Adicionar anotação de rasurado
-Owner password	PasswordWindow		Palavra-passe do proprietário
-Add insert text annotation	PDFWindow		Adicionar inserção de texto
-Delete	PDFWindow		Eliminar
-Color	PrintSettingsWindow		Cores
-View	PDFWindow		Visualização
-Search string not found.	PDFSearch		Texto de pesquisa não encontrado.
-Normal	PrintSettingsWindow		Normal
-System fonts	AnnotationWindow		Tipos de letra do sistema
-Add widget annotation	PDFWindow		Adicionar anotação de widget
-Zoom in	PDFWindow		Ampliar
-Unknown link action type: '%s'	PDFView		Tipo de ação de ligação desconhecido: '%s'
-Page:	FindTextWindow		Página:
-Rotation	PrintSettingsWindow		Rodar
-Gamma	BepdfApplication		Gama
-Error messages	TraceWindow		Mensagens de erro
-Jump to page	PDFWindow		Saltar para a página
-Fullscreen mode	AnnotationWindow		Modo de ecrã completo
-BePDF printing	PrintingProgressWindow		BePDF a imprimir
-BePDF status	StatusWindow		Estado do BePDF
-Mode	PrintSettingsWindow		Modo
-Save as…	PDFWindow		Guardar como…
-Execute the command:	PDFView		Executar o comando:
-Issue tracker…	PDFWindow		Reportar um problema…
-Printing:	FileInfoWindow		Imprimir:
-Font:	AnnotationWindow		Tipo de letra:
-Zoom must be between 25 and 400!	PrintSettingsWindow		A ampliação deve ser um valor entre 25 e 400%!
-Open…	PDFWindow		Abrir…
-Save attachment(s) as	AttachmentView		Guardar anexo(s) como
-OK	PDFView		OK
-Date:	AnnotationWindow		Data:
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Mostrar também as barras de ferramentas, de estado e de deslocamento
-Show page list	PDFWindow		Mostrar lista de páginas
-current	AnnotationWindow		atual
-OK	PasswordWindow		OK
-Name	FileInfoWindow		Nome
-Document	OutlinesWindow		Documento
-Hide side bar	PDFWindow		Ocultar barra lateral
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Não é possível reescrever um ficheiro PDF que esteja aberto no BePDF! Por favor, escolha outro nome de ficheiro.
-Invert vertical mouse scrolling	AnnotationWindow		Inverter deslocamento vertical do rato
-Page setup…	PDFWindow		Configurar página…
-Add ink annotation	PDFWindow		Adicionar anotação de tinta
-Stroked rectangle	AnnotationWindow		Contorno do retângulo
-Find: 	FindTextWindow		Procurar:
-Zoom	PDFWindow		Ampliação
-Open in workspace:	AnnotationWindow		Abrir em área de trabalho:
-BePDF reading file: 	PDFView		BePDF a ler o ficheiro:
-Go to next page	PDFWindow		Avançar para a página seguinte
-Add square annotation	PDFWindow		Adicionar anotação de quadrado
-[internal link]	PDFView		[ligação interna]
-Restore page number	AnnotationWindow		Restaurar número de página
-Fonts of this page	FileInfoWindow		Tipos de letra desta página
-Last	PDFWindow		Última
-Abort	FileInfoWindow		Cancelar
-Find next	PDFWindow		Procurar seguinte
-All pages	PrintSettingsWindow		Todas as páginas
-Show annotation toolbar	PDFWindow		Mostrar a barra de ferramentas de anotação
-File name	AttachmentView		Nome do ficheiro
-Go to start of document	PDFWindow		Regressar ao início do documento
-Go back 10 pages	PDFWindow		Retroceder 10 páginas
-Go forward 10 pages	PDFWindow		Avançar 10 páginas
-Add file attachment annotation	PDFWindow		Adicionar ficheiro como anexo
-Show annotation tool bar	PDFWindow		Mostrar a barra de ferramentas de anotação
-Fit to page width	PDFWindow		Ajustar à largura da página
-DPI	PrintSettingsWindow		DPI
-Find…	PDFWindow		Procurar…
-Odd pages	PrintSettingsWindow		Páginas ímpares
-Add sound annotation	PDFWindow		Adicionar anotação de som
-Show bookmarks	PDFWindow		Mostrar marcadores
-Max. printer resolution	PrintSettingsWindow		Resolução máx. da impressora
-Quit	PDFWindow		Sair
-File	PDFWindow		Ficheiro
-Options	FindTextWindow		Opções
-Fullscreen mode	PDFWindow		Modo de ecrã completo
-Find text	FindTextWindow		Procurar seguinte
-Clear	TraceWindow		Limpar
-Print	PrintSettingsWindow		Imprimir
-Online help…	PDFWindow		Ajuda online…
-Enter Password	PasswordWindow		Introduzir palavra-passe
-Filename:	FileInfoWindow		Nome do ficheiro:
-Embedded name	FileInfoWindow		Nome incorporado
-Copy link	PDFView		Copiar ligação
-First	PDFWindow		Primeira
-Add	PDFWindow		Adicionar
-Open in new window…	PDFWindow		Abrir em nova janela…
-<empty>	AttachmentView		<vazio>
-Preferences…	PDFWindow		Preferências…
-OK	PDFSearch		OK
-Version	BepdfApplication		Versão
-Delete	PDFView		Eliminar
-Zoom (%)	PrintSettingsWindow		Ampliação (%)
-Type	FileInfoWindow		Tipo
-Custom zoom factor (%d%%)	PDFWindow		Ampliação personalizada (%d%%)
-Add stamp annotation	PDFWindow		Adicionar anotação de carimbo
-Abort	PrintingProgressWindow		Cancelar
-Align:	AnnotationWindow		Alinhar:
-Go to end of document	PDFWindow		Avançar para o fim do documento
-Beta	BepdfApplication		Beta
-Auto open	TraceWindow		Abrir automaticamente
-Back	PDFWindow		Retroceder
-Pages	PrintSettingsWindow		Páginas
-Add movie annotation	PDFWindow		Adicionar filme
-Final	BepdfApplication		Final
-Add circle annotation	PDFWindow		Adicionar círculo
-BePDF printing document: 	PrintingProgressWindow		O BePDF está a imprimir o documento:
-Show error messages	PDFWindow		Mostrar mensagens de erro
-Document	FileInfoWindow		Documento
-Width: 	PrintSettingsWindow		Largura:
-Author:	FileInfoWindow		Autor:
-Add highlight annotation	PDFWindow		Adicionar realce
-Add new paragraph text annotation	PDFWindow		Adicionar anotação de novo parágrafo
-of %d	PDFWindow		de %d
-Security	FileInfoWindow		Segurança
-Denied	FileInfoWindow		Não autorizado
-Save file as	PDFWindow		Guardar ficheiro como
-Order	PrintSettingsWindow		Ordem
-Properties	PDFView		Propriedades
-Add comment text annotation	PDFWindow		Adicionar comentário de texto
-Description	AttachmentView		Descrição
-Add underline annotation	PDFWindow		Adicionar anotação de sublinhado
-BePDF: Launch	PDFView		BePDF: Iniciar
-Saving copy of PDF file:	PDFWindow		A guardar uma cópia do ficheiro PDF:
-Page: %d	FindTextWindow		Página: %d
-Page	PDFWindow		Página
-Add squiggly annotation	PDFWindow		Adicionar anotação de traço ondulado
-Annotation	PDFView		Anotação
-Add trapnet annotation	PDFWindow		Adicionar anotação de trapnet
-Producer:	FileInfoWindow		Produtor:
-Keywords:	FileInfoWindow		Palavras-chave:
-Forward in page history list	PDFWindow		Avançar no histórico de páginas
-Page:	PrintingProgressWindow		Página:
-BePDF: Error opening file!	BepdfApplication		BePDF: Erro ao abrir o ficheiro!
-Find next…	PDFWindow		Procurar seguinte…
-Display	AnnotationWindow		Mostrar
-Visit homepage…	PDFWindow		Visitar página…
-Even pages	PrintSettingsWindow		Páginas pares
-Stop	FindTextWindow		Parar
-Print	PDFWindow		Imprimir
-Add link annotation	PDFWindow		Adicionar ligação
- in	PrintSettingsWindow		pol.
-Unknown	BepdfApplication		Desconhecido
-[link type 'movie' not supported]	PDFView		[ligação do tipo 'filme' não suportada]
-Annotation	AnnotationWindow		Anotação
-Bookmark	PDFWindow		Marcador
-Next	PDFWindow		Seguinte
-Reverse	PrintSettingsWindow		Inversa
+1	Portuguese	application/x-vnd.mp-xpdf	1689344215
 Close	BepdfApplication		Fechar
-Page: %d	PrintingProgressWindow		Página: %d
-Select none	PDFWindow		Anular a seleção
-Rotate counter-clockwise	PDFWindow		Rodar no sentido contrário ao dos ponteiros do relógio
-Alpha	BepdfApplication		Alfa
-<empty>	OutlinesWindow		<vazio>
-Add key text annotation	PDFWindow		Adicionar texto chave
-Forward	PDFWindow		Avançar
-Size:	AnnotationWindow		Tamanho:
-Asian fonts	AnnotationWindow		Tipos de letra asiáticos
+Error	BepdfApplication		Erro
+Beta	BepdfApplication		Beta
+Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Língua 'Inglês', traduzido pelos autores do BePDF.
+Gamma	BepdfApplication		Gama
 Golden Master	BepdfApplication		Golden Master
-Author	AnnotationWindow		Autor
-User fonts	AnnotationWindow		Tipos de letra do utilizador
-Zoom out	PDFWindow		Reduzir
-Restore window position and size	AnnotationWindow		Restaurar posição e tamanho da janela
-Modified:	FileInfoWindow		Modificado:
-Go to page %d	PDFView		Ir para a página %d
-OK	OutlinesWindow		OK
-Copy selection	PDFWindow		Copiar seleção
-Annotations:	FileInfoWindow		Anotações:
-Select all	PDFWindow		Selecionar tudo
-PDF file successfully written!	PDFWindow		Ficheiro PDF escrito com sucesso!
-OK	PDFWindow		OK
-Previous	PDFWindow		Anterior
-File info	FileInfoWindow		Informação do ficheiro
-Search	PDFWindow		Procura
-Leave annotation editing mode	PDFView		Sair do modo de edição de anotações
-Edit	PDFView		Editar
-Saving attachment(s):	AttachmentView		A guardar anexo(s):
-Leave annotation editing mode	PDFWindow		Sair do modo de edição de anotações
-OK	PrintSettingsWindow		OK
-Add free text annotation	PDFWindow		Adicionar texto livre
-Open file	PDFWindow		Abrir ficheiro
-Preferences	AnnotationWindow		Preferências
-Print settings	PrintSettingsWindow		Definições de impressão
-Back in page history list	PDFWindow		Retroceder no histórico de páginas
-Find	PDFWindow		Procurar
-Yes	FileInfoWindow		Sim
-[unknown link]	PDFView		[ligação desconhecida]
-Will take effect at next program launch.	AnnotationWindow		As alterações terão efeito quando esta aplicação for iniciada novamente.
-Floating	TraceWindow		Painel flutuante
-Add help text annotation	PDFWindow		Adicionar texto de ajuda
-Stop	PrintingProgressWindow		Parar
-Add popup annotation	PDFWindow		Adicionar anotação de "popup"
-Show attachments	PDFWindow		Mostrar anexos
-Edit	PDFWindow		Editar
+BePDF: Error opening file!	BepdfApplication		BePDF: Erro ao abrir o ficheiro!
+Alpha	BepdfApplication		Alfa
+Version	BepdfApplication		Versão
+Development	BepdfApplication		Desenvolvimento
+Unknown	BepdfApplication		Desconhecido
+Final	BepdfApplication		Final
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	O BePDF é baseado no XPDF %s, %s.
+Show bookmarks	PDFWindow		Mostrar marcadores
+of %d	PDFWindow		de %d
+Zoom in	PDFWindow		Ampliar
+About BePDF…	PDFWindow		Acerca do BePDF…
+Go to next page	PDFWindow		Avançar para a página seguinte
+View	PDFWindow		Visualização
+Show annotation tool bar	PDFWindow		Mostrar a barra de ferramentas de anotação
+Select none	PDFWindow		Anular a seleção
+Add trapnet annotation	PDFWindow		Adicionar anotação de trapnet
+Add underline annotation	PDFWindow		Adicionar anotação de sublinhado
 Show help…	PDFWindow		Mostrar ajuda…
-Add printer mark annotation	PDFWindow		Adicionar anotação de marca de impressora
-Search backwards	FindTextWindow		Procurar para trás
-Reload	PDFWindow		Recarregar
-Add line annotation	PDFWindow		Adicionar linha
 Help	PDFWindow		Ajuda
-Rotation	PDFWindow		Rodar
-Show document view only	AnnotationWindow		Mostrar apenas o documento
-Encrypted:	FileInfoWindow		Encriptado:
-Gray scale	PrintSettingsWindow		Escala de cinzentos
-Save file attachment as…	PDFView		Guardar anexo como…
+Add popup annotation	PDFWindow		Adicionar anotação de "popup"
+Find…	PDFWindow		Procurar…
+Reload	PDFWindow		Recarregar
+First	PDFWindow		Primeira
+Fit to page	PDFWindow		Ajustar à página
+Add key text annotation	PDFWindow		Adicionar texto chave
+File	PDFWindow		Ficheiro
+PDF file successfully written!	PDFWindow		Ficheiro PDF escrito com sucesso!
+Warning	PDFWindow		Atenção
+Zoom out	PDFWindow		Reduzir
+Show error messages	PDFWindow		Mostrar mensagens de erro
+Add movie annotation	PDFWindow		Adicionar filme
+Open…	PDFWindow		Abrir…
+Add widget annotation	PDFWindow		Adicionar anotação de widget
+Add insert text annotation	PDFWindow		Adicionar inserção de texto
+Find	PDFWindow		Procurar
+Add ink annotation	PDFWindow		Adicionar anotação de tinta
+Go to start of document	PDFWindow		Regressar ao início do documento
+Go to previous page	PDFWindow		Retroceder para a página anterior
+Save as…	PDFWindow		Guardar como…
+Reload file	PDFWindow		Recarregar ficheiro
+Find next…	PDFWindow		Procurar seguinte…
+Fullscreen mode	PDFWindow		Modo de ecrã completo
+Show page list	PDFWindow		Mostrar lista de páginas
+Back	PDFWindow		Retroceder
+Add note text annotation	PDFWindow		Adicionar anotação de nota de texto
 Close	PDFWindow		Fechar
-No title	OutlinesWindow		Sem título
-Page	PrintSettingsWindow		Página
-Created:	FileInfoWindow		Criado:
-Title:	AnnotationWindow		Título:
+Add printer mark annotation	PDFWindow		Adicionar anotação de marca de impressora
+Go forward 10 pages	PDFWindow		Avançar 10 páginas
+Page %d	PDFWindow		Página %d
+Forward in page history list	PDFWindow		Avançar no histórico de páginas
+Add new paragraph text annotation	PDFWindow		Adicionar anotação de novo parágrafo
+Fullscreen	PDFWindow		Ecrã completo
+Add sound annotation	PDFWindow		Adicionar anotação de som
+Add comment text annotation	PDFWindow		Adicionar comentário de texto
+Page	PDFWindow		Página
+File info…	PDFWindow		Informação sobre o ficheiro…
+Page setup…	PDFWindow		Configurar página…
+Print	PDFWindow		Imprimir
+Issue tracker…	PDFWindow		Reportar um problema…
+Preferences…	PDFWindow		Preferências…
+Rotation	PDFWindow		Rodar
+Last	PDFWindow		Última
+Add stamp annotation	PDFWindow		Adicionar anotação de carimbo
+Add squiggly annotation	PDFWindow		Adicionar anotação de traço ondulado
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Não é possível reescrever um ficheiro PDF que esteja aberto no BePDF! Por favor, escolha outro nome de ficheiro.
+Copy selection	PDFWindow		Copiar seleção
+Add free text annotation	PDFWindow		Adicionar texto livre
+Next	PDFWindow		Seguinte
+Forward	PDFWindow		Avançar
+Hide side bar	PDFWindow		Ocultar barra lateral
+Jump to page	PDFWindow		Saltar para a página
+Add line annotation	PDFWindow		Adicionar linha
+Add circle annotation	PDFWindow		Adicionar círculo
+Save file as	PDFWindow		Guardar ficheiro como
+Show annotation toolbar	PDFWindow		Mostrar a barra de ferramentas de anotação
+Add link annotation	PDFWindow		Adicionar ligação
+Previous	PDFWindow		Anterior
+Leave annotation editing mode	PDFWindow		Sair do modo de edição de anotações
+Rotate clockwise	PDFWindow		Rodar no sentido dos ponteiros do relógio
+Find next	PDFWindow		Procurar seguinte
+Add strikeout annotation	PDFWindow		Adicionar anotação de rasurado
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Bookmark	PDFWindow		Marcador
+Could not write PDF file!	PDFWindow		Não foi possível escrever o ficheiro PDF!
+OK	PDFWindow		OK
+Add	PDFWindow		Adicionar
+Edit	PDFWindow		Editar
+Online help…	PDFWindow		Ajuda online…
+Quit	PDFWindow		Sair
+Back in page history list	PDFWindow		Retroceder no histórico de páginas
+Open file	PDFWindow		Abrir ficheiro
+Visit homepage…	PDFWindow		Visitar página…
+Show attachments	PDFWindow		Mostrar anexos
+Add paragraph text annotation	PDFWindow		Adicionar anotação de parágrafo
+Go back 10 pages	PDFWindow		Retroceder 10 páginas
+Print…	PDFWindow		Imprimir…
+Go to end of document	PDFWindow		Avançar para o fim do documento
+Rotate counter-clockwise	PDFWindow		Rodar no sentido contrário ao dos ponteiros do relógio
+Delete	PDFWindow		Eliminar
+Select all	PDFWindow		Selecionar tudo
+Add square annotation	PDFWindow		Adicionar anotação de quadrado
+Fit to page width	PDFWindow		Ajustar à largura da página
+Zoom	PDFWindow		Ampliação
+Search	PDFWindow		Procura
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		A edição de anotações num ficheiro PDF encrostado ainda não é suportada!
+Saving copy of PDF file:	PDFWindow		A guardar uma cópia do ficheiro PDF:
+Add help text annotation	PDFWindow		Adicionar texto de ajuda
+Custom zoom factor (%d%%)	PDFWindow		Ampliação personalizada (%d%%)
+Open in new window…	PDFWindow		Abrir em nova janela…
+Add highlight annotation	PDFWindow		Adicionar realce
+Add file attachment annotation	PDFWindow		Adicionar ficheiro como anexo
+Go to page %d	PDFView		Ir para a página %d
+BePDF: Launch	PDFView		BePDF: Iniciar
+Copy link	PDFView		Copiar ligação
 Saving file attachment:	PDFView		A guardar anexo:
 Open in new window	PDFView		Abrir em nova janela
-Height: 	PrintSettingsWindow		Altura:
-File info…	PDFWindow		Informação sobre o ficheiro…
-Allowed	FileInfoWindow		Permitido
-Add paragraph text annotation	PDFWindow		Adicionar anotação de parágrafo
-Development	BepdfApplication		Desenvolvimento
-Linearized:	FileInfoWindow		Linearizado:
-No	FileInfoWindow		Não
-Fit to page	PDFWindow		Ajustar à página
-Reload file	PDFWindow		Recarregar ficheiro
-Document	AnnotationWindow		Documento
-Path:	FileInfoWindow		Caminho:
-Print…	PDFWindow		Imprimir…
-Copy & paste:	FileInfoWindow		Copiar e colar:
-Page %d	PDFWindow		Página %d
-Edit title for bookmark	OutlinesWindow		Editar título para o marcador
-Version:	FileInfoWindow		Versão:
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Automatic	AnnotationWindow		Automático
-Title:	FileInfoWindow		Título:
-Warning	PDFWindow		Atenção
-User defined	OutlinesWindow		Usuário definido
-Fullscreen	PDFWindow		Ecrã completo
-Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Língua 'Inglês', traduzido pelos autores do BePDF.
-Save selected attachment to file	AttachmentView		Guardar o anexo selecionado num ficheiro
-Add note text annotation	PDFWindow		Adicionar anotação de nota de texto
-Editing:	FileInfoWindow		Editar:
-User password	PasswordWindow		Palavra-passe do utilizador
-Find	FindTextWindow		Procurar
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	O BePDF é baseado no XPDF %s, %s.
-Could not write PDF file!	PDFWindow		Não foi possível escrever o ficheiro PDF!
-Ignore case	FindTextWindow		Ignorar maiúsculas/minúsculas
+Save file attachment as…	PDFView		Guardar anexo como…
+[link type 'movie' not supported]	PDFView		[ligação do tipo 'filme' não suportada]
+Cancel	PDFView		Cancelar
+[unknown link]	PDFView		[ligação desconhecida]
+Execute the command:	PDFView		Executar o comando:
+Properties	PDFView		Propriedades
+Unknown link action type: '%s'	PDFView		Tipo de ação de ligação desconhecido: '%s'
+Annotation	PDFView		Anotação
+Delete	PDFView		Eliminar
+Leave annotation editing mode	PDFView		Sair do modo de edição de anotações
+[internal link]	PDFView		[ligação interna]
+OK	PDFView		OK
+BePDF reading file: 	PDFView		BePDF a ler o ficheiro:
+Edit	PDFView		Editar
+Keywords:	FileInfoWindow		Palavras-chave:
+Subject:	FileInfoWindow		Assunto:
+Encrypted:	FileInfoWindow		Encriptado:
+Type	FileInfoWindow		Tipo
+Abort	FileInfoWindow		Cancelar
+Denied	FileInfoWindow		Não autorizado
 Creator:	FileInfoWindow		Criador:
-Error	BepdfApplication		Erro
-Save selected attachments into directory	AttachmentView		Guardar os anexos selecionados numa pasta
-Wrong parameter!	PrintSettingsWindow		Parâmetro incorreto!
-Rotate clockwise	PDFWindow		Rodar no sentido dos ponteiros do relógio
+Document	FileInfoWindow		Documento
+Fonts of this page	FileInfoWindow		Tipos de letra desta página
+Path:	FileInfoWindow		Caminho:
+Name	FileInfoWindow		Nome
+Filename:	FileInfoWindow		Nome do ficheiro:
+Yes	FileInfoWindow		Sim
+Annotations:	FileInfoWindow		Anotações:
+Producer:	FileInfoWindow		Produtor:
+Allowed	FileInfoWindow		Permitido
+Copy & paste:	FileInfoWindow		Copiar e colar:
+Modified:	FileInfoWindow		Modificado:
+Editing:	FileInfoWindow		Editar:
+Title:	FileInfoWindow		Título:
+Created:	FileInfoWindow		Criado:
+Linearized:	FileInfoWindow		Linearizado:
+Version:	FileInfoWindow		Versão:
+No	FileInfoWindow		Não
+Author:	FileInfoWindow		Autor:
+Security	FileInfoWindow		Segurança
+Embedded name	FileInfoWindow		Nome incorporado
+Printing:	FileInfoWindow		Imprimir:
+File info	FileInfoWindow		Informação do ficheiro
 Show all fonts	FileInfoWindow		Mostrar todos os tipos de letra
+All pages	PrintSettingsWindow		Todas as páginas
+ in	PrintSettingsWindow		pol.
+Pages	PrintSettingsWindow		Páginas
+Page	PrintSettingsWindow		Página
+Max. printer resolution	PrintSettingsWindow		Resolução máx. da impressora
+DPI	PrintSettingsWindow		DPI
+Zoom (%)	PrintSettingsWindow		Ampliação (%)
+Gray scale	PrintSettingsWindow		Escala de cinzentos
+Color	PrintSettingsWindow		Cores
+Normal	PrintSettingsWindow		Normal
+Rotation	PrintSettingsWindow		Rodar
+Print settings	PrintSettingsWindow		Definições de impressão
+Print	PrintSettingsWindow		Imprimir
+Reverse	PrintSettingsWindow		Inversa
+Odd pages	PrintSettingsWindow		Páginas ímpares
+Zoom must be between 25 and 400!	PrintSettingsWindow		A ampliação deve ser um valor entre 25 e 400%!
+Mode	PrintSettingsWindow		Modo
+Order	PrintSettingsWindow		Ordem
+Height: 	PrintSettingsWindow		Altura:
+Width: 	PrintSettingsWindow		Largura:
+OK	PrintSettingsWindow		OK
+Even pages	PrintSettingsWindow		Páginas pares
+Wrong parameter!	PrintSettingsWindow		Parâmetro incorreto!
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Mostrar também as barras de ferramentas, de estado e de deslocamento
+Fullscreen mode	AnnotationWindow		Modo de ecrã completo
+Will take effect at next program launch.	AnnotationWindow		As alterações terão efeito quando esta aplicação for iniciada novamente.
+Filled rectangle	AnnotationWindow		Retângulo com preenchimento
+Align:	AnnotationWindow		Alinhar:
+Title:	AnnotationWindow		Título:
+User fonts	AnnotationWindow		Tipos de letra do utilizador
+Asian fonts	AnnotationWindow		Tipos de letra asiáticos
+Restore window position and size	AnnotationWindow		Restaurar posição e tamanho da janela
+Author	AnnotationWindow		Autor
+Open in workspace:	AnnotationWindow		Abrir em área de trabalho:
+Preferences	AnnotationWindow		Preferências
+Show document view only	AnnotationWindow		Mostrar apenas o documento
+Automatic	AnnotationWindow		Automático
+Font:	AnnotationWindow		Tipo de letra:
+Restore page number	AnnotationWindow		Restaurar número de página
+System fonts	AnnotationWindow		Tipos de letra do sistema
+Stroked rectangle	AnnotationWindow		Contorno do retângulo
+current	AnnotationWindow		atual
+Annotation	AnnotationWindow		Anotação
+Selection rectangle	AnnotationWindow		Retângulo de seleção
+Display	AnnotationWindow		Mostrar
+Document	AnnotationWindow		Documento
+Size:	AnnotationWindow		Tamanho:
+Date:	AnnotationWindow		Data:
+Invert vertical mouse scrolling	AnnotationWindow		Inverter deslocamento vertical do rato
+<empty>	OutlinesWindow		<vazio>
+Document	OutlinesWindow		Documento
+Edit title for bookmark	OutlinesWindow		Editar título para o marcador
+No title	OutlinesWindow		Sem título
+User defined	OutlinesWindow		Usuário definido
+OK	OutlinesWindow		OK
+BePDF printing document: 	PrintingProgressWindow		O BePDF está a imprimir o documento:
+BePDF printing	PrintingProgressWindow		BePDF a imprimir
+Stop	PrintingProgressWindow		Parar
+Abort	PrintingProgressWindow		Cancelar
+Page:	PrintingProgressWindow		Página:
+Page: %d	PrintingProgressWindow		Página: %d
+Clear	TraceWindow		Limpar
+Auto open	TraceWindow		Abrir automaticamente
+Floating	TraceWindow		Painel flutuante
+Error messages	TraceWindow		Mensagens de erro
+Options	FindTextWindow		Opções
+Ignore case	FindTextWindow		Ignorar maiúsculas/minúsculas
+Page:	FindTextWindow		Página:
+Find: 	FindTextWindow		Procurar:
+Stop	FindTextWindow		Parar
+Find	FindTextWindow		Procurar
+Find text	FindTextWindow		Procurar seguinte
+Search backwards	FindTextWindow		Procurar para trás
+Page: %d	FindTextWindow		Página: %d
+Save selected attachments into directory	AttachmentView		Guardar os anexos selecionados numa pasta
+File name	AttachmentView		Nome do ficheiro
+Save attachment(s) as	AttachmentView		Guardar anexo(s) como
+Saving attachment(s):	AttachmentView		A guardar anexo(s):
+Save selected attachment to file	AttachmentView		Guardar o anexo selecionado num ficheiro
+Description	AttachmentView		Descrição
+<empty>	AttachmentView		<vazio>
+Search string not found.	PDFSearch		Texto de pesquisa não encontrado.
+OK	PDFSearch		OK
+BePDF status	StatusWindow		Estado do BePDF
+User password	PasswordWindow		Palavra-passe do utilizador
+Enter Password	PasswordWindow		Introduzir palavra-passe
+Owner password	PasswordWindow		Palavra-passe do proprietário
+OK	PasswordWindow		OK

@@ -1,255 +1,255 @@
-1	English	application/x-vnd.mp-xpdf	1689344215
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editarea de adnotări într-un fișier PDF criptat nu este suportată încă!
-Selection rectangle	AnnotationWindow		Selecție dreptunghi
-About BePDF…	PDFWindow		Despre BePDF…
-Cancel	PDFView		Anulează
-Go to previous page	PDFWindow		Mergi la pagina anterioară
-Subject:	FileInfoWindow		Subiect:
-Filled rectangle	AnnotationWindow		Dreptunghi umplut
-Add strikeout annotation	PDFWindow		Adaugă adnotare tăiată
-Owner password	PasswordWindow		Parolă deținător
-Add insert text annotation	PDFWindow		Adaugă adnotare inserare text
-Delete	PDFWindow		Șterge
-Color	PrintSettingsWindow		Culoare
-View	PDFWindow		Vizualizare
-Search string not found.	PDFSearch		Șirul căutat nu a fost găsit.
-Normal	PrintSettingsWindow		Normal
-System fonts	AnnotationWindow		Fonturi de utilizator
-Add widget annotation	PDFWindow		Adaugă adnotare widget
-Zoom in	PDFWindow		Mărire
-Unknown link action type: '%s'	PDFView		Tip de acțiune de legătură necunoscut: „%s”
-Page:	FindTextWindow		Pagină:
-Rotation	PrintSettingsWindow		Rotație
-Gamma	BepdfApplication		Gama
-Error messages	TraceWindow		Mesaje de eroare
-Jump to page	PDFWindow		Sari la pagina
-Fullscreen mode	AnnotationWindow		Mod ecran complet
-BePDF printing	PrintingProgressWindow		Tipărire BePDF
-BePDF status	StatusWindow		Stare BePDF
-Mode	PrintSettingsWindow		Mod
-Save as…	PDFWindow		Salvează ca...
-Execute the command:	PDFView		Execută comanda:
-Issue tracker…	PDFWindow		Monitor de probleme…
-Printing:	FileInfoWindow		Tipărire
-Font:	AnnotationWindow		Font:
-Zoom must be between 25 and 400!	PrintSettingsWindow		Focalizarea trebuie să fie între 25 și 400!
-Open…	PDFWindow		Deschide...
-Save attachment(s) as	AttachmentView		Salvează atașamentul(ele) ca
-OK	PDFView		OK
-Date:	AnnotationWindow		Dată:
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Arată și bara de unelte, bara de stare și barele de derulare
-Show page list	PDFWindow		Afișează lista de pagini
-current	AnnotationWindow		curent
-OK	PasswordWindow		OK
-Name	FileInfoWindow		Nume
-Document	OutlinesWindow		Document
-Hide side bar	PDFWindow		Ascunde bara laterală
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Nu se poate suprascrie un fișier PDF care este deschis în prezent în BePDF! Alegeți un alt nume de fișier.
-Invert vertical mouse scrolling	AnnotationWindow		Inversează derularea verticală a mausului
-Page setup…	PDFWindow		Configurare pagină...
-Add ink annotation	PDFWindow		Adaugă adnotare cerneală
-Stroked rectangle	AnnotationWindow		Dreptunghi tăiat
-Find: 	FindTextWindow		Caută:
-Zoom	PDFWindow		Focalizare
-Open in workspace:	AnnotationWindow		Deschide în spațiul de lucru:
-BePDF reading file: 	PDFView		Fișierul de citire BePDF:
-Go to next page	PDFWindow		Mergi la pagina următoare
-Add square annotation	PDFWindow		Adaugă adnotare pătrat
-[internal link]	PDFView		[legătură internă]
-Restore page number	AnnotationWindow		Restaurează numărul de pagină
-Fonts of this page	FileInfoWindow		Fonturile acestei pagini
-Last	PDFWindow		Ultimul
-Abort	FileInfoWindow		Anulează
-Find next	PDFWindow		Caută înainte
-All pages	PrintSettingsWindow		Toate paginile
-Show annotation toolbar	PDFWindow		Arată bara de unelte pentru adnotare
-File name	AttachmentView		Nume fișier
-Go to start of document	PDFWindow		Mergi la începutul documentului
-Go back 10 pages	PDFWindow		Mergi înapoi 10 pagini
-Go forward 10 pages	PDFWindow		Mergi înainte 10 pagini
-Add file attachment annotation	PDFWindow		Adaugă adnotare fișier atașat
-Show annotation tool bar	PDFWindow		Arată bara de unelte pentru adnotare
-Fit to page width	PDFWindow		Potrivire la lățimea paginii
-DPI	PrintSettingsWindow		DPI
-Find…	PDFWindow		Căutare...
-Odd pages	PrintSettingsWindow		Pagini impare
-Add sound annotation	PDFWindow		Adaugă adnotare sunet
-Show bookmarks	PDFWindow		Afișează favorite
-Max. printer resolution	PrintSettingsWindow		Rezoluție imprimantă maximă
-Quit	PDFWindow		Ieșire
-File	PDFWindow		Fișier
-Options	FindTextWindow		Opțiuni
-Fullscreen mode	PDFWindow		Mod ecran complet
-Find text	FindTextWindow		Caută text
-Clear	TraceWindow		Eliberare
-Print	PrintSettingsWindow		Tipărire
-Online help…	PDFWindow		Ajutor online...
-Enter Password	PasswordWindow		Introduceți parola
-Filename:	FileInfoWindow		Nume fișier:
-Embedded name	FileInfoWindow		Nume încorporat
-Copy link	PDFView		Copiază legătura
-First	PDFWindow		Primul
-Add	PDFWindow		Adaugă
-Open in new window…	PDFWindow		Deschide în fereastră nouă...
-<empty>	AttachmentView		<liber>
-Preferences…	PDFWindow		Preferințe...
-OK	PDFSearch		OK
-Version	BepdfApplication		Versiune
-Delete	PDFView		Șterge
-Zoom (%)	PrintSettingsWindow		Focalizare (%)
-Type	FileInfoWindow		Tip
-Custom zoom factor (%d%%)	PDFWindow		Factor de focalizare personalizat (%d%%)
-Add stamp annotation	PDFWindow		Adaugă adnotare ștampilă
-Abort	PrintingProgressWindow		Anulează
-Align:	AnnotationWindow		Aliniere:
-Go to end of document	PDFWindow		Mergi la sfârșitul documentului
-Beta	BepdfApplication		Beta
-Auto open	TraceWindow		Deschide automat
-Back	PDFWindow		Înapoi
-Pages	PrintSettingsWindow		Pagini
-Add movie annotation	PDFWindow		Adaugă adnotare film
-Final	BepdfApplication		Final
-Add circle annotation	PDFWindow		Adaugă adnotare cerc
-BePDF printing document: 	PrintingProgressWindow		Document BePDF de tipărit:
-Show error messages	PDFWindow		Afișează mesajele de eroare
-Document	FileInfoWindow		Document
-Width: 	PrintSettingsWindow		Lățime:
-Author:	FileInfoWindow		Autor:
-Add highlight annotation	PDFWindow		Adaugă adnotare evidențiere
-Add new paragraph text annotation	PDFWindow		Adaugă adnotare paragraf nou
-of %d	PDFWindow		din %d
-Security	FileInfoWindow		Securitate
-Denied	FileInfoWindow		Respins
-Save file as	PDFWindow		Salvează fișierul ca
-Order	PrintSettingsWindow		Ordine
-Properties	PDFView		Proprietăți
-Add comment text annotation	PDFWindow		Adaugă adnotare comentariu text
-Description	AttachmentView		Descriere
-Add underline annotation	PDFWindow		Adaugă adnotare subliniată
-BePDF: Launch	PDFView		BePDF: Lansare
-Saving copy of PDF file:	PDFWindow		Se salvează copia fișierului PDF:
-Page: %d	FindTextWindow		Pagină: %d
-Page	PDFWindow		Pagină
-Add squiggly annotation	PDFWindow		Adaugă adnotare șerpuită
-Annotation	PDFView		Adnotare
-Add trapnet annotation	PDFWindow		Adaugă adnotare plasă de capcană
-Producer:	FileInfoWindow		Producător:
-Keywords:	FileInfoWindow		Cuvinte cheie:
-Forward in page history list	PDFWindow		Înainte în lista de istoric a paginii
-Page:	PrintingProgressWindow		Pagină:
-BePDF: Error opening file!	BepdfApplication		BePDF: Eroare la deschiderea fișierului!
-Find next…	PDFWindow		Caută înainte...
-Display	AnnotationWindow		Afișaj
-Visit homepage…	PDFWindow		Vizitează pagina principală...
-Even pages	PrintSettingsWindow		Pagini pare
-Stop	FindTextWindow		Oprește
-Print	PDFWindow		Tipărire
-Add link annotation	PDFWindow		Adaugă adnotare legătură
- in	PrintSettingsWindow		în
-Unknown	BepdfApplication		Necunoscut
-[link type 'movie' not supported]	PDFView		[legătura de tip 'movie' nu este suportată]
-Annotation	AnnotationWindow		Adnotare
-Bookmark	PDFWindow		Favorit
-Next	PDFWindow		Următorul
-Reverse	PrintSettingsWindow		Verso
+1	Romanian	application/x-vnd.mp-xpdf	1689344215
 Close	BepdfApplication		Închide
-Page: %d	PrintingProgressWindow		Pagină: %d
-Select none	PDFWindow		Selectează nimic
-Rotate counter-clockwise	PDFWindow		Rotește în sens anti-orar
-Alpha	BepdfApplication		Alfa
-<empty>	OutlinesWindow		<liber>
-Add key text annotation	PDFWindow		Adaugă adnotare text cheie
-Forward	PDFWindow		Înainte
-Size:	AnnotationWindow		Dimensiune:
-Asian fonts	AnnotationWindow		Fonturi asiatice
+Error	BepdfApplication		Eroare
+Beta	BepdfApplication		Beta
+Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Limba română, tradusă de Florentina Mușat.
+Gamma	BepdfApplication		Gama
 Golden Master	BepdfApplication		Maestru de aur
-Author	AnnotationWindow		Autor
-User fonts	AnnotationWindow		Fonturi de utilizator
-Zoom out	PDFWindow		Micșorare
-Restore window position and size	AnnotationWindow		Restaurează poziția și dimensiunea ferestrei
-Modified:	FileInfoWindow		Modificat:
-Go to page %d	PDFView		Mergi la pagina %d
-OK	OutlinesWindow		OK
-Copy selection	PDFWindow		Copiază selecția
-Annotations:	FileInfoWindow		Adnotări:
-Select all	PDFWindow		Selectează tot
-PDF file successfully written!	PDFWindow		Fișier PDF scris cu succes!
-OK	PDFWindow		OK
-Previous	PDFWindow		Anteriorul
-File info	FileInfoWindow		Info fișier
-Search	PDFWindow		Căutare
-Leave annotation editing mode	PDFView		Părăsește modul de editare a adnotărilor
-Edit	PDFView		Editează
-Saving attachment(s):	AttachmentView		Se salvează atașamentul(ele):
-Leave annotation editing mode	PDFWindow		Părăsește modul de editare de anotare
-OK	PrintSettingsWindow		OK
-Add free text annotation	PDFWindow		Adaugă adnotare text liber
-Open file	PDFWindow		Deschide fișierul
-Preferences	AnnotationWindow		Preferințe
-Print settings	PrintSettingsWindow		Configurări tipărire
-Back in page history list	PDFWindow		Înapoi în lista de istoric a paginii
-Find	PDFWindow		Căutare
-Yes	FileInfoWindow		Da
-[unknown link]	PDFView		[legătură necunoscută]
-Will take effect at next program launch.	AnnotationWindow		Va intra în vigoare la următoarea lansare a programului.
-Floating	TraceWindow		Plutitor
-Add help text annotation	PDFWindow		Adaugă adnotare text de ajutor
-Stop	PrintingProgressWindow		Oprește
-Add popup annotation	PDFWindow		Adaugă adnotare popup
-Show attachments	PDFWindow		Afișează atașamentele
-Edit	PDFWindow		Editează
+BePDF: Error opening file!	BepdfApplication		BePDF: Eroare la deschiderea fișierului!
+Alpha	BepdfApplication		Alfa
+Version	BepdfApplication		Versiune
+Development	BepdfApplication		Dezvoltare
+Unknown	BepdfApplication		Necunoscut
+Final	BepdfApplication		Final
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF este bazat pe XPDF %s, %s.
+Show bookmarks	PDFWindow		Afișează favorite
+of %d	PDFWindow		din %d
+Zoom in	PDFWindow		Mărire
+About BePDF…	PDFWindow		Despre BePDF…
+Go to next page	PDFWindow		Mergi la pagina următoare
+View	PDFWindow		Vizualizare
+Show annotation tool bar	PDFWindow		Arată bara de unelte pentru adnotare
+Select none	PDFWindow		Selectează nimic
+Add trapnet annotation	PDFWindow		Adaugă adnotare plasă de capcană
+Add underline annotation	PDFWindow		Adaugă adnotare subliniată
 Show help…	PDFWindow		Afișează ajutorul...
-Add printer mark annotation	PDFWindow		Adaugă adnotare marcaj de imprimantă
-Search backwards	FindTextWindow		Caută invers
-Reload	PDFWindow		Reîncarcă
-Add line annotation	PDFWindow		Adaugă adnotare linie
 Help	PDFWindow		Ajutor
-Rotation	PDFWindow		Rotație
-Show document view only	AnnotationWindow		Arată doar vizualizarea document
-Encrypted:	FileInfoWindow		Criptat
-Gray scale	PrintSettingsWindow		Scală de gri
-Save file attachment as…	PDFView		Salvează atașamentul de fișier ca…
+Add popup annotation	PDFWindow		Adaugă adnotare popup
+Find…	PDFWindow		Căutare...
+Reload	PDFWindow		Reîncarcă
+First	PDFWindow		Primul
+Fit to page	PDFWindow		Potrivire la pagină
+Add key text annotation	PDFWindow		Adaugă adnotare text cheie
+File	PDFWindow		Fișier
+PDF file successfully written!	PDFWindow		Fișier PDF scris cu succes!
+Warning	PDFWindow		Avertisment
+Zoom out	PDFWindow		Micșorare
+Show error messages	PDFWindow		Afișează mesajele de eroare
+Add movie annotation	PDFWindow		Adaugă adnotare film
+Open…	PDFWindow		Deschide...
+Add widget annotation	PDFWindow		Adaugă adnotare widget
+Add insert text annotation	PDFWindow		Adaugă adnotare inserare text
+Find	PDFWindow		Căutare
+Add ink annotation	PDFWindow		Adaugă adnotare cerneală
+Go to start of document	PDFWindow		Mergi la începutul documentului
+Go to previous page	PDFWindow		Mergi la pagina anterioară
+Save as…	PDFWindow		Salvează ca...
+Reload file	PDFWindow		Reîncarcă fișierul
+Find next…	PDFWindow		Caută înainte...
+Fullscreen mode	PDFWindow		Mod ecran complet
+Show page list	PDFWindow		Afișează lista de pagini
+Back	PDFWindow		Înapoi
+Add note text annotation	PDFWindow		Adaugă adnotare notă text
 Close	PDFWindow		Închide
-No title	OutlinesWindow		Fără titlu
-Page	PrintSettingsWindow		Pagină
-Created:	FileInfoWindow		Creat:
-Title:	AnnotationWindow		Titlu:
+Add printer mark annotation	PDFWindow		Adaugă adnotare marcaj de imprimantă
+Go forward 10 pages	PDFWindow		Mergi înainte 10 pagini
+Page %d	PDFWindow		Pagină %d
+Forward in page history list	PDFWindow		Înainte în lista de istoric a paginii
+Add new paragraph text annotation	PDFWindow		Adaugă adnotare paragraf nou
+Fullscreen	PDFWindow		Ecran complet
+Add sound annotation	PDFWindow		Adaugă adnotare sunet
+Add comment text annotation	PDFWindow		Adaugă adnotare comentariu text
+Page	PDFWindow		Pagină
+File info…	PDFWindow		Info fișier...
+Page setup…	PDFWindow		Configurare pagină...
+Print	PDFWindow		Tipărire
+Issue tracker…	PDFWindow		Monitor de probleme…
+Preferences…	PDFWindow		Preferințe...
+Rotation	PDFWindow		Rotație
+Last	PDFWindow		Ultimul
+Add stamp annotation	PDFWindow		Adaugă adnotare ștampilă
+Add squiggly annotation	PDFWindow		Adaugă adnotare șerpuită
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Nu se poate suprascrie un fișier PDF care este deschis în prezent în BePDF! Alegeți un alt nume de fișier.
+Copy selection	PDFWindow		Copiază selecția
+Add free text annotation	PDFWindow		Adaugă adnotare text liber
+Next	PDFWindow		Următorul
+Forward	PDFWindow		Înainte
+Hide side bar	PDFWindow		Ascunde bara laterală
+Jump to page	PDFWindow		Sari la pagina
+Add line annotation	PDFWindow		Adaugă adnotare linie
+Add circle annotation	PDFWindow		Adaugă adnotare cerc
+Save file as	PDFWindow		Salvează fișierul ca
+Show annotation toolbar	PDFWindow		Arată bara de unelte pentru adnotare
+Add link annotation	PDFWindow		Adaugă adnotare legătură
+Previous	PDFWindow		Anteriorul
+Leave annotation editing mode	PDFWindow		Părăsește modul de editare de anotare
+Rotate clockwise	PDFWindow		Rotește în sens orar
+Find next	PDFWindow		Caută înainte
+Add strikeout annotation	PDFWindow		Adaugă adnotare tăiată
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Română.pdf
+Bookmark	PDFWindow		Favorit
+Could not write PDF file!	PDFWindow		Nu s-a putut scrie fișierul PDF!
+OK	PDFWindow		OK
+Add	PDFWindow		Adaugă
+Edit	PDFWindow		Editează
+Online help…	PDFWindow		Ajutor online...
+Quit	PDFWindow		Ieșire
+Back in page history list	PDFWindow		Înapoi în lista de istoric a paginii
+Open file	PDFWindow		Deschide fișierul
+Visit homepage…	PDFWindow		Vizitează pagina principală...
+Show attachments	PDFWindow		Afișează atașamentele
+Add paragraph text annotation	PDFWindow		Adaugă adnotare paragraf text
+Go back 10 pages	PDFWindow		Mergi înapoi 10 pagini
+Print…	PDFWindow		Tipărire...
+Go to end of document	PDFWindow		Mergi la sfârșitul documentului
+Rotate counter-clockwise	PDFWindow		Rotește în sens anti-orar
+Delete	PDFWindow		Șterge
+Select all	PDFWindow		Selectează tot
+Add square annotation	PDFWindow		Adaugă adnotare pătrat
+Fit to page width	PDFWindow		Potrivire la lățimea paginii
+Zoom	PDFWindow		Focalizare
+Search	PDFWindow		Căutare
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editarea de adnotări într-un fișier PDF criptat nu este suportată încă!
+Saving copy of PDF file:	PDFWindow		Se salvează copia fișierului PDF:
+Add help text annotation	PDFWindow		Adaugă adnotare text de ajutor
+Custom zoom factor (%d%%)	PDFWindow		Factor de focalizare personalizat (%d%%)
+Open in new window…	PDFWindow		Deschide în fereastră nouă...
+Add highlight annotation	PDFWindow		Adaugă adnotare evidențiere
+Add file attachment annotation	PDFWindow		Adaugă adnotare fișier atașat
+Go to page %d	PDFView		Mergi la pagina %d
+BePDF: Launch	PDFView		BePDF: Lansare
+Copy link	PDFView		Copiază legătura
 Saving file attachment:	PDFView		Se salvează atașamentul de fișier:
 Open in new window	PDFView		Deschide în fereastră nouă
-Height: 	PrintSettingsWindow		Înălțime:
-File info…	PDFWindow		Info fișier...
-Allowed	FileInfoWindow		Permis
-Add paragraph text annotation	PDFWindow		Adaugă adnotare paragraf text
-Development	BepdfApplication		Dezvoltare
-Linearized:	FileInfoWindow		Liniarizat:
-No	FileInfoWindow		Nu
-Fit to page	PDFWindow		Potrivire la pagină
-Reload file	PDFWindow		Reîncarcă fișierul
-Document	AnnotationWindow		Document
-Path:	FileInfoWindow		Cale:
-Print…	PDFWindow		Tipărire...
-Copy & paste:	FileInfoWindow		Copiere & lipire:
-Page %d	PDFWindow		Pagină %d
-Edit title for bookmark	OutlinesWindow		Editează titlul pentru favorit
-Version:	FileInfoWindow		Versiune:
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Română.pdf
-Automatic	AnnotationWindow		Automat
-Title:	FileInfoWindow		Titlu:
-Warning	PDFWindow		Avertisment
-User defined	OutlinesWindow		Definit de utilizator
-Fullscreen	PDFWindow		Ecran complet
-Language 'English', translated by the BePDF authors.	BepdfApplication	Replace 'English' with the language you're translating to, and 'the BePDF authors' with your name or your translation group's name.	Limba română, tradusă de Florentina Mușat.
-Save selected attachment to file	AttachmentView		Salvează atașamentul selectat la fișier
-Add note text annotation	PDFWindow		Adaugă adnotare notă text
-Editing:	FileInfoWindow		Editare:
-User password	PasswordWindow		Parolă utilizator
-Find	FindTextWindow		Căutare
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF este bazat pe XPDF %s, %s.
-Could not write PDF file!	PDFWindow		Nu s-a putut scrie fișierul PDF!
-Ignore case	FindTextWindow		Ignoră majuscule
+Save file attachment as…	PDFView		Salvează atașamentul de fișier ca…
+[link type 'movie' not supported]	PDFView		[legătura de tip 'movie' nu este suportată]
+Cancel	PDFView		Anulează
+[unknown link]	PDFView		[legătură necunoscută]
+Execute the command:	PDFView		Execută comanda:
+Properties	PDFView		Proprietăți
+Unknown link action type: '%s'	PDFView		Tip de acțiune de legătură necunoscut: „%s”
+Annotation	PDFView		Adnotare
+Delete	PDFView		Șterge
+Leave annotation editing mode	PDFView		Părăsește modul de editare a adnotărilor
+[internal link]	PDFView		[legătură internă]
+OK	PDFView		OK
+BePDF reading file: 	PDFView		Fișierul de citire BePDF:
+Edit	PDFView		Editează
+Keywords:	FileInfoWindow		Cuvinte cheie:
+Subject:	FileInfoWindow		Subiect:
+Encrypted:	FileInfoWindow		Criptat
+Type	FileInfoWindow		Tip
+Abort	FileInfoWindow		Anulează
+Denied	FileInfoWindow		Respins
 Creator:	FileInfoWindow		Creator:
-Error	BepdfApplication		Eroare
-Save selected attachments into directory	AttachmentView		Salvează atașamentele selectate în dosar
-Wrong parameter!	PrintSettingsWindow		Parametru greșit!
-Rotate clockwise	PDFWindow		Rotește în sens orar
+Document	FileInfoWindow		Document
+Fonts of this page	FileInfoWindow		Fonturile acestei pagini
+Path:	FileInfoWindow		Cale:
+Name	FileInfoWindow		Nume
+Filename:	FileInfoWindow		Nume fișier:
+Yes	FileInfoWindow		Da
+Annotations:	FileInfoWindow		Adnotări:
+Producer:	FileInfoWindow		Producător:
+Allowed	FileInfoWindow		Permis
+Copy & paste:	FileInfoWindow		Copiere & lipire:
+Modified:	FileInfoWindow		Modificat:
+Editing:	FileInfoWindow		Editare:
+Title:	FileInfoWindow		Titlu:
+Created:	FileInfoWindow		Creat:
+Linearized:	FileInfoWindow		Liniarizat:
+Version:	FileInfoWindow		Versiune:
+No	FileInfoWindow		Nu
+Author:	FileInfoWindow		Autor:
+Security	FileInfoWindow		Securitate
+Embedded name	FileInfoWindow		Nume încorporat
+Printing:	FileInfoWindow		Tipărire
+File info	FileInfoWindow		Info fișier
 Show all fonts	FileInfoWindow		Afișează toate fonturile
+All pages	PrintSettingsWindow		Toate paginile
+ in	PrintSettingsWindow		în
+Pages	PrintSettingsWindow		Pagini
+Page	PrintSettingsWindow		Pagină
+Max. printer resolution	PrintSettingsWindow		Rezoluție imprimantă maximă
+DPI	PrintSettingsWindow		DPI
+Zoom (%)	PrintSettingsWindow		Focalizare (%)
+Gray scale	PrintSettingsWindow		Scală de gri
+Color	PrintSettingsWindow		Culoare
+Normal	PrintSettingsWindow		Normal
+Rotation	PrintSettingsWindow		Rotație
+Print settings	PrintSettingsWindow		Configurări tipărire
+Print	PrintSettingsWindow		Tipărire
+Reverse	PrintSettingsWindow		Verso
+Odd pages	PrintSettingsWindow		Pagini impare
+Zoom must be between 25 and 400!	PrintSettingsWindow		Focalizarea trebuie să fie între 25 și 400!
+Mode	PrintSettingsWindow		Mod
+Order	PrintSettingsWindow		Ordine
+Height: 	PrintSettingsWindow		Înălțime:
+Width: 	PrintSettingsWindow		Lățime:
+OK	PrintSettingsWindow		OK
+Even pages	PrintSettingsWindow		Pagini pare
+Wrong parameter!	PrintSettingsWindow		Parametru greșit!
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Arată și bara de unelte, bara de stare și barele de derulare
+Fullscreen mode	AnnotationWindow		Mod ecran complet
+Will take effect at next program launch.	AnnotationWindow		Va intra în vigoare la următoarea lansare a programului.
+Filled rectangle	AnnotationWindow		Dreptunghi umplut
+Align:	AnnotationWindow		Aliniere:
+Title:	AnnotationWindow		Titlu:
+User fonts	AnnotationWindow		Fonturi de utilizator
+Asian fonts	AnnotationWindow		Fonturi asiatice
+Restore window position and size	AnnotationWindow		Restaurează poziția și dimensiunea ferestrei
+Author	AnnotationWindow		Autor
+Open in workspace:	AnnotationWindow		Deschide în spațiul de lucru:
+Preferences	AnnotationWindow		Preferințe
+Show document view only	AnnotationWindow		Arată doar vizualizarea document
+Automatic	AnnotationWindow		Automat
+Font:	AnnotationWindow		Font:
+Restore page number	AnnotationWindow		Restaurează numărul de pagină
+System fonts	AnnotationWindow		Fonturi de utilizator
+Stroked rectangle	AnnotationWindow		Dreptunghi tăiat
+current	AnnotationWindow		curent
+Annotation	AnnotationWindow		Adnotare
+Selection rectangle	AnnotationWindow		Selecție dreptunghi
+Display	AnnotationWindow		Afișaj
+Document	AnnotationWindow		Document
+Size:	AnnotationWindow		Dimensiune:
+Date:	AnnotationWindow		Dată:
+Invert vertical mouse scrolling	AnnotationWindow		Inversează derularea verticală a mausului
+<empty>	OutlinesWindow		<liber>
+Document	OutlinesWindow		Document
+Edit title for bookmark	OutlinesWindow		Editează titlul pentru favorit
+No title	OutlinesWindow		Fără titlu
+User defined	OutlinesWindow		Definit de utilizator
+OK	OutlinesWindow		OK
+BePDF printing document: 	PrintingProgressWindow		Document BePDF de tipărit:
+BePDF printing	PrintingProgressWindow		Tipărire BePDF
+Stop	PrintingProgressWindow		Oprește
+Abort	PrintingProgressWindow		Anulează
+Page:	PrintingProgressWindow		Pagină:
+Page: %d	PrintingProgressWindow		Pagină: %d
+Clear	TraceWindow		Eliberare
+Auto open	TraceWindow		Deschide automat
+Floating	TraceWindow		Plutitor
+Error messages	TraceWindow		Mesaje de eroare
+Options	FindTextWindow		Opțiuni
+Ignore case	FindTextWindow		Ignoră majuscule
+Page:	FindTextWindow		Pagină:
+Find: 	FindTextWindow		Caută:
+Stop	FindTextWindow		Oprește
+Find	FindTextWindow		Căutare
+Find text	FindTextWindow		Caută text
+Search backwards	FindTextWindow		Caută invers
+Page: %d	FindTextWindow		Pagină: %d
+Save selected attachments into directory	AttachmentView		Salvează atașamentele selectate în dosar
+File name	AttachmentView		Nume fișier
+Save attachment(s) as	AttachmentView		Salvează atașamentul(ele) ca
+Saving attachment(s):	AttachmentView		Se salvează atașamentul(ele):
+Save selected attachment to file	AttachmentView		Salvează atașamentul selectat la fișier
+Description	AttachmentView		Descriere
+<empty>	AttachmentView		<liber>
+Search string not found.	PDFSearch		Șirul căutat nu a fost găsit.
+OK	PDFSearch		OK
+BePDF status	StatusWindow		Stare BePDF
+User password	PasswordWindow		Parolă utilizator
+Enter Password	PasswordWindow		Introduceți parola
+Owner password	PasswordWindow		Parolă deținător
+OK	PasswordWindow		OK
