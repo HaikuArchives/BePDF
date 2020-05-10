@@ -1,0 +1,254 @@
+1	Turkish	application/x-vnd.mp-xpdf	1765081836
+Close	BepdfApplication		Kapat
+Error	BepdfApplication		Hata
+Beta	BepdfApplication		Beta
+Gamma	BepdfApplication		Gama
+Golden Master	BepdfApplication		Altın kopya
+BePDF: Error opening file!	BepdfApplication		BePDF: Dosya açılamadı!
+Alpha	BepdfApplication		Alfa
+Version	BepdfApplication		Sürüm
+Development	BepdfApplication		Geliştirme
+Unknown	BepdfApplication		Bilinmeyen
+Final	BepdfApplication		Final
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF, XPDF %s temellidir, %s.
+Show bookmarks	PDFWindow		Yer imlerini göster
+of %d	PDFWindow		/%d
+Zoom in	PDFWindow		Yakınlaştır
+About BePDF…	PDFWindow		BePDF hakkında…
+Go to next page	PDFWindow		Sonraki sayfaya git
+View	PDFWindow		Görünüm
+Show annotation tool bar	PDFWindow		Ek açıklama araç çubuğunu göster
+Select none	PDFWindow		Hiçbirini seçme
+Add trapnet annotation	PDFWindow		Kapan ağı
+Add underline annotation	PDFWindow		Altını çiz
+Show help…	PDFWindow		Yardımı göster…
+Help	PDFWindow		Yardım
+Add popup annotation	PDFWindow		Açılır pencere
+Find…	PDFWindow		Bul…
+Reload	PDFWindow		Yeniden yükle
+First	PDFWindow		İlk
+Fit to page	PDFWindow		Sayfaya sığdır
+Add key text annotation	PDFWindow		Anahtar metin
+File	PDFWindow		Dosya
+PDF file successfully written!	PDFWindow		PDF dosyası başarıyla yazıldı!
+Warning	PDFWindow		Uyarı
+Zoom out	PDFWindow		Uzaklaştır
+Show error messages	PDFWindow		Hata iletilerini göster
+Add movie annotation	PDFWindow		Film
+Open…	PDFWindow		Aç…
+Add widget annotation	PDFWindow		Uygulamacık
+Add insert text annotation	PDFWindow		Metin ekle imi
+Find	PDFWindow		Bul
+Add ink annotation	PDFWindow		Mürekkep
+Go to start of document	PDFWindow		Belgenin başlangıcına git
+Go to previous page	PDFWindow		Önceki sayfaya git
+Save as…	PDFWindow		Farklı kaydet…
+Reload file	PDFWindow		Dosyayı yeniden yükle
+Find next…	PDFWindow		Sonrakini bul…
+Fullscreen mode	PDFWindow		Tam ekran kipi
+Show page list	PDFWindow		Sayfa listesini göster
+Back	PDFWindow		Geri
+Add note text annotation	PDFWindow		Not metni
+Close	PDFWindow		Kapat
+Add printer mark annotation	PDFWindow		Yazıcı imi
+Go forward 10 pages	PDFWindow		10 sayfa ileri git
+Page %d	PDFWindow		Sayfa %d
+Forward in page history list	PDFWindow		Sayfa geçmişi listesinde ileri
+Add new paragraph text annotation	PDFWindow		Yeni paragraf metni
+Fullscreen	PDFWindow		Tam ekran
+Add sound annotation	PDFWindow		Ses
+Add comment text annotation	PDFWindow		Metin
+Page	PDFWindow		Sayfa
+File info…	PDFWindow		Dosya bilgisi …
+Page setup…	PDFWindow		Sayfa yapısı…
+Print	PDFWindow		Yazdır
+Issue tracker…	PDFWindow		Hata izleyicisi…
+Preferences…	PDFWindow		Tercihler…
+Rotation	PDFWindow		Döndürme
+Last	PDFWindow		Son
+Add stamp annotation	PDFWindow		Damga
+Add squiggly annotation	PDFWindow		Dalgalı alt çizgiler
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Şu anda BePDF'de açık olan bir PDF dosyasının üzerine yazılamaz. Lütfen başka bir dosya adı seçin.
+Copy selection	PDFWindow		Seçimi kopyala
+Add free text annotation	PDFWindow		Serbest metin
+Next	PDFWindow		Sonraki
+Forward	PDFWindow		İleri
+Hide side bar	PDFWindow		Yan paneli gizle
+Jump to page	PDFWindow		Sayfaya atla
+Add line annotation	PDFWindow		Çizgi
+Add circle annotation	PDFWindow		Daire
+Save file as	PDFWindow		Dosyayı farklı kaydet
+Show annotation toolbar	PDFWindow		Ek açıklama araç çubuğunu göster
+Add link annotation	PDFWindow		Bağlantı
+Previous	PDFWindow		Önceki
+Leave annotation editing mode	PDFWindow		Düzenleme kipinden çık
+Rotate clockwise	PDFWindow		Saat yönünde döndür
+Find next	PDFWindow		Sonrakini bul
+Add strikeout annotation	PDFWindow		Üstünü çiz
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Bookmark	PDFWindow		Yer İmleri
+Could not write PDF file!	PDFWindow		PDF dosyası yazılamadı!
+OK	PDFWindow		Tamam
+Add	PDFWindow		Ekle
+Edit	PDFWindow		Düzen
+Online help…	PDFWindow		Çevrimiçi yardım…
+Quit	PDFWindow		Çık
+Back in page history list	PDFWindow		Sayfa geçmişi listesinde geri
+Open file	PDFWindow		Dosya aç
+Visit homepage…	PDFWindow		Ana sayfayı ziyaret et
+Show attachments	PDFWindow		Ekleri göster
+Add paragraph text annotation	PDFWindow		Paragraf metni
+Go back 10 pages	PDFWindow		10 sayfa geri git
+Print…	PDFWindow		Yazdır…
+Go to end of document	PDFWindow		Belgenin sonuna git
+Rotate counter-clockwise	PDFWindow		Saat yönünün tersine döndür
+Delete	PDFWindow		Sil
+Select all	PDFWindow		Tümünü seç
+Add square annotation	PDFWindow		Kare
+Fit to page width	PDFWindow		Sayfa genişliğine sığdır
+Zoom	PDFWindow		Yakınlaştırma
+Search	PDFWindow		Arama
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Şifreli bir PDF dosyasındaki ek açıklamaların düzenlenmesi henüz olanaklı değil!
+Saving copy of PDF file:	PDFWindow		PDF dosyasının bir kopyası kaydediliyor:
+Add help text annotation	PDFWindow		Yardım metni
+Custom zoom factor (%d%%)	PDFWindow		Özel yakınlaştırma çarpanı (%d%%)
+Open in new window…	PDFWindow		Yeni pencerede aç…
+Add highlight annotation	PDFWindow		Vurgulama
+Add file attachment annotation	PDFWindow		Dosya eki
+Go to page %d	PDFView		%d. sayfaya git
+BePDF: Launch	PDFView		BePDF: Çalıştır
+Copy link	PDFView		Bağlantıyı kopyala
+Saving file attachment:	PDFView		Dosya eki kaydediliyor:
+Open in new window	PDFView		Yeni pencerede aç
+Save file attachment as…	PDFView		Dosya ekini farklı kaydet…
+[link type 'movie' not supported]	PDFView		['film' bağlantı türü desteklenmiyor]
+Cancel	PDFView		İptal
+[unknown link]	PDFView		[bilinmeyen bağlantı]
+Execute the command:	PDFView		Bu komutu çalıştır:
+Properties	PDFView		Özellikler
+Unknown link action type: '%s'	PDFView		Bilinmeyen bağlantı eylem türü: '%s'
+Annotation	PDFView		Ek açıklama
+Delete	PDFView		Sil
+Leave annotation editing mode	PDFView		Düzenleme kipinden çık
+[internal link]	PDFView		[iç bağ]
+OK	PDFView		Tamam
+BePDF reading file: 	PDFView		BePDF dosyayı okuyor:
+Edit	PDFView		Düzenle
+Keywords:	FileInfoWindow		Anahtar sözcükler:
+Subject:	FileInfoWindow		Konu:
+Encrypted:	FileInfoWindow		Şifrelenmiş:
+Type	FileInfoWindow		Tür
+Abort	FileInfoWindow		İptal et
+Denied	FileInfoWindow		İzin verilmiyor
+Creator:	FileInfoWindow		Oluşturan:
+Document	FileInfoWindow		Belge
+Fonts of this page	FileInfoWindow		Yazıtipleri
+Path:	FileInfoWindow		Yol:
+Name	FileInfoWindow		Ad
+Filename:	FileInfoWindow		Dosya adı:
+Yes	FileInfoWindow		Evet
+Annotations:	FileInfoWindow		Ek açıklamalar:
+Producer:	FileInfoWindow		Prodüktör:
+Allowed	FileInfoWindow		İzin veriliyor
+Copy & paste:	FileInfoWindow		Kopyala ve yapıştır:
+Modified:	FileInfoWindow		Değiştirilme:
+Editing:	FileInfoWindow		Düzenleme:
+Title:	FileInfoWindow		Başlık:
+Created:	FileInfoWindow		Oluşturulma:
+Linearized:	FileInfoWindow		Doğrusallaştırılmış:
+Version:	FileInfoWindow		Sürüm:
+No	FileInfoWindow		Hayır
+Author:	FileInfoWindow		Yazar:
+Security	FileInfoWindow		Güvenlik
+Embedded name	FileInfoWindow		Gömülü ad
+Printing:	FileInfoWindow		Yazdırma:
+File info	FileInfoWindow		Dosya bilgisi
+Show all fonts	FileInfoWindow		Tüm yazıtiplerini göster
+All pages	PrintSettingsWindow		Tüm sayfalar
+ in	PrintSettingsWindow		içinde
+Pages	PrintSettingsWindow		Sayfalar
+Page	PrintSettingsWindow		Sayfa
+Max. printer resolution	PrintSettingsWindow		En çok yazıcı çözünürlüğü
+DPI	PrintSettingsWindow		DPI
+Zoom (%)	PrintSettingsWindow		Yakınlaştırma (%)
+Gray scale	PrintSettingsWindow		Gri tonlu
+Color	PrintSettingsWindow		Renk
+Normal	PrintSettingsWindow		Normal
+Rotation	PrintSettingsWindow		Döndürme
+Print settings	PrintSettingsWindow		Yazdırma ayarları
+Print	PrintSettingsWindow		Yazdır
+Reverse	PrintSettingsWindow		Tersi
+Odd pages	PrintSettingsWindow		Tek numaralı sayfalar
+Zoom must be between 25 and 400!	PrintSettingsWindow		Yakınlaştırma 25 ve 400 arasında olmalıdır!
+Mode	PrintSettingsWindow		Kip
+Order	PrintSettingsWindow		Sıra
+Height: 	PrintSettingsWindow		Yükseklik:
+Width: 	PrintSettingsWindow		Genişlik:
+OK	PrintSettingsWindow		Tamam
+Even pages	PrintSettingsWindow		Çift numaralı sayfalar
+Wrong parameter!	PrintSettingsWindow		Yanlış parametre!
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Araç, durum ve kaydırma çubuklarını da göster
+Fullscreen mode	AnnotationWindow		Tam ekran kipi
+Will take effect at next program launch.	AnnotationWindow		Bir sonraki başlatmada geçerli olacaktır.
+Filled rectangle	AnnotationWindow		Dolu dikdörtgen
+Align:	AnnotationWindow		Hizala:
+Title:	AnnotationWindow		Başlık:
+User fonts	AnnotationWindow		Kullanıcı yazıtipleri
+Asian fonts	AnnotationWindow		Asya yazıtipleri
+Restore window position and size	AnnotationWindow		Pencere konumunu ve boyutunu hatırla
+Author	AnnotationWindow		Yazar
+Open in workspace:	AnnotationWindow		Şu çalışma alanında aç:
+Preferences	AnnotationWindow		Tercihler
+Show document view only	AnnotationWindow		Yalnızca belgeyi göster
+Automatic	AnnotationWindow		Otomatik
+Font:	AnnotationWindow		Yazıtipi:
+Restore page number	AnnotationWindow		Sayfa numarasını hatırla
+System fonts	AnnotationWindow		Sistem yazıtipleri
+Stroked rectangle	AnnotationWindow		Çerçeveli dikdörtgen
+current	AnnotationWindow		şu anki
+Annotation	AnnotationWindow		Ek açıklama
+Selection rectangle	AnnotationWindow		Seçim dörtgeni
+Display	AnnotationWindow		Görüntüleme
+Document	AnnotationWindow		Belge
+Size:	AnnotationWindow		Boyut:
+Date:	AnnotationWindow		Tarih:
+Invert vertical mouse scrolling	AnnotationWindow		Dikey fare kaydırmasını tersine çevir
+<empty>	OutlinesWindow		<boş>
+Document	OutlinesWindow		Belge
+Edit title for bookmark	OutlinesWindow		Yer imi başlığını düzenle
+No title	OutlinesWindow		Başlık yok
+User defined	OutlinesWindow		Kullanıcı tanımlı
+OK	OutlinesWindow		Tamam
+BePDF printing document: 	PrintingProgressWindow		BePDF belgeyi yazdırıyor:
+BePDF printing	PrintingProgressWindow		BePDF yazdırıyor
+Stop	PrintingProgressWindow		Durdur
+Abort	PrintingProgressWindow		İptal et
+Page:	PrintingProgressWindow		Sayfa:
+Page: %d	PrintingProgressWindow		Sayfa: %d
+Clear	TraceWindow		Temizle
+Auto open	TraceWindow		Kendiliğinden aç
+Floating	TraceWindow		Yüzen pencere
+Error messages	TraceWindow		Hata iletileri
+Options	FindTextWindow		Seçenekler
+Ignore case	FindTextWindow		BÜYÜK/küçük harf yoksay
+Page:	FindTextWindow		Sayfa:
+Find: 	FindTextWindow		Bul:
+Stop	FindTextWindow		Dur
+Find	FindTextWindow		Bul
+Find text	FindTextWindow		Metin bul
+Search backwards	FindTextWindow		Geriye doğru ara
+Page: %d	FindTextWindow		Sayfa: %d
+Save selected attachments into directory	AttachmentView		Seçili ekleri dizine kaydet
+File name	AttachmentView		Dosya adı
+Save attachment(s) as	AttachmentView		Ek(ler)i farklı kaydet
+Saving attachment(s):	AttachmentView		Ek(ler) kaydediliyor:
+Save selected attachment to file	AttachmentView		Seçili eki dosyaya kaydet
+Description	AttachmentView		Açıklama
+<empty>	AttachmentView		<boş>
+Search string not found.	PDFSearch		Arama dizisi bulunamadı.
+OK	PDFSearch		Tamam
+BePDF status	StatusWindow		BePDF durumu
+User password	PasswordWindow		Kullanıcı şifresi
+Enter Password	PasswordWindow		Parola girin
+Owner password	PasswordWindow		Sahip şifresi
+OK	PasswordWindow		Tamam

@@ -1,0 +1,254 @@
+1	Croatian	application/x-vnd.mp-xpdf	1765081836
+Close	BepdfApplication		Zatvori
+Error	BepdfApplication		Greška
+Beta	BepdfApplication		Beta
+Gamma	BepdfApplication		Gama
+Golden Master	BepdfApplication		Golden Master
+BePDF: Error opening file!	BepdfApplication		BePDF: Greška pri otvaranju datoteke!
+Alpha	BepdfApplication		Alfa
+Version	BepdfApplication		Inačica
+Development	BepdfApplication		Razvoj
+Unknown	BepdfApplication		Nepoznato
+Final	BepdfApplication		Završno
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF je baziran na XPDF-u %s, %s.
+Show bookmarks	PDFWindow		Show bookmarks
+of %d	PDFWindow		of %d
+Zoom in	PDFWindow		Zoom in
+About BePDF…	PDFWindow		O BePDF-u…
+Go to next page	PDFWindow		Go to next page
+View	PDFWindow		View
+Show annotation tool bar	PDFWindow		Show annotation tool bar
+Select none	PDFWindow		Select none
+Add trapnet annotation	PDFWindow		Add trapnet annotation
+Add underline annotation	PDFWindow		Add underline annotation
+Show help…	PDFWindow		Show help…
+Help	PDFWindow		Help
+Add popup annotation	PDFWindow		Add popup annotation
+Find…	PDFWindow		Find…
+Reload	PDFWindow		Reload
+First	PDFWindow		First
+Fit to page	PDFWindow		Fit to page
+Add key text annotation	PDFWindow		Add key text annotation
+File	PDFWindow		File
+PDF file successfully written!	PDFWindow		PDF file successfully written!
+Warning	PDFWindow		Warning
+Zoom out	PDFWindow		Zoom out
+Show error messages	PDFWindow		Show error messages
+Add movie annotation	PDFWindow		Add movie annotation
+Open…	PDFWindow		Open…
+Add widget annotation	PDFWindow		Add widget annotation
+Add insert text annotation	PDFWindow		Add insert text annotation
+Find	PDFWindow		Find
+Add ink annotation	PDFWindow		Add ink annotation
+Go to start of document	PDFWindow		Go to start of document
+Go to previous page	PDFWindow		Go to previous page
+Save as…	PDFWindow		Save as…
+Reload file	PDFWindow		Reload file
+Find next…	PDFWindow		Find next…
+Fullscreen mode	PDFWindow		Fullscreen mode
+Show page list	PDFWindow		Show page list
+Back	PDFWindow		Back
+Add note text annotation	PDFWindow		Add note text annotation
+Close	PDFWindow		Close
+Add printer mark annotation	PDFWindow		Add printer mark annotation
+Go forward 10 pages	PDFWindow		Go forward 10 pages
+Page %d	PDFWindow		Page %d
+Forward in page history list	PDFWindow		Forward in page history list
+Add new paragraph text annotation	PDFWindow		Add new paragraph text annotation
+Fullscreen	PDFWindow		Fullscreen
+Add sound annotation	PDFWindow		Add sound annotation
+Add comment text annotation	PDFWindow		Add comment text annotation
+Page	PDFWindow		Page
+File info…	PDFWindow		File info…
+Page setup…	PDFWindow		Page setup…
+Print	PDFWindow		Print
+Issue tracker…	PDFWindow		Issue tracker…
+Preferences…	PDFWindow		Preferences…
+Rotation	PDFWindow		Rotation
+Last	PDFWindow		Last
+Add stamp annotation	PDFWindow		Add stamp annotation
+Add squiggly annotation	PDFWindow		Add squiggly annotation
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.
+Copy selection	PDFWindow		Copy selection
+Add free text annotation	PDFWindow		Add free text annotation
+Next	PDFWindow		Next
+Forward	PDFWindow		Forward
+Hide side bar	PDFWindow		Hide side bar
+Jump to page	PDFWindow		Jump to page
+Add line annotation	PDFWindow		Add line annotation
+Add circle annotation	PDFWindow		Add circle annotation
+Save file as	PDFWindow		Save file as
+Show annotation toolbar	PDFWindow		Show annotation toolbar
+Add link annotation	PDFWindow		Add link annotation
+Previous	PDFWindow		Previous
+Leave annotation editing mode	PDFWindow		Leave annotation editing mode
+Rotate clockwise	PDFWindow		Rotate clockwise
+Find next	PDFWindow		Find next
+Add strikeout annotation	PDFWindow		Add strikeout annotation
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Bookmark	PDFWindow		Bookmark
+Could not write PDF file!	PDFWindow		Could not write PDF file!
+OK	PDFWindow		OK
+Add	PDFWindow		Dodaj
+Edit	PDFWindow		Edit
+Online help…	PDFWindow		Online help…
+Quit	PDFWindow		Quit
+Back in page history list	PDFWindow		Back in page history list
+Open file	PDFWindow		Open file
+Visit homepage…	PDFWindow		Visit homepage…
+Show attachments	PDFWindow		Show attachments
+Add paragraph text annotation	PDFWindow		Add paragraph text annotation
+Go back 10 pages	PDFWindow		Go back 10 pages
+Print…	PDFWindow		Print…
+Go to end of document	PDFWindow		Go to end of document
+Rotate counter-clockwise	PDFWindow		Rotate counter-clockwise
+Delete	PDFWindow		Delete
+Select all	PDFWindow		Select all
+Add square annotation	PDFWindow		Add square annotation
+Fit to page width	PDFWindow		Fit to page width
+Zoom	PDFWindow		Zoom
+Search	PDFWindow		Search
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file isn't supported yet!
+Saving copy of PDF file:	PDFWindow		Saving copy of PDF file:
+Add help text annotation	PDFWindow		Add help text annotation
+Custom zoom factor (%d%%)	PDFWindow		Custom zoom factor (%d%%)
+Open in new window…	PDFWindow		Open in new window…
+Add highlight annotation	PDFWindow		Add highlight annotation
+Add file attachment annotation	PDFWindow		Add file attachment annotation
+Go to page %d	PDFView		Idi na stranicu %d
+BePDF: Launch	PDFView		BePDF: Pokreni
+Copy link	PDFView		Kopiraj poveznicu
+Saving file attachment:	PDFView		Spremam datoteku privitka:
+Open in new window	PDFView		Otvori u novom prozoru
+Save file attachment as…	PDFView		Spremi datoteku privitka kao...
+[link type 'movie' not supported]	PDFView		[link type 'movie' not supported]
+Cancel	PDFView		Otkaži
+[unknown link]	PDFView		[unknown link]
+Execute the command:	PDFView		Izvrši naredbu:
+Properties	PDFView		Osobitosti
+Unknown link action type: '%s'	PDFView		Unknown link action type: '%s'
+Annotation	PDFView		Annotation
+Delete	PDFView		Izbriši
+Leave annotation editing mode	PDFView		Leave annotation editing mode
+[internal link]	PDFView		[internal link]
+OK	PDFView		U redu
+BePDF reading file: 	PDFView		BePDF reading file: 
+Edit	PDFView		Uredi
+Keywords:	FileInfoWindow		Ključne riječi:
+Subject:	FileInfoWindow		Subject:
+Encrypted:	FileInfoWindow		Encrypted:
+Type	FileInfoWindow		Vrsta
+Abort	FileInfoWindow		Prekini
+Denied	FileInfoWindow		Odbijeno
+Creator:	FileInfoWindow		Tvorac:
+Document	FileInfoWindow		Dokument
+Fonts of this page	FileInfoWindow		Fontovi na ovoj stranici
+Path:	FileInfoWindow		Putanja:
+Name	FileInfoWindow		Ime
+Filename:	FileInfoWindow		Ime datoteke:
+Yes	FileInfoWindow		Da
+Annotations:	FileInfoWindow		Annotations:
+Producer:	FileInfoWindow		Producer:
+Allowed	FileInfoWindow		Dopušteno
+Copy & paste:	FileInfoWindow		Kopiraj & zalijepi:
+Modified:	FileInfoWindow		Izmjenjeno:
+Editing:	FileInfoWindow		Uređivanje:
+Title:	FileInfoWindow		Naslov:
+Created:	FileInfoWindow		Napravljeno:
+Linearized:	FileInfoWindow		Linearized:
+Version:	FileInfoWindow		Inačica:
+No	FileInfoWindow		Ne
+Author:	FileInfoWindow		Autor:
+Security	FileInfoWindow		Sigurnost
+Embedded name	FileInfoWindow		Embedded name
+Printing:	FileInfoWindow		Ispis:
+File info	FileInfoWindow		Informacije o datoteci
+Show all fonts	FileInfoWindow		Pokaži sve fontove
+All pages	PrintSettingsWindow		All pages
+ in	PrintSettingsWindow		 in
+Pages	PrintSettingsWindow		Pages
+Page	PrintSettingsWindow		Page
+Max. printer resolution	PrintSettingsWindow		Max. printer resolution
+DPI	PrintSettingsWindow		DPI
+Zoom (%)	PrintSettingsWindow		Zoom (%)
+Gray scale	PrintSettingsWindow		Gray scale
+Color	PrintSettingsWindow		Color
+Normal	PrintSettingsWindow		Normal
+Rotation	PrintSettingsWindow		Rotation
+Print settings	PrintSettingsWindow		Print settings
+Print	PrintSettingsWindow		Print
+Reverse	PrintSettingsWindow		Reverse
+Odd pages	PrintSettingsWindow		Odd pages
+Zoom must be between 25 and 400!	PrintSettingsWindow		Zoom must be between 25 and 400!
+Mode	PrintSettingsWindow		Mode
+Order	PrintSettingsWindow		Order
+Height: 	PrintSettingsWindow		Height: 
+Width: 	PrintSettingsWindow		Width: 
+OK	PrintSettingsWindow		OK
+Even pages	PrintSettingsWindow		Even pages
+Wrong parameter!	PrintSettingsWindow		Wrong parameter!
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Show toolbar, statusbar and scrollbars, too
+Fullscreen mode	AnnotationWindow		Cijeli zaslon
+Will take effect at next program launch.	AnnotationWindow		Will take effect at next program launch.
+Filled rectangle	AnnotationWindow		Filled rectangle
+Align:	AnnotationWindow		Poravnaj:
+Title:	AnnotationWindow		Naslov:
+User fonts	AnnotationWindow		Fontovi korisnika
+Asian fonts	AnnotationWindow		Azijski fontovi
+Restore window position and size	AnnotationWindow		Obnovi poziciju i veličinu prozora
+Author	AnnotationWindow		Autor
+Open in workspace:	AnnotationWindow		Otvori u radnom prostoru:
+Preferences	AnnotationWindow		Osobitosti
+Show document view only	AnnotationWindow		Show document view only
+Automatic	AnnotationWindow		Automatski
+Font:	AnnotationWindow		Font:
+Restore page number	AnnotationWindow		Obnovi broj stranice
+System fonts	AnnotationWindow		Fontovi sustava
+Stroked rectangle	AnnotationWindow		Stroked rectangle
+current	AnnotationWindow		trenutno
+Annotation	AnnotationWindow		Annotation
+Selection rectangle	AnnotationWindow		Selection rectangle
+Display	AnnotationWindow		Prikaz
+Document	AnnotationWindow		Dokument
+Size:	AnnotationWindow		Veličina:
+Date:	AnnotationWindow		Datum:
+Invert vertical mouse scrolling	AnnotationWindow		Invert vertical mouse scrolling
+<empty>	OutlinesWindow		<empty>
+Document	OutlinesWindow		Dokument
+Edit title for bookmark	OutlinesWindow		Uredite naslov bilješke
+No title	OutlinesWindow		Nema naslova
+User defined	OutlinesWindow		Definirao korisnik
+OK	OutlinesWindow		U redu
+BePDF printing document: 	PrintingProgressWindow		BePDF printing document: 
+BePDF printing	PrintingProgressWindow		BePDF printing
+Stop	PrintingProgressWindow		Stop
+Abort	PrintingProgressWindow		Abort
+Page:	PrintingProgressWindow		Page:
+Page: %d	PrintingProgressWindow		Page: %d
+Clear	TraceWindow		Clear
+Auto open	TraceWindow		Auto open
+Floating	TraceWindow		Floating
+Error messages	TraceWindow		Error messages
+Options	FindTextWindow		Opcije
+Ignore case	FindTextWindow		Ignore case
+Page:	FindTextWindow		Stranica:
+Find: 	FindTextWindow		Nađi:
+Stop	FindTextWindow		Stani
+Find	FindTextWindow		Nađi
+Find text	FindTextWindow		Nađi tekst
+Search backwards	FindTextWindow		Traži unatrag
+Page: %d	FindTextWindow		Stranica: %d
+Save selected attachments into directory	AttachmentView		Spremi odabrane privitke u direktorij
+File name	AttachmentView		Ime datoteke
+Save attachment(s) as	AttachmentView		Spremi privitak(e) kao
+Saving attachment(s):	AttachmentView		Spremanje privitak(a):
+Save selected attachment to file	AttachmentView		Spremi odabrani privitak u datoteku
+Description	AttachmentView		Opis
+<empty>	AttachmentView		<empty>
+Search string not found.	PDFSearch		Search string not found.
+OK	PDFSearch		U redu
+BePDF status	StatusWindow		BePDF status
+User password	PasswordWindow		Lozinka korisnika
+Enter Password	PasswordWindow		Unesi lozinku
+Owner password	PasswordWindow		Lozinka vlasnika
+OK	PasswordWindow		U redu

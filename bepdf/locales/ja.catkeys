@@ -19,11 +19,11 @@ Go to next page	PDFWindow		次ページに移動
 View	PDFWindow		表示
 Show annotation tool bar	PDFWindow		注釈ツールバーを表示
 Select none	PDFWindow		選択を解除
-Add trapnet annotation	PDFWindow		Add trapnet annotation
+Add trapnet annotation	PDFWindow		トラップネットワークの追加
 Add underline annotation	PDFWindow		下線の追加
 Show help…	PDFWindow		BePDF のヘルプ…
 Help	PDFWindow		ヘルプ
-Add popup annotation	PDFWindow		ポップアップ注釈の追加
+Add popup annotation	PDFWindow		ポップアップの追加
 Find…	PDFWindow		検索…
 Reload	PDFWindow		再読み込み
 First	PDFWindow		開始ページ
@@ -36,7 +36,7 @@ Zoom out	PDFWindow		ズームアウト
 Show error messages	PDFWindow		エラーメッセージを表示
 Add movie annotation	PDFWindow		動画注釈の追加
 Open…	PDFWindow		開く…
-Add widget annotation	PDFWindow		Add widget annotation
+Add widget annotation	PDFWindow		ウィジェットの追加
 Add insert text annotation	PDFWindow		挿入テキストの追加
 Find	PDFWindow		検索
 Add ink annotation	PDFWindow		インクコメントの追加
@@ -50,7 +50,7 @@ Show page list	PDFWindow		ページリストを表示
 Back	PDFWindow		前の表示に移動
 Add note text annotation	PDFWindow		メモテキストの追加
 Close	PDFWindow		閉じる
-Add printer mark annotation	PDFWindow		Add printer mark annotation
+Add printer mark annotation	PDFWindow		プリンターズマークの追加
 Go forward 10 pages	PDFWindow		10 ページ分進む
 Page %d	PDFWindow		%d ページ
 Forward in page history list	PDFWindow		次の画面
@@ -76,7 +76,7 @@ Forward	PDFWindow		次の表示に移動
 Hide side bar	PDFWindow		サイドバーを非表示
 Jump to page	PDFWindow		ページ指定
 Add line annotation	PDFWindow		線注釈の追加
-Add circle annotation	PDFWindow		円注釈の追加
+Add circle annotation	PDFWindow		円の追加
 Save file as	PDFWindow		ファイルに保存
 Show annotation toolbar	PDFWindow		注釈ツールバーの表示
 Add link annotation	PDFWindow		リンクの追加
@@ -104,7 +104,7 @@ Go to end of document	PDFWindow		最後のページヘ移動
 Rotate counter-clockwise	PDFWindow		表示を左 90°回転
 Delete	PDFWindow		削除
 Select all	PDFWindow		すべてを選択
-Add square annotation	PDFWindow		四角注釈の追加
+Add square annotation	PDFWindow		四角の追加
 Fit to page width	PDFWindow		幅に合わせる
 Zoom	PDFWindow		ズーム
 Search	PDFWindow		検索
@@ -113,8 +113,8 @@ Saving copy of PDF file:	PDFWindow		PDF ファイルのコピーを保存中:
 Add help text annotation	PDFWindow		ヘルプテキストの追加
 Custom zoom factor (%d%%)	PDFWindow		倍率指定 (%d%%)
 Open in new window…	PDFWindow		新しいウィンドウで開く…
-Add highlight annotation	PDFWindow		ハイライト注釈の追加
-Add file attachment annotation	PDFWindow		Add fileattachment annotation
+Add highlight annotation	PDFWindow		ハイライトの追加
+Add file attachment annotation	PDFWindow		添付ファイルの追加
 Go to page %d	PDFView		%d ページに移動
 BePDF: Launch	PDFView		BePDF: 開始
 Copy link	PDFView		リンク先のロケーションをコピー
