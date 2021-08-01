@@ -1,254 +1,254 @@
 1	Catalan	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		Tanca
-Error	BepdfApplication		Error
-Beta	BepdfApplication		Beta
-Gamma	BepdfApplication		Gamma
-Golden Master	BepdfApplication		Mestre d’Or
-BePDF: Error opening file!	BepdfApplication		BePDF: error en obrir el fitxer!
-Alpha	BepdfApplication		Alfa
-Version	BepdfApplication		Versió
-Development	BepdfApplication		Desenvolupament
-Unknown	BepdfApplication		Desconegut
-Final	BepdfApplication		Final
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF està basat en XPDF %s, %s.
-Show bookmarks	PDFWindow		Mostra els marcadors
-of %d	PDFWindow		de %d
-Zoom in	PDFWindow		Amplia
-About BePDF…	PDFWindow		Quant a BePDF…
-Go to next page	PDFWindow		Ves a la pàgina següent
-View	PDFWindow		Visualització
-Show annotation tool bar	PDFWindow		Mostra la barra d’eines d’anotació
-Select none	PDFWindow		Desmarca-ho tot
-Add trapnet annotation	PDFWindow		Afegiu una anotació de tampa de xarxa
-Add underline annotation	PDFWindow		Afegeix una anotació de subratllat
-Show help…	PDFWindow		Mostra l'ajuda...
-Help	PDFWindow		Ajuda
-Add popup annotation	PDFWindow		Afegeix una anotació emergent
-Find…	PDFWindow		Troba...
-Reload	PDFWindow		Torna a carregar
-First	PDFWindow		Primera
-Fit to page	PDFWindow		Ajusta a la pàgina
-Add key text annotation	PDFWindow		Afegeix una anotació de text clau
-File	PDFWindow		Fitxer
-PDF file successfully written!	PDFWindow		Fitxer PDF escrit correctament!
-Warning	PDFWindow		Avís
-Zoom out	PDFWindow		Redueix
-Show error messages	PDFWindow		Mostra els missatges d'error
-Add movie annotation	PDFWindow		Afegeix una anotació de pel·lícula
-Open…	PDFWindow		Obre...
-Add widget annotation	PDFWindow		Afegeix una anotació de giny
-Add insert text annotation	PDFWindow		Afegeix una anotació d'inserció de text
-Find	PDFWindow		Troba
-Add ink annotation	PDFWindow		Afegeix una anotació de tinta
-Go to start of document	PDFWindow		Ves a l'inici del document
-Go to previous page	PDFWindow		Ves a la pàgina anterior
-Save as…	PDFWindow		Desa com a...
-Reload file	PDFWindow		Torna a carregar el fitxer
-Find next…	PDFWindow		Troba'n el següent...
-Fullscreen mode	PDFWindow		Mode de pantalla completa
-Show page list	PDFWindow		Mostra la llista de pàgines
-Back	PDFWindow		Enrere
-Add note text annotation	PDFWindow		Afegeix una anotació de text de nota
-Close	PDFWindow		Tanca
-Add printer mark annotation	PDFWindow		Afegeix una anotació de marca d'impressora
-Go forward 10 pages	PDFWindow		Ves endavant 10 pàgines
-Page %d	PDFWindow		Pàgina %d
-Forward in page history list	PDFWindow		Endavant en la llista de pàgines de l'historial
-Add new paragraph text annotation	PDFWindow		Afegeix una anotació de text de paràgraf nou
-Fullscreen	PDFWindow		Pantalla completa
-Add sound annotation	PDFWindow		Afegeix una anotació de so
-Add comment text annotation	PDFWindow		Afegeix una anotació de text de comentari
-Page	PDFWindow		Pàgina
-File info…	PDFWindow		Informació del fitxer...
-Page setup…	PDFWindow		Configuració de la pàgina...
-Print	PDFWindow		Imprimeix
-Issue tracker…	PDFWindow		Seguiment de problemes...
-Preferences…	PDFWindow		Preferències…
-Rotation	PDFWindow		Rotació
-Last	PDFWindow		Darrera
-Add stamp annotation	PDFWindow		Afegeix una anotació de segell
-Add squiggly annotation	PDFWindow		Afegeix una anotació de línia serpentejant
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		No es pot sobreescriure un fitxer PDF obert actualment al BePDF! Si us plau, trieu un altre nom de fitxer.
-Copy selection	PDFWindow		Copia la selecció
-Add free text annotation	PDFWindow		Afegeix una anotació de text lliure
-Next	PDFWindow		Següent
-Forward	PDFWindow		Endavant
-Hide side bar	PDFWindow		Amaga la barra lateral
-Jump to page	PDFWindow		Salta a la pàgina
-Add line annotation	PDFWindow		Afegeix una anotació de línia
-Add circle annotation	PDFWindow		Afegeix una anotació de cercle
-Save file as	PDFWindow		Desa el fitxer com a
-Show annotation toolbar	PDFWindow		Mostra la barra d’eines d’anotació
-Add link annotation	PDFWindow		Afegeix una anotació d'enllaç
-Previous	PDFWindow		Anterior
-Leave annotation editing mode	PDFWindow		Abandona el mode d’edició d’anotacions
-Rotate clockwise	PDFWindow		Gira en el sentit del rellotge
-Find next	PDFWindow		Troba'n el següent
-Add strikeout annotation	PDFWindow		Afegeix una anotació de ratllada
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Bookmark	PDFWindow		Marcador
-Could not write PDF file!	PDFWindow		No s'ha pogut escriure el fitxer PDF!
-OK	PDFWindow		D'acord
-Add	PDFWindow		Afegeix
-Edit	PDFWindow		Edita
-Online help…	PDFWindow		Ajuda en línia...
-Quit	PDFWindow		Surt
-Back in page history list	PDFWindow		Enrere en la llista de l'historial de pàgines
-Open file	PDFWindow		Obre un fitxer
-Visit homepage…	PDFWindow		Visita la pàgina d'inici
-Show attachments	PDFWindow		Mostra els adjunts
-Add paragraph text annotation	PDFWindow		Afegeix una anotació de text de paràgraf
-Go back 10 pages	PDFWindow		Ves enrere 10 pàgines
-Print…	PDFWindow		Imprimeix...
-Go to end of document	PDFWindow		Ves al final del document
-Rotate counter-clockwise	PDFWindow		Gira en sentit antihorari
-Delete	PDFWindow		Suprimeix
-Select all	PDFWindow		Selecciona-ho tot
-Add square annotation	PDFWindow		Afegeix una anotació quadrada
-Fit to page width	PDFWindow		Ajusta a l'amplada de la pàgina
-Zoom	PDFWindow		Zoom
-Search	PDFWindow		Cerca
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		L'edició de les anotacions en un fitxer PDF encriptat encara no s'admet.
-Saving copy of PDF file:	PDFWindow		Es desa la còpia del fitxer PDF:
-Add help text annotation	PDFWindow		Afegeix una anotació de text d’ajuda
-Custom zoom factor (%d%%)	PDFWindow		Zoom personalitzat (%d%%)
-Open in new window…	PDFWindow		Obre en una finestra nova...
-Add highlight annotation	PDFWindow		Afegeix una anotació destacada
-Add file attachment annotation	PDFWindow		Afegeix una anotació de fitxer adjunt
-Go to page %d	PDFView		Ves a la pàgina %d
-BePDF: Launch	PDFView		BePDF: inicia
-Copy link	PDFView		Copia l'enllaç
-Saving file attachment:	PDFView		Es desa el fitxer adjunt:
-Open in new window	PDFView		Obre en una finestra nova
-Save file attachment as…	PDFView		Desa el fitxer adjunt com a...
-[link type 'movie' not supported]	PDFView		[no s'admet el tipus d'enllaç "movie"]
-Cancel	PDFView		Cancel·la
-[unknown link]	PDFView		[enllaç desconegut]
-Execute the command:	PDFView		Executa l'ordre:
-Properties	PDFView		Propietats
-Unknown link action type: '%s'	PDFView		Tipus d'acció d'enllaç desconegut: %s
-Annotation	PDFView		Anotació
-Delete	PDFView		Suprimeix
-Leave annotation editing mode	PDFView		Abandona el mode d’edició d’anotacions
-[internal link]	PDFView		[enllaç intern]
-OK	PDFView		D'acord
-BePDF reading file: 	PDFView		Fitxer de lectura de BePDF:
-Edit	PDFView		Edita
-Keywords:	FileInfoWindow		Paraules clau:
-Subject:	FileInfoWindow		Assumpte:
-Encrypted:	FileInfoWindow		Encriptat:
-Type	FileInfoWindow		Tipus
-Abort	FileInfoWindow		Avorta
-Denied	FileInfoWindow		Denegat
-Creator:	FileInfoWindow		Creador:
-Document	FileInfoWindow		Document
-Fonts of this page	FileInfoWindow		Codi d'aquesta pàgina
-Path:	FileInfoWindow		Camí:
-Name	FileInfoWindow		Nom
-Filename:	FileInfoWindow		Nom del fitxer:
-Yes	FileInfoWindow		Sí
-Annotations:	FileInfoWindow		Anotacions:
-Producer:	FileInfoWindow		Productor:
-Allowed	FileInfoWindow		Permès
-Copy & paste:	FileInfoWindow		Copia i enganxa:
-Modified:	FileInfoWindow		Modificat:
-Editing:	FileInfoWindow		Edició:
-Title:	FileInfoWindow		Títol:
-Created:	FileInfoWindow		Creat:
-Linearized:	FileInfoWindow		Linealitzat:
-Version:	FileInfoWindow		Versió:
-No	FileInfoWindow		No
-Author:	FileInfoWindow		Autor:
-Security	FileInfoWindow		Seguretat
-Embedded name	FileInfoWindow		Nom encastat
-Printing:	FileInfoWindow		Impressió:
-File info	FileInfoWindow		Informació del fitxer
-Show all fonts	FileInfoWindow		Mostra totes les lletres
-All pages	PrintSettingsWindow		Totes les pàgines
  in	PrintSettingsWindow		 a
-Pages	PrintSettingsWindow		Pàgines
-Page	PrintSettingsWindow		Pàgina
-Max. printer resolution	PrintSettingsWindow		Resolució màx. de la impressora
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		Ampliació (%)
-Gray scale	PrintSettingsWindow		Escala de grisos
+All pages	PrintSettingsWindow		Totes les pàgines
 Color	PrintSettingsWindow		Color
-Normal	PrintSettingsWindow		Normal
-Rotation	PrintSettingsWindow		Rotació
-Print settings	PrintSettingsWindow		Configuració de la impressió
-Print	PrintSettingsWindow		Imprimeix
-Reverse	PrintSettingsWindow		Inversa
-Odd pages	PrintSettingsWindow		Pàgines senars
-Zoom must be between 25 and 400!	PrintSettingsWindow		L'ampliació ha de ser d'entre 25 i 400!
-Mode	PrintSettingsWindow		Mode
-Order	PrintSettingsWindow		Ordre
-Height: 	PrintSettingsWindow		Alçada: 
-Width: 	PrintSettingsWindow		Amplada: 
-OK	PrintSettingsWindow		D'acord
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		Pàgines parells
+Gray scale	PrintSettingsWindow		Escala de grisos
+Height: 	PrintSettingsWindow		Alçada: 
+Max. printer resolution	PrintSettingsWindow		Resolució màx. de la impressora
+Mode	PrintSettingsWindow		Mode
+Normal	PrintSettingsWindow		Normal
+Odd pages	PrintSettingsWindow		Pàgines senars
+OK	PrintSettingsWindow		D'acord
+Order	PrintSettingsWindow		Ordre
+Page	PrintSettingsWindow		Pàgina
+Pages	PrintSettingsWindow		Pàgines
+Print	PrintSettingsWindow		Imprimeix
+Print settings	PrintSettingsWindow		Configuració de la impressió
+Reverse	PrintSettingsWindow		Inversa
+Rotation	PrintSettingsWindow		Rotació
+Width: 	PrintSettingsWindow		Amplada: 
 Wrong parameter!	PrintSettingsWindow		Paràmetre incorrecte!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Mostra la barra d’eines, la barra d’estat i les barres de desplaçament, també
-Fullscreen mode	AnnotationWindow		Mode de pantalla completa
-Will take effect at next program launch.	AnnotationWindow		Tindrà efecte al proper inici del programa.
-Filled rectangle	AnnotationWindow		Rectangle ple
-Align:	AnnotationWindow		Alineació:
-Title:	AnnotationWindow		Títol:
-User fonts	AnnotationWindow		Lletres de l'usuari
-Asian fonts	AnnotationWindow		Lletres asiàtiques
-Restore window position and size	AnnotationWindow		Restaura la posició i la mida de la finestra
-Author	AnnotationWindow		Autor
-Open in workspace:	AnnotationWindow		Obre a l'espai de treball:
-Preferences	AnnotationWindow		Preferències
-Show document view only	AnnotationWindow		Mostra només la visualització de documents
-Automatic	AnnotationWindow		Automàtic
-Font:	AnnotationWindow		Lletra:
-Restore page number	AnnotationWindow		Restaura el número de pàgina
-System fonts	AnnotationWindow		Lletres del sistema
-Stroked rectangle	AnnotationWindow		Rectangle traçat
-current	AnnotationWindow		actual
-Annotation	AnnotationWindow		Anotació
-Selection rectangle	AnnotationWindow		Rectangle de selecció
-Display	AnnotationWindow		Pantalla
-Document	AnnotationWindow		Document
-Size:	AnnotationWindow		Mida:
-Date:	AnnotationWindow		Data:
-Invert vertical mouse scrolling	AnnotationWindow		Inverteix el desplaçament del ratolí vertical
+Zoom (%)	PrintSettingsWindow		Ampliació (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		L'ampliació ha de ser d'entre 25 i 400!
+[internal link]	PDFView		[enllaç intern]
+[link type 'movie' not supported]	PDFView		[no s'admet el tipus d'enllaç "movie"]
+[unknown link]	PDFView		[enllaç desconegut]
+Annotation	PDFView		Anotació
+BePDF reading file: 	PDFView		Fitxer de lectura de BePDF:
+BePDF: Launch	PDFView		BePDF: inicia
+Cancel	PDFView		Cancel·la
+Copy link	PDFView		Copia l'enllaç
+Delete	PDFView		Suprimeix
+Edit	PDFView		Edita
+Execute the command:	PDFView		Executa l'ordre:
+Go to page %d	PDFView		Ves a la pàgina %d
+Leave annotation editing mode	PDFView		Abandona el mode d’edició d’anotacions
+OK	PDFView		D'acord
+Open in new window	PDFView		Obre en una finestra nova
+Properties	PDFView		Propietats
+Save file attachment as…	PDFView		Desa el fitxer adjunt com a...
+Saving file attachment:	PDFView		Es desa el fitxer adjunt:
+Unknown link action type: '%s'	PDFView		Tipus d'acció d'enllaç desconegut: %s
 <empty>	OutlinesWindow		<buit>
 Document	OutlinesWindow		Document
 Edit title for bookmark	OutlinesWindow		Edita el títol per al marcador
 No title	OutlinesWindow		Sense títol
-User defined	OutlinesWindow		Definit per l'usuari
 OK	OutlinesWindow		D'acord
-BePDF printing document: 	PrintingProgressWindow		Document que el BePDF imprimeix:
-BePDF printing	PrintingProgressWindow		El BePDF imprimeix
-Stop	PrintingProgressWindow		Atura
-Abort	PrintingProgressWindow		Avorta
-Page:	PrintingProgressWindow		Pàgina:
-Page: %d	PrintingProgressWindow		Pàgina: %d
-Clear	TraceWindow		Neteja
-Auto open	TraceWindow		Obre automàticament
-Floating	TraceWindow		Flotant
-Error messages	TraceWindow		Missatges d'error
-Options	FindTextWindow		Opcions
-Ignore case	FindTextWindow		Ignora'n la caixa
-Page:	FindTextWindow		Pàgina:
-Find: 	FindTextWindow		Troba:
-Stop	FindTextWindow		Interromp
-Find	FindTextWindow		Troba
-Find text	FindTextWindow		Troba el text:
-Search backwards	FindTextWindow		Cerca enrere
-Page: %d	FindTextWindow		Pàgina: %d
-Save selected attachments into directory	AttachmentView		Desa els adjunts seleccionats en un directori
+User defined	OutlinesWindow		Definit per l'usuari
+<empty>	AttachmentView		<buit>
+Description	AttachmentView		Descripció
 File name	AttachmentView		Nom del fitxer
 Save attachment(s) as	AttachmentView		Desa els adjunts com a
-Saving attachment(s):	AttachmentView		Es desen els adjunts:
 Save selected attachment to file	AttachmentView		Desa l'adjunt seleccionat en un fitxer
-Description	AttachmentView		Descripció
-<empty>	AttachmentView		<buit>
-Search string not found.	PDFSearch		No s'ha trobat la cadena de cerca.
-OK	PDFSearch		D'acord
+Save selected attachments into directory	AttachmentView		Desa els adjunts seleccionats en un directori
+Saving attachment(s):	AttachmentView		Es desen els adjunts:
+Abort	PrintingProgressWindow		Avorta
+BePDF printing	PrintingProgressWindow		El BePDF imprimeix
+BePDF printing document: 	PrintingProgressWindow		Document que el BePDF imprimeix:
+Page:	PrintingProgressWindow		Pàgina:
+Page: %d	PrintingProgressWindow		Pàgina: %d
+Stop	PrintingProgressWindow		Atura
+Abort	FileInfoWindow		Avorta
+Allowed	FileInfoWindow		Permès
+Annotations:	FileInfoWindow		Anotacions:
+Author:	FileInfoWindow		Autor:
+Copy & paste:	FileInfoWindow		Copia i enganxa:
+Created:	FileInfoWindow		Creat:
+Creator:	FileInfoWindow		Creador:
+Denied	FileInfoWindow		Denegat
+Document	FileInfoWindow		Document
+Editing:	FileInfoWindow		Edició:
+Embedded name	FileInfoWindow		Nom encastat
+Encrypted:	FileInfoWindow		Encriptat:
+File info	FileInfoWindow		Informació del fitxer
+Filename:	FileInfoWindow		Nom del fitxer:
+Fonts of this page	FileInfoWindow		Codi d'aquesta pàgina
+Keywords:	FileInfoWindow		Paraules clau:
+Linearized:	FileInfoWindow		Linealitzat:
+Modified:	FileInfoWindow		Modificat:
+Name	FileInfoWindow		Nom
+No	FileInfoWindow		No
+Path:	FileInfoWindow		Camí:
+Printing:	FileInfoWindow		Impressió:
+Producer:	FileInfoWindow		Productor:
+Security	FileInfoWindow		Seguretat
+Show all fonts	FileInfoWindow		Mostra totes les lletres
+Subject:	FileInfoWindow		Assumpte:
+Title:	FileInfoWindow		Títol:
+Type	FileInfoWindow		Tipus
+Version:	FileInfoWindow		Versió:
+Yes	FileInfoWindow		Sí
+About BePDF…	PDFWindow		Quant a BePDF…
+Add	PDFWindow		Afegeix
+Add circle annotation	PDFWindow		Afegeix una anotació de cercle
+Add comment text annotation	PDFWindow		Afegeix una anotació de text de comentari
+Add file attachment annotation	PDFWindow		Afegeix una anotació de fitxer adjunt
+Add free text annotation	PDFWindow		Afegeix una anotació de text lliure
+Add help text annotation	PDFWindow		Afegeix una anotació de text d’ajuda
+Add highlight annotation	PDFWindow		Afegeix una anotació destacada
+Add ink annotation	PDFWindow		Afegeix una anotació de tinta
+Add insert text annotation	PDFWindow		Afegeix una anotació d'inserció de text
+Add key text annotation	PDFWindow		Afegeix una anotació de text clau
+Add line annotation	PDFWindow		Afegeix una anotació de línia
+Add link annotation	PDFWindow		Afegeix una anotació d'enllaç
+Add movie annotation	PDFWindow		Afegeix una anotació de pel·lícula
+Add new paragraph text annotation	PDFWindow		Afegeix una anotació de text de paràgraf nou
+Add note text annotation	PDFWindow		Afegeix una anotació de text de nota
+Add paragraph text annotation	PDFWindow		Afegeix una anotació de text de paràgraf
+Add popup annotation	PDFWindow		Afegeix una anotació emergent
+Add printer mark annotation	PDFWindow		Afegeix una anotació de marca d'impressora
+Add sound annotation	PDFWindow		Afegeix una anotació de so
+Add square annotation	PDFWindow		Afegeix una anotació quadrada
+Add squiggly annotation	PDFWindow		Afegeix una anotació de línia serpentejant
+Add stamp annotation	PDFWindow		Afegeix una anotació de segell
+Add strikeout annotation	PDFWindow		Afegeix una anotació de ratllada
+Add trapnet annotation	PDFWindow		Afegiu una anotació de tampa de xarxa
+Add underline annotation	PDFWindow		Afegeix una anotació de subratllat
+Add widget annotation	PDFWindow		Afegeix una anotació de giny
+Back	PDFWindow		Enrere
+Back in page history list	PDFWindow		Enrere en la llista de l'historial de pàgines
+Bookmark	PDFWindow		Marcador
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		No es pot sobreescriure un fitxer PDF obert actualment al BePDF! Si us plau, trieu un altre nom de fitxer.
+Close	PDFWindow		Tanca
+Copy selection	PDFWindow		Copia la selecció
+Could not write PDF file!	PDFWindow		No s'ha pogut escriure el fitxer PDF!
+Custom zoom factor (%d%%)	PDFWindow		Zoom personalitzat (%d%%)
+Delete	PDFWindow		Suprimeix
+Edit	PDFWindow		Edita
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		L'edició de les anotacions en un fitxer PDF encriptat encara no s'admet.
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		Fitxer
+File info…	PDFWindow		Informació del fitxer...
+Find	PDFWindow		Troba
+Find next	PDFWindow		Troba'n el següent
+Find next…	PDFWindow		Troba'n el següent...
+Find…	PDFWindow		Troba...
+First	PDFWindow		Primera
+Fit to page	PDFWindow		Ajusta a la pàgina
+Fit to page width	PDFWindow		Ajusta a l'amplada de la pàgina
+Forward	PDFWindow		Endavant
+Forward in page history list	PDFWindow		Endavant en la llista de pàgines de l'historial
+Fullscreen	PDFWindow		Pantalla completa
+Fullscreen mode	PDFWindow		Mode de pantalla completa
+Go back 10 pages	PDFWindow		Ves enrere 10 pàgines
+Go forward 10 pages	PDFWindow		Ves endavant 10 pàgines
+Go to end of document	PDFWindow		Ves al final del document
+Go to next page	PDFWindow		Ves a la pàgina següent
+Go to previous page	PDFWindow		Ves a la pàgina anterior
+Go to start of document	PDFWindow		Ves a l'inici del document
+Help	PDFWindow		Ajuda
+Hide side bar	PDFWindow		Amaga la barra lateral
+Issue tracker…	PDFWindow		Seguiment de problemes...
+Jump to page	PDFWindow		Salta a la pàgina
+Last	PDFWindow		Darrera
+Leave annotation editing mode	PDFWindow		Abandona el mode d’edició d’anotacions
+Next	PDFWindow		Següent
+of %d	PDFWindow		de %d
+OK	PDFWindow		D'acord
+Online help…	PDFWindow		Ajuda en línia...
+Open file	PDFWindow		Obre un fitxer
+Open in new window…	PDFWindow		Obre en una finestra nova...
+Open…	PDFWindow		Obre...
+Page	PDFWindow		Pàgina
+Page %d	PDFWindow		Pàgina %d
+Page setup…	PDFWindow		Configuració de la pàgina...
+PDF file successfully written!	PDFWindow		Fitxer PDF escrit correctament!
+Preferences…	PDFWindow		Preferències…
+Previous	PDFWindow		Anterior
+Print	PDFWindow		Imprimeix
+Print…	PDFWindow		Imprimeix...
+Quit	PDFWindow		Surt
+Reload	PDFWindow		Torna a carregar
+Reload file	PDFWindow		Torna a carregar el fitxer
+Rotate clockwise	PDFWindow		Gira en el sentit del rellotge
+Rotate counter-clockwise	PDFWindow		Gira en sentit antihorari
+Rotation	PDFWindow		Rotació
+Save as…	PDFWindow		Desa com a...
+Save file as	PDFWindow		Desa el fitxer com a
+Saving copy of PDF file:	PDFWindow		Es desa la còpia del fitxer PDF:
+Search	PDFWindow		Cerca
+Select all	PDFWindow		Selecciona-ho tot
+Select none	PDFWindow		Desmarca-ho tot
+Show annotation tool bar	PDFWindow		Mostra la barra d’eines d’anotació
+Show annotation toolbar	PDFWindow		Mostra la barra d’eines d’anotació
+Show attachments	PDFWindow		Mostra els adjunts
+Show bookmarks	PDFWindow		Mostra els marcadors
+Show error messages	PDFWindow		Mostra els missatges d'error
+Show help…	PDFWindow		Mostra l'ajuda...
+Show page list	PDFWindow		Mostra la llista de pàgines
+View	PDFWindow		Visualització
+Visit homepage…	PDFWindow		Visita la pàgina d'inici
+Warning	PDFWindow		Avís
+Zoom	PDFWindow		Zoom
+Zoom in	PDFWindow		Amplia
+Zoom out	PDFWindow		Redueix
+Align:	AnnotationWindow		Alineació:
+Annotation	AnnotationWindow		Anotació
+Asian fonts	AnnotationWindow		Lletres asiàtiques
+Author	AnnotationWindow		Autor
+Automatic	AnnotationWindow		Automàtic
+current	AnnotationWindow		actual
+Date:	AnnotationWindow		Data:
+Display	AnnotationWindow		Pantalla
+Document	AnnotationWindow		Document
+Filled rectangle	AnnotationWindow		Rectangle ple
+Font:	AnnotationWindow		Lletra:
+Fullscreen mode	AnnotationWindow		Mode de pantalla completa
+Invert vertical mouse scrolling	AnnotationWindow		Inverteix el desplaçament del ratolí vertical
+Open in workspace:	AnnotationWindow		Obre a l'espai de treball:
+Preferences	AnnotationWindow		Preferències
+Restore page number	AnnotationWindow		Restaura el número de pàgina
+Restore window position and size	AnnotationWindow		Restaura la posició i la mida de la finestra
+Selection rectangle	AnnotationWindow		Rectangle de selecció
+Show document view only	AnnotationWindow		Mostra només la visualització de documents
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Mostra la barra d’eines, la barra d’estat i les barres de desplaçament, també
+Size:	AnnotationWindow		Mida:
+Stroked rectangle	AnnotationWindow		Rectangle traçat
+System fonts	AnnotationWindow		Lletres del sistema
+Title:	AnnotationWindow		Títol:
+User fonts	AnnotationWindow		Lletres de l'usuari
+Will take effect at next program launch.	AnnotationWindow		Tindrà efecte al proper inici del programa.
+Alpha	BepdfApplication		Alfa
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF està basat en XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: error en obrir el fitxer!
+Beta	BepdfApplication		Beta
+Close	BepdfApplication		Tanca
+Development	BepdfApplication		Desenvolupament
+Error	BepdfApplication		Error
+Final	BepdfApplication		Final
+Gamma	BepdfApplication		Gamma
+Golden Master	BepdfApplication		Mestre d’Or
+Unknown	BepdfApplication		Desconegut
+Version	BepdfApplication		Versió
+Auto open	TraceWindow		Obre automàticament
+Clear	TraceWindow		Neteja
+Error messages	TraceWindow		Missatges d'error
+Floating	TraceWindow		Flotant
 BePDF status	StatusWindow		Estat del BePDF
-User password	PasswordWindow		Contrasenya de l’usuari
 Enter Password	PasswordWindow		Escriviu la contrasenya
-Owner password	PasswordWindow		Contrasenya del propietari
 OK	PasswordWindow		D'acord
+Owner password	PasswordWindow		Contrasenya del propietari
+User password	PasswordWindow		Contrasenya de l’usuari
+Find	FindTextWindow		Troba
+Find text	FindTextWindow		Troba el text:
+Find: 	FindTextWindow		Troba:
+Ignore case	FindTextWindow		Ignora'n la caixa
+Options	FindTextWindow		Opcions
+Page:	FindTextWindow		Pàgina:
+Page: %d	FindTextWindow		Pàgina: %d
+Search backwards	FindTextWindow		Cerca enrere
+Stop	FindTextWindow		Interromp
+OK	PDFSearch		D'acord
+Search string not found.	PDFSearch		No s'ha trobat la cadena de cerca.

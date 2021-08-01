@@ -1,254 +1,254 @@
 1	Swedish	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		Stäng
-Error	BepdfApplication		Fel
-Beta	BepdfApplication		Beta
-Gamma	BepdfApplication		Gamma
-Golden Master	BepdfApplication		Gyllene Master
-BePDF: Error opening file!	BepdfApplication		BePDF: Fel vid öppnande av fil!
-Alpha	BepdfApplication		Alfa
-Version	BepdfApplication		Version
-Development	BepdfApplication		Utveckling
-Unknown	BepdfApplication		Okänd
-Final	BepdfApplication		Slutgiltig
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF är baserad på XPDF %s, %s.
-Show bookmarks	PDFWindow		Visa bokmärken
-of %d	PDFWindow		av %d
-Zoom in	PDFWindow		Zooma in
-About BePDF…	PDFWindow		Om BePDF…
-Go to next page	PDFWindow		Gå till nästa sida
-View	PDFWindow		Visa
-Show annotation tool bar	PDFWindow		Visa annotationsverktygsfältet
-Select none	PDFWindow		Markera ingen
-Add trapnet annotation	PDFWindow		Lägg till fältsnittsannotation
-Add underline annotation	PDFWindow		Lägg till ‎understruken annotering
-Show help…	PDFWindow		Visa hjälpen…
-Help	PDFWindow		Hjälp
-Add popup annotation	PDFWindow		Lägg till popup-annotation
-Find…	PDFWindow		Sök…
-Reload	PDFWindow		Ladda om
-First	PDFWindow		Första
-Fit to page	PDFWindow		Anpassa till sidan
-Add key text annotation	PDFWindow		Lägg till nyckeltextannotation
-File	PDFWindow		Arkiv
-PDF file successfully written!	PDFWindow		PDF-filen skrevs framgångsrikt!
-Warning	PDFWindow		Varning
-Zoom out	PDFWindow		Zooma ut
-Show error messages	PDFWindow		Visa felmeddelanden
-Add movie annotation	PDFWindow		Lägg till filmannotation
-Open…	PDFWindow		Öppna…
-Add widget annotation	PDFWindow		Lägg till komponentannotation
-Add insert text annotation	PDFWindow		Lägg till textannotation
-Find	PDFWindow		Sök
-Add ink annotation	PDFWindow		Lägg till bläckannotation
-Go to start of document	PDFWindow		Gå till början av dokumentet
-Go to previous page	PDFWindow		Gå till föregående sida
-Save as…	PDFWindow		Spara som…
-Reload file	PDFWindow		Ladda om fil
-Find next…	PDFWindow		Sök nästa…
-Fullscreen mode	PDFWindow		Fullskärmsläge
-Show page list	PDFWindow		Visa sidlistan
-Back	PDFWindow		Bakåt
-Add note text annotation	PDFWindow		Lägg till annotation för textanteckning
-Close	PDFWindow		Stäng
-Add printer mark annotation	PDFWindow		Lägg till annotation för boktryckarmärke
-Go forward 10 pages	PDFWindow		Gå framåt 10 sidor
-Page %d	PDFWindow		Sida %d
-Forward in page history list	PDFWindow		Framåt i sidhistoriken
-Add new paragraph text annotation	PDFWindow		Lägg till annotation för ny textparagraf
-Fullscreen	PDFWindow		Fullskärm
-Add sound annotation	PDFWindow		Lägg till ljudannotation
-Add comment text annotation	PDFWindow		Lägg till kommentar för textannotation
-Page	PDFWindow		Sida
-File info…	PDFWindow		Filinformation…
-Page setup…	PDFWindow		Utskriftsformat...
-Print	PDFWindow		Skriv ut
-Issue tracker…	PDFWindow		Felrapporteringssystem...
-Preferences…	PDFWindow		Inställningar...
-Rotation	PDFWindow		Rotation
-Last	PDFWindow		Sista
-Add stamp annotation	PDFWindow		Lägg till stämpelannotation
-Add squiggly annotation	PDFWindow		Lägg till annotation för snirklig linje
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Kan inte skriva över en PDF-fil som för närvarande är öppnad i BePDF! Vänligen välj ett annat filnamn.
-Copy selection	PDFWindow		Kopiera markering
-Add free text annotation	PDFWindow		Lägg till annotation för fritext
-Next	PDFWindow		Nästa
-Forward	PDFWindow		Framåt
-Hide side bar	PDFWindow		Göm statusfältet
-Jump to page	PDFWindow		Hoppa till sida
-Add line annotation	PDFWindow		Lägg till linjeannotation
-Add circle annotation	PDFWindow		Lägg till cirkelannotation
-Save file as	PDFWindow		Spara fil som
-Show annotation toolbar	PDFWindow		Visa annotationsverktygsfältet
-Add link annotation	PDFWindow		Lägg till länkannotation
-Previous	PDFWindow		Föregående
-Leave annotation editing mode	PDFWindow		Lämna läge för annotationsredigering
-Rotate clockwise	PDFWindow		Rotera medurs
-Find next	PDFWindow		Sök nästa
-Add strikeout annotation	PDFWindow		Lägg till överstrykningsannotation
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Bookmark	PDFWindow		Bokmärke
-Could not write PDF file!	PDFWindow		Kunde inte skriva PDF-fil!
-OK	PDFWindow		OK
-Add	PDFWindow		Lägg till
-Edit	PDFWindow		Redigera
-Online help…	PDFWindow		Onlinehjälp...
-Quit	PDFWindow		Avsluta
-Back in page history list	PDFWindow		Tillbaka i sidohistorikslistan
-Open file	PDFWindow		Öppna fil
-Visit homepage…	PDFWindow		Besök hemsidan...
-Show attachments	PDFWindow		Visa bilagor
-Add paragraph text annotation	PDFWindow		Lägg till annotation för textparagraf
-Go back 10 pages	PDFWindow		Gå tillbaka 10 sidor
-Print…	PDFWindow		Skriv ut...
-Go to end of document	PDFWindow		Gå till slutet av dokumentet
-Rotate counter-clockwise	PDFWindow		Rotera moturs
-Delete	PDFWindow		Ta bort
-Select all	PDFWindow		Markera alla
-Add square annotation	PDFWindow		Lägg till rektangulär annotation
-Fit to page width	PDFWindow		Anpassa till sidans bredd
-Zoom	PDFWindow		Zooma
-Search	PDFWindow		Sök
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Redigering av annotationer i en krypterad PDF-fil stöds inte.
-Saving copy of PDF file:	PDFWindow		Sparar kopia av PDF-filen:
-Add help text annotation	PDFWindow		Lägg till annotation för hjälptext
-Custom zoom factor (%d%%)	PDFWindow		Anpassad zoomfaktor (%d%%)
-Open in new window…	PDFWindow		Öppna i nytt fönster...
-Add highlight annotation	PDFWindow		Lägg till annotation för överstrykning
-Add file attachment annotation	PDFWindow		Lägg till annotation för bifogad fil
-Go to page %d	PDFView		Gå till sida %d
-BePDF: Launch	PDFView		BePDF: Starta
-Copy link	PDFView		Kopiera länk
-Saving file attachment:	PDFView		Sparar bifogad fil:
-Open in new window	PDFView		Öppna i nytt fönster
-Save file attachment as…	PDFView		Spara bifogad fil som...
-[link type 'movie' not supported]	PDFView		[länktypen 'video' stöds inte]
-Cancel	PDFView		Avbryt
-[unknown link]	PDFView		[okänd länk]
-Execute the command:	PDFView		Kör kommandot:
-Properties	PDFView		Alternativ
-Unknown link action type: '%s'	PDFView		Okänd åtgärdstyp för länk: '%s'
-Annotation	PDFView		Kommentar
-Delete	PDFView		Ta bort
-Leave annotation editing mode	PDFView		Lämna redigeringsläge för kommentar
-[internal link]	PDFView		[intern länk]
-OK	PDFView		OK
-BePDF reading file: 	PDFView		BePDF läser fil:
-Edit	PDFView		Redigera
-Keywords:	FileInfoWindow		Nyckelord:
-Subject:	FileInfoWindow		Ämne:
-Encrypted:	FileInfoWindow		Kryptering:
-Type	FileInfoWindow		Typ
-Abort	FileInfoWindow		Avbryt
-Denied	FileInfoWindow		Nekad
-Creator:	FileInfoWindow		Skapare:
-Document	FileInfoWindow		Dokument
-Fonts of this page	FileInfoWindow		Typsnitt på denna sida
-Path:	FileInfoWindow		Sökväg:
-Name	FileInfoWindow		Namn
-Filename:	FileInfoWindow		Filnamn:
-Yes	FileInfoWindow		Ja
-Annotations:	FileInfoWindow		Annotationer:
-Producer:	FileInfoWindow		Producent:
-Allowed	FileInfoWindow		Tillåtet
-Copy & paste:	FileInfoWindow		Kopiera och klistra in:
-Modified:	FileInfoWindow		Modifierad:
-Editing:	FileInfoWindow		Redigering:
-Title:	FileInfoWindow		Titel:
-Created:	FileInfoWindow		Skapad:
-Linearized:	FileInfoWindow		Linjäriserad:
-Version:	FileInfoWindow		Version:
-No	FileInfoWindow		Nej
-Author:	FileInfoWindow		Författare:
-Security	FileInfoWindow		Säkerhet
-Embedded name	FileInfoWindow		Inbäddat namn
-Printing:	FileInfoWindow		Utskrift:
-File info	FileInfoWindow		Filinformation
-Show all fonts	FileInfoWindow		Visa alla typsnitt
-All pages	PrintSettingsWindow		Alla sidor
  in	PrintSettingsWindow		i
-Pages	PrintSettingsWindow		Sidor
-Page	PrintSettingsWindow		Sida
-Max. printer resolution	PrintSettingsWindow		Högsta skrivarupplösning
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		Zoom (%)
-Gray scale	PrintSettingsWindow		Gråskala
+All pages	PrintSettingsWindow		Alla sidor
 Color	PrintSettingsWindow		Färg
-Normal	PrintSettingsWindow		Normal
-Rotation	PrintSettingsWindow		Rotation
-Print settings	PrintSettingsWindow		Utskriftsinställningar
-Print	PrintSettingsWindow		Skriv ut
-Reverse	PrintSettingsWindow		Omkasta
-Odd pages	PrintSettingsWindow		Ojämna sidor
-Zoom must be between 25 and 400!	PrintSettingsWindow		Zoomläget måste vara mellan 25 och 400!
-Mode	PrintSettingsWindow		Läge
-Order	PrintSettingsWindow		Ordning
-Height: 	PrintSettingsWindow		Höjd:
-Width: 	PrintSettingsWindow		Bredd:
-OK	PrintSettingsWindow		OK
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		Jämna sidor
+Gray scale	PrintSettingsWindow		Gråskala
+Height: 	PrintSettingsWindow		Höjd:
+Max. printer resolution	PrintSettingsWindow		Högsta skrivarupplösning
+Mode	PrintSettingsWindow		Läge
+Normal	PrintSettingsWindow		Normal
+Odd pages	PrintSettingsWindow		Ojämna sidor
+OK	PrintSettingsWindow		OK
+Order	PrintSettingsWindow		Ordning
+Page	PrintSettingsWindow		Sida
+Pages	PrintSettingsWindow		Sidor
+Print	PrintSettingsWindow		Skriv ut
+Print settings	PrintSettingsWindow		Utskriftsinställningar
+Reverse	PrintSettingsWindow		Omkasta
+Rotation	PrintSettingsWindow		Rotation
+Width: 	PrintSettingsWindow		Bredd:
 Wrong parameter!	PrintSettingsWindow		Fel parameter!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Visa verktygsfält, statusfält och rullningslist
-Fullscreen mode	AnnotationWindow		Fullskärmsläge
-Will take effect at next program launch.	AnnotationWindow		Kommer att ta effekt vid nästa programstart.
-Filled rectangle	AnnotationWindow		Fylld rektangel
-Align:	AnnotationWindow		Justera:
-Title:	AnnotationWindow		Titel:
-User fonts	AnnotationWindow		Användarvalda fonter
-Asian fonts	AnnotationWindow		Asiatiska fonter
-Restore window position and size	AnnotationWindow		Återställ fönsterposition och storlek
-Author	AnnotationWindow		Upphovman
-Open in workspace:	AnnotationWindow		Öppna på arbetsyta:
-Preferences	AnnotationWindow		Inställningar
-Show document view only	AnnotationWindow		Visa endast dokumentvyn
-Automatic	AnnotationWindow		Automatiskt
-Font:	AnnotationWindow		Typsnitt:
-Restore page number	AnnotationWindow		Återställ sidnumrering
-System fonts	AnnotationWindow		Systemteckensnitt
-Stroked rectangle	AnnotationWindow		Streckad rektangel
-current	AnnotationWindow		aktuell
-Annotation	AnnotationWindow		Annotation
-Selection rectangle	AnnotationWindow		Markeringsrektangel
-Display	AnnotationWindow		Visa
-Document	AnnotationWindow		Dokument
-Size:	AnnotationWindow		Storlek:
-Date:	AnnotationWindow		Datum:
-Invert vertical mouse scrolling	AnnotationWindow		Invertera vertikal muskskrollning
+Zoom (%)	PrintSettingsWindow		Zoom (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		Zoomläget måste vara mellan 25 och 400!
+[internal link]	PDFView		[intern länk]
+[link type 'movie' not supported]	PDFView		[länktypen 'video' stöds inte]
+[unknown link]	PDFView		[okänd länk]
+Annotation	PDFView		Kommentar
+BePDF reading file: 	PDFView		BePDF läser fil:
+BePDF: Launch	PDFView		BePDF: Starta
+Cancel	PDFView		Avbryt
+Copy link	PDFView		Kopiera länk
+Delete	PDFView		Ta bort
+Edit	PDFView		Redigera
+Execute the command:	PDFView		Kör kommandot:
+Go to page %d	PDFView		Gå till sida %d
+Leave annotation editing mode	PDFView		Lämna redigeringsläge för kommentar
+OK	PDFView		OK
+Open in new window	PDFView		Öppna i nytt fönster
+Properties	PDFView		Alternativ
+Save file attachment as…	PDFView		Spara bifogad fil som...
+Saving file attachment:	PDFView		Sparar bifogad fil:
+Unknown link action type: '%s'	PDFView		Okänd åtgärdstyp för länk: '%s'
 <empty>	OutlinesWindow		<tomt>
 Document	OutlinesWindow		Dokument
 Edit title for bookmark	OutlinesWindow		Ändra titel för bokmärke
 No title	OutlinesWindow		Ingen titel
-User defined	OutlinesWindow		Användaredefinerad
 OK	OutlinesWindow		OK
-BePDF printing document: 	PrintingProgressWindow		BePDF skriver ut dokument
-BePDF printing	PrintingProgressWindow		BePDF skriver ut
-Stop	PrintingProgressWindow		Stoppa
-Abort	PrintingProgressWindow		Avbryt
-Page:	PrintingProgressWindow		Sida:
-Page: %d	PrintingProgressWindow		Sida: %d
-Clear	TraceWindow		Rensa
-Auto open	TraceWindow		Öppna automatiskt
-Floating	TraceWindow		Flytande
-Error messages	TraceWindow		Felmeddelanden
-Options	FindTextWindow		Alternativ
-Ignore case	FindTextWindow		Ignorera skiftläge
-Page:	FindTextWindow		Sida:
-Find: 	FindTextWindow		Sök:
-Stop	FindTextWindow		Stopp
-Find	FindTextWindow		Sök
-Find text	FindTextWindow		Sök efter text
-Search backwards	FindTextWindow		Sök baklänges
-Page: %d	FindTextWindow		Sida: %d
-Save selected attachments into directory	AttachmentView		Spara markerad bilaga till mapp
+User defined	OutlinesWindow		Användaredefinerad
+<empty>	AttachmentView		<tom>
+Description	AttachmentView		Beskrivning
 File name	AttachmentView		Filnamn
 Save attachment(s) as	AttachmentView		Spara bilagor som
-Saving attachment(s):	AttachmentView		Sparar bilagor:
 Save selected attachment to file	AttachmentView		Spara markerad bilaga till fil
-Description	AttachmentView		Beskrivning
-<empty>	AttachmentView		<tom>
-Search string not found.	PDFSearch		Söksträngen hittades inte.
-OK	PDFSearch		OK
+Save selected attachments into directory	AttachmentView		Spara markerad bilaga till mapp
+Saving attachment(s):	AttachmentView		Sparar bilagor:
+Abort	PrintingProgressWindow		Avbryt
+BePDF printing	PrintingProgressWindow		BePDF skriver ut
+BePDF printing document: 	PrintingProgressWindow		BePDF skriver ut dokument
+Page:	PrintingProgressWindow		Sida:
+Page: %d	PrintingProgressWindow		Sida: %d
+Stop	PrintingProgressWindow		Stoppa
+Abort	FileInfoWindow		Avbryt
+Allowed	FileInfoWindow		Tillåtet
+Annotations:	FileInfoWindow		Annotationer:
+Author:	FileInfoWindow		Författare:
+Copy & paste:	FileInfoWindow		Kopiera och klistra in:
+Created:	FileInfoWindow		Skapad:
+Creator:	FileInfoWindow		Skapare:
+Denied	FileInfoWindow		Nekad
+Document	FileInfoWindow		Dokument
+Editing:	FileInfoWindow		Redigering:
+Embedded name	FileInfoWindow		Inbäddat namn
+Encrypted:	FileInfoWindow		Kryptering:
+File info	FileInfoWindow		Filinformation
+Filename:	FileInfoWindow		Filnamn:
+Fonts of this page	FileInfoWindow		Typsnitt på denna sida
+Keywords:	FileInfoWindow		Nyckelord:
+Linearized:	FileInfoWindow		Linjäriserad:
+Modified:	FileInfoWindow		Modifierad:
+Name	FileInfoWindow		Namn
+No	FileInfoWindow		Nej
+Path:	FileInfoWindow		Sökväg:
+Printing:	FileInfoWindow		Utskrift:
+Producer:	FileInfoWindow		Producent:
+Security	FileInfoWindow		Säkerhet
+Show all fonts	FileInfoWindow		Visa alla typsnitt
+Subject:	FileInfoWindow		Ämne:
+Title:	FileInfoWindow		Titel:
+Type	FileInfoWindow		Typ
+Version:	FileInfoWindow		Version:
+Yes	FileInfoWindow		Ja
+About BePDF…	PDFWindow		Om BePDF…
+Add	PDFWindow		Lägg till
+Add circle annotation	PDFWindow		Lägg till cirkelannotation
+Add comment text annotation	PDFWindow		Lägg till kommentar för textannotation
+Add file attachment annotation	PDFWindow		Lägg till annotation för bifogad fil
+Add free text annotation	PDFWindow		Lägg till annotation för fritext
+Add help text annotation	PDFWindow		Lägg till annotation för hjälptext
+Add highlight annotation	PDFWindow		Lägg till annotation för överstrykning
+Add ink annotation	PDFWindow		Lägg till bläckannotation
+Add insert text annotation	PDFWindow		Lägg till textannotation
+Add key text annotation	PDFWindow		Lägg till nyckeltextannotation
+Add line annotation	PDFWindow		Lägg till linjeannotation
+Add link annotation	PDFWindow		Lägg till länkannotation
+Add movie annotation	PDFWindow		Lägg till filmannotation
+Add new paragraph text annotation	PDFWindow		Lägg till annotation för ny textparagraf
+Add note text annotation	PDFWindow		Lägg till annotation för textanteckning
+Add paragraph text annotation	PDFWindow		Lägg till annotation för textparagraf
+Add popup annotation	PDFWindow		Lägg till popup-annotation
+Add printer mark annotation	PDFWindow		Lägg till annotation för boktryckarmärke
+Add sound annotation	PDFWindow		Lägg till ljudannotation
+Add square annotation	PDFWindow		Lägg till rektangulär annotation
+Add squiggly annotation	PDFWindow		Lägg till annotation för snirklig linje
+Add stamp annotation	PDFWindow		Lägg till stämpelannotation
+Add strikeout annotation	PDFWindow		Lägg till överstrykningsannotation
+Add trapnet annotation	PDFWindow		Lägg till fältsnittsannotation
+Add underline annotation	PDFWindow		Lägg till ‎understruken annotering
+Add widget annotation	PDFWindow		Lägg till komponentannotation
+Back	PDFWindow		Bakåt
+Back in page history list	PDFWindow		Tillbaka i sidohistorikslistan
+Bookmark	PDFWindow		Bokmärke
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Kan inte skriva över en PDF-fil som för närvarande är öppnad i BePDF! Vänligen välj ett annat filnamn.
+Close	PDFWindow		Stäng
+Copy selection	PDFWindow		Kopiera markering
+Could not write PDF file!	PDFWindow		Kunde inte skriva PDF-fil!
+Custom zoom factor (%d%%)	PDFWindow		Anpassad zoomfaktor (%d%%)
+Delete	PDFWindow		Ta bort
+Edit	PDFWindow		Redigera
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Redigering av annotationer i en krypterad PDF-fil stöds inte.
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		Arkiv
+File info…	PDFWindow		Filinformation…
+Find	PDFWindow		Sök
+Find next	PDFWindow		Sök nästa
+Find next…	PDFWindow		Sök nästa…
+Find…	PDFWindow		Sök…
+First	PDFWindow		Första
+Fit to page	PDFWindow		Anpassa till sidan
+Fit to page width	PDFWindow		Anpassa till sidans bredd
+Forward	PDFWindow		Framåt
+Forward in page history list	PDFWindow		Framåt i sidhistoriken
+Fullscreen	PDFWindow		Fullskärm
+Fullscreen mode	PDFWindow		Fullskärmsläge
+Go back 10 pages	PDFWindow		Gå tillbaka 10 sidor
+Go forward 10 pages	PDFWindow		Gå framåt 10 sidor
+Go to end of document	PDFWindow		Gå till slutet av dokumentet
+Go to next page	PDFWindow		Gå till nästa sida
+Go to previous page	PDFWindow		Gå till föregående sida
+Go to start of document	PDFWindow		Gå till början av dokumentet
+Help	PDFWindow		Hjälp
+Hide side bar	PDFWindow		Göm statusfältet
+Issue tracker…	PDFWindow		Felrapporteringssystem...
+Jump to page	PDFWindow		Hoppa till sida
+Last	PDFWindow		Sista
+Leave annotation editing mode	PDFWindow		Lämna läge för annotationsredigering
+Next	PDFWindow		Nästa
+of %d	PDFWindow		av %d
+OK	PDFWindow		OK
+Online help…	PDFWindow		Onlinehjälp...
+Open file	PDFWindow		Öppna fil
+Open in new window…	PDFWindow		Öppna i nytt fönster...
+Open…	PDFWindow		Öppna…
+Page	PDFWindow		Sida
+Page %d	PDFWindow		Sida %d
+Page setup…	PDFWindow		Utskriftsformat...
+PDF file successfully written!	PDFWindow		PDF-filen skrevs framgångsrikt!
+Preferences…	PDFWindow		Inställningar...
+Previous	PDFWindow		Föregående
+Print	PDFWindow		Skriv ut
+Print…	PDFWindow		Skriv ut...
+Quit	PDFWindow		Avsluta
+Reload	PDFWindow		Ladda om
+Reload file	PDFWindow		Ladda om fil
+Rotate clockwise	PDFWindow		Rotera medurs
+Rotate counter-clockwise	PDFWindow		Rotera moturs
+Rotation	PDFWindow		Rotation
+Save as…	PDFWindow		Spara som…
+Save file as	PDFWindow		Spara fil som
+Saving copy of PDF file:	PDFWindow		Sparar kopia av PDF-filen:
+Search	PDFWindow		Sök
+Select all	PDFWindow		Markera alla
+Select none	PDFWindow		Markera ingen
+Show annotation tool bar	PDFWindow		Visa annotationsverktygsfältet
+Show annotation toolbar	PDFWindow		Visa annotationsverktygsfältet
+Show attachments	PDFWindow		Visa bilagor
+Show bookmarks	PDFWindow		Visa bokmärken
+Show error messages	PDFWindow		Visa felmeddelanden
+Show help…	PDFWindow		Visa hjälpen…
+Show page list	PDFWindow		Visa sidlistan
+View	PDFWindow		Visa
+Visit homepage…	PDFWindow		Besök hemsidan...
+Warning	PDFWindow		Varning
+Zoom	PDFWindow		Zooma
+Zoom in	PDFWindow		Zooma in
+Zoom out	PDFWindow		Zooma ut
+Align:	AnnotationWindow		Justera:
+Annotation	AnnotationWindow		Annotation
+Asian fonts	AnnotationWindow		Asiatiska fonter
+Author	AnnotationWindow		Upphovman
+Automatic	AnnotationWindow		Automatiskt
+current	AnnotationWindow		aktuell
+Date:	AnnotationWindow		Datum:
+Display	AnnotationWindow		Visa
+Document	AnnotationWindow		Dokument
+Filled rectangle	AnnotationWindow		Fylld rektangel
+Font:	AnnotationWindow		Typsnitt:
+Fullscreen mode	AnnotationWindow		Fullskärmsläge
+Invert vertical mouse scrolling	AnnotationWindow		Invertera vertikal muskskrollning
+Open in workspace:	AnnotationWindow		Öppna på arbetsyta:
+Preferences	AnnotationWindow		Inställningar
+Restore page number	AnnotationWindow		Återställ sidnumrering
+Restore window position and size	AnnotationWindow		Återställ fönsterposition och storlek
+Selection rectangle	AnnotationWindow		Markeringsrektangel
+Show document view only	AnnotationWindow		Visa endast dokumentvyn
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Visa verktygsfält, statusfält och rullningslist
+Size:	AnnotationWindow		Storlek:
+Stroked rectangle	AnnotationWindow		Streckad rektangel
+System fonts	AnnotationWindow		Systemteckensnitt
+Title:	AnnotationWindow		Titel:
+User fonts	AnnotationWindow		Användarvalda fonter
+Will take effect at next program launch.	AnnotationWindow		Kommer att ta effekt vid nästa programstart.
+Alpha	BepdfApplication		Alfa
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF är baserad på XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: Fel vid öppnande av fil!
+Beta	BepdfApplication		Beta
+Close	BepdfApplication		Stäng
+Development	BepdfApplication		Utveckling
+Error	BepdfApplication		Fel
+Final	BepdfApplication		Slutgiltig
+Gamma	BepdfApplication		Gamma
+Golden Master	BepdfApplication		Gyllene Master
+Unknown	BepdfApplication		Okänd
+Version	BepdfApplication		Version
+Auto open	TraceWindow		Öppna automatiskt
+Clear	TraceWindow		Rensa
+Error messages	TraceWindow		Felmeddelanden
+Floating	TraceWindow		Flytande
 BePDF status	StatusWindow		BePDF status
-User password	PasswordWindow		Användarlösenord
 Enter Password	PasswordWindow		Ange lösenord
-Owner password	PasswordWindow		Ägarlösenord
 OK	PasswordWindow		OK
+Owner password	PasswordWindow		Ägarlösenord
+User password	PasswordWindow		Användarlösenord
+Find	FindTextWindow		Sök
+Find text	FindTextWindow		Sök efter text
+Find: 	FindTextWindow		Sök:
+Ignore case	FindTextWindow		Ignorera skiftläge
+Options	FindTextWindow		Alternativ
+Page:	FindTextWindow		Sida:
+Page: %d	FindTextWindow		Sida: %d
+Search backwards	FindTextWindow		Sök baklänges
+Stop	FindTextWindow		Stopp
+OK	PDFSearch		OK
+Search string not found.	PDFSearch		Söksträngen hittades inte.

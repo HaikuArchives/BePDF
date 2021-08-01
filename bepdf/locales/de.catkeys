@@ -1,254 +1,254 @@
 1	German	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		Schließen
-Error	BepdfApplication		Fehler
-Beta	BepdfApplication		Beta
-Gamma	BepdfApplication		Gamma
-Golden Master	BepdfApplication		Golden Master
-BePDF: Error opening file!	BepdfApplication		BePDF: Fehler beim Öffnen der Datei!
-Alpha	BepdfApplication		Alpha
-Version	BepdfApplication		Version
-Development	BepdfApplication		Entwicklung
-Unknown	BepdfApplication		Unbekannt
-Final	BepdfApplication		Final
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF basiert auf XPDF %s, %s.
-Show bookmarks	PDFWindow		Lesezeichen zeigen
-of %d	PDFWindow		von %d
-Zoom in	PDFWindow		Vergrößern
-About BePDF…	PDFWindow		Über BePDF…
-Go to next page	PDFWindow		Nächste Seite
-View	PDFWindow		Ansicht
-Show annotation tool bar	PDFWindow		Anmerkungen-Leiste zeigen
-Select none	PDFWindow		Auswahl aufheben
-Add trapnet annotation	PDFWindow		Anmerkung: Trapnet
-Add underline annotation	PDFWindow		Anmerkung: Unterstreichen
-Show help…	PDFWindow		Hilfe anzeigen…
-Help	PDFWindow		Hilfe
-Add popup annotation	PDFWindow		Anmerkung: Popup
-Find…	PDFWindow		Suche…
-Reload	PDFWindow		Neu laden
-First	PDFWindow		Erste Seite
-Fit to page	PDFWindow		Auf Fenstergröße anpassen
-Add key text annotation	PDFWindow		Anmerkung: Schlüsseltext
-File	PDFWindow		Datei
-PDF file successfully written!	PDFWindow		PDF erfolgreich geschrieben!
-Warning	PDFWindow		Warnung
-Zoom out	PDFWindow		Verkleinern
-Show error messages	PDFWindow		Fehlermeldungen anzeigen
-Add movie annotation	PDFWindow		Anmerkung: Film
-Open…	PDFWindow		Öffnen…
-Add widget annotation	PDFWindow		Anmerkung: Widget
-Add insert text annotation	PDFWindow		Anmerkung: Texteinfügen
-Find	PDFWindow		Suchen
-Add ink annotation	PDFWindow		Anmerkung: Link
-Go to start of document	PDFWindow		Zum Anfang des Dokuments
-Go to previous page	PDFWindow		Vorige Seite
-Save as…	PDFWindow		Speichern unter…
-Reload file	PDFWindow		Datei neu laden
-Find next…	PDFWindow		Weitersuchen…
-Fullscreen mode	PDFWindow		Vollbildmodus
-Show page list	PDFWindow		Seitenliste zeigen
-Back	PDFWindow		Zurück
-Add note text annotation	PDFWindow		Anmerkung: Notiz
-Close	PDFWindow		Schließen
-Add printer mark annotation	PDFWindow		Anmerkung: Druckermarkierung
-Go forward 10 pages	PDFWindow		Vorwärts 10 Seiten
-Page %d	PDFWindow		Seite %d
-Forward in page history list	PDFWindow		Vorwärts in Seitenhistorie
-Add new paragraph text annotation	PDFWindow		Anmerkung: Neuer Absatz
-Fullscreen	PDFWindow		Vollbild
-Add sound annotation	PDFWindow		Anmerkung: Klang
-Add comment text annotation	PDFWindow		Anmerkung: Kommentar
-Page	PDFWindow		Seite
-File info…	PDFWindow		Datei-Info…
-Page setup…	PDFWindow		Seiteneinrichtung…
-Print	PDFWindow		Drucken
-Issue tracker…	PDFWindow		Bugtracker…
-Preferences…	PDFWindow		Einstellungen…
-Rotation	PDFWindow		Drehung
-Last	PDFWindow		Letzte Seite
-Add stamp annotation	PDFWindow		Anmerkung: Stempel
-Add squiggly annotation	PDFWindow		Anmerkung: Unterkringelt
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Ein gerade in BePDF geöffnetes Dokument kann nicht überschrieben werden. Bitte einen anderen Dateinamen wählen.
-Copy selection	PDFWindow		Auswahl kopieren
-Add free text annotation	PDFWindow		Anmerkung: Freier Text
-Next	PDFWindow		Nächste Seite
-Forward	PDFWindow		Vorwärts
-Hide side bar	PDFWindow		Seitenleiste ausblenden
-Jump to page	PDFWindow		Zu Seite gehen
-Add line annotation	PDFWindow		Anmerkung: Linie
-Add circle annotation	PDFWindow		Anmerkung: Kreis
-Save file as	PDFWindow		Datei speichern als
-Show annotation toolbar	PDFWindow		Anmerkungsleiste zeigen
-Add link annotation	PDFWindow		Anmerkung: Link
-Previous	PDFWindow		Vorige Seite
-Leave annotation editing mode	PDFWindow		Bearbeitungsmodus verlassen
-Rotate clockwise	PDFWindow		Im Uhrzeigersinn drehen
-Find next	PDFWindow		Weitersuchen
-Add strikeout annotation	PDFWindow		Anmerkung: Durchstreichen
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Deutsch.pdf
-Bookmark	PDFWindow		Lesezeichen
-Could not write PDF file!	PDFWindow		Konnte PDF Datei nicht schreiben!
-OK	PDFWindow		OK
-Add	PDFWindow		Hinzufügen
-Edit	PDFWindow		Bearbeiten
-Online help…	PDFWindow		Online-Hilfe…
-Quit	PDFWindow		Beenden
-Back in page history list	PDFWindow		Zurück in Seitenhistorie
-Open file	PDFWindow		Datei öffnen
-Visit homepage…	PDFWindow		Zur Webseite…
-Show attachments	PDFWindow		Anhänge zeigen
-Add paragraph text annotation	PDFWindow		Anmerkung: Absatz
-Go back 10 pages	PDFWindow		Zurück 10 Seiten
-Print…	PDFWindow		Drucken…
-Go to end of document	PDFWindow		Zum Ende des Dokuments
-Rotate counter-clockwise	PDFWindow		Gegen Uhrzeigersinn drehen
-Delete	PDFWindow		Löschen
-Select all	PDFWindow		Alles auswählen
-Add square annotation	PDFWindow		Anmerkung: Rechteck
-Fit to page width	PDFWindow		Auf Seitenbreite anpassen
-Zoom	PDFWindow		Zoomfaktor
-Search	PDFWindow		Suche
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Die Bearbeitung von Anmerkungen wird bei verschlüsselten PDFs noch nicht unterstützt.
-Saving copy of PDF file:	PDFWindow		Speichern einer Kopie der PDF Datei:
-Add help text annotation	PDFWindow		Anmerkung:  Hilfetext
-Custom zoom factor (%d%%)	PDFWindow		Eigener Zoomfaktor (%d%%)
-Open in new window…	PDFWindow		In neuem Fester öffnen…
-Add highlight annotation	PDFWindow		Anmerkung: Hervorheben
-Add file attachment annotation	PDFWindow		Anmerkung: Dateianhang
-Go to page %d	PDFView		Zur Seite %d gehen
-BePDF: Launch	PDFView		BePDF: Starte
-Copy link	PDFView		Link kopieren
-Saving file attachment:	PDFView		Dateianhang speichern:
-Open in new window	PDFView		In neuem Fenster öffnen
-Save file attachment as…	PDFView		Dateianhang speichern unter…
-[link type 'movie' not supported]	PDFView		[Linktyp 'movie' nicht unterstützt]
-Cancel	PDFView		Abbrechen
-[unknown link]	PDFView		[unbekannter Link]
-Execute the command:	PDFView		Befehl ausführen:
-Properties	PDFView		Eigenschaften
-Unknown link action type: '%s'	PDFView		Unbekannte Link-Aktion: '%s'
-Annotation	PDFView		Anmerkung
-Delete	PDFView		Entfernen
-Leave annotation editing mode	PDFView		Bearbeitungsmodus verlassen
-[internal link]	PDFView		[interner Link]
-OK	PDFView		OK
-BePDF reading file: 	PDFView		BePDF liest Datei:
-Edit	PDFView		Bearbeiten
-Keywords:	FileInfoWindow		Stichworte:
-Subject:	FileInfoWindow		Betreff:
-Encrypted:	FileInfoWindow		Verschlüsselt:
-Type	FileInfoWindow		Typ
-Abort	FileInfoWindow		Abbrechen
-Denied	FileInfoWindow		Nicht gestattet
-Creator:	FileInfoWindow		Ersteller:
-Document	FileInfoWindow		Dokument
-Fonts of this page	FileInfoWindow		Schriften dieser Seite
-Path:	FileInfoWindow		Pfad:
-Name	FileInfoWindow		Name
-Filename:	FileInfoWindow		Dateiname:
-Yes	FileInfoWindow		Ja
-Annotations:	FileInfoWindow		Anmerkungen:
-Producer:	FileInfoWindow		Produzent:
-Allowed	FileInfoWindow		Gestattet
-Copy & paste:	FileInfoWindow		Kopieren & Einfügen:
-Modified:	FileInfoWindow		Geändert:
-Editing:	FileInfoWindow		Bearbeiten:
-Title:	FileInfoWindow		Titel:
-Created:	FileInfoWindow		Erzeugt:
-Linearized:	FileInfoWindow		Linearisiert:
-Version:	FileInfoWindow		Version:
-No	FileInfoWindow		Nein
-Author:	FileInfoWindow		Autor:
-Security	FileInfoWindow		Sicherheit
-Embedded name	FileInfoWindow		Eingebetteter Name
-Printing:	FileInfoWindow		Drucken:
-File info	FileInfoWindow		Datei-Info
-Show all fonts	FileInfoWindow		Alle Schriften zeigen
-All pages	PrintSettingsWindow		Alle Seiten
  in	PrintSettingsWindow		 Zoll
-Pages	PrintSettingsWindow		Seiten
-Page	PrintSettingsWindow		Seite
-Max. printer resolution	PrintSettingsWindow		Max. Druckerauflösung
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		Zoom (%)
-Gray scale	PrintSettingsWindow		Graustufen
+All pages	PrintSettingsWindow		Alle Seiten
 Color	PrintSettingsWindow		Farbe
-Normal	PrintSettingsWindow		Normal
-Rotation	PrintSettingsWindow		Drehung
-Print settings	PrintSettingsWindow		Druckereinstellungen
-Print	PrintSettingsWindow		Drucken
-Reverse	PrintSettingsWindow		Umgekehrte Reihenfolge
-Odd pages	PrintSettingsWindow		Ungerade Seiten
-Zoom must be between 25 and 400!	PrintSettingsWindow		Zoomfaktor muss zwischen 25 und 400 sein.
-Mode	PrintSettingsWindow		Modus
-Order	PrintSettingsWindow		Reihenfolge
-Height: 	PrintSettingsWindow		Höhe:
-Width: 	PrintSettingsWindow		Breite:
-OK	PrintSettingsWindow		OK
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		Gerade Seiten
+Gray scale	PrintSettingsWindow		Graustufen
+Height: 	PrintSettingsWindow		Höhe:
+Max. printer resolution	PrintSettingsWindow		Max. Druckerauflösung
+Mode	PrintSettingsWindow		Modus
+Normal	PrintSettingsWindow		Normal
+Odd pages	PrintSettingsWindow		Ungerade Seiten
+OK	PrintSettingsWindow		OK
+Order	PrintSettingsWindow		Reihenfolge
+Page	PrintSettingsWindow		Seite
+Pages	PrintSettingsWindow		Seiten
+Print	PrintSettingsWindow		Drucken
+Print settings	PrintSettingsWindow		Druckereinstellungen
+Reverse	PrintSettingsWindow		Umgekehrte Reihenfolge
+Rotation	PrintSettingsWindow		Drehung
+Width: 	PrintSettingsWindow		Breite:
 Wrong parameter!	PrintSettingsWindow		Falscher Parameter!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Werkzeug- und Statusleiste, sowie Scrollbalken zeigen
-Fullscreen mode	AnnotationWindow		Vollbildmodus
-Will take effect at next program launch.	AnnotationWindow		Tritt beim nächsten Programmstart in Kraft.
-Filled rectangle	AnnotationWindow		Gefülltes Rechteck
-Align:	AnnotationWindow		Ausrichtung:
-Title:	AnnotationWindow		Titel:
-User fonts	AnnotationWindow		Benutzerschriften
-Asian fonts	AnnotationWindow		Asiatische Schriften
-Restore window position and size	AnnotationWindow		Fensterposition und -größe wiederherstellen
-Author	AnnotationWindow		Autor
-Open in workspace:	AnnotationWindow		Öffnen in Arbeitsfläche:
-Preferences	AnnotationWindow		Einstellungen
-Show document view only	AnnotationWindow		Nur Dokumentenansicht zeigen
-Automatic	AnnotationWindow		Automatisch
-Font:	AnnotationWindow		Schrift:
-Restore page number	AnnotationWindow		Seitennummer wieder herstellen
-System fonts	AnnotationWindow		Systemschriften
-Stroked rectangle	AnnotationWindow		Rechteckige Kontur
-current	AnnotationWindow		aktuell
-Annotation	AnnotationWindow		Anmerkung
-Selection rectangle	AnnotationWindow		Auswahlrechteck
-Display	AnnotationWindow		Anzeige
-Document	AnnotationWindow		Dokument
-Size:	AnnotationWindow		Größe:
-Date:	AnnotationWindow		Datum:
-Invert vertical mouse scrolling	AnnotationWindow		Vertikales Maus-Scrolling umkehren
+Zoom (%)	PrintSettingsWindow		Zoom (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		Zoomfaktor muss zwischen 25 und 400 sein.
+[internal link]	PDFView		[interner Link]
+[link type 'movie' not supported]	PDFView		[Linktyp 'movie' nicht unterstützt]
+[unknown link]	PDFView		[unbekannter Link]
+Annotation	PDFView		Anmerkung
+BePDF reading file: 	PDFView		BePDF liest Datei:
+BePDF: Launch	PDFView		BePDF: Starte
+Cancel	PDFView		Abbrechen
+Copy link	PDFView		Link kopieren
+Delete	PDFView		Entfernen
+Edit	PDFView		Bearbeiten
+Execute the command:	PDFView		Befehl ausführen:
+Go to page %d	PDFView		Zur Seite %d gehen
+Leave annotation editing mode	PDFView		Bearbeitungsmodus verlassen
+OK	PDFView		OK
+Open in new window	PDFView		In neuem Fenster öffnen
+Properties	PDFView		Eigenschaften
+Save file attachment as…	PDFView		Dateianhang speichern unter…
+Saving file attachment:	PDFView		Dateianhang speichern:
+Unknown link action type: '%s'	PDFView		Unbekannte Link-Aktion: '%s'
 <empty>	OutlinesWindow		<leer>
 Document	OutlinesWindow		Dokument
 Edit title for bookmark	OutlinesWindow		Titel des Lesezeichens bearbeiten
 No title	OutlinesWindow		Kein Titel
-User defined	OutlinesWindow		Benutzerdefiniert
 OK	OutlinesWindow		OK
-BePDF printing document: 	PrintingProgressWindow		BePDF druckt Dokument:
-BePDF printing	PrintingProgressWindow		BePDF drucken
-Stop	PrintingProgressWindow		Anhalten
-Abort	PrintingProgressWindow		Abbrechen
-Page:	PrintingProgressWindow		Seite:
-Page: %d	PrintingProgressWindow		Seite: %d
-Clear	TraceWindow		Löschen
-Auto open	TraceWindow		Automatisch öffnen
-Floating	TraceWindow		Schweben
-Error messages	TraceWindow		Fehlermeldungen
-Options	FindTextWindow		Optionen
-Ignore case	FindTextWindow		Groß-/Kleinschreibung ignorieren
-Page:	FindTextWindow		Seite:
-Find: 	FindTextWindow		Suchen:
-Stop	FindTextWindow		Halt
-Find	FindTextWindow		Suchen
-Find text	FindTextWindow		Text suchen
-Search backwards	FindTextWindow		Rückwärts suchen
-Page: %d	FindTextWindow		Seite: %d
-Save selected attachments into directory	AttachmentView		Ausgewählte Anhänge in Ordner speichern
+User defined	OutlinesWindow		Benutzerdefiniert
+<empty>	AttachmentView		<leer>
+Description	AttachmentView		Beschreibung
 File name	AttachmentView		Dateiname
 Save attachment(s) as	AttachmentView		Anhänge speichern als
-Saving attachment(s):	AttachmentView		Anhänge speichern:
 Save selected attachment to file	AttachmentView		Ausgewählte Anhänge in Datei speichern
-Description	AttachmentView		Beschreibung
-<empty>	AttachmentView		<leer>
-Search string not found.	PDFSearch		Die gesuchte Zeichenkette wurde nicht gefunden.
-OK	PDFSearch		OK
+Save selected attachments into directory	AttachmentView		Ausgewählte Anhänge in Ordner speichern
+Saving attachment(s):	AttachmentView		Anhänge speichern:
+Abort	PrintingProgressWindow		Abbrechen
+BePDF printing	PrintingProgressWindow		BePDF drucken
+BePDF printing document: 	PrintingProgressWindow		BePDF druckt Dokument:
+Page:	PrintingProgressWindow		Seite:
+Page: %d	PrintingProgressWindow		Seite: %d
+Stop	PrintingProgressWindow		Anhalten
+Abort	FileInfoWindow		Abbrechen
+Allowed	FileInfoWindow		Gestattet
+Annotations:	FileInfoWindow		Anmerkungen:
+Author:	FileInfoWindow		Autor:
+Copy & paste:	FileInfoWindow		Kopieren & Einfügen:
+Created:	FileInfoWindow		Erzeugt:
+Creator:	FileInfoWindow		Ersteller:
+Denied	FileInfoWindow		Nicht gestattet
+Document	FileInfoWindow		Dokument
+Editing:	FileInfoWindow		Bearbeiten:
+Embedded name	FileInfoWindow		Eingebetteter Name
+Encrypted:	FileInfoWindow		Verschlüsselt:
+File info	FileInfoWindow		Datei-Info
+Filename:	FileInfoWindow		Dateiname:
+Fonts of this page	FileInfoWindow		Schriften dieser Seite
+Keywords:	FileInfoWindow		Stichworte:
+Linearized:	FileInfoWindow		Linearisiert:
+Modified:	FileInfoWindow		Geändert:
+Name	FileInfoWindow		Name
+No	FileInfoWindow		Nein
+Path:	FileInfoWindow		Pfad:
+Printing:	FileInfoWindow		Drucken:
+Producer:	FileInfoWindow		Produzent:
+Security	FileInfoWindow		Sicherheit
+Show all fonts	FileInfoWindow		Alle Schriften zeigen
+Subject:	FileInfoWindow		Betreff:
+Title:	FileInfoWindow		Titel:
+Type	FileInfoWindow		Typ
+Version:	FileInfoWindow		Version:
+Yes	FileInfoWindow		Ja
+About BePDF…	PDFWindow		Über BePDF…
+Add	PDFWindow		Hinzufügen
+Add circle annotation	PDFWindow		Anmerkung: Kreis
+Add comment text annotation	PDFWindow		Anmerkung: Kommentar
+Add file attachment annotation	PDFWindow		Anmerkung: Dateianhang
+Add free text annotation	PDFWindow		Anmerkung: Freier Text
+Add help text annotation	PDFWindow		Anmerkung:  Hilfetext
+Add highlight annotation	PDFWindow		Anmerkung: Hervorheben
+Add ink annotation	PDFWindow		Anmerkung: Link
+Add insert text annotation	PDFWindow		Anmerkung: Texteinfügen
+Add key text annotation	PDFWindow		Anmerkung: Schlüsseltext
+Add line annotation	PDFWindow		Anmerkung: Linie
+Add link annotation	PDFWindow		Anmerkung: Link
+Add movie annotation	PDFWindow		Anmerkung: Film
+Add new paragraph text annotation	PDFWindow		Anmerkung: Neuer Absatz
+Add note text annotation	PDFWindow		Anmerkung: Notiz
+Add paragraph text annotation	PDFWindow		Anmerkung: Absatz
+Add popup annotation	PDFWindow		Anmerkung: Popup
+Add printer mark annotation	PDFWindow		Anmerkung: Druckermarkierung
+Add sound annotation	PDFWindow		Anmerkung: Klang
+Add square annotation	PDFWindow		Anmerkung: Rechteck
+Add squiggly annotation	PDFWindow		Anmerkung: Unterkringelt
+Add stamp annotation	PDFWindow		Anmerkung: Stempel
+Add strikeout annotation	PDFWindow		Anmerkung: Durchstreichen
+Add trapnet annotation	PDFWindow		Anmerkung: Trapnet
+Add underline annotation	PDFWindow		Anmerkung: Unterstreichen
+Add widget annotation	PDFWindow		Anmerkung: Widget
+Back	PDFWindow		Zurück
+Back in page history list	PDFWindow		Zurück in Seitenhistorie
+Bookmark	PDFWindow		Lesezeichen
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Ein gerade in BePDF geöffnetes Dokument kann nicht überschrieben werden. Bitte einen anderen Dateinamen wählen.
+Close	PDFWindow		Schließen
+Copy selection	PDFWindow		Auswahl kopieren
+Could not write PDF file!	PDFWindow		Konnte PDF Datei nicht schreiben!
+Custom zoom factor (%d%%)	PDFWindow		Eigener Zoomfaktor (%d%%)
+Delete	PDFWindow		Löschen
+Edit	PDFWindow		Bearbeiten
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Die Bearbeitung von Anmerkungen wird bei verschlüsselten PDFs noch nicht unterstützt.
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Deutsch.pdf
+File	PDFWindow		Datei
+File info…	PDFWindow		Datei-Info…
+Find	PDFWindow		Suchen
+Find next	PDFWindow		Weitersuchen
+Find next…	PDFWindow		Weitersuchen…
+Find…	PDFWindow		Suche…
+First	PDFWindow		Erste Seite
+Fit to page	PDFWindow		Auf Fenstergröße anpassen
+Fit to page width	PDFWindow		Auf Seitenbreite anpassen
+Forward	PDFWindow		Vorwärts
+Forward in page history list	PDFWindow		Vorwärts in Seitenhistorie
+Fullscreen	PDFWindow		Vollbild
+Fullscreen mode	PDFWindow		Vollbildmodus
+Go back 10 pages	PDFWindow		Zurück 10 Seiten
+Go forward 10 pages	PDFWindow		Vorwärts 10 Seiten
+Go to end of document	PDFWindow		Zum Ende des Dokuments
+Go to next page	PDFWindow		Nächste Seite
+Go to previous page	PDFWindow		Vorige Seite
+Go to start of document	PDFWindow		Zum Anfang des Dokuments
+Help	PDFWindow		Hilfe
+Hide side bar	PDFWindow		Seitenleiste ausblenden
+Issue tracker…	PDFWindow		Bugtracker…
+Jump to page	PDFWindow		Zu Seite gehen
+Last	PDFWindow		Letzte Seite
+Leave annotation editing mode	PDFWindow		Bearbeitungsmodus verlassen
+Next	PDFWindow		Nächste Seite
+of %d	PDFWindow		von %d
+OK	PDFWindow		OK
+Online help…	PDFWindow		Online-Hilfe…
+Open file	PDFWindow		Datei öffnen
+Open in new window…	PDFWindow		In neuem Fester öffnen…
+Open…	PDFWindow		Öffnen…
+Page	PDFWindow		Seite
+Page %d	PDFWindow		Seite %d
+Page setup…	PDFWindow		Seiteneinrichtung…
+PDF file successfully written!	PDFWindow		PDF erfolgreich geschrieben!
+Preferences…	PDFWindow		Einstellungen…
+Previous	PDFWindow		Vorige Seite
+Print	PDFWindow		Drucken
+Print…	PDFWindow		Drucken…
+Quit	PDFWindow		Beenden
+Reload	PDFWindow		Neu laden
+Reload file	PDFWindow		Datei neu laden
+Rotate clockwise	PDFWindow		Im Uhrzeigersinn drehen
+Rotate counter-clockwise	PDFWindow		Gegen Uhrzeigersinn drehen
+Rotation	PDFWindow		Drehung
+Save as…	PDFWindow		Speichern unter…
+Save file as	PDFWindow		Datei speichern als
+Saving copy of PDF file:	PDFWindow		Speichern einer Kopie der PDF Datei:
+Search	PDFWindow		Suche
+Select all	PDFWindow		Alles auswählen
+Select none	PDFWindow		Auswahl aufheben
+Show annotation tool bar	PDFWindow		Anmerkungen-Leiste zeigen
+Show annotation toolbar	PDFWindow		Anmerkungsleiste zeigen
+Show attachments	PDFWindow		Anhänge zeigen
+Show bookmarks	PDFWindow		Lesezeichen zeigen
+Show error messages	PDFWindow		Fehlermeldungen anzeigen
+Show help…	PDFWindow		Hilfe anzeigen…
+Show page list	PDFWindow		Seitenliste zeigen
+View	PDFWindow		Ansicht
+Visit homepage…	PDFWindow		Zur Webseite…
+Warning	PDFWindow		Warnung
+Zoom	PDFWindow		Zoomfaktor
+Zoom in	PDFWindow		Vergrößern
+Zoom out	PDFWindow		Verkleinern
+Align:	AnnotationWindow		Ausrichtung:
+Annotation	AnnotationWindow		Anmerkung
+Asian fonts	AnnotationWindow		Asiatische Schriften
+Author	AnnotationWindow		Autor
+Automatic	AnnotationWindow		Automatisch
+current	AnnotationWindow		aktuell
+Date:	AnnotationWindow		Datum:
+Display	AnnotationWindow		Anzeige
+Document	AnnotationWindow		Dokument
+Filled rectangle	AnnotationWindow		Gefülltes Rechteck
+Font:	AnnotationWindow		Schrift:
+Fullscreen mode	AnnotationWindow		Vollbildmodus
+Invert vertical mouse scrolling	AnnotationWindow		Vertikales Maus-Scrolling umkehren
+Open in workspace:	AnnotationWindow		Öffnen in Arbeitsfläche:
+Preferences	AnnotationWindow		Einstellungen
+Restore page number	AnnotationWindow		Seitennummer wieder herstellen
+Restore window position and size	AnnotationWindow		Fensterposition und -größe wiederherstellen
+Selection rectangle	AnnotationWindow		Auswahlrechteck
+Show document view only	AnnotationWindow		Nur Dokumentenansicht zeigen
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Werkzeug- und Statusleiste, sowie Scrollbalken zeigen
+Size:	AnnotationWindow		Größe:
+Stroked rectangle	AnnotationWindow		Rechteckige Kontur
+System fonts	AnnotationWindow		Systemschriften
+Title:	AnnotationWindow		Titel:
+User fonts	AnnotationWindow		Benutzerschriften
+Will take effect at next program launch.	AnnotationWindow		Tritt beim nächsten Programmstart in Kraft.
+Alpha	BepdfApplication		Alpha
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF basiert auf XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: Fehler beim Öffnen der Datei!
+Beta	BepdfApplication		Beta
+Close	BepdfApplication		Schließen
+Development	BepdfApplication		Entwicklung
+Error	BepdfApplication		Fehler
+Final	BepdfApplication		Final
+Gamma	BepdfApplication		Gamma
+Golden Master	BepdfApplication		Golden Master
+Unknown	BepdfApplication		Unbekannt
+Version	BepdfApplication		Version
+Auto open	TraceWindow		Automatisch öffnen
+Clear	TraceWindow		Löschen
+Error messages	TraceWindow		Fehlermeldungen
+Floating	TraceWindow		Schweben
 BePDF status	StatusWindow		BePDF Status
-User password	PasswordWindow		Benutzerkennwort
 Enter Password	PasswordWindow		Kennwort eingeben
-Owner password	PasswordWindow		Eigentümer-Kennwort
 OK	PasswordWindow		OK
+Owner password	PasswordWindow		Eigentümer-Kennwort
+User password	PasswordWindow		Benutzerkennwort
+Find	FindTextWindow		Suchen
+Find text	FindTextWindow		Text suchen
+Find: 	FindTextWindow		Suchen:
+Ignore case	FindTextWindow		Groß-/Kleinschreibung ignorieren
+Options	FindTextWindow		Optionen
+Page:	FindTextWindow		Seite:
+Page: %d	FindTextWindow		Seite: %d
+Search backwards	FindTextWindow		Rückwärts suchen
+Stop	FindTextWindow		Halt
+OK	PDFSearch		OK
+Search string not found.	PDFSearch		Die gesuchte Zeichenkette wurde nicht gefunden.

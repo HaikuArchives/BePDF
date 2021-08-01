@@ -1,254 +1,254 @@
 1	Thai	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		ปิด
-Error	BepdfApplication		ผิดพลาด
-Beta	BepdfApplication		เบต้า
-Gamma	BepdfApplication		แกมม่า
-Golden Master	BepdfApplication		Golden Master
-BePDF: Error opening file!	BepdfApplication		BePDF: เกิดข้อผิดพลาดในการเปิดไฟล์!
-Alpha	BepdfApplication		อัลฟา
-Version	BepdfApplication		เวอร์ชั่น
-Development	BepdfApplication		พัฒนา
-Unknown	BepdfApplication		ไม่ทราบ
-Final	BepdfApplication		สุดท้าย
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF ขึ้นอยู่กับ XPDF %s, %s.
-Show bookmarks	PDFWindow		แสดงบุ๊กมาร์ก
-of %d	PDFWindow		ของ %d
-Zoom in	PDFWindow		ขยายเข้า
-About BePDF…	PDFWindow		เกี่ยวกับ BePDF…
-Go to next page	PDFWindow		ไปหน้าถัดไป
-View	PDFWindow		ดู
-Show annotation tool bar	PDFWindow		แสดงแถบเครื่องมือคำอธิบายประกอบ
-Select none	PDFWindow		ไม่เลือก
-Add trapnet annotation	PDFWindow		เพิ่มคำอธิบายประกอบTrapnet
-Add underline annotation	PDFWindow		เพิ่มหมายเหตุประกอบแบบขีดเส้นใต้
-Show help…	PDFWindow		แสดงความช่วยเหลือ ...
-Help	PDFWindow		ช่วยเหลือ
-Add popup annotation	PDFWindow		เพิ่มคำอธิบายประกอบป๊อปอัพ
-Find…	PDFWindow		ค้นหา
-Reload	PDFWindow		รีโหลด
-First	PDFWindow		ลำดับแรก
-Fit to page	PDFWindow		พอดีกับหน้า
-Add key text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความสำคัญ
-File	PDFWindow		ไฟล์
-PDF file successfully written!	PDFWindow		เขียนไฟล์ PDF สำเร็จ!
-Warning	PDFWindow		เตือน
-Zoom out	PDFWindow		ขยายออก
-Show error messages	PDFWindow		แสดงข้อความผิดพลาด
-Add movie annotation	PDFWindow		เพิ่มคำอธิบายประกอบภาพยนตร์
-Open…	PDFWindow		เปิด…
-Add widget annotation	PDFWindow		เพิ่มคำอธิบายประกอบวิดเจ็ต
-Add insert text annotation	PDFWindow		เพิ่มคำอธิบายประกอบแทรกข้อความ
-Find	PDFWindow		ค้นหา
-Add ink annotation	PDFWindow		เพิ่มคำอธิบายประกอบแบบหมึก
-Go to start of document	PDFWindow		ไปหน้าเริ่มต้น
-Go to previous page	PDFWindow		ไปหน้าก่อนหน้า
-Save as…	PDFWindow		บันทึกเป็น
-Reload file	PDFWindow		รีโหลดไฟล์
-Find next…	PDFWindow		ค้นหาถัดไป
-Fullscreen mode	PDFWindow		โหมดเต็มจอ
-Show page list	PDFWindow		แสดงรายการหน้า
-Back	PDFWindow		ย้อนกลับ
-Add note text annotation	PDFWindow		เพิ่มหมายเหตุประกอบข้อความโน้ต
-Close	PDFWindow		ปิด
-Add printer mark annotation	PDFWindow		เพิ่มคำอธิบายประกอบเครื่องหมายเครื่องพิมพ์
-Go forward 10 pages	PDFWindow		ไปข้างหน้า 10 หน้า
-Page %d	PDFWindow		หน้า %d
-Forward in page history list	PDFWindow		ส่งต่อในรายการประวัติหน้า
-Add new paragraph text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความย่อหน้าใหม่
-Fullscreen	PDFWindow		เต็มจอ
-Add sound annotation	PDFWindow		เพิ่มคำอธิบายประกอบเสียง
-Add comment text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความความคิดเห็น
-Page	PDFWindow		หน้า
-File info…	PDFWindow		ข้อมูลไฟล์
-Page setup…	PDFWindow		ตั้งค่าหน้า…
-Print	PDFWindow		พิมพ์
-Issue tracker…	PDFWindow		ติดตามปัญหา ...
-Preferences…	PDFWindow		การตั้งค่า ...
-Rotation	PDFWindow		หมุน
-Last	PDFWindow		สุดท้าย
-Add stamp annotation	PDFWindow		เพิ่มคำอธิบายประกอบแสตมป์
-Add squiggly annotation	PDFWindow		เพิ่มคำอธิบายประกอบเส้นหยัก
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		ไม่สามารถเขียนทับไฟล์ PDF ที่เปิดอยู่ใน BePDF ได้ในขณะนี้! กรุณาเลือกชื่อไฟล์อื่น
-Copy selection	PDFWindow		คัดลอกส่วนที่เลือก
-Add free text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความแบบอิสระ
-Next	PDFWindow		ถัดไป
-Forward	PDFWindow		ส่งต่อ
-Hide side bar	PDFWindow		ซ่อนแถบด้านข้าง
-Jump to page	PDFWindow		ข้ามไปที่หน้า
-Add line annotation	PDFWindow		เพิ่มคำอธิบายประกอบบรรทัด
-Add circle annotation	PDFWindow		เพิ่มคำอธิบายประกอบวงกลม
-Save file as	PDFWindow		บันทึกไฟล์เป็น
-Show annotation toolbar	PDFWindow		แสดงแถบเครื่องมือคำอธิบายประกอบ
-Add link annotation	PDFWindow		เพิ่มคำอธิบายประกอบลิงค์
-Previous	PDFWindow		ก่อนหน้า
-Leave annotation editing mode	PDFWindow		ออกจากโหมดแก้ไขคำอธิบายประกอบ
-Rotate clockwise	PDFWindow		หมุนตามเข็มนาฬิกา
-Find next	PDFWindow		ค้นหาถัดไป
-Add strikeout annotation	PDFWindow		เพิ่มหมายเหตุประกอบการขีดฆ่า
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Thai.pdf
-Bookmark	PDFWindow		คั่นหน้า
-Could not write PDF file!	PDFWindow		ไม่สามารถเขียนไฟล์ PDF ได้!
-OK	PDFWindow		ตกลง
-Add	PDFWindow		เพิ่ม
-Edit	PDFWindow		แก้ไข
-Online help…	PDFWindow		ความช่วยเหลือออนไลน์ ...
-Quit	PDFWindow		ออก
-Back in page history list	PDFWindow		ย้อนกลับไปในรายการประวัติหน้า
-Open file	PDFWindow		เปิดไฟล์
-Visit homepage…	PDFWindow		ไปที่หน้าแรก ...
-Show attachments	PDFWindow		แสดงไฟล์แนบ
-Add paragraph text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความในย่อหน้า
-Go back 10 pages	PDFWindow		ย้อนไป 10 หน้า
-Print…	PDFWindow		พิมพ์…
-Go to end of document	PDFWindow		ไปหน้าสุดท้ายของเอกสาร
-Rotate counter-clockwise	PDFWindow		หมุนทวนเข็มนาฬิกา
-Delete	PDFWindow		ลบ
-Select all	PDFWindow		เลือกทั้งหมด
-Add square annotation	PDFWindow		เพิ่มคำอธิบายประกอบสี่เหลี่ยม
-Fit to page width	PDFWindow		พอดีกับความกว้างของหน้า
-Zoom	PDFWindow		ขยาย
-Search	PDFWindow		ค้นหา
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		การแก้ไขคำอธิบายประกอบในไฟล์ PDF ที่เข้ารหัสยังไม่ได้รับการสนับสนุน!
-Saving copy of PDF file:	PDFWindow		กำลังบันทึกสำเนาของไฟล์ PDF:
-Add help text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความช่วยเหลือ
-Custom zoom factor (%d%%)	PDFWindow		ปัจจัยการซูมที่กำหนดเอง (%d%%)
-Open in new window…	PDFWindow		เปิดหน้าต่างใหม่…
-Add highlight annotation	PDFWindow		เพิ่มคำอธิบายประกอบไฮไลต์
-Add file attachment annotation	PDFWindow		เพิ่มคำอธิบายประกอบไฟล์
-Go to page %d	PDFView		ไปที่หน้า %d
-BePDF: Launch	PDFView		BePDF: เปิด
-Copy link	PDFView		คัดลอกลิงค์
-Saving file attachment:	PDFView		กำลังบันทึกไฟล์แนบ:
-Open in new window	PDFView		เปิดในหน้าต่างใหม่
-Save file attachment as…	PDFView		บันทึกไฟล์แนบเป็น ...
-[link type 'movie' not supported]	PDFView		ไม่รองรับประเภทลิงก์ 'ภาพยนตร์']
-Cancel	PDFView		ยกเลิก
-[unknown link]	PDFView		[ลิงค์ที่ไม่รู้จัก]
-Execute the command:	PDFView		ดำเนินการคำสั่ง:
-Properties	PDFView		คุณสมบัติ
-Unknown link action type: '%s'	PDFView		ลิงค์ประเภทการกระทำที่ไม่รู้จัก:'%s'
-Annotation	PDFView		คำอธิบายประกอบ
-Delete	PDFView		ลบ
-Leave annotation editing mode	PDFView		ออกจากโหมดแก้ไขคำอธิบายประกอบ
-[internal link]	PDFView		[ลิงค์ภายใน]
-OK	PDFView		ตกลง
-BePDF reading file: 	PDFView		อ่านไฟล์ BePDF:
-Edit	PDFView		แก้ไข
-Keywords:	FileInfoWindow		คำสำคัญ:
-Subject:	FileInfoWindow		เรื่อง:
-Encrypted:	FileInfoWindow		เข้ารหัส:
-Type	FileInfoWindow		ชนิด
-Abort	FileInfoWindow		ยกเลิก
-Denied	FileInfoWindow		ปฎิเสธ
-Creator:	FileInfoWindow		ผู้สร้าง:
-Document	FileInfoWindow		เอกสาร
-Fonts of this page	FileInfoWindow		แบบอักษรของหน้านี้
-Path:	FileInfoWindow		พาธ:
-Name	FileInfoWindow		ชื่อ
-Filename:	FileInfoWindow		ชื่อไฟล์:
-Yes	FileInfoWindow		ใช่
-Annotations:	FileInfoWindow		คำอธิบายประกอบ:
-Producer:	FileInfoWindow		ผู้จัดทำ:
-Allowed	FileInfoWindow		อนุญาต
-Copy & paste:	FileInfoWindow		คัดลอก & วาง:
-Modified:	FileInfoWindow		แก้ไข:
-Editing:	FileInfoWindow		กำลังแก้ไข:
-Title:	FileInfoWindow		ชื่อ:
-Created:	FileInfoWindow		สร้าง:
-Linearized:	FileInfoWindow		Linearized:
-Version:	FileInfoWindow		เวอร์ชั่น:
-No	FileInfoWindow		ไม่
-Author:	FileInfoWindow		ผู้เขียน:
-Security	FileInfoWindow		ความปลอดภัย
-Embedded name	FileInfoWindow		ชื่อที่แนบมา
-Printing:	FileInfoWindow		กำลังพิมพ์:
-File info	FileInfoWindow		ข้อมูลไฟล์
-Show all fonts	FileInfoWindow		แสดงแบบอักษรทั้งหมด
-All pages	PrintSettingsWindow		ทุกหน้า
  in	PrintSettingsWindow		ใน
-Pages	PrintSettingsWindow		หน้า
-Page	PrintSettingsWindow		หน้า
-Max. printer resolution	PrintSettingsWindow		ความละเอียดของเครื่องพิมพ์สูงสุด
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		ขยาย (%)
-Gray scale	PrintSettingsWindow		ระดับสีเทา
+All pages	PrintSettingsWindow		ทุกหน้า
 Color	PrintSettingsWindow		สี
-Normal	PrintSettingsWindow		ปกติ
-Rotation	PrintSettingsWindow		หมุน
-Print settings	PrintSettingsWindow		การตั้งค่าการพิมพ์
-Print	PrintSettingsWindow		พิมพ์
-Reverse	PrintSettingsWindow		ย้อนกลับ
-Odd pages	PrintSettingsWindow		หน้าคี่
-Zoom must be between 25 and 400!	PrintSettingsWindow		การขยายจะต้องอยู่ระหว่าง 25 ถึง 400!
-Mode	PrintSettingsWindow		โหมด
-Order	PrintSettingsWindow		สั่ง
-Height: 	PrintSettingsWindow		ความสูง: 
-Width: 	PrintSettingsWindow		ความกว้าง: 
-OK	PrintSettingsWindow		ตกลง
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		แม้แต่หน้า
+Gray scale	PrintSettingsWindow		ระดับสีเทา
+Height: 	PrintSettingsWindow		ความสูง: 
+Max. printer resolution	PrintSettingsWindow		ความละเอียดของเครื่องพิมพ์สูงสุด
+Mode	PrintSettingsWindow		โหมด
+Normal	PrintSettingsWindow		ปกติ
+Odd pages	PrintSettingsWindow		หน้าคี่
+OK	PrintSettingsWindow		ตกลง
+Order	PrintSettingsWindow		สั่ง
+Page	PrintSettingsWindow		หน้า
+Pages	PrintSettingsWindow		หน้า
+Print	PrintSettingsWindow		พิมพ์
+Print settings	PrintSettingsWindow		การตั้งค่าการพิมพ์
+Reverse	PrintSettingsWindow		ย้อนกลับ
+Rotation	PrintSettingsWindow		หมุน
+Width: 	PrintSettingsWindow		ความกว้าง: 
 Wrong parameter!	PrintSettingsWindow		พารามิเตอร์ผิด!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		แสดงแถบเครื่องมือ แถบสถานะและแถบเลื่อนด้วย
-Fullscreen mode	AnnotationWindow		โหมดเต็มหน้าจอ
-Will take effect at next program launch.	AnnotationWindow		จะมีผลเมื่อเปิดตัวโปรแกรมครั้งต่อไป
-Filled rectangle	AnnotationWindow		สี่เหลี่ยมผืนผ้าที่เต็ม
-Align:	AnnotationWindow		แนวตรง:
-Title:	AnnotationWindow		ชื่อ:
-User fonts	AnnotationWindow		แบบอักษรของผู้ใช้
-Asian fonts	AnnotationWindow		ตัวอักษรเอเชีย
-Restore window position and size	AnnotationWindow		กู้คืนตำแหน่งและขนาดของหน้าต่าง
-Author	AnnotationWindow		ผู้เขียน
-Open in workspace:	AnnotationWindow		เปิดในพื้นที่ทำงาน:
-Preferences	AnnotationWindow		การตั้งค่า
-Show document view only	AnnotationWindow		แสดงมุมมองเอกสารเท่านั้น
-Automatic	AnnotationWindow		อัตโนมัติ
-Font:	AnnotationWindow		ตัวอักษร
-Restore page number	AnnotationWindow		คืนค่าหมายเลขหน้า
-System fonts	AnnotationWindow		แบบอักษรของระบบ
-Stroked rectangle	AnnotationWindow		กรอบสี่เหลี่ยมผืนผ้า
-current	AnnotationWindow		ปัจจุบัน
-Annotation	AnnotationWindow		คำอธิบายประกอบ
-Selection rectangle	AnnotationWindow		สี่เหลี่ยมผืนผ้าที่เลือก
-Display	AnnotationWindow		แสดง
-Document	AnnotationWindow		เอกสาร
-Size:	AnnotationWindow		ขนาด:
-Date:	AnnotationWindow		วันที่:
-Invert vertical mouse scrolling	AnnotationWindow		สลับการเลื่อนเมาส์แนวตั้ง
+Zoom (%)	PrintSettingsWindow		ขยาย (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		การขยายจะต้องอยู่ระหว่าง 25 ถึง 400!
+[internal link]	PDFView		[ลิงค์ภายใน]
+[link type 'movie' not supported]	PDFView		ไม่รองรับประเภทลิงก์ 'ภาพยนตร์']
+[unknown link]	PDFView		[ลิงค์ที่ไม่รู้จัก]
+Annotation	PDFView		คำอธิบายประกอบ
+BePDF reading file: 	PDFView		อ่านไฟล์ BePDF:
+BePDF: Launch	PDFView		BePDF: เปิด
+Cancel	PDFView		ยกเลิก
+Copy link	PDFView		คัดลอกลิงค์
+Delete	PDFView		ลบ
+Edit	PDFView		แก้ไข
+Execute the command:	PDFView		ดำเนินการคำสั่ง:
+Go to page %d	PDFView		ไปที่หน้า %d
+Leave annotation editing mode	PDFView		ออกจากโหมดแก้ไขคำอธิบายประกอบ
+OK	PDFView		ตกลง
+Open in new window	PDFView		เปิดในหน้าต่างใหม่
+Properties	PDFView		คุณสมบัติ
+Save file attachment as…	PDFView		บันทึกไฟล์แนบเป็น ...
+Saving file attachment:	PDFView		กำลังบันทึกไฟล์แนบ:
+Unknown link action type: '%s'	PDFView		ลิงค์ประเภทการกระทำที่ไม่รู้จัก:'%s'
 <empty>	OutlinesWindow		<ว่าง>
 Document	OutlinesWindow		เอกสาร
 Edit title for bookmark	OutlinesWindow		แก้ไขชื่อสำหรับบุ๊คมาร์ค
 No title	OutlinesWindow		ไม่มีชื่อ
-User defined	OutlinesWindow		ผู้ใช้กำหนด
 OK	OutlinesWindow		ตกลง
-BePDF printing document: 	PrintingProgressWindow		เอกสารการพิมพ์ BePDF:
-BePDF printing	PrintingProgressWindow		การพิมพ์ BePDF
-Stop	PrintingProgressWindow		หยุด
-Abort	PrintingProgressWindow		ยกเลิก
-Page:	PrintingProgressWindow		หน้า:
-Page: %d	PrintingProgressWindow		หน้า: %d
-Clear	TraceWindow		ลบ
-Auto open	TraceWindow		เปิดอัตโนมัติ
-Floating	TraceWindow		ลอยตัว
-Error messages	TraceWindow		ข้อความผิดพลาด
-Options	FindTextWindow		ทางเลือก
-Ignore case	FindTextWindow		เพิกเฉย
-Page:	FindTextWindow		หน้า:
-Find: 	FindTextWindow		ค้นหา: 
-Stop	FindTextWindow		หยุด
-Find	FindTextWindow		ค้นหา
-Find text	FindTextWindow		ค้นหาข้อความ
-Search backwards	FindTextWindow		ค้นหาย้อนหลัง
-Page: %d	FindTextWindow		หน้า: %d
-Save selected attachments into directory	AttachmentView		บันทึกไฟล์แนบที่เลือกไว้ในไดเรกทอรี
+User defined	OutlinesWindow		ผู้ใช้กำหนด
+<empty>	AttachmentView		<ว่างเปล่า>
+Description	AttachmentView		รายละเอียด
 File name	AttachmentView		ชื่อไฟล์
 Save attachment(s) as	AttachmentView		บันทึกเอกสารแนบเป็น
-Saving attachment(s):	AttachmentView		กำลังบันทึกไฟล์แนบ:
 Save selected attachment to file	AttachmentView		บันทึกไฟล์แนบที่เลือกไปยังไฟล์
-Description	AttachmentView		รายละเอียด
-<empty>	AttachmentView		<ว่างเปล่า>
-Search string not found.	PDFSearch		ไม่พบสตริงการค้นหา
-OK	PDFSearch		ตกลง
+Save selected attachments into directory	AttachmentView		บันทึกไฟล์แนบที่เลือกไว้ในไดเรกทอรี
+Saving attachment(s):	AttachmentView		กำลังบันทึกไฟล์แนบ:
+Abort	PrintingProgressWindow		ยกเลิก
+BePDF printing	PrintingProgressWindow		การพิมพ์ BePDF
+BePDF printing document: 	PrintingProgressWindow		เอกสารการพิมพ์ BePDF:
+Page:	PrintingProgressWindow		หน้า:
+Page: %d	PrintingProgressWindow		หน้า: %d
+Stop	PrintingProgressWindow		หยุด
+Abort	FileInfoWindow		ยกเลิก
+Allowed	FileInfoWindow		อนุญาต
+Annotations:	FileInfoWindow		คำอธิบายประกอบ:
+Author:	FileInfoWindow		ผู้เขียน:
+Copy & paste:	FileInfoWindow		คัดลอก & วาง:
+Created:	FileInfoWindow		สร้าง:
+Creator:	FileInfoWindow		ผู้สร้าง:
+Denied	FileInfoWindow		ปฎิเสธ
+Document	FileInfoWindow		เอกสาร
+Editing:	FileInfoWindow		กำลังแก้ไข:
+Embedded name	FileInfoWindow		ชื่อที่แนบมา
+Encrypted:	FileInfoWindow		เข้ารหัส:
+File info	FileInfoWindow		ข้อมูลไฟล์
+Filename:	FileInfoWindow		ชื่อไฟล์:
+Fonts of this page	FileInfoWindow		แบบอักษรของหน้านี้
+Keywords:	FileInfoWindow		คำสำคัญ:
+Linearized:	FileInfoWindow		Linearized:
+Modified:	FileInfoWindow		แก้ไข:
+Name	FileInfoWindow		ชื่อ
+No	FileInfoWindow		ไม่
+Path:	FileInfoWindow		พาธ:
+Printing:	FileInfoWindow		กำลังพิมพ์:
+Producer:	FileInfoWindow		ผู้จัดทำ:
+Security	FileInfoWindow		ความปลอดภัย
+Show all fonts	FileInfoWindow		แสดงแบบอักษรทั้งหมด
+Subject:	FileInfoWindow		เรื่อง:
+Title:	FileInfoWindow		ชื่อ:
+Type	FileInfoWindow		ชนิด
+Version:	FileInfoWindow		เวอร์ชั่น:
+Yes	FileInfoWindow		ใช่
+About BePDF…	PDFWindow		เกี่ยวกับ BePDF…
+Add	PDFWindow		เพิ่ม
+Add circle annotation	PDFWindow		เพิ่มคำอธิบายประกอบวงกลม
+Add comment text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความความคิดเห็น
+Add file attachment annotation	PDFWindow		เพิ่มคำอธิบายประกอบไฟล์
+Add free text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความแบบอิสระ
+Add help text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความช่วยเหลือ
+Add highlight annotation	PDFWindow		เพิ่มคำอธิบายประกอบไฮไลต์
+Add ink annotation	PDFWindow		เพิ่มคำอธิบายประกอบแบบหมึก
+Add insert text annotation	PDFWindow		เพิ่มคำอธิบายประกอบแทรกข้อความ
+Add key text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความสำคัญ
+Add line annotation	PDFWindow		เพิ่มคำอธิบายประกอบบรรทัด
+Add link annotation	PDFWindow		เพิ่มคำอธิบายประกอบลิงค์
+Add movie annotation	PDFWindow		เพิ่มคำอธิบายประกอบภาพยนตร์
+Add new paragraph text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความย่อหน้าใหม่
+Add note text annotation	PDFWindow		เพิ่มหมายเหตุประกอบข้อความโน้ต
+Add paragraph text annotation	PDFWindow		เพิ่มคำอธิบายประกอบข้อความในย่อหน้า
+Add popup annotation	PDFWindow		เพิ่มคำอธิบายประกอบป๊อปอัพ
+Add printer mark annotation	PDFWindow		เพิ่มคำอธิบายประกอบเครื่องหมายเครื่องพิมพ์
+Add sound annotation	PDFWindow		เพิ่มคำอธิบายประกอบเสียง
+Add square annotation	PDFWindow		เพิ่มคำอธิบายประกอบสี่เหลี่ยม
+Add squiggly annotation	PDFWindow		เพิ่มคำอธิบายประกอบเส้นหยัก
+Add stamp annotation	PDFWindow		เพิ่มคำอธิบายประกอบแสตมป์
+Add strikeout annotation	PDFWindow		เพิ่มหมายเหตุประกอบการขีดฆ่า
+Add trapnet annotation	PDFWindow		เพิ่มคำอธิบายประกอบTrapnet
+Add underline annotation	PDFWindow		เพิ่มหมายเหตุประกอบแบบขีดเส้นใต้
+Add widget annotation	PDFWindow		เพิ่มคำอธิบายประกอบวิดเจ็ต
+Back	PDFWindow		ย้อนกลับ
+Back in page history list	PDFWindow		ย้อนกลับไปในรายการประวัติหน้า
+Bookmark	PDFWindow		คั่นหน้า
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		ไม่สามารถเขียนทับไฟล์ PDF ที่เปิดอยู่ใน BePDF ได้ในขณะนี้! กรุณาเลือกชื่อไฟล์อื่น
+Close	PDFWindow		ปิด
+Copy selection	PDFWindow		คัดลอกส่วนที่เลือก
+Could not write PDF file!	PDFWindow		ไม่สามารถเขียนไฟล์ PDF ได้!
+Custom zoom factor (%d%%)	PDFWindow		ปัจจัยการซูมที่กำหนดเอง (%d%%)
+Delete	PDFWindow		ลบ
+Edit	PDFWindow		แก้ไข
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		การแก้ไขคำอธิบายประกอบในไฟล์ PDF ที่เข้ารหัสยังไม่ได้รับการสนับสนุน!
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Thai.pdf
+File	PDFWindow		ไฟล์
+File info…	PDFWindow		ข้อมูลไฟล์
+Find	PDFWindow		ค้นหา
+Find next	PDFWindow		ค้นหาถัดไป
+Find next…	PDFWindow		ค้นหาถัดไป
+Find…	PDFWindow		ค้นหา
+First	PDFWindow		ลำดับแรก
+Fit to page	PDFWindow		พอดีกับหน้า
+Fit to page width	PDFWindow		พอดีกับความกว้างของหน้า
+Forward	PDFWindow		ส่งต่อ
+Forward in page history list	PDFWindow		ส่งต่อในรายการประวัติหน้า
+Fullscreen	PDFWindow		เต็มจอ
+Fullscreen mode	PDFWindow		โหมดเต็มจอ
+Go back 10 pages	PDFWindow		ย้อนไป 10 หน้า
+Go forward 10 pages	PDFWindow		ไปข้างหน้า 10 หน้า
+Go to end of document	PDFWindow		ไปหน้าสุดท้ายของเอกสาร
+Go to next page	PDFWindow		ไปหน้าถัดไป
+Go to previous page	PDFWindow		ไปหน้าก่อนหน้า
+Go to start of document	PDFWindow		ไปหน้าเริ่มต้น
+Help	PDFWindow		ช่วยเหลือ
+Hide side bar	PDFWindow		ซ่อนแถบด้านข้าง
+Issue tracker…	PDFWindow		ติดตามปัญหา ...
+Jump to page	PDFWindow		ข้ามไปที่หน้า
+Last	PDFWindow		สุดท้าย
+Leave annotation editing mode	PDFWindow		ออกจากโหมดแก้ไขคำอธิบายประกอบ
+Next	PDFWindow		ถัดไป
+of %d	PDFWindow		ของ %d
+OK	PDFWindow		ตกลง
+Online help…	PDFWindow		ความช่วยเหลือออนไลน์ ...
+Open file	PDFWindow		เปิดไฟล์
+Open in new window…	PDFWindow		เปิดหน้าต่างใหม่…
+Open…	PDFWindow		เปิด…
+Page	PDFWindow		หน้า
+Page %d	PDFWindow		หน้า %d
+Page setup…	PDFWindow		ตั้งค่าหน้า…
+PDF file successfully written!	PDFWindow		เขียนไฟล์ PDF สำเร็จ!
+Preferences…	PDFWindow		การตั้งค่า ...
+Previous	PDFWindow		ก่อนหน้า
+Print	PDFWindow		พิมพ์
+Print…	PDFWindow		พิมพ์…
+Quit	PDFWindow		ออก
+Reload	PDFWindow		รีโหลด
+Reload file	PDFWindow		รีโหลดไฟล์
+Rotate clockwise	PDFWindow		หมุนตามเข็มนาฬิกา
+Rotate counter-clockwise	PDFWindow		หมุนทวนเข็มนาฬิกา
+Rotation	PDFWindow		หมุน
+Save as…	PDFWindow		บันทึกเป็น
+Save file as	PDFWindow		บันทึกไฟล์เป็น
+Saving copy of PDF file:	PDFWindow		กำลังบันทึกสำเนาของไฟล์ PDF:
+Search	PDFWindow		ค้นหา
+Select all	PDFWindow		เลือกทั้งหมด
+Select none	PDFWindow		ไม่เลือก
+Show annotation tool bar	PDFWindow		แสดงแถบเครื่องมือคำอธิบายประกอบ
+Show annotation toolbar	PDFWindow		แสดงแถบเครื่องมือคำอธิบายประกอบ
+Show attachments	PDFWindow		แสดงไฟล์แนบ
+Show bookmarks	PDFWindow		แสดงบุ๊กมาร์ก
+Show error messages	PDFWindow		แสดงข้อความผิดพลาด
+Show help…	PDFWindow		แสดงความช่วยเหลือ ...
+Show page list	PDFWindow		แสดงรายการหน้า
+View	PDFWindow		ดู
+Visit homepage…	PDFWindow		ไปที่หน้าแรก ...
+Warning	PDFWindow		เตือน
+Zoom	PDFWindow		ขยาย
+Zoom in	PDFWindow		ขยายเข้า
+Zoom out	PDFWindow		ขยายออก
+Align:	AnnotationWindow		แนวตรง:
+Annotation	AnnotationWindow		คำอธิบายประกอบ
+Asian fonts	AnnotationWindow		ตัวอักษรเอเชีย
+Author	AnnotationWindow		ผู้เขียน
+Automatic	AnnotationWindow		อัตโนมัติ
+current	AnnotationWindow		ปัจจุบัน
+Date:	AnnotationWindow		วันที่:
+Display	AnnotationWindow		แสดง
+Document	AnnotationWindow		เอกสาร
+Filled rectangle	AnnotationWindow		สี่เหลี่ยมผืนผ้าที่เต็ม
+Font:	AnnotationWindow		ตัวอักษร
+Fullscreen mode	AnnotationWindow		โหมดเต็มหน้าจอ
+Invert vertical mouse scrolling	AnnotationWindow		สลับการเลื่อนเมาส์แนวตั้ง
+Open in workspace:	AnnotationWindow		เปิดในพื้นที่ทำงาน:
+Preferences	AnnotationWindow		การตั้งค่า
+Restore page number	AnnotationWindow		คืนค่าหมายเลขหน้า
+Restore window position and size	AnnotationWindow		กู้คืนตำแหน่งและขนาดของหน้าต่าง
+Selection rectangle	AnnotationWindow		สี่เหลี่ยมผืนผ้าที่เลือก
+Show document view only	AnnotationWindow		แสดงมุมมองเอกสารเท่านั้น
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		แสดงแถบเครื่องมือ แถบสถานะและแถบเลื่อนด้วย
+Size:	AnnotationWindow		ขนาด:
+Stroked rectangle	AnnotationWindow		กรอบสี่เหลี่ยมผืนผ้า
+System fonts	AnnotationWindow		แบบอักษรของระบบ
+Title:	AnnotationWindow		ชื่อ:
+User fonts	AnnotationWindow		แบบอักษรของผู้ใช้
+Will take effect at next program launch.	AnnotationWindow		จะมีผลเมื่อเปิดตัวโปรแกรมครั้งต่อไป
+Alpha	BepdfApplication		อัลฟา
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF ขึ้นอยู่กับ XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: เกิดข้อผิดพลาดในการเปิดไฟล์!
+Beta	BepdfApplication		เบต้า
+Close	BepdfApplication		ปิด
+Development	BepdfApplication		พัฒนา
+Error	BepdfApplication		ผิดพลาด
+Final	BepdfApplication		สุดท้าย
+Gamma	BepdfApplication		แกมม่า
+Golden Master	BepdfApplication		Golden Master
+Unknown	BepdfApplication		ไม่ทราบ
+Version	BepdfApplication		เวอร์ชั่น
+Auto open	TraceWindow		เปิดอัตโนมัติ
+Clear	TraceWindow		ลบ
+Error messages	TraceWindow		ข้อความผิดพลาด
+Floating	TraceWindow		ลอยตัว
 BePDF status	StatusWindow		สถานะ BePDF
-User password	PasswordWindow		รหัสผ่านผู้ใช้
 Enter Password	PasswordWindow		ใส่รหัสผ่าน
-Owner password	PasswordWindow		รหัสผ่านของเจ้าของ
 OK	PasswordWindow		ตกลง
+Owner password	PasswordWindow		รหัสผ่านของเจ้าของ
+User password	PasswordWindow		รหัสผ่านผู้ใช้
+Find	FindTextWindow		ค้นหา
+Find text	FindTextWindow		ค้นหาข้อความ
+Find: 	FindTextWindow		ค้นหา: 
+Ignore case	FindTextWindow		เพิกเฉย
+Options	FindTextWindow		ทางเลือก
+Page:	FindTextWindow		หน้า:
+Page: %d	FindTextWindow		หน้า: %d
+Search backwards	FindTextWindow		ค้นหาย้อนหลัง
+Stop	FindTextWindow		หยุด
+OK	PDFSearch		ตกลง
+Search string not found.	PDFSearch		ไม่พบสตริงการค้นหา

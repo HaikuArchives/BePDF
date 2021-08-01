@@ -1,254 +1,254 @@
 1	Russian	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		Закрыть
-Error	BepdfApplication		Ошибка
-Beta	BepdfApplication		Beta
-Gamma	BepdfApplication		Гамма
-Golden Master	BepdfApplication		Golden Master
-BePDF: Error opening file!	BepdfApplication		BePDF: Ошибка открытия файла!
-Alpha	BepdfApplication		Alpha
-Version	BepdfApplication		Версия
-Development	BepdfApplication		Разработка
-Unknown	BepdfApplication		Неизвестно
-Final	BepdfApplication		Final
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF основан на XPDF %s, %s.
-Show bookmarks	PDFWindow		Показать закладки
-of %d	PDFWindow		из %d
-Zoom in	PDFWindow		Увеличить масштаб
-About BePDF…	PDFWindow		О BePDF…
-Go to next page	PDFWindow		Перейти на след. страницу
-View	PDFWindow		Вид
-Show annotation tool bar	PDFWindow		Показать панель аннотирования
-Select none	PDFWindow		Отменить выделение
-Add trapnet annotation	PDFWindow		Добавить trapnet
-Add underline annotation	PDFWindow		Добавить подчеркивание
-Show help…	PDFWindow		Показать справку...
-Help	PDFWindow		Справка
-Add popup annotation	PDFWindow		Добавить всплывающее окно
-Find…	PDFWindow		Найти…
-Reload	PDFWindow		Перезагрузить
-First	PDFWindow		Первая
-Fit to page	PDFWindow		Подогнать страницу
-Add key text annotation	PDFWindow		Добавить ключ
-File	PDFWindow		Файл
-PDF file successfully written!	PDFWindow		Файл PDF успешно сохранен!
-Warning	PDFWindow		Предупреждение
-Zoom out	PDFWindow		Уменьшить масштаб
-Show error messages	PDFWindow		Показать сообщения об ошибках
-Add movie annotation	PDFWindow		Добавить видео
-Open…	PDFWindow		Открыть…
-Add widget annotation	PDFWindow		Добавить виджет
-Add insert text annotation	PDFWindow		Добавить вставку текста
-Find	PDFWindow		Поиск
-Add ink annotation	PDFWindow		Добавить рукописный текст
-Go to start of document	PDFWindow		Перейти к началу документа
-Go to previous page	PDFWindow		Перейти к пред. странице
-Save as…	PDFWindow		Сохранить как…
-Reload file	PDFWindow		Перезагрузить файл
-Find next…	PDFWindow		Найти дальше…
-Fullscreen mode	PDFWindow		Полноэкранный режим
-Show page list	PDFWindow		Показать список страниц
-Back	PDFWindow		Назад
-Add note text annotation	PDFWindow		Добавить заметку
-Close	PDFWindow		Закрыть
-Add printer mark annotation	PDFWindow		Добавить значок принтера
-Go forward 10 pages	PDFWindow		Перейти на 10 страниц вперед
-Page %d	PDFWindow		Страница %d
-Forward in page history list	PDFWindow		Вперед по списку истории страниц
-Add new paragraph text annotation	PDFWindow		Добавить новый параграф
-Fullscreen	PDFWindow		Полноэкранный режим
-Add sound annotation	PDFWindow		Добавить звук
-Add comment text annotation	PDFWindow		Добавить комментарий
-Page	PDFWindow		Страница
-File info…	PDFWindow		Информация о файле…
-Page setup…	PDFWindow		Настройка страницы…
-Print	PDFWindow		Печать
-Issue tracker…	PDFWindow		Ошибки, пожелания…
-Preferences…	PDFWindow		Настройки…
-Rotation	PDFWindow		Поворот
-Last	PDFWindow		Последняя
-Add stamp annotation	PDFWindow		Добавить штамп
-Add squiggly annotation	PDFWindow		Добавить волнистое подчеркивание
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Невозможно перезаписать файл, который открыт в BePDF в данный момент! Пожалуйста, выберите другой файл.
-Copy selection	PDFWindow		Копировать выбранное
-Add free text annotation	PDFWindow		Добавить плавающий текст
-Next	PDFWindow		Следующая
-Forward	PDFWindow		Вперед
-Hide side bar	PDFWindow		Скрыть боковую панель
-Jump to page	PDFWindow		Перейти на страницу
-Add line annotation	PDFWindow		Добавить линию
-Add circle annotation	PDFWindow		Добвить окружность
-Save file as	PDFWindow		Сохранить файл как
-Show annotation toolbar	PDFWindow		Отображать панель аннотирования
-Add link annotation	PDFWindow		Добавить ссылку
-Previous	PDFWindow		Предыдущая
-Leave annotation editing mode	PDFWindow		Выйти из режима аннотирования
-Rotate clockwise	PDFWindow		Вращать по часовой стрелке
-Find next	PDFWindow		Найти дальше
-Add strikeout annotation	PDFWindow		Добавить перечеркивание
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Bookmark	PDFWindow		Закладки
-Could not write PDF file!	PDFWindow		Ошибка сохрарнения PDF файла!
-OK	PDFWindow		OK
-Add	PDFWindow		Добавить
-Edit	PDFWindow		Правка
-Online help…	PDFWindow		Онлайн справка…
-Quit	PDFWindow		Выход
-Back in page history list	PDFWindow		Назад по списку истории страниц
-Open file	PDFWindow		Открыть файл
-Visit homepage…	PDFWindow		Посетить дом. страницу…
-Show attachments	PDFWindow		Показать вложения
-Add paragraph text annotation	PDFWindow		Добавить параграф
-Go back 10 pages	PDFWindow		Перейти на 10 страниц назад
-Print…	PDFWindow		Печать…
-Go to end of document	PDFWindow		Перейти к концу документа
-Rotate counter-clockwise	PDFWindow		Вращать против часовой стрелки
-Delete	PDFWindow		Удалить
-Select all	PDFWindow		Выбрать все
-Add square annotation	PDFWindow		Добавить прямоугольник
-Fit to page width	PDFWindow		Подогнать по ширине страницы
-Zoom	PDFWindow		Масштаб
-Search	PDFWindow		Поиск
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Редактирование аннотации в защищенном PDF файле еще не поддерживается!
-Saving copy of PDF file:	PDFWindow		Сохранение копии PDF файла:
-Add help text annotation	PDFWindow		Добавить справку
-Custom zoom factor (%d%%)	PDFWindow		Пользовательский масштаб (%d%%)
-Open in new window…	PDFWindow		Открыть в новом окне…
-Add highlight annotation	PDFWindow		Добавить выделение
-Add file attachment annotation	PDFWindow		Добавить файл
-Go to page %d	PDFView		Перейти на страницу %d
-BePDF: Launch	PDFView		BePDF: Запуск
-Copy link	PDFView		Копировать ссылку
-Saving file attachment:	PDFView		Сохранение вложенного файла:
-Open in new window	PDFView		Открыть в новом окне
-Save file attachment as…	PDFView		Сохранить вложенный файл как…
-[link type 'movie' not supported]	PDFView		[тип ссылки 'видео' не поддерживается]
-Cancel	PDFView		Отмена
-[unknown link]	PDFView		[неизвестная ссылка]
-Execute the command:	PDFView		Выполнить команду:
-Properties	PDFView		Свойства
-Unknown link action type: '%s'	PDFView		Неизвестный тип действия ссылки: '%s'
-Annotation	PDFView		Аннотация
-Delete	PDFView		Удалить
-Leave annotation editing mode	PDFView		Выйти из режима аннотирования
-[internal link]	PDFView		[внутренняя ссылка]
-OK	PDFView		OK
-BePDF reading file: 	PDFView		BePDF читает файл: 
-Edit	PDFView		Правка
-Keywords:	FileInfoWindow		Ключевые слова:
-Subject:	FileInfoWindow		Тема:
-Encrypted:	FileInfoWindow		Зашифрован:
-Type	FileInfoWindow		Тип
-Abort	FileInfoWindow		Прервать
-Denied	FileInfoWindow		Отказано
-Creator:	FileInfoWindow		Автор:
-Document	FileInfoWindow		Документ
-Fonts of this page	FileInfoWindow		Шрифты на этой странице
-Path:	FileInfoWindow		Путь:
-Name	FileInfoWindow		Название
-Filename:	FileInfoWindow		Название файла:
-Yes	FileInfoWindow		Да
-Annotations:	FileInfoWindow		Аннотирование:
-Producer:	FileInfoWindow		Производитель:
-Allowed	FileInfoWindow		Разрешено
-Copy & paste:	FileInfoWindow		Копировать/Вставить:
-Modified:	FileInfoWindow		Изменен:
-Editing:	FileInfoWindow		Редактирование:
-Title:	FileInfoWindow		Название:
-Created:	FileInfoWindow		Создан:
-Linearized:	FileInfoWindow		Выпрямлен:
-Version:	FileInfoWindow		Версия:
-No	FileInfoWindow		Нет
-Author:	FileInfoWindow		Автор:
-Security	FileInfoWindow		Безопасность
-Embedded name	FileInfoWindow		Встроенное название
-Printing:	FileInfoWindow		Печать:
-File info	FileInfoWindow		Информация о файле
-Show all fonts	FileInfoWindow		Показать все шрифты
-All pages	PrintSettingsWindow		Все страницы
  in	PrintSettingsWindow		 в
-Pages	PrintSettingsWindow		Страницы
-Page	PrintSettingsWindow		Страница
-Max. printer resolution	PrintSettingsWindow		Макс. разрешение принтера
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		Масштаб (%)
-Gray scale	PrintSettingsWindow		Оттенки серого
+All pages	PrintSettingsWindow		Все страницы
 Color	PrintSettingsWindow		Цветной
-Normal	PrintSettingsWindow		Обычный
-Rotation	PrintSettingsWindow		Поворот
-Print settings	PrintSettingsWindow		Настройки печати
-Print	PrintSettingsWindow		Печать
-Reverse	PrintSettingsWindow		Обратный
-Odd pages	PrintSettingsWindow		Нечетные страницы
-Zoom must be between 25 and 400!	PrintSettingsWindow		Масштаб должен быть между 25 и 400!
-Mode	PrintSettingsWindow		Режим
-Order	PrintSettingsWindow		Порядок
-Height: 	PrintSettingsWindow		Высота: 
-Width: 	PrintSettingsWindow		Ширина: 
-OK	PrintSettingsWindow		OK
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		Четные страницы
+Gray scale	PrintSettingsWindow		Оттенки серого
+Height: 	PrintSettingsWindow		Высота: 
+Max. printer resolution	PrintSettingsWindow		Макс. разрешение принтера
+Mode	PrintSettingsWindow		Режим
+Normal	PrintSettingsWindow		Обычный
+Odd pages	PrintSettingsWindow		Нечетные страницы
+OK	PrintSettingsWindow		OK
+Order	PrintSettingsWindow		Порядок
+Page	PrintSettingsWindow		Страница
+Pages	PrintSettingsWindow		Страницы
+Print	PrintSettingsWindow		Печать
+Print settings	PrintSettingsWindow		Настройки печати
+Reverse	PrintSettingsWindow		Обратный
+Rotation	PrintSettingsWindow		Поворот
+Width: 	PrintSettingsWindow		Ширина: 
 Wrong parameter!	PrintSettingsWindow		Неверный параметр!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Отображать также панель настроек, строку статуса и прокрутки
-Fullscreen mode	AnnotationWindow		Полноэкранный режим
-Will take effect at next program launch.	AnnotationWindow		Изменения вступят в силу при следующем запуске приложения
-Filled rectangle	AnnotationWindow		Сплошной прямоугольник
-Align:	AnnotationWindow		Выравнивание:
-Title:	AnnotationWindow		Название:
-User fonts	AnnotationWindow		Пользовательские шрифты
-Asian fonts	AnnotationWindow		Азиатские шрифты
-Restore window position and size	AnnotationWindow		Восстановить положение окна и размер
-Author	AnnotationWindow		Автор
-Open in workspace:	AnnotationWindow		Открывать на рабочем столе:
-Preferences	AnnotationWindow		Настройки
-Show document view only	AnnotationWindow		Отображать только документ
-Automatic	AnnotationWindow		Автоматически
-Font:	AnnotationWindow		Шрифт:
-Restore page number	AnnotationWindow		Восстановить номер страницы
-System fonts	AnnotationWindow		Системные шрифты
-Stroked rectangle	AnnotationWindow		Прямоугольный контур
-current	AnnotationWindow		текущий
-Annotation	AnnotationWindow		Аннотация
-Selection rectangle	AnnotationWindow		Прямоугольное выделение
-Display	AnnotationWindow		Отображение
-Document	AnnotationWindow		Документ
-Size:	AnnotationWindow		Размер:
-Date:	AnnotationWindow		Дата:
-Invert vertical mouse scrolling	AnnotationWindow		Инвертировать вертикальную прокрутку мыши
+Zoom (%)	PrintSettingsWindow		Масштаб (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		Масштаб должен быть между 25 и 400!
+[internal link]	PDFView		[внутренняя ссылка]
+[link type 'movie' not supported]	PDFView		[тип ссылки 'видео' не поддерживается]
+[unknown link]	PDFView		[неизвестная ссылка]
+Annotation	PDFView		Аннотация
+BePDF reading file: 	PDFView		BePDF читает файл: 
+BePDF: Launch	PDFView		BePDF: Запуск
+Cancel	PDFView		Отмена
+Copy link	PDFView		Копировать ссылку
+Delete	PDFView		Удалить
+Edit	PDFView		Правка
+Execute the command:	PDFView		Выполнить команду:
+Go to page %d	PDFView		Перейти на страницу %d
+Leave annotation editing mode	PDFView		Выйти из режима аннотирования
+OK	PDFView		OK
+Open in new window	PDFView		Открыть в новом окне
+Properties	PDFView		Свойства
+Save file attachment as…	PDFView		Сохранить вложенный файл как…
+Saving file attachment:	PDFView		Сохранение вложенного файла:
+Unknown link action type: '%s'	PDFView		Неизвестный тип действия ссылки: '%s'
 <empty>	OutlinesWindow		<пусто>
 Document	OutlinesWindow		Документ
 Edit title for bookmark	OutlinesWindow		Редактировать название закладки
 No title	OutlinesWindow		Без названия
-User defined	OutlinesWindow		Определено пользователем
 OK	OutlinesWindow		OK
-BePDF printing document: 	PrintingProgressWindow		BePDF печатает документ: 
-BePDF printing	PrintingProgressWindow		BePDF: печать документа
-Stop	PrintingProgressWindow		Стоп
-Abort	PrintingProgressWindow		Прервать
-Page:	PrintingProgressWindow		Страница:
-Page: %d	PrintingProgressWindow		Страница: %d
-Clear	TraceWindow		Очистить
-Auto open	TraceWindow		Открывать автоматически
-Floating	TraceWindow		Всплывающие
-Error messages	TraceWindow		Сообщения об ошибках
-Options	FindTextWindow		Опции
-Ignore case	FindTextWindow		Игнорировать регистр
-Page:	FindTextWindow		Страница:
-Find: 	FindTextWindow		Найти: 
-Stop	FindTextWindow		Стоп
-Find	FindTextWindow		Найти
-Find text	FindTextWindow		Найти текст
-Search backwards	FindTextWindow		Искать в обратном направлении
-Page: %d	FindTextWindow		Страница: %d
-Save selected attachments into directory	AttachmentView		Сохранить выбранные вложения в папку
+User defined	OutlinesWindow		Определено пользователем
+<empty>	AttachmentView		<пусто>
+Description	AttachmentView		Описание
 File name	AttachmentView		Название файла
 Save attachment(s) as	AttachmentView		Сохранить вложеня как
-Saving attachment(s):	AttachmentView		Сохранение вложений:
 Save selected attachment to file	AttachmentView		Сохранить выбранное вложение в файл
-Description	AttachmentView		Описание
-<empty>	AttachmentView		<пусто>
-Search string not found.	PDFSearch		Искомый текст не найден.
-OK	PDFSearch		OK
+Save selected attachments into directory	AttachmentView		Сохранить выбранные вложения в папку
+Saving attachment(s):	AttachmentView		Сохранение вложений:
+Abort	PrintingProgressWindow		Прервать
+BePDF printing	PrintingProgressWindow		BePDF: печать документа
+BePDF printing document: 	PrintingProgressWindow		BePDF печатает документ: 
+Page:	PrintingProgressWindow		Страница:
+Page: %d	PrintingProgressWindow		Страница: %d
+Stop	PrintingProgressWindow		Стоп
+Abort	FileInfoWindow		Прервать
+Allowed	FileInfoWindow		Разрешено
+Annotations:	FileInfoWindow		Аннотирование:
+Author:	FileInfoWindow		Автор:
+Copy & paste:	FileInfoWindow		Копировать/Вставить:
+Created:	FileInfoWindow		Создан:
+Creator:	FileInfoWindow		Автор:
+Denied	FileInfoWindow		Отказано
+Document	FileInfoWindow		Документ
+Editing:	FileInfoWindow		Редактирование:
+Embedded name	FileInfoWindow		Встроенное название
+Encrypted:	FileInfoWindow		Зашифрован:
+File info	FileInfoWindow		Информация о файле
+Filename:	FileInfoWindow		Название файла:
+Fonts of this page	FileInfoWindow		Шрифты на этой странице
+Keywords:	FileInfoWindow		Ключевые слова:
+Linearized:	FileInfoWindow		Выпрямлен:
+Modified:	FileInfoWindow		Изменен:
+Name	FileInfoWindow		Название
+No	FileInfoWindow		Нет
+Path:	FileInfoWindow		Путь:
+Printing:	FileInfoWindow		Печать:
+Producer:	FileInfoWindow		Производитель:
+Security	FileInfoWindow		Безопасность
+Show all fonts	FileInfoWindow		Показать все шрифты
+Subject:	FileInfoWindow		Тема:
+Title:	FileInfoWindow		Название:
+Type	FileInfoWindow		Тип
+Version:	FileInfoWindow		Версия:
+Yes	FileInfoWindow		Да
+About BePDF…	PDFWindow		О BePDF…
+Add	PDFWindow		Добавить
+Add circle annotation	PDFWindow		Добвить окружность
+Add comment text annotation	PDFWindow		Добавить комментарий
+Add file attachment annotation	PDFWindow		Добавить файл
+Add free text annotation	PDFWindow		Добавить плавающий текст
+Add help text annotation	PDFWindow		Добавить справку
+Add highlight annotation	PDFWindow		Добавить выделение
+Add ink annotation	PDFWindow		Добавить рукописный текст
+Add insert text annotation	PDFWindow		Добавить вставку текста
+Add key text annotation	PDFWindow		Добавить ключ
+Add line annotation	PDFWindow		Добавить линию
+Add link annotation	PDFWindow		Добавить ссылку
+Add movie annotation	PDFWindow		Добавить видео
+Add new paragraph text annotation	PDFWindow		Добавить новый параграф
+Add note text annotation	PDFWindow		Добавить заметку
+Add paragraph text annotation	PDFWindow		Добавить параграф
+Add popup annotation	PDFWindow		Добавить всплывающее окно
+Add printer mark annotation	PDFWindow		Добавить значок принтера
+Add sound annotation	PDFWindow		Добавить звук
+Add square annotation	PDFWindow		Добавить прямоугольник
+Add squiggly annotation	PDFWindow		Добавить волнистое подчеркивание
+Add stamp annotation	PDFWindow		Добавить штамп
+Add strikeout annotation	PDFWindow		Добавить перечеркивание
+Add trapnet annotation	PDFWindow		Добавить trapnet
+Add underline annotation	PDFWindow		Добавить подчеркивание
+Add widget annotation	PDFWindow		Добавить виджет
+Back	PDFWindow		Назад
+Back in page history list	PDFWindow		Назад по списку истории страниц
+Bookmark	PDFWindow		Закладки
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Невозможно перезаписать файл, который открыт в BePDF в данный момент! Пожалуйста, выберите другой файл.
+Close	PDFWindow		Закрыть
+Copy selection	PDFWindow		Копировать выбранное
+Could not write PDF file!	PDFWindow		Ошибка сохрарнения PDF файла!
+Custom zoom factor (%d%%)	PDFWindow		Пользовательский масштаб (%d%%)
+Delete	PDFWindow		Удалить
+Edit	PDFWindow		Правка
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Редактирование аннотации в защищенном PDF файле еще не поддерживается!
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		Файл
+File info…	PDFWindow		Информация о файле…
+Find	PDFWindow		Поиск
+Find next	PDFWindow		Найти дальше
+Find next…	PDFWindow		Найти дальше…
+Find…	PDFWindow		Найти…
+First	PDFWindow		Первая
+Fit to page	PDFWindow		Подогнать страницу
+Fit to page width	PDFWindow		Подогнать по ширине страницы
+Forward	PDFWindow		Вперед
+Forward in page history list	PDFWindow		Вперед по списку истории страниц
+Fullscreen	PDFWindow		Полноэкранный режим
+Fullscreen mode	PDFWindow		Полноэкранный режим
+Go back 10 pages	PDFWindow		Перейти на 10 страниц назад
+Go forward 10 pages	PDFWindow		Перейти на 10 страниц вперед
+Go to end of document	PDFWindow		Перейти к концу документа
+Go to next page	PDFWindow		Перейти на след. страницу
+Go to previous page	PDFWindow		Перейти к пред. странице
+Go to start of document	PDFWindow		Перейти к началу документа
+Help	PDFWindow		Справка
+Hide side bar	PDFWindow		Скрыть боковую панель
+Issue tracker…	PDFWindow		Ошибки, пожелания…
+Jump to page	PDFWindow		Перейти на страницу
+Last	PDFWindow		Последняя
+Leave annotation editing mode	PDFWindow		Выйти из режима аннотирования
+Next	PDFWindow		Следующая
+of %d	PDFWindow		из %d
+OK	PDFWindow		OK
+Online help…	PDFWindow		Онлайн справка…
+Open file	PDFWindow		Открыть файл
+Open in new window…	PDFWindow		Открыть в новом окне…
+Open…	PDFWindow		Открыть…
+Page	PDFWindow		Страница
+Page %d	PDFWindow		Страница %d
+Page setup…	PDFWindow		Настройка страницы…
+PDF file successfully written!	PDFWindow		Файл PDF успешно сохранен!
+Preferences…	PDFWindow		Настройки…
+Previous	PDFWindow		Предыдущая
+Print	PDFWindow		Печать
+Print…	PDFWindow		Печать…
+Quit	PDFWindow		Выход
+Reload	PDFWindow		Перезагрузить
+Reload file	PDFWindow		Перезагрузить файл
+Rotate clockwise	PDFWindow		Вращать по часовой стрелке
+Rotate counter-clockwise	PDFWindow		Вращать против часовой стрелки
+Rotation	PDFWindow		Поворот
+Save as…	PDFWindow		Сохранить как…
+Save file as	PDFWindow		Сохранить файл как
+Saving copy of PDF file:	PDFWindow		Сохранение копии PDF файла:
+Search	PDFWindow		Поиск
+Select all	PDFWindow		Выбрать все
+Select none	PDFWindow		Отменить выделение
+Show annotation tool bar	PDFWindow		Показать панель аннотирования
+Show annotation toolbar	PDFWindow		Отображать панель аннотирования
+Show attachments	PDFWindow		Показать вложения
+Show bookmarks	PDFWindow		Показать закладки
+Show error messages	PDFWindow		Показать сообщения об ошибках
+Show help…	PDFWindow		Показать справку...
+Show page list	PDFWindow		Показать список страниц
+View	PDFWindow		Вид
+Visit homepage…	PDFWindow		Посетить дом. страницу…
+Warning	PDFWindow		Предупреждение
+Zoom	PDFWindow		Масштаб
+Zoom in	PDFWindow		Увеличить масштаб
+Zoom out	PDFWindow		Уменьшить масштаб
+Align:	AnnotationWindow		Выравнивание:
+Annotation	AnnotationWindow		Аннотация
+Asian fonts	AnnotationWindow		Азиатские шрифты
+Author	AnnotationWindow		Автор
+Automatic	AnnotationWindow		Автоматически
+current	AnnotationWindow		текущий
+Date:	AnnotationWindow		Дата:
+Display	AnnotationWindow		Отображение
+Document	AnnotationWindow		Документ
+Filled rectangle	AnnotationWindow		Сплошной прямоугольник
+Font:	AnnotationWindow		Шрифт:
+Fullscreen mode	AnnotationWindow		Полноэкранный режим
+Invert vertical mouse scrolling	AnnotationWindow		Инвертировать вертикальную прокрутку мыши
+Open in workspace:	AnnotationWindow		Открывать на рабочем столе:
+Preferences	AnnotationWindow		Настройки
+Restore page number	AnnotationWindow		Восстановить номер страницы
+Restore window position and size	AnnotationWindow		Восстановить положение окна и размер
+Selection rectangle	AnnotationWindow		Прямоугольное выделение
+Show document view only	AnnotationWindow		Отображать только документ
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Отображать также панель настроек, строку статуса и прокрутки
+Size:	AnnotationWindow		Размер:
+Stroked rectangle	AnnotationWindow		Прямоугольный контур
+System fonts	AnnotationWindow		Системные шрифты
+Title:	AnnotationWindow		Название:
+User fonts	AnnotationWindow		Пользовательские шрифты
+Will take effect at next program launch.	AnnotationWindow		Изменения вступят в силу при следующем запуске приложения
+Alpha	BepdfApplication		Alpha
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF основан на XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: Ошибка открытия файла!
+Beta	BepdfApplication		Beta
+Close	BepdfApplication		Закрыть
+Development	BepdfApplication		Разработка
+Error	BepdfApplication		Ошибка
+Final	BepdfApplication		Final
+Gamma	BepdfApplication		Гамма
+Golden Master	BepdfApplication		Golden Master
+Unknown	BepdfApplication		Неизвестно
+Version	BepdfApplication		Версия
+Auto open	TraceWindow		Открывать автоматически
+Clear	TraceWindow		Очистить
+Error messages	TraceWindow		Сообщения об ошибках
+Floating	TraceWindow		Всплывающие
 BePDF status	StatusWindow		Статус BePDF
-User password	PasswordWindow		Пароль пользователя
 Enter Password	PasswordWindow		Введите пароль
-Owner password	PasswordWindow		Пароль владельца
 OK	PasswordWindow		OK
+Owner password	PasswordWindow		Пароль владельца
+User password	PasswordWindow		Пароль пользователя
+Find	FindTextWindow		Найти
+Find text	FindTextWindow		Найти текст
+Find: 	FindTextWindow		Найти: 
+Ignore case	FindTextWindow		Игнорировать регистр
+Options	FindTextWindow		Опции
+Page:	FindTextWindow		Страница:
+Page: %d	FindTextWindow		Страница: %d
+Search backwards	FindTextWindow		Искать в обратном направлении
+Stop	FindTextWindow		Стоп
+OK	PDFSearch		OK
+Search string not found.	PDFSearch		Искомый текст не найден.

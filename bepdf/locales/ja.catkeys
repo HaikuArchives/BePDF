@@ -1,254 +1,254 @@
 1	Japanese	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		閉じる
-Error	BepdfApplication		エラー
-Beta	BepdfApplication		β
-Gamma	BepdfApplication		γ
-Golden Master	BepdfApplication		ゴールデンマスター
-BePDF: Error opening file!	BepdfApplication		BePDF: エラー! ファイルを開けません
-Alpha	BepdfApplication		α
-Version	BepdfApplication		バージョン
-Development	BepdfApplication		開発版
-Unknown	BepdfApplication		不明
-Final	BepdfApplication		ファイナル
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF は XPDF %s, %s を基にしています。
-Show bookmarks	PDFWindow		しおりを表示
-of %d	PDFWindow		/ %d
-Zoom in	PDFWindow		ズームイン
-About BePDF…	PDFWindow		BePDF について…
-Go to next page	PDFWindow		次ページに移動
-View	PDFWindow		表示
-Show annotation tool bar	PDFWindow		注釈ツールバーを表示
-Select none	PDFWindow		選択を解除
-Add trapnet annotation	PDFWindow		トラップネットワークの追加
-Add underline annotation	PDFWindow		下線の追加
-Show help…	PDFWindow		BePDF のヘルプ…
-Help	PDFWindow		ヘルプ
-Add popup annotation	PDFWindow		ポップアップの追加
-Find…	PDFWindow		検索…
-Reload	PDFWindow		再読み込み
-First	PDFWindow		開始ページ
-Fit to page	PDFWindow		全体表示
-Add key text annotation	PDFWindow		鍵テキストの追加
-File	PDFWindow		ファイル
-PDF file successfully written!	PDFWindow		PDF ファイルの書き込みに成功しました!
-Warning	PDFWindow		警告
-Zoom out	PDFWindow		ズームアウト
-Show error messages	PDFWindow		エラーメッセージを表示
-Add movie annotation	PDFWindow		動画注釈の追加
-Open…	PDFWindow		開く…
-Add widget annotation	PDFWindow		ウィジェットの追加
-Add insert text annotation	PDFWindow		挿入テキストの追加
-Find	PDFWindow		検索
-Add ink annotation	PDFWindow		インクコメントの追加
-Go to start of document	PDFWindow		最初のページヘ移動
-Go to previous page	PDFWindow		前ページに移動
-Save as…	PDFWindow		複製を保存…
-Reload file	PDFWindow		ファイルの再読み込み
-Find next…	PDFWindow		次を検索…
-Fullscreen mode	PDFWindow		全画面モード
-Show page list	PDFWindow		ページリストを表示
-Back	PDFWindow		前の表示に移動
-Add note text annotation	PDFWindow		メモテキストの追加
-Close	PDFWindow		閉じる
-Add printer mark annotation	PDFWindow		プリンターズマークの追加
-Go forward 10 pages	PDFWindow		10 ページ分進む
-Page %d	PDFWindow		%d ページ
-Forward in page history list	PDFWindow		次の画面
-Add new paragraph text annotation	PDFWindow		新規段落テキストの追加
-Fullscreen	PDFWindow		全画面表示
-Add sound annotation	PDFWindow		サウンドの追加
-Add comment text annotation	PDFWindow		コメントの追加
-Page	PDFWindow		ページ
-File info…	PDFWindow		文書のプロパティ…
-Page setup…	PDFWindow		ページ設定…
-Print	PDFWindow		印刷
-Issue tracker…	PDFWindow		バグトラッカー…
-Preferences…	PDFWindow		環境設定…
-Rotation	PDFWindow		回転
-Last	PDFWindow		最終ページ
-Add stamp annotation	PDFWindow		スタンプの追加
-Add squiggly annotation	PDFWindow		ねじれ線の追加
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		BePDF で開いた PDF ファイルが上書きできません! 別のファイル名を選んでください。
-Copy selection	PDFWindow		選択部分をコピー
-Add free text annotation	PDFWindow		フリーテキストの追加
-Next	PDFWindow		次ページ
-Forward	PDFWindow		次の表示に移動
-Hide side bar	PDFWindow		サイドバーを非表示
-Jump to page	PDFWindow		ページ指定
-Add line annotation	PDFWindow		線注釈の追加
-Add circle annotation	PDFWindow		円の追加
-Save file as	PDFWindow		ファイルに保存
-Show annotation toolbar	PDFWindow		注釈ツールバーの表示
-Add link annotation	PDFWindow		リンクの追加
-Previous	PDFWindow		前ページ
-Leave annotation editing mode	PDFWindow		注釈編集モードからぬける
-Rotate clockwise	PDFWindow		表示を右 90°回転
-Find next	PDFWindow		次を検索
-Add strikeout annotation	PDFWindow		消去線の追加
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Bookmark	PDFWindow		しおり
-Could not write PDF file!	PDFWindow		PDF ファイルを書き込めません!
-OK	PDFWindow		OK
-Add	PDFWindow		追加
-Edit	PDFWindow		編集
-Online help…	PDFWindow		オンラインヘルプ…
-Quit	PDFWindow		終了
-Back in page history list	PDFWindow		前の画面
-Open file	PDFWindow		ファイルを開く
-Visit homepage…	PDFWindow		BePDF ホームページへアクセス…
-Show attachments	PDFWindow		添付ファイルを表示
-Add paragraph text annotation	PDFWindow		段落テキストの追加
-Go back 10 pages	PDFWindow		10 ページ分戻る
-Print…	PDFWindow		印刷…
-Go to end of document	PDFWindow		最後のページヘ移動
-Rotate counter-clockwise	PDFWindow		表示を左 90°回転
-Delete	PDFWindow		削除
-Select all	PDFWindow		すべてを選択
-Add square annotation	PDFWindow		四角の追加
-Fit to page width	PDFWindow		幅に合わせる
-Zoom	PDFWindow		ズーム
-Search	PDFWindow		検索
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		暗号化された PDF ファイル中の注釈の編集はまだサポートされていません!
-Saving copy of PDF file:	PDFWindow		PDF ファイルのコピーを保存中:
-Add help text annotation	PDFWindow		ヘルプテキストの追加
-Custom zoom factor (%d%%)	PDFWindow		倍率指定 (%d%%)
-Open in new window…	PDFWindow		新しいウィンドウで開く…
-Add highlight annotation	PDFWindow		ハイライトの追加
-Add file attachment annotation	PDFWindow		添付ファイルの追加
-Go to page %d	PDFView		%d ページに移動
-BePDF: Launch	PDFView		BePDF: 開始
-Copy link	PDFView		リンク先のロケーションをコピー
-Saving file attachment:	PDFView		ファイルに添付ファイルの保存中:
-Open in new window	PDFView		新しいウィンドウで開く
-Save file attachment as…	PDFView		名前を付けて添付ファイルを保存…
-[link type 'movie' not supported]	PDFView		['movie'リンクタイプはサポートされていません]
-Cancel	PDFView		中止
-[unknown link]	PDFView		[不明なリンク]
-Execute the command:	PDFView		コマンドの実行:
-Properties	PDFView		プロパティ
-Unknown link action type: '%s'	PDFView		不明なリンク形式です: '%s'
-Annotation	PDFView		注釈
-Delete	PDFView		削除
-Leave annotation editing mode	PDFView		注釈編集モードからぬける
-[internal link]	PDFView		[インターナルリンク]
-OK	PDFView		OK
-BePDF reading file: 	PDFView		BePDF ファイルを読み込んでいます: 
-Edit	PDFView		編集
-Keywords:	FileInfoWindow		キーワード:
-Subject:	FileInfoWindow		サブタイトル:
-Encrypted:	FileInfoWindow		暗号化:
-Type	FileInfoWindow		種類
-Abort	FileInfoWindow		中止
-Denied	FileInfoWindow		許可しない
-Creator:	FileInfoWindow		作成:
-Document	FileInfoWindow		文書
-Fonts of this page	FileInfoWindow		このページのフォント
-Path:	FileInfoWindow		場所:
-Name	FileInfoWindow		オリジナルフォント
-Filename:	FileInfoWindow		ファイル:
-Yes	FileInfoWindow		はい
-Annotations:	FileInfoWindow		注釈:
-Producer:	FileInfoWindow		PDF 変換:
-Allowed	FileInfoWindow		許可
-Copy & paste:	FileInfoWindow		コピー & ペースト:
-Modified:	FileInfoWindow		更新日:
-Editing:	FileInfoWindow		編集:
-Title:	FileInfoWindow		タイトル:
-Created:	FileInfoWindow		作成日:
-Linearized:	FileInfoWindow		Web 表示用に最適化:
-Version:	FileInfoWindow		PDF のバージョン:
-No	FileInfoWindow		いいえ
-Author:	FileInfoWindow		作成者:
-Security	FileInfoWindow		セキュリティ
-Embedded name	FileInfoWindow		埋め込みフォント
-Printing:	FileInfoWindow		印刷:
-File info	FileInfoWindow		文書のプロパティ
-Show all fonts	FileInfoWindow		フォント一覧
-All pages	PrintSettingsWindow		すべてのページ
  in	PrintSettingsWindow		 インチ
-Pages	PrintSettingsWindow		ページ
-Page	PrintSettingsWindow		ページ
-Max. printer resolution	PrintSettingsWindow		印刷解像度: 最大
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		倍率 (%)
-Gray scale	PrintSettingsWindow		グレースケール(白黒)
+All pages	PrintSettingsWindow		すべてのページ
 Color	PrintSettingsWindow		カラー
-Normal	PrintSettingsWindow		標準
-Rotation	PrintSettingsWindow		回転
-Print settings	PrintSettingsWindow		印刷設定
-Print	PrintSettingsWindow		印刷
-Reverse	PrintSettingsWindow		反転
-Odd pages	PrintSettingsWindow		奇数ページ
-Zoom must be between 25 and 400!	PrintSettingsWindow		倍率は 25 ～ 400の間で設定する必要があります!!
-Mode	PrintSettingsWindow		モード
-Order	PrintSettingsWindow		順序
-Height: 	PrintSettingsWindow		高さ: 
-Width: 	PrintSettingsWindow		幅: 
-OK	PrintSettingsWindow		OK
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		偶数ページ
+Gray scale	PrintSettingsWindow		グレースケール(白黒)
+Height: 	PrintSettingsWindow		高さ: 
+Max. printer resolution	PrintSettingsWindow		印刷解像度: 最大
+Mode	PrintSettingsWindow		モード
+Normal	PrintSettingsWindow		標準
+Odd pages	PrintSettingsWindow		奇数ページ
+OK	PrintSettingsWindow		OK
+Order	PrintSettingsWindow		順序
+Page	PrintSettingsWindow		ページ
+Pages	PrintSettingsWindow		ページ
+Print	PrintSettingsWindow		印刷
+Print settings	PrintSettingsWindow		印刷設定
+Reverse	PrintSettingsWindow		反転
+Rotation	PrintSettingsWindow		回転
+Width: 	PrintSettingsWindow		幅: 
 Wrong parameter!	PrintSettingsWindow		不正なパラメータです!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		ツールバー、ステータスバー、スクロールバーを表示
-Fullscreen mode	AnnotationWindow		全画面モード
-Will take effect at next program launch.	AnnotationWindow		次回起動時に有効になります。
-Filled rectangle	AnnotationWindow		色を変更して指定範囲を表示
-Align:	AnnotationWindow		行揃え:
-Title:	AnnotationWindow		タイトル:
-User fonts	AnnotationWindow		ユーザフォント
-Asian fonts	AnnotationWindow		アジアフォント設定
-Restore window position and size	AnnotationWindow		ウィンドウの位置とサイズを記憶する
-Author	AnnotationWindow		作成者
-Open in workspace:	AnnotationWindow		ワークスペースを指定して開く:
-Preferences	AnnotationWindow		設定
-Show document view only	AnnotationWindow		ドキュメントビューのみを表示
-Automatic	AnnotationWindow		自動
-Font:	AnnotationWindow		フォント:
-Restore page number	AnnotationWindow		次回起動時に前回終了したページへ移動する
-System fonts	AnnotationWindow		システムフォント
-Stroked rectangle	AnnotationWindow		枠のみで指定範囲を表示
-current	AnnotationWindow		現在のワークスペース
-Annotation	AnnotationWindow		注釈
-Selection rectangle	AnnotationWindow		範囲指定設定
-Display	AnnotationWindow		表示設定
-Document	AnnotationWindow		文書
-Size:	AnnotationWindow		サイズ:
-Date:	AnnotationWindow		日付:
-Invert vertical mouse scrolling	AnnotationWindow		逆回転垂直マウススクロール
+Zoom (%)	PrintSettingsWindow		倍率 (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		倍率は 25 ～ 400の間で設定する必要があります!!
+[internal link]	PDFView		[インターナルリンク]
+[link type 'movie' not supported]	PDFView		['movie'リンクタイプはサポートされていません]
+[unknown link]	PDFView		[不明なリンク]
+Annotation	PDFView		注釈
+BePDF reading file: 	PDFView		BePDF ファイルを読み込んでいます: 
+BePDF: Launch	PDFView		BePDF: 開始
+Cancel	PDFView		中止
+Copy link	PDFView		リンク先のロケーションをコピー
+Delete	PDFView		削除
+Edit	PDFView		編集
+Execute the command:	PDFView		コマンドの実行:
+Go to page %d	PDFView		%d ページに移動
+Leave annotation editing mode	PDFView		注釈編集モードからぬける
+OK	PDFView		OK
+Open in new window	PDFView		新しいウィンドウで開く
+Properties	PDFView		プロパティ
+Save file attachment as…	PDFView		名前を付けて添付ファイルを保存…
+Saving file attachment:	PDFView		ファイルに添付ファイルの保存中:
+Unknown link action type: '%s'	PDFView		不明なリンク形式です: '%s'
 <empty>	OutlinesWindow		<なし>
 Document	OutlinesWindow		文書
 Edit title for bookmark	OutlinesWindow		しおりの編集
 No title	OutlinesWindow		タイトル無し
-User defined	OutlinesWindow		ユーザ定義
 OK	OutlinesWindow		OK
-BePDF printing document: 	PrintingProgressWindow		BePDF 印刷文書: 
-BePDF printing	PrintingProgressWindow		BePDF 印刷
-Stop	PrintingProgressWindow		停止
-Abort	PrintingProgressWindow		中止
-Page:	PrintingProgressWindow		ページ:
-Page: %d	PrintingProgressWindow		ページ: %d
-Clear	TraceWindow		消去
-Auto open	TraceWindow		自動表示
-Floating	TraceWindow		手前に表示
-Error messages	TraceWindow		エラーメッセージ
-Options	FindTextWindow		オプション
-Ignore case	FindTextWindow		大小文字を区別しない
-Page:	FindTextWindow		ページ:
-Find: 	FindTextWindow		検索: 
-Stop	FindTextWindow		停止
-Find	FindTextWindow		検索
-Find text	FindTextWindow		テキストの検索
-Search backwards	FindTextWindow		後方へ検索
-Page: %d	FindTextWindow		ページ: %d
-Save selected attachments into directory	AttachmentView		ディレクトリに選択した添付ファイルを保存
+User defined	OutlinesWindow		ユーザ定義
+<empty>	AttachmentView		<なし>
+Description	AttachmentView		説明
 File name	AttachmentView		ファイル名
 Save attachment(s) as	AttachmentView		添付ファイルの保存
-Saving attachment(s):	AttachmentView		添付ファイルの保存中:
 Save selected attachment to file	AttachmentView		ファイルに選択した添付ファイルを保存
-Description	AttachmentView		説明
-<empty>	AttachmentView		<なし>
-Search string not found.	PDFSearch		検索文字列が見つかりません。
-OK	PDFSearch		OK
+Save selected attachments into directory	AttachmentView		ディレクトリに選択した添付ファイルを保存
+Saving attachment(s):	AttachmentView		添付ファイルの保存中:
+Abort	PrintingProgressWindow		中止
+BePDF printing	PrintingProgressWindow		BePDF 印刷
+BePDF printing document: 	PrintingProgressWindow		BePDF 印刷文書: 
+Page:	PrintingProgressWindow		ページ:
+Page: %d	PrintingProgressWindow		ページ: %d
+Stop	PrintingProgressWindow		停止
+Abort	FileInfoWindow		中止
+Allowed	FileInfoWindow		許可
+Annotations:	FileInfoWindow		注釈:
+Author:	FileInfoWindow		作成者:
+Copy & paste:	FileInfoWindow		コピー & ペースト:
+Created:	FileInfoWindow		作成日:
+Creator:	FileInfoWindow		作成:
+Denied	FileInfoWindow		許可しない
+Document	FileInfoWindow		文書
+Editing:	FileInfoWindow		編集:
+Embedded name	FileInfoWindow		埋め込みフォント
+Encrypted:	FileInfoWindow		暗号化:
+File info	FileInfoWindow		文書のプロパティ
+Filename:	FileInfoWindow		ファイル:
+Fonts of this page	FileInfoWindow		このページのフォント
+Keywords:	FileInfoWindow		キーワード:
+Linearized:	FileInfoWindow		Web 表示用に最適化:
+Modified:	FileInfoWindow		更新日:
+Name	FileInfoWindow		オリジナルフォント
+No	FileInfoWindow		いいえ
+Path:	FileInfoWindow		場所:
+Printing:	FileInfoWindow		印刷:
+Producer:	FileInfoWindow		PDF 変換:
+Security	FileInfoWindow		セキュリティ
+Show all fonts	FileInfoWindow		フォント一覧
+Subject:	FileInfoWindow		サブタイトル:
+Title:	FileInfoWindow		タイトル:
+Type	FileInfoWindow		種類
+Version:	FileInfoWindow		PDF のバージョン:
+Yes	FileInfoWindow		はい
+About BePDF…	PDFWindow		BePDF について…
+Add	PDFWindow		追加
+Add circle annotation	PDFWindow		円の追加
+Add comment text annotation	PDFWindow		コメントの追加
+Add file attachment annotation	PDFWindow		添付ファイルの追加
+Add free text annotation	PDFWindow		フリーテキストの追加
+Add help text annotation	PDFWindow		ヘルプテキストの追加
+Add highlight annotation	PDFWindow		ハイライトの追加
+Add ink annotation	PDFWindow		インクコメントの追加
+Add insert text annotation	PDFWindow		挿入テキストの追加
+Add key text annotation	PDFWindow		鍵テキストの追加
+Add line annotation	PDFWindow		線注釈の追加
+Add link annotation	PDFWindow		リンクの追加
+Add movie annotation	PDFWindow		動画注釈の追加
+Add new paragraph text annotation	PDFWindow		新規段落テキストの追加
+Add note text annotation	PDFWindow		メモテキストの追加
+Add paragraph text annotation	PDFWindow		段落テキストの追加
+Add popup annotation	PDFWindow		ポップアップの追加
+Add printer mark annotation	PDFWindow		プリンターズマークの追加
+Add sound annotation	PDFWindow		サウンドの追加
+Add square annotation	PDFWindow		四角の追加
+Add squiggly annotation	PDFWindow		ねじれ線の追加
+Add stamp annotation	PDFWindow		スタンプの追加
+Add strikeout annotation	PDFWindow		消去線の追加
+Add trapnet annotation	PDFWindow		トラップネットワークの追加
+Add underline annotation	PDFWindow		下線の追加
+Add widget annotation	PDFWindow		ウィジェットの追加
+Back	PDFWindow		前の表示に移動
+Back in page history list	PDFWindow		前の画面
+Bookmark	PDFWindow		しおり
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		BePDF で開いた PDF ファイルが上書きできません! 別のファイル名を選んでください。
+Close	PDFWindow		閉じる
+Copy selection	PDFWindow		選択部分をコピー
+Could not write PDF file!	PDFWindow		PDF ファイルを書き込めません!
+Custom zoom factor (%d%%)	PDFWindow		倍率指定 (%d%%)
+Delete	PDFWindow		削除
+Edit	PDFWindow		編集
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		暗号化された PDF ファイル中の注釈の編集はまだサポートされていません!
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		ファイル
+File info…	PDFWindow		文書のプロパティ…
+Find	PDFWindow		検索
+Find next	PDFWindow		次を検索
+Find next…	PDFWindow		次を検索…
+Find…	PDFWindow		検索…
+First	PDFWindow		開始ページ
+Fit to page	PDFWindow		全体表示
+Fit to page width	PDFWindow		幅に合わせる
+Forward	PDFWindow		次の表示に移動
+Forward in page history list	PDFWindow		次の画面
+Fullscreen	PDFWindow		全画面表示
+Fullscreen mode	PDFWindow		全画面モード
+Go back 10 pages	PDFWindow		10 ページ分戻る
+Go forward 10 pages	PDFWindow		10 ページ分進む
+Go to end of document	PDFWindow		最後のページヘ移動
+Go to next page	PDFWindow		次ページに移動
+Go to previous page	PDFWindow		前ページに移動
+Go to start of document	PDFWindow		最初のページヘ移動
+Help	PDFWindow		ヘルプ
+Hide side bar	PDFWindow		サイドバーを非表示
+Issue tracker…	PDFWindow		バグトラッカー…
+Jump to page	PDFWindow		ページ指定
+Last	PDFWindow		最終ページ
+Leave annotation editing mode	PDFWindow		注釈編集モードからぬける
+Next	PDFWindow		次ページ
+of %d	PDFWindow		/ %d
+OK	PDFWindow		OK
+Online help…	PDFWindow		オンラインヘルプ…
+Open file	PDFWindow		ファイルを開く
+Open in new window…	PDFWindow		新しいウィンドウで開く…
+Open…	PDFWindow		開く…
+Page	PDFWindow		ページ
+Page %d	PDFWindow		%d ページ
+Page setup…	PDFWindow		ページ設定…
+PDF file successfully written!	PDFWindow		PDF ファイルの書き込みに成功しました!
+Preferences…	PDFWindow		環境設定…
+Previous	PDFWindow		前ページ
+Print	PDFWindow		印刷
+Print…	PDFWindow		印刷…
+Quit	PDFWindow		終了
+Reload	PDFWindow		再読み込み
+Reload file	PDFWindow		ファイルの再読み込み
+Rotate clockwise	PDFWindow		表示を右 90°回転
+Rotate counter-clockwise	PDFWindow		表示を左 90°回転
+Rotation	PDFWindow		回転
+Save as…	PDFWindow		複製を保存…
+Save file as	PDFWindow		ファイルに保存
+Saving copy of PDF file:	PDFWindow		PDF ファイルのコピーを保存中:
+Search	PDFWindow		検索
+Select all	PDFWindow		すべてを選択
+Select none	PDFWindow		選択を解除
+Show annotation tool bar	PDFWindow		注釈ツールバーを表示
+Show annotation toolbar	PDFWindow		注釈ツールバーの表示
+Show attachments	PDFWindow		添付ファイルを表示
+Show bookmarks	PDFWindow		しおりを表示
+Show error messages	PDFWindow		エラーメッセージを表示
+Show help…	PDFWindow		BePDF のヘルプ…
+Show page list	PDFWindow		ページリストを表示
+View	PDFWindow		表示
+Visit homepage…	PDFWindow		BePDF ホームページへアクセス…
+Warning	PDFWindow		警告
+Zoom	PDFWindow		ズーム
+Zoom in	PDFWindow		ズームイン
+Zoom out	PDFWindow		ズームアウト
+Align:	AnnotationWindow		行揃え:
+Annotation	AnnotationWindow		注釈
+Asian fonts	AnnotationWindow		アジアフォント設定
+Author	AnnotationWindow		作成者
+Automatic	AnnotationWindow		自動
+current	AnnotationWindow		現在のワークスペース
+Date:	AnnotationWindow		日付:
+Display	AnnotationWindow		表示設定
+Document	AnnotationWindow		文書
+Filled rectangle	AnnotationWindow		色を変更して指定範囲を表示
+Font:	AnnotationWindow		フォント:
+Fullscreen mode	AnnotationWindow		全画面モード
+Invert vertical mouse scrolling	AnnotationWindow		逆回転垂直マウススクロール
+Open in workspace:	AnnotationWindow		ワークスペースを指定して開く:
+Preferences	AnnotationWindow		設定
+Restore page number	AnnotationWindow		次回起動時に前回終了したページへ移動する
+Restore window position and size	AnnotationWindow		ウィンドウの位置とサイズを記憶する
+Selection rectangle	AnnotationWindow		範囲指定設定
+Show document view only	AnnotationWindow		ドキュメントビューのみを表示
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		ツールバー、ステータスバー、スクロールバーを表示
+Size:	AnnotationWindow		サイズ:
+Stroked rectangle	AnnotationWindow		枠のみで指定範囲を表示
+System fonts	AnnotationWindow		システムフォント
+Title:	AnnotationWindow		タイトル:
+User fonts	AnnotationWindow		ユーザフォント
+Will take effect at next program launch.	AnnotationWindow		次回起動時に有効になります。
+Alpha	BepdfApplication		α
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF は XPDF %s, %s を基にしています。
+BePDF: Error opening file!	BepdfApplication		BePDF: エラー! ファイルを開けません
+Beta	BepdfApplication		β
+Close	BepdfApplication		閉じる
+Development	BepdfApplication		開発版
+Error	BepdfApplication		エラー
+Final	BepdfApplication		ファイナル
+Gamma	BepdfApplication		γ
+Golden Master	BepdfApplication		ゴールデンマスター
+Unknown	BepdfApplication		不明
+Version	BepdfApplication		バージョン
+Auto open	TraceWindow		自動表示
+Clear	TraceWindow		消去
+Error messages	TraceWindow		エラーメッセージ
+Floating	TraceWindow		手前に表示
 BePDF status	StatusWindow		BePDF ステータス
-User password	PasswordWindow		ユーザパスワード
 Enter Password	PasswordWindow		パスワードの入力
-Owner password	PasswordWindow		マスタパスワード
 OK	PasswordWindow		OK
+Owner password	PasswordWindow		マスタパスワード
+User password	PasswordWindow		ユーザパスワード
+Find	FindTextWindow		検索
+Find text	FindTextWindow		テキストの検索
+Find: 	FindTextWindow		検索: 
+Ignore case	FindTextWindow		大小文字を区別しない
+Options	FindTextWindow		オプション
+Page:	FindTextWindow		ページ:
+Page: %d	FindTextWindow		ページ: %d
+Search backwards	FindTextWindow		後方へ検索
+Stop	FindTextWindow		停止
+OK	PDFSearch		OK
+Search string not found.	PDFSearch		検索文字列が見つかりません。

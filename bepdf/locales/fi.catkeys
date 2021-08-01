@@ -1,254 +1,254 @@
 1	Finnish	application/x-vnd.mp-xpdf	1765081836
-Close	BepdfApplication		Sulje
-Error	BepdfApplication		Virhe
-Beta	BepdfApplication		Beeta
-Gamma	BepdfApplication		Gamma
-Golden Master	BepdfApplication		Golden Master
-BePDF: Error opening file!	BepdfApplication		BePDF: Virhe tiedoston avaamisessa!
-Alpha	BepdfApplication		Alfa
-Version	BepdfApplication		Versio
-Development	BepdfApplication		Kehitys
-Unknown	BepdfApplication		Tuntematon
-Final	BepdfApplication		Lopullinen
-BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF perustuu XPDF-versioon %s, %s.
-Show bookmarks	PDFWindow		Näytä kirjanmerkit
-of %d	PDFWindow		/ %d
-Zoom in	PDFWindow		Lähennä
-About BePDF…	PDFWindow		Ohjelmasta BePDF…
-Go to next page	PDFWindow		Siirry seuraavalle sivulle
-View	PDFWindow		Näkymä
-Show annotation tool bar	PDFWindow		Näytä kommenttityökalupalkki
-Select none	PDFWindow		Älä valitse mitään
-Add trapnet annotation	PDFWindow		Lisää ansaverkkokommentti
-Add underline annotation	PDFWindow		Lisää alleviivattu kommentti
-Show help…	PDFWindow		Näytä opaste…
-Help	PDFWindow		Opaste
-Add popup annotation	PDFWindow		Lisää ponnahdusikkunakommentti
-Find…	PDFWindow		Etsi…
-Reload	PDFWindow		Lataa uudelleen
-First	PDFWindow		Ensimmäinen
-Fit to page	PDFWindow		Sovita sivuun
-Add key text annotation	PDFWindow		Lisää avaintekstikommentti
-File	PDFWindow		Tiedosto
-PDF file successfully written!	PDFWindow		PDF-tiedoston kirjoittaminen onnistui!
-Warning	PDFWindow		Varoitus
-Zoom out	PDFWindow		Loitonna
-Show error messages	PDFWindow		Näytä virheilmoitukset
-Add movie annotation	PDFWindow		Lisää elokuvakommentti
-Open…	PDFWindow		Avaa…
-Add widget annotation	PDFWindow		Lisää näyttöliittymäkomponenttikommentti
-Add insert text annotation	PDFWindow		Lisää lisää teksti-kommentti
-Find	PDFWindow		Etsi
-Add ink annotation	PDFWindow		Lisää mustekommentti
-Go to start of document	PDFWindow		Siirry asiakirjan alkuun
-Go to previous page	PDFWindow		Siirry edelliselle sivulle
-Save as…	PDFWindow		Tallenna nimellä…
-Reload file	PDFWindow		Lataa tiedosto uudelleen
-Find next…	PDFWindow		Etsi seuraava…
-Fullscreen mode	PDFWindow		Kokonäyttötila
-Show page list	PDFWindow		Näytä sivuluettelo
-Back	PDFWindow		Takaisin
-Add note text annotation	PDFWindow		Lisää muistiinpanotekstikommentti
-Close	PDFWindow		Sulje
-Add printer mark annotation	PDFWindow		Lisää tulostinmerkintäkommentti
-Go forward 10 pages	PDFWindow		Siirry 10 sivua eteenpäin
-Page %d	PDFWindow		Sivu %d
-Forward in page history list	PDFWindow		Eteenpäin sivuhistorialuettelossa
-Add new paragraph text annotation	PDFWindow		Lisää uusi kappale tekstikommenttiin
-Fullscreen	PDFWindow		Kokonäyttö
-Add sound annotation	PDFWindow		Lisää äänikommentti
-Add comment text annotation	PDFWindow		Lisää kommenttitekstikommentti
-Page	PDFWindow		Sivu
-File info…	PDFWindow		Tiedostotiedot…
-Page setup…	PDFWindow		Sivuasetukset…
-Print	PDFWindow		Tulosta
-Issue tracker…	PDFWindow		Tapahtumajäljittäjä…
-Preferences…	PDFWindow		Asetukset…
-Rotation	PDFWindow		Kierto
-Last	PDFWindow		Viimeinen
-Add stamp annotation	PDFWindow		Lisää leimakommentti
-Add squiggly annotation	PDFWindow		Lisää koukeroinen kommentti
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Parhaillaan BePDF:ssä avoinna olean PDF-tiedoston korvaaminen epäonnistui! Valitse toinen tiedostonimi.
-Copy selection	PDFWindow		Kopioi valinta
-Add free text annotation	PDFWindow		Lisää vapaa tekstikommentti
-Next	PDFWindow		Seuraava
-Forward	PDFWindow		Eteenpäin
-Hide side bar	PDFWindow		Piilota sivupalkki
-Jump to page	PDFWindow		Siirry sivulle
-Add line annotation	PDFWindow		Lisää rivikommentti
-Add circle annotation	PDFWindow		Lisää ympyräkommentti
-Save file as	PDFWindow		Tallenna tiedosto nimellä
-Show annotation toolbar	PDFWindow		Näytä kommenttityökalupalkki
-Add link annotation	PDFWindow		Lisää linkkikommentti
-Previous	PDFWindow		Edellinen
-Leave annotation editing mode	PDFWindow		Jätä kommenttien muokkaustila
-Rotate clockwise	PDFWindow		Kierrä myötäpäivään
-Find next	PDFWindow		Etsi seuraava
-Add strikeout annotation	PDFWindow		Lisää yliviivattu kommentti
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
-Bookmark	PDFWindow		Kirjanmerkki
-Could not write PDF file!	PDFWindow		PDF-tiedoston kirjoittaminen epäonnistui!
-OK	PDFWindow		Valmis
-Add	PDFWindow		Lisää
-Edit	PDFWindow		Muokkaa
-Online help…	PDFWindow		Verkko-opaste…
-Quit	PDFWindow		Poistu
-Back in page history list	PDFWindow		Takaisin sivuhistorialuetteloon
-Open file	PDFWindow		Avaa tiedosto
-Visit homepage…	PDFWindow		Vieraile kotisivulla…
-Show attachments	PDFWindow		Näytä liitteet
-Add paragraph text annotation	PDFWindow		Lisää kappale tekstikommenttiin
-Go back 10 pages	PDFWindow		Siirry 10 sivua taaksepäin
-Print…	PDFWindow		Tulosta…
-Go to end of document	PDFWindow		Siirry asiakirjan loppuun
-Rotate counter-clockwise	PDFWindow		Kierrä vastapäivään
-Delete	PDFWindow		Poista
-Select all	PDFWindow		Valitse kaikki
-Add square annotation	PDFWindow		Lisää nelikulmiokommentti
-Fit to page width	PDFWindow		Sovita sivuleveyteen
-Zoom	PDFWindow		Lähennä/Loitonna
-Search	PDFWindow		Etsi
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Salatun PDF-tiedoston kommenttien muokkausta ei tueta vielä!
-Saving copy of PDF file:	PDFWindow		Tallennetaan PDF-tiedoston kopio:
-Add help text annotation	PDFWindow		Lisää opastetekstikommentti
-Custom zoom factor (%d%%)	PDFWindow		Oma lähennä-/loitonna-tekijä (%d%%)
-Open in new window…	PDFWindow		Avaa uudessa ikkunassa…
-Add highlight annotation	PDFWindow		Lisää korostuskommentti
-Add file attachment annotation	PDFWindow		Lisää tiedostoliitekommentti
-Go to page %d	PDFView		Siirry sivulle %d
-BePDF: Launch	PDFView		BePDF: Käynnistä
-Copy link	PDFView		Kopioi linkki
-Saving file attachment:	PDFView		Tallennetaan tiedostoliite:
-Open in new window	PDFView		Avaa uudessa ikkunassa
-Save file attachment as…	PDFView		Tallenna tiedostoliite nimellä…
-[link type 'movie' not supported]	PDFView		[linkkityyppiä 'movie' ei tueta]
-Cancel	PDFView		Peru
-[unknown link]	PDFView		[tuntematon linkki]
-Execute the command:	PDFView		Suorita komento:
-Properties	PDFView		Ominaisuudet
-Unknown link action type: '%s'	PDFView		Tuntematon linkkitoimintatyyppi: '%s'
-Annotation	PDFView		Kommentti
-Delete	PDFView		Poista
-Leave annotation editing mode	PDFView		Jätä kommentin muokkaustila
-[internal link]	PDFView		[sisäinen linkki]
-OK	PDFView		Valmis
-BePDF reading file: 	PDFView		BePDF lukee tiedostoa:
-Edit	PDFView		Muokkaa
-Keywords:	FileInfoWindow		Avainsanat:
-Subject:	FileInfoWindow		Aihe:
-Encrypted:	FileInfoWindow		Salattu:
-Type	FileInfoWindow		Tyyppi
-Abort	FileInfoWindow		Peru
-Denied	FileInfoWindow		Kielletty
-Creator:	FileInfoWindow		Tekijä:
-Document	FileInfoWindow		Asiakirja
-Fonts of this page	FileInfoWindow		Tämän sivun kirjasimet
-Path:	FileInfoWindow		Polku:
-Name	FileInfoWindow		Nimi
-Filename:	FileInfoWindow		Tiedostonimi:
-Yes	FileInfoWindow		Kyllä
-Annotations:	FileInfoWindow		Kommentit:
-Producer:	FileInfoWindow		Tuottaja:
-Allowed	FileInfoWindow		Sallittu
-Copy & paste:	FileInfoWindow		Kopio & liitä:
-Modified:	FileInfoWindow		Muokattu:
-Editing:	FileInfoWindow		Muokataan:
-Title:	FileInfoWindow		Otsikko:
-Created:	FileInfoWindow		Luotu:
-Linearized:	FileInfoWindow		Linearisoitu:
-Version:	FileInfoWindow		Versio:
-No	FileInfoWindow		Ei
-Author:	FileInfoWindow		Tekijä:
-Security	FileInfoWindow		Turvallisuus
-Embedded name	FileInfoWindow		Upotettu nimi
-Printing:	FileInfoWindow		Tulostetaan:
-File info	FileInfoWindow		Tiedostotiedot
-Show all fonts	FileInfoWindow		Näytä kaikki kirjasimet
-All pages	PrintSettingsWindow		Kaikki sivut
  in	PrintSettingsWindow		:ssa
-Pages	PrintSettingsWindow		Sivut
-Page	PrintSettingsWindow		Sivu
-Max. printer resolution	PrintSettingsWindow		Tulostimen enimmäisresoluutio
-DPI	PrintSettingsWindow		DPI
-Zoom (%)	PrintSettingsWindow		Lähennä/Loitonna (%)
-Gray scale	PrintSettingsWindow		Harmaaskaala
+All pages	PrintSettingsWindow		Kaikki sivut
 Color	PrintSettingsWindow		Väri
-Normal	PrintSettingsWindow		Normaali
-Rotation	PrintSettingsWindow		Kierto
-Print settings	PrintSettingsWindow		Tulostusasetukset
-Print	PrintSettingsWindow		Tulosta
-Reverse	PrintSettingsWindow		Käänteinen
-Odd pages	PrintSettingsWindow		Parittomat sivut
-Zoom must be between 25 and 400!	PrintSettingsWindow		Lähennyksen/Loitonnuksen on oltava välillä 25 ... 400!
-Mode	PrintSettingsWindow		Tila
-Order	PrintSettingsWindow		Järjestys
-Height: 	PrintSettingsWindow		Korkeus:
-Width: 	PrintSettingsWindow		Leveys:
-OK	PrintSettingsWindow		Valmis
+DPI	PrintSettingsWindow		DPI
 Even pages	PrintSettingsWindow		Parilliset sivut
+Gray scale	PrintSettingsWindow		Harmaaskaala
+Height: 	PrintSettingsWindow		Korkeus:
+Max. printer resolution	PrintSettingsWindow		Tulostimen enimmäisresoluutio
+Mode	PrintSettingsWindow		Tila
+Normal	PrintSettingsWindow		Normaali
+Odd pages	PrintSettingsWindow		Parittomat sivut
+OK	PrintSettingsWindow		Valmis
+Order	PrintSettingsWindow		Järjestys
+Page	PrintSettingsWindow		Sivu
+Pages	PrintSettingsWindow		Sivut
+Print	PrintSettingsWindow		Tulosta
+Print settings	PrintSettingsWindow		Tulostusasetukset
+Reverse	PrintSettingsWindow		Käänteinen
+Rotation	PrintSettingsWindow		Kierto
+Width: 	PrintSettingsWindow		Leveys:
 Wrong parameter!	PrintSettingsWindow		Väärä parametri!
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Näytä myös työkalupalkki, tilapalkki ja työkalupalkit
-Fullscreen mode	AnnotationWindow		Kokonäyttötila
-Will take effect at next program launch.	AnnotationWindow		Tulee voimaan ohjelma seuraavan käynnistyksen jälkeen.
-Filled rectangle	AnnotationWindow		Täytetty nelikulmio
-Align:	AnnotationWindow		Tasaa:
-Title:	AnnotationWindow		Otsikko:
-User fonts	AnnotationWindow		Käyttäjäkirjasimet
-Asian fonts	AnnotationWindow		Aasialaiset kirjasimet
-Restore window position and size	AnnotationWindow		Palauta ikkunan sijainti ja koko
-Author	AnnotationWindow		Tekijä
-Open in workspace:	AnnotationWindow		Avaa työtilassa:
-Preferences	AnnotationWindow		Asetukset
-Show document view only	AnnotationWindow		Näytä vain nykyinen asiakirja
-Automatic	AnnotationWindow		Automaattinen
-Font:	AnnotationWindow		Kirjasin:
-Restore page number	AnnotationWindow		Palauta sivunumerointi
-System fonts	AnnotationWindow		Järjestelmäkirjasimet
-Stroked rectangle	AnnotationWindow		Vinoviivoitettu nelikulmio
-current	AnnotationWindow		nykyinen
-Annotation	AnnotationWindow		Kommentti
-Selection rectangle	AnnotationWindow		Valintanelikulmio
-Display	AnnotationWindow		Näyttö
-Document	AnnotationWindow		Asiakirja
-Size:	AnnotationWindow		Koko:
-Date:	AnnotationWindow		Päivämäärä:
-Invert vertical mouse scrolling	AnnotationWindow		Käännä pystysuora hiirivieritys
+Zoom (%)	PrintSettingsWindow		Lähennä/Loitonna (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		Lähennyksen/Loitonnuksen on oltava välillä 25 ... 400!
+[internal link]	PDFView		[sisäinen linkki]
+[link type 'movie' not supported]	PDFView		[linkkityyppiä 'movie' ei tueta]
+[unknown link]	PDFView		[tuntematon linkki]
+Annotation	PDFView		Kommentti
+BePDF reading file: 	PDFView		BePDF lukee tiedostoa:
+BePDF: Launch	PDFView		BePDF: Käynnistä
+Cancel	PDFView		Peru
+Copy link	PDFView		Kopioi linkki
+Delete	PDFView		Poista
+Edit	PDFView		Muokkaa
+Execute the command:	PDFView		Suorita komento:
+Go to page %d	PDFView		Siirry sivulle %d
+Leave annotation editing mode	PDFView		Jätä kommentin muokkaustila
+OK	PDFView		Valmis
+Open in new window	PDFView		Avaa uudessa ikkunassa
+Properties	PDFView		Ominaisuudet
+Save file attachment as…	PDFView		Tallenna tiedostoliite nimellä…
+Saving file attachment:	PDFView		Tallennetaan tiedostoliite:
+Unknown link action type: '%s'	PDFView		Tuntematon linkkitoimintatyyppi: '%s'
 <empty>	OutlinesWindow		<tyhjä>
 Document	OutlinesWindow		Asiakirja
 Edit title for bookmark	OutlinesWindow		Muokkaa kirjanmerkin otsikkoa
 No title	OutlinesWindow		Ei otsikkoa
-User defined	OutlinesWindow		Käyttäjän määritelemä
 OK	OutlinesWindow		Valmis
-BePDF printing document: 	PrintingProgressWindow		BePDF tulostaa asiakirjan:
-BePDF printing	PrintingProgressWindow		BePDF tulostaa
-Stop	PrintingProgressWindow		Pysäytä
-Abort	PrintingProgressWindow		Keskeytä
-Page:	PrintingProgressWindow		Sivu:
-Page: %d	PrintingProgressWindow		Sivu: %d
-Clear	TraceWindow		Tyhjennä
-Auto open	TraceWindow		Avaa automaattisesti
-Floating	TraceWindow		Kelluva
-Error messages	TraceWindow		Virheilmoitukset
-Options	FindTextWindow		Valitsimet
-Ignore case	FindTextWindow		Ohita kirjainkoko
-Page:	FindTextWindow		Sivu:
-Find: 	FindTextWindow		Etsi:
-Stop	FindTextWindow		Pysäytä
-Find	FindTextWindow		Etsi
-Find text	FindTextWindow		Etsi teksti
-Search backwards	FindTextWindow		Etsi taaksepäin
-Page: %d	FindTextWindow		Sivu: %d
-Save selected attachments into directory	AttachmentView		Tallenna valitut liitteet kansioon
+User defined	OutlinesWindow		Käyttäjän määritelemä
+<empty>	AttachmentView		<tyhjä>
+Description	AttachmentView		Kuvaus
 File name	AttachmentView		Tiedostonimi
 Save attachment(s) as	AttachmentView		Tallenna liitteet nimellä
-Saving attachment(s):	AttachmentView		Tallenna liitteet:
 Save selected attachment to file	AttachmentView		Tallenna valitut liitteet tiedostoon
-Description	AttachmentView		Kuvaus
-<empty>	AttachmentView		<tyhjä>
-Search string not found.	PDFSearch		Hakumerkkijonoa ei löytynyt.
-OK	PDFSearch		Valmis
+Save selected attachments into directory	AttachmentView		Tallenna valitut liitteet kansioon
+Saving attachment(s):	AttachmentView		Tallenna liitteet:
+Abort	PrintingProgressWindow		Keskeytä
+BePDF printing	PrintingProgressWindow		BePDF tulostaa
+BePDF printing document: 	PrintingProgressWindow		BePDF tulostaa asiakirjan:
+Page:	PrintingProgressWindow		Sivu:
+Page: %d	PrintingProgressWindow		Sivu: %d
+Stop	PrintingProgressWindow		Pysäytä
+Abort	FileInfoWindow		Peru
+Allowed	FileInfoWindow		Sallittu
+Annotations:	FileInfoWindow		Kommentit:
+Author:	FileInfoWindow		Tekijä:
+Copy & paste:	FileInfoWindow		Kopio & liitä:
+Created:	FileInfoWindow		Luotu:
+Creator:	FileInfoWindow		Tekijä:
+Denied	FileInfoWindow		Kielletty
+Document	FileInfoWindow		Asiakirja
+Editing:	FileInfoWindow		Muokataan:
+Embedded name	FileInfoWindow		Upotettu nimi
+Encrypted:	FileInfoWindow		Salattu:
+File info	FileInfoWindow		Tiedostotiedot
+Filename:	FileInfoWindow		Tiedostonimi:
+Fonts of this page	FileInfoWindow		Tämän sivun kirjasimet
+Keywords:	FileInfoWindow		Avainsanat:
+Linearized:	FileInfoWindow		Linearisoitu:
+Modified:	FileInfoWindow		Muokattu:
+Name	FileInfoWindow		Nimi
+No	FileInfoWindow		Ei
+Path:	FileInfoWindow		Polku:
+Printing:	FileInfoWindow		Tulostetaan:
+Producer:	FileInfoWindow		Tuottaja:
+Security	FileInfoWindow		Turvallisuus
+Show all fonts	FileInfoWindow		Näytä kaikki kirjasimet
+Subject:	FileInfoWindow		Aihe:
+Title:	FileInfoWindow		Otsikko:
+Type	FileInfoWindow		Tyyppi
+Version:	FileInfoWindow		Versio:
+Yes	FileInfoWindow		Kyllä
+About BePDF…	PDFWindow		Ohjelmasta BePDF…
+Add	PDFWindow		Lisää
+Add circle annotation	PDFWindow		Lisää ympyräkommentti
+Add comment text annotation	PDFWindow		Lisää kommenttitekstikommentti
+Add file attachment annotation	PDFWindow		Lisää tiedostoliitekommentti
+Add free text annotation	PDFWindow		Lisää vapaa tekstikommentti
+Add help text annotation	PDFWindow		Lisää opastetekstikommentti
+Add highlight annotation	PDFWindow		Lisää korostuskommentti
+Add ink annotation	PDFWindow		Lisää mustekommentti
+Add insert text annotation	PDFWindow		Lisää lisää teksti-kommentti
+Add key text annotation	PDFWindow		Lisää avaintekstikommentti
+Add line annotation	PDFWindow		Lisää rivikommentti
+Add link annotation	PDFWindow		Lisää linkkikommentti
+Add movie annotation	PDFWindow		Lisää elokuvakommentti
+Add new paragraph text annotation	PDFWindow		Lisää uusi kappale tekstikommenttiin
+Add note text annotation	PDFWindow		Lisää muistiinpanotekstikommentti
+Add paragraph text annotation	PDFWindow		Lisää kappale tekstikommenttiin
+Add popup annotation	PDFWindow		Lisää ponnahdusikkunakommentti
+Add printer mark annotation	PDFWindow		Lisää tulostinmerkintäkommentti
+Add sound annotation	PDFWindow		Lisää äänikommentti
+Add square annotation	PDFWindow		Lisää nelikulmiokommentti
+Add squiggly annotation	PDFWindow		Lisää koukeroinen kommentti
+Add stamp annotation	PDFWindow		Lisää leimakommentti
+Add strikeout annotation	PDFWindow		Lisää yliviivattu kommentti
+Add trapnet annotation	PDFWindow		Lisää ansaverkkokommentti
+Add underline annotation	PDFWindow		Lisää alleviivattu kommentti
+Add widget annotation	PDFWindow		Lisää näyttöliittymäkomponenttikommentti
+Back	PDFWindow		Takaisin
+Back in page history list	PDFWindow		Takaisin sivuhistorialuetteloon
+Bookmark	PDFWindow		Kirjanmerkki
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Parhaillaan BePDF:ssä avoinna olean PDF-tiedoston korvaaminen epäonnistui! Valitse toinen tiedostonimi.
+Close	PDFWindow		Sulje
+Copy selection	PDFWindow		Kopioi valinta
+Could not write PDF file!	PDFWindow		PDF-tiedoston kirjoittaminen epäonnistui!
+Custom zoom factor (%d%%)	PDFWindow		Oma lähennä-/loitonna-tekijä (%d%%)
+Delete	PDFWindow		Poista
+Edit	PDFWindow		Muokkaa
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Salatun PDF-tiedoston kommenttien muokkausta ei tueta vielä!
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		Tiedosto
+File info…	PDFWindow		Tiedostotiedot…
+Find	PDFWindow		Etsi
+Find next	PDFWindow		Etsi seuraava
+Find next…	PDFWindow		Etsi seuraava…
+Find…	PDFWindow		Etsi…
+First	PDFWindow		Ensimmäinen
+Fit to page	PDFWindow		Sovita sivuun
+Fit to page width	PDFWindow		Sovita sivuleveyteen
+Forward	PDFWindow		Eteenpäin
+Forward in page history list	PDFWindow		Eteenpäin sivuhistorialuettelossa
+Fullscreen	PDFWindow		Kokonäyttö
+Fullscreen mode	PDFWindow		Kokonäyttötila
+Go back 10 pages	PDFWindow		Siirry 10 sivua taaksepäin
+Go forward 10 pages	PDFWindow		Siirry 10 sivua eteenpäin
+Go to end of document	PDFWindow		Siirry asiakirjan loppuun
+Go to next page	PDFWindow		Siirry seuraavalle sivulle
+Go to previous page	PDFWindow		Siirry edelliselle sivulle
+Go to start of document	PDFWindow		Siirry asiakirjan alkuun
+Help	PDFWindow		Opaste
+Hide side bar	PDFWindow		Piilota sivupalkki
+Issue tracker…	PDFWindow		Tapahtumajäljittäjä…
+Jump to page	PDFWindow		Siirry sivulle
+Last	PDFWindow		Viimeinen
+Leave annotation editing mode	PDFWindow		Jätä kommenttien muokkaustila
+Next	PDFWindow		Seuraava
+of %d	PDFWindow		/ %d
+OK	PDFWindow		Valmis
+Online help…	PDFWindow		Verkko-opaste…
+Open file	PDFWindow		Avaa tiedosto
+Open in new window…	PDFWindow		Avaa uudessa ikkunassa…
+Open…	PDFWindow		Avaa…
+Page	PDFWindow		Sivu
+Page %d	PDFWindow		Sivu %d
+Page setup…	PDFWindow		Sivuasetukset…
+PDF file successfully written!	PDFWindow		PDF-tiedoston kirjoittaminen onnistui!
+Preferences…	PDFWindow		Asetukset…
+Previous	PDFWindow		Edellinen
+Print	PDFWindow		Tulosta
+Print…	PDFWindow		Tulosta…
+Quit	PDFWindow		Poistu
+Reload	PDFWindow		Lataa uudelleen
+Reload file	PDFWindow		Lataa tiedosto uudelleen
+Rotate clockwise	PDFWindow		Kierrä myötäpäivään
+Rotate counter-clockwise	PDFWindow		Kierrä vastapäivään
+Rotation	PDFWindow		Kierto
+Save as…	PDFWindow		Tallenna nimellä…
+Save file as	PDFWindow		Tallenna tiedosto nimellä
+Saving copy of PDF file:	PDFWindow		Tallennetaan PDF-tiedoston kopio:
+Search	PDFWindow		Etsi
+Select all	PDFWindow		Valitse kaikki
+Select none	PDFWindow		Älä valitse mitään
+Show annotation tool bar	PDFWindow		Näytä kommenttityökalupalkki
+Show annotation toolbar	PDFWindow		Näytä kommenttityökalupalkki
+Show attachments	PDFWindow		Näytä liitteet
+Show bookmarks	PDFWindow		Näytä kirjanmerkit
+Show error messages	PDFWindow		Näytä virheilmoitukset
+Show help…	PDFWindow		Näytä opaste…
+Show page list	PDFWindow		Näytä sivuluettelo
+View	PDFWindow		Näkymä
+Visit homepage…	PDFWindow		Vieraile kotisivulla…
+Warning	PDFWindow		Varoitus
+Zoom	PDFWindow		Lähennä/Loitonna
+Zoom in	PDFWindow		Lähennä
+Zoom out	PDFWindow		Loitonna
+Align:	AnnotationWindow		Tasaa:
+Annotation	AnnotationWindow		Kommentti
+Asian fonts	AnnotationWindow		Aasialaiset kirjasimet
+Author	AnnotationWindow		Tekijä
+Automatic	AnnotationWindow		Automaattinen
+current	AnnotationWindow		nykyinen
+Date:	AnnotationWindow		Päivämäärä:
+Display	AnnotationWindow		Näyttö
+Document	AnnotationWindow		Asiakirja
+Filled rectangle	AnnotationWindow		Täytetty nelikulmio
+Font:	AnnotationWindow		Kirjasin:
+Fullscreen mode	AnnotationWindow		Kokonäyttötila
+Invert vertical mouse scrolling	AnnotationWindow		Käännä pystysuora hiirivieritys
+Open in workspace:	AnnotationWindow		Avaa työtilassa:
+Preferences	AnnotationWindow		Asetukset
+Restore page number	AnnotationWindow		Palauta sivunumerointi
+Restore window position and size	AnnotationWindow		Palauta ikkunan sijainti ja koko
+Selection rectangle	AnnotationWindow		Valintanelikulmio
+Show document view only	AnnotationWindow		Näytä vain nykyinen asiakirja
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Näytä myös työkalupalkki, tilapalkki ja työkalupalkit
+Size:	AnnotationWindow		Koko:
+Stroked rectangle	AnnotationWindow		Vinoviivoitettu nelikulmio
+System fonts	AnnotationWindow		Järjestelmäkirjasimet
+Title:	AnnotationWindow		Otsikko:
+User fonts	AnnotationWindow		Käyttäjäkirjasimet
+Will take effect at next program launch.	AnnotationWindow		Tulee voimaan ohjelma seuraavan käynnistyksen jälkeen.
+Alpha	BepdfApplication		Alfa
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF perustuu XPDF-versioon %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: Virhe tiedoston avaamisessa!
+Beta	BepdfApplication		Beeta
+Close	BepdfApplication		Sulje
+Development	BepdfApplication		Kehitys
+Error	BepdfApplication		Virhe
+Final	BepdfApplication		Lopullinen
+Gamma	BepdfApplication		Gamma
+Golden Master	BepdfApplication		Golden Master
+Unknown	BepdfApplication		Tuntematon
+Version	BepdfApplication		Versio
+Auto open	TraceWindow		Avaa automaattisesti
+Clear	TraceWindow		Tyhjennä
+Error messages	TraceWindow		Virheilmoitukset
+Floating	TraceWindow		Kelluva
 BePDF status	StatusWindow		BePDF-tila
-User password	PasswordWindow		Käyttäjän salasana
 Enter Password	PasswordWindow		Kirjoita salasana
-Owner password	PasswordWindow		Omistajan salasana
 OK	PasswordWindow		Valmis
+Owner password	PasswordWindow		Omistajan salasana
+User password	PasswordWindow		Käyttäjän salasana
+Find	FindTextWindow		Etsi
+Find text	FindTextWindow		Etsi teksti
+Find: 	FindTextWindow		Etsi:
+Ignore case	FindTextWindow		Ohita kirjainkoko
+Options	FindTextWindow		Valitsimet
+Page:	FindTextWindow		Sivu:
+Page: %d	FindTextWindow		Sivu: %d
+Search backwards	FindTextWindow		Etsi taaksepäin
+Stop	FindTextWindow		Pysäytä
+OK	PDFSearch		Valmis
+Search string not found.	PDFSearch		Hakumerkkijonoa ei löytynyt.
