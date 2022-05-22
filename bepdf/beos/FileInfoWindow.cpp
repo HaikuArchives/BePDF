@@ -87,7 +87,7 @@ static int ToInt(const char *s, int i, int n) {
 static const char *ToDate(const char *date, time_t *time) {
 static char s[80];
 	struct tm d;
-	memset(&d, sizeof(d), 0);
+    memset(&d,0, sizeof(d));
 
 	if ((date[0] == 'D') && (date[1] == ':')) {
 		int i = 2;

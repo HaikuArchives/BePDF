@@ -37,7 +37,7 @@
 #include <RadioButton.h>
 #include <ScrollView.h>
 #include <StringView.h>
-
+#include <String.h>
 #include "BepdfApplication.h"
 #include "LayoutUtils.h"
 #include "PreferencesWindow.h"
@@ -59,13 +59,14 @@ void PreferencesWindow::UpdateWorkspace() {
 }
 
 void PreferencesWindow::BuildWorkspaceMenu(BMenu *m) {
-	m->AddItem(new BMenuItem(B_TRANSLATE("current"), new BMessage(WORKSPACE_CHANGED)));
+	m->AddItem(new BMenuItem(B_TRANSLATE("Current"), new BMessage(WORKSPACE_CHANGED)));
 	m->AddSeparatorItem();
 	int n = count_workspaces();
+
+    BString buffer;
 	for (int i = 1; i <= n; i ++) {
-		char buffer[10];
-		sprintf(buffer, "%d", i);
-		m->AddItem(new BMenuItem(buffer, new BMessage(WORKSPACE_CHANGED)));
+        buffer.SetToFormat("%d", i);
+		m->AddItem(new BMenuItem(buffer.String(), new BMessage(WORKSPACE_CHANGED)));
 	}
 	m->SetLabelFromMarked(true);
 	m->SetRadioMode(true);

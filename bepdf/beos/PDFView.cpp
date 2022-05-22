@@ -212,7 +212,7 @@ PDFView::UpdatePanelDirectory(BPath* path) {
 void
 PDFView::MakeTitleString(BPath* path) {
 	delete mTitle;
-	mTitle = new BString("Rog BePDF: ");
+	mTitle = new BString("BePDF: ");
 
 	Object obj;
 	if (mDoc->getDocInfo(&obj) && obj.isDict()) {
