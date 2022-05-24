@@ -63,9 +63,9 @@ void PreferencesWindow::BuildWorkspaceMenu(BMenu *m) {
 	m->AddSeparatorItem();
 	int n = count_workspaces();
 
-    BString buffer;
+	BString buffer;
 	for (int i = 1; i <= n; i ++) {
-        buffer.SetToFormat("%d", i);
+		buffer.SetToFormat("%d", i);
 		m->AddItem(new BMenuItem(buffer.String(), new BMessage(WORKSPACE_CHANGED)));
 	}
 	m->SetLabelFromMarked(true);
