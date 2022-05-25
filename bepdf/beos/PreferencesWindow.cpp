@@ -59,7 +59,7 @@ void PreferencesWindow::UpdateWorkspace() {
 }
 
 void PreferencesWindow::BuildWorkspaceMenu(BMenu *m) {
-	m->AddItem(new BMenuItem(B_TRANSLATE("Current"), new BMessage(WORKSPACE_CHANGED)));
+	m->AddItem(new BMenuItem(B_TRANSLATE("current"), new BMessage(WORKSPACE_CHANGED)));
 	m->AddSeparatorItem();
 	int n = count_workspaces();
 
