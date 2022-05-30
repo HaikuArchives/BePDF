@@ -153,7 +153,7 @@ DEBUGGER :=
 COMPILER_FLAGS = -Wno-write-strings
 
 #	Specify any additional linker flags to be used.
-LINKER_FLAGS = $(shell freetype-config --libs)
+LINKER_FLAGS = $(shell pkg-config --libs freetype2)
 
 #	Specify the version of this binary. Example:
 #		-app 3 4 0 d 0 -short 340 -long "340 "`echo -n -e '\302\251'`"1999 GNU GPL"
