@@ -1,0 +1,254 @@
+1	Greek (Modern)	application/x-vnd.mp-xpdf	1765081836
+ in	PrintSettingsWindow		σε
+All pages	PrintSettingsWindow		Όλες οι σελίδες
+Color	PrintSettingsWindow		Χρώμα
+DPI	PrintSettingsWindow		DPI
+Even pages	PrintSettingsWindow		Ζυγές σελίδες
+Gray scale	PrintSettingsWindow		Ασπρόμαυρο
+Height: 	PrintSettingsWindow		Ύψος:
+Max. printer resolution	PrintSettingsWindow		Μέγιστη ανάλυση εκτυπωτή
+Mode	PrintSettingsWindow		Λειτουργία
+Normal	PrintSettingsWindow		Κανονική
+Odd pages	PrintSettingsWindow		Μονές σελίδες
+OK	PrintSettingsWindow		Εντάξει
+Order	PrintSettingsWindow		Σειρά
+Page	PrintSettingsWindow		Σελίδα
+Pages	PrintSettingsWindow		Σελίδες
+Print	PrintSettingsWindow		Εκτύπωση
+Print settings	PrintSettingsWindow		Ρυθμίσεις εκτύπωσης
+Reverse	PrintSettingsWindow		Αντιστροφή
+Rotation	PrintSettingsWindow		Περιστροφή
+Width: 	PrintSettingsWindow		Πλάτος:
+Wrong parameter!	PrintSettingsWindow		Εσφαλμένη παράμετρος!
+Zoom (%)	PrintSettingsWindow		Μεγέθυνση (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		Η τιμή της μεγέθυνσης πρέπει να είναι μεταξύ 25 και 400!
+[internal link]	PDFView		[εσωτ. σύνδεσμος]
+[link type 'movie' not supported]	PDFView		[οι σύνδεσμοι τύπου ταινία δεν υποστηρίζονται]
+[unknown link]	PDFView		[άγνωστος σύνδεσμος]
+Annotation	PDFView		Περίληψη
+BePDF reading file: 	PDFView		Το BePDF διαβάζει το αρχείο: 
+BePDF: Launch	PDFView		BePDF: Εκκίνηση
+Cancel	PDFView		Ακύρωση
+Copy link	PDFView		Αντιγραφή συνδέσμου
+Delete	PDFView		Διαγραφή
+Edit	PDFView		Επεξεργασία
+Execute the command:	PDFView		Εκτέλεση εντολής:
+Go to page %d	PDFView		Μετάβαση στην σελίδα %d
+Leave annotation editing mode	PDFView		Έξοδος από τον επεξεργαστή επισημειώσεων
+OK	PDFView		Εντάξει
+Open in new window	PDFView		Άνοιγμα σε νέο παράθυρο
+Properties	PDFView		Παράμετροι
+Save file attachment as…	PDFView		Αποθήκευση συννημένου αρχείου ως...
+Saving file attachment:	PDFView		Αποθήκευση συνημμένου αρχείου:
+Unknown link action type: '%s'	PDFView		Άγνωστο είδος ενέργειας συνδέσμου: '%s'
+<empty>	OutlinesWindow		<κενό>
+Document	OutlinesWindow		Έγγραφο
+Edit title for bookmark	OutlinesWindow		Επεξεργασία τίτλου σελιδοδείκτης
+No title	OutlinesWindow		Χωρίς τίτλο
+OK	OutlinesWindow		Εντάξει
+User defined	OutlinesWindow		Καθορισμένο από χρήστη
+<empty>	AttachmentView		<κενό>
+Description	AttachmentView		Περιγραφή
+File name	AttachmentView		Όνομα αρχείου
+Save attachment(s) as	AttachmentView		Αποθήκευση επισυννημένων αρχείων ως
+Save selected attachment to file	AttachmentView		Αποθήκευση επιλεγμένου συνημμένου σε αρχείου
+Save selected attachments into directory	AttachmentView		Αποθήκευση επιλεγμένου συνημμένου σε κατάλογο
+Saving attachment(s):	AttachmentView		Αποθήκευση συνημμένου(-ων):
+Abort	PrintingProgressWindow		Ακύρωση
+BePDF printing	PrintingProgressWindow		Το BePDF εκτυπώνει
+BePDF printing document: 	PrintingProgressWindow		Το BePDF εκτυπώνει το έγγραφο: 
+Page:	PrintingProgressWindow		Σελίδα:
+Page: %d	PrintingProgressWindow		Σελίδα: %d
+Stop	PrintingProgressWindow		Σταμάτημα
+Abort	FileInfoWindow		Ακύρωση
+Allowed	FileInfoWindow		Επιτρέπεται
+Annotations:	FileInfoWindow		Σημειώσεις:
+Author:	FileInfoWindow		Συγγραφέας:
+Copy & paste:	FileInfoWindow		Αντιγραφή και επικόλληση:
+Created:	FileInfoWindow		Δημιουργήθηκε:
+Creator:	FileInfoWindow		Δημιουργός:
+Denied	FileInfoWindow		Απαγορεύεται
+Document	FileInfoWindow		Έγγραφο
+Editing:	FileInfoWindow		Επεξεργασία:
+Embedded name	FileInfoWindow		Επισυνημμένο όνομα
+Encrypted:	FileInfoWindow		Κρυπτογραφημένο:
+File info	FileInfoWindow		Πληροφορίες αρχείου
+Filename:	FileInfoWindow		Όνομα αρχείου:
+Fonts of this page	FileInfoWindow		Γραμματοσειρές στην σελίδα
+Keywords:	FileInfoWindow		Λέξεις κλειδιά:
+Linearized:	FileInfoWindow		Γραμμικό:
+Modified:	FileInfoWindow		Επεξεργάστηκε:
+Name	FileInfoWindow		Όνομα
+No	FileInfoWindow		Όχι
+Path:	FileInfoWindow		Τοποθεσία αρχείου:
+Printing:	FileInfoWindow		Εκτύπωση:
+Producer:	FileInfoWindow		Παραγωγός:
+Security	FileInfoWindow		Ασφάλεια
+Show all fonts	FileInfoWindow		Εμφάνιση όλων των γραμματοσειρών
+Subject:	FileInfoWindow		Θέμα:
+Title:	FileInfoWindow		Τίτλος:
+Type	FileInfoWindow		Είδος
+Version:	FileInfoWindow		Έκδοση:
+Yes	FileInfoWindow		Ναι
+About BePDF…	PDFWindow		Σχετικά με το BePDF…
+Add	PDFWindow		Προσθήκη
+Add circle annotation	PDFWindow		Επισημείωση κύκλου
+Add comment text annotation	PDFWindow		Επισημείωση σχολίου
+Add file attachment annotation	PDFWindow		Επισημείωση αρχείου
+Add free text annotation	PDFWindow		Επισημείωση ελεύθερου κειμένου
+Add help text annotation	PDFWindow		Επισημείωση κειμένου βοήθειας
+Add highlight annotation	PDFWindow		Επισημείωση υπογράμμισης
+Add ink annotation	PDFWindow		Επισημείωση συνδέσμου
+Add insert text annotation	PDFWindow		Επισημείωση κειμένου προσθήκης
+Add key text annotation	PDFWindow		Επισημείωση κειμένου κλειδιού
+Add line annotation	PDFWindow		Επισημείωση γραμμής
+Add link annotation	PDFWindow		Επισημείωση συνδέσμου
+Add movie annotation	PDFWindow		Επισημείωση ταινίας
+Add new paragraph text annotation	PDFWindow		Επισημείωση παραγράφου
+Add note text annotation	PDFWindow		Επισημείωση κειμένου σημείωσης
+Add paragraph text annotation	PDFWindow		Add paragraph text annotation
+Add popup annotation	PDFWindow		Επισημείωση κειμένου με αναπήδηση
+Add printer mark annotation	PDFWindow		Επισημείωση σημείου εκτύπωσης
+Add sound annotation	PDFWindow		Επισημείωση ήχου
+Add square annotation	PDFWindow		Επισημείωση τετραγώνου
+Add squiggly annotation	PDFWindow		Επισημείωση ελεύθερης γραμμής
+Add stamp annotation	PDFWindow		Επισημείωση σφραγίδας
+Add strikeout annotation	PDFWindow		Επισημείωση κειμένου σε διαγραφή
+Add trapnet annotation	PDFWindow		Επισημείωση διχτυού
+Add underline annotation	PDFWindow		Επισημείωση υπογραμμισμένου κειμένου
+Add widget annotation	PDFWindow		Επισημείωση widget
+Back	PDFWindow		Πίσω
+Back in page history list	PDFWindow		Πίσω βάσει ιστορικού σελίδων
+Bookmark	PDFWindow		Σελιδοδείκτης
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Δεν είναι δυνατή η αντικατάσταση ενός αρχείου PDF το οποίο είναι ήδη ανοικτό στο BePDF! Παρακαλώ επιλέξτε άλλο όνομα αρχείου.
+Close	PDFWindow		Κλείσιμο
+Copy selection	PDFWindow		Αντιγραφή επιλογής
+Could not write PDF file!	PDFWindow		Δεν ήταν δυνατή η αποθήκευση του αρχείου PDF!
+Custom zoom factor (%d%%)	PDFWindow		Προσαρμοσμένο μέτρο μεγέθυνσης (%d%%)
+Delete	PDFWindow		Διαγραφή
+Edit	PDFWindow		Επεξεργασία
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Η επεξεργασία επισημειώσεων δεν είναι ακόμα διαθέσιμη για τα κρυπτογραφημένα αρχεία PDF!
+English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+File	PDFWindow		Αρχείο
+File info…	PDFWindow		Πληροφορίες αρχείου...
+Find	PDFWindow		Αναζήτηση
+Find next	PDFWindow		Αναζήτηση επόμενου
+Find next…	PDFWindow		Αναζήτηση επόμενου...
+Find…	PDFWindow		Αναζήτηση...
+First	PDFWindow		Πρώτο
+Fit to page	PDFWindow		Εστίαση σελίδας
+Fit to page width	PDFWindow		Εστίαση πλάτους σελίδας
+Forward	PDFWindow		Μπροστά
+Forward in page history list	PDFWindow		Μποστά βάσει ιστορικού σελίδων
+Fullscreen	PDFWindow		Πλήρης οθόνη
+Fullscreen mode	PDFWindow		Λειτουργία πλήρους οθόνης
+Go back 10 pages	PDFWindow		Μετάβαση πίσω κατά 10 σελίδες
+Go forward 10 pages	PDFWindow		Μετάβαση μπρος κατά 10 σελίδες
+Go to end of document	PDFWindow		Μετάβαση στο τέλος του εγγράφου
+Go to next page	PDFWindow		Μετάβαση στην επόμενη σελίδα
+Go to previous page	PDFWindow		Μετάβαση στην προηγούμενη σελίδα
+Go to start of document	PDFWindow		Μετάβαση στην αρχή του εγγράφου
+Help	PDFWindow		Βοήθεια
+Hide side bar	PDFWindow		Απόκρυψη πλευρικής μπάρας
+Issue tracker…	PDFWindow		Ιχνηλάτης προβλημάτων...
+Jump to page	PDFWindow		Μετάβαση στην σελίδα
+Last	PDFWindow		Τελευταία
+Leave annotation editing mode	PDFWindow		Έξοδος από επεξεργαστή επί σημειώσεων
+Next	PDFWindow		Επόμενη
+of %d	PDFWindow		από %d
+OK	PDFWindow		Εντάξει
+Online help…	PDFWindow		Διαδικτυακή βοήθεια...
+Open file	PDFWindow		Άνοιγμα αρχείου
+Open in new window…	PDFWindow		Άνοιγμα σε νέο παράθυρο...
+Open…	PDFWindow		Άνοιγμα...
+Page	PDFWindow		Σελίδα
+Page %d	PDFWindow		Σελίδα %d
+Page setup…	PDFWindow		Ρύθμιση σελίδας...
+PDF file successfully written!	PDFWindow		Η αποθήκευση του αρχείου PDF ήταν επιτυχής.
+Preferences…	PDFWindow		Ρυθμίσεις...
+Previous	PDFWindow		Προηγούμενη
+Print	PDFWindow		Εκτύπωση
+Print…	PDFWindow		Εκτύπωση...
+Quit	PDFWindow		Έξοδος
+Reload	PDFWindow		Επαναφόρτωση
+Reload file	PDFWindow		Επαναφόρτωση αρχείου
+Rotate clockwise	PDFWindow		Περιστροφή κατά φορά ρολογιού
+Rotate counter-clockwise	PDFWindow		Περιστροφή κατά αντίστροφη φορά ρολογιού
+Rotation	PDFWindow		Περιστροφή
+Save as…	PDFWindow		Αποθήκευση ως...
+Save file as	PDFWindow		Αποθήκευση αρχείου ως
+Saving copy of PDF file:	PDFWindow		Αποθήκευση αντιγράφου του αρχείου PDF:
+Search	PDFWindow		Αναζήτηση
+Select all	PDFWindow		Επιλογή όλων
+Select none	PDFWindow		Ακύρωση επιλογής
+Show annotation tool bar	PDFWindow		Εμφάνιση μπάρας εργαλείων επισημείωσης
+Show annotation toolbar	PDFWindow		Εμφάνιση μπάρας εργαλείων επισημείωσης
+Show attachments	PDFWindow		Εμφάνιση συνημμένων
+Show bookmarks	PDFWindow		Εμφάνιση σελιδοδεικτών
+Show error messages	PDFWindow		Εμφάνιση σφαλμάτων
+Show help…	PDFWindow		Εμφάνιση βοήθειας...
+Show page list	PDFWindow		Εμφάνιση λίστας σελίδων
+View	PDFWindow		Προβολή
+Visit homepage…	PDFWindow		Επίσκεψη ιστοσελίδας...
+Warning	PDFWindow		Προειδοποίηση
+Zoom	PDFWindow		Μεγέθυνση
+Zoom in	PDFWindow		Μεγέθυνση
+Zoom out	PDFWindow		Σμίκρυνση
+Align:	AnnotationWindow		Στοίχιση:
+Annotation	AnnotationWindow		Σημείωση
+Asian fonts	AnnotationWindow		Ασιάτικες γραμματοσειρές
+Author	AnnotationWindow		Συγγραφέας
+Automatic	AnnotationWindow		Αυτόματο
+current	AnnotationWindow		τρέχων
+Date:	AnnotationWindow		Ημερομηνία:
+Display	AnnotationWindow		Προβολή
+Document	AnnotationWindow		Έγγραφο
+Filled rectangle	AnnotationWindow		Γεμισμένο ορθογώνιο
+Font:	AnnotationWindow		Γραμματοσειρά:
+Fullscreen mode	AnnotationWindow		Λειτουργία πλήρης οθόνης
+Invert vertical mouse scrolling	AnnotationWindow		Αντιστροφή κάθετης κύλισης ποντικιού
+Open in workspace:	AnnotationWindow		Άνοιγμα σε χώρο εργασίας:
+Preferences	AnnotationWindow		Προτιμήσεις
+Restore page number	AnnotationWindow		Επαναφορά αριθμού σελίδας
+Restore window position and size	AnnotationWindow		Επαναφορά θέσης και μεγέθους παραθύρου
+Selection rectangle	AnnotationWindow		Ορθογώνιο επιλογής
+Show document view only	AnnotationWindow		Εμφάνιση μόνο προβολής εγγράφου
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Εμφάνιση μπαρών εργαλείων, κατάστασης και κύλισης
+Size:	AnnotationWindow		Μέγεθος
+Stroked rectangle	AnnotationWindow		Περιγεγραμμένο ορθογώνιο
+System fonts	AnnotationWindow		Γραμματοσειρές συστήματος
+Title:	AnnotationWindow		Τίτλος:
+User fonts	AnnotationWindow		Γραμματοσειρές χρήστη
+Will take effect at next program launch.	AnnotationWindow		Θα εφαρμοστεί στην επόμενη έναρξη του προγράμματος.
+Alpha	BepdfApplication		Alpha
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	Το BePDF είναι βασισμένο στο XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: Σφάλμα ανοίγματος αρχείου!
+Beta	BepdfApplication		Beta
+Close	BepdfApplication		Κλείσιμο
+Development	BepdfApplication		Έκδοση ανάπτυξης
+Error	BepdfApplication		Σφάλμα
+Final	BepdfApplication		Τελική έκδοση
+Gamma	BepdfApplication		Γάμμα έκδοση
+Golden Master	BepdfApplication		Χρυσή έκδοση
+Unknown	BepdfApplication		Άγνωστη έκδοση
+Version	BepdfApplication		Έκδοση
+Auto open	TraceWindow		Αυτόματο άνοιγμα
+Clear	TraceWindow		Καθάρισμα
+Error messages	TraceWindow		Μηνύματα σφαλμάτων
+Floating	TraceWindow		Αιωρούμενη
+BePDF status	StatusWindow		Κατάσταση του BePDF
+Enter Password	PasswordWindow		Εισάγετε κωδικό πρόσβασης
+OK	PasswordWindow		Εντάξει
+Owner password	PasswordWindow		Κωδικός πρόσβασης κατόχου
+User password	PasswordWindow		Κωδικός πρόσβασης χρήστη
+Find	FindTextWindow		Αναζήτηση
+Find text	FindTextWindow		Αναζήτηση κειμένου
+Find: 	FindTextWindow		Αναζήτηση:
+Ignore case	FindTextWindow		Μη διάκριση πεζών/κεφαλαίων
+Options	FindTextWindow		Ρυθμίσεις
+Page:	FindTextWindow		Σελίδα:
+Page: %d	FindTextWindow		Σελίδα: %d
+Search backwards	FindTextWindow		Ανάποδη αναζήτηση
+Stop	FindTextWindow		Σταμάτημα
+OK	PDFSearch		Εντάξει
+Search string not found.	PDFSearch		Η αναζητούμενη συμβολοσειρά δεν βρέθηκε.

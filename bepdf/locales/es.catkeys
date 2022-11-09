@@ -10,7 +10,7 @@ Max. printer resolution	PrintSettingsWindow		Resolución de impresora max.
 Mode	PrintSettingsWindow		Modo
 Normal	PrintSettingsWindow		Normal
 Odd pages	PrintSettingsWindow		Páginas impares
-OK	PrintSettingsWindow		OK
+OK	PrintSettingsWindow		Aceptar
 Order	PrintSettingsWindow		Orden
 Page	PrintSettingsWindow		Página
 Pages	PrintSettingsWindow		Páginas
@@ -20,11 +20,11 @@ Reverse	PrintSettingsWindow		Invertir
 Rotation	PrintSettingsWindow		Rotación
 Width: 	PrintSettingsWindow		Anchura: 
 Wrong parameter!	PrintSettingsWindow		Parámetro incorrecto!
-Zoom (%)	PrintSettingsWindow		Zoom (%)
-Zoom must be between 25 and 400!	PrintSettingsWindow		El zoom debe estar entre 25 y 400!
-[internal link]	PDFView		[Enlace interno]
+Zoom (%)	PrintSettingsWindow		Aumento (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		El nivel de aumento debe estar entre 25 y 400.
+[internal link]	PDFView		[enlace interno]
 [link type 'movie' not supported]	PDFView		[enlace tipo 'animación' no soportado]
-[unknown link]	PDFView		[Enlace desconocido]
+[unknown link]	PDFView		[enlace desconocido]
 Annotation	PDFView		Anotación
 BePDF reading file: 	PDFView		BePDF leyendo archivo: 
 BePDF: Launch	PDFView		BePDF: Lanzar
@@ -35,19 +35,19 @@ Edit	PDFView		Editar
 Execute the command:	PDFView		Ejecutar el comando:
 Go to page %d	PDFView		Ir a página %d
 Leave annotation editing mode	PDFView		Abandonar modo de edición de anotaciones
-OK	PDFView		OK
+OK	PDFView		Aceptar
 Open in new window	PDFView		Abrir en nueva ventana
 Properties	PDFView		Propiedades
-Save file attachment as…	PDFView		Guardando fichero adjunto como...
-Saving file attachment:	PDFView		Guardando fichero adjunto:
+Save file attachment as…	PDFView		Guardando adjunto como...
+Saving file attachment:	PDFView		Guardando adjunto:
 Unknown link action type: '%s'	PDFView		Enlace de acción desconocido tipo: '%s'
-<empty>	OutlinesWindow		<vacio>
+<empty>	OutlinesWindow		<vacío>
 Document	OutlinesWindow		Documento
 Edit title for bookmark	OutlinesWindow		Editar título del marcador
 No title	OutlinesWindow		Sin título
-OK	OutlinesWindow		OK
-User defined	OutlinesWindow		Definido por usuario
-<empty>	AttachmentView		<vacio>
+OK	OutlinesWindow		Aceptar
+User defined	OutlinesWindow		Definido por el usuario
+<empty>	AttachmentView		<vacío>
 Description	AttachmentView		Descripción
 File name	AttachmentView		Nombre de archivo
 Save attachment(s) as	AttachmentView		Guardar adjunto(s) como
@@ -71,7 +71,7 @@ Denied	FileInfoWindow		Denegado
 Document	FileInfoWindow		Documento
 Editing:	FileInfoWindow		Editando:
 Embedded name	FileInfoWindow		Nombre embebido
-Encrypted:	FileInfoWindow		Encriptado:
+Encrypted:	FileInfoWindow		Cifrado:
 File info	FileInfoWindow		info de archivo
 Filename:	FileInfoWindow		Nombre de archivo:
 Fonts of this page	FileInfoWindow		Fuentes de esta página
@@ -90,7 +90,7 @@ Title:	FileInfoWindow		Título:
 Type	FileInfoWindow		Tipo
 Version:	FileInfoWindow		Versión:
 Yes	FileInfoWindow		Sí
-About BePDF…	PDFWindow		Sobre BePDF…
+About BePDF…	PDFWindow		Acerca de BePDF…
 Add	PDFWindow		Insertar
 Add circle annotation	PDFWindow		Añadir círculo de anotación
 Add comment text annotation	PDFWindow		Insertar anotación de comentario de texto
@@ -120,17 +120,17 @@ Add widget annotation	PDFWindow		Insertar artilugio de anotación
 Back	PDFWindow		Atrás
 Back in page history list	PDFWindow		Atrás en el historial de página
 Bookmark	PDFWindow		Marcador
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		No se puede sobre escribir un PDF que está actualmetne en uso! Por favor, elige otro nombre de archivo.
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		No se puede sobre escribir un PDF que está actualmetne en uso. Por favor, elige otro nombre de archivo.
 Close	PDFWindow		Cerrar
 Copy selection	PDFWindow		Copiar selección
-Could not write PDF file!	PDFWindow		No se puede escribir el archivo PDF!
-Custom zoom factor (%d%%)	PDFWindow		Zoom personalizado (%d%%)
+Could not write PDF file!	PDFWindow		No se puede escribir el archivo PDF.
+Custom zoom factor (%d%%)	PDFWindow		Aumento personalizado (%d%%)
 Delete	PDFWindow		Borrar
 Edit	PDFWindow		Editar
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		La edición de anotaciones en un PDF encriptado no está soportada todavía!
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Aún no hay soporte para la edición de anotaciones en PDF cifrados.
 English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Español.pdf
-File	PDFWindow		Fichero
-File info…	PDFWindow		Info de arhivo…
+File	PDFWindow		Archivo
+File info…	PDFWindow		Información de archivo…
 Find	PDFWindow		Buscar
 Find next	PDFWindow		Buscar siguiente
 Find next…	PDFWindow		Buscar siguiente…
@@ -156,15 +156,15 @@ Last	PDFWindow		Último
 Leave annotation editing mode	PDFWindow		Abandonar modo edición de anotaciones
 Next	PDFWindow		Siguiente
 of %d	PDFWindow		de %d
-OK	PDFWindow		OK
-Online help…	PDFWindow		Ayuda online…
+OK	PDFWindow		Aceptar
+Online help…	PDFWindow		Ayuda en línea…
 Open file	PDFWindow		Abrir archivo
 Open in new window…	PDFWindow		Abrir en nueva ventana…
 Open…	PDFWindow		Abrir…
 Page	PDFWindow		Página
 Page %d	PDFWindow		Página %d
 Page setup…	PDFWindow		Configuración de página…
-PDF file successfully written!	PDFWindow		Archivo PDF escrito correctamente!
+PDF file successfully written!	PDFWindow		Archivo PDF escrito correctamente.
 Preferences…	PDFWindow		Preferencias…
 Previous	PDFWindow		Anterior
 Print	PDFWindow		Imprimir
@@ -173,7 +173,7 @@ Quit	PDFWindow		Abandonar
 Reload	PDFWindow		Recargar
 Reload file	PDFWindow		Recargar archivo
 Rotate clockwise	PDFWindow		Rotar en sentido horario
-Rotate counter-clockwise	PDFWindow		Rotar en sentido anti-horario
+Rotate counter-clockwise	PDFWindow		Rotar en sentido antihorario
 Rotation	PDFWindow		Rotación
 Save as…	PDFWindow		Guardar como…
 Save file as	PDFWindow		Guardar archivo como
@@ -189,11 +189,11 @@ Show error messages	PDFWindow		Mostrar mensajes de error
 Show help…	PDFWindow		Mostrar ayuda…
 Show page list	PDFWindow		Mostrar lista de páginas
 View	PDFWindow		Vista
-Visit homepage…	PDFWindow		Visitar homepage…
+Visit homepage…	PDFWindow		Visitar sitio web…
 Warning	PDFWindow		Aviso
-Zoom	PDFWindow		Zoom
-Zoom in	PDFWindow		Zoom +
-Zoom out	PDFWindow		Zoom -
+Zoom	PDFWindow		Aumento
+Zoom in	PDFWindow		Ampliar
+Zoom out	PDFWindow		Alejar
 Align:	AnnotationWindow		Alinear:
 Annotation	AnnotationWindow		Anotación
 Asian fonts	AnnotationWindow		Fuentes asiáticas
@@ -220,15 +220,15 @@ System fonts	AnnotationWindow		Fuentes de sistema
 Title:	AnnotationWindow		Título:
 User fonts	AnnotationWindow		Fuentes de usuario
 Will take effect at next program launch.	AnnotationWindow		Se aplicará en el próximo arranque del programa.
-Alpha	BepdfApplication		Alpha
+Alpha	BepdfApplication		Alfa
 BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF está basado en XPDF %s, %s.
-BePDF: Error opening file!	BepdfApplication		BePDF: Error abriendo archivo!
+BePDF: Error opening file!	BepdfApplication		BePDF: Error al abrir archivo
 Beta	BepdfApplication		Beta
 Close	BepdfApplication		Cerrar
 Development	BepdfApplication		Desarrollo
 Error	BepdfApplication		Error
 Final	BepdfApplication		Final
-Gamma	BepdfApplication		Gamma
+Gamma	BepdfApplication		Gama
 Golden Master	BepdfApplication		Versión final
 Unknown	BepdfApplication		Desconocido
 Version	BepdfApplication		Versión
@@ -237,10 +237,10 @@ Clear	TraceWindow		Limpiar
 Error messages	TraceWindow		Mensajes de error
 Floating	TraceWindow		Flotante
 BePDF status	StatusWindow		Estado de BePDF
-Enter Password	PasswordWindow		Introducir Password
-OK	PasswordWindow		OK
-Owner password	PasswordWindow		Password de propietario
-User password	PasswordWindow		Password de usuario
+Enter Password	PasswordWindow		Introducir contraseña
+OK	PasswordWindow		Aceptar
+Owner password	PasswordWindow		Contaseña del propietario
+User password	PasswordWindow		Contraseña del usuario
 Find	FindTextWindow		Buscar
 Find text	FindTextWindow		Buscar texto
 Find: 	FindTextWindow		Buscar: 
@@ -250,5 +250,5 @@ Page:	FindTextWindow		Página:
 Page: %d	FindTextWindow		Página: %d
 Search backwards	FindTextWindow		Buscar hacia atrás
 Stop	FindTextWindow		Detener
-OK	PDFSearch		OK
-Search string not found.	PDFSearch		Cadena de búsqueda no encontrada
+OK	PDFSearch		Aceptar
+Search string not found.	PDFSearch		Términos de búsqueda no encontrados
