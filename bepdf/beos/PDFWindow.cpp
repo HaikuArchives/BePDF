@@ -576,7 +576,7 @@ BMenuBar* PDFWindow::BuildMenu()
 			.AddItem(B_TRANSLATE("Select none"), SELECT_NONE_CMD, 'A', B_SHIFT_KEY)
 			.AddSeparator()
 			.AddItem(mPreferencesItem = new BMenuItem(B_TRANSLATE("Preferences" B_UTF8_ELLIPSIS),
-										new BMessage(PREFERENCES_FILE_CMD), 'P', B_SHIFT_KEY))
+										new BMessage(PREFERENCES_FILE_CMD), ','))
 		.End()
 
 		.AddMenu(B_TRANSLATE("View"))
