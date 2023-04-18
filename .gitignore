@@ -8,4 +8,5 @@ Deutsch.pdf
 Español.pdf
 Italiano.pdf
 dist/BePDF
+dist/docs/*
 xpdf/libxpdf.a
