@@ -1,4 +1,4 @@
-1	Greek (Modern)	application/x-vnd.mp-xpdf	1765081836
+1	Greek (Modern)	application/x-vnd.mp-xpdf	2108883333
  in	PrintSettingsWindow		σε
 All pages	PrintSettingsWindow		Όλες οι σελίδες
 Color	PrintSettingsWindow		Χρώμα
@@ -128,7 +128,7 @@ Custom zoom factor (%d%%)	PDFWindow		Προσαρμοσμένο μέτρο με�
 Delete	PDFWindow		Διαγραφή
 Edit	PDFWindow		Επεξεργασία
 Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Η επεξεργασία επισημειώσεων δεν είναι ακόμα διαθέσιμη για τα κρυπτογραφημένα αρχεία PDF!
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+English	PDFWindow	Replace with the name of the help document folder, if there is one for your language (currently: Deutsch, Español or Italiano)	English
 File	PDFWindow		Αρχείο
 File info…	PDFWindow		Πληροφορίες αρχείου...
 Find	PDFWindow		Αναζήτηση

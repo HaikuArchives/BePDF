@@ -1,0 +1,254 @@
+1	Chinese (simplified)	application/x-vnd.mp-xpdf	2108883333
+ in	PrintSettingsWindow		 英寸
+All pages	PrintSettingsWindow		所有页面
+Color	PrintSettingsWindow		彩色
+DPI	PrintSettingsWindow		DPI
+Even pages	PrintSettingsWindow		偶数页
+Gray scale	PrintSettingsWindow		灰度
+Height: 	PrintSettingsWindow		高度：
+Max. printer resolution	PrintSettingsWindow		打印机最大分辨率
+Mode	PrintSettingsWindow		模式
+Normal	PrintSettingsWindow		正常
+Odd pages	PrintSettingsWindow		奇数页
+OK	PrintSettingsWindow		确定
+Order	PrintSettingsWindow		顺序
+Page	PrintSettingsWindow		页
+Pages	PrintSettingsWindow		页面
+Print	PrintSettingsWindow		打印
+Print settings	PrintSettingsWindow		打印设置
+Reverse	PrintSettingsWindow		倒序
+Rotation	PrintSettingsWindow		旋转
+Width: 	PrintSettingsWindow		宽度：
+Wrong parameter!	PrintSettingsWindow		参数错误！
+Zoom (%)	PrintSettingsWindow		缩放 (%)
+Zoom must be between 25 and 400!	PrintSettingsWindow		缩放值必须在 25 到 400 之间！
+[internal link]	PDFView		[内部链接]
+[link type 'movie' not supported]	PDFView		[链接类型“movie”不受支持]
+[unknown link]	PDFView		[未知链接]
+Annotation	PDFView		注释
+BePDF reading file: 	PDFView		BePDF 正在读取文件：
+BePDF: Launch	PDFView		
+Cancel	PDFView		取消
+Copy link	PDFView		复制链接
+Delete	PDFView		删除
+Edit	PDFView		编辑
+Execute the command:	PDFView		执行以下命令：
+Go to page %d	PDFView		转到第 %d 页
+Leave annotation editing mode	PDFView		离开注释编辑模式
+OK	PDFView		确定
+Open in new window	PDFView		在新窗口打开
+Properties	PDFView		属性
+Save file attachment as…	PDFView		将文件附件另存为…
+Saving file attachment:	PDFView		保存文件附件：
+Unknown link action type: '%s'	PDFView		未知链接操作类型：'%s'
+<empty>	OutlinesWindow		<空>
+Document	OutlinesWindow		文档
+Edit title for bookmark	OutlinesWindow		编辑书签标题
+No title	OutlinesWindow		无标题
+OK	OutlinesWindow		确定
+User defined	OutlinesWindow		用户定义
+<empty>	AttachmentView		<空>
+Description	AttachmentView		描述
+File name	AttachmentView		文件名称
+Save attachment(s) as	AttachmentView		附件另存为
+Save selected attachment to file	AttachmentView		将所选附件保存到文件
+Save selected attachments into directory	AttachmentView		将所选附件保存到目录
+Saving attachment(s):	AttachmentView		保存附件：
+Abort	PrintingProgressWindow		中止
+BePDF printing	PrintingProgressWindow		BePDF 打印中
+BePDF printing document: 	PrintingProgressWindow		BePDF 正在打印文档: 
+Page:	PrintingProgressWindow		页面:
+Page: %d	PrintingProgressWindow		页面: %d
+Stop	PrintingProgressWindow		停止
+Abort	FileInfoWindow		中止
+Allowed	FileInfoWindow		允许
+Annotations:	FileInfoWindow		注释：
+Author:	FileInfoWindow		作者：
+Copy & paste:	FileInfoWindow		复制和粘贴：
+Created:	FileInfoWindow		创建时间：
+Creator:	FileInfoWindow		制作者：
+Denied	FileInfoWindow		拒绝
+Document	FileInfoWindow		文档
+Editing:	FileInfoWindow		编辑：
+Embedded name	FileInfoWindow		内嵌名称
+Encrypted:	FileInfoWindow		加密：
+File info	FileInfoWindow		文件信息
+Filename:	FileInfoWindow		文件名：
+Fonts of this page	FileInfoWindow		页面字体
+Keywords:	FileInfoWindow		关键词：
+Linearized:	FileInfoWindow		线性化：
+Modified:	FileInfoWindow		修改日期:
+Name	FileInfoWindow		名称
+No	FileInfoWindow		无
+Path:	FileInfoWindow		路径：
+Printing:	FileInfoWindow		打印：
+Producer:	FileInfoWindow		制作：
+Security	FileInfoWindow		安全
+Show all fonts	FileInfoWindow		显示所有字体
+Subject:	FileInfoWindow		主题：
+Title:	FileInfoWindow		标题：
+Type	FileInfoWindow		类型
+Version:	FileInfoWindow		版本：
+Yes	FileInfoWindow		是
+About BePDF…	PDFWindow		关于 BePDF…
+Add	PDFWindow		添加
+Add circle annotation	PDFWindow		添加圆型注释
+Add comment text annotation	PDFWindow		添加注解文字注释
+Add file attachment annotation	PDFWindow		添加文件附件注释
+Add free text annotation	PDFWindow		添加自由文本标注
+Add help text annotation	PDFWindow		添加帮助文本标注
+Add highlight annotation	PDFWindow		添加高亮标注
+Add ink annotation	PDFWindow		添加墨水标注
+Add insert text annotation	PDFWindow		添加插入文本标注
+Add key text annotation	PDFWindow		添加关键文本标注
+Add line annotation	PDFWindow		添加行标注
+Add link annotation	PDFWindow		添加链接标注
+Add movie annotation	PDFWindow		添加电影标注
+Add new paragraph text annotation	PDFWindow		添加新段落文本标注
+Add note text annotation	PDFWindow		添加批注文本标注
+Add paragraph text annotation	PDFWindow		添加段落文本标注
+Add popup annotation	PDFWindow		添加弹出标注
+Add printer mark annotation	PDFWindow		添加打印机标记标注
+Add sound annotation	PDFWindow		添加声音标注
+Add square annotation	PDFWindow		添加正方形标注
+Add squiggly annotation	PDFWindow		添加波浪线标注
+Add stamp annotation	PDFWindow		添加戳记批注
+Add strikeout annotation	PDFWindow		添加删除线批注
+Add trapnet annotation	PDFWindow		Add trapnet annotation
+Add underline annotation	PDFWindow		添加下划线标注
+Add widget annotation	PDFWindow		添加小部件标注
+Back	PDFWindow		回退
+Back in page history list	PDFWindow		在页面历史记录列表中回退
+Bookmark	PDFWindow		书签
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		无法覆盖当前以 BePDF 格式打开的 PDF 文件！请选择其他文件名。
+Close	PDFWindow		关闭
+Copy selection	PDFWindow		复制所选
+Could not write PDF file!	PDFWindow		无法写入 PDF 文件!
+Custom zoom factor (%d%%)	PDFWindow		自定义缩放 (%d%%)
+Delete	PDFWindow		删除
+Edit	PDFWindow		编辑
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		暂不支持在加密的 PDF 文件中编辑注释！
+English	PDFWindow	Replace with the name of the help document folder, if there is one for your language (currently: Deutsch, Español or Italiano)	English
+File	PDFWindow		文件
+File info…	PDFWindow		文件信息…
+Find	PDFWindow		查找
+Find next	PDFWindow		查找下一个
+Find next…	PDFWindow		查找下一个…
+Find…	PDFWindow		查找…
+First	PDFWindow		首页
+Fit to page	PDFWindow		适合页面
+Fit to page width	PDFWindow		适合页面宽度
+Forward	PDFWindow		前进
+Forward in page history list	PDFWindow		在页面历史列表中前进
+Fullscreen	PDFWindow		全屏
+Fullscreen mode	PDFWindow		全屏模式
+Go back 10 pages	PDFWindow		后退 10 页
+Go forward 10 pages	PDFWindow		前进 10 页
+Go to end of document	PDFWindow		转至文档末尾
+Go to next page	PDFWindow		转至下一页
+Go to previous page	PDFWindow		转至上一页
+Go to start of document	PDFWindow		转至文档始页
+Help	PDFWindow		帮助
+Hide side bar	PDFWindow		隐藏侧边栏
+Issue tracker…	PDFWindow		问题追踪器…
+Jump to page	PDFWindow		跳转至页面
+Last	PDFWindow		末页
+Leave annotation editing mode	PDFWindow		离开注释编辑模式
+Next	PDFWindow		下一页
+of %d	PDFWindow		共计 %d
+OK	PDFWindow		确定
+Online help…	PDFWindow		在线帮助…
+Open file	PDFWindow		打开文件
+Open in new window…	PDFWindow		在新窗口打开…
+Open…	PDFWindow		打开…
+Page	PDFWindow		页
+Page %d	PDFWindow		页面 %d
+Page setup…	PDFWindow		页面设置…
+PDF file successfully written!	PDFWindow		PDF文件写入成功!
+Preferences…	PDFWindow		首选项…
+Previous	PDFWindow		上一页
+Print	PDFWindow		打印
+Print…	PDFWindow		打印…
+Quit	PDFWindow		退出
+Reload	PDFWindow		重新加载
+Reload file	PDFWindow		重新加载文件
+Rotate clockwise	PDFWindow		顺时针旋转
+Rotate counter-clockwise	PDFWindow		逆时针旋转
+Rotation	PDFWindow		旋转
+Save as…	PDFWindow		另存为…
+Save file as	PDFWindow		另存文件为
+Saving copy of PDF file:	PDFWindow		保存 PDF 文件副本：
+Search	PDFWindow		搜索
+Select all	PDFWindow		全选
+Select none	PDFWindow		全不选
+Show annotation tool bar	PDFWindow		显示注释工具栏
+Show annotation toolbar	PDFWindow		显示注释工具栏
+Show attachments	PDFWindow		显示附件
+Show bookmarks	PDFWindow		显示书签
+Show error messages	PDFWindow		显示错误信息
+Show help…	PDFWindow		显示帮助…
+Show page list	PDFWindow		显示页面列表
+View	PDFWindow		视图
+Visit homepage…	PDFWindow		访问主页…
+Warning	PDFWindow		警告
+Zoom	PDFWindow		缩放
+Zoom in	PDFWindow		放大
+Zoom out	PDFWindow		缩小
+Align:	AnnotationWindow		对齐：
+Annotation	AnnotationWindow		注释
+Asian fonts	AnnotationWindow		亚洲字体
+Author	AnnotationWindow		作者
+Automatic	AnnotationWindow		自动
+current	AnnotationWindow		当前
+Date:	AnnotationWindow		日期：
+Display	AnnotationWindow		显示
+Document	AnnotationWindow		文档
+Filled rectangle	AnnotationWindow		Filled rectangle
+Font:	AnnotationWindow		字体:
+Fullscreen mode	AnnotationWindow		全屏模式
+Invert vertical mouse scrolling	AnnotationWindow		反转鼠标上下拖动
+Open in workspace:	AnnotationWindow		在工作区中打开：
+Preferences	AnnotationWindow		首选项
+Restore page number	AnnotationWindow		恢复页码
+Restore window position and size	AnnotationWindow		恢复窗口位置和大小
+Selection rectangle	AnnotationWindow		Selection rectangle
+Show document view only	AnnotationWindow		仅显示文档视图
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		显示工具栏、状态栏和滚动条
+Size:	AnnotationWindow		大小:
+Stroked rectangle	AnnotationWindow		Stroked rectangle
+System fonts	AnnotationWindow		系统字体
+Title:	AnnotationWindow		标题：
+User fonts	AnnotationWindow		用户字体
+Will take effect at next program launch.	AnnotationWindow		将在程序下一次启动时生效。
+Alpha	BepdfApplication		内测版
+BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF 基于 XPDF %s, %s.
+BePDF: Error opening file!	BepdfApplication		BePDF: 打开文件出错！
+Beta	BepdfApplication		公测版
+Close	BepdfApplication		关闭
+Development	BepdfApplication		开发版
+Error	BepdfApplication		错误
+Final	BepdfApplication		正式版
+Gamma	BepdfApplication		候选版
+Golden Master	BepdfApplication		最终测试版
+Unknown	BepdfApplication		未知
+Version	BepdfApplication		版本
+Auto open	TraceWindow		自动打开
+Clear	TraceWindow		清除
+Error messages	TraceWindow		错误信息
+Floating	TraceWindow		浮动
+BePDF status	StatusWindow		BePDF 状态
+Enter Password	PasswordWindow		输入密码
+OK	PasswordWindow		确定
+Owner password	PasswordWindow		所有者密码
+User password	PasswordWindow		用户密码
+Find	FindTextWindow		查找
+Find text	FindTextWindow		查找文本
+Find: 	FindTextWindow		查找：
+Ignore case	FindTextWindow		忽略大小写
+Options	FindTextWindow		选项
+Page:	FindTextWindow		页：
+Page: %d	FindTextWindow		页： %d
+Search backwards	FindTextWindow		逆向搜索
+Stop	FindTextWindow		停止
+OK	PDFSearch		确定
+Search string not found.	PDFSearch		未找到搜索字符串。

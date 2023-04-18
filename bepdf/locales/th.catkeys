@@ -1,4 +1,4 @@
-1	Thai	application/x-vnd.mp-xpdf	1765081836
+1	Thai	application/x-vnd.mp-xpdf	2108883333
  in	PrintSettingsWindow		ใน
 All pages	PrintSettingsWindow		ทุกหน้า
 Color	PrintSettingsWindow		สี
@@ -128,7 +128,7 @@ Custom zoom factor (%d%%)	PDFWindow		ปัจจัยการซูมที�
 Delete	PDFWindow		ลบ
 Edit	PDFWindow		แก้ไข
 Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		การแก้ไขคำอธิบายประกอบในไฟล์ PDF ที่เข้ารหัสยังไม่ได้รับการสนับสนุน!
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	Thai.pdf
+English	PDFWindow	Replace with the name of the help document folder, if there is one for your language (currently: Deutsch, Español or Italiano)	English
 File	PDFWindow		ไฟล์
 File info…	PDFWindow		ข้อมูลไฟล์
 Find	PDFWindow		ค้นหา

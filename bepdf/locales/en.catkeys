@@ -1,4 +1,4 @@
-1	English	application/x-vnd.mp-xpdf	1765081836
+1	English	application/x-vnd.mp-xpdf	2108883333
 Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		Editing of annotations in an encrypted PDF file isn't supported yet!
 Selection rectangle	AnnotationWindow		Selection rectangle
 About BePDF…	PDFWindow		About BePDF…
@@ -47,6 +47,7 @@ Hide side bar	PDFWindow		Hide side bar
 Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.
 Invert vertical mouse scrolling	AnnotationWindow		Invert vertical mouse scrolling
 Page setup…	PDFWindow		Page setup…
+English	PDFWindow	Replace with the name of the help document folder, if there is one for your language (currently: Deutsch, Español or Italiano)	English
 Add ink annotation	PDFWindow		Add ink annotation
 Stroked rectangle	AnnotationWindow		Stroked rectangle
 Find: 	FindTextWindow		Find: 
@@ -232,7 +233,6 @@ Copy & paste:	FileInfoWindow		Copy & paste:
 Page %d	PDFWindow		Page %d
 Edit title for bookmark	OutlinesWindow		Edit title for bookmark
 Version:	FileInfoWindow		Version:
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
 Automatic	AnnotationWindow		Automatic
 Title:	FileInfoWindow		Title:
 Warning	PDFWindow		Warning

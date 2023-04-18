@@ -1,4 +1,4 @@
-1	French	application/x-vnd.mp-xpdf	1765081836
+1	French	application/x-vnd.mp-xpdf	2108883333
  in	PrintSettingsWindow		in
 All pages	PrintSettingsWindow		Toutes les pages
 Color	PrintSettingsWindow		Couleur
@@ -6,16 +6,16 @@ DPI	PrintSettingsWindow		Résolution
 Even pages	PrintSettingsWindow		Pages paires
 Gray scale	PrintSettingsWindow		Échelle de gris
 Height: 	PrintSettingsWindow		Hauteur :
-Max. printer resolution	PrintSettingsWindow		Résolution max. de l'imprimante
+Max. printer resolution	PrintSettingsWindow		Résolution max. de l’imprimante
 Mode	PrintSettingsWindow		Mode
 Normal	PrintSettingsWindow		Normal
 Odd pages	PrintSettingsWindow		Pages impaires
-OK	PrintSettingsWindow		D'accord
+OK	PrintSettingsWindow		D’accord
 Order	PrintSettingsWindow		Ordre
 Page	PrintSettingsWindow		Page
 Pages	PrintSettingsWindow		Pages
 Print	PrintSettingsWindow		Imprimer
-Print settings	PrintSettingsWindow		Paramètres d'impression
+Print settings	PrintSettingsWindow		Paramètres d’impression
 Reverse	PrintSettingsWindow		Inverser
 Rotation	PrintSettingsWindow		Rotation
 Width: 	PrintSettingsWindow		Largeur :
@@ -23,7 +23,7 @@ Wrong parameter!	PrintSettingsWindow		Paramètre erroné !
 Zoom (%)	PrintSettingsWindow		Zoom (%)
 Zoom must be between 25 and 400!	PrintSettingsWindow		Le zoom doit être entre 25 et 400 !
 [internal link]	PDFView		[lien interne]
-[link type 'movie' not supported]	PDFView		[lien de type 'vidéo' non supporté]
+[link type 'movie' not supported]	PDFView		[lien de type « vidéo » non supporté]
 [unknown link]	PDFView		[lien inconnu]
 Annotation	PDFView		Annotation
 BePDF reading file: 	PDFView		BePDF lit le fichier :
@@ -34,19 +34,19 @@ Delete	PDFView		Effacer
 Edit	PDFView		Éditer
 Execute the command:	PDFView		Exécuter la commande :
 Go to page %d	PDFView		Aller à la page %d
-Leave annotation editing mode	PDFView		Quitter le mode édition d'annotation
-OK	PDFView		D'accord
+Leave annotation editing mode	PDFView		Quitter le mode édition d’annotation
+OK	PDFView		D’accord
 Open in new window	PDFView		Ouvrir dans une nouvelle fenêtre
 Properties	PDFView		Propriétés
 Save file attachment as…	PDFView		Enregistrer le fichier joint sous…
 Saving file attachment:	PDFView		Enregistrement du fichier joint :
-Unknown link action type: '%s'	PDFView		Type de lien inconnu : '%s'
+Unknown link action type: '%s'	PDFView		Type d’action inconnu pour le lien : « %s »
 <empty>	OutlinesWindow		<vide>
 Document	OutlinesWindow		Document
 Edit title for bookmark	OutlinesWindow		Éditer le titre pour le marque-page
 No title	OutlinesWindow		Pas de titre
-OK	OutlinesWindow		D'accord
-User defined	OutlinesWindow		Défini par l'utilisateur
+OK	OutlinesWindow		D’accord
+User defined	OutlinesWindow		Défini par l’utilisateur
 <empty>	AttachmentView		<vide>
 Description	AttachmentView		Description
 File name	AttachmentView		Nom de fichier
@@ -55,7 +55,7 @@ Save selected attachment to file	AttachmentView		Enregistrer la pièce jointe s�
 Save selected attachments into directory	AttachmentView		Enregistrer les pièces jointes sélectionnées dans le répertoire
 Saving attachment(s):	AttachmentView		Enregistrer les pièces jointes :
 Abort	PrintingProgressWindow		Abandon
-BePDF printing	PrintingProgressWindow		BePDF en cours d'impression
+BePDF printing	PrintingProgressWindow		BePDF en cours d’impression
 BePDF printing document: 	PrintingProgressWindow		BePDF imprime le document :
 Page:	PrintingProgressWindow		Page :
 Page: %d	PrintingProgressWindow		Page : %d
@@ -96,7 +96,7 @@ Add circle annotation	PDFWindow		Ajouter une annotation circulaire
 Add comment text annotation	PDFWindow		Ajouter une annotation de type commentaire
 Add file attachment annotation	PDFWindow		Ajouté une annotation de type pièce jointe
 Add free text annotation	PDFWindow		Ajouter une annotation libre
-Add help text annotation	PDFWindow		Ajouter une annotation d'aide
+Add help text annotation	PDFWindow		Ajouter une annotation d’aide
 Add highlight annotation	PDFWindow		Ajouter une annotation de surlignage
 Add ink annotation	PDFWindow		Ajouter une annotation en écriture cursive
 Add insert text annotation	PDFWindow		Ajouter une annotation de type texte inséré
@@ -118,28 +118,28 @@ Add trapnet annotation	PDFWindow		Ajouter une annotation filet
 Add underline annotation	PDFWindow		Ajouter une annotation soulignée
 Add widget annotation	PDFWindow		Ajouter une annotation gadget
 Back	PDFWindow		Retour
-Back in page history list	PDFWindow		En arrière dans l'historique des pages
+Back in page history list	PDFWindow		En arrière dans l’historique des pages
 Bookmark	PDFWindow		Marque-page
-Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Impossible d'écraser un fichier PDF actuellement ouvert dans BePDF ! Veuillez choisir un autre nom de fichier.
+Can not overwrite a PDF file that's currently opened in BePDF! Please choose another file name.	PDFWindow		Impossible d’écraser un fichier PDF actuellement ouvert dans BePDF ! Veuillez choisir un autre nom de fichier.
 Close	PDFWindow		Fermer
 Copy selection	PDFWindow		Copier la sélection
-Could not write PDF file!	PDFWindow		Impossible d'écrire le fichier PDF !
+Could not write PDF file!	PDFWindow		Impossible d’écrire le fichier PDF !
 Custom zoom factor (%d%%)	PDFWindow		Facteur de zoom personnalisé (%d%%)
 Delete	PDFWindow		Effacer
 Edit	PDFWindow		Éditer
-Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		L'édition d'annotations dans un fichier PDF encrypté n'est pas encore supportée !
-English.pdf	PDFWindow	Replace with the PDF name of the help document, if there is one for your language.	English.pdf
+Editing of annotations in an encrypted PDF file isn't supported yet!	PDFWindow		L’édition d’annotations dans un fichier PDF encrypté n’est pas encore supportée !
+English	PDFWindow	Replace with the name of the help document folder, if there is one for your language (currently: Deutsch, Español or Italiano)	English
 File	PDFWindow		Fichier
 File info…	PDFWindow		Informations sur le fichier…
 Find	PDFWindow		Chercher
 Find next	PDFWindow		Chercher l’occurrence suivante
-Find next…	PDFWindow		Recherche de l'occurrence suivante…
+Find next…	PDFWindow		Recherche de l’occurrence suivante…
 Find…	PDFWindow		Recherche…
 First	PDFWindow		Première
 Fit to page	PDFWindow		Adapter à la page
 Fit to page width	PDFWindow		Adapter à la largeur de la page
 Forward	PDFWindow		Avancer
-Forward in page history list	PDFWindow		En avant dans l'historique des pages
+Forward in page history list	PDFWindow		En avant dans l’historique des pages
 Fullscreen	PDFWindow		Plein-écran
 Fullscreen mode	PDFWindow		Mode plein-écran
 Go back 10 pages	PDFWindow		Retourner en arrière de 10 pages
@@ -153,10 +153,10 @@ Hide side bar	PDFWindow		Cacher la barre latérale
 Issue tracker…	PDFWindow		Signaler un bug…
 Jump to page	PDFWindow		Sauter à la page
 Last	PDFWindow		Dernière
-Leave annotation editing mode	PDFWindow		Quitter le mode édition d'annotation
+Leave annotation editing mode	PDFWindow		Quitter le mode édition d’annotation
 Next	PDFWindow		Suivante
 of %d	PDFWindow		de %d
-OK	PDFWindow		D'accord
+OK	PDFWindow		D’accord
 Online help…	PDFWindow		Aide en ligne…
 Open file	PDFWindow		Ouvrir le fichier
 Open in new window…	PDFWindow		Ouvrir dans une nouvelle fenêtre…
@@ -177,16 +177,16 @@ Rotate counter-clockwise	PDFWindow		Rotation anti-horaire
 Rotation	PDFWindow		Rotation
 Save as…	PDFWindow		Enregistrer sous…
 Save file as	PDFWindow		Enregistrer le fichier sous
-Saving copy of PDF file:	PDFWindow		Enregistrement d'une copie du fichier PDF :
+Saving copy of PDF file:	PDFWindow		Enregistrement d’une copie du fichier PDF :
 Search	PDFWindow		Recherche
 Select all	PDFWindow		Sélectionner tout
 Select none	PDFWindow		Aucune sélection
-Show annotation tool bar	PDFWindow		Afficher la barre d'annotation
-Show annotation toolbar	PDFWindow		Afficher la barre d'annotation
+Show annotation tool bar	PDFWindow		Afficher la barre d’annotation
+Show annotation toolbar	PDFWindow		Afficher la barre d’annotation
 Show attachments	PDFWindow		Afficher les pièces jointes
 Show bookmarks	PDFWindow		Afficher les signets
-Show error messages	PDFWindow		Afficher les messages d'erreur
-Show help…	PDFWindow		Afficher l'aide…
+Show error messages	PDFWindow		Afficher les messages d’erreur
+Show help…	PDFWindow		Afficher l’aide…
 Show page list	PDFWindow		Afficher la liste des pages
 View	PDFWindow		Vue
 Visit homepage…	PDFWindow		Visiter le site web…
@@ -213,7 +213,7 @@ Restore page number	AnnotationWindow		Restaurer le numéro de page
 Restore window position and size	AnnotationWindow		Restaurer la dimension et la position de la fenêtre
 Selection rectangle	AnnotationWindow		Rectangle de sélection
 Show document view only	AnnotationWindow		Afficher la vue document seule
-Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Afficher également la barre d'outils, la barre de statut et les barres de défilement.
+Show toolbar, statusbar and scrollbars, too	AnnotationWindow		Afficher également la barre d’outils, la barre de statut et les barres de défilement.
 Size:	AnnotationWindow		Dimension :
 Stroked rectangle	AnnotationWindow		Rectangle vide
 System fonts	AnnotationWindow		Polices système
@@ -222,7 +222,7 @@ User fonts	AnnotationWindow		Polices utilisateur
 Will take effect at next program launch.	AnnotationWindow		Prendront effet au prochain lancement du programme.
 Alpha	BepdfApplication		Alpha
 BePDF is based on XPDF %s, %s.	BepdfApplication	XPDF version, copyright	BePDF est basé sur XPDF %s, %s.
-BePDF: Error opening file!	BepdfApplication		BePDF : Erreur à l'ouverture du fichier !
+BePDF: Error opening file!	BepdfApplication		BePDF : Erreur à l’ouverture du fichier !
 Beta	BepdfApplication		Bêta
 Close	BepdfApplication		Fermer
 Development	BepdfApplication		Développement
@@ -234,11 +234,11 @@ Unknown	BepdfApplication		Inconnu
 Version	BepdfApplication		Version
 Auto open	TraceWindow		Ouverture automatique
 Clear	TraceWindow		Nettoyer
-Error messages	TraceWindow		Messages d'erreur
+Error messages	TraceWindow		Messages d’erreur
 Floating	TraceWindow		Flottant
 BePDF status	StatusWindow		Statut de BePDF
 Enter Password	PasswordWindow		Entrer le mot de passe
-OK	PasswordWindow		D'accord
+OK	PasswordWindow		D’accord
 Owner password	PasswordWindow		Mot de passe propriétaire
 User password	PasswordWindow		Mot de passe utilisateur
 Find	FindTextWindow		Chercher
@@ -250,5 +250,5 @@ Page:	FindTextWindow		Page :
 Page: %d	FindTextWindow		Page : %d
 Search backwards	FindTextWindow		Rechercher en arrière
 Stop	FindTextWindow		Stopper
-OK	PDFSearch		D'accord
-Search string not found.	PDFSearch		Chaine recherchée non trouvée.
+OK	PDFSearch		D’accord
+Search string not found.	PDFSearch		Chaîne recherchée non trouvée.
