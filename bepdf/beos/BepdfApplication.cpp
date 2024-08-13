@@ -545,11 +545,20 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 	BString ownerPassword, userPassword;
 	const char *owner = NULL;
 	const char *user  = NULL;
+    int32 pageNum = 0;
+
 	if (B_OK == msg->FindString("ownerPassword", &ownerPassword)) {
 		owner = ownerPassword.String();
 	}
 	if (B_OK == msg->FindString("userPassword", &userPassword)) {
 		user = userPassword.String();
+	}
+    status_t result = msg->FindInt32(PAGE_NUM_MSG, &pageNum);
+    if (result != B_OK) {
+        if (result != B_NAME_NOT_FOUND) {
+            BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("BePDF: Error getting page number!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+            error->Go();
+        }
 	}
 
 	Initialize();
@@ -589,6 +598,12 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 				mWindow = win;
 				win->Show();
 			}
+            // jump to page if provided
+            if (pageNum != 0) {
+                mWindow->LockLooper();
+                mWindow->SetPage(pageNum);
+                mWindow->UnlockLooper();
+            }
 			// stop after first document
 			mGotSomething = true;
 			break;
