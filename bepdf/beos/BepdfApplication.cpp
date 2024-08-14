@@ -25,6 +25,7 @@
 
 #include <locale/Catalog.h>
 #include <be/app/Application.h>
+#include <be/storage/Entry.h>
 #include <be/storage/FilePanel.h>
 #include <be/app/Roster.h>
 #include <be/interface/Screen.h>
@@ -60,7 +61,7 @@ static const char * GPLCopyright =
     "\n\n"
     "This program is free software under the GNU GPL v2, or any later version.\n";
 
-static const char *PAGE_NUM_MSG = "bepdf:page_num";
+static const char *PAGE_NUM_MSG_KEY = "bepdf:page_num";
 
 static const char *settingsFilename = "BePDF";
 
@@ -528,24 +529,27 @@ bool BepdfApplication::QuitRequested() {
 /*
 	Opens everything.
 */
-void BepdfApplication::RefsReceived ( BMessage * msg )
+void BepdfApplication::RefsReceived(BMessage *msg)
 {
 	uint32 type;
 	int32 count;
-	int32 i;
-	entry_ref ref;
-
 	mReadyToQuit = false;
+    status_t result;
 
-	msg->GetInfo ( "refs", &type, &count );
-	if ( type != B_REF_TYPE ) {
-		return;
-	}
+	msg->GetInfo("refs", &type, &count);
+
+	if (type != B_REF_TYPE) {
+        BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("Invalid file reference received!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+        error->Go();
+
+        return;
+    }
 
 	BString ownerPassword, userPassword;
 	const char *owner = NULL;
 	const char *user  = NULL;
     int32 pageNum = 0;
+	entry_ref ref;
 
 	if (B_OK == msg->FindString("ownerPassword", &ownerPassword)) {
 		owner = ownerPassword.String();
@@ -553,17 +557,17 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 	if (B_OK == msg->FindString("userPassword", &userPassword)) {
 		user = userPassword.String();
 	}
-    status_t result = msg->FindInt32(PAGE_NUM_MSG, &pageNum);
+    result = msg->FindInt32(PAGE_NUM_MSG_KEY, &pageNum);
     if (result != B_OK) {
         if (result != B_NAME_NOT_FOUND) {
-            BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("BePDF: Error getting page number!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+            BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("Error getting page number!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
             error->Go();
         }
 	}
 
 	Initialize();
 
-	for ( i = --count ; i >= 0; i-- ) {
+	for (int32 i = --count ; i >= 0; i-- ) {
 		if ( msg->FindRef("refs", i, &ref ) == B_OK ) {
 			/*
 				Open the document...
@@ -688,7 +692,7 @@ BepdfApplication::ArgvReceived (int32 argc, char **argv)
 //	fprintf(errFile, "%s%s\n", pdfViewerCopyright, GPLCopyright);
 
 	BMessage msg(B_REFS_RECEIVED);
-	msg.AddInt32 (PAGE_NUM_MSG, pg);
+	msg.AddInt32 (PAGE_NUM_MSG_KEY, pg);
 	get_ref_for_path (argvCopy[1], &fileToOpen);
 	msg.AddRef ("refs", &fileToOpen);
 	PostMessage (&msg);
