@@ -283,7 +283,7 @@ public:
 	void SetZoomSize (float w, float h);
 	void SetZoom(int16 zoom);
 	void SetRotation(float rotation);
-	void SetPage(int16 page);
+	void SetPage(int32 page);
 
 	static void OpenPDF(const char* file);
 	static bool OpenPDFHelp(const char* name);
