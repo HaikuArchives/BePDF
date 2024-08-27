@@ -232,6 +232,9 @@ PDFView::MakeTitleString(BPath* path) {
 bool
 PDFView::OpenFile(entry_ref *ref, const char *ownerPassword, const char *userPassword, bool *encrypted) {
 	BEntry entry (ref, true);
+    if (!entry.Exists()) {
+        return false;
+    }
 	BPath path;
 	entry.GetPath (&path);
 
@@ -245,11 +248,8 @@ PDFView::OpenFile(entry_ref *ref, const char *ownerPassword, const char *userPas
 	UpdatePanelDirectory(&path);
 
 	bool ok = newDoc->isOk();
-	// xpdf 3.01 returns false even PDF file is password protected?!?
-	*encrypted = true; // newDoc->isEncrypted();
-//	fprintf(stderr, "ok %s encrypted %s\n",
-//		ok ? "yes" : "no",
-//		(*encrypted) ? "yes" : "no");
+	*encrypted = newDoc->isEncrypted();
+
 	if (ok) {
 		delete mDoc;
 		mDoc = newDoc;
