@@ -579,7 +579,10 @@ void BepdfApplication::RefsReceived ( BMessage * msg )
 				if (!encrypted) {
 			 		BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("BePDF: Error opening file!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 			 		error->Go();
-                    OpenFilePanel();
+
+                    if (mWindow == NULL) {  // fixme: always true even if a PDF window is already open!
+                        OpenFilePanel();
+                    }
 		 		} else {
 		 			new PasswordWindow(&ref, rect, this);
                 }
