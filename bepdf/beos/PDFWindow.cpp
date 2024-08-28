@@ -1069,22 +1069,31 @@ PDFWindow::MessageReceived(BMessage* message)
 		mMainView->MoveToPage (mMainView->GetNumPages());
 		break;
 	case GOTO_PAGE_CMD: {
-			status_t err;
-			BTextControl * control;
-			BControl * ptr;
+        status_t result;
+        BTextControl * control;
+        BControl * ptr;
 
-			err = message->FindPointer ("source", (void **)&ptr);
-			control = dynamic_cast <BTextControl *> (ptr);
-			if (err == B_OK && control != NULL) {
-				const char *txt = control->Text ();
-				page = atoi (txt);
-				mMainView->MoveToPage (page);
-				mMainView->MakeFocus();
-			} else {
-				/* ERROR */
-			}
-		}
+        result = message->FindPointer ("source", (void **)&ptr);
+        if (result == B_OK) {
+            control = dynamic_cast <BTextControl *> (ptr);
+            if (result == B_OK && control != NULL) {
+                const char *txt = control->Text ();
+                page = atoi (txt);
+            }
+        } else {    // may come from external source over page parameter
+            result = message->FindInt32("page", &page);
+            if (result == B_OK)
+                mMainView->WaitForPage();
+        }
+
+        if (result == B_OK) {
+            LockLooper();
+            mMainView->MoveToPage (page);
+            UnlockLooper();
+            mMainView->MakeFocus();
+        }
 		break;
+    }
 	case PAGE_SELECTED_CMD:
 		page = mPagesView->CurrentSelection(0) + 1;
 		mMainView->MoveToPage(page);

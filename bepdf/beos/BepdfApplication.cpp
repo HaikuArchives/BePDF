@@ -604,9 +604,9 @@ void BepdfApplication::RefsReceived(BMessage *msg)
 			}
             // jump to page if provided
             if (pageNum != 0) {
-                mWindow->LockLooper();
-                mWindow->SetPage(pageNum);
-                mWindow->UnlockLooper();
+                BMessage goToPageMsg(PDFWindow::GOTO_PAGE_CMD);
+                goToPageMsg.AddInt32("page", pageNum);
+                mWindow->MessageReceived(&goToPageMsg);
             }
 			// stop after first document
 			mGotSomething = true;
