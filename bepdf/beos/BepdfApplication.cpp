@@ -577,6 +577,7 @@ void BepdfApplication::RefsReceived(BMessage *msg)
 			BRect rect(mSettings->GetWindowRect());
 			bool ok;
 			bool encrypted = false;
+
 			if (mWindow == NULL) {
 				win = new PDFWindow(&ref, rect, owner, user, &encrypted);
 				ok = win->IsOk();
@@ -591,13 +592,15 @@ void BepdfApplication::RefsReceived(BMessage *msg)
 				if (!encrypted) {
 			 		BAlert *error = new BAlert(B_TRANSLATE("Error"), B_TRANSLATE("BePDF: Error opening file!"), B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
 			 		error->Go();
-		 		}
 
+                    if (mWindow == NULL) {  // fixme: always true even if a PDF window is already open!
+                        OpenFilePanel();
+                    }
+		 		} else {
+		 			new PasswordWindow(&ref, rect, this);
+                }
 		 		if (mWindow == NULL) delete win;
 
-		 		if (encrypted) {
-		 			new PasswordWindow(&ref, rect, this);
-		 		}
 			} else if (mWindow == NULL) {
 				mWindow = win;
 				win->Show();
