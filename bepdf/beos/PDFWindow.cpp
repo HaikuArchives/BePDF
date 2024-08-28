@@ -975,6 +975,10 @@ PDFWindow::SetZoomSize(float w, float h)
 void
 PDFWindow::SetPage(int32 page) {
 	char pageStr [64];
+    if (page <= 0) page = 1;
+    if (page > mPagesView->CountItems()) {
+        page = mPagesView->CountItems();
+    }
 	snprintf (pageStr, sizeof (pageStr), "%d", page);
 	mPageNumberItem->SetText (pageStr);
 	mPagesView->Select(page-1);
