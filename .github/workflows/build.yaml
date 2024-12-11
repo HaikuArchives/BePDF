@@ -25,5 +25,5 @@ jobs:
           version: ${{ matrix.config.version }}
           architecture: ${{ matrix.config.architecture }}
           run: |
-            ssh user@localhost "pkgman update -y haiku_devel devel:libbz2 devel:libfreetype devel:libpng16 devel:libz cmd:gcc cmd:htmldoc cmd:make cmd:pkg_config cmd:ps2pdf" &&
+            ssh user@localhost "pkgman update -y haiku_devel devel:libbz2 devel:libfreetype devel:libpng16 devel:libz cmd:gcc gcc_syslibs_devel cmd:htmldoc cmd:make cmd:pkg_config cmd:ps2pdf" &&
             make -C xpdf && make -C bepdf && make -C bepdf bindcatalogs
