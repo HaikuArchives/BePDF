@@ -112,7 +112,8 @@ SYSTEM_INCLUDE_PATHS = ../xpdf \
 	../xpdf/goo \
 	../xpdf/splash \
 	../xpdf/xpdf \
-	/system/develop/headers/private/interface
+	/system/develop/headers/private/interface \
+	/system/develop/headers/private/storage
 
 #	Additional paths paths to look for local headers. These use the form
 #	#include "header". Directories that contain the files in SRCS are
@@ -135,7 +136,7 @@ LOCALES = ca cs de el en_AU en_GB en es fi fr fur hi id ja pl pt pt_BR ro ru sv 
 #	use. For example, setting DEFINES to "DEBUG=1" will cause the compiler
 #	option "-DDEBUG=1" to be used. Setting DEFINES to "DEBUG" would pass
 #	"-DDEBUG" on the compiler's command line.
-DEFINES =
+DEFINES = 
 
 #	Specify the warning level. Either NONE (suppress all warnings),
 #	ALL (enable all warnings), or leave blank (enable default warnings).
@@ -147,7 +148,7 @@ SYMBOLS :=
 
 #	Includes debug information, which allows the binary to be debugged easily.
 #	If set to "TRUE", debug info will be created.
-DEBUGGER :=
+DEBUGGER := 
 
 #	Specify any additional compiler flags to be used.
 COMPILER_FLAGS = -Wno-write-strings

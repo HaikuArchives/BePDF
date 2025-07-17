@@ -344,6 +344,10 @@ bool PDFWindow::IsCurrentFile(entry_ref *ref) const {
 ///////////////////////////////////////////////////////////
 bool PDFWindow::LoadFile(entry_ref *ref, const char *ownerPassword, const char *userPassword, bool *encrypted) {
 	if (mMainView != NULL) {
+		// Haiku sends a B_STAT_CHANGED notification
+		// when attributes are changed too
+		// that's why we stop watching when changing attributes
+		mEntryChangedMonitor.StopWatching();
 		StoreFileAttributes();
 		CleanUpBeforeLoad();
 		// load new file
@@ -354,6 +358,10 @@ bool PDFWindow::LoadFile(entry_ref *ref, const char *ownerPassword, const char *
 			InitAfterOpen();
 			return true;
 		}
+		//If unable to load the new ref, watch again
+		entry_ref oldRef;
+		if (mCurrentFile.GetRef(&oldRef) == B_OK)
+			mEntryChangedMonitor.StartWatching(&oldRef);
 	}
 	return false;
 }
