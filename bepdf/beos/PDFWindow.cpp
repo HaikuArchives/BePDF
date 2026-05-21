@@ -310,9 +310,6 @@ void PDFWindow::StoreFileAttributes() {
 		entry_ref cur_ref;
 		if (mCurrentFile.InitCheck() == B_OK) {
 			mCurrentFile.GetRef(&cur_ref);
-			BMessage bm;
-			if (mOutlinesView->GetBookmarks(&bm))
-				mFileAttributes.SetBookmarks(&bm);
 			mFileAttributes.Write(&cur_ref, gApp->GetSettings());
 		}
 		Unlock();
@@ -1434,6 +1431,7 @@ PDFWindow::MessageReceived(BMessage* message)
 			if (message->FindString("label", &label) == B_OK &&
 			    message->FindInt32("pageNum", &pageNum) == B_OK) {
 				mOutlinesView->AddUserBookmark(pageNum, label.String());
+				SaveUserBookmarks();
 				UpdateInputEnabler();
 			}
 		}
@@ -1597,10 +1595,10 @@ PDFWindow::ShowLeftPanel(int panel)
 	if (mLayerView->CardLayout()->VisibleIndex() != panel) {
 		gApp->GetSettings()->SetLeftPanel(panel);
 		mLayerView->CardLayout()->SetVisibleItem(panel);
-		if (panel == BOOKMARKS_PANEL) {
-			ActivateOutlines();
-		}
 	}
+	if (panel == BOOKMARKS_PANEL) {
+		ActivateOutlines();
+	}	
 	UpdateInputEnabler();
 }
 
@@ -1699,6 +1697,7 @@ void PDFWindow::AddBookmark()
 
 void PDFWindow::DeleteBookmark() {
 	mOutlinesView->RemoveUserBookmark(mMainView->Page());
+	SaveUserBookmarks();
 	UpdateInputEnabler();
 }
 
@@ -1977,4 +1976,20 @@ void PDFWindow::ReleaseAnnotationButton() {
 		mPressedAnnotationButton->SetValue(B_CONTROL_OFF);
 		mPressedAnnotationButton = NULL;
 	}
+}
+
+void PDFWindow::SaveUserBookmarks()
+{
+	if (mCurrentFile.InitCheck() != B_OK)
+		return;
+	
+	BMessage bm;
+	if (!mOutlinesView->GetBookmarks(&bm))
+		return;
+	
+	entry_ref cur_ref;
+	mCurrentFile.GetRef(&cur_ref);
+	
+	mFileAttributes.SetBookmarks(&bm);
+	mFileAttributes.Write(&cur_ref, gApp->GetSettings());
 }

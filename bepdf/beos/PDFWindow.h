@@ -347,6 +347,7 @@ protected:
 	void AddBookmark();
 	void DeleteBookmark();
 	void EditBookmark();
+	void SaveUserBookmarks();
 
 	// Annotations
 	void PressAnnotationButton();
