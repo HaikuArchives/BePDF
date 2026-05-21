@@ -159,9 +159,9 @@ public:
 		FIND_NEXT_CMD,
 
 		// User defined bookmarks
-		ADD_BOOKMARK_CMD,
-		DELETE_BOOKMARK_CMD,
-		EDIT_BOOKMARK_CMD,
+		ADD_USER_BOOKMARK_CMD,
+		DELETE_USER_BOOKMARK_CMD,
+		EDIT_USER_BOOKMARK_CMD,
 
 		// Help
 		HELP_CMD,
@@ -344,9 +344,9 @@ protected:
 	void OnFullScreen();
 
 	// User defined bookmarks
-	void AddBookmark();
-	void DeleteBookmark();
-	void EditBookmark();
+	void AddUserBookmark();
+	void DeleteUserBookmark();
+	void EditUserBookmark();
 	void SaveUserBookmarks();
 
 	// Annotations

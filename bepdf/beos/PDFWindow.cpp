@@ -499,11 +499,11 @@ void PDFWindow::UpdateInputEnabler()
 		fMenuBar->FindItem(SELECT_ALL_CMD)->SetEnabled(okToCopy);
 		fMenuBar->FindItem(SELECT_NONE_CMD)->SetEnabled(okToCopy);
 
-		bool hasBookmark = mOutlinesView->HasUserBookmark(page);
-		bool selected    = hasBookmark && mOutlinesView->IsUserBMSelected();
-		fMenuBar->FindItem(ADD_BOOKMARK_CMD)->SetEnabled(!hasBookmark);
-		fMenuBar->FindItem(EDIT_BOOKMARK_CMD)->SetEnabled(selected);
-		fMenuBar->FindItem(DELETE_BOOKMARK_CMD)->SetEnabled(selected);
+		bool hasUserBookmark = mOutlinesView->HasUserBookmark(page);
+		bool selected    = hasUserBookmark && mOutlinesView->IsUserBMSelected();
+		fMenuBar->FindItem(ADD_USER_BOOKMARK_CMD)->SetEnabled(!hasUserBookmark);
+		fMenuBar->FindItem(EDIT_USER_BOOKMARK_CMD)->SetEnabled(selected);
+		fMenuBar->FindItem(DELETE_USER_BOOKMARK_CMD)->SetEnabled(selected);
 
 		// Annotation
 		bool editAnnot = mMainView->EditingAnnot();
@@ -637,9 +637,9 @@ BMenuBar* PDFWindow::BuildMenu()
 		.End()
 
 		.AddMenu(B_TRANSLATE("Bookmark"))
-			.AddItem(B_TRANSLATE("Add"), ADD_BOOKMARK_CMD)
-			.AddItem(B_TRANSLATE("Delete"), DELETE_BOOKMARK_CMD)
-			.AddItem(B_TRANSLATE("Edit"), EDIT_BOOKMARK_CMD)
+			.AddItem(B_TRANSLATE("Add"), ADD_USER_BOOKMARK_CMD)
+			.AddItem(B_TRANSLATE("Delete"), DELETE_USER_BOOKMARK_CMD)
+			.AddItem(B_TRANSLATE("Edit"), EDIT_USER_BOOKMARK_CMD)
 		.End()
 
 		.AddMenu(B_TRANSLATE("Help"))
@@ -1256,11 +1256,11 @@ PDFWindow::MessageReceived(BMessage* message)
 		break;
 	case FULL_SCREEN_CMD: OnFullScreen();
 		break;
-	case ADD_BOOKMARK_CMD: AddBookmark();
+	case ADD_USER_BOOKMARK_CMD: AddUserBookmark();
 		break;
-	case DELETE_BOOKMARK_CMD: DeleteBookmark();
+	case DELETE_USER_BOOKMARK_CMD: DeleteUserBookmark();
 		break;
-	case EDIT_BOOKMARK_CMD: EditBookmark();
+	case EDIT_USER_BOOKMARK_CMD: EditUserBookmark();
 		break;
 	case SHOW_TRACER_CMD: OutputTracer::ShowWindow(gApp->GetSettings());
 		break;
@@ -1688,26 +1688,42 @@ void PDFWindow::WorkspaceActivated(int32 workspace, bool active) {
 
 // #pragma mark - User-defined bookmarks
 
-void PDFWindow::AddBookmark()
+void PDFWindow::AddUserBookmark()
 {
 	char buffer[256];
 	sprintf(buffer, B_TRANSLATE("Page %d"), mMainView->Page());
 	new BookmarkWindow(mMainView->Page(), buffer, BRect(30, 30, 300, 200), this);
 }
 
-void PDFWindow::DeleteBookmark() {
+void PDFWindow::DeleteUserBookmark() {
 	mOutlinesView->RemoveUserBookmark(mMainView->Page());
 	SaveUserBookmarks();
 	UpdateInputEnabler();
 }
 
-void PDFWindow::EditBookmark() {
+void PDFWindow::EditUserBookmark() {
 	const char *label = mOutlinesView->GetUserBMLabel(mMainView->Page());
 	if (label) {
 		new BookmarkWindow(mMainView->Page(), label, BRect(30, 30, 300, 200), this);
 	} else {
 		// should not reach here
 	}
+}
+
+void PDFWindow::SaveUserBookmarks()
+{
+	if (mCurrentFile.InitCheck() != B_OK)
+		return;
+	
+	BMessage bm;
+	if (!mOutlinesView->GetBookmarks(&bm))
+		return;
+	
+	entry_ref cur_ref;
+	mCurrentFile.GetRef(&cur_ref);
+	
+	mFileAttributes.SetBookmarks(&bm);
+	mFileAttributes.Write(&cur_ref, gApp->GetSettings());
 }
 
 // #pragma mark - Annotations
@@ -1976,20 +1992,4 @@ void PDFWindow::ReleaseAnnotationButton() {
 		mPressedAnnotationButton->SetValue(B_CONTROL_OFF);
 		mPressedAnnotationButton = NULL;
 	}
-}
-
-void PDFWindow::SaveUserBookmarks()
-{
-	if (mCurrentFile.InitCheck() != B_OK)
-		return;
-	
-	BMessage bm;
-	if (!mOutlinesView->GetBookmarks(&bm))
-		return;
-	
-	entry_ref cur_ref;
-	mCurrentFile.GetRef(&cur_ref);
-	
-	mFileAttributes.SetBookmarks(&bm);
-	mFileAttributes.Write(&cur_ref, gApp->GetSettings());
 }
