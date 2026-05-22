@@ -976,7 +976,7 @@ PDFWindow::SetPage(int32 page) {
     if (page > mPagesView->CountItems()) {
         page = mPagesView->CountItems();
     }
-	snprintf (pageStr, sizeof (pageStr), "%d", page);
+	snprintf (pageStr, sizeof (pageStr), "%d" B_PRId32, page);
 	mPageNumberItem->SetText (pageStr);
 	mPagesView->Select(page-1);
 	mPagesView->ScrollToSelection();
@@ -986,7 +986,7 @@ PDFWindow::SetPage(int32 page) {
 void
 PDFWindow::MessageReceived(BMessage* message)
 {
-	int page;
+	int32 page;
 	const char *text;
 
 	if (CancelCommand(message))
