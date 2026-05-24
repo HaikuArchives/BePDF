@@ -22,6 +22,10 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <syslog.h>
+#include <stdarg.h>
+#include <OS.h> 
+
 // BeOS
 #include <locale/Catalog.h>
 
@@ -72,6 +76,17 @@
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PDFView"
+
+static void
+Trace(const char *fmt, ...)
+{
+	char buf[512];
+	va_list ap;
+	va_start(ap, fmt);
+	vsnprintf(buf, sizeof(buf), fmt, ap);
+	va_end(ap);
+	syslog(LOG_INFO, "BePDF[t=%" B_PRId32 "]: %s", find_thread(NULL), buf);
+ }
 
 // zoom factor is 1.2 (similar to DVI magsteps)
 #if 0
@@ -1608,6 +1623,15 @@ PDFView::ShowPopUpMenu(BPoint point, LinkAction* action) {
 ///////////////////////////////////////////////////////////////////////////
 void
 PDFView::LinkToString(LinkAction* action, BString* string) {
+      if (action == NULL) {
+          Trace("PDFView::LinkToString - a null value was passed. "
+              "Most likely an xpdf parser failure. "
+              "See issue #100 on GitHub.");
+
+          string->Truncate(0);
+          return;
+      }
+		  
 	const char *s = NULL;
 	char *t;
 	BString str;
