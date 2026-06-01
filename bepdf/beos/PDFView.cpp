@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 #include <math.h>
+
 // BeOS
 #include <locale/Catalog.h>
 
@@ -72,6 +73,7 @@
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PDFView"
+
 
 // zoom factor is 1.2 (similar to DVI magsteps)
 #if 0
@@ -1608,6 +1610,14 @@ PDFView::ShowPopUpMenu(BPoint point, LinkAction* action) {
 ///////////////////////////////////////////////////////////////////////////
 void
 PDFView::LinkToString(LinkAction* action, BString* string) {
+	if (action == NULL) {
+		fprintf(stderr, "PDFView::LinkToString - a null value was passed. "
+			"Most likely an xpdf parser failure. "
+			"See issue #100 on GitHub.\n");
+		string->Truncate(0);
+		return;
+	}
+		  
 	const char *s = NULL;
 	char *t;
 	BString str;
