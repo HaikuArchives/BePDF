@@ -1354,6 +1354,9 @@ Annotations::Annotations(Object* annots, BePDFAcroForm* acroForm)
 
 				Object subType;
 				if (annot.dictLookup("Subtype", &subType) && subType.isName()) {
+					#ifdef DEBUG
+					const char* s = subType.getName();
+					#endif
 					Annotation* a = NULL;
 					LOG(s);
 					if (subType.isName("Text")) {
