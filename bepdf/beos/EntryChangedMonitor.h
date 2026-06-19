@@ -23,10 +23,10 @@
 #ifndef ENTRY_CHANGED_MONITOR_H
 #define ENTRY_CHANGED_MONITOR_H
 
-#include <Handler.h>
-#include <Node.h>
 #include <Entry.h>
-#include <NodeMonitor.h>
+#include <Handler.h>
+#include <Path.h>
+#include <PathMonitor.h>
 
 class EntryChangedListener {
 public:
@@ -59,7 +59,6 @@ private:
 	EntryChangedListener* mListener;
 	bool       mActive;
 	entry_ref  mEntryRef;
-	node_ref   mNodeRef;
 };
 
 #endif

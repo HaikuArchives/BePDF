@@ -112,7 +112,8 @@ SYSTEM_INCLUDE_PATHS = ../xpdf \
 	../xpdf/goo \
 	../xpdf/splash \
 	../xpdf/xpdf \
-	/system/develop/headers/private/interface
+	/system/develop/headers/private/interface \
+	/system/develop/headers/private/storage
 
 #	Additional paths paths to look for local headers. These use the form
 #	#include "header". Directories that contain the files in SRCS are
@@ -147,7 +148,7 @@ SYMBOLS :=
 
 #	Includes debug information, which allows the binary to be debugged easily.
 #	If set to "TRUE", debug info will be created.
-DEBUGGER :=
+DEBUGGER := 
 
 #	Specify any additional compiler flags to be used.
 COMPILER_FLAGS = -Wno-write-strings
